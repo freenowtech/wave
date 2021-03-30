@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders medium bottom-lined label 1`] = `
+.c0 {
+  position: absolute;
+  pointer-events: none;
+  line-height: 1;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: #637689;
+  -webkit-transition: color 125ms ease;
+  transition: color 125ms ease;
+  top: 0.375rem;
+  left: 0;
+  padding: 0 0.25rem;
+  font-size: 0.75rem;
+}
+
+<div>
+  <label
+    class="c0"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`Label renders medium boxed label 1`] = `
+.c0 {
+  position: absolute;
+  pointer-events: none;
+  line-height: 1;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: #637689;
+  -webkit-transition: color 125ms ease;
+  transition: color 125ms ease;
+  top: -0.3125rem;
+  left: 0.5625rem;
+  padding: 0 0.25rem;
+  font-size: 0.75rem;
+}
+
+<div>
+  <label
+    class="c0"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`Label renders small bottom-lined label 1`] = `
+.c0 {
+  position: absolute;
+  pointer-events: none;
+  line-height: 1;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: #637689;
+  -webkit-transition: color 125ms ease;
+  transition: color 125ms ease;
+  top: 0.125rem;
+  left: 0;
+  padding: 0 0.125rem;
+  font-size: 0.625rem;
+}
+
+<div>
+  <label
+    class="c0"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`Label renders small boxed label 1`] = `
+.c0 {
+  position: absolute;
+  pointer-events: none;
+  line-height: 1;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: #637689;
+  -webkit-transition: color 125ms ease;
+  transition: color 125ms ease;
+  top: -0.3125rem;
+  left: 0.4375rem;
+  padding: 0 0.125rem;
+  font-size: 0.625rem;
+}
+
+<div>
+  <label
+    class="c0"
+  >
+    Label
+  </label>
+</div>
+`;

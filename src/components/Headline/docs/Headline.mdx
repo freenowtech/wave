@@ -1,0 +1,57 @@
+---
+name: Headline
+menu: Components
+route: /components/headline
+---
+
+import { Playground } from 'docz';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { Headline } from '../Headline.tsx';
+import { theme } from '../../../essentials/theme.ts';
+import { Colors } from '../../../essentials/Colors/Colors.ts';
+
+# Headline
+
+The Headline component will render an html `h1-6` tag. Please reference the
+[w3 recommendations for headings](https://www.w3.org/WAI/tutorials/page-structure/headings/) to ensure your headings
+provide an accessible experience for screen reader users.
+
+-   Use different headlines and paragraphs to structure your content hierarchically
+-   Avoid using headline lengths, breaking more then two times (three times on mobile)
+-   Avoid using sizes outside the given range
+-   Recommended width of headline is between 500px and 700px
+
+<ItemWrapper>
+    <Headline as="h1">headline h1</Headline>
+    <Headline as="h2">headline h2</Headline>
+    <Headline as="h3">headline h3</Headline>
+    <Headline as="h4">headline h4</Headline>
+    <Headline as="h5">headline h5</Headline>
+    <Headline as="h6">headline h6</Headline>
+</ItemWrapper>
+<ItemWrapper inverted>
+    <Headline as="h1" inverted>
+        headline h1 inverted
+    </Headline>
+    <Headline as="h2" inverted>
+        headline h2 inverted
+    </Headline>
+    <Headline as="h3" inverted>
+        headline h3 inverted
+    </Headline>
+    <Headline as="h4" inverted>
+        headline h4 inverted
+    </Headline>
+    <Headline as="h5" inverted>
+        headline h5 inverted
+    </Headline>
+    <Headline as="h6" inverted>
+        headline h6 inverted
+    </Headline>
+</ItemWrapper>
+
+### Playground
+
+<Playground>
+    <Headline as="h3">default headline h3</Headline>
+</Playground>

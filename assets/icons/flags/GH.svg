@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/GH</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/GH" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/GH">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#E71F37" mask="url(#mask-2)" x="0" y="0" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#118B56" mask="url(#mask-2)" x="0" y="13.3333333" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#FDD64C" mask="url(#mask-2)" x="0" y="6.66666667" width="28" height="6.66666667"></rect>
+            <polygon id="Star-53" fill="#262626" mask="url(#mask-2)" points="14 11.6116938 12.0407158 13.0300566 12.784207 10.7283684 10.8298116 9.30327669 13.2485986 9.29911801 14 7 14.7514014 9.29911801 17.1701884 9.30327669 15.215793 10.7283684 15.9592842 13.0300566"></polygon>
+        </g>
+    </g>
+</svg>

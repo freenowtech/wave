@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/KH</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/KH" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/KH">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#0F3EB6" mask="url(#mask-2)" x="0" y="0" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#0F3EB6" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#ED1A3C" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="9.33333333"></rect>
+            <path d="M10,10.6666667 L11.3333333,10.6666667 L11.3333333,13.3333333 L8.66666667,13.3333333 L10,10.6666667 Z M12,10.6666667 L16,10.6666667 L16,13.3333333 L12,13.3333333 L12,10.6666667 Z M16.6666667,10.6666667 L18,10.6666667 L19.3333333,13.3333333 L16.6666667,13.3333333 L16.6666667,10.6666667 Z M16.6666667,8.66597104 C16.6666667,8.29816539 16.9625765,8 17.3333333,8 C17.7015232,8 18,8.29510689 18,8.66597104 L18,10 L16.6666667,10 L16.6666667,8.66597104 Z M12,8.72721354 L13.3333333,8.72721354 L13.3333333,7.997615 C13.3333333,7.63074237 13.6292432,7.33333333 14,7.33333333 C14.3681898,7.33333333 14.6666667,7.62893947 14.6666667,7.997615 L14.6666667,8.72721354 L16,8.72721354 L16,10 L12,10 L12,8.72721354 Z M10,8.66597104 C10,8.29816539 10.2959099,8 10.6666667,8 C11.0348565,8 11.3333333,8.29510689 11.3333333,8.66597104 L11.3333333,10 L10,10 L10,8.66597104 Z" id="Rectangle-621" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

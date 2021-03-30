@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/KG</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/KG" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/KG">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#F22A46" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <circle id="Oval-9" fill="#FFF04D" mask="url(#mask-2)" cx="14" cy="10" r="3.33333333"></circle>
+            <path d="M14,14.713613 L12.3681798,17.1494714 L11.95484,14.2468186 L9.42774145,15.7334309 L10.3147489,12.9388896 L7.39289497,13.1818141 L9.40456711,11.0488776 L6.66666667,10 L9.40456711,8.95112243 L7.39289497,6.81818591 L10.3147489,7.06111036 L9.42774145,4.26656913 L11.95484,5.75318142 L12.3681798,2.85052864 L14,5.28638699 L15.6318202,2.85052864 L16.04516,5.75318142 L18.5722585,4.26656913 L17.6852511,7.06111036 L20.607105,6.81818591 L18.5954329,8.95112243 L21.3333333,10 L18.5954329,11.0488776 L20.607105,13.1818141 L17.6852511,12.9388896 L18.5722585,15.7334309 L16.04516,14.2468186 L15.6318202,17.1494714 L14,14.713613 Z M14,14.6666667 C16.5773288,14.6666667 18.6666667,12.5773288 18.6666667,10 C18.6666667,7.42267117 16.5773288,5.33333333 14,5.33333333 C11.4226712,5.33333333 9.33333333,7.42267117 9.33333333,10 C9.33333333,12.5773288 11.4226712,14.6666667 14,14.6666667 Z" id="Star-28" fill="#FFF04D" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

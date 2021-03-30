@@ -1,0 +1,61 @@
+---
+name: Text
+menu: Components
+route: /components/text
+---
+
+import { Playground } from 'docz';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { Text } from '../Text.tsx';
+import { Colors } from '../../../essentials/Colors/Colors.ts';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+
+# Text
+
+The Text component is a wrapper component that will apply typography styles to the text inside.
+
+-   Use different headlines and copies to structure your content hierarchically
+-   Avoid using sizes outside the given range
+-   Text default size is medium
+
+<StyledSystemLinks component="Text" supportedProps={ ['margin', 'fontSize', 'fontWeight', 'fontFamily', 'textAlign'] }/>
+
+## Playground
+
+<Playground>
+    <Text>default text</Text>
+    <Text as="p" fontWeight="semibold" marginTop={3} fontSize={1}>
+        custom paragraph
+    </Text>
+    <Text as="p" fontSize="small">
+        using fontSize alias you can set (small, medium or large)
+    </Text>
+    <Text as="p" fontSize={[1, "medium", "large"]}>
+        You can apply responsive styles
+    </Text>
+</Playground>
+
+## Design
+
+### Appearance
+
+<ItemWrapper mt={4}>
+    <Text as="p">paragraph large</Text>
+    <Text as="p" fontSize={1}>paragraph medium</Text>
+    <Text as="p" fontSize={0}>paragraph small</Text>
+</ItemWrapper>
+<ItemWrapper inverted>
+    <Text as="p" inverted>paragraph inverted large</Text>
+    <Text as="p" inverted fontSize={1}>paragraph inverted medium</Text>
+    <Text as="p" inverted fontSize={0}>paragraph inverted small</Text>
+</ItemWrapper>
+<ItemWrapper>
+    <Text as="p" weak>paragraph weak large</Text>
+    <Text as="p" weak fontSize={1}>paragraph weak medium</Text>
+    <Text as="p" weak fontSize={0}>paragraph weak small</Text>
+</ItemWrapper>
+<ItemWrapper inverted>
+    <Text as="p" weak inverted>paragraph weak inverted large</Text>
+    <Text as="p" weak fontSize={1} inverted>paragraph weak inverted medium</Text>
+    <Text as="p" weak fontSize={0} inverted>paragraph weak inverted small</Text>
+</ItemWrapper>

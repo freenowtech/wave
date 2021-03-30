@@ -1,0 +1,46 @@
+---
+name: Textarea
+menu: Components
+route: /components/textarea
+---
+
+import { Playground } from 'docz';
+import { ControlledTextarea } from './ControlledTextarea';
+import { Textarea } from '../Textarea';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+
+# Textarea
+
+<StyledSystemLinks component="Textarea" supportedProps={ ['margin', 'height', 'width'] }/>
+
+## Playground
+
+<Playground>
+    <Textarea placeholder="user@free-now.com" label="E-Mail Address" resize="vertical" />
+</Playground>
+
+## Appearance
+
+### Default
+
+<Textarea label="Default" />
+
+### Default placeholder
+
+<Textarea label="Default" placeholder="Placeholder" />
+
+### Error
+
+<Textarea label="Default" error />
+
+### Disabled
+
+<Textarea label="Default" disabled />
+
+### Inverted
+
+<ItemWrapper inverted gridTemplate="60% 1fr" mt={4}>
+    <Textarea inverted label="Default" />
+</ItemWrapper>
+

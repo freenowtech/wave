@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / credit-card / default</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-credit-card-/-default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M22,13 L20,13 L20,15 L22,15 L22,17 C22,18.1045695 21.1045695,19 20,19 L4,19 C2.8954305,19 2,18.1045695 2,17 L2,7 C2,5.8954305 2.8954305,5 4,5 L20,5 C21.1045695,5 22,5.8954305 22,7 L22,13 Z M4,7 L4,13 L22,13 L22,15 L4,15 L4,17 L20,17 L20,7 L4,7 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

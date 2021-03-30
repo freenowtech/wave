@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/AD</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/AD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/AD">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#1537D1" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <rect id="Mask" fill="#EA3058" mask="url(#mask-2)" x="13.3333333" y="0" width="14.6666667" height="20"></rect>
+            <rect id="Rectangle-2" fill="#FFCF3C" mask="url(#mask-2)" x="9.33333333" y="0" width="9.33333333" height="20"></rect>
+            <polygon id="Rectangle-139-Copy" fill="#FFEDB1" mask="url(#mask-2)" points="12.6666667 8.66666667 14 8.66666667 14 9.33333333 12.6666667 9.33333333"></polygon>
+            <path d="M12.3872251,8.63283682 L12.5545201,10.6403761 C12.60174,11.2070148 13.1027672,11.6666667 13.669921,11.6666667 L14.330079,11.6666667 C14.8964309,11.6666667 15.3984979,11.2041608 15.4454799,10.6403761 L15.6127749,8.63283682 C15.627384,8.45752745 15.5124844,8.33333333 15.3394814,8.33333333 L12.6605186,8.33333333 C12.4938221,8.33333333 12.3731733,8.46421469 12.3872251,8.63283682 Z" id="Rectangle-137" stroke="#D32E28" stroke-width="0.666666667" mask="url(#mask-2)"></path>
+            <polygon id="Rectangle-139" fill="#D32E28" mask="url(#mask-2)" points="12.6666667 9.33333333 15.3333333 9.33333333 15.3333333 10 14.6666667 10 13.3333333 10 12.6666667 10"></polygon>
+        </g>
+    </g>
+</svg>

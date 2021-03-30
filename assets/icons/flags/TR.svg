@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TR</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TR" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TR">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#E92434" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <polygon id="Star-8" fill="#FFFFFF" mask="url(#mask-2)" points="18.6857803 10.8124704 17.1183529 11.929849 17.6966815 10.093848 16.1496296 8.94842503 18.0744836 8.93109264 18.6857803 7.10580368 19.297077 8.93109264 21.221931 8.94842503 19.6748791 10.093848 20.2532076 11.929849 18.6857803 10.8124704 18.6857803 10.8124704"></polygon>
+            <path d="M17.4027613,6.31588587 C16.5555329,5.70011138 15.4903254,5.33333333 14.3333333,5.33333333 C11.5719096,5.33333333 9.33333333,7.42267117 9.33333333,10 C9.33333333,12.5773288 11.5719096,14.6666667 14.3333333,14.6666667 C15.4903254,14.6666667 16.5555329,14.2998886 17.4027613,13.6841141 C16.3048507,15.0935058 14.5916202,16 12.6666667,16 C9.35295817,16 6.66666667,13.3137085 6.66666667,10 C6.66666667,6.6862915 9.35295817,4 12.6666667,4 C14.5916202,4 16.3048507,4.90649423 17.4027613,6.31588587 Z" id="Oval-41" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

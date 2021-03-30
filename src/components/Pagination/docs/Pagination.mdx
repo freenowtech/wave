@@ -1,0 +1,141 @@
+---
+name: Pagination
+menu: Components
+route: /components/pagination
+---
+
+import { Text } from '../../Text/Text.tsx';
+import { Pagination } from '../Pagination.tsx';
+import { NormalPagination, SmallPagination } from './PaginationProvider.tsx';
+
+# Pagination
+
+* Use pagination to split long datasets like tables and lists
+* As a rule of thumb set pagination after **10, 15 or 20 items**
+* Use small navigation on mobile and for small datasets
+
+### Normal
+
+<NormalPagination />
+
+### Small
+
+<SmallPagination />
+
+## API
+
+### Full example
+
+```jsx
+export default () => {
+    const PAGE_SIZE = 20;
+    const TOTAL_ITEMS = 200;
+    
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const lastPage = Math.ceil(TOTAL_ITEMS / PAGE_SIZE);
+
+    return (
+        <Pagination
+            value={currentPage}
+            pageSize={PAGE_SIZE}
+            totalItems={TOTAL_ITEMS}
+            label={
+                <Text weak>
+                    Page{' '}
+                    <Text as="b" fontWeight="semibold" weak>
+                        {currentPage} of {lastPage}
+                    </Text>
+                </Text>
+            }
+            onNextPage={() => setCurrentPage(current => current + 1)}
+            onPrevPage={() => setCurrentPage(current => current - 1)}
+            onSkipForward={() => setCurrentPage(lastPage)}
+            onSkipBackward={() => setCurrentPage(1)}
+        />
+    );
+};
+```
+
+### Label
+
+The label should be used to display the current state of the pagination which
+typically consists of the current page and the total number of pages. This can be as simple as passing a string:
+
+<Pagination
+    value={1}
+    pageSize={20}
+    totalItems={200}
+    label={`Page ${1} of ${20}`}
+/>
+
+```jsx
+<Pagination
+    value={currentPage}
+    pageSize={PAGE_SIZE}
+    totalItems={TOTAL_ITEMS}
+    label={`Page ${currentPage} of ${Math.ceil(TOTAL_ITEMS / PAGE_SIZE)}`}
+/>
+```
+
+To display a label like in the examples above you can pass a custom component:
+
+<Pagination
+    value={1}
+    pageSize={20}
+    totalItems={200}
+    label={
+        <Text weak>
+            Page{' '}
+            <Text as="b" fontWeight="semibold" weak>
+                {1} of {20}
+            </Text>
+        </Text>
+    }
+/>
+
+```jsx
+<Pagination
+    value={currentPage}
+    pageSize={PAGE_SIZE}
+    totalItems={TOTAL_ITEMS}
+    label={
+        <Text weak>
+            Page{' '}
+            <Text as="b" fontWeight="semibold" weak>
+                {currentPage} of {lastPage}
+            </Text>
+        </Text>
+    }
+/>
+```
+
+### Accessibility
+
+It is recommended to set ARIA labels to provide accessible names for the pagination inputs.
+This also helps when [testing](#testing). You can use the following props to provide translated
+ARIA labels.
+
+```jsx
+<Pagination
+    ariaLabelFirst="First"
+    ariaLabelPrevious="Previous"
+    ariaLabelNext="Next"
+    ariaLabelLast="Last"
+/>
+```
+
+## Testing
+
+In tests you can use the `aria-label` attributes to select the individual buttons.
+Here is an example using `@testing-library/react`.
+
+```jsx
+test('should select by aria-label', () => {
+    const { getByRole } = render(<Pagination value={1} pageSize={20} totalItems={200} />);
+    getByRole('button', { name: 'First' });
+    getByRole('button', { name: 'Previous' });
+    getByRole('button', { name: 'Next' });
+    getByRole('button', { name: 'Last' });
+});
+```

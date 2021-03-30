@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / star / outline</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-star-/-outline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M12,3 L15.0901699,8.92523292 L22,9.8753882 L17,14.4875388 L18.1803399,21 L12,17.9252329 L5.81966011,21 L7,14.4875388 L2,9.8753882 L8.90983006,8.92523292 L12,3 Z M10.2055319,10.7658837 L6.47173268,11.2793101 L9.16395621,13.7626982 L8.49868,17.4333235 L12,15.6913896 L15.50132,17.4333235 L14.8360438,13.7626982 L17.5282673,11.2793101 L13.7944681,10.7658837 L12,7.32508859 L10.2055319,10.7658837 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

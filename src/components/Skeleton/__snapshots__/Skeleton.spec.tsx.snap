@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton should render animated version 1`] = `
+.c0 {
+  display: inline-block;
+  height: 1rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background-color: #F1F2F4;
+}
+
+.c0::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateX(-75%);
+  -ms-transform: translateX(-75%);
+  transform: translateX(-75%);
+  background-image: linear-gradient( 90deg, rgba(255,255,255,0) 25%, rgba(255,255,255,0.5) 37%, rgba(255,255,255,0) 63% );
+  background-repeat: no-repeat;
+  content: '';
+  -webkit-animation: ctGIgz 1600ms ease infinite;
+  animation: ctGIgz 1600ms ease infinite;
+  -webkit-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+<span
+  class="c0"
+/>
+`;
+
+exports[`Skeleton should render default 1`] = `
+.c0 {
+  display: inline-block;
+  height: 1rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background-color: #F1F2F4;
+}
+
+<span
+  class="c0"
+/>
+`;

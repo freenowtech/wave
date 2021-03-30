@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / calendar / checked</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-calendar-/-checked" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M7,2 L7,5 L17,5 L17,2 L19,2 L19,5 L20,5 C21.1045695,5 22,5.8954305 22,7 L22,22 L2,22 L2,7 C2,5.8954305 2.8954305,5 4,5 L5,5 L5,2 L7,2 Z M19.777,10 L4.222,10 L4.22222222,19.875 L19.7777778,19.875 L19.777,10 Z M15.8984683,10.9928539 L17.3126033,12.4071461 L10.9932261,18.7258209 L7.29667679,15.0685162 L8.70332321,13.6467758 L10.9857778,15.9049985 L15.8984683,10.9928539 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

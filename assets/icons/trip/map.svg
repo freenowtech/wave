@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / map</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-map" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M22,3 L22,15.411 L20,15.884 L20,5.57468088 L15.999,6.596 L15.999,18.916 L20,17.9081097 L20,17.907 L22,17.403 L22,19.4665712 L14.6283408,21.3245471 L9.31122067,19.7246262 L2,21.5713321 L2,5.11046435 L9.28866294,3.25065099 L14.7503541,4.85063576 L22,3 Z M10,5.543 L10,17.843 L13.999,19.047 L13.999,6.715 L10,5.543 Z M8,5.643 L4,6.66421654 L4,19.0033488 L8,17.993 L8,5.643 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

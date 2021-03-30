@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/BN</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/BN" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/BN">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#F7E250" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <g id="Rectangle-2-Copy-4-+-Rectangle-2-Copy-4" mask="url(#mask-2)">
+                <g transform="translate(13.931906, 10.498060) rotate(20.000000) translate(-13.931906, -10.498060) translate(-5.568094, 5.998060)" id="Rectangle-2-Copy-4">
+                    <polygon fill="#FFFFFF" points="0.0603073792 4.00868681 38.726974 4.00868681 38.726974 0.00868680999 0.0603073792 0.00868680999"></polygon>
+                    <polygon fill="#262626" points="0.0603073792 8.00868681 38.726974 8.00868681 38.726974 4.00868681 0.0603073792 4.00868681"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TN</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TN" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TN">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#E92434" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <path d="M15.8111387,5.69780903 C15.2542529,5.46308611 14.6422791,5.33333333 14,5.33333333 C11.4226712,5.33333333 9.33333333,7.42267117 9.33333333,10 C9.33333333,12.5773288 11.4226712,14.6666667 14,14.6666667 C14.6422791,14.6666667 15.2542529,14.5369139 15.8111387,14.302191 C13.6641346,14.044317 12,12.2164982 12,10 C12,7.78350178 13.6641346,5.95568302 15.8111387,5.69780903 Z M14,16 C10.6862915,16 8,13.3137085 8,10 C8,6.6862915 10.6862915,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,13.3137085 17.3137085,16 14,16 Z M16.3541922,11.1701023 L18.1574096,11.8437271 L17.1235951,10.2199688 L18.3214752,8.71316863 L16.457723,9.19461571 L15.3948362,7.58973718 L15.2767885,9.51104615 L13.4220082,10.0259768 L15.2128029,10.731964 L15.1293725,12.6550872 L16.3541922,11.1701023 Z" id="Oval-41" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

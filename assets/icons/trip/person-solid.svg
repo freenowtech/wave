@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / person / solid</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-person-/-solid" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M15,11 C17.209139,11 19,12.790861 19,15 L19,22 L5,22 L5,15 C5,12.790861 6.790861,11 9,11 L15,11 Z M11.9751553,2 C14.1705729,2 15.9503106,3.790861 15.9503106,6 C15.9503106,8.209139 14.1705729,10 11.9751553,10 C9.77973764,10 8,8.209139 8,6 C8,3.790861 9.77973764,2 11.9751553,2 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

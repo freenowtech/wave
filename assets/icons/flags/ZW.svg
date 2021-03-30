@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/ZW</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <polygon id="path-3" points="0.666666667 20 0.666666667 0 2 0 15.3333333 10 2 20"></polygon>
+        <rect id="path-5" x="2" y="-1" width="29" height="22" rx="2"></rect>
+        <polygon id="path-7" points="0.666666667 20 0.666666667 0 2 0 15.3333333 10 2 20"></polygon>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-9">
+            <stop stop-color="#F12F1F" offset="0%"></stop>
+            <stop stop-color="#DE2010" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon/flags/ZW" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/ZW">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#369D0C" mask="url(#mask-2)" x="0" y="0" width="28" height="2.66666667"></rect>
+            <rect id="Rectangle-2" fill="#369D0C" mask="url(#mask-2)" x="0" y="17.3333333" width="28" height="2.66666667"></rect>
+            <rect id="Rectangle-2" fill="#369D0C" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="2.66666667"></rect>
+            <rect id="Rectangle-2" fill="#369D0C" mask="url(#mask-2)" x="0" y="12" width="28" height="2.66666667"></rect>
+            <rect id="Rectangle-2" fill="#262626" mask="url(#mask-2)" x="0" y="8" width="28" height="4"></rect>
+            <rect id="Rectangle-2" fill="#FFD40E" mask="url(#mask-2)" x="0" y="2.66666667" width="28" height="2.66666667"></rect>
+            <rect id="Rectangle-2" fill="#FFD40E" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="2.66666667"></rect>
+            <g id="Rectangle-83" mask="url(#mask-2)">
+                <g transform="translate(-2.000000, 0.000000)">
+                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <path stroke="#262626" stroke-width="1.33333333" d="M1.33333333,19.3333333 L1.77777778,19.3333333 L14.2222222,10 L1.77777778,0.666666667 L1.33333333,0.666666667 L1.33333333,19.3333333 Z"></path>
+                        <mask id="mask-6" fill="white">
+                            <use xlink:href="#path-5"></use>
+                        </mask>
+                        <rect stroke="#F5F5F5" stroke-width="0.5" x="2.25" y="-0.75" width="28.5" height="21.5" rx="2"></rect>
+                    </g>
+                    <mask id="mask-8" fill="white">
+                        <use xlink:href="#path-7"></use>
+                    </mask>
+                    <path stroke="#262626" stroke-width="1.33333333" d="M1.33333333,19.3333333 L1.77777778,19.3333333 L14.2222222,10 L1.77777778,0.666666667 L1.33333333,0.666666667 L1.33333333,19.3333333 Z"></path>
+                </g>
+            </g>
+            <polygon id="Star-8" fill="url(#linearGradient-9)" mask="url(#mask-2)" points="4 11.3000001 2.04071583 12.6967233 2.76362648 10.4017221 0.829811612 8.96994335 3.23587914 8.94827787 4 6.66666667 4.76412086 8.94827787 7.17018839 8.96994335 5.23637352 10.4017221 5.95928417 12.6967233"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/KP</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/KP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/KP">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#1461B6" mask="url(#mask-2)" x="0" y="0" width="28" height="4"></rect>
+            <rect id="Rectangle-2" fill="#1461B6" mask="url(#mask-2)" x="0" y="16" width="28" height="4"></rect>
+            <rect id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)" x="0" y="4" width="28" height="12"></rect>
+            <rect id="Rectangle-2-Copy-4" fill="#F53846" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="9.33333333"></rect>
+            <path d="M10,13.3333333 C8.15905083,13.3333333 6.66666667,11.8409492 6.66666667,10 C6.66666667,8.15905083 8.15905083,6.66666667 10,6.66666667 C11.8409492,6.66666667 13.3333333,8.15905083 13.3333333,10 C13.3333333,11.8409492 11.8409492,13.3333333 10,13.3333333 Z M10,11.3375785 L11.9592842,12.6967233 L11.2721127,10.4133345 L13.1701884,8.96994335 L10.7862089,8.91787628 L10,6.66666667 L9.21379109,8.91787628 L6.82981161,8.96994335 L8.72788727,10.4133345 L8.04071583,12.6967233 L10,11.3375785 Z" id="Oval-12" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

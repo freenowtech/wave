@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/BF</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/BF" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/BF">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#00B051" mask="url(#mask-2)" x="0" y="10.6666667" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2" fill="#FA494B" mask="url(#mask-2)" x="0" y="0" width="28" height="10.6666667"></rect>
+            <polygon id="Star-8" fill="#FDD216" mask="url(#mask-2)" points="14 12.2266667 11.648859 13.9027346 12.5163518 11.1487332 10.1957739 9.43059869 13.083055 9.40460011 14 6.66666667 14.916945 9.40460011 17.8042261 9.43059869 15.4836482 11.1487332 16.351141 13.9027346"></polygon>
+        </g>
+    </g>
+</svg>

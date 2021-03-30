@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / brands / mastercard colored</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-brands-/-mastercard-colored" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon">
+            <circle id="Oval" fill="#EB001B" cx="8.5" cy="12" r="6"></circle>
+            <circle id="Oval-Copy" fill="#F79E1B" cx="15.5" cy="12" r="6"></circle>
+            <path d="M12.0009178,7.12670777 C13.5144671,8.21594388 14.5,9.99288017 14.5,12 C14.5,14.0071198 13.5144671,15.7840561 12.0009178,16.8732922 C10.4859706,15.7848452 9.5,14.0075655 9.5,12 C9.5,10.0418995 10.4379819,8.30287647 11.8891386,7.20773806 Z" id="Combined-Shape" fill="#FF5F00"></path>
+        </g>
+    </g>
+</svg>

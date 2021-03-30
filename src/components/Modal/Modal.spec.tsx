@@ -1,0 +1,150 @@
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import * as React from 'react';
+import { Modal, useModalDismiss } from './Modal';
+
+describe('Modal', () => {
+    it('renders the default props', () => {
+        expect(render(<Modal>Content</Modal>).container).toMatchSnapshot();
+    });
+
+    it('renders the fullscreen variation', () => {
+        expect(render(<Modal fullscreen>Content</Modal>).container).toMatchSnapshot();
+    });
+
+    describe('should call onClose function', () => {
+        it('when clicking on close icon', async () => {
+            const mockCloseHandler = jest.fn();
+            const { getByTestId } = render(<Modal onClose={mockCloseHandler}>Content</Modal>);
+
+            fireEvent.click(getByTestId('close-icon'));
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+
+        it('when clicking on close icon in fullscreen', async () => {
+            const mockCloseHandler = jest.fn();
+            const { getByTestId } = render(
+                <Modal onClose={mockCloseHandler} fullscreen>
+                    Content
+                </Modal>
+            );
+
+            fireEvent.click(getByTestId('close-icon'));
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+
+        it('when clicking on the dimming background', async () => {
+            const mockCloseHandler = jest.fn();
+            const { getByTestId } = render(<Modal onClose={mockCloseHandler}>Content</Modal>);
+
+            fireEvent.click(getByTestId('dimming-background'));
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+
+        it('when pressing the escape key', async () => {
+            const mockCloseHandler = jest.fn();
+            render(<Modal onClose={mockCloseHandler}>Content</Modal>);
+
+            fireEvent.keyUp(window, { keyCode: 27 });
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+
+        it('when calling the dismiss function', async () => {
+            const mockCloseHandler = jest.fn();
+            const { getByTestId } = render(
+                <Modal onClose={mockCloseHandler}>
+                    {dismiss => <button onClick={dismiss} data-testid="dismiss-button" />}
+                </Modal>
+            );
+
+            fireEvent.click(getByTestId('dismiss-button'));
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+
+        it('when calling the dismiss function from a hook', async () => {
+            const mockCloseHandler = jest.fn();
+
+            const InnerComponent: React.FC = () => {
+                const dismiss = useModalDismiss();
+                return <button onClick={dismiss}>Click Me</button>;
+            };
+
+            render(
+                <Modal onClose={mockCloseHandler}>
+                    <InnerComponent />
+                </Modal>
+            );
+
+            userEvent.click(screen.getByRole('button'));
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+    });
+
+    describe('in the non-dismissible state', () => {
+        it('should not show the close icon for the default modal', () => {
+            const { queryByTestId } = render(<Modal dismissible={false} />);
+
+            expect(queryByTestId('close-icon')).toBeNull();
+        });
+
+        it('should not show the close icon for the fullscreen modal', () => {
+            const { queryByTestId } = render(<Modal fullscreen dismissible={false} />);
+
+            expect(queryByTestId('close-icon')).toBeNull();
+        });
+
+        it('should not call the onClose handler when clicking on the dimming', async () => {
+            const mockCloseHandler = jest.fn();
+            const { getByTestId } = render(<Modal dismissible={false} onClose={mockCloseHandler} />);
+
+            fireEvent.click(getByTestId('dimming-background'));
+
+            await waitFor(() => expect(mockCloseHandler).not.toHaveBeenCalled());
+        });
+
+        it('should not call the onClose handler when pressing the escape key', async () => {
+            const mockCloseHandler = jest.fn();
+            render(
+                <Modal dismissible={false} onClose={mockCloseHandler}>
+                    Content
+                </Modal>
+            );
+
+            fireEvent.keyUp(window, { keyCode: 27 });
+
+            await waitFor(() => expect(mockCloseHandler).not.toHaveBeenCalled());
+        });
+
+        it('should call the onClose handler when calling the dismiss function', async () => {
+            const mockCloseHandler = jest.fn();
+            const { getByTestId } = render(
+                <Modal onClose={mockCloseHandler} dismissible={false}>
+                    {dismiss => <button onClick={dismiss} data-testid="dismiss-button" />}
+                </Modal>
+            );
+
+            fireEvent.click(getByTestId('dismiss-button'));
+
+            await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
+        });
+    });
+
+    it('should not call onClose function when clicking dimming in fullscreen', async () => {
+        const mockCloseHandler = jest.fn();
+        const { getByTestId } = render(
+            <Modal onClose={mockCloseHandler} fullscreen>
+                Content
+            </Modal>
+        );
+
+        fireEvent.click(getByTestId('dimming-background'));
+
+        await waitFor(() => expect(mockCloseHandler).not.toHaveBeenCalled());
+    });
+});

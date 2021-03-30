@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / stop-watch</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-stop-watch" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M15,1 L15,3 L13,3 L13.0006955,4.05500569 C17.5003111,4.55276616 21,8.36768501 21,13 C21,17.9705627 16.9705627,22 12,22 C7.02943725,22 3,17.9705627 3,13 C3,8.3673423 6.50020676,4.5522017 11.0003032,4.05489527 L11,3 L9,3 L9,1 L15,1 Z M12,6 C8.13400675,6 5,9.13400675 5,13 C5,16.8659932 8.13400675,20 12,20 C15.8659932,20 19,16.8659932 19,13 C19,9.13400675 15.8659932,6 12,6 Z M15.3160589,8.2704628 L16.6839411,9.7295372 L12.6839411,13.4795372 L11.3160589,12.0204628 L15.3160589,8.2704628 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

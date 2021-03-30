@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / close / circle outline</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-close-/-circle-outline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M12,2 C17.5228475,2 22,6.4771525 22,12 C22,17.5228475 17.5228475,22 12,22 C6.4771525,22 2,17.5228475 2,12 C2,6.4771525 6.4771525,2 12,2 Z M12,4 C7.581722,4 4,7.581722 4,12 C4,16.418278 7.581722,20 12,20 C16.418278,20 20,16.418278 20,12 C20,7.581722 16.418278,4 12,4 Z M14.363961,8 L15.7781746,9.41421356 L13.303,11.889 L15.7781746,14.363961 L14.363961,15.7781746 L11.889,13.303 L9.41421356,15.7781746 L8,14.363961 L10.474,11.889 L8,9.41421356 L9.41421356,8 L11.889,10.474 L14.363961,8 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/NO</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/NO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/NO">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <rect stroke="#F5F5F5" stroke-width="0.5" x="0.25" y="0.25" width="27.5" height="19.5" rx="2"></rect>
+            <path d="M8,0 L8,8 L0,8 L0,0 L8,0 Z M12,0 L28,0 L28,8 L12,8 L12,0 Z M28,12 L28,20 L12,20 L12,12 L28,12 Z M8,20 L0,20 L0,12 L8,12 L8,20 Z" id="Combined-Shape" fill="#F14247" mask="url(#mask-2)"></path>
+            <polygon id="Rectangle-2" fill="#0A3A85" mask="url(#mask-2)" points="0 10.6666667 9.33333333 10.6666667 9.33333333 20 10.6666667 20 10.6666667 10.6666667 28 10.6666667 28 9.33333333 10.6666667 9.33333333 10.6666667 0 9.33333333 0 9.33333333 9.33333333 0 9.33333333"></polygon>
+        </g>
+    </g>
+</svg>

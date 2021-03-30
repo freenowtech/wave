@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/IS</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/IS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/IS">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#0E4CB5" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <polygon id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)" points="0 12 8 12 8 20 12 20 12 12 28 12 28 8 12 8 12 0 8 0 8 8 0 8"></polygon>
+            <polygon id="Rectangle-2" fill="#EB363A" mask="url(#mask-2)" points="0 10.6666667 9.33333333 10.6666667 9.33333333 20 10.6666667 20 10.6666667 10.6666667 28 10.6666667 28 9.33333333 10.6666667 9.33333333 10.6666667 0 9.33333333 0 9.33333333 9.33333333 0 9.33333333"></polygon>
+        </g>
+    </g>
+</svg>

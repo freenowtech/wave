@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/BY</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/BY" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/BY">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#E54252" mask="url(#mask-2)" x="0" y="0" width="28" height="13.3333333"></rect>
+            <rect id="Rectangle-2" fill="#5CBE6B" mask="url(#mask-2)" x="0" y="13.3333333" width="28" height="6.66666667"></rect>
+            <path d="M4,17 L4,20 L0,20 L0,0 L4,0 L4,3 L3.33333333,4 L4,5 L4,7 L3.33333333,8 L4,9 L4,11 L3.33333333,12 L4,13 L4,15 L3.33333333,16 L4,17 Z" id="Rectangle-1512" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            <path d="M-2,4 L-0.666666667,2 L0.666666667,4 L-0.666666667,6 L-2,4 Z M-2,8 L-0.666666667,6 L0.666666667,8 L-0.666666667,10 L-2,8 Z M-2,12 L-0.666666667,10 L0.666666667,12 L-0.666666667,14 L-2,12 Z M-2,16 L-0.666666667,14 L0.666666667,16 L-0.666666667,18 L-2,16 Z" id="Rectangle-1513" fill="#E54252" mask="url(#mask-2)"></path>
+            <path d="M0.666666667,2 L2,0 L3.33333333,2 L2,4 L0.666666667,2 Z M0.666666667,6 L2,4 L3.33333333,6 L2,8 L0.666666667,6 Z M0.666666667,10 L2,8 L3.33333333,10 L2,12 L0.666666667,10 Z M0.666666667,14 L2,12 L3.33333333,14 L2,16 L0.666666667,14 Z M0.666666667,18 L2,16 L3.33333333,18 L2,20 L0.666666667,18 Z" id="Rectangle-1513" fill="#E54252" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

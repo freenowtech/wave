@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/DM</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#E02C42" offset="0%"></stop>
+            <stop stop-color="#D22036" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon/flags/DM" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/DM">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#108753" mask="url(#mask-2)" x="0" y="0" width="28" height="8"></rect>
+            <rect id="Rectangle-2" fill="#108753" mask="url(#mask-2)" x="0" y="12" width="28" height="8"></rect>
+            <path d="M12,8 L12,0 L16,0 L16,8 L28,8 L28,12 L16,12 L16,20 L12,20 L12,12 L0,12 L0,8 L12,8 Z" id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            <path d="M13.3333333,10.6666667 L0,10.6666667 L0,9.33333333 L13.3333333,9.33333333 L13.3333333,0 L14.6666667,0 L14.6666667,9.33333333 L28,9.33333333 L28,10.6666667 L14.6666667,10.6666667 L14.6666667,20 L13.3333333,20 L13.3333333,10.6666667 Z" id="Rectangle-2" fill="#262626" mask="url(#mask-2)"></path>
+            <path d="M12,9.33333333 L0,9.33333333 L0,8 L12,8 L12,0 L13.3333333,0 L13.3333333,8 L28,8 L28,9.33333333 L13.3333333,9.33333333 L13.3333333,20 L12,20 L12,9.33333333 Z" id="Rectangle-2" fill="#FCD449" mask="url(#mask-2)"></path>
+            <circle id="Oval-83" fill="url(#linearGradient-3)" mask="url(#mask-2)" cx="14" cy="10" r="4.66666667"></circle>
+            <path d="M14,13.3333333 C15.8409492,13.3333333 17.3333333,11.8409492 17.3333333,10 C17.3333333,8.15905083 15.8409492,6.66666667 14,6.66666667 C12.1590508,6.66666667 10.6666667,8.15905083 10.6666667,10 C10.6666667,11.8409492 12.1590508,13.3333333 14,13.3333333 Z" id="Oval-73" stroke="#0E673F" stroke-width="1.33333333" stroke-linecap="round" stroke-dasharray="0.6666666666666666,2.666666666666667" mask="url(#mask-2)"></path>
+            <path d="M14,11.3333333 C14.7363797,11.3333333 14.6666667,10.7363797 14.6666667,10 C14.6666667,9.26362033 14.7363797,8.66666667 14,8.66666667 C13.2636203,8.66666667 13.3333333,9.26362033 13.3333333,10 C13.3333333,10.7363797 13.2636203,11.3333333 14,11.3333333 Z" id="Oval-84" fill="#0E673F" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,199 @@
+---
+name: Icons
+menu: Essentials
+route: /essentials/icons
+---
+
+import { Playground } from 'docz';
+
+import { Colors, Headline } from '../..';
+import * as Icons from '..';
+import { Flag } from '../Flag';
+import * as BasicIcons from '../basic';
+import * as TripIcons from '../trip';
+import * as BatteryIcons from '../battery';
+import * as MobilityIcons from '../mobility';
+import * as OptionsIcons from '../options';
+import * as PaymentIcons from '../payment';
+import * as ServiceTypeIcons from '../service-type';
+import { IconGrid, Item } from './IconGrid';
+import { FlagSelector } from './FlagSelector';
+import { LargeFlag } from './LargeFlag';
+import { GuidelineBlock, GuidelineImage, GuidelineList, GuidelineContent } from './GuidelineBlock';
+import SpecsSvg from './images/specs-detail.svg';
+import GapSvg from './images/gap-detail.svg';
+import GapCrossedIconSvg from './images/gap-not-used.svg';
+import RadiusSvg from './images/radius-detail.svg';
+import RadiusCrossedIconSvg from './images/radius-not-used.svg';
+import ColorSvg from './images/color-detail.svg';
+import BorderSvg from './images/border-detail.svg';
+
+# Icons
+
+### Basic
+<IconGrid entries={Object.entries(BasicIcons)} />
+
+### Trip
+<IconGrid entries={Object.entries(TripIcons)} />
+
+### Battery/Fuel
+<IconGrid entries={Object.entries(BatteryIcons)} />
+
+### Multimobility
+<IconGrid entries={Object.entries(MobilityIcons)} />
+
+### Options
+<IconGrid entries={Object.entries(OptionsIcons)} />
+
+### Payment
+<IconGrid entries={Object.entries(PaymentIcons)} />
+
+### Service Types
+
+#### 28x28
+<IconGrid>
+    <Item name="TwoPeopleCircleIcon"><ServiceTypeIcons.TwoPeopleCircleIcon size="large" /></Item>
+    <Item name="BoltCircleIcon"><ServiceTypeIcons.BoltCircleIcon size="large" /></Item>
+    <Item name="LeafCircleIcon"><ServiceTypeIcons.LeafCircleIcon size="large" /></Item>
+    <Item name="WheelchairCircleIcon"><ServiceTypeIcons.WheelchairCircleIcon size="large" /></Item>
+    <Item name="LiteCircleIcon"><ServiceTypeIcons.LiteCircleIcon size="large" /></Item>
+</IconGrid>
+
+#### 24x24
+<IconGrid>
+    <Item name="TwoPeopleOutlineIcon"><ServiceTypeIcons.TwoPeopleOutlineIcon /></Item>
+    <Item name="BoltOutlineIcon"><ServiceTypeIcons.BoltOutlineIcon /></Item>
+    <Item name="LeafOutlineIcon"><ServiceTypeIcons.LeafOutlineIcon /></Item>
+    <Item name="WheelchairOutlineIcon"><ServiceTypeIcons.WheelchairOutlineIcon /></Item>
+    <Item name="LabelOutlineIcon"><ServiceTypeIcons.LabelOutlineIcon /></Item>
+    <Item name="TwoPeopleSolidIcon"><ServiceTypeIcons.TwoPeopleSolidIcon /></Item>
+    <Item name="BoltSolidIcon"><ServiceTypeIcons.BoltSolidIcon /></Item>
+    <Item name="LeafSolidIcon"><ServiceTypeIcons.LeafSolidIcon /></Item>
+    <Item name="WheelchairSolidIcon"><ServiceTypeIcons.WheelchairSolidIcon /></Item>
+    <Item name="LabelSolidIcon"><ServiceTypeIcons.LabelSolidIcon /></Item>
+</IconGrid>
+
+### Inline icons
+#### 12x12
+<IconGrid>
+    <Item name="InfoCircleOutlineIcon"><BasicIcons.InfoCircleOutlineIcon size="small" /></Item>
+    <Item name="LabelSolidIcon"><ServiceTypeIcons.LabelSolidIcon size="small" color={Colors.POSITIVE_GREEN_900} /></Item>
+    <Item name="SurgeCircleSolidIcon"><TripIcons.SurgeCircleSolidIcon size="small" /></Item>
+</IconGrid>
+
+## Flags
+<IconGrid>
+    <Item name='code="EU"'><LargeFlag code="EU" /></Item>
+    <Item name='code="DE"'><LargeFlag code="DE" /></Item>
+    <Item name='code="AT"'><LargeFlag code="AT" /></Item>
+    <Item name='code="NL"'><LargeFlag code="NL" /></Item>
+    <Item name='code="BE"'><LargeFlag code="BE" /></Item>
+    <Item name='code="ES"'><LargeFlag code="ES" /></Item>
+    <Item name='code="PE"'><LargeFlag code="PE" /></Item>
+    <Item name='code="RO"'><LargeFlag code="RO" /></Item>
+    <Item name='code="IT"'><LargeFlag code="IT" /></Item>
+    <Item name='code="SE"'><LargeFlag code="SE" /></Item>
+</IconGrid>
+
+It is also possible to preview all flags included in this library with the selector below.
+
+<FlagSelector />
+
+
+## Design Documentation
+
+### Specs
+
+<GuidelineBlock>
+    <GuidelineImage>
+        <img src={SpecsSvg} />
+    </GuidelineImage>
+    <GuidelineContent>
+        <Headline as="h5" mb={2}>
+            Icon sizes
+        </Headline>
+        <GuidelineList>
+            <Icons.CheckCircleOutlineIcon style={{ placeSelf: 'center' }} />
+            Default (24px)
+            <Icons.BoltCircleIcon size="large" style={{ placeSelf: 'center' }} />
+            Service Types (28px)
+            <Icons.InfoCircleOutlineIcon size="small" style={{ placeSelf: 'center' }} />
+            Inline (12px)
+        </GuidelineList>
+    </GuidelineContent>
+</GuidelineBlock>
+
+The content of an icon should remain inside of the inner safe zone and should only extend into the padding between
+the save and trim area if additional visual weight is needed. Do not place any part of the icon outside of the trim area.
+
+
+### Gap
+
+<GuidelineBlock>
+    <GuidelineImage>
+        <img src={GapSvg} />
+    </GuidelineImage>
+    <GuidelineContent>
+        <GuidelineList>
+            <Icons.CalculatorIcon />
+            Used as unique brand style
+            <img src={GapCrossedIconSvg} />
+            Not used when meaning of icon breaks
+            <Icons.TrainOutlineIcon />
+            Not used in multimobility icons
+        </GuidelineList>
+    </GuidelineContent>
+</GuidelineBlock>
+
+Most of the icons contain an open edge which is part of our unique brand style.
+The 2x width gap is only used in icons, where it is not breaking the meaning of the icon.
+The multimodality icons, which are used in the tab bar are not including the gap.
+
+
+### Corner Radius
+
+<GuidelineBlock>
+    <GuidelineImage>
+        <img src={RadiusSvg} />
+    </GuidelineImage>
+    <GuidelineContent>
+        <GuidelineList>
+            <Icons.SpeechbubblesSingleIcon />
+            Combination of 2px and 0px corder radius for solidity
+            <Icons.ClockIcon />
+            Replacing a circle shape with 2px corner radius used on four corners
+            <img src={RadiusCrossedIconSvg} />
+            Don’t add corner radius of 2px to every circle if it breaks the meaning of the icon
+        </GuidelineList>
+    </GuidelineContent>
+</GuidelineBlock>
+
+The border radius of 2px is used in every icon where it makes sense.
+The corner radius is based on our UI components e.g. buttons and annotations.
+Often it is a combination of 2px and 0px border radius to create a round and friendly but also stable icon.
+
+
+### Color
+
+<GuidelineBlock>
+    <GuidelineImage>
+        <img src={ColorSvg} />
+    </GuidelineImage>
+    <GuidelineContent>
+        <GuidelineList>
+            <Icons.BatteryChargingIcon />
+            Colors for fuel/battery icons to indicate remaining percent
+            <Icons.PayPalIcon />
+            External icons such e.g. the Paypal icon uses their own brand colors
+            <Icons.ScooterSolidIcon color={Colors.ACTION_BLUE_900} />
+            Active/selected tab bar icons are colored in Action Blue 900
+        </GuidelineList>
+    </GuidelineContent>
+</GuidelineBlock>
+
+The default color for our icons is Authentic Blue 900.
+
+
+### Outline
+
+<img src={BorderSvg} />

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MR</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/MR" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MR">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#108B4D" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <path d="M19.8136496,7.73333359 C19.86222,8.04076762 19.8874417,8.35596561 19.8874417,8.67705446 C19.8874417,11.990763 17.2011502,14.6770545 13.8874417,14.6770545 C10.5737332,14.6770545 7.88744174,11.990763 7.88744174,8.67705446 C7.88744174,8.35596561 7.91266347,8.04076762 7.96123383,7.73333359 C8.41392046,10.5986874 10.8948221,12.7896127 13.8874417,12.7896127 C16.8800614,12.7896127 19.360963,10.5986874 19.8136496,7.73333359 L19.8136496,7.73333359 Z M14,8.56408669 L12.3519094,9.73896809 L12.96,7.80848243 L11.3333333,6.60411341 L13.3572446,6.58588906 L14,4.66666667 L14.6427554,6.58588906 L16.6666667,6.60411341 L15.04,7.80848243 L15.6480906,9.73896809 L14,8.56408669 L14,8.56408669 Z" id="Star-8" fill="#FFC941" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

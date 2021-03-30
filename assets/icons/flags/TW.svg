@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TW</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TW" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TW">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-2"></use>
+            <rect id="Rectangle-2" fill="#FE3030" mask="url(#mask-3)" x="-1.33333333" y="-1.33333333" width="30.6666667" height="22.6666667"></rect>
+            <rect id="Rectangle-2" fill="#0909B6" mask="url(#mask-3)" x="-1.33333333" y="-1.33333333" width="16" height="12"></rect>
+            <polygon id="Star-27" fill="#FFFFFF" mask="url(#mask-3)" points="7.33333333 7 6.05772189 8.41293178 6.15482203 6.51184464 4.25373489 6.60894477 5.66666667 5.33333333 4.25373489 4.05772189 6.15482203 4.15482203 6.05772189 2.25373489 7.33333333 3.66666667 8.60894477 2.25373489 8.51184464 4.15482203 10.4129318 4.05772189 9 5.33333333 10.4129318 6.60894477 8.51184464 6.51184464 8.60894477 8.41293178"></polygon>
+        </g>
+    </g>
+</svg>

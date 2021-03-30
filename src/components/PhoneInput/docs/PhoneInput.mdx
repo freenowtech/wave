@@ -1,0 +1,42 @@
+---
+name: PhoneInput
+menu: Components
+route: /components/phone-input
+---
+
+import { Playground } from 'docz';
+import { PhoneInput } from '../PhoneInput.tsx';
+import { PhoneInputPropsTable } from './PhoneInputPropsTable.tsx';
+import { ControlledPhoneInput } from './ControlledPhoneInput.tsx';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import {useState} from 'react';
+
+import { COUNTRIES } from '../constants';
+
+# PhoneInput
+
+## Properties
+
+<PhoneInputPropsTable />
+<br/>
+
+<StyledSystemLinks component="PhoneInput" supportedProps={ ['margin', 'width'] }/>
+
+## Examples
+
+<ControlledPhoneInput label="Mobile Phone Number" />
+
+```jsx
+const [nationalNumber, setNationalNumber] = React.useState('');
+const [country, setCountry] = React.useState(COUNTRIES.find(it => it.value == 'DE'));
+
+return (
+    <PhoneInput
+        id="phone-input-example"
+        text={nationalNumber}
+        country={country}
+        onCountryChange={c => setCountry(c)}
+        onTextChange={event => setNationalNumber(event.target.value)}
+    />
+);
+```

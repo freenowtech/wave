@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/JM</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/JM" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/JM">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#1DBE4F" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <polygon id="Rectangle-253" fill="#262626" mask="url(#mask-2)" points="0 0 12 10 0 20"></polygon>
+            <polygon id="Rectangle-253" fill="#262626" mask="url(#mask-2)" transform="translate(22.000000, 10.000000) scale(-1, 1) translate(-22.000000, -10.000000) " points="16 0 28 10 16 20"></polygon>
+            <path d="M14,8.3917094 L29.2824692,-1.91644623 L30.7736503,0.29432063 L16.3843889,10 L30.7736503,19.7056794 L29.2824692,21.9164462 L14,11.6082906 L-1.2824692,21.9164462 L-2.77365027,19.7056794 L11.6156111,10 L-2.77365027,0.29432063 L-1.2824692,-1.91644623 L14,8.3917094 Z" id="Rectangle-2" fill="#FFD646" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

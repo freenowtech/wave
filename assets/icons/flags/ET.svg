@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/ET</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/ET" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/ET">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#20AA46" mask="url(#mask-2)" x="0" y="0" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#E92F3B" mask="url(#mask-2)" x="0" y="13.3333333" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#FADF50" mask="url(#mask-2)" x="0" y="6.66666667" width="28" height="6.66666667"></rect>
+            <circle id="Oval-95" fill="#205CCA" mask="url(#mask-2)" cx="14" cy="10" r="4.66666667"></circle>
+            <path d="M15.3423188,11.8475433 L14.8470478,10.2752225 L16.1719174,9.29430125 L14.5235044,9.27945808 L14,7.71631086 L13.4764956,9.27945808 L11.8280826,9.29430125 L13.1529522,10.2752225 L12.6576812,11.8475433 L14,10.8906388 L15.3423188,11.8475433 Z" id="Star-8" stroke="#FFDB3D" stroke-width="0.666666667" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

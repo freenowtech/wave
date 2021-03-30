@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/ER</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/ER" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/ER">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#29C53F" mask="url(#mask-2)" x="0" y="0" width="28" height="10"></rect>
+            <rect id="Rectangle-2" fill="#579DED" mask="url(#mask-2)" x="0" y="10" width="28" height="10.6666667"></rect>
+            <polygon id="Rectangle-2" fill="#F42D56" mask="url(#mask-2)" points="0 20 28 10 0 0"></polygon>
+            <circle id="Oval-87" stroke="#FFC63C" stroke-width="1.33333333" mask="url(#mask-2)" cx="8.66666667" cy="10" r="4"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="8" cy="8.66666667" r="1"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="9.33333333" cy="9.33333333" r="1"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="8.66666667" cy="8" r="1"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="8" cy="10" r="1"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="9.33333333" cy="10.6666667" r="1"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="8" cy="11.3333333" r="1"></circle>
+            <circle id="Oval-88" fill="#FFC63C" mask="url(#mask-2)" cx="9.33333333" cy="12" r="1"></circle>
+        </g>
+    </g>
+</svg>

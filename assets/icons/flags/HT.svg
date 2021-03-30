@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/HT</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="0" y="0" width="9.33333333" height="8" rx="0.666666667"></rect>
+    </defs>
+    <g id="icon/flags/HT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/HT">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#112EBC" mask="url(#mask-2)" x="0" y="0" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2" fill="#E3264A" mask="url(#mask-2)" x="0" y="9.33333333" width="28" height="10.6666667"></rect>
+            <g id="Rectangle-180" mask="url(#mask-2)">
+                <g transform="translate(9.333333, 6.666667)">
+                    <mask id="mask-5" fill="white">
+                        <use xlink:href="#path-4"></use>
+                    </mask>
+                    <use id="Mask" stroke="none" fill="url(#linearGradient-3)" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    <path d="M0.333333333,6.872678 L0.333333333,7.66666667 L9,7.66666667 L9,6.872678 L7.71053554,6.22794577 C7.10155144,5.92345372 6.01639561,5.66666667 5.33472459,5.66666667 L3.99860875,5.66666667 C3.31080263,5.66666667 2.23730792,5.9206907 1.62279779,6.22794577 L0.333333333,6.872678 Z" id="Rectangle-181" stroke="#366C14" stroke-width="0.666666667" fill="#AABCAE" fill-rule="evenodd" mask="url(#mask-5)"></path>
+                    <circle id="Oval-6" stroke="none" fill="#D4B872" fill-rule="evenodd" mask="url(#mask-5)" cx="4.66666667" cy="3.33333333" r="2"></circle>
+                    <path d="M1.66666667,4.02687495 L1.66666667,5.99211693 C1.66666667,6.1785209 1.81809564,6.33333333 1.99693171,6.33333333 L7.33640162,6.33333333 C7.51372501,6.33333333 7.66666667,6.17894012 7.66666667,5.99211693 L7.66666667,4.02687495 L5.39573168,5.84362294 C4.99099692,6.16741074 4.34512535,6.16964189 3.93760165,5.84362294 L1.66666667,4.02687495 Z" id="Rectangle-182" stroke="#0D3488" stroke-width="0.666666667" fill="#C28321" fill-rule="evenodd" mask="url(#mask-5)"></path>
+                    <path d="M2.8960921,1.56275876 C2.76938393,1.4360506 2.81858699,1.33333333 3.00770442,1.33333333 L6.32562892,1.33333333 C6.51397886,1.33333333 6.55913798,1.44086202 6.43724124,1.56275876 L4.8960921,3.1039079 C4.76938393,3.23061607 4.55913798,3.22580465 4.43724124,3.1039079 L2.8960921,1.56275876 Z" id="Rectangle-183" stroke="none" fill="#216C30" fill-rule="evenodd" mask="url(#mask-5)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

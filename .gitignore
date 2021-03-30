@@ -1,0 +1,16 @@
+# editor files
+.idea/
+.DS_STORE
+.vscode
+
+# test files
+coverage/
+junit.xml
+
+# project files
+.docz/
+*.tgz
+.npmrc
+node_modules/
+lib/
+dist/

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TG</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TG" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TG">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#FFD44D" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <path d="M12,0 L28,0 L28,4 L12,4 L12,0 Z M12,8 L28,8 L28,12 L12,12 L12,8 Z M0,16 L28,16 L28,20 L0,20 L0,16 Z" id="Rectangle-537" fill="#159A74" mask="url(#mask-2)"></path>
+            <rect id="Rectangle-1568" fill="#ED1F45" mask="url(#mask-2)" x="0" y="0" width="12" height="12"></rect>
+            <polygon id="Star-8" fill="#FFFFFF" mask="url(#mask-2)" points="6 7.56000006 3.64885899 9.23606798 4.51635178 6.48206653 2.19577393 4.76393202 5.08305497 4.73793344 6 2 6.91694503 4.73793344 9.80422607 4.76393202 7.48364822 6.48206653 8.35114101 9.23606798"></polygon>
+        </g>
+    </g>
+</svg>

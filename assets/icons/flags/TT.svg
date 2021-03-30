@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TT</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TT">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#ED233C" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <polygon id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)" transform="translate(14.000000, 10.000000) scale(-1, 1) translate(-14.000000, -10.000000) " points="7.53095587 25.4204734 28.0628641 0.951498072 20.4690441 -5.42047344 -0.0628640749 19.0485019 7.53095587 25.4204734"></polygon>
+            <polygon id="Rectangle-2" fill="#262626" mask="url(#mask-2)" transform="translate(14.000000, 10.000000) scale(-1, 1) translate(-14.000000, -10.000000) " points="4.12625436 26.9528179 28.9807086 -2.6675672 23.8737456 -6.95281793 -0.980708598 22.6675672 4.12625436 26.9528179"></polygon>
+        </g>
+    </g>
+</svg>

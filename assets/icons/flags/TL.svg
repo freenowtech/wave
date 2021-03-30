@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TL</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TL" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TL">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#FF323E" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <polygon id="Rectangle-83" fill="#FFCC51" mask="url(#mask-2)" points="0 0 17.3333333 10 0 20"></polygon>
+            <polygon id="Rectangle-83" fill="#262626" mask="url(#mask-2)" points="0 0 12 10 0 20"></polygon>
+            <polygon id="Star-8" fill="#FFFFFF" mask="url(#mask-2)" transform="translate(5.227272, 9.583114) rotate(-30.000000) translate(-5.227272, -9.583114) " points="5.22727222 11.0164063 3.49198354 12.2534489 4.13224731 10.2208241 2.41951616 8.95273373 4.55050961 8.93354515 5.22727222 6.91277954 5.90403483 8.93354515 8.03502828 8.95273373 6.32229713 10.2208241 6.9625609 12.2534489"></polygon>
+        </g>
+    </g>
+</svg>

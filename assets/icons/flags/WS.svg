@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/WS</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/WS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/WS">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-2"></use>
+            <rect id="Mask-Copy" fill="#E31F37" mask="url(#mask-3)" x="0" y="0" width="28" height="20"></rect>
+            <rect id="Rectangle-2" fill="#083B9A" mask="url(#mask-3)" x="-1.33333333" y="-1.33333333" width="16" height="12"></rect>
+            <path d="M6.66666667,9.33333333 L5.72385763,9.60947571 L6,8.66666667 L5.72385763,7.72385763 L6.66666667,8 L7.60947571,7.72385763 L7.33333333,8.66666667 L7.60947571,9.60947571 L6.66666667,9.33333333 Z M6.66666667,2.66666667 L5.72385763,2.94280904 L6,2 L5.72385763,1.05719096 L6.66666667,1.33333333 L7.60947571,1.05719096 L7.33333333,2 L7.60947571,2.94280904 L6.66666667,2.66666667 Z M4,6 L3.05719096,6.27614237 L3.33333333,5.33333333 L3.05719096,4.39052429 L4,4.66666667 L4.94280904,4.39052429 L4.66666667,5.33333333 L4.94280904,6.27614237 L4,6 Z M10,5.33333333 L9.05719096,5.60947571 L9.33333333,4.66666667 L9.05719096,3.72385763 L10,4 L10.942809,3.72385763 L10.6666667,4.66666667 L10.942809,5.60947571 L10,5.33333333 Z M8.33333333,7.33333333 C8.14923842,7.33333333 8,7.18409492 8,7 C8,6.81590508 8.14923842,6.66666667 8.33333333,6.66666667 C8.51742825,6.66666667 8.66666667,6.81590508 8.66666667,7 C8.66666667,7.18409492 8.51742825,7.33333333 8.33333333,7.33333333 Z" id="Star-2" fill="#FFFFFF" mask="url(#mask-3)"></path>
+        </g>
+    </g>
+</svg>

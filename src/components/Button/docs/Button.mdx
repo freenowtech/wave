@@ -1,0 +1,66 @@
+---
+name: Button
+menu: Components
+route: /components/button
+---
+
+import { Playground } from 'docz';
+import { Button } from '../Button';
+import { TextButton } from '../TextButton';
+import { Box } from '../../Box/Box';
+import { Headline } from '../../Headline/Headline';
+import { Text } from '../../Text/Text';
+import { TrashBinIcon, CloseIcon } from '../../../icons/index.ts';
+import { ButtonPropsTable } from './ButtonPropsTable.tsx';
+import { Combination } from '../../../docs/Combination'
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+
+# Button
+
+Renders a `button` tag. This module exposes two types of buttons `<TextButton />` and `<Button />`.
+Take a look to the [MDN web docs - Button](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to know more
+about some of the default props supported by a button along with some accessibility concerns.
+
+The purpose of the buttons is to trigger an interaction like order, confirmation or submit. For navigation
+targets consider a link. Use the primary button only once per screen and avoid putting two primary buttons next to each other.
+Use the secondary button for less important actions and in multi button scenarios.
+
+## Properties
+
+<ButtonPropsTable />
+<br/>
+
+<StyledSystemLinks component="Button" supportedProps={ ['margin', 'width'] }/>
+<StyledSystemLinks component="TextButton" supportedProps={ ['margin', 'width'] }/>
+
+## Examples
+
+<Playground>
+    <Button>Regular</Button>
+    <TextButton>Text Only</TextButton>
+</Playground>
+
+### Icons
+
+Sometimes an icon can help clarify the usage of the button.
+
+The recommended sizes for the icons:
+* `<IconName size={20} />` — 20px for regular button
+* `<IconName size={18} />` — 18px for small button
+
+<Playground>
+    <Button variant="danger">
+        <TrashBinIcon size={20} /> Remove
+    </Button>
+
+    <Button size='small' ml={2}>
+      <CloseIcon size={18} /> Remove
+    </Button>
+</Playground>
+
+## Combinations
+
+<Combination variant={["primary", "secondary", "danger"]} size={["medium", "small"]} inverted={[false, true]}>
+    {(props, i) => <Button key={i} {...props}>Button</Button>}
+</Combination>
+

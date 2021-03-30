@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MA</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/MA" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MA">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#E33B44" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <path d="M16.2927808,13.155742 L15.446821,10.4701006 L17.7097972,8.79461382 L14.8941845,8.76926058 L14,6.09928839 L13.1058155,8.76926058 L10.2902028,8.79461382 L12.553179,10.4701006 L11.7072192,13.155742 L14,11.5212776 L16.2927808,13.155742 Z" id="Star-8" stroke="#0A6135" stroke-width="1.33333333" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

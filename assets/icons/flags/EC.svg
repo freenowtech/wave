@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/EC</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/EC" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/EC">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#0748AE" mask="url(#mask-2)" x="0" y="9.33333333" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#DE2035" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#FFD935" mask="url(#mask-2)" x="0" y="0" width="28" height="9.33333333"></rect>
+            <path d="M12.3999479,8 L13.3333333,10.8001562 L14.6666667,10.8001562 L15.6000521,8 C16.2477274,8.48651244 16.6666667,9.26107673 16.6666667,10.1334895 C16.6666667,11.6062489 15.4727593,12.8001562 14,12.8001562 C12.5272407,12.8001562 11.3333333,11.6062489 11.3333333,10.1334895 C11.3333333,9.26107673 11.7522726,8.48651244 12.3999479,8 Z" id="Oval-12" fill="#FFD935" mask="url(#mask-2)"></path>
+            <polygon id="Rectangle-483" fill="#5FC0DC" mask="url(#mask-2)" points="14 7.33333333 14.6666667 10.6666667 13.3333333 10.6666667"></polygon>
+            <polyline id="Line" stroke="#3F2821" stroke-width="0.666666667" opacity="0.66" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="17.3333333 6 15.3333333 5.33333333 14 6.66666667 12.6666667 5.33333333 10.6666667 6"></polyline>
+        </g>
+    </g>
+</svg>

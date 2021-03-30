@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/KE</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <path d="M3.33333333,14 C4.66666667,14 6.66666667,11.3834215 6.66666667,7.33333333 C6.66666667,3.28324517 4.66666667,0.666666667 3.33333333,0.666666667 C2,0.666666667 0,3.28324517 0,7.33333333 C0,11.3834215 2,14 3.33333333,14 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+        <path d="M3.33333333,9.33333333 C2.9651435,9.33333333 2.66666667,8.43790283 2.66666667,7.33333333 C2.66666667,6.22876383 2.9651435,5.33333333 3.33333333,5.33333333 C3.70152317,5.33333333 4,6.22876383 4,7.33333333 C4,8.43790283 3.70152317,9.33333333 3.33333333,9.33333333 Z M3.33333333,5.33333333 C2.9651435,5.33333333 2.66666667,4.139426 2.66666667,2.66666667 C2.66666667,1.19390733 2.9651435,0 3.33333333,0 C3.70152317,0 4,1.19390733 4,2.66666667 C4,4.139426 3.70152317,5.33333333 3.33333333,5.33333333 Z M3.33333333,14.6666667 C2.9651435,14.6666667 2.66666667,13.4727593 2.66666667,12 C2.66666667,10.5272407 2.9651435,9.33333333 3.33333333,9.33333333 C3.70152317,9.33333333 4,10.5272407 4,12 C4,13.4727593 3.70152317,14.6666667 3.33333333,14.6666667 Z" id="path-6"></path>
+        <filter x="-37.5%" y="-3.4%" width="175.0%" height="113.6%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.06 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icon/flags/KE" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/KE">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#262626" mask="url(#mask-2)" x="0" y="0" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#018301" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2-Copy-4" fill="#DC0808" mask="url(#mask-2)" x="0" y="6.66666667" width="28" height="6.66666667"></rect>
+            <g id="Oval-225" mask="url(#mask-2)">
+                <g transform="translate(10.666667, 2.666667)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" stroke="none" fill="#BC0000" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <ellipse id="Mask-Copy" stroke="none" fill="#262626" fill-rule="evenodd" mask="url(#mask-4)" cx="-2" cy="7.33333333" rx="3.33333333" ry="7.33333333"></ellipse>
+                    <ellipse id="Mask-Copy-2" stroke="none" fill="#262626" fill-rule="evenodd" mask="url(#mask-4)" cx="8.66666667" cy="7.33333333" rx="3.33333333" ry="7.33333333"></ellipse>
+                    <g id="Oval-228" stroke="none" fill="none" mask="url(#mask-4)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="url(#linearGradient-5)" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/ST</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/ST" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/ST">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#2ACB41" mask="url(#mask-2)" x="0" y="13.3333333" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#2ACB41" mask="url(#mask-2)" x="0" y="0" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#FDD043" mask="url(#mask-2)" x="0" y="6.66666667" width="28" height="6.66666667"></rect>
+            <polygon id="Rectangle-83" fill="#E71E43" mask="url(#mask-2)" points="0 0 10.6666667 10 0 20"></polygon>
+            <polygon id="Star-33" fill="#262626" mask="url(#mask-2)" points="14.6666667 11.0933333 13.0992393 12.1573787 13.6268449 10.3378586 12.130516 9.17595468 14.0240215 9.11547476 14.6666667 7.33333333 15.3093119 9.11547476 17.2028174 9.17595468 15.7064884 10.3378586 16.234094 12.1573787"></polygon>
+            <polygon id="Star-33" fill="#262626" mask="url(#mask-2)" points="21.3333333 11.0933333 19.765906 12.1573787 20.2935116 10.3378586 18.7971826 9.17595468 20.6906881 9.11547476 21.3333333 7.33333333 21.9759785 9.11547476 23.869484 9.17595468 22.3731551 10.3378586 22.9007607 12.1573787"></polygon>
+        </g>
+    </g>
+</svg>

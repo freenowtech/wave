@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / trash-bin</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-trash-bin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M7.07397635,7 L7.9311192,20 L16.0688808,20 L16.794,9 L18.807,9 L18.0637982,20.1424941 C17.9890403,21.1891049 17.1181581,22 16.0688808,22 L7.9311192,22 C6.88184187,22 6.01095972,21.1891049 5.9362018,20.1424941 L5.059,7 L4,7 L4,5 L20,5 L20,7 L7.07397635,7 Z M14,2 L14,4 L10,4 L10,2 L14,2 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

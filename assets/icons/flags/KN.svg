@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/KN</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/KN" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/KN">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <polygon id="Rectangle-2" fill="#1EC160" mask="url(#mask-2)" points="0 13.3333333 28 0 0 0"></polygon>
+            <polygon id="Rectangle-2" fill="#DF2A40" mask="url(#mask-2)" points="0 20 28 20 28 6.66666667"></polygon>
+            <polygon id="Rectangle-2" fill="#FFD956" mask="url(#mask-2)" points="0.78391906 25.3333944 33.5751121 4.8431828 27.2160809 -5.33339435 -5.57511211 15.1568172"></polygon>
+            <polygon id="Rectangle-2" fill="#262626" mask="url(#mask-2)" points="-0.629198978 23.0719328 32.1619941 2.58172121 28.629199 -3.07193276 -4.16199407 17.4182788"></polygon>
+            <polygon id="Star-29" fill="#FFFFFF" mask="url(#mask-2)" points="20.3094011 7.79743495 19.3639918 9.2947928 18.7505603 7.63359418 17.0343408 7.19716559 18.4246738 6.10041889 18.3094011 4.33333333 19.7821057 5.31670522 21.4270827 4.66101488 20.9469312 6.36551882 22.0788556 7.72736546"></polygon>
+            <polygon id="Star-29" fill="#FFFFFF" mask="url(#mask-2)" points="9.64273441 14.2641098 8.69732517 15.7614676 8.0838936 14.100269 6.36767414 13.6638404 7.75800713 12.5670937 7.64273441 10.8000081 9.11543903 11.78338 10.760416 11.1276897 10.2802645 12.8321936 11.412189 14.1940403"></polygon>
+        </g>
+    </g>
+</svg>

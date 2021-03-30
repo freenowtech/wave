@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MV</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/MV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MV">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#F32249" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <rect id="Rectangle-1568" fill="#15A04F" mask="url(#mask-2)" x="4" y="4" width="20" height="12" rx="0.666666667"></rect>
+            <path d="M16.3333333,5.44072651 C14.2365453,5.89850666 12.6666667,7.76592092 12.6666667,10 C12.6666667,12.2340791 14.2365453,14.1014933 16.3333333,14.5592735 C16.0111773,14.629608 15.6765831,14.6666667 15.3333333,14.6666667 C12.7560045,14.6666667 10.6666667,12.5773288 10.6666667,10 C10.6666667,7.42267117 12.7560045,5.33333333 15.3333333,5.33333333 C15.6765831,5.33333333 16.0111773,5.37039197 16.3333333,5.44072651 Z" id="Oval-12" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

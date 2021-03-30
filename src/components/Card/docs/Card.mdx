@@ -1,0 +1,35 @@
+---
+name: Card
+menu: Components
+route: /components/card
+---
+
+import { Playground } from 'docz';
+import { Card } from '../Card.tsx';
+import { Text } from '../../Text/Text.tsx';
+import { CardPropsTable } from './CardPropsTable'
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import { Combination } from '../../../docs/Combination'
+
+# Card
+
+## Properties
+
+<CardPropsTable />
+<br />
+
+<StyledSystemLinks component="Card" supportedProps={ ['space', 'height', 'width'] }/>
+
+## Examples
+
+<Playground>
+    <Card level={100} width="250px" height="100px">
+        Content
+    </Card>
+</Playground>
+
+## Combinations
+
+<Combination level={[0, 100, 200, 300]}>
+    {(props, i) => <Card key={i} {...props}>Card Content</Card>}
+</Combination>

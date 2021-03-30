@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/ZA</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/ZA" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/ZA">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <use id="Mask" fill="#06A86E" xlink:href="#path-2"></use>
+            <polygon id="Rectangle-83" fill="#FFBF2E" mask="url(#mask-3)" points="0 2.66666667 9.33333333 10 0 17.3333333"></polygon>
+            <polygon id="Rectangle-83-Copy-5" fill="#262626" mask="url(#mask-3)" points="-1.33333333 3 7.66666667 10 -1.33333333 17"></polygon>
+            <polygon id="Rectangle-83-Copy" fill="#FFFFFF" mask="url(#mask-3)" points="12 8 2.66666667 0 28 0 28 8"></polygon>
+            <polygon id="Rectangle-83-Copy-3" fill="#F44E46" mask="url(#mask-3)" points="12.3333333 6.66666667 4.33333333 0 28 0 28 6.66666667"></polygon>
+            <polygon id="Rectangle-83-Copy-2" fill="#FFFFFF" mask="url(#mask-3)" points="2.66666667 20 28 20 28 12 12 12"></polygon>
+            <polygon id="Rectangle-83-Copy-4" fill="#072CB4" mask="url(#mask-3)" points="4.33333333 20 28 20 28 13.3333333 12.3333333 13.3333333"></polygon>
+        </g>
+    </g>
+</svg>

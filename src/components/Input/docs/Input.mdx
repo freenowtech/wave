@@ -1,0 +1,119 @@
+---
+name: Input
+menu: Components
+route: /components/input
+---
+
+import { Playground } from 'docz';
+import { Input } from '../Input.tsx';
+import { ControlledInput } from './ControlledInput.tsx';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { Headline } from '../..';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import { Combination } from '../../../docs/Combination'
+import { InputPropsTable } from './InputPropsTable';
+
+# Input
+
+Inputs are mainly used in forms to introduce alphanumeric content and edit it.
+
+## Properties
+
+<InputPropsTable />
+<br/>
+<StyledSystemLinks component="Input" supportedProps={ ['margin', 'width'] }/>
+
+Additionally all native HTML input element props are supported and forwarded to the underlying input element.
+
+## Example
+
+<Playground>
+    <ControlledInput variant="boxed" placeholder="user@free-now.com" label="E-Mail Address" />
+</Playground>
+
+## Testing
+
+```ts
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import * as React from 'react';
+import { Input } from './Input';
+
+test('allows to be tested using accessible queries', () => {
+    const spySubmit = jest.fn();
+    const onSubmit = e => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        spySubmit({ username: formData.get('username-name'), password: formData.get('password-name') });
+    };
+
+    render(
+        <form onSubmit={onSubmit}>
+            <Input id="username-id" name="username-name" label="username" />
+            <Input id="password-id" type="password" name="password-name" label="password" />
+            <button type="submit">Submit</button>
+        </form>
+    );
+
+    const usernameInput = screen.getByRole('textbox', { name: 'username' });
+    const passwordInput = screen.getByLabelText(/password/i);
+    const submitBtn = screen.getByRole('button', { name: /submit/i });
+
+    userEvent.type(usernameInput, 'jaimito');
+    userEvent.type(passwordInput, 'tontoelquelolea');
+    userEvent.click(submitBtn);
+
+    expect(spySubmit).toHaveBeenCalledWith({ username: 'jaimito', password: 'tontoelquelolea' });
+    // Because input type password doesn't have implicit roles (type is passing as prop as expected) https://www.w3.org/TR/html-aria/#docconformance
+    expect(screen.queryByRole('textbox', { name: 'password' })).not.toBeInTheDocument();
+});
+```
+
+
+## Design
+
+**Boxes**: When they appear in places like forms, where many text fields are placed together, their reduced emphasis helps simplify the layout.
+
+**Bottom lined**: Labels are aligned with the input line and always visible. They can be resting (when a field is inactive and empty) or floating.
+
+Both types provide the same functionality. Choose the type that:
+
+- Works best with your tool visual style
+- Works better with the type of users (not advanced users tend to prefer the outlined inputs)
+- Best accommodates the IU goals (for searching maybe is easy to have an input line to differentiate from the rest of inputs)
+
+### Appearance
+
+- All the inputs should have a label
+- Length: Its recommended to choose it accordingly to the content (e.g. small width for phone number and long width for surnames)
+- Icons: Sometimes inputs can include icons on the right. The icons can:
+ Trigger a custom function (for example a date picker)
+- They can just be included to facilitate the content recognitions to the user (eg: in an ID input in a login form include a user icon)
+- Placeholders: We include placeholder or not  if we think the user could need some instructions (eg: data format as dates or email addresses)
+- Helper text: This information can appear after an error occurs or can be shown as an additional information for filling out the input when the placeholder is informing about format or the message is very long (eg: password requirements)
+- Mandatory/Optional indicators: To indicate that an input is mandatory, display an asterisk  next to the label text just in the case that few inputs are mandatory.  Although, when most of the fields are required, indicate optional fields by displaying the word “optional” in parentheses next to the label text
+
+### Placement
+
+They mainly appear in forms but can also appear in other places, like dialog boxes and search.
+Ideally the inputs should be placed in one column, in order to provide an easy reading for the users, so always use one input by row. Although is possible to add 2 columns in case of 2 inputs are related as in the case of country code and phone number
+
+### Behavior
+
+#### States
+
+- **Default**: We show the input lines or borders and the label in grey.
+- **Focused**: When the pointer is inside the field the border will turn blue.
+  - In some cases as long inputs like search we will show at this state a cross icon on the ride in order to delete the content written. In oder cases as passwords inputs we will show an eye icon to show the by default hidden content
+  - When the input just allows to include numeric data: Don’t allow to type letters and when user does it, show a tooltip saying ‘Just numbers’. When the user is in the mobile, show by default the numeric virtual keyboard.
+  - Placeholder text rests in the input field until the user starts entering text. It may contain an action or an example, such as a phone number or email address.
+- **In line Error**: When a field is active or contains an error, the line’s color and label turns to red and an error text appears replacing the helper text when applicable (also in red color).
+  - Manage multiple errors: If only one error is possible, text describes how to avoid it. If multiple errors are possible, the text describes how to avoid the most likely error.
+  - Mandatory errors: Don’t show errors when a field is mandatory until user click/tap on the action button in the form to save/send changes.
+- **Disable**: when the user cannot make any action with the input. It’s recommended to show a tooltip when user is focused on the input explaining the reasons.
+
+## Combinations
+
+<Combination variant={["boxed", "bottom-lined"]} size={["medium", "small"]} disabled={[false, true]} inverted={[false, true]} error={[false, true]}>
+    {(props, i) => <Input key={i} {...props} label="Label" value="User entry"/>}
+</Combination>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/LA</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/LA" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/LA">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2-Copy-4" fill="#073A88" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2" fill="#E2273E" mask="url(#mask-2)" x="0" y="0" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#E2273E" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+            <circle id="Oval-12" fill="#FFFFFF" mask="url(#mask-2)" cx="14" cy="10" r="3.33333333"></circle>
+        </g>
+    </g>
+</svg>

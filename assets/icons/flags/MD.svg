@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MD</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/MD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MD">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask" fill="#EB1C43" mask="url(#mask-2)" x="13.3333333" y="0" width="14.6666667" height="20"></rect>
+            <rect id="Rectangle-2" fill="#115BCB" mask="url(#mask-2)" x="0" y="0" width="9.33333333" height="20"></rect>
+            <rect id="Rectangle-2-Copy" fill="#FFD953" mask="url(#mask-2)" x="9.33333333" y="0" width="9.33333333" height="20"></rect>
+            <path d="M12,8 L13.3333333,8 L14,6 L14.6666667,8 L16,8 L16,12 L14,13.3333333 L12,12 L12,8 Z M13.3333333,9.33333333 L13.3333333,11.3333333 L14.6666667,11.3333333 L14.6666667,9.33333333 L13.3333333,9.33333333 Z" id="Rectangle-1601" fill="#AF7F59" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

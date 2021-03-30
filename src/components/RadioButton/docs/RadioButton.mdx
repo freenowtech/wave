@@ -1,0 +1,36 @@
+---
+name: RadioButton
+menu: Components
+route: /components/RadioButton
+---
+
+import { Playground } from 'docz';
+import { RadioButton } from '../RadioButton';
+
+# RadioButton
+
+Use radio buttons when you have a few options that a user can choose from. Never use radio buttons if the user can
+select more than one option from a list (consider using a [Checkbox](/components/Checkbox) instead).
+
+You can provide the label as either a `string` or as a react component. If a `string` is provided as the label, it
+will be wrapped with the [Text](/components/Text) component.
+
+<RadioButton name="country" label="Germany" mt={2} />
+<br />
+<RadioButton name="country" label="Spain" defaultChecked />
+<br />
+<RadioButton name="fleet" label="Scooter (error)" error defaultChecked mt={2}/>
+<br />
+<RadioButton name="fleet" label="Ride (error)" error />
+<br />
+<RadioButton label="Cash (disabled)" disabled mt={2}/>
+<br />
+<RadioButton label="Credit Card (disabled)" defaultChecked disabled />
+
+## Playground
+
+<Playground>
+    <RadioButton name="test" label="Scooter" />
+    <br />
+    <RadioButton name="test" label="Taxi" />
+</Playground>

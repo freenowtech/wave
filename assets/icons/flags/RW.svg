@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/RW</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <rect id="path-3" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+        <filter x="-5.4%" y="-28.1%" width="110.7%" height="156.2%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.06 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icon/flags/RW" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/RW">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <g id="Rectangle-2" mask="url(#mask-2)">
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                <use fill="#2D754D" fill-rule="evenodd" xlink:href="#path-3"></use>
+            </g>
+            <rect id="Rectangle-2" fill="#25B1EB" mask="url(#mask-2)" x="0" y="0" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2" fill="#FECB2F" mask="url(#mask-2)" x="0" y="9.33333333" width="28" height="5.33333333"></rect>
+            <polygon id="Star-31" fill="#FECB2F" mask="url(#mask-2)" points="21.3333333 6 20.3128442 7.13034542 20.3905243 5.60947571 18.8696546 5.68715582 20 4.66666667 18.8696546 3.64617751 20.3905243 3.72385763 20.3128442 2.20298791 21.3333333 3.33333333 22.3538225 2.20298791 22.2761424 3.72385763 23.7970121 3.64617751 22.6666667 4.66666667 23.7970121 5.68715582 22.2761424 5.60947571 22.3538225 7.13034542"></polygon>
+        </g>
+    </g>
+</svg>

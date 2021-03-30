@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / lock-open</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-lock-open" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M12,2 C15.3137085,2 18,4.6862915 18,8 L16,8 C16,5.790861 14.209139,4 12,4 C9.790861,4 8,5.790861 8,8 L8,10 L20,10 L20,22 L18,22 L18,12 L6,12 L6,20 L16,20 L16,22 L4,22 L4,10 L6,10 L6,8 C6,4.6862915 8.6862915,2 12,2 Z M12,14 C13.1045695,14 14,14.8954305 14,16 C14,17.1045695 13.1045695,18 12,18 C10.8954305,18 10,17.1045695 10,16 C10,14.8954305 10.8954305,14 12,14 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

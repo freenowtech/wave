@@ -1,0 +1,21 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "declaration-empty-line-before": null,
+    "unit-whitelist": [
+      "rem",
+      "deg",
+      "fr",
+      "ms",
+      "%"
+    ],
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }]
+  }
+}

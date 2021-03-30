@@ -1,0 +1,25 @@
+{
+    "name": "typings",
+    "version": "0.0.0",
+    "description": "Example to test types",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --mode production"
+    },
+    "license": "UNLICENSED",
+    "dependencies": {
+        "@freenow/wave": "file:../../mytaxi-wave-1.23.0.tgz",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "styled-components": "^5.0.1"
+    },
+    "devDependencies": {
+        "@types/react": "^16.9.19",
+        "@types/react-dom": "^16.9.5",
+        "html-webpack-plugin": "^3.2.0",
+        "ts-loader": "^6.2.1",
+        "typescript": "^3.7.5",
+        "webpack": "^4.40.1",
+        "webpack-cli": "^3.3.8"
+    }
+}

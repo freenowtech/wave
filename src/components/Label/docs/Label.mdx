@@ -1,0 +1,36 @@
+---
+name: Label
+menu: Components
+route: /components/label
+---
+
+import { Playground } from 'docz';
+import { Label } from '../Label.tsx';
+import { LabelPropsTable } from './LabelPropsTable';
+import { Combination } from '../../../docs/Combination';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+# Label
+
+Multiple or single labels can be used to categorize items.
+Use short labels for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags.
+
+## Properties
+
+<LabelPropsTable />
+<br/>
+<StyledSystemLinks component="Label" supportedProps={ ['margin'] }/>
+
+
+## Examples
+
+<Playground>
+    <Label variant="success">Label</Label>
+</Playground>
+
+## Combinations
+
+<Combination variant={["info", "success", "danger"]}>
+    {(props, i) => <Label key={i} {...props}>Label</Label>}
+</Combination>
+

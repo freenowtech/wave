@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MN</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#F8D246" offset="0%"></stop>
+            <stop stop-color="#F9CE2F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon/flags/MN" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MN">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2-Copy" fill="#146BBC" mask="url(#mask-2)" x="9.33333333" y="0" width="9.33333333" height="20"></rect>
+            <rect id="Rectangle-2" fill="#E43642" mask="url(#mask-2)" x="0" y="0" width="9.33333333" height="20"></rect>
+            <rect id="Rectangle-2" fill="#E43642" mask="url(#mask-2)" x="18.6666667" y="0" width="9.33333333" height="20"></rect>
+            <path d="M5.33333333,12 L6.66666667,12 L6.66666667,16 L5.33333333,16 L5.33333333,12 Z M2.66666667,12 L4,12 L4,16 L2.66666667,16 L2.66666667,12 Z M4,14.6666667 L5.33333333,14.6666667 L4.66666667,16 L4,14.6666667 Z M4,12 L5.33333333,12 L4.66666667,13.3333333 L4,12 Z M4,10.6666667 L4.66666667,10 L5.33333333,10.6666667 L4,10.6666667 Z M4.66666667,12 C4.29847683,12 4,11.7015232 4,11.3333333 C4,10.9651435 4.29847683,10.6666667 4.66666667,10.6666667 C5.0348565,10.6666667 5.33333333,10.9651435 5.33333333,11.3333333 C5.33333333,11.7015232 5.0348565,12 4.66666667,12 Z M4.66666667,14.6666667 C4.29847683,14.6666667 4,14.3681898 4,14 C4,13.6318102 4.29847683,13.3333333 4.66666667,13.3333333 C5.0348565,13.3333333 5.33333333,13.6318102 5.33333333,14 C5.33333333,14.3681898 5.0348565,14.6666667 4.66666667,14.6666667 Z" id="Rectangle-1611" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

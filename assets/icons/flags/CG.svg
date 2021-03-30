@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/CG</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/CG" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/CG">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <polygon id="Rectangle-74" fill="#F33630" mask="url(#mask-2)" points="6.66666667 18.6666667 26.6666667 0 28 0 28 20 6.66666667 20"></polygon>
+            <polygon id="Rectangle-74-Copy" fill="#009643" mask="url(#mask-2)" transform="translate(10.666667, 10.000000) scale(-1, -1) translate(-10.666667, -10.000000) " points="5.68434189e-14 18.6666667 20 0 21.3333333 0 21.3333333 20 5.68434189e-14 20"></polygon>
+            <polygon id="Rectangle-69-Copy" fill="#FCDF4A" mask="url(#mask-2)" transform="translate(14.412496, 9.532967) rotate(134.000000) translate(-14.412496, -9.532967) " points="-4.9208373 6.19963333 33.7458294 6.19963333 33.7458294 12.8663 -4.9208373 12.8663"></polygon>
+        </g>
+    </g>
+</svg>

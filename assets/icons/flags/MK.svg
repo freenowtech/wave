@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MK</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/MK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MK">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#E81B26" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <circle id="Oval-12" fill="#FFE94F" mask="url(#mask-2)" cx="14" cy="10" r="3.33333333"></circle>
+            <path d="M10.2080812,12.7207387 C10.4093895,13.0008084 10.6409591,13.2576656 10.8980041,13.4865249 L1.96165435,23.5306406 L-0.714868071,20.5580613 L10.2080812,12.7207387 Z M14.9153846,5.42307701 C14.6193849,5.36420669 14.3132979,5.33333333 14,5.33333333 C13.6867021,5.33333333 13.3806151,5.36420669 13.0846154,5.42307701 L12,-3.95239397e-14 L16,-3.95239397e-14 L14.9153846,5.42307701 Z" id="Rectangle-346" fill="#FFE94F" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icons / 24x24 / digital-payment</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons-/-24x24-/-digital-payment" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" fill="#001E3E" fill-rule="nonzero">
+            <path d="M12,5 C12,4.44771525 11.5522847,4 11,4 L5,4 C4.44771525,4 4,4.44771525 4,5 L4,19 C4,19.5522847 4.44771525,20 5,20 L11,20 C11.5522847,20 12,19.5522847 12,19 L12,13 L8,13 L8,11 L19.4352012,11 L15.879,7 L18.555,7 L23,12 L18.555,17 L15.879,17 L19.4352012,13 L14,13 L14,19 C14,20.6568542 12.6568542,22 11,22 L5,22 C3.34314575,22 2,20.6568542 2,19 L2,5 C2,3.34314575 3.34314575,2 5,2 L11,2 C12.6568542,2 14,3.34314575 14,5 L14,9 L12,9 L12,5 Z M8,17 C8.55228475,17 9,17.4477153 9,18 C9,18.5522847 8.55228475,19 8,19 C7.44771525,19 7,18.5522847 7,18 C7,17.4477153 7.44771525,17 8,17 Z" id="shape"></path>
+        </g>
+    </g>
+</svg>

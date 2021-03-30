@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBar.Link has a bright color if selected 1`] = `
+.c2 {
+  background-color: transparent;
+  height: 0.1875rem;
+  margin-top: 0.5rem;
+}
+
+.c0 {
+  color: #9CA7B4;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:last-child {
+  margin-right: 0;
+}
+
+.c0.active {
+  color: #096BDB;
+}
+
+.c0.active .c1 {
+  background-color: #096BDB;
+}
+
+<a
+  class="c0  active"
+  href="#"
+>
+  General macaroni
+  <div
+    class="c1 c2"
+  />
+</a>
+`;
+
+exports[`TabBar.Link renders with default props 1`] = `
+.c2 {
+  background-color: transparent;
+  height: 0.1875rem;
+  margin-top: 0.5rem;
+}
+
+.c0 {
+  color: #9CA7B4;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:last-child {
+  margin-right: 0;
+}
+
+.c0.active {
+  color: #096BDB;
+}
+
+.c0.active .c1 {
+  background-color: #096BDB;
+}
+
+<a
+  class="c0"
+  href="#"
+>
+  Hello there
+  <div
+    class="c1 c2"
+  />
+</a>
+`;

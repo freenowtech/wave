@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box renders color 1`] = `
+.c0 {
+  background-color: #069D4F;
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`Box renders flexbox 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`Box renders grid layout 1`] = `
+.c0 {
+  grid-column-gap: 1rem;
+  grid-template-rows: 1fr auto 10%;
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`Box renders layout 1`] = `
+.c0 {
+  width: 50%;
+  overflow-y: auto;
+}
+
+<div
+  class="c0"
+  width="50%"
+/>
+`;
+
+exports[`Box renders padding and margin 1`] = `
+.c0 {
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`Box renders without any props 1`] = `
+<div
+  class=""
+/>
+`;

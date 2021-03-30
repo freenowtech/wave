@@ -1,0 +1,34 @@
+---
+name: Checkbox
+menu: Components
+route: /components/Checkbox
+---
+
+import { Playground } from 'docz';
+import { Checkbox } from '../Checkbox';
+
+# Checkbox
+
+Checkboxes are used for a list of options where the user may select multiple options, including all or none. A
+stand-alone checkbox is used for a single option that the user can turn on or off.
+
+You can provide the label as either a `string` or as a react component. If a `string` is provided as the label, it
+will be wrapped with the [Text](/components/Text) component.
+
+<Checkbox label="default state" mt={2} />
+<br />
+<Checkbox label="selected" defaultChecked mb={2} />
+<br />
+<Checkbox label="error" error />
+<br />
+<Checkbox label="error selected" error defaultChecked mb={2} />
+<br />
+<Checkbox label="disabled" disabled />
+<br />
+<Checkbox label="disabled selected" defaultChecked disabled mb={2} />
+
+### Playground
+
+<Playground>
+    <Checkbox label="I have read the Terms & Conditions" />
+</Playground>

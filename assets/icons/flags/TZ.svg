@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/TZ</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/TZ" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/TZ">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <polygon id="Rectangle-2" fill="#33CC4D" mask="url(#mask-2)" points="0 13.3333333 28 0 0 0"></polygon>
+            <polygon id="Rectangle-2" fill="#2DAFE4" mask="url(#mask-2)" points="0 20 28 20 28 6.66666667"></polygon>
+            <polygon id="Rectangle-2" fill="#FFD84F" mask="url(#mask-2)" points="3.08238507 22.6666972 30.1707194 5.74002727 24.9176149 -2.66669718 -2.17071939 14.2599727"></polygon>
+            <polygon id="Rectangle-2" fill="#262626" mask="url(#mask-2)" points="-0.629198978 23.0719328 32.1619941 2.58172121 28.629199 -3.07193276 -4.16199407 17.4182788"></polygon>
+        </g>
+    </g>
+</svg>

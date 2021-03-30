@@ -1,0 +1,50 @@
+---
+name: Link
+menu: Components
+route: /components/link
+---
+
+import { Playground } from 'docz';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { Link } from '../Link.tsx';
+
+# Link
+
+The Link component styles anchor tags with default blue styling and hover text decoration. Link is used for destinations, or moving from one page to another.
+
+-   Use links to navigate on and between pages and flows
+-   For interactions consider Buttons
+
+<ItemWrapper mt={4}>
+    <Link href="#">Link large (default)</Link>
+    <Link fontSize={1} href="#">
+        Link medium
+    </Link>
+    <Link fontSize={0} href="#">
+        Link small
+    </Link>
+</ItemWrapper>
+
+<ItemWrapper inverted>
+    <Link inverted href="#">
+        Link large (default)
+    </Link>
+    <Link fontSize={1} inverted href="#">
+        Link medium
+    </Link>
+    <Link fontSize={0} inverted href="#">
+        Link small
+    </Link>
+</ItemWrapper>
+
+### Playground
+
+<Playground>
+    <Link href="https://free-now.com/" target="_blank">
+        https://free-now.com/
+    </Link>
+</Playground>
+
+## Component Props
+
+<Props of={Link} />

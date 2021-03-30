@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/SB</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#1DBE4F" offset="0%"></stop>
+            <stop stop-color="#159B3F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#0660D4" offset="0%"></stop>
+            <stop stop-color="#0051BB" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-5" points="0 0 28 0 0 20"></polygon>
+        <filter x="-5.4%" y="-7.5%" width="118.3%" height="119.7%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.06 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icon/flags/SB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/SB">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="url(#linearGradient-3)" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <g id="Rectangle-253" mask="url(#mask-2)">
+                <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+            </g>
+            <polygon id="Rectangle-253" fill="#2C7442" mask="url(#mask-2)" transform="translate(14.000000, 10.000000) scale(-1, 1) translate(-14.000000, -10.000000) " points="0 0 28 20 0 20"></polygon>
+            <polygon id="Rectangle-2" fill="#FFD646" mask="url(#mask-2)" points="-5.33333333 8.66666667 33.3333333 8.66666667 33.3333333 11.3333333 -5.33333333 11.3333333"></polygon>
+            <path d="M3,3.83333333 L2.02035791,4.34836166 L2.2074529,3.25751416 L1.41490581,2.48497168 L2.51017896,2.32581917 L3,1.33333333 L3.48982104,2.32581917 L4.58509419,2.48497168 L3.7925471,3.25751416 L3.97964209,4.34836166 L3,3.83333333 Z M9.66666667,3.83333333 L8.68702458,4.34836166 L8.87411957,3.25751416 L8.08157247,2.48497168 L9.17684562,2.32581917 L9.66666667,1.33333333 L10.1564877,2.32581917 L11.2517609,2.48497168 L10.4592138,3.25751416 L10.6463088,4.34836166 L9.66666667,3.83333333 Z M9.66666667,7.83333333 L8.68702458,8.34836166 L8.87411957,7.25751416 L8.08157247,6.48497168 L9.17684562,6.32581917 L9.66666667,5.33333333 L10.1564877,6.32581917 L11.2517609,6.48497168 L10.4592138,7.25751416 L10.6463088,8.34836166 L9.66666667,7.83333333 Z M3,7.83333333 L2.02035791,8.34836166 L2.2074529,7.25751416 L1.41490581,6.48497168 L2.51017896,6.32581917 L3,5.33333333 L3.48982104,6.32581917 L4.58509419,6.48497168 L3.7925471,7.25751416 L3.97964209,8.34836166 L3,7.83333333 Z M6.33333333,5.83333333 L5.35369125,6.34836166 L5.54078624,5.25751416 L4.74823914,4.48497168 L5.84351229,4.32581917 L6.33333333,3.33333333 L6.82315438,4.32581917 L7.91842753,4.48497168 L7.12588043,5.25751416 L7.31297542,6.34836166 L6.33333333,5.83333333 Z" id="Star-2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

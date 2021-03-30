@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>ic_trophy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Android" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Incentives---Quests-cards" transform="translate(-294.000000, -95.000000)" fill="#001E3E">
+            <g id="Group-3-Copy-20" transform="translate(16.000000, 63.000000)">
+                <g id="ic_trophy" transform="translate(264.000000, 18.000000)">
+                    <g id="icons-/-24x24-/-trophy" transform="translate(12.000000, 12.000000)">
+                        <g id="icon">
+                            <path d="M14,4 L8,4 L8,13 C8,14.1045695 8.8954305,15 10,15 L10,15 L14,15 C15.1045695,15 16,14.1045695 16,13 L16,13 L16,2 L18,2 L18,4 L22,4 L22,10 C22,12.209139 20.209139,14 18,14 L17.8748197,13.9967415 C17.4319113,15.7236218 15.8650127,17 14,17 L14,17 L13,17 L13,20 L14,20 C15.1045695,20 16,20.8954305 16,22 L16,22 L8,22 C8,20.8954305 8.8954305,20 10,20 L10,20 L11,20 L11,17 L10,17 C8.13498732,17 6.56808874,15.7236218 6.12518027,13.9967415 L6,14 C3.790861,14 2,12.209139 2,10 L2,10 L2,4 L6,4 L6,2 L14,2 L14,4 Z M6,6 L4,6 L4,10 C4,11.1045695 4.8954305,12 6,12 L6,12 L6,6 Z M20,6 L18,6 L18,12 L18.1492623,11.9945143 C19.1841222,11.9181651 20,11.0543618 20,10 L20,6 Z" id="Shape" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

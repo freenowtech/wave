@@ -1,0 +1,15 @@
+export { default as BikeRiderOutlineIcon } from './BikeRiderOutlineIcon';
+export { default as BikeRiderSolidIcon } from './BikeRiderSolidIcon';
+export { default as BlackCabOutlineIcon } from './BlackCabOutlineIcon';
+export { default as BlackCabSolidIcon } from './BlackCabSolidIcon';
+export { default as BusOutlineIcon } from './BusOutlineIcon';
+export { default as BusSolidIcon } from './BusSolidIcon';
+export { default as CarOutlineIcon } from './CarOutlineIcon';
+export { default as CarSolidIcon } from './CarSolidIcon';
+export { default as FreeNowArrowIcon } from './FreeNowArrowIcon';
+export { default as PersonHailingOutlineIcon } from './PersonHailingOutlineIcon';
+export { default as PersonHailingSolidIcon } from './PersonHailingSolidIcon';
+export { default as ScooterOutlineIcon } from './ScooterOutlineIcon';
+export { default as ScooterSolidIcon } from './ScooterSolidIcon';
+export { default as TrainOutlineIcon } from './TrainOutlineIcon';
+export { default as TrainSolidIcon } from './TrainSolidIcon';

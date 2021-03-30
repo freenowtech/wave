@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-clean-code",
+        "tslint-react",
+        "tslint-react-hooks",
+        "tslint-no-circular-imports",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "jsx-boolean-value": false,
+        "interface-name": false,
+        "interface-over-type-literal": true,
+        "no-implicit-dependencies": [true, "dev"],
+        "object-literal-sort-keys": false,
+        "ordered-imports": false,
+        "triple-equals": false,
+        "jsx-no-lambda": false,
+        "no-submodule-imports": [true, "date-fns/parse"]
+    }
+}

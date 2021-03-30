@@ -1,0 +1,711 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accepts an disabled prop that will change the component appareance 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: none;
+  -webkit-box-pack: top;
+  -webkit-justify-content: top;
+  -ms-flex-pack: top;
+  justify-content: top;
+}
+
+.c11 {
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  -ms-flex-align: top;
+  align-items: top;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  color: #001E3E;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c7 {
+  color: #637689;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c3 {
+  min-height: 5.125rem;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border: 0.0625rem solid #C6CDD4;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: background-color ease 200ms,border-color ease 200ms;
+  transition: background-color ease 200ms,border-color ease 200ms;
+  opacity: 0.5;
+}
+
+.c3 .c5 {
+  cursor: pointer;
+}
+
+.c3,
+.c3 .c9,
+.c3 .c5 {
+  cursor: not-allowed;
+}
+
+.c1 {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  outline: none;
+}
+
+.c1:focus + .c2 {
+  border-color: #096BDB;
+  box-shadow: inset 0 0 0 0.0625rem #096BDB;
+}
+
+.c10 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid transparent;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: 1rem;
+  height: 3rem;
+  min-width: 6.25rem;
+  padding: 0 1rem;
+  -webkit-transition: background ease 216ms,border-color ease 216ms;
+  transition: background ease 216ms,border-color ease 216ms;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
+  color: #001E3E;
+  fill: #001E3E;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 400;
+  height: auto;
+  min-width: auto;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+.c10:disabled {
+  cursor: not-allowed;
+}
+
+.c10 svg path {
+  fill: inherit;
+}
+
+.c10:hover {
+  background: #F1F2F4;
+}
+
+.c10:disabled {
+  color: #C6CDD4;
+  fill: #C6CDD4;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
+}
+
+@media screen and (min-width:48rem) {
+  .c8 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width:48rem) {
+  .c11 {
+    display: none;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <input
+      accept="image/png, image/jpeg"
+      class="c1"
+      disabled=""
+      id="avatar"
+      name="avatar"
+      type="file"
+    />
+    <div
+      class="c2 c3"
+      data-testid="filepicker-outliner"
+      disabled=""
+      display="flex"
+    >
+      <div
+        class="c4"
+        display="flex"
+      >
+        <label
+          class="c5 c6"
+          font-size="1"
+          for="avatar"
+        >
+          A picture of you
+        </label>
+        <span
+          class="c5 c7"
+          font-size="1"
+        />
+      </div>
+      <div
+        class="c8"
+        display="[object Object]"
+      >
+        <button
+          class="sc-AxjAm sc-AxirZ c9 c10"
+          tabindex="-1"
+          type="button"
+        >
+          Browse files
+        </button>
+      </div>
+      <div
+        class="c11"
+        display="[object Object]"
+      >
+        <svg
+          color="#001E3E"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M19 19v2H5v-2h14zM12 3l6 5.333v2.675l-5-4.444V17h-2V6.564l-5 4.445V8.334L12 3z"
+            fill="currentColor"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a composition with an input type file 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: none;
+  -webkit-box-pack: top;
+  -webkit-justify-content: top;
+  -ms-flex-pack: top;
+  justify-content: top;
+}
+
+.c10 {
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  -ms-flex-align: top;
+  align-items: top;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  color: #001E3E;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c7 {
+  color: #637689;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c3 {
+  min-height: 5.125rem;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border: 0.0625rem solid #C6CDD4;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: background-color ease 200ms,border-color ease 200ms;
+  transition: background-color ease 200ms,border-color ease 200ms;
+}
+
+.c3 .c5 {
+  cursor: pointer;
+}
+
+.c1 {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  outline: none;
+}
+
+.c1:focus + .c2 {
+  border-color: #096BDB;
+  box-shadow: inset 0 0 0 0.0625rem #096BDB;
+}
+
+.c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid transparent;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: 1rem;
+  height: 3rem;
+  min-width: 6.25rem;
+  padding: 0 1rem;
+  -webkit-transition: background ease 216ms,border-color ease 216ms;
+  transition: background ease 216ms,border-color ease 216ms;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
+  color: #001E3E;
+  fill: #001E3E;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 400;
+  height: auto;
+  min-width: auto;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+.c9:disabled {
+  cursor: not-allowed;
+}
+
+.c9 svg path {
+  fill: inherit;
+}
+
+.c9:hover {
+  background: #F1F2F4;
+}
+
+.c9:disabled {
+  color: #C6CDD4;
+  fill: #C6CDD4;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
+}
+
+@media screen and (min-width:48rem) {
+  .c8 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width:48rem) {
+  .c10 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="file-picker"
+>
+  <input
+    accept="image/png, image/jpeg"
+    class="c1"
+    id="avatar"
+    name="avatar"
+    type="file"
+  />
+  <div
+    class="c2 c3"
+    data-testid="filepicker-outliner"
+    display="flex"
+  >
+    <div
+      class="c4"
+      display="flex"
+    >
+      <label
+        class="c5 c6"
+        font-size="1"
+        for="avatar"
+      >
+        A picture of you
+      </label>
+      <span
+        class="c5 c7"
+        font-size="1"
+      />
+    </div>
+    <div
+      class="c8"
+      display="[object Object]"
+    >
+      <button
+        class="sc-AxjAm sc-AxirZ c9"
+        tabindex="-1"
+        type="button"
+      >
+        Browse files
+      </button>
+    </div>
+    <div
+      class="c10"
+      display="[object Object]"
+    >
+      <svg
+        color="#001E3E"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M19 19v2H5v-2h14zM12 3l6 5.333v2.675l-5-4.444V17h-2V6.564l-5 4.445V8.334L12 3z"
+          fill="currentColor"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`when a file gets submitted component removes the initial button 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: none;
+  -webkit-box-pack: top;
+  -webkit-justify-content: top;
+  -ms-flex-pack: top;
+  justify-content: top;
+}
+
+.c9 {
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  -ms-flex-align: top;
+  align-items: top;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  color: #001E3E;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c7 {
+  color: #637689;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c10 .c5 {
+  cursor: pointer;
+}
+
+.c3 {
+  min-height: 5.125rem;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border: 0.0625rem solid #C6CDD4;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: background-color ease 200ms,border-color ease 200ms;
+  transition: background-color ease 200ms,border-color ease 200ms;
+}
+
+.c3 .c5 {
+  cursor: pointer;
+}
+
+.c1 {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  outline: none;
+}
+
+.c1:focus + .c2 {
+  border-color: #096BDB;
+  box-shadow: inset 0 0 0 0.0625rem #096BDB;
+}
+
+@media screen and (min-width:48rem) {
+  .c8 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width:48rem) {
+  .c9 {
+    display: none;
+  }
+}
+
+@media screen and (min-width:48rem) {
+  .c3:hover {
+    background-color: #F1F7FD;
+    border-color: #F1F7FD;
+  }
+
+  .c3:hover svg:not([color='#069D4F']) path {
+    fill: #096BDB;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="file-picker"
+>
+  <input
+    accept="image/png, image/jpeg"
+    class="c1"
+    id="avatar"
+    name="avatar"
+    type="file"
+  />
+  <div
+    class="c2 c3"
+    data-testid="filepicker-outliner"
+    display="flex"
+  >
+    <div
+      class="c4"
+      display="flex"
+    >
+      <label
+        class="c5 c6"
+        font-size="1"
+        for="avatar"
+      >
+        A picture of you
+      </label>
+      <span
+        class="c5 c7"
+        font-size="1"
+      >
+        carnet.png
+      </span>
+    </div>
+    <div
+      class="c8"
+      display="[object Object]"
+    >
+      <svg
+        color="#069D4F"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm3.898 4.293l1.415 1.414-6.32 6.319-3.696-3.657 1.406-1.422 2.283 2.258 4.912-4.912z"
+          fill="currentColor"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </div>
+    <div
+      class="c9"
+      display="[object Object]"
+    >
+      <svg
+        color="#069D4F"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm3.898 4.293l1.415 1.414-6.32 6.319-3.696-3.657 1.406-1.422 2.283 2.258 4.912-4.912z"
+          fill="currentColor"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/SZ</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <ellipse id="path-3" cx="6" cy="3.33333333" rx="6" ry="3.33333333"></ellipse>
+    </defs>
+    <g id="icon/flags/SZ" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/SZ">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#486BCA" mask="url(#mask-2)" x="0" y="0" width="28" height="4"></rect>
+            <rect id="Rectangle-2" fill="#486BCA" mask="url(#mask-2)" x="0" y="16" width="28" height="4"></rect>
+            <rect id="Rectangle-2" fill="#FFDF20" mask="url(#mask-2)" x="0" y="4" width="28" height="12"></rect>
+            <rect id="Rectangle-2-Copy-4" fill="#CF1615" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="9.33333333"></rect>
+            <g id="Oval-190" mask="url(#mask-2)">
+                <g transform="translate(8.000000, 6.666667)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" stroke="none" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <polygon id="Rectangle-1180" stroke="none" fill="#262626" fill-rule="evenodd" mask="url(#mask-4)" transform="translate(3.333333, 3.333333) scale(-1, 1) translate(-3.333333, -3.333333) " points="0 0 6.66666667 0 6.66666667 6.66666667 1.33333333 6.66666667"></polygon>
+                    <circle id="Oval-191" stroke="none" fill="#1A1A1A" fill-rule="evenodd" mask="url(#mask-4)" cx="7.33333333" cy="3.33333333" r="1"></circle>
+                    <circle id="Oval-191" stroke="none" fill="#F6F6F6" fill-rule="evenodd" mask="url(#mask-4)" cx="4.66666667" cy="3.33333333" r="1"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

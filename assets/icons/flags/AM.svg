@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/AM</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/AM" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/AM">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#1047B9" mask="url(#mask-2)" x="0" y="6.66666667" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#F01C31" mask="url(#mask-2)" x="0" y="0" width="28" height="6.66666667"></rect>
+            <rect id="Rectangle-2" fill="#FECB2F" mask="url(#mask-2)" x="0" y="13.3333333" width="28" height="6.66666667"></rect>
+        </g>
+    </g>
+</svg>

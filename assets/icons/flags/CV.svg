@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/CV</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/CV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/CV">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#0C49AE" mask="url(#mask-2)" x="0" y="0" width="28" height="10.6666667"></rect>
+            <rect id="Rectangle-2" fill="#0C49AE" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)" x="0" y="10.6666667" width="28" height="4"></rect>
+            <rect id="Rectangle-2-Copy-4" fill="#CD232E" mask="url(#mask-2)" x="0" y="12" width="28" height="1.33333333"></rect>
+            <path d="M10.6666667,16.6666667 C12.8758057,16.6666667 14.6666667,14.8758057 14.6666667,12.6666667 C14.6666667,10.4575277 12.8758057,8.66666667 10.6666667,8.66666667 C8.45752767,8.66666667 6.66666667,10.4575277 6.66666667,12.6666667 C6.66666667,14.8758057 8.45752767,16.6666667 10.6666667,16.6666667 Z" id="Oval-73" stroke="#F7D035" stroke-width="1.33333333" stroke-linecap="round" stroke-dasharray="0.6666666666666666,2" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

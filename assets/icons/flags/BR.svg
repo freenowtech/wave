@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/BR</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+        <circle id="path-3" cx="4.66666667" cy="4.66666667" r="4.66666667"></circle>
+    </defs>
+    <g id="icon/flags/BR" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/BR">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask-Copy" fill="#05AB41" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <path d="M3.22868843,10.3636611 C2.91829238,10.1628166 2.92467316,9.83305462 3.22868843,9.63633886 L13.4379782,3.03032781 C13.7483743,2.82948331 14.2580065,2.83361204 14.5620218,3.03032781 L24.7713116,9.63633886 C25.0817076,9.83718336 25.0753268,10.1669454 24.7713116,10.3636611 L14.5620218,16.9696722 C14.2516257,17.1705167 13.7419935,17.166388 13.4379782,16.9696722 L3.22868843,10.3636611 Z" id="Rectangle-60" fill="#FDD216" mask="url(#mask-2)"></path>
+            <g id="Oval-2" mask="url(#mask-2)">
+                <g transform="translate(9.333333, 5.333333)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" stroke="none" fill="#053087" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <path d="M-0.666666667,4 C3.8524739e-14,3.33333336 2.41015625,3.64518235 4.66666667,4.00000001 C6.92317708,4.35481767 9.34145555,5.34145565 10,6" id="Line" stroke="#FFFFFF" stroke-width="1.33333333" fill="none" stroke-linecap="square" mask="url(#mask-4)" transform="translate(4.666667, 4.804198) rotate(6.000000) translate(-4.666667, -4.804198) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

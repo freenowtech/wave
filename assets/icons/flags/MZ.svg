@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/MZ</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/MZ" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/MZ">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#FFE547" mask="url(#mask-2)" x="0" y="14.6666667" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#118C81" mask="url(#mask-2)" x="0" y="0" width="28" height="5.33333333"></rect>
+            <rect id="Rectangle-2" fill="#FFFFFF" mask="url(#mask-2)" x="0" y="5.33333333" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2" fill="#262626" mask="url(#mask-2)" x="0" y="6.66666667" width="28" height="6.66666667"></rect>
+            <polygon id="Rectangle-83" fill="#EF2147" mask="url(#mask-2)" points="0 0 13.3333333 10 0 20"></polygon>
+            <polygon id="Star-27" fill="#FDE444" mask="url(#mask-2)" points="4.66666667 11.2740796 2.70738249 12.6967233 3.45494494 10.3937123 1.49647828 8.96994335 3.91778145 8.96924793 4.66666667 6.66666667 5.41555188 8.96924793 7.83685505 8.96994335 5.87838839 10.3937123 6.62595084 12.6967233"></polygon>
+        </g>
+    </g>
+</svg>

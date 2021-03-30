@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/GY</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/GY" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/GY">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Mask" fill="#08C55F" mask="url(#mask-2)" x="0" y="0" width="28" height="20"></rect>
+            <path d="M-0.666666667,19.3333333 L-0.108185107,19.3333333 L27.3333333,10.1861605 L27.3333333,9.81383948 L-0.108185107,0.666666667 L-0.666666667,0.666666667 L-0.666666667,19.3333333 Z" id="Rectangle-1134" stroke="#FFFFFF" stroke-width="1.33333333" fill="#FFD831" mask="url(#mask-2)"></path>
+            <path d="M-0.666666667,19.3333333 L-0.198180464,19.3333333 L14.1129306,10 L-0.198180464,0.666666667 L-0.666666667,0.666666667 L-0.666666667,19.3333333 Z" id="Rectangle-1134" stroke="#262626" stroke-width="1.33333333" fill="#E92034" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

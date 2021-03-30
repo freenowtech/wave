@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon/flags/GW</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="20" rx="2"></rect>
+    </defs>
+    <g id="icon/flags/GW" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_flags/GW">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <rect id="Rectangle-2" fill="#1AB558" mask="url(#mask-2)" x="0" y="9.33333333" width="28" height="10.6666667"></rect>
+            <rect id="Rectangle-2" fill="#FFD952" mask="url(#mask-2)" x="0" y="0" width="28" height="9.33333333"></rect>
+            <rect id="Rectangle-2" fill="#E72B42" mask="url(#mask-2)" x="0" y="0" width="10.6666667" height="20"></rect>
+            <polygon id="Star-53" fill="#262626" mask="url(#mask-2)" points="5.33333333 11.2783604 3.37404916 12.6967233 4.1175403 10.3950351 2.16314495 8.96994335 4.58193192 8.96578467 5.33333333 6.66666667 6.08473475 8.96578467 8.50352172 8.96994335 6.54912636 10.3950351 7.29261751 12.6967233"></polygon>
+        </g>
+    </g>
+</svg>

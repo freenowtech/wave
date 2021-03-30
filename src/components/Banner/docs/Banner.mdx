@@ -1,0 +1,166 @@
+---
+name: Banner
+menu: Components
+route: /components/banner
+---
+
+import { Banner } from '../Banner.tsx';
+import { Text, Headline, Button } from '../..';
+import { BannerCreator } from './BannerCreator.tsx';
+import { BannerPropsTable } from './BannerPropsTable.tsx';
+import { ContainedBanner } from './ContainedBanner.ts';
+
+# Banner
+
+Banner is a strong visual pattern that is used to display an important information or state which remains until the
+cause is resolved or the banner is dismissed by the user.
+
+-   Banner can include any kind of content, i.e. icons, links, copy
+-   Banner should be dismissible
+-   Banner **info** and **success** appear at the bottom of the screen (sticky)
+-   Banner **error** appears at the top of the screen (sticky)
+-   Banner appears and disappears via slide in/out animation combined with soft fade and smooth easing
+
+To properly hide the banner with the correct animation, it is recommended to call the dismiss function that can be used
+when providing a function as the child. This will also unmount the component once the animation is completed.
+
+If you need the banner to be placed top or bottom without depending on the variant make sure to align with the design team
+and bear in mind that you can use the **position** prop for it.
+
+## Variants
+
+With these buttons, you can trigger a banner to appear on the current page. You can also see some example banner
+variations with content below.
+
+<BannerCreator />
+
+### Info Banner
+
+<ContainedBanner>
+    <Text as="p" fontSize={1} inverted>
+        In order to continuously improve our websites, and show offers and advertisements that are suited to you, we use
+        cookies, tracking and (re-) targeting technologies. Please see our Cookie policy for more information. Tracking
+        and (re-) targeting technologies will only be used if you click on "Agree".
+    </Text>
+</ContainedBanner>
+
+```jsx
+<Banner>
+    <Text as="p" fontSize={1} inverted>
+        In order to continuously improve our websites, and show offers and advertisements that are suited to you, we use
+        cookies, tracking and (re-)targeting technologies. Please see our Cookie policy for more information. Tracking
+        and (re-)targeting technologies will only be used if you click on "Agree".
+    </Text>
+</Banner>
+```
+
+### Success Banner
+
+<ContainedBanner variant="success">
+    <Headline as="h4" textAlign="center" inverted>
+        Booking radius updated
+    </Headline>
+</ContainedBanner>
+
+```jsx
+<Banner variant="success">
+    <Text as="p" textAlign="center" fontWeight="semibold" inverted>
+        Booking radius updated
+    </Text>
+</Banner>
+```
+
+### Success Banner with Headline & Text
+
+<ContainedBanner variant="success">
+    <Headline as="h4" mb={1} textAlign="center" inverted>
+        Booking radius updated
+    </Headline>
+    <Text as="p" fontSize={1} textAlign="center" inverted>
+        accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+    </Text>
+</ContainedBanner>
+
+```jsx
+<Banner variant="success">
+    <Headline as="h5" mb={1} textAlign="center" inverted>
+        Booking radius updated
+    </Headline>
+    <Text as="p" fontSize={1} textAlign="center" inverted>
+        accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+    </Text>
+</Banner>
+```
+
+### Error Banner
+
+<ContainedBanner variant="danger">
+    <Text as="p" textAlign="center" fontWeight="semibold" inverted>
+        Something went wrong :(
+    </Text>
+</ContainedBanner>
+
+```jsx
+<Banner variant="danger">
+    <Text as="p" textAlign="center" fontWeight="semibold" inverted>
+        Something went wrong :(
+    </Text>
+</Banner>
+```
+
+### Dismissible Banner
+
+<ContainedBanner>
+    {dismiss => (
+        <Button variant="secondary" size="small" inverted onClick={() => dismiss()}>
+            Dismiss
+        </Button>
+    )}
+</ContainedBanner>
+
+```jsx
+<Banner>
+    {dismiss => (
+        <Button variant="secondary" size="small" inverted onClick={() => dismiss()}>
+            Dismiss
+        </Button>
+    )}
+</Banner>
+```
+
+## API
+
+<BannerPropsTable />
+
+### Dismiss
+
+Banner provides a function to dismiss the component with an animation. The
+dismiss function is available either through render props or a hook. After the
+animation has finished the `onClose` callback will be called.
+
+#### Render Props
+
+```jsx
+<Banner>
+    {dismiss => <Button onClick={dismiss}>Close</Button>}
+</Banner>
+```
+
+#### Hook
+
+```jsx
+const InsideBanner = () => {
+    const dismiss = useBannerDismiss();
+    return <button onClick={dismiss}>Close</button>;
+};
+
+const BannerWrapper = () => {
+    return (
+        <Banner>
+            <InsideBanner />
+        </Banner>
+    )
+};
+```
