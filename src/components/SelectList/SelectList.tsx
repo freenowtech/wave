@@ -143,7 +143,8 @@ const customStyles: StylesConfig = {
             : Colors.WHITE,
         '&:active': {
             background: state.isSelected ? Colors.ACTION_BLUE_900 : Colors.AUTHENTIC_BLUE_50
-        }
+        },
+        wordWrap: 'break-word'
     }),
     multiValue: (provided, { selectProps }) => {
         const styles = {
