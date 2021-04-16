@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Sitemap: https://wave.free-now.com/sitemap.xml
+Host: https://wave.free-now.com

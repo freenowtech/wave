@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "docz-app",
+  "description": null,
+  "icons": {
+    "60": "/icons-26396bd6f487a8f16e36e65660f5d9df/firefox_app_60x60.png",
+    "128": "/icons-26396bd6f487a8f16e36e65660f5d9df/firefox_app_128x128.png",
+    "512": "/icons-26396bd6f487a8f16e36e65660f5d9df/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": null,
+    "url": null
+  }
+}
