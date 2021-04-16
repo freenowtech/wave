@@ -4,17 +4,6 @@ module.exports = {
     },
     plugins: [
         {
-            resolve: `gatsby-plugin-robots-txt`,
-            options: {
-                policy: [
-                    {
-                        userAgent: '*',
-                        disallow: '/'
-                    }
-                ]
-            }
-        },
-        {
             resolve: `gatsby-plugin-styled-components`
         },
         {
