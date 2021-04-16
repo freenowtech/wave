@@ -1,17 +1,17 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
 
 import { PhoneInput } from './PhoneInput';
 
-const selectOption = async (currentValueText, selectOptionText) => {
+const selectOption = async (currentValueText: string, selectOptionText: string) => {
     fireEvent.keyDown(screen.getByText(currentValueText), { keyCode: 40 });
-    await waitFor(() => screen.getByText(selectOptionText));
-    fireEvent.click(screen.getByText(selectOptionText));
+    fireEvent.click(await screen.findByText(selectOptionText));
 };
 
 describe('PhoneInput', () => {
     const defaultCountry = { value: 'DE', label: 'Germany', dialCode: '+49' };
 
+    // This test seems to take a very long time (almost 10s), not sure why.
     it('should call the country change handler when the user selects a country', async () => {
         const mockCountryChangeHandler = jest.fn();
         const mockTextChangeHandler = jest.fn();
@@ -27,7 +27,7 @@ describe('PhoneInput', () => {
 
         expect(mockTextChangeHandler).not.toHaveBeenCalled();
         expect(mockCountryChangeHandler).toHaveBeenCalledWith({ value: 'AD', label: 'Andorra +376', dialCode: '+376' });
-    });
+    }, 10000);
 
     it('should focus on national number input after selecting a country', async () => {
         render(<PhoneInput country={defaultCountry} label="Phone Number" />);
