@@ -23,15 +23,50 @@
         "lint:stylelint": "stylelint --config .stylelintrc 'src/**/*.ts?(x)'",
         "lint:tslint": "tslint --project tsconfig.json 'src/**/*.ts?(x)'",
         "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
-        "husky:precommit": "npm run lint:tslint -- --fix --force && npm run prettier",
-        "preversion": "npm run test && npm run lint",
-        "prepublishOnly": "npm run test && npm run lint && npm run build"
+        "husky:precommit": "npm run lint:tslint -- --fix --force && npm run prettier"
     },
     "husky": {
         "hooks": {
             "commit-msg": "npm run husky:commitMsg",
             "pre-commit": "npm run husky:precommit"
         }
+    },
+    "release": {
+        "branches": [
+            "main"
+        ],
+        "plugins": [
+            [
+                "@semantic-release/commit-analyzer",
+                {
+                    "preset": "conventionalcommits"
+                }
+            ],
+            [
+                "@semantic-release/release-notes-generator",
+                {
+                    "preset": "conventionalcommits"
+                }
+            ],
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogFile": "docs/changelog.mdx",
+                    "changelogTitle": "---\nname: Releases\nroute: /release-notes\n---\nimport { TitleCard } from './components/TitleCard';\n\n\n<TitleCard title=\"Release Notes\">\nKeep up to date with the latest releases of the design system.\n</TitleCard>"
+                }
+            ],
+            [
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "docs/changelog.mdx"
+                    ]
+                }
+            ],
+            "@semantic-release/npm",
+            "@semantic-release/github"
+        ],
+        "dryRun": true
     },
     "repository": {
         "type": "git",
@@ -49,6 +84,8 @@
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",
         "@commitlint/config-conventional": "^8.3.4",
+        "@semantic-release/changelog": "^5.0.1",
+        "@semantic-release/git": "^9.0.0",
         "@svgr/core": "^5.3.0",
         "@svgr/plugin-prettier": "^5.3.0",
         "@svgr/plugin-svgo": "^5.3.0",
@@ -77,6 +114,7 @@
         "react-dom": "^16.13.1",
         "react-helmet": "^6.0.0",
         "react-lottie": "^1.2.3",
+        "semantic-release": "^17.4.2",
         "styled-components": "^5.1.1",
         "stylelint": "^13.2.1",
         "stylelint-config-prettier": "^8.0.1",
