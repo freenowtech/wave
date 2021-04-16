@@ -17,7 +17,6 @@
         "prettier": "pretty-quick --staged",
         "start": "docz dev",
         "test": "jest",
-        "test:ci": "jest --ci --reporters=default --reporters=jest-junit",
         "test:fixture": "./scripts/run_fixtures.sh",
         "test:watch": "jest --watch",
         "lint": "npx concurrently \"npm run lint:tslint\" \"npm run lint:stylelint\"",
