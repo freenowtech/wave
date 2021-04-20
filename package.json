@@ -9,8 +9,8 @@
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
-        "build:cjs": "tsc --target es5 --module commonjs --outDir lib/cjs",
-        "build:esm": "tsc --target es6 --module esnext --outDir lib/esm",
+        "build:cjs": "ttsc --target es5 --module commonjs --outDir lib/cjs",
+        "build:esm": "ttsc --target es6 --module esnext --outDir lib/esm",
         "build:documentation": "docz build",
         "generate": "npm run generate:icons",
         "generate:icons": "node ./scripts/generate-icons assets/icons -r -o src/icons --exclude-color-prop **/payment/** **/flags/** --exclude-suffix **/flags/**",
@@ -92,7 +92,9 @@
         "tslint-no-circular-imports": "^0.7.0",
         "tslint-react": "^4.2.0",
         "tslint-react-hooks": "^2.2.2",
+        "ttypescript": "^1.5.12",
         "typescript": "^3.8.3",
+        "typescript-plugin-styled-components": "^1.5.0",
         "yargs": "^15.3.1"
     },
     "dependencies": {
