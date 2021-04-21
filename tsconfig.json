@@ -9,7 +9,14 @@
         "declaration": true,
         "declarationDir": "lib/types/",
         "rootDir": "src/",
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "plugins": [
+            {
+                "transform": "typescript-plugin-styled-components",
+                "type": "config",
+                "ssr": true
+            }
+        ]
     },
     "include": ["src/**/*"],
     "exclude": ["src/**/docs"]
