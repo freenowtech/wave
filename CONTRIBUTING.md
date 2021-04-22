@@ -1,24 +1,49 @@
 # Contributing
 
--   [Contributing](#contributing)
-    -   [Introduction](#introduction)
-    -   [Ground Rules](#ground-rules)
-        -   [Adding release notes](#adding-release-notes)
-        -   [Testing](#testing)
-        -   [Code style](#code-style)
-        -   [Commit messages](#commit-messages)
-    -   [Your First Contribution](#your-first-contribution)
-        -   [Triage tickets](#triage-tickets)
-        -   [Write some documentation](#write-some-documentation)
-        -   [Reporting pains and use cases](#reporting-pains-and-use-cases)
-        -   [Take from the backlog](#take-from-the-backlog)
-    -   [Tools we use](#tools-we-use)
-    -   [Component patterns](#component-patterns)
-    -   [Adding icons](#adding-icons)
+- [Contributing](#contributing)
+  - [Introduction](#introduction)
+  - [Project setup](#project-setup)
+  - [Ground Rules](#ground-rules)
+    - [Adding release notes](#adding-release-notes)
+    - [Testing](#testing)
+    - [Code style](#code-style)
+    - [Commit messages](#commit-messages)
+  - [Your First Contribution](#your-first-contribution)
+    - [Triage tickets](#triage-tickets)
+    - [Write some documentation](#write-some-documentation)
+    - [Reporting pains and use cases](#reporting-pains-and-use-cases)
+    - [Take from the backlog](#take-from-the-backlog)
+  - [Tools we use](#tools-we-use)
+  - [Component patterns](#component-patterns)
+  - [Adding icons](#adding-icons)
 
 ## Introduction
 
 You are here to help Wave? Awesome! feel welcome and read the following sections in order to know how to ask questions and how to work on something.
+
+**Working on your first Pull Request?** You can learn how from this _free_
+series [How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github)
+
+## Project setup
+
+1. Fork and clone the repo
+2. Run `yarn install` to install dependencies
+3. Create a branch for your PR with `git checkout -b <ISSUE-NUMBER>/your-branch-name`
+
+> Tip: Keep your `master` branch pointing at the original repository and make
+> pull requests from branches on your fork. To do this, run:
+>
+> ```sh
+> git remote add upstream git@github.com:freenowtech/wave.git
+> git fetch upstream
+> git branch --set-upstream-to=upstream/master master
+> ```
+>
+> This will add the original repository as a "remote" called "upstream," Then
+> fetch the git information from that remote, then set your local `master`
+> branch to use the upstream master branch whenever you run `git pull`. Then you
+> can make all of your pull request branches based on this `master` branch.
+> Whenever you want to update your version of `master`, do a regular `git pull`.
 
 ## Ground Rules
 
