@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import ReactSelect, { components as ReactSelectComponents, IndicatorProps, Props, StylesConfig } from 'react-select';
-import { MarginProps, style, WidthProps } from 'styled-system';
+import { MarginProps, WidthProps } from 'styled-system';
 
 import { Colors, Elevation } from '../../essentials';
-import { theme } from '../../essentials/theme';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
 import {
     ClassNameProps,
