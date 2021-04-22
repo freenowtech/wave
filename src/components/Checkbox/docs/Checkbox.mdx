@@ -6,6 +6,7 @@ route: /components/Checkbox
 
 import { Playground } from 'docz';
 import { Checkbox } from '../Checkbox';
+import { CheckboxPropsTable } from './CheckboxPropsTable.tsx';
 
 # Checkbox
 
@@ -15,7 +16,14 @@ stand-alone checkbox is used for a single option that the user can turn on or of
 You can provide the label as either a `string` or as a react component. If a `string` is provided as the label, it
 will be wrapped with the [Text](/components/Text) component.
 
-<Checkbox label="default state" mt={2} />
+## Properties
+
+<CheckboxPropsTable />
+<br/>
+
+
+### States
+<Checkbox label="default state" />
 <br />
 <Checkbox label="selected" defaultChecked mb={2} />
 <br />
@@ -26,6 +34,14 @@ will be wrapped with the [Text](/components/Text) component.
 <Checkbox label="disabled" disabled />
 <br />
 <Checkbox label="disabled selected" defaultChecked disabled mb={2} />
+
+### Sizes
+<Checkbox label="small" size="small" mb={2} />
+<br />
+<Checkbox label="medium" size="medium" mb={2} />
+<br />
+<Checkbox label="large" size="large" mb={2} />
+<br />
 
 ### Playground
 
