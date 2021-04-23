@@ -130,23 +130,21 @@ exports[`Checkbox renders large checkbox 1`] = `
   margin: 0 0.5rem 0 0;
 }
 
-<div>
-  <label
-    class="c0"
+<label
+  class="c0"
+>
+  <div
+    class="c1"
   >
     <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-      />
-      <input
-        class="c4 c5"
-        type="checkbox"
-      />
-    </div>
-  </label>
-</div>
+      class="c2 c3"
+    />
+    <input
+      class="c4 c5"
+      type="checkbox"
+    />
+  </div>
+</label>
 `;
 
 exports[`Checkbox renders medium checkbox 1`] = `
@@ -279,23 +277,21 @@ exports[`Checkbox renders medium checkbox 1`] = `
   margin: 0 0.5rem 0 0;
 }
 
-<div>
-  <label
-    class="c0"
+<label
+  class="c0"
+>
+  <div
+    class="c1"
   >
     <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-      />
-      <input
-        class="c4 c5"
-        type="checkbox"
-      />
-    </div>
-  </label>
-</div>
+      class="c2 c3"
+    />
+    <input
+      class="c4 c5"
+      type="checkbox"
+    />
+  </div>
+</label>
 `;
 
 exports[`Checkbox renders small checkbox 1`] = `
@@ -428,23 +424,21 @@ exports[`Checkbox renders small checkbox 1`] = `
   margin: 0 0.5rem 0 0;
 }
 
-<div>
-  <label
-    class="c0"
+<label
+  class="c0"
+>
+  <div
+    class="c1"
   >
     <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-      />
-      <input
-        class="c4 c5"
-        type="checkbox"
-      />
-    </div>
-  </label>
-</div>
+      class="c2 c3"
+    />
+    <input
+      class="c4 c5"
+      type="checkbox"
+    />
+  </div>
+</label>
 `;
 
 exports[`Checkbox renders the checked style 1`] = `
