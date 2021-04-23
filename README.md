@@ -1,6 +1,6 @@
 # @freenow/wave
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Documentation
@@ -36,6 +36,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://jonah.ml/"><img src="https://avatars.githubusercontent.com/u/8927747?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jonah Möller</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=snapsnapturtle" title="Code">💻</a> <a href="https://github.com/freenowtech/wave/commits?author=snapsnapturtle" title="Documentation">📖</a> <a href="https://github.com/freenowtech/wave/issues?q=author%3Asnapsnapturtle" title="Bug reports">🐛</a> <a href="https://github.com/freenowtech/wave/pulls?q=is%3Apr+reviewed-by%3Asnapsnapturtle" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://lukahartwig.de"><img src="https://avatars.githubusercontent.com/u/7414521?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luka Hartwig</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=lukahartwig" title="Code">💻</a> <a href="https://github.com/freenowtech/wave/commits?author=lukahartwig" title="Documentation">📖</a> <a href="https://github.com/freenowtech/wave/issues?q=author%3Alukahartwig" title="Bug reports">🐛</a> <a href="https://github.com/freenowtech/wave/pulls?q=is%3Apr+reviewed-by%3Alukahartwig" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="http://alexisduran.com"><img src="https://avatars.githubusercontent.com/u/1425162?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alexis Duran</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=duranmla" title="Code">💻</a> <a href="https://github.com/freenowtech/wave/commits?author=duranmla" title="Documentation">📖</a> <a href="https://github.com/freenowtech/wave/issues?q=author%3Aduranmla" title="Bug reports">🐛</a> <a href="https://github.com/freenowtech/wave/pulls?q=is%3Apr+reviewed-by%3Aduranmla" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://www.leonardodivittorio.com"><img src="https://avatars.githubusercontent.com/u/12762609?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leonardo</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=div-Leo" title="Code">💻</a></td>
   </tr>
 </table>
 

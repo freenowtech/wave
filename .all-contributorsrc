@@ -52,6 +52,15 @@
         "bug",
         "review"
       ]
+    },
+    {
+      "login": "div-Leo",
+      "name": "Leonardo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12762609?v=4",
+      "profile": "http://www.leonardodivittorio.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
