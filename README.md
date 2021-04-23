@@ -19,6 +19,10 @@ or
 yarn add @freenow/wave
 ```
 
+## Contributing
+
+Thanks for being willing to contribute! Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) doc
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
