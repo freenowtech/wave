@@ -40,6 +40,19 @@
         "bug",
         "review"
       ]
+    },
+    {
+      "login": "duranmla",
+      "name": "Alexis Duran",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1425162?v=4",
+      "profile": "http://alexisduran.com",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "wave",
