@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import ReactSelect, { components as ReactSelectComponents, IndicatorProps, Props, StylesConfig } from 'react-select';
 import { MarginProps, WidthProps } from 'styled-system';
 
 import { Colors, Elevation } from '../../essentials';
-import { theme } from '../../essentials/theme';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
 import {
     ClassNameProps,
@@ -131,21 +130,41 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    option: (provided, state) => ({
-        ...provided,
-        color: state.isSelected ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900,
-        padding: '0.375rem 0.75rem',
-        fontSize: 'inherit',
-        backgroundColor: state.isSelected
-            ? Colors.ACTION_BLUE_900
-            : state.isFocused
-            ? Colors.AUTHENTIC_BLUE_50
-            : Colors.WHITE,
-        '&:active': {
-            background: state.isSelected ? Colors.ACTION_BLUE_900 : Colors.AUTHENTIC_BLUE_50
-        },
-        wordWrap: 'break-word'
-    }),
+    option: (provided, state) => {
+        const colorsByState = {
+            isDisabled: {
+                color: Colors.AUTHENTIC_BLUE_350
+            },
+            isFocused: {
+                backgroundColor: Colors.ACTION_BLUE_50
+            },
+            isSelected: {
+                backgroundColor: Colors.ACTION_BLUE_900,
+                color: Colors.WHITE
+            }
+        };
+
+        const defaultColors = {
+            color: Colors.AUTHENTIC_BLUE_900,
+            backgroundColor: Colors.WHITE
+        };
+
+        const colors = Object.keys(colorsByState)
+            .filter(key => state[key])
+            .reduce((acc, style) => ({ ...acc, ...colorsByState[style] }), defaultColors);
+
+        return {
+            ...provided,
+            ...colors,
+            '&:active': {
+                ...colors
+            },
+            padding: `${state.selectProps.size === 'medium' ? '0.5rem' : '0.375rem'} 0.75rem`,
+            fontSize: 'inherit',
+            wordWrap: 'break-word',
+            cursor: state.isDisabled ? 'not-allowed' : 'default'
+        };
+    },
     multiValue: (provided, { selectProps }) => {
         const styles = {
             ...provided,
