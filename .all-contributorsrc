@@ -16,6 +16,18 @@
         "bug",
         "review"
       ]
+    },
+    {
+      "login": "lukahartwig",
+      "name": "Luka Hartwig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7414521?v=4",
+      "profile": "https://lukahartwig.de",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
