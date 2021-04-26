@@ -1,0 +1,72 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "nlopin",
+      "name": "Nikolai Lopin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1469636?v=4",
+      "profile": "https://bitbucket.org/Lopinopulos",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "snapsnapturtle",
+      "name": "Jonah Möller",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8927747?v=4",
+      "profile": "http://jonah.ml/",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "lukahartwig",
+      "name": "Luka Hartwig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7414521?v=4",
+      "profile": "https://lukahartwig.de",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "duranmla",
+      "name": "Alexis Duran",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1425162?v=4",
+      "profile": "http://alexisduran.com",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "div-Leo",
+      "name": "Leonardo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12762609?v=4",
+      "profile": "http://www.leonardodivittorio.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "wave",
+  "projectOwner": "freenowtech",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
