@@ -10,7 +10,7 @@ import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
 
 interface CheckboxProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'>,
+    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref' | 'size'>,
         ClassNameProps,
         MarginProps {
     /**
@@ -25,6 +25,10 @@ interface CheckboxProps
      * Align label text relatively to the checkbox
      */
     textVerticalAlign?: ResponsiveValue<'top' | 'center'>;
+    /**
+     * Define size of the checkbox component, defaults to large
+     */
+    size?: ResponsiveValue<'small' | 'medium' | 'large'>;
 }
 
 const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
@@ -41,11 +45,11 @@ const Checkbox: FC<CheckboxProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
 
-    const { disabled, error, label, textVerticalAlign = 'center', ...rest } = restProps;
+    const { disabled, error, label, textVerticalAlign, size, ...rest } = restProps;
     let dynamicLabel: ReactNode = label;
 
     if (typeof label === 'string') {
-        dynamicLabel = <Text>{label}</Text>;
+        dynamicLabel = <Text fontSize={size}>{label}</Text>;
     }
 
     return (
@@ -63,6 +67,12 @@ const Checkbox: FC<CheckboxProps> = props => {
             {dynamicLabel}
         </LabelWrapper>
     );
+};
+
+Checkbox.defaultProps = {
+    textVerticalAlign: 'center',
+    // TODO: size defaults to "large" when theme fontSizes aliases are fixed
+    size: 'medium'
 };
 
 export { Checkbox, CheckboxProps };

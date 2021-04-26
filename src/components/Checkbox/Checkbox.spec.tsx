@@ -26,4 +26,16 @@ describe('Checkbox', () => {
     it('renders the disabled checked style', () => {
         expect(render(<Checkbox disabled defaultChecked />).container.firstChild).toMatchSnapshot();
     });
+
+    it('renders small checkbox', () => {
+        expect(render(<Checkbox size="small" />).container.firstChild).toMatchSnapshot();
+    });
+
+    it('renders medium checkbox', () => {
+        expect(render(<Checkbox size="medium" />).container.firstChild).toMatchSnapshot();
+    });
+
+    it('renders large checkbox', () => {
+        expect(render(<Checkbox size="large" />).container.firstChild).toMatchSnapshot();
+    });
 });
