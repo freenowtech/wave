@@ -70,7 +70,7 @@ const Checkbox: FC<CheckboxProps> = props => {
 };
 
 Checkbox.defaultProps = {
-    textVerticalAlign: 'top',
+    textVerticalAlign: 'center',
     // TODO: size defaults to "large" when theme fontSizes aliases are fixed
     size: 'medium'
 };
