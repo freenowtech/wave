@@ -123,7 +123,7 @@ Speak outloud for us to understand your pains is valuable, challenge current app
 
 ### Take from the backlog
 
-Feel like doing a bit more? You can check what is up for graps in our public backlog and create a PR for it
+Feel like doing a bit more? You can check what is up for grabs in our public backlog and create a PR for it
 
 ## Tools we use
 
