@@ -31,7 +31,7 @@ export const CheckboxPropsTable = () => {
             name: 'textVerticalAlign',
             type: '"top" | "center"',
             description: 'Adjusts the vertical alignment of the checkbox',
-            defaultValue: '"center"'
+            defaultValue: '"top"'
         }
     ];
     return <PropsTable props={props} />;
