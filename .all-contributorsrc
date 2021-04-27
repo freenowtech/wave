@@ -61,6 +61,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "arturmiglio",
+      "name": "Artur Miglio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/539801?v=4",
+      "profile": "http://arturmiglio.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
