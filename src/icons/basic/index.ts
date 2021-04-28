@@ -69,3 +69,4 @@ export { default as TravelExpensesIcon } from './TravelExpensesIcon';
 export { default as PlusIcon } from './PlusIcon';
 export { default as TrophyIcon } from './TrophyIcon';
 export { default as LightningIcon } from './LightningIcon';
+export { default as PenIcon } from './PenIcon';
