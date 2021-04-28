@@ -70,6 +70,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "phllipo",
+      "name": "Phillip Barkmann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9133431?v=4",
+      "profile": "https://github.com/phllipo",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
