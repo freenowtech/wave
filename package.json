@@ -23,9 +23,7 @@
         "lint:stylelint": "stylelint --config .stylelintrc 'src/**/*.ts?(x)'",
         "lint:tslint": "tslint --project tsconfig.json 'src/**/*.ts?(x)'",
         "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
-        "husky:precommit": "npm run lint:tslint -- --fix --force && npm run prettier",
-        "preversion": "npm run test && npm run lint",
-        "prepublishOnly": "npm run test && npm run lint && npm run build"
+        "husky:precommit": "npm run lint:tslint -- --fix --force && npm run prettier"
     },
     "husky": {
         "hooks": {
@@ -49,6 +47,7 @@
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",
         "@commitlint/config-conventional": "^8.3.4",
+        "@semantic-release/changelog": "^5.0.1",
         "@svgr/core": "^5.3.0",
         "@svgr/plugin-prettier": "^5.3.0",
         "@svgr/plugin-svgo": "^5.3.0",
@@ -77,6 +76,7 @@
         "react-dom": "^16.13.1",
         "react-helmet": "^6.0.0",
         "react-lottie": "^1.2.3",
+        "semantic-release": "^17.4.2",
         "styled-components": "^5.1.1",
         "stylelint": "^13.2.1",
         "stylelint-config-prettier": "^8.0.1",
