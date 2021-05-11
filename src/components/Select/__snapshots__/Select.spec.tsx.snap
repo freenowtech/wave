@@ -287,6 +287,7 @@ exports[`Select variant "bottom-lined" renders the disabled styles 1`] = `
   height: 3.5rem;
   padding: 1.25rem 1.75rem 0.25rem 0.25rem;
   color: #C6CDD4;
+  cursor: not-allowed;
   border-color: #C6CDD4;
 }
 
@@ -584,6 +585,7 @@ exports[`Select variant "bottom-lined" renders the inverted disabled styles 1`] 
   height: 3.5rem;
   padding: 1.25rem 1.75rem 0.25rem 0.25rem;
   color: #637689;
+  cursor: not-allowed;
   border-color: #637689;
 }
 
@@ -1267,6 +1269,7 @@ exports[`Select variant "boxed" renders the disabled styles 1`] = `
   height: 3rem;
   padding: 0 2.25rem 0 0.75rem;
   color: #C6CDD4;
+  cursor: not-allowed;
   border-color: #C6CDD4;
 }
 
@@ -1552,6 +1555,7 @@ exports[`Select variant "boxed" renders the inverted disabled styles 1`] = `
   height: 3rem;
   padding: 0 2.25rem 0 0.75rem;
   color: #637689;
+  cursor: not-allowed;
   border-color: #637689;
 }
 

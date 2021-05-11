@@ -8,6 +8,19 @@ describe('Select', () => {
         expect(render(<Select />).container.firstChild).toMatchSnapshot();
     });
 
+    it('can be selected using accessible queries', () => {
+        render(
+            <Select defaultValue="2" label="Wave" id="test">
+                <option value="1">test 1</option>
+                <option value="2">test 2</option>
+            </Select>
+        );
+
+        userEvent.selectOptions(screen.getByRole('combobox', { name: /wave/i }), '1');
+
+        expect(screen.getByLabelText('Wave')).toHaveDisplayValue('test 1');
+    });
+
     describe('variant "boxed"', () => {
         it('renders with default props', () => {
             expect(render(<Select variant="boxed" />).container.firstChild).toMatchSnapshot();
@@ -90,20 +103,6 @@ describe('Select', () => {
                     </Select>
                 ).container.firstChild
             ).toMatchSnapshot();
-        });
-
-        // this test gets used to visualize testing in the docs, please update docs in case of updating the test
-        it('can be selected by label', () => {
-            render(
-                <Select defaultValue="2" label="Example" id="test">
-                    <option value="1">test 1</option>
-                    <option value="2">test 2</option>
-                </Select>
-            );
-
-            userEvent.selectOptions(screen.getByLabelText('Example'), '1');
-
-            expect(screen.getByLabelText('Example')).toHaveDisplayValue('test 1');
         });
     });
 });
