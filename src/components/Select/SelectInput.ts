@@ -70,6 +70,7 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
 
 const disabledStyles = css<BaseSelectProps>`
     color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+    cursor: not-allowed;
     border-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
 
     & ~ ${SelectLabel} {
