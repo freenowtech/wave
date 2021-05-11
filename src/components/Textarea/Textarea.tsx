@@ -1,4 +1,4 @@
-import { default as React, FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled, { CSSProperties } from 'styled-components';
 
 import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';

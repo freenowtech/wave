@@ -1,4 +1,4 @@
-import { default as React, forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { BottomLinedInput } from './BottomLinedInput';
 import { BottomLinedInputLabel } from './BottomLinedInputLabel';
