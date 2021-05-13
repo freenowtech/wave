@@ -16,6 +16,7 @@ const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
     font-weight: ${get('fontWeights.bold')};
     height: ${p => p.rowSize};
     padding: 0 calc(${p => p.columnSpace} / 2);
+    text-align: left;
     vertical-align: middle;
     white-space: nowrap;
 
