@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import { Password } from './Password';
+
+const ControlledPassword = props => {
+    const [value, setValue] = useState('');
+    const handleChange = e => {
+        setValue(e.target.value);
+    };
+
+    return <Password {...props} id="password-id" value={value} onChange={handleChange} />;
+};
 
 describe('Password', () => {
     describe('in initial render', () => {
@@ -16,8 +25,8 @@ describe('Password', () => {
 
     describe('when toggle button is clicked', () => {
         it('when mode is hide password, changes the mode to show', () => {
-            render(<Password label="password" id="id" />);
-            const input = screen.getByLabelText('password');
+            render(<ControlledPassword label="password" id="id" />);
+            const input = screen.getByLabelText('password') as HTMLInputElement;
             const toggleButton = screen.getByRole('button');
 
             expect(input).toHaveAttribute('type', 'password');
@@ -29,7 +38,7 @@ describe('Password', () => {
 
             expect(input).toHaveAttribute('type', 'text');
             expect(input).toHaveAttribute('value', passwordText);
-            expect(toggleButton.innerText).toBe('hide');
+            expect(toggleButton.innerHTML).toBe('hide');
         });
         it.todo('when mode is show password, changes the mode to hide');
     });

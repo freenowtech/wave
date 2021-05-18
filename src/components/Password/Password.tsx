@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Input } from '../Input/Input';
@@ -15,10 +15,17 @@ const ToggleButton = styled.button`
 `;
 
 const Password = props => {
+    const [isHidden, setIsHidden] = useState<boolean>(true);
     return (
         <PasswordWrapper>
-            <Input {...props} type="password" />
-            <ToggleButton>show</ToggleButton>
+            <Input {...props} type={isHidden ? 'password' : 'text'} />
+            <ToggleButton
+                onClick={() => {
+                    setIsHidden(prevValue => !prevValue);
+                }}
+            >
+                {isHidden ? 'show' : 'hide'}
+            </ToggleButton>
         </PasswordWrapper>
     );
 };
