@@ -5,7 +5,7 @@ import { Password } from './Password';
 
 describe('Password', () => {
     it('is in hidden password mode and button to toggle', () => {
-        render(<Password label="password" />);
+        render(<Password label="password" id="id" />);
 
         expect(screen.getByLabelText('password')).toHaveAttribute('type', 'password');
         expect(screen.getByRole('button', { name: 'show' })).toBeInTheDocument();
