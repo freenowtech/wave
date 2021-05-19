@@ -24,9 +24,9 @@ describe('Password', () => {
     });
 
     describe('when toggle button is clicked', () => {
-        it('when mode is hide password, changes the mode to show', () => {
+        it('changes the mode to show if the current mode is hide', () => {
             render(<ControlledPassword label="password" id="id" />);
-            const input = screen.getByLabelText('password') as HTMLInputElement;
+            const input = screen.getByLabelText('password');
             const toggleButton = screen.getByRole('button');
 
             expect(input).toHaveAttribute('type', 'password');
@@ -40,6 +40,22 @@ describe('Password', () => {
             expect(input).toHaveAttribute('value', passwordText);
             expect(toggleButton.innerHTML).toBe('hide');
         });
-        it.todo('when mode is show password, changes the mode to hide');
+
+        it('changes the mode to hide if the current mode is show', () => {
+            render(<ControlledPassword label="password" id="id" />);
+            const input = screen.getByLabelText('password');
+            const toggleButton = screen.getByRole('button');
+
+            expect(input).toHaveAttribute('type', 'password');
+
+            // show password as plain text
+            user.click(toggleButton);
+            expect(input).toHaveAttribute('type', 'text');
+
+            // hide password again
+            user.click(toggleButton);
+            expect(input).toHaveAttribute('type', 'password');
+            expect(toggleButton.innerHTML).toBe('show');
+        });
     });
 });
