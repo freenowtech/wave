@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 import { Input, InputProps } from '../Input/Input';
 import { InputWrapperProps } from '../Input/InputWrapper';
+import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
+import { get } from '../../utils/themeGet';
+import { Colors } from '../../essentials';
 
 const PasswordWrapper = styled.div`
     display: inline-block;
@@ -13,6 +16,19 @@ const ToggleButton = styled.button`
     position: absolute;
     top: 0.75rem;
     right: 0.5rem;
+    align-items: center;
+    background: transparent;
+    border-radius: ${get('radii.2')};
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+
+    svg path {
+        fill: ${Colors.AUTHENTIC_BLUE_550};
+    }
 `;
 
 interface PasswordProps extends InputWrapperProps, InputProps {
@@ -34,7 +50,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }
                     setIsHidden(prevValue => !prevValue);
                 }}
             >
-                {isHidden ? 'show' : 'hide'}
+                <EyeOpenIcon />
             </ToggleButton>
         </PasswordWrapper>
     );
