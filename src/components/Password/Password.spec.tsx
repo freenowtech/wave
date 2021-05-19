@@ -21,12 +21,19 @@ describe('Password', () => {
         expect(screen.getByRole('button', { name: 'show' })).toBeInTheDocument();
     });
 
-    it('has autocomplete off', () => {
-        render(<Password label="password" id="id" />);
-        expect(screen.getByLabelText('password')).toHaveAttribute('autocomplete', 'off');
+    describe('`purpose` property', () => {
+        it('has autocomplete off when set to "login"', () => {
+            render(<Password label="password" id="id" purpose="login" />);
+            expect(screen.getByLabelText('password')).toHaveAttribute('autocomplete', 'off');
+        });
+
+        it('has autocomplete new-password when set to "new-password', () => {
+            render(<Password label="password" id="id" purpose="new-password" />);
+            expect(screen.getByLabelText('password')).toHaveAttribute('autocomplete', 'new-password');
+        });
     });
-    it.todo('autocomplete new-password');
-    it.only('focus moves from the input to the button', () => {
+
+    it('focus moves from the input to the button', () => {
         render(<Password label="password" id="id" />);
 
         expect(document.body).toHaveFocus();

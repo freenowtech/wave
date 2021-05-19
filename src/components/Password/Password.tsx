@@ -16,7 +16,7 @@ const ToggleButton = styled.button`
 `;
 
 interface PasswordProps extends InputWrapperProps, InputProps {
-    purpose?: 'login' | 'set-new-password';
+    purpose?: 'login' | 'new-password';
 }
 
 const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }, ref) => {
@@ -27,7 +27,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }
                 {...rest}
                 ref={ref}
                 type={isHidden ? 'password' : 'text'}
-                autoComplete={purpose === 'set-new-password' ? 'new-password' : 'off'}
+                autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
             />
             <ToggleButton
                 onClick={() => {
