@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Input } from '../Input/Input';
+import { Input, InputProps } from '../Input/Input';
+import { InputWrapperProps } from '../Input/InputWrapper';
 
 const PasswordWrapper = styled.div`
     display: inline-block;
@@ -14,11 +15,20 @@ const ToggleButton = styled.button`
     right: 0.5rem;
 `;
 
-const Password = props => {
+interface PasswordProps extends InputWrapperProps, InputProps {
+    purpose?: 'login' | 'set-new-password';
+}
+
+const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }, ref) => {
     const [isHidden, setIsHidden] = useState<boolean>(true);
     return (
         <PasswordWrapper>
-            <Input {...props} type={isHidden ? 'password' : 'text'} />
+            <Input
+                {...rest}
+                ref={ref}
+                type={isHidden ? 'password' : 'text'}
+                autoComplete={purpose === 'set-new-password' ? 'new-password' : 'off'}
+            />
             <ToggleButton
                 onClick={() => {
                     setIsHidden(prevValue => !prevValue);
@@ -28,6 +38,10 @@ const Password = props => {
             </ToggleButton>
         </PasswordWrapper>
     );
+});
+
+Password.defaultProps = {
+    purpose: 'login'
 };
 
 export { Password };

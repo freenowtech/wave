@@ -14,14 +14,19 @@ const ControlledPassword = props => {
 };
 
 describe('Password', () => {
-    describe('in initial render', () => {
-        it('is in hidden password mode', () => {
-            render(<Password label="password" id="id" />);
+    it('initially renders in hidden password mode', () => {
+        render(<Password label="password" id="id" />);
 
-            expect(screen.getByLabelText('password')).toHaveAttribute('type', 'password');
-            expect(screen.getByRole('button', { name: 'show' })).toBeInTheDocument();
-        });
+        expect(screen.getByLabelText('password')).toHaveAttribute('type', 'password');
+        expect(screen.getByRole('button', { name: 'show' })).toBeInTheDocument();
     });
+
+    it('has autocomplete off', () => {
+        render(<Password label="password" id="id" />);
+        expect(screen.getByLabelText('password')).toHaveAttribute('autocomplete', 'off');
+    });
+    it.todo('autocomplete new-password');
+    it.todo('focus moves from the input to the button');
 
     describe('when toggle button is clicked', () => {
         it('changes the mode to show if the current mode is hide', () => {
