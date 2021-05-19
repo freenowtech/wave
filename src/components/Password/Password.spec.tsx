@@ -26,7 +26,20 @@ describe('Password', () => {
         expect(screen.getByLabelText('password')).toHaveAttribute('autocomplete', 'off');
     });
     it.todo('autocomplete new-password');
-    it.todo('focus moves from the input to the button');
+    it.only('focus moves from the input to the button', () => {
+        render(<Password label="password" id="id" />);
+
+        expect(document.body).toHaveFocus();
+
+        user.tab();
+        expect(screen.getByLabelText('password')).toHaveFocus();
+
+        user.tab();
+        expect(screen.getByRole('button')).toHaveFocus();
+
+        user.tab();
+        expect(document.body).toHaveFocus();
+    });
 
     describe('when toggle button is clicked', () => {
         it('changes the mode to show if the current mode is hide', () => {
