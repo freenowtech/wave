@@ -31,6 +31,16 @@ const ToggleButton = styled.button`
     }
 `;
 
+const VisuallyHidden = styled.div`
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+`;
+
 interface PasswordProps extends InputWrapperProps, InputProps {
     purpose?: 'login' | 'new-password';
 }
@@ -46,12 +56,17 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }
                 autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
             />
             <ToggleButton
+                type="button"
                 onClick={() => {
                     setIsHidden(prevValue => !prevValue);
                 }}
+                aria-label={isHidden ? 'Show password' : 'Hide password'}
             >
                 <EyeOpenIcon />
             </ToggleButton>
+            <VisuallyHidden as="span" aria-live="polite">
+                {isHidden ? 'Your password is hidden' : 'Your password is shown'}
+            </VisuallyHidden>
         </PasswordWrapper>
     );
 });
