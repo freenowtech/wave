@@ -45,6 +45,10 @@ interface PasswordProps extends InputWrapperProps, InputProps {
     purpose?: 'login' | 'new-password';
 }
 
+// * generate ids to connect components
+// * translations???
+// * CSS padding should not expand the input?
+// * hide icon (closed eye?)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }, ref) => {
     const [isHidden, setIsHidden] = useState<boolean>(true);
     return (
