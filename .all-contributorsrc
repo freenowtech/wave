@@ -79,6 +79,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "lloydaf",
+      "name": "Lloyd Francis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5729666?v=4",
+      "profile": "https://github.com/lloydaf",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
