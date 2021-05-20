@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import { Input } from './Input';
 
+jest.mock('../../utils/ids');
+
 describe('Input', () => {
     describe('variant "boxed"', () => {
         it('renders', () => {
@@ -72,8 +74,21 @@ describe('Input', () => {
         });
     });
 
-    it('should set the htmlFor attribute for the label', () => {
-        expect(render(<Input id="test-input-id" label="Simple Label" />).container.firstChild).toMatchSnapshot();
+    describe('link input with the label', () => {
+        it('uses `id` prop value if passed', () => {
+            render(<Input id="test-input-id" label="Simple Label" />);
+
+            expect(screen.getByLabelText('Simple Label')).toHaveAttribute('id', 'test-input-id');
+            expect(screen.getByText('Simple Label')).toHaveAttribute('for', 'test-input-id');
+        });
+
+        it('generate id automatically if `id` prop is empty', () => {
+            render(<Input label="Simple Label" />);
+            const generatedId = 'random';
+
+            expect(screen.getByLabelText('Simple Label')).toHaveAttribute('id', generatedId);
+            expect(screen.getByText('Simple Label')).toHaveAttribute('for', generatedId);
+        });
     });
 
     it('allows to be tested using accessible queries', () => {
