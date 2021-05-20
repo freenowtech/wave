@@ -13,7 +13,7 @@
         "build:esm": "ttsc --target es6 --module esnext --outDir lib/esm",
         "build:documentation": "docz build",
         "generate": "npm run generate:icons",
-        "generate:icons": "node ./scripts/generate-icons assets/icons -r -o src/icons --exclude-color-prop **/flags/** --exclude-suffix **/flags/**",
+        "generate:icons": "node ./scripts/generate-icons assets/icons -r -o src/icons --exclude-color-prop **/brands/** **/flags/** --exclude-suffix **/flags/**",
         "prettier": "pretty-quick --staged",
         "start": "docz dev",
         "test": "jest",
