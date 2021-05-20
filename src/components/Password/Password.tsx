@@ -10,12 +10,20 @@ import { Colors } from '../../essentials';
 const PasswordWrapper = styled.div`
     display: inline-block;
     position: relative;
+    margin-right: -3rem;
+
+    & > div {
+        width: calc(100% - 3rem);
+    }
+
+    input {
+        padding-right: 3rem;
+    }
 `;
 
 const ToggleButton = styled.button`
     position: absolute;
-    top: 0.75rem;
-    right: 0.5rem;
+    right: 2.75rem;
     align-items: center;
     background: transparent;
     border-radius: ${get('radii.2')};
@@ -25,7 +33,8 @@ const ToggleButton = styled.button`
     justify-content: center;
     text-align: center;
     text-decoration: none;
-
+    height: 100%;
+    width: 3.5rem;
     svg path {
         fill: ${Colors.AUTHENTIC_BLUE_550};
     }
@@ -46,7 +55,9 @@ interface PasswordProps extends InputWrapperProps, InputProps {
 }
 
 // * generate ids to connect components
+// yes, if not provided
 // * translations???
+// first step: english hardcoded strings + props to overwrite (investigate and decide of we want translation)
 // * CSS padding should not expand the input?
 // * hide icon (closed eye?)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }, ref) => {
