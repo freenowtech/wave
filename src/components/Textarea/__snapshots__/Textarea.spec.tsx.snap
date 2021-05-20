@@ -92,6 +92,7 @@ exports[`Textarea renders 1`] = `
 .c1 + .sc-AxiKw {
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1:disabled + .sc-AxiKw {
@@ -113,6 +114,7 @@ exports[`Textarea renders 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -236,6 +238,7 @@ exports[`Textarea renders the disabled state with label and placeholder 1`] = `
   font-size: 0.75rem;
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1:disabled + .c2 {
@@ -257,6 +260,7 @@ exports[`Textarea renders the disabled state with label and placeholder 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -369,6 +373,7 @@ exports[`Textarea renders the error state 1`] = `
 .c1 + .sc-AxiKw {
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1 ~ .sc-AxiKw {
@@ -394,6 +399,7 @@ exports[`Textarea renders the error state 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -519,6 +525,7 @@ exports[`Textarea renders the error state with label and placeholder 1`] = `
   font-size: 0.75rem;
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1 ~ .c2 {
@@ -544,6 +551,7 @@ exports[`Textarea renders the error state with label and placeholder 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -653,6 +661,7 @@ exports[`Textarea renders the inverted style 1`] = `
 .c1 + .sc-AxiKw {
   color: #C6CDD4;
   background: #001E3E;
+  background: linear-gradient(0deg,#001E3E calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1:disabled + .sc-AxiKw {
@@ -674,6 +683,7 @@ exports[`Textarea renders the inverted style 1`] = `
   font-size: 0.75rem;
   color: #FFFFFF;
   background: #001E3E;
+  background: linear-gradient(0deg,#001E3E calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -794,6 +804,7 @@ exports[`Textarea renders the label 1`] = `
 .c1 + .c2 {
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1:disabled + .c2 {
@@ -815,6 +826,7 @@ exports[`Textarea renders the label 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -943,6 +955,7 @@ exports[`Textarea renders the label and the placeholder 1`] = `
   font-size: 0.75rem;
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1:disabled + .c2 {
@@ -964,6 +977,7 @@ exports[`Textarea renders the label and the placeholder 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div
@@ -1095,6 +1109,7 @@ exports[`Textarea renders with custom height and width 1`] = `
   font-size: 0.75rem;
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1:disabled + .c2 {
@@ -1116,6 +1131,7 @@ exports[`Textarea renders with custom height and width 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 <div

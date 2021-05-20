@@ -80,6 +80,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
 .c2 + .sc-AxgMl {
   color: #9CA7B4;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c2:disabled + .sc-AxgMl {
@@ -101,6 +102,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
   font-size: 0.75rem;
   color: #096BDB;
   background: #FFFFFF;
+  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
 .c1 {
