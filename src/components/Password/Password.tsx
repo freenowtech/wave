@@ -52,16 +52,29 @@ const VisuallyHidden = styled.div`
 
 interface PasswordProps extends InputWrapperProps, InputProps {
     purpose?: 'login' | 'new-password';
+    ariaStrings: {
+        showPasswordButton: string;
+        hidePasswordButton: string;
+        messagePasswordIsHidden: string;
+        messagePasswordIsShown: string;
+    };
 }
+
+const defaultAriaStrings = {
+    showPasswordButton: 'Show password',
+    hidePasswordButton: 'Hide password',
+    messagePasswordIsHidden: 'Your password is hidden',
+    messagePasswordIsShown: 'Your password is shown'
+};
 
 // * generate ids to connect components
 // yes, if not provided
-// * translations???
-// first step: english hardcoded strings + props to overwrite (investigate and decide of we want translation)
-// * CSS padding should not expand the input?
-// * hide icon (closed eye?)
-const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }, ref) => {
+const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpose, ...rest }, ref) => {
     const [isHidden, setIsHidden] = useState<boolean>(true);
+    const aria = {
+        ...defaultAriaStrings,
+        ...ariaStrings
+    };
     return (
         <PasswordWrapper>
             <Input
@@ -75,12 +88,12 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ purpose, ...rest }
                 onClick={() => {
                     setIsHidden(prevValue => !prevValue);
                 }}
-                aria-label={isHidden ? 'Show password' : 'Hide password'}
+                aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
             >
                 <EyeOpenIcon />
             </ToggleButton>
             <VisuallyHidden as="span" aria-live="polite">
-                {isHidden ? 'Your password is hidden' : 'Your password is shown'}
+                {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}
             </VisuallyHidden>
         </PasswordWrapper>
     );
