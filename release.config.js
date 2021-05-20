@@ -23,14 +23,14 @@ module.exports = {
         [
             '@semantic-release/release-notes-generator',
             {
-                preset: 'conventionalcommits',
-                changelogTitle
+                preset: 'conventionalcommits'
             }
         ],
         [
             '@semantic-release/changelog',
             {
-                changelogFile: 'docs/changelog.mdx'
+                changelogFile: 'docs/changelog.mdx',
+                changelogTitle: changelogTitle
             }
         ],
         [
