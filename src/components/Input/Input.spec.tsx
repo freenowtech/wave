@@ -3,8 +3,6 @@ import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import { Input } from './Input';
 
-jest.mock('../../utils/ids');
-
 describe('Input', () => {
     describe('variant "boxed"', () => {
         it('renders', () => {

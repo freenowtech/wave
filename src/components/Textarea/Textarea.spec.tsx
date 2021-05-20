@@ -2,8 +2,6 @@ import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import { Textarea } from './Textarea';
 
-jest.mock('../../utils/ids');
-
 describe('Textarea', () => {
     it('renders', () => {
         expect(render(<Textarea />).container.firstChild).toMatchSnapshot();
