@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
+import { generateId } from '../../utils/ids';
 import { ChevronDownIcon } from '../../icons/basic';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { BaseSelectProps, SelectInput } from './SelectInput';
@@ -39,15 +40,20 @@ const Select: React.FC<SelectProps> = props => {
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
     const { label, ...rest } = restProps;
+    const id = useMemo(() => {
+        if (props.id) return props.id;
+
+        return label ? generateId() : null;
+    }, [props.id]);
 
     return (
         <SelectWrapper {...classNameProps} {...marginProps} {...widthProps}>
-            <SelectInput {...rest} />
+            <SelectInput {...rest} id={id} />
             <IconNode className="svg-icon">
                 <ChevronDownIcon />
             </IconNode>
             {label && (
-                <SelectLabel inverted={props.inverted} htmlFor={props.id}>
+                <SelectLabel inverted={props.inverted} htmlFor={id}>
                     {label}
                 </SelectLabel>
             )}
