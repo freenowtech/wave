@@ -15,7 +15,11 @@ const Input = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>((props,
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
     const { label, onChange, size, ...rest } = restProps;
-    const id = useMemo(() => props.id ?? generateId(), [props.id]);
+    const id = useMemo(() => {
+        if (props.id) return props.id;
+
+        return label ? generateId() : null;
+    }, [props.id]);
 
     const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 
