@@ -1,16 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import styled, { CSSProperties } from 'styled-components';
 
 import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
+import { generateId } from '../../utils/ids';
 import {
     extractClassNameProps,
     extractHeightProps,
     extractWidthProps,
     extractWrapperMarginProps
 } from '../../utils/extractProps';
-import { InternalInputComponentProps } from '../Input/BaseInput';
 
+import { InternalInputComponentProps } from '../Input/BaseInput';
 import { BoxedInput } from '../Input/BoxedInput';
 import { BoxedInputLabel } from '../Input/BoxedInputLabel';
 import { InputProps } from '../Input/InputProps';
@@ -52,7 +53,12 @@ const Textarea: FC<InputWrapperProps & TextAreaProps> = props => {
     const { widthProps, restProps: withoutWidth } = extractWidthProps(withoutMargin);
     const { heightProps, restProps } = extractHeightProps(withoutWidth);
 
-    const { label, onChange, id, resize, ...rest } = restProps;
+    const { label, onChange, resize, ...rest } = restProps;
+    const id = useMemo(() => {
+        if (props.id) return props.id;
+
+        return label ? generateId() : null;
+    }, [props.id]);
 
     const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 
