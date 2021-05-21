@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Input, InputProps } from '../Input/Input';
 import { InputWrapperProps } from '../Input/InputWrapper';
 import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
+import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
 import { get } from '../../utils/themeGet';
 import { Colors } from '../../essentials';
 
@@ -67,8 +68,9 @@ const defaultAriaStrings = {
     messagePasswordIsShown: 'Your password is shown'
 };
 
-// * generate ids to connect components
-// yes, if not provided
+// TODO small size and check underlined version
+// TODO docs
+// TODO aria-control for the button (need id PR to be merged)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpose, ...rest }, ref) => {
     const [isHidden, setIsHidden] = useState<boolean>(true);
     const aria = {
@@ -90,7 +92,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpo
                 }}
                 aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
             >
-                <EyeOpenIcon />
+                {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}
             </ToggleButton>
             <VisuallyHidden as="span" aria-live="polite">
                 {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}
