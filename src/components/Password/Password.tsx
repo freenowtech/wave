@@ -22,11 +22,11 @@ const PasswordWrapper = styled.div`
 
 interface PasswordProps extends InputWrapperProps, InputProps {
     purpose?: 'login' | 'new-password';
-    ariaStrings: {
-        showPasswordButton: string;
-        hidePasswordButton: string;
-        messagePasswordIsHidden: string;
-        messagePasswordIsShown: string;
+    ariaStrings?: {
+        showPasswordButton?: string;
+        hidePasswordButton?: string;
+        messagePasswordIsHidden?: string;
+        messagePasswordIsShown?: string;
     };
 }
 
@@ -97,7 +97,8 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
 Password.defaultProps = {
     purpose: 'login',
     size: 'medium',
-    variant: 'boxed'
+    variant: 'boxed',
+    ariaStrings: {}
 };
 
 export { Password };
