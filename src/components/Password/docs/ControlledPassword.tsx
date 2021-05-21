@@ -7,7 +7,7 @@ const ControlledPassword = props => {
         setValue(e.target.value);
     };
 
-    return <Password {...props} id="password-id" value={value} onChange={handleChange} />;
+    return <Password {...props} value={value} onChange={handleChange} />;
 };
 
 export { ControlledPassword };

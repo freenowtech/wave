@@ -8,6 +8,7 @@ import { InputWrapperProps } from '../Input/InputWrapper';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 import { Colors } from '../../essentials/Colors/Colors';
 import { ToggleButton } from './ToggleButton';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 
 const PasswordWrapper = styled.div`
     display: inline-block;
@@ -41,20 +42,21 @@ const iconColors = {
     inverted: { color: Colors.AUTHENTIC_BLUE_200, hover: Colors.AUTHENTIC_BLUE_50 }
 };
 
-// TODO aria-control for the button (need id PR to be merged)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
-    ({ ariaStrings, purpose, disabled, size, variant, inverted, ...rest }, ref) => {
+    ({ ariaStrings, purpose, id, disabled, size, variant, inverted, ...rest }, ref) => {
         const [isHidden, setIsHidden] = useState<boolean>(true);
         const aria = {
             ...defaultAriaStrings,
             ...ariaStrings
         };
         const { color, hover } = iconColors[inverted ? 'inverted' : 'regular'];
+        const inputId = useGeneratedId(id);
 
         return (
             <PasswordWrapper>
                 <Input
                     {...rest}
+                    id={inputId}
                     size={size}
                     variant={variant}
                     inverted={inverted}
@@ -72,6 +74,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
                             }}
+                            aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
                             style={{
                                 // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
