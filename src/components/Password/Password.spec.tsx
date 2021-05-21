@@ -18,7 +18,7 @@ describe('Password', () => {
         render(<Password label="password" id="id" />);
 
         expect(screen.getByLabelText('password')).toHaveAttribute('type', 'password');
-        expect(screen.getByRole('button', { name: 'show' })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /show/i })).toBeInTheDocument();
     });
 
     describe('`purpose` property', () => {
@@ -55,7 +55,7 @@ describe('Password', () => {
             const toggleButton = screen.getByRole('button');
 
             expect(input).toHaveAttribute('type', 'password');
-            expect(toggleButton.innerHTML).toBe('show');
+            expect(toggleButton).toHaveAttribute('aria-label', 'Show password');
 
             const passwordText = 'my-very-secure-password';
             user.type(input, passwordText);
@@ -63,7 +63,7 @@ describe('Password', () => {
 
             expect(input).toHaveAttribute('type', 'text');
             expect(input).toHaveAttribute('value', passwordText);
-            expect(toggleButton.innerHTML).toBe('hide');
+            expect(toggleButton).toHaveAttribute('aria-label', 'Hide password');
         });
 
         it('changes the mode to hide if the current mode is show', () => {
@@ -80,7 +80,7 @@ describe('Password', () => {
             // hide password again
             user.click(toggleButton);
             expect(input).toHaveAttribute('type', 'password');
-            expect(toggleButton.innerHTML).toBe('show');
+            expect(toggleButton).toHaveAttribute('aria-label', 'Show password');
         });
     });
 });
