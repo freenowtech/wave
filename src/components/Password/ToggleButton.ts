@@ -46,10 +46,6 @@ const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
     width: 3.5rem;
     ${sizeVariant}
     ${inputType}
-
-    svg path {
-        fill: ${Colors.AUTHENTIC_BLUE_550};
-    }
 `;
 
 export { ToggleButton };
