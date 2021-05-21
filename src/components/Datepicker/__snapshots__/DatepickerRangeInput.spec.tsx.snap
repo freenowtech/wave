@@ -176,6 +176,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
         class="sc-AxirZ c2"
         data-error="false"
         data-testid="start-date-input"
+        id="random"
         type="text"
         value=""
       />
@@ -202,6 +203,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
         class="sc-AxirZ c2"
         data-error="false"
         data-testid="end-date-input"
+        id="random"
         tabindex="-1"
         type="text"
         value=""

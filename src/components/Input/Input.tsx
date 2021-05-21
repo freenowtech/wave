@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BottomLinedInput } from './BottomLinedInput';
 import { BottomLinedInputLabel } from './BottomLinedInputLabel';
 import { BoxedInput } from './BoxedInput';
@@ -12,7 +13,8 @@ const Input = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>((props,
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
-    const { label, onChange, size, id, ...rest } = restProps;
+    const { label, onChange, size, ...rest } = restProps;
+    const id = useGeneratedId(props.id);
 
     const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 

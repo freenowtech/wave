@@ -13,6 +13,9 @@ declare global {
     }
 }
 
+// mock the source of randomness in all the tests
+jest.mock('./ids');
+
 expect.extend({
     toMatchHtmlTag(wrapper: RenderResult, expectedTag: string): CustomMatcherResult {
         const { firstChild } = wrapper.container;

@@ -120,6 +120,7 @@ exports[`DatepickerSingleInput renders the default props 1`] = `
       class="sc-AxjAm c1"
       data-error="false"
       data-testid="start-date-input"
+      id="random"
       type="text"
       value=""
     />
