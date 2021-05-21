@@ -122,6 +122,7 @@ exports[`Textarea renders 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
 </div>
 `;
@@ -269,10 +270,12 @@ exports[`Textarea renders the disabled state with label and placeholder 1`] = `
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
     disabled=""
+    id="random"
     placeholder="FREE NOW"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -407,6 +410,7 @@ exports[`Textarea renders the error state 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
 </div>
 `;
@@ -559,10 +563,12 @@ exports[`Textarea renders the error state with label and placeholder 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
     placeholder="FREE NOW"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -691,6 +697,7 @@ exports[`Textarea renders the inverted style 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
 </div>
 `;
@@ -834,9 +841,11 @@ exports[`Textarea renders the label 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -985,10 +994,12 @@ exports[`Textarea renders the label and the placeholder 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
     placeholder="FREE NOW"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -1141,10 +1152,12 @@ exports[`Textarea renders with custom height and width 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
     placeholder="FREE NOW"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>

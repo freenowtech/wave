@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import { Textarea } from './Textarea';
 
@@ -37,5 +37,22 @@ describe('Textarea', () => {
         expect(
             render(<Textarea label="Name" placeholder="FREE NOW" disabled />).container.firstChild
         ).toMatchSnapshot();
+    });
+
+    describe('link textarea with the label', () => {
+        it('uses `id` prop value if passed', () => {
+            render(<Textarea id="test-input-id" label="Simple Label" />);
+
+            expect(screen.getByLabelText('Simple Label')).toHaveAttribute('id', 'test-input-id');
+            expect(screen.getByText('Simple Label')).toHaveAttribute('for', 'test-input-id');
+        });
+
+        it('generate id automatically if `id` prop is empty', () => {
+            render(<Textarea label="Simple Label" />);
+            const generatedId = 'random';
+
+            expect(screen.getByLabelText('Simple Label')).toHaveAttribute('id', generatedId);
+            expect(screen.getByText('Simple Label')).toHaveAttribute('for', generatedId);
+        });
     });
 });
