@@ -1,7 +1,6 @@
 import { variant } from 'styled-system';
 import styled from 'styled-components';
 
-import { Colors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { InputProps } from '../Input/InputProps';
 
@@ -14,7 +13,7 @@ const inputType = variant({
     }
 });
 
-const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant' | 'inverted'>>`
+const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
     box-sizing: border-box;
     position: absolute;
     background: transparent;
@@ -36,8 +35,12 @@ const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant' | 'invert
     }};
     ${inputType};
 
+    &:hover svg path {
+        fill: var(--hover-color);
+    }
+
     svg path {
-        fill: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550)};
+        fill: var(--color);
     }
 `;
 

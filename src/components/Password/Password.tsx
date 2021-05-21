@@ -1,11 +1,12 @@
 import React, { forwardRef, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
 import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
 import { Input, InputProps } from '../Input/Input';
 import { InputWrapperProps } from '../Input/InputWrapper';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
+import { Colors } from '../../essentials/Colors/Colors';
 import { ToggleButton } from './ToggleButton';
 
 const PasswordWrapper = styled.div`
@@ -35,6 +36,11 @@ const defaultAriaStrings = {
     messagePasswordIsShown: 'Your password is shown'
 };
 
+const iconColors = {
+    regular: { color: Colors.AUTHENTIC_BLUE_550, hover: Colors.AUTHENTIC_BLUE_900 },
+    inverted: { color: Colors.AUTHENTIC_BLUE_200, hover: Colors.AUTHENTIC_BLUE_50 }
+};
+
 // TODO aria-control for the button (need id PR to be merged)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
     ({ ariaStrings, purpose, disabled, size, variant, inverted, ...rest }, ref) => {
@@ -43,6 +49,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
             ...defaultAriaStrings,
             ...ariaStrings
         };
+        const { color, hover } = iconColors[inverted ? 'inverted' : 'regular'];
 
         return (
             <PasswordWrapper>
@@ -61,12 +68,16 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                         <ToggleButton
                             size={size}
                             variant={variant}
-                            inverted
                             type="button"
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
                             }}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
+                            style={{
+                                // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
+                                ['--color' as any]: color,
+                                ['--hover-color' as any]: hover
+                            }}
                         >
                             {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}
                         </ToggleButton>
