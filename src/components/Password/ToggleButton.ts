@@ -35,12 +35,12 @@ const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
     }};
     ${inputType};
 
-    &:hover svg path {
-        fill: var(--hover-color);
-    }
-
     svg path {
         fill: var(--color);
+    }
+
+    &:hover svg path {
+        fill: var(--hover-color);
     }
 `;
 
