@@ -71,3 +71,4 @@ export { default as TrophyIcon } from './TrophyIcon';
 export { default as LightningIcon } from './LightningIcon';
 export { default as PenIcon } from './PenIcon';
 export { default as EyeOpenIcon } from './EyeOpenIcon';
+export { default as EyeClosedIcon } from './EyeClosedIcon';
