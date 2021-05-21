@@ -1,12 +1,11 @@
 import React, { forwardRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Input, InputProps } from '../Input/Input';
 import { InputWrapperProps } from '../Input/InputWrapper';
 import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
 import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
-import { get } from '../../utils/themeGet';
-import { Colors } from '../../essentials';
+import { ToggleButton } from './ToggleButton';
 
 const PasswordWrapper = styled.div`
     display: inline-block;
@@ -19,25 +18,6 @@ const PasswordWrapper = styled.div`
 
     input {
         padding-right: 3rem;
-    }
-`;
-
-const ToggleButton = styled.button`
-    position: absolute;
-    right: 2.75rem;
-    align-items: center;
-    background: transparent;
-    border-radius: ${get('radii.2')};
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    justify-content: center;
-    text-align: center;
-    text-decoration: none;
-    height: 100%;
-    width: 3.5rem;
-    svg path {
-        fill: ${Colors.AUTHENTIC_BLUE_550};
     }
 `;
 
@@ -68,10 +48,9 @@ const defaultAriaStrings = {
     messagePasswordIsShown: 'Your password is shown'
 };
 
-// TODO small size and check underlined version
 // TODO docs
 // TODO aria-control for the button (need id PR to be merged)
-const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpose, ...rest }, ref) => {
+const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpose, size, variant, ...rest }, ref) => {
     const [isHidden, setIsHidden] = useState<boolean>(true);
     const aria = {
         ...defaultAriaStrings,
@@ -81,11 +60,15 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpo
         <PasswordWrapper>
             <Input
                 {...rest}
+                size={size}
+                variant={variant}
                 ref={ref}
                 type={isHidden ? 'password' : 'text'}
                 autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
             />
             <ToggleButton
+                size={size}
+                variant={variant}
                 type="button"
                 onClick={() => {
                     setIsHidden(prevValue => !prevValue);
@@ -102,7 +85,9 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(({ ariaStrings, purpo
 });
 
 Password.defaultProps = {
-    purpose: 'login'
+    purpose: 'login',
+    size: 'medium',
+    variant: 'boxed'
 };
 
 export { Password };
