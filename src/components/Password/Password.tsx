@@ -52,7 +52,7 @@ const defaultAriaStrings = {
 // TODO docs
 // TODO aria-control for the button (need id PR to be merged)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
-    ({ ariaStrings, purpose, size, variant, inverted, ...rest }, ref) => {
+    ({ ariaStrings, purpose, disabled, size, variant, inverted, ...rest }, ref) => {
         const [isHidden, setIsHidden] = useState<boolean>(true);
         const aria = {
             ...defaultAriaStrings,
@@ -68,24 +68,29 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                     size={size}
                     variant={variant}
                     inverted={inverted}
+                    disabled={disabled}
                     ref={ref}
                     type={isHidden ? 'password' : 'text'}
                     autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
                 />
-                <ToggleButton
-                    size={size}
-                    variant={variant}
-                    type="button"
-                    onClick={() => {
-                        setIsHidden(prevValue => !prevValue);
-                    }}
-                    aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
-                >
-                    <Icon color={iconColor} />
-                </ToggleButton>
-                <VisuallyHidden as="span" aria-live="polite">
-                    {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}
-                </VisuallyHidden>
+                {!disabled ? (
+                    <>
+                        <ToggleButton
+                            size={size}
+                            variant={variant}
+                            type="button"
+                            onClick={() => {
+                                setIsHidden(prevValue => !prevValue);
+                            }}
+                            aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
+                        >
+                            <Icon color={iconColor} />
+                        </ToggleButton>
+                        <VisuallyHidden as="span" aria-live="polite">
+                            {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}
+                        </VisuallyHidden>
+                    </>
+                ) : null}
             </PasswordWrapper>
         );
     }
