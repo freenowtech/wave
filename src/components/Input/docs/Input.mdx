@@ -7,13 +7,16 @@ route: /components/input
 import { Playground } from 'docz';
 import { Input } from '../Input.tsx';
 import { ControlledInput } from './ControlledInput.tsx';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { Headline } from '../..';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 import { Combination } from '../../../docs/Combination'
+import { Advice } from '../../../docs/Advice';
 import { InputPropsTable } from './InputPropsTable';
 
 # Input
+
+<Advice>
+    If you need an input to set or ask for a password, use <a href="/components/password">Password component</a> instead.
+</Advice>
 
 Inputs are mainly used in forms to introduce alphanumeric content and edit it.
 
@@ -23,7 +26,7 @@ Inputs are mainly used in forms to introduce alphanumeric content and edit it.
 <br/>
 <StyledSystemLinks component="Input" supportedProps={ ['margin', 'width'] }/>
 
-Additionally all native HTML input element props are supported and forwarded to the underlying input element.
+Additionally, all native HTML input element props are supported and forwarded to the underlying input element.
 
 ## Example
 
