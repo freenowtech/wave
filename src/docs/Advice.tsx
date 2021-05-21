@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors } from '../../../essentials';
+import { Colors } from '../essentials';
 
 export const Advice = styled.div`
     border: 1px solid ${Colors.ACTION_BLUE_350};
