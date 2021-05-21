@@ -47,6 +47,11 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
         ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : null)};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+        background: ${p =>
+            `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
+                // @ts-ignore
+                p.size === 'small' ? '0.0825rem' : '0.0625rem'
+            }), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : null)}
@@ -71,6 +76,11 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
             ${p => activeBoxedPosition(p.size)};
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+            background: ${p =>
+                `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
+                    // @ts-ignore
+                    p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                }), transparent 50%)`};
         }
     }
 `;

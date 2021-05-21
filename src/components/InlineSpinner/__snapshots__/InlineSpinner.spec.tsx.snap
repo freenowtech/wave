@@ -7,20 +7,18 @@ exports[`InlineSpinner renders in a custom color 1`] = `
   width: 1.25rem;
   height: 1.25rem;
   vertical-align: text-bottom;
-  border: 0.125rem solid #069D4F;
+  border: 0.125rem solid;
   border-right-color: transparent;
   border-radius: 50%;
   -webkit-animation: wdnds 750ms linear infinite;
   animation: wdnds 750ms linear infinite;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-width: 0.125rem;
 }
 
-<div
-  class="c0"
-  color="#069D4F"
-/>
+<span>
+  <div
+    class="c0"
+  />
+</span>
 `;
 
 exports[`InlineSpinner renders the default variant 1`] = `
@@ -30,20 +28,18 @@ exports[`InlineSpinner renders the default variant 1`] = `
   width: 1.25rem;
   height: 1.25rem;
   vertical-align: text-bottom;
-  border: 0.125rem solid #001E3E;
+  border: 0.125rem solid;
   border-right-color: transparent;
   border-radius: 50%;
   -webkit-animation: wdnds 750ms linear infinite;
   animation: wdnds 750ms linear infinite;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-width: 0.125rem;
 }
 
-<div
-  class="c0"
-  color="#001E3E"
-/>
+<span>
+  <div
+    class="c0"
+  />
+</span>
 `;
 
 exports[`InlineSpinner renders the small size 1`] = `
@@ -53,18 +49,16 @@ exports[`InlineSpinner renders the small size 1`] = `
   width: 1.25rem;
   height: 1.25rem;
   vertical-align: text-bottom;
-  border: 0.125rem solid #001E3E;
+  border: 0.125rem solid;
   border-right-color: transparent;
   border-radius: 50%;
   -webkit-animation: wdnds 750ms linear infinite;
   animation: wdnds 750ms linear infinite;
-  width: 1rem;
-  height: 1rem;
-  border-width: 0.1rem;
 }
 
-<div
-  class="c0"
-  color="#001E3E"
-/>
+<span>
+  <div
+    class="c0"
+  />
+</span>
 `;
