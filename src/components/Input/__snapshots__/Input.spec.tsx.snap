@@ -116,6 +116,7 @@ exports[`Input variant "bottom-lined" renders 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -243,6 +244,7 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -519,6 +521,7 @@ exports[`Input variant "bottom-lined" renders the inverted style 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -934,6 +937,7 @@ exports[`Input variant "bottom-lined" renders the small size 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1055,6 +1059,7 @@ exports[`Input variant "boxed" renders 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1182,6 +1187,7 @@ exports[`Input variant "boxed" renders the error state 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1458,6 +1464,7 @@ exports[`Input variant "boxed" renders the inverted style 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1873,6 +1880,7 @@ exports[`Input variant "boxed" renders the small size 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>

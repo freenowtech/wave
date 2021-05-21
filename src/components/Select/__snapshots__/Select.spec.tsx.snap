@@ -98,6 +98,7 @@ exports[`Select renders with default props 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -216,6 +217,7 @@ exports[`Select variant "bottom-lined" renders passed options 1`] = `
 >
   <select
     class="c1"
+    id="random"
   >
     <option
       value="1"
@@ -1092,6 +1094,7 @@ exports[`Select variant "bottom-lined" renders with default props 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1210,6 +1213,7 @@ exports[`Select variant "boxed" renders passed options 1`] = `
 >
   <select
     class="c1"
+    id="random"
   >
     <option
       value="1"
@@ -2050,6 +2054,7 @@ exports[`Select variant "boxed" renders with default props 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"

@@ -122,6 +122,7 @@ exports[`Textarea renders 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
 </div>
 `;
@@ -409,6 +410,7 @@ exports[`Textarea renders the error state 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
 </div>
 `;
@@ -695,6 +697,7 @@ exports[`Textarea renders the inverted style 1`] = `
 >
   <textarea
     class="sc-AxjAm sc-AxhCb c1"
+    id="random"
   />
 </div>
 `;

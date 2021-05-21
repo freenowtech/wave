@@ -1,7 +1,6 @@
-import React, { forwardRef, useEffect, useMemo, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
-import { generateId } from '../../utils/ids';
-
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BottomLinedInput } from './BottomLinedInput';
 import { BottomLinedInputLabel } from './BottomLinedInputLabel';
 import { BoxedInput } from './BoxedInput';
@@ -15,11 +14,7 @@ const Input = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>((props,
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
     const { label, onChange, size, ...rest } = restProps;
-    const id = useMemo(() => {
-        if (props.id) return props.id;
-
-        return label ? generateId() : null;
-    }, [props.id]);
+    const id = useGeneratedId(props.id);
 
     const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 

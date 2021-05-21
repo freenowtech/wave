@@ -1,15 +1,15 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled, { CSSProperties } from 'styled-components';
 
 import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { generateId } from '../../utils/ids';
 import {
     extractClassNameProps,
     extractHeightProps,
     extractWidthProps,
     extractWrapperMarginProps
 } from '../../utils/extractProps';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 
 import { InternalInputComponentProps } from '../Input/BaseInput';
 import { BoxedInput } from '../Input/BoxedInput';
@@ -54,11 +54,7 @@ const Textarea: FC<InputWrapperProps & TextAreaProps> = props => {
     const { heightProps, restProps } = extractHeightProps(withoutWidth);
 
     const { label, onChange, resize, ...rest } = restProps;
-    const id = useMemo(() => {
-        if (props.id) return props.id;
-
-        return label ? generateId() : null;
-    }, [props.id]);
+    const id = useGeneratedId(props.id);
 
     const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 

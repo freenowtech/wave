@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { generateId } from '../../utils/ids';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ChevronDownIcon } from '../../icons/basic';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { BaseSelectProps, SelectInput } from './SelectInput';
@@ -40,11 +40,7 @@ const Select: React.FC<SelectProps> = props => {
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
     const { label, ...rest } = restProps;
-    const id = useMemo(() => {
-        if (props.id) return props.id;
-
-        return label ? generateId() : null;
-    }, [props.id]);
+    const id = useGeneratedId(props.id);
 
     return (
         <SelectWrapper {...classNameProps} {...marginProps} {...widthProps}>
