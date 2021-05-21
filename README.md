@@ -43,6 +43,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://arturmiglio.com"><img src="https://avatars.githubusercontent.com/u/539801?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Artur Miglio</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=arturmiglio" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/phllipo"><img src="https://avatars.githubusercontent.com/u/9133431?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Phillip Barkmann</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=phllipo" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/lloydaf"><img src="https://avatars.githubusercontent.com/u/5729666?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lloyd Francis</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=lloydaf" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
