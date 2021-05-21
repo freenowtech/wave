@@ -1,35 +1,21 @@
 import React, { forwardRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Colors } from '../../essentials';
-import { Input, InputProps } from '../Input/Input';
-import { InputWrapperProps } from '../Input/InputWrapper';
 import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
 import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
+import { Input, InputProps } from '../Input/Input';
+import { InputWrapperProps } from '../Input/InputWrapper';
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 import { ToggleButton } from './ToggleButton';
 
 const PasswordWrapper = styled.div`
     display: inline-block;
     position: relative;
-    margin-right: -3rem;
-
-    & > div {
-        width: calc(100% - 3rem);
-    }
+    box-sizing: border-box;
 
     input {
-        padding-right: 3rem;
+        padding-right: 2.5rem;
     }
-`;
-
-const VisuallyHidden = styled.div`
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
 `;
 
 interface PasswordProps extends InputWrapperProps, InputProps {
@@ -49,7 +35,6 @@ const defaultAriaStrings = {
     messagePasswordIsShown: 'Your password is shown'
 };
 
-// TODO docs
 // TODO aria-control for the button (need id PR to be merged)
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
     ({ ariaStrings, purpose, disabled, size, variant, inverted, ...rest }, ref) => {
@@ -58,8 +43,6 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
             ...defaultAriaStrings,
             ...ariaStrings
         };
-        const Icon = isHidden ? EyeOpenIcon : EyeClosedIcon;
-        const iconColor = inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550;
 
         return (
             <PasswordWrapper>
@@ -78,13 +61,14 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                         <ToggleButton
                             size={size}
                             variant={variant}
+                            inverted
                             type="button"
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
                             }}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
                         >
-                            <Icon color={iconColor} />
+                            {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}
                         </ToggleButton>
                         <VisuallyHidden as="span" aria-live="polite">
                             {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}

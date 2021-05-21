@@ -43,3 +43,4 @@ export { PhoneAreaCodeCountry } from './PhoneInput/types/PhoneAreaCodeCountry';
 export { Skeleton, SkeletonProps } from './Skeleton/Skeleton';
 export { Search, SearchProps } from './Search/Search';
 export { Password } from './Password/Password';
+export { VisuallyHidden } from './VisuallyHidden/VisuallyHidden';

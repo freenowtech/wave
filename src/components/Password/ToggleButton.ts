@@ -5,34 +5,17 @@ import { Colors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { InputProps } from '../Input/InputProps';
 
-const sizeVariant = variant({
-    prop: 'size',
-    variants: {
-        small: {
-            alignItems: 'end',
-            paddingBottom: '.25rem'
-        },
-        medium: {
-            alignItems: 'center'
-        }
-    }
-});
-
 const inputType = variant({
     prop: 'variant',
     variants: {
-        boxed: {
-            right: '2.75rem'
-        },
         'bottom-lined': {
-            right: '2rem',
-            alignItems: 'end',
-            paddingBottom: '.5rem'
+            justifyContent: 'right'
         }
     }
 });
 
-const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
+const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant' | 'inverted'>>`
+    box-sizing: border-box;
     position: absolute;
     background: transparent;
     border-radius: ${get('radii.2')};
@@ -43,9 +26,19 @@ const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
     text-align: center;
     text-decoration: none;
     height: 100%;
-    width: 3.5rem;
-    ${sizeVariant}
-    ${inputType}
+    width: 2.5rem;
+    right: 0;
+    align-items: ${p => (p.size === 'small' || p.variant === 'bottom-lined' ? 'end' : 'center')};
+    padding-bottom: ${p => {
+        if (p.size === 'small') return '.25rem';
+
+        return p.variant === 'bottom-lined' ? '.5rem' : 0;
+    }};
+    ${inputType};
+
+    svg path {
+        fill: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550)};
+    }
 `;
 
 export { ToggleButton };
