@@ -1,150 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input should set the htmlFor attribute for the label 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  top: 0.75rem;
-  left: 0.5rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
-.c1 {
-  margin: 0;
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border-radius: 0;
-  color: #001E3E;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  -webkit-transition: box-shadow 100ms,border 100ms;
-  transition: box-shadow 100ms,border 100ms;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  border-radius: 0.25rem;
-  border: 0.0625rem solid #C6CDD4;
-  font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: #9CA7B4;
-}
-
-.c1::-moz-placeholder {
-  color: #9CA7B4;
-}
-
-.c1:-ms-input-placeholder {
-  color: #9CA7B4;
-}
-
-.c1::placeholder {
-  color: #9CA7B4;
-}
-
-.c1:active,
-.c1:focus {
-  border-color: #096BDB;
-  box-shadow: inset 0 0 0 0.0625rem #096BDB;
-}
-
-.c1:disabled {
-  color: #C6CDD4;
-  border-color: #C6CDD4;
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
-.c1:disabled::-webkit-input-placeholder {
-  color: #C6CDD4;
-}
-
-.c1:disabled::-moz-placeholder {
-  color: #C6CDD4;
-}
-
-.c1:disabled:-ms-input-placeholder {
-  color: #C6CDD4;
-}
-
-.c1:disabled::placeholder {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill,
-.c1:-webkit-autofill:hover,
-.c1:-webkit-autofill:focus,
-.c1:-webkit-autofill:active {
-  -webkit-text-fill-color: #001E3E;
-  -webkit-transition: background-color 99999999ms ease 99999999ms;
-  transition: background-color 99999999ms ease 99999999ms;
-}
-
-.c1 + .c2 {
-  color: #9CA7B4;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
-}
-
-.c1:disabled + .c2 {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) + .c2 {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-  color: #096BDB;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
-}
-
-.c0 {
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-}
-
-<div
-  class="c0"
->
-  <input
-    class="sc-AxjAm c1"
-    id="test-input-id"
-    type="text"
-  />
-  <label
-    class="sc-AxirZ c2 c3"
-    for="test-input-id"
-  >
-    Simple Label
-  </label>
-</div>
-`;
-
 exports[`Input variant "bottom-lined" renders 1`] = `
 .c1 {
   margin: 0;
@@ -261,6 +116,7 @@ exports[`Input variant "bottom-lined" renders 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -388,6 +244,7 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -535,11 +392,13 @@ exports[`Input variant "bottom-lined" renders the error state with label and pla
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -662,6 +521,7 @@ exports[`Input variant "bottom-lined" renders the inverted style 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -800,10 +660,12 @@ exports[`Input variant "bottom-lined" renders the label 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -946,11 +808,13 @@ exports[`Input variant "bottom-lined" renders the label and the placeholder 1`] 
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -1073,6 +937,7 @@ exports[`Input variant "bottom-lined" renders the small size 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1194,6 +1059,7 @@ exports[`Input variant "boxed" renders 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1321,6 +1187,7 @@ exports[`Input variant "boxed" renders the error state 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1468,11 +1335,13 @@ exports[`Input variant "boxed" renders the error state with label and placeholde
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -1595,6 +1464,7 @@ exports[`Input variant "boxed" renders the inverted style 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>
@@ -1733,10 +1603,12 @@ exports[`Input variant "boxed" renders the label 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -1879,11 +1751,13 @@ exports[`Input variant "boxed" renders the label and the placeholder 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
     class="sc-AxirZ c2 c3"
+    for="random"
   >
     Name
   </label>
@@ -2006,6 +1880,7 @@ exports[`Input variant "boxed" renders the small size 1`] = `
 >
   <input
     class="sc-AxjAm c1"
+    id="random"
     type="text"
   />
 </div>

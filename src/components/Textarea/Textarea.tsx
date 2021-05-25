@@ -9,8 +9,9 @@ import {
     extractWidthProps,
     extractWrapperMarginProps
 } from '../../utils/extractProps';
-import { InternalInputComponentProps } from '../Input/BaseInput';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 
+import { InternalInputComponentProps } from '../Input/BaseInput';
 import { BoxedInput } from '../Input/BoxedInput';
 import { BoxedInputLabel } from '../Input/BoxedInputLabel';
 import { InputProps } from '../Input/InputProps';
@@ -52,7 +53,8 @@ const Textarea: FC<InputWrapperProps & TextAreaProps> = props => {
     const { widthProps, restProps: withoutWidth } = extractWidthProps(withoutMargin);
     const { heightProps, restProps } = extractHeightProps(withoutWidth);
 
-    const { label, onChange, id, resize, ...rest } = restProps;
+    const { label, onChange, resize, ...rest } = restProps;
+    const id = useGeneratedId(props.id);
 
     const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 

@@ -98,6 +98,7 @@ exports[`Select renders with default props 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -216,6 +217,7 @@ exports[`Select variant "bottom-lined" renders passed options 1`] = `
 >
   <select
     class="c1"
+    id="random"
   >
     <option
       value="1"
@@ -375,6 +377,7 @@ exports[`Select variant "bottom-lined" renders the disabled styles 1`] = `
   <select
     class="c1"
     disabled=""
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -394,6 +397,7 @@ exports[`Select variant "bottom-lined" renders the disabled styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     disabled
   </label>
@@ -521,6 +525,7 @@ exports[`Select variant "bottom-lined" renders the error styles 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -540,6 +545,7 @@ exports[`Select variant "bottom-lined" renders the error styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     error
   </label>
@@ -673,6 +679,7 @@ exports[`Select variant "bottom-lined" renders the inverted disabled styles 1`] 
   <select
     class="c1"
     disabled=""
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -692,6 +699,7 @@ exports[`Select variant "bottom-lined" renders the inverted disabled styles 1`] 
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     inverted disabled
   </label>
@@ -813,6 +821,7 @@ exports[`Select variant "bottom-lined" renders the inverted styles 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -832,6 +841,7 @@ exports[`Select variant "bottom-lined" renders the inverted styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     inverted
   </label>
@@ -953,6 +963,7 @@ exports[`Select variant "bottom-lined" renders with a label 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -972,6 +983,7 @@ exports[`Select variant "bottom-lined" renders with a label 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     label
   </label>
@@ -1082,6 +1094,7 @@ exports[`Select variant "bottom-lined" renders with default props 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1200,6 +1213,7 @@ exports[`Select variant "boxed" renders passed options 1`] = `
 >
   <select
     class="c1"
+    id="random"
   >
     <option
       value="1"
@@ -1353,6 +1367,7 @@ exports[`Select variant "boxed" renders the disabled styles 1`] = `
   <select
     class="c1"
     disabled=""
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1372,6 +1387,7 @@ exports[`Select variant "boxed" renders the disabled styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     disabled
   </label>
@@ -1493,6 +1509,7 @@ exports[`Select variant "boxed" renders the error styles 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1512,6 +1529,7 @@ exports[`Select variant "boxed" renders the error styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     error
   </label>
@@ -1639,6 +1657,7 @@ exports[`Select variant "boxed" renders the inverted disabled styles 1`] = `
   <select
     class="c1"
     disabled=""
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1658,6 +1677,7 @@ exports[`Select variant "boxed" renders the inverted disabled styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     inverted disabled
   </label>
@@ -1773,6 +1793,7 @@ exports[`Select variant "boxed" renders the inverted styles 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1792,6 +1813,7 @@ exports[`Select variant "boxed" renders the inverted styles 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     inverted
   </label>
@@ -1907,6 +1929,7 @@ exports[`Select variant "boxed" renders with a label 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
@@ -1926,6 +1949,7 @@ exports[`Select variant "boxed" renders with a label 1`] = `
   </div>
   <label
     class="c3 c4"
+    for="random"
   >
     label
   </label>
@@ -2030,6 +2054,7 @@ exports[`Select variant "boxed" renders with default props 1`] = `
 >
   <select
     class="c1"
+    id="random"
   />
   <div
     class="c2 svg-icon"
