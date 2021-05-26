@@ -5,8 +5,7 @@ about: I have a suggestion (and might want to implement myself 🙂)!
 
 <!--
 
-Vote on feature requests by adding a 👍. This helps maintainers prioritize what
-to work on.
+Vote on feature requests by adding a 👍. This helps the community to prioritise what to start with
 
 * Please fill out this template with all the relevant information so we can
   understand what's going on and fix the issue. We appreciate bugs filed and PRs
@@ -20,10 +19,6 @@ to work on.
 A clear and concise description of what you want to happen. Add any considered
 drawbacks.
 -->
-
-### Suggested implementation
-
-<!-- Helpful but optional 😀 -->
 
 ### Describe alternatives you've considered
 

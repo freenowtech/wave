@@ -19,7 +19,7 @@ about: Bugs, missing documentation, or unexpected behavior 🤔.
 var your => (code) => here;
 ```
 
-### Problem description
+### What was expected to happen?
 
 <!-- Please describe why the current behavior is a problem -->
 
@@ -28,11 +28,4 @@ var your => (code) => here;
 <!--
 If you can, try to reproduce the issue in a Codesandbox. You can fork the one
 here: https://codesandbox.io/s/wave-playground-w7cf3 (make sure to use latest Wave version)
--->
-
-### Suggested solution
-
-<!--
-It's ok if you don't have a suggested solution, but it really helps if you could
-do a little digging to come up with some suggestion of how to improve things.
 -->
