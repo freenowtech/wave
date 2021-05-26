@@ -11,7 +11,7 @@ about: Bugs, missing documentation, or unexpected behavior 🤔.
 
 -->
 
-- `@freenow/wave` version:
+-   `@freenow/wave` version:
 
 ### Relevant code
 
@@ -19,13 +19,9 @@ about: Bugs, missing documentation, or unexpected behavior 🤔.
 var your => (code) => here;
 ```
 
-### What you did
+### Problem description
 
-<!-- What you were doing -->
-
-### What happened
-
-<!-- Please provide the full error message/screenshots/anything -->
+<!-- Please describe why the current behavior is a problem -->
 
 ### Reproduction
 
@@ -33,10 +29,6 @@ var your => (code) => here;
 If you can, try to reproduce the issue in a Codesandbox. You can fork the one
 here: https://codesandbox.io/s/wave-playground-w7cf3 (make sure to use latest Wave version)
 -->
-
-### Problem description
-
-<!-- Please describe why the current behavior is a problem -->
 
 ### Suggested solution
 
