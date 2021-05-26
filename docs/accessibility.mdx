@@ -1,0 +1,36 @@
+---
+name: Accessibility
+route: /a11y
+---
+
+import { TitleCard } from './components/TitleCard';
+
+<TitleCard title="Accessibility (a11y)">
+    Accessible design not only helps users with disabilities; it provides better user experiences for everyone.
+</TitleCard>
+
+## Overview
+
+Accessible design not only helps users with disabilities; it provides better user experiences for everyone. Our goal is to provide a consistent user experience for all users, whether they’re navigating with a mouse/touchscreen, keyboard, or screen reader.
+
+An accessible product should:
+
+- Give all users the same quality of experience
+- Adapt to users and situations
+
+Individually accessible elements and components are part of building accessible products, but the accessibility efforts need for manual testing. When designing new UIs, rely as much as possible on Wave existing components and follow accessible patterns. If you're creating a new component or pattern (one that doesn't exist in Wave), keep in mind accessibility practices before your implementation.
+
+## Mission
+
+The Wave Design System team wants as many people as possible to be able to use Wave powered products. For example, that means you should be able to:
+
+- **zoom** in up to 300% without the text spilling off the screen
+- navigate most of the website using just a **keyboard**
+- listen to most of the website using a **screen reader**
+
+## Aid development process
+
+- Use the [a11y project checklist](https://www.a11yproject.com/checklist/) and aim for at least A level compliance
+- Use [axe dev tools](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd) for accessibility testing. Check more at [deque Axe](https://www.deque.com/axe/devtools/)
+- Use [Lighthouse Chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) for accessibility score. Check more at [Web.dev a11y](https://web.dev/accessibility-scoring/)
+- Use [accessible queries](https://testing-library.com/docs/queries/about#priority) when writing tests. This assume you are using [testing-library](https://testing-library.com/)
