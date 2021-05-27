@@ -7,8 +7,9 @@ import { Input, InputProps } from '../Input/Input';
 import { InputWrapperProps } from '../Input/InputWrapper';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 import { Colors } from '../../essentials/Colors/Colors';
-import { ToggleButton } from './ToggleButton';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
+import { ToggleButton } from './ToggleButton';
+import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 
 const PasswordWrapper = styled.div`
     display: inline-block;
@@ -16,7 +17,8 @@ const PasswordWrapper = styled.div`
     box-sizing: border-box;
 
     input {
-        padding-right: 2.5rem;
+        // avoid text under the toggle mode button
+        padding-right: ${TOGGLE_MODE_BUTTON_WIDTH};
     }
 `;
 

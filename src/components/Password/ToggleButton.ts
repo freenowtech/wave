@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { get } from '../../utils/themeGet';
 import { InputProps } from '../Input/InputProps';
+import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 
 const inputType = variant({
     prop: 'variant',
@@ -25,7 +26,7 @@ const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
     text-align: center;
     text-decoration: none;
     height: 100%;
-    width: 2.5rem;
+    width: ${TOGGLE_MODE_BUTTON_WIDTH};
     right: 0;
     align-items: ${p => (p.size === 'small' || p.variant === 'bottom-lined' ? 'end' : 'center')};
     padding-bottom: ${p => {
