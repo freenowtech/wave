@@ -29,9 +29,9 @@ const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
     right: 0;
     align-items: ${p => (p.size === 'small' || p.variant === 'bottom-lined' ? 'end' : 'center')};
     padding-bottom: ${p => {
-        if (p.size === 'small') return '.25rem';
+        if (p.size === 'small') return '0.25rem';
 
-        return p.variant === 'bottom-lined' ? '.5rem' : 0;
+        return p.variant === 'bottom-lined' ? '0.5rem' : 0;
     }};
     ${inputType};
 
