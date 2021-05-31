@@ -9,14 +9,9 @@ import { Input } from '../Input.tsx';
 import { ControlledInput } from './ControlledInput.tsx';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 import { Combination } from '../../../docs/Combination'
-import { Advice } from '../../../docs/Advice';
 import { InputPropsTable } from './InputPropsTable';
 
 # Input
-
-<Advice>
-    If you need an input to set or ask for a password, use <a href="/components/password">Password component</a> instead.
-</Advice>
 
 Inputs are mainly used in forms to introduce alphanumeric content and edit it.
 
@@ -107,7 +102,7 @@ Ideally the inputs should be placed in one column, in order to provide an easy r
 
 - **Default**: We show the input lines or borders and the label in grey.
 - **Focused**: When the pointer is inside the field the border will turn blue.
-  - In some cases as long inputs like search we will show at this state a cross icon on the ride in order to delete the content written. In oder cases as passwords inputs we will show an eye icon to show the by default hidden content
+  - In some cases as long inputs like search we will show at this state a cross icon on the ride in order to delete the content written. In case of password, we show an eye icon to show the by default hidden content
   - When the input just allows to include numeric data: Don’t allow to type letters and when user does it, show a tooltip saying ‘Just numbers’. When the user is in the mobile, show by default the numeric virtual keyboard.
   - Placeholder text rests in the input field until the user starts entering text. It may contain an action or an example, such as a phone number or email address.
 - **In line Error**: When a field is active or contains an error, the line’s color and label turns to red and an error text appears replacing the helper text when applicable (also in red color).
