@@ -26,7 +26,6 @@ export default {
     `,
     a: styled.a`
         font-family: 'Open Sans', sans-serif;
-        font-size: 1rem;
         font-weight: 600;
         color: #096bdb;
         display: inline-block;
