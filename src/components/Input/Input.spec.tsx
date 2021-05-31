@@ -106,7 +106,7 @@ describe('Input', () => {
         );
 
         const usernameInput = screen.getByRole('textbox', { name: 'username' });
-        const passwordInput = screen.getByLabelText(/password/i);
+        const passwordInput = screen.getByLabelText('password');
         const submitBtn = screen.getByRole('button', { name: /submit/i });
 
         userEvent.type(usernameInput, 'jaimito');

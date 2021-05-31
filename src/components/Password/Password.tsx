@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
 import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
-import { Input, InputProps } from '../Input/Input';
+import { InnerInput as Input } from '../Input/InnerInput';
+import { InputProps } from '../Input/InputProps';
 import { InputWrapperProps } from '../Input/InputWrapper';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 import { Colors } from '../../essentials/Colors/Colors';
