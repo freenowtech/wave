@@ -18,7 +18,7 @@ const PasswordWrapper = styled.div`
     box-sizing: border-box;
 
     input {
-        // avoid text under the toggle mode button
+        /* avoid text under the toggle mode button */
         padding-right: ${TOGGLE_MODE_BUTTON_WIDTH};
     }
 `;
