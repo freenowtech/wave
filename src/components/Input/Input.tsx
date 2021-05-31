@@ -1,58 +1,16 @@
-import React, { forwardRef, useEffect, useState } from 'react';
-import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
-import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
-import { BottomLinedInput } from './BottomLinedInput';
-import { BottomLinedInputLabel } from './BottomLinedInputLabel';
-import { BoxedInput } from './BoxedInput';
-import { BoxedInputLabel } from './BoxedInputLabel';
+import React, { forwardRef } from 'react';
+
+import { Password } from '../Password/Password';
 import { InputProps } from './InputProps';
-import { InputWrapper, InputWrapperProps } from './InputWrapper';
+import { InputWrapperProps } from './InputWrapper';
+import { InnerInput } from './InnerInput';
 
 const Input = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>((props, ref) => {
-    const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
-    const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
-    const { widthProps, restProps } = extractWidthProps(withoutMargin);
-
-    const { label, onChange, size, ...rest } = restProps;
-    const id = useGeneratedId(props.id);
-
-    const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
-
-    const handleChange = event => {
-        if (onChange) {
-            onChange(event);
-        }
-    };
-
-    useEffect(() => {
-        setHasValue(rest.value && rest.value.toString().length > 0);
-    }, [rest.value]);
-
-    if (props.variant == 'boxed') {
-        return (
-            <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
-                <BoxedInput {...rest} id={id} size={size} hasValue={hasValue} onChange={handleChange} />
-                {label && (
-                    <BoxedInputLabel htmlFor={id} size={size}>
-                        {label}
-                    </BoxedInputLabel>
-                )}
-            </InputWrapper>
-        );
+    if (props.type === 'password') {
+        return <Password {...props} ref={ref} />;
     }
 
-    if (props.variant == 'bottom-lined') {
-        return (
-            <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
-                <BottomLinedInput {...rest} id={id} size={size} hasValue={hasValue} onChange={handleChange} />
-                {label && (
-                    <BottomLinedInputLabel htmlFor={id} size={size}>
-                        {label}
-                    </BottomLinedInputLabel>
-                )}
-            </InputWrapper>
-        );
-    }
+    return <InnerInput {...props} ref={ref} />;
 });
 
 Input.defaultProps = {
