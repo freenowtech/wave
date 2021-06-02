@@ -1,6 +1,6 @@
 {
     "name": "@freenow/wave",
-    "version": "1.25.1",
+    "version": "1.1.0",
     "description": "React components of the Wave design system for your Front-End project",
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
