@@ -11,11 +11,16 @@ import { Colors } from '../../essentials/Colors/Colors';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ToggleButton } from './ToggleButton';
 import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
+import { extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { compose, MarginProps, margin, width, WidthProps } from 'styled-system';
 
-const PasswordWrapper = styled.div`
+type WrapperProps = MarginProps & WidthProps;
+const PasswordWrapper = styled.div<WrapperProps>`
     display: inline-block;
     position: relative;
     box-sizing: border-box;
+
+    ${compose(margin, width)}
 
     input {
         /* avoid text under the toggle mode button */
@@ -54,11 +59,14 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
         };
         const { color, hover } = iconColors[inverted ? 'inverted' : 'regular'];
         const inputId = useGeneratedId(id);
+        const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(rest);
+        const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
         return (
-            <PasswordWrapper>
+            <PasswordWrapper {...widthProps} {...marginProps}>
                 <Input
-                    {...rest}
+                    {...restProps}
+                    width="100%"
                     id={inputId}
                     size={size}
                     variant={variant}
