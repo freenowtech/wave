@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[85],{gCSE:function(e,t,a){"use strict";a("d3/y"),Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=l(a("j1TT")),d=l(a("a2dV")),f=l(a("17Je")),u=l(a("rmdD")),n=l(a("8D+C"));function l(e){return e&&e.__esModule?e:{default:e}}var r={code:"fa-IR",formatDistance:o.default,formatLong:d.default,formatRelative:f.default,localize:u.default,match:n.default,options:{weekStartsOn:0,firstWeekContainsDate:1}};t.default=r,e.exports=t.default}}]);
-//# sourceMappingURL=85-c1781f169ca57844e532.js.map
