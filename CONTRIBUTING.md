@@ -1,21 +1,20 @@
 # Contributing
 
-- [Contributing](#contributing)
-  - [Introduction](#introduction)
-  - [Project setup](#project-setup)
-  - [Ground Rules](#ground-rules)
-    - [Adding release notes](#adding-release-notes)
-    - [Testing](#testing)
-    - [Code style](#code-style)
-    - [Commit messages](#commit-messages)
-  - [Your First Contribution](#your-first-contribution)
-    - [Triage tickets](#triage-tickets)
-    - [Write some documentation](#write-some-documentation)
-    - [Reporting pains and use cases](#reporting-pains-and-use-cases)
-    - [Take from the backlog](#take-from-the-backlog)
-  - [Tools we use](#tools-we-use)
-  - [Component patterns](#component-patterns)
-  - [Adding icons](#adding-icons)
+-   [Contributing](#contributing)
+    -   [Introduction](#introduction)
+    -   [Project setup](#project-setup)
+    -   [Ground Rules](#ground-rules)
+        -   [Testing](#testing)
+        -   [Code style](#code-style)
+        -   [Commit messages](#commit-messages)
+    -   [Your First Contribution](#your-first-contribution)
+        -   [Triage tickets](#triage-tickets)
+        -   [Write some documentation](#write-some-documentation)
+        -   [Reporting pains and use cases](#reporting-pains-and-use-cases)
+        -   [Take from the backlog](#take-from-the-backlog)
+    -   [Tools we use](#tools-we-use)
+    -   [Component patterns](#component-patterns)
+    -   [Adding icons](#adding-icons)
 
 ## Introduction
 
@@ -48,10 +47,6 @@ series [How to Contribute to an Open Source Project on GitHub](https://app.egghe
 > Whenever you want to update your version of `main`, do a regular `git pull`.
 
 ## Ground Rules
-
-### Adding release notes
-
-Everytime you push a pull request remember to update the [release notes](/docs/release-notes.mdx) under "Unreleased" title describing briefly the Enhancements, Documentation, New Components or Bug Fixes you have done
 
 ### Testing
 
