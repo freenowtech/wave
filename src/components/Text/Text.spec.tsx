@@ -16,10 +16,31 @@ describe('Text', () => {
         expect(render(<Text>Content</Text>).getByText('Content')).toBeInTheDocument();
     });
 
-    it('has a dim color if weak property is set', () => {
-        expect(render(<Text weak />).container.firstChild).toHaveStyle(`
-            color: ${Colors.AUTHENTIC_BLUE_550};
-        `);
+    describe('if the weak property is set', () => {
+        it('has a dim color', () => {
+            expect(render(<Text weak />).container.firstChild).toHaveStyle(`
+                color: ${Colors.AUTHENTIC_BLUE_550};
+            `);
+        });
+
+        it('has a dimmer color if inverted', () => {
+            expect(render(<Text weak inverted />).container.firstChild).toHaveStyle(`
+                color: ${Colors.AUTHENTIC_BLUE_350};
+            `);
+        });
+    });
+
+    describe('if the disabled property is set', () => {
+        it('has the disabled color', () => {
+            expect(render(<Text disabled />).container.firstChild).toHaveStyle(`
+                color: ${Colors.AUTHENTIC_BLUE_350};
+            `);
+        });
+        it('has a stronger disabled color if inverted', () => {
+            expect(render(<Text disabled inverted />).container.firstChild).toHaveStyle(`
+                color: ${Colors.AUTHENTIC_BLUE_550};
+            `);
+        });
     });
 
     it('has a bright color if inverted property is set', () => {
