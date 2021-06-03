@@ -49,7 +49,11 @@ const Checkbox: FC<CheckboxProps> = props => {
     let dynamicLabel: ReactNode = label;
 
     if (typeof label === 'string') {
-        dynamicLabel = <Text fontSize={size}>{label}</Text>;
+        dynamicLabel = (
+            <Text disabled={disabled} fontSize={size}>
+                {label}
+            </Text>
+        );
     }
 
     return (
