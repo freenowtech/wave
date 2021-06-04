@@ -17,7 +17,10 @@ interface HeadlineProps
      * Set the html tag for the headline including the appropriate styles
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    size?: 'medium';
+    /**
+     * Set the style of the headline
+     */
+    size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs';
 }
 
 function determineFontSize(props: HeadlineProps) {
@@ -27,10 +30,32 @@ function determineFontSize(props: HeadlineProps) {
     `;
 
     switch (props.size) {
-        case 'medium':
+        case 'xxl':
+            return h1Styles;
+        case 'xl':
+            return css`
+                font-size: ${get('fontSizes.5')};
+                line-height: 2.5rem;
+            `;
+        case 'l':
             return css`
                 font-size: ${get('fontSizes.4')};
                 line-height: 2rem;
+            `;
+        case 'm':
+            return css`
+                font-size: ${get('fontSizes.2')};
+                line-height: 1.375rem;
+            `;
+        case 's':
+            return css`
+                font-size: ${get('fontSizes.1')};
+                line-height: 1.25rem;
+            `;
+        case 'xs':
+            return css`
+                font-size: ${get('fontSizes.0')};
+                line-height: 1.125rem;
             `;
     }
 

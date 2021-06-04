@@ -15,14 +15,14 @@ describe('Headline', () => {
 
     it('uses size from the "size" prop', () => {
         render(
-            <Headline as="h2" size="medium">
+            <Headline as="h2" size="m">
                 Headline
             </Headline>
         );
         const headline = screen.getByRole('heading', { level: 2 });
 
         expect(headline).toHaveStyle(`
-          font-size: ${theme.fontSizes[4]}
+          font-size: ${theme.fontSizes[2]}
         `);
     });
 
@@ -54,5 +54,24 @@ describe('Headline', () => {
             `);
             }
         );
+    });
+
+    describe('renders headline with provided sizes', () => {
+        const testCases = [
+            ['xxl', theme.fontSizes[7]],
+            ['xl', theme.fontSizes[5]],
+            ['l', theme.fontSizes[4]],
+            ['m', theme.fontSizes[2]],
+            ['s', theme.fontSizes[1]],
+            ['xs', theme.fontSizes[0]]
+        ] as const;
+
+        test.each(testCases)('size %s uses correct font-size', (sizeName, expectedFontSize) => {
+            render(<Headline size={sizeName}>Headline</Headline>);
+
+            expect(screen.getByRole('heading', { level: 1 })).toHaveStyle(`
+            font-size: ${expectedFontSize};
+        `);
+        });
     });
 });
