@@ -23,13 +23,23 @@ interface HeadlineProps
     size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs';
 }
 
+const DEFAULT_HEADLINE_SIZE = {
+    h1: 'xxl',
+    h2: 'xl',
+    h3: 'l',
+    h4: 'm',
+    h5: 's',
+    h6: 'xs'
+} as const;
+
 function determineFontSize(props: HeadlineProps) {
     const h1Styles = css`
         font-size: ${get('fontSizes.7')};
         line-height: 3.75rem;
     `;
 
-    switch (props.size) {
+    const size = props.size ?? DEFAULT_HEADLINE_SIZE[props.as];
+    switch (size) {
         case 'xxl':
             return h1Styles;
         case 'xl':
@@ -53,36 +63,6 @@ function determineFontSize(props: HeadlineProps) {
                 line-height: 1.25rem;
             `;
         case 'xs':
-            return css`
-                font-size: ${get('fontSizes.0')};
-                line-height: 1.125rem;
-            `;
-    }
-
-    switch (props.as) {
-        case 'h1':
-            return h1Styles;
-        case 'h2':
-            return css`
-                font-size: ${get('fontSizes.5')};
-                line-height: 2.5rem;
-            `;
-        case 'h3':
-            return css`
-                font-size: ${get('fontSizes.4')};
-                line-height: 2rem;
-            `;
-        case 'h4':
-            return css`
-                font-size: ${get('fontSizes.2')};
-                line-height: 1.375rem;
-            `;
-        case 'h5':
-            return css`
-                font-size: ${get('fontSizes.1')};
-                line-height: 1.25rem;
-            `;
-        case 'h6':
             return css`
                 font-size: ${get('fontSizes.0')};
                 line-height: 1.125rem;
