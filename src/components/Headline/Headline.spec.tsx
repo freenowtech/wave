@@ -38,39 +38,41 @@ describe('Headline', () => {
 
     describe('renders different default headline sizes', () => {
         const testCases = [
-            ['h1', theme.fontSizes[7]],
-            ['h2', theme.fontSizes[5]],
-            ['h3', theme.fontSizes[4]],
-            ['h4', theme.fontSizes[2]],
-            ['h5', theme.fontSizes[1]],
-            ['h6', theme.fontSizes[0]]
-        ];
+            ['h1', { fontSize: theme.fontSizes[7], lineHeight: '3.75rem' }],
+            ['h2', { fontSize: theme.fontSizes[5], lineHeight: '2.5rem' }],
+            ['h3', { fontSize: theme.fontSizes[4], lineHeight: '2rem' }],
+            ['h4', { fontSize: theme.fontSizes[2], lineHeight: '1.375rem' }],
+            ['h5', { fontSize: theme.fontSizes[1], lineHeight: '1.25rem' }],
+            ['h6', { fontSize: theme.fontSizes[0], lineHeight: '1.125rem' }]
+        ] as const;
 
         test.each(testCases)(
-            'in size %s with correct font size',
-            (headline: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', expected) => {
+            '"%s" with correct styles',
+            (headline: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', expectedStyles) => {
                 expect(render(<Headline as={headline} />).container.firstChild).toHaveStyle(`
-                font-size: ${expected};
+                font-size: ${expectedStyles.fontSize};
+                line-height: ${expectedStyles.lineHeight};
             `);
             }
         );
     });
 
-    describe('renders headline with provided sizes', () => {
+    describe('renders headline styles with provided sizes', () => {
         const testCases = [
-            ['xxl', theme.fontSizes[7]],
-            ['xl', theme.fontSizes[5]],
-            ['l', theme.fontSizes[4]],
-            ['m', theme.fontSizes[2]],
-            ['s', theme.fontSizes[1]],
-            ['xs', theme.fontSizes[0]]
+            ['xxl', { fontSize: theme.fontSizes[7], lineHeight: '3.75rem' }],
+            ['xl', { fontSize: theme.fontSizes[5], lineHeight: '2.5rem' }],
+            ['l', { fontSize: theme.fontSizes[4], lineHeight: '2rem' }],
+            ['m', { fontSize: theme.fontSizes[2], lineHeight: '1.375rem' }],
+            ['s', { fontSize: theme.fontSizes[1], lineHeight: '1.25rem' }],
+            ['xs', { fontSize: theme.fontSizes[0], lineHeight: '1.125rem' }]
         ] as const;
 
-        test.each(testCases)('size %s uses correct font-size', (sizeName, expectedFontSize) => {
+        test.each(testCases)('size "%s" with correct styles', (sizeName, expectedStyles) => {
             render(<Headline size={sizeName}>Headline</Headline>);
 
             expect(screen.getByRole('heading', { level: 1 })).toHaveStyle(`
-            font-size: ${expectedFontSize};
+            font-size: ${expectedStyles.fontSize};
+            line-height: ${expectedStyles.lineHeight};
         `);
         });
     });
