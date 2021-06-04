@@ -13,16 +13,16 @@ describe('Headline', () => {
         expect(render(<Headline as="h5" />)).toMatchHtmlTag('h5');
     });
 
-    it('uses size from the "size" prop', () => {
+    it('"size" prop has precedence over "as" prop', () => {
         render(
-            <Headline as="h2" size="m">
+            <Headline as="h2" size="xs">
                 Headline
             </Headline>
         );
         const headline = screen.getByRole('heading', { level: 2 });
 
         expect(headline).toHaveStyle(`
-          font-size: ${theme.fontSizes[2]}
+          font-size: ${theme.fontSizes[0]}
         `);
     });
 
