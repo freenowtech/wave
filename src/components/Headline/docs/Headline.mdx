@@ -7,19 +7,29 @@ route: /components/headline
 import { Playground } from 'docz';
 import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
 import { Headline } from '../Headline.tsx';
-import { theme } from '../../../essentials/theme.ts';
-import { Colors } from '../../../essentials/Colors/Colors.ts';
+import { HeadlinePropsTable } from './HeadlinePropsTable';
+
 
 # Headline
 
-The Headline component will render an html `h1-6` tag. Please reference the
+The Headline component will render a html `h1-6` tag. Please reference the
 [w3 recommendations for headings](https://www.w3.org/WAI/tutorials/page-structure/headings/) to ensure your headings
 provide an accessible experience for screen reader users.
 
+Prefer to use headlines starting from level one and not skip levels. Use combination of `as` and `size` property to keep
+the semantics while following the design.
+
 -   Use different headlines and paragraphs to structure your content hierarchically
--   Avoid using headline lengths, breaking more then two times (three times on mobile)
+-   Avoid using headline lengths, breaking more than two times (three times on mobile)
 -   Avoid using sizes outside the given range
 -   Recommended width of headline is between 500px and 700px
+
+## Properties
+
+<HeadlinePropsTable />
+
+
+## Default headlines
 
 <ItemWrapper>
     <Headline as="h1">headline h1</Headline>
@@ -54,4 +64,5 @@ provide an accessible experience for screen reader users.
 
 <Playground>
     <Headline as="h3">default headline h3</Headline>
+    <Headline as="h1" size="xs">The smallest h1</Headline>
 </Playground>
