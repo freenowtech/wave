@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
@@ -13,6 +13,19 @@ describe('Headline', () => {
         expect(render(<Headline as="h5" />)).toMatchHtmlTag('h5');
     });
 
+    it('uses size from the "size" prop', () => {
+        render(
+            <Headline as="h2" size="medium">
+                Headline
+            </Headline>
+        );
+        const headline = screen.getByRole('heading', { level: 2 });
+
+        expect(headline).toHaveStyle(`
+          font-size: ${theme.fontSizes[4]}
+        `);
+    });
+
     it('renders the children', () => {
         expect(render(<Headline>Content</Headline>).getByText('Content')).toBeInTheDocument();
     });
@@ -23,7 +36,7 @@ describe('Headline', () => {
         `);
     });
 
-    describe('renders different headline sizes', () => {
+    describe('renders different default headline sizes', () => {
         const testCases = [
             ['h1', theme.fontSizes[7]],
             ['h2', theme.fontSizes[5]],

@@ -17,6 +17,7 @@ interface HeadlineProps
      * Set the html tag for the headline including the appropriate styles
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    size?: 'medium';
 }
 
 function determineFontSize(props: HeadlineProps) {
@@ -24,6 +25,14 @@ function determineFontSize(props: HeadlineProps) {
         font-size: ${get('fontSizes.7')};
         line-height: 3.75rem;
     `;
+
+    switch (props.size) {
+        case 'medium':
+            return css`
+                font-size: ${get('fontSizes.4')};
+                line-height: 2rem;
+            `;
+    }
 
     switch (props.as) {
         case 'h1':
