@@ -26,4 +26,8 @@ describe('Checkbox', () => {
     it('renders the disabled checked style', () => {
         expect(render(<RadioButton disabled defaultChecked />).container.firstChild).toMatchSnapshot();
     });
+
+    it('renders the correct text vertical align version', () => {
+        expect(render(<RadioButton label="Test" textVerticalAlign="top" />).container.firstChild).toMatchSnapshot();
+    });
 });

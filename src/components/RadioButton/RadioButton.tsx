@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
-import { MarginProps } from 'styled-system';
+import { MarginProps, ResponsiveValue } from 'styled-system';
 
 import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { Text } from '../Text/Text';
@@ -21,18 +21,25 @@ interface RadioButtonProps
      * Add styles to show the radio button has errors
      */
     error?: boolean;
+    /**
+     * Align the label text relatively to the radio button
+     */
+    textVerticalAlign?: 'top' | 'center';
 }
 
-const WithTapAreaWrapper = styled.div`
+const WithTapAreaWrapper = styled.div<Pick<RadioButtonProps, 'textVerticalAlign'>>`
     width: 1.5rem;
     position: relative;
-    display: flex;
+    display: inline-flex;
+    align-items: center;
+
+    ${({ textVerticalAlign }) => (textVerticalAlign == 'top' ? 'margin-top: 0.1875rem' : null)}
 `;
 
-const RadioButton: FC<RadioButtonProps> = props => {
+const RadioButton: FC<RadioButtonProps> = (props: RadioButtonProps = { textVerticalAlign: 'center' }) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
-    const { disabled, error, label, ...rest } = restProps;
+    const { disabled, error, label, textVerticalAlign, ...rest } = restProps;
 
     let dynamicLabel: ReactNode = label;
 
@@ -41,8 +48,14 @@ const RadioButton: FC<RadioButtonProps> = props => {
     }
 
     return (
-        <LabelWrapper disabled={disabled} error={error} {...marginProps} {...classNameProps}>
-            <WithTapAreaWrapper>
+        <LabelWrapper
+            disabled={disabled}
+            error={error}
+            textVerticalAlign={textVerticalAlign}
+            {...marginProps}
+            {...classNameProps}
+        >
+            <WithTapAreaWrapper textVerticalAlign={textVerticalAlign}>
                 <TapArea />
                 <Checkmark type="radio" disabled={disabled} error={error} {...rest} />
             </WithTapAreaWrapper>
