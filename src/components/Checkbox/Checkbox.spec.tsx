@@ -1,4 +1,6 @@
 import { render } from '@testing-library/react';
+import user from '@testing-library/user-event';
+
 import * as React from 'react';
 import { Checkbox } from './Checkbox';
 
@@ -37,5 +39,18 @@ describe('Checkbox', () => {
 
     it('renders large checkbox', () => {
         expect(render(<Checkbox size="large" />).container.firstChild).toMatchSnapshot();
+    });
+
+    it('selects/unselects the checkbox on clicking the label', () => {
+        const labelText = 'Click Me!';
+        const onClickCallback = jest.fn();
+        const checkbox = render(<Checkbox label={labelText} onChange={e => onClickCallback(e.target.checked)} />);
+        const label = checkbox.getByText(labelText);
+
+        user.click(label);
+        expect(onClickCallback).toBeCalledWith(true);
+
+        user.click(label);
+        expect(onClickCallback).toBeCalledWith(false);
     });
 });
