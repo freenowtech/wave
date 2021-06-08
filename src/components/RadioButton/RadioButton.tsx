@@ -1,31 +1,13 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { MarginProps, ResponsiveValue } from 'styled-system';
 
-import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { Text } from '../Text/Text';
 
 import { Checkmark } from './components/Checkmark';
 import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
-
-interface RadioButtonProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'>,
-        ClassNameProps,
-        MarginProps {
-    /**
-     * Provide a label for the input which will be shown next to the radio button
-     */
-    label?: ReactNode;
-    /**
-     * Add styles to show the radio button has errors
-     */
-    error?: boolean;
-    /**
-     * Align the label text relatively to the radio button
-     */
-    textVerticalAlign?: 'top' | 'center';
-}
+import { RadioButtonProps } from './RadioButtonProps';
 
 const WithTapAreaWrapper = styled.div<Pick<RadioButtonProps, 'textVerticalAlign'>>`
     width: 1.5rem;
@@ -64,4 +46,4 @@ const RadioButton: FC<RadioButtonProps> = (props: RadioButtonProps = { textVerti
     );
 };
 
-export { RadioButton, RadioButtonProps };
+export { RadioButton };

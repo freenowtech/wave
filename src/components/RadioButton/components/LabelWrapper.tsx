@@ -4,7 +4,7 @@ import { compose, margin, MarginProps, variant } from 'styled-system';
 import { Colors } from '../../../essentials';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
-import { RadioButtonProps } from '../RadioButton';
+import { RadioButtonProps } from '../RadioButtonProps';
 import { Checkmark } from './Checkmark';
 import { TapArea } from './TapArea';
 
