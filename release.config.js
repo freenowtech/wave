@@ -1,16 +1,3 @@
-const changelogTitle = `
----
-name: Changelog
-route: /changelog
----
-import { TitleCard } from './components/TitleCard';
-
-<TitleCard title="Release Notes">
-    Keep up to date with the latest releases of the design system.
-</TitleCard>
-
-`;
-
 module.exports = {
     branches: ['main'],
     plugins: [
@@ -29,8 +16,7 @@ module.exports = {
         [
             '@semantic-release/changelog',
             {
-                changelogFile: 'docs/changelog.mdx',
-                changelogTitle: changelogTitle
+                changelogFile: 'docs/changelog.mdx'
             }
         ],
         [
