@@ -17,10 +17,12 @@ exports[`InlineSpinner renders in a custom color 1`] = `
   border-width: 0.125rem;
 }
 
-<span
-  class="c0"
-  color="#069D4F"
-/>
+<span>
+  <div
+    class="c0"
+    color="#069D4F"
+  />
+</span>
 `;
 
 exports[`InlineSpinner renders the default variant 1`] = `
@@ -40,10 +42,12 @@ exports[`InlineSpinner renders the default variant 1`] = `
   border-width: 0.125rem;
 }
 
-<span
-  class="c0"
-  color="#001E3E"
-/>
+<span>
+  <div
+    class="c0"
+    color="#001E3E"
+  />
+</span>
 `;
 
 exports[`InlineSpinner renders the small size 1`] = `
@@ -63,8 +67,10 @@ exports[`InlineSpinner renders the small size 1`] = `
   border-width: 0.1rem;
 }
 
-<span
-  class="c0"
-  color="#001E3E"
-/>
+<span>
+  <div
+    class="c0"
+    color="#001E3E"
+  />
+</span>
 `;
