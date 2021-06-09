@@ -1,16 +1,29 @@
 import styled, { css } from 'styled-components';
-import { margin, MarginProps } from 'styled-system';
+import { compose, margin, MarginProps, variant } from 'styled-system';
 
 import { Colors } from '../../../essentials';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
+import { RadioButtonProps } from '../RadioButtonProps';
 import { Checkmark } from './Checkmark';
 import { TapArea } from './TapArea';
 
-interface LabelWrapperProps extends MarginProps {
+interface LabelWrapperProps extends MarginProps, Pick<RadioButtonProps, 'textVerticalAlign'> {
     disabled?: boolean;
     error?: boolean;
 }
+
+const textVerticalAlignVariant = variant({
+    prop: 'textVerticalAlign',
+    variants: {
+        top: {
+            alignItems: 'flex-start'
+        },
+        center: {
+            alignItems: 'center'
+        }
+    }
+});
 
 const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
     if (disabled) {
@@ -51,7 +64,7 @@ const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
         ${hoverStyle}
     }
 
-    ${margin}
+    ${compose(margin, textVerticalAlignVariant)}
 `;
 
 export { LabelWrapper };
