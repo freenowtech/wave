@@ -10,6 +10,7 @@ import {
     extractWidthProps,
     extractWrapperMarginProps
 } from '../../utils/extractProps';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
 import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
@@ -268,9 +269,12 @@ const SelectList: FC<SelectListProps> = props => {
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
     const { components, isDisabled, variant, inverted, size, error, label } = restProps;
 
+    const id = useGeneratedId(null);
+
     return (
         <Wrapper {...classNameProps} {...marginProps} {...widthProps}>
             <ReactSelect
+                inputId={id}
                 styles={customStyles}
                 components={{
                     DropdownIndicator,
@@ -282,7 +286,14 @@ const SelectList: FC<SelectListProps> = props => {
                 {...restProps}
             />
             {label && (
-                <Label isDisabled={isDisabled} variant={variant} inverted={inverted} size={size} error={error}>
+                <Label
+                    htmlFor={id}
+                    isDisabled={isDisabled}
+                    variant={variant}
+                    inverted={inverted}
+                    size={size}
+                    error={error}
+                >
                     {label}
                 </Label>
             )}
