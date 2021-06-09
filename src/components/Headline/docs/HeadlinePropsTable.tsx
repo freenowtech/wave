@@ -11,7 +11,7 @@ export const HeadlinePropsTable = () => {
         {
             name: 'size',
             type: '"xxl" | "xl" | "l" | "m" | "s" | "xs"',
-            defaultValue: `depends on the heading level`
+            description: `if "size" prop is not set , the size is determined based on "as" prop`
         }
     ];
 
