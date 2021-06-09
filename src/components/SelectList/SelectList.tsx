@@ -269,7 +269,7 @@ const SelectList: FC<SelectListProps> = props => {
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
     const { components, isDisabled, variant, inverted, size, error, label } = restProps;
 
-    const id = useGeneratedId(null);
+    const id = useGeneratedId();
 
     return (
         <Wrapper {...classNameProps} {...marginProps} {...widthProps}>
