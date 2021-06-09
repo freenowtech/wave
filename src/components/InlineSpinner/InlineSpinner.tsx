@@ -50,9 +50,9 @@ const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.div<InlineSpinner
     ${compose(margin, sizeVariant)}
 `;
 
-const InlineSpinner = () => (
+const InlineSpinner = (props: InlineSpinnerProps) => (
     <span>
-        <InlineSpinnerIcon />
+        <InlineSpinnerIcon {...props} />
     </span>
 );
 
