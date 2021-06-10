@@ -2,7 +2,8 @@ import React, { useEffect, useState, ReactNode, useContext } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
-import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, SideCard } from './components/SideCard';
+import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, CenteredCard } from './components/CenteredCard';
+import { ANIMATION_DURATION as CARD_ANIMATION_DURATION_SIDE, SideCard } from './components/SideCard';
 import { ANIMATION_DURATION as DIMMING_ANIMATION_DURATION, DimmingFade } from './components/DimmingFade';
 import { TopRightXIcon } from './components/TopRightXIcon';
 
@@ -46,14 +47,20 @@ const PreventBackgroundScroll = createGlobalStyle`
     }
 `;
 
-const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_DURATION);
+const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_DURATION | CARD_ANIMATION_DURATION_SIDE);
 
 /*
  * We define the types for the props twice because the render props won't be inferred correctly
  * when only using `React.FC<OffcanvasProps>`. This leads to compiler errors when passing the
  * dismiss function.
  */
-const Offcanvas: React.FC<OffcanvasProps> = ({ children, onClose, dismissible, side, ...rest }: OffcanvasProps) => {
+const Offcanvas: React.FC<OffcanvasProps> = ({
+    children,
+    onClose,
+    dismissible,
+    side = 'left',
+    ...rest
+}: OffcanvasProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
 
@@ -86,10 +93,17 @@ const Offcanvas: React.FC<OffcanvasProps> = ({ children, onClose, dismissible, s
     return (
         <DismissContext.Provider value={handleClose}>
             <DimmingFade onClick={handleDimmingClick} visible={visible} data-testid="dimming-background" />
-            <SideCard visible={visible} {...rest} side={side}>
-                {dismissible && <TopRightXIcon data-testid="close-icon" onClick={handleClose} />}
-                {renderChildren()}
-            </SideCard>
+            {side === 'top' || side === 'bottom' ? (
+                <CenteredCard visible={visible} {...rest} side={side}>
+                    {dismissible && <TopRightXIcon data-testid="close-icon" onClick={handleClose} />}
+                    {renderChildren()}
+                </CenteredCard>
+            ) : (
+                <SideCard visible={visible} {...rest} side={side}>
+                    {dismissible && <TopRightXIcon data-testid="close-icon" onClick={handleClose} />}
+                    {renderChildren()}
+                </SideCard>
+            )}
             <PreventBackgroundScroll />
         </DismissContext.Provider>
     );
