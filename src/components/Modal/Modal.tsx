@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import { WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, CenteredCard } from './components/CenteredCard';
+import { ANIMATION_DURATION as CARD_ANIMATION_DURATION_SIDE, SideCard } from './components/SideCard';
 import { ANIMATION_DURATION as DIMMING_ANIMATION_DURATION, DimmingFade } from './components/DimmingFade';
 import { TopRightXIcon } from './components/TopRightXIcon';
 
@@ -25,6 +26,10 @@ interface ModalProps extends WidthProps {
      * Show the modal covering the whole page to focus the users attention
      */
     fullscreen?: boolean;
+    /**
+     * Show the modal on the side of the page: left or right
+     */
+    side?: 'left' | 'right';
     /**
      * Makes the modal dismissible by the user (defaults to true)
      */
@@ -53,7 +58,7 @@ const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_D
  * when only using `React.FC<ModalProps>`. This leads to compiler errors when passing the
  * dismiss function.
  */
-const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, side, ...rest }: ModalProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
 
@@ -95,10 +100,19 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }
             >
                 {dismissible && rest.fullscreen && <TopRightXIcon data-testid="close-icon" onClick={handleClose} />}
             </DimmingFade>
-            <CenteredCard visible={visible} {...rest}>
-                {dismissible && !rest.fullscreen && <TopRightXIcon data-testid="close-icon" onClick={handleClose} />}
-                {renderChildren()}
-            </CenteredCard>
+            {side && !rest.fullscreen ? (
+                <SideCard visible={visible} {...rest} side={side}>
+                    {dismissible && <TopRightXIcon data-testid="close-icon" onClick={handleClose} />}
+                    {renderChildren()}
+                </SideCard>
+            ) : (
+                <CenteredCard visible={visible} {...rest}>
+                    {dismissible && !rest.fullscreen && (
+                        <TopRightXIcon data-testid="close-icon" onClick={handleClose} />
+                    )}
+                    {renderChildren()}
+                </CenteredCard>
+            )}
             <PreventBackgroundScroll />
         </DismissContext.Provider>
     );
