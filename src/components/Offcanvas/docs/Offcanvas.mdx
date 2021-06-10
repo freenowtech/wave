@@ -1,0 +1,79 @@
+---
+name: Offcanvas
+menu: Components
+route: /components/Offcanvas
+---
+
+import { Offcanvas } from '../Offcanvas.tsx';
+import { OffcanvasCreator } from './OffcanvasCreator.tsx';
+import { OffcanvasPropsTable } from './OffcanvasPropsTable.tsx';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+
+# Offcanvas
+
+The Offcanvas should only contain content or flows which are related to the current page and not replace pages, therefore
+its complexity level has to be simple. Consider the fullscreen state if you want to focus the users attention to the Offcanvas
+content.
+
+Offcanvas is responsive per default but the width can be adjusted (the default is 600px or 37.5rem). Content on the Offcanvas
+is scrollable and has a space5 bounding box.
+
+<OffcanvasCreator />
+
+### Example Code
+
+The following contains a simple example, with a resulting Offcanvas similar to the live examples above.
+
+```jsx
+const [showOffcanvas, setShowOffcanvas] = useState(true);
+
+<Offcanvas onClose={() => setShowOffcanvas(false)} fullscreen={true}>
+    {dismiss => (
+        <>
+            <Headline as="h2">Add Note</Headline>
+            <Text as="p" my={3}>
+                Ensure that all participants are aware of the change.
+            </Text>
+            <Button onClick={dismiss}>Add Note</Button>
+            <TextButton onClick={dismiss}>Cancel</TextButton>
+        </>
+    )}
+</Offcanvas>;
+```
+
+## API
+
+<OffcanvasPropsTable />
+
+<br />
+
+<StyledSystemLinks component="Offcanvas" supportedProps={ ['width'] }/>
+
+### Dismiss
+
+Offcanvas provides a function to dismiss the component with an animation. The
+dismiss function is available either through render props or a hook. After the
+animation has finished the `onClose` callback will be called.
+
+#### Render Props
+
+```jsx
+<Offcanvas>
+    {dismiss => <Button onClick={dismiss}>Close</Button>}
+</Offcanvas>
+```
+
+#### Hook
+
+```jsx
+const InsideOffcanvas = () => {
+    const dismiss = useOffcanvasDismiss();
+    return <button onClick={dismiss}>Close</button>;
+}
+
+const OffcanvasWrapper = () => (
+    <Offcanvas>
+        <InsideOffcanvas />
+    </Offcanvas>
+);
+```
