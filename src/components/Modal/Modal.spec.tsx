@@ -12,6 +12,14 @@ describe('Modal', () => {
         expect(render(<Modal fullscreen>Content</Modal>).container).toMatchSnapshot();
     });
 
+    it('renders the left side variation', () => {
+        expect(render(<Modal side="left">Content</Modal>).container).toMatchSnapshot();
+    });
+
+    it('renders the right side variation', () => {
+        expect(render(<Modal side="right">Content</Modal>).container).toMatchSnapshot();
+    });
+
     describe('should call onClose function', () => {
         it('when clicking on close icon', async () => {
             const mockCloseHandler = jest.fn();

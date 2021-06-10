@@ -103,7 +103,7 @@ exports[`Modal renders the default props 1`] = `
 
 <div>
   <div
-    class="sc-AxiKw c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
+    class="sc-AxhCb c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
     data-testid="dimming-background"
   />
   <div
@@ -234,7 +234,7 @@ exports[`Modal renders the fullscreen variation 1`] = `
 
 <div>
   <div
-    class="sc-AxiKw c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
+    class="sc-AxhCb c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
     data-testid="dimming-background"
   >
     <svg
@@ -256,6 +256,266 @@ exports[`Modal renders the fullscreen variation 1`] = `
     class="sc-AxjAm c2 centered-card-animation-appear centered-card-animation-appear-active"
     width="37.5rem"
   >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Modal renders the left side variation 1`] = `
+.c1 {
+  overflow: auto;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-radius: 0.125rem;
+  padding: 2.5rem;
+  width: 28.375rem;
+  box-shadow: 0 0 0.75rem 0.25rem rgba(0,0,0,0.12);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: unset;
+  -webkit-transform: translate(0%,0%);
+  -ms-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+  z-index: 1100;
+  height: 100%;
+  will-change: transform,opacity;
+  -webkit-transition: -webkit-transform 150ms ease-out,opacity 150ms ease-out;
+  -webkit-transition: transform 150ms ease-out,opacity 150ms ease-out;
+  transition: transform 150ms ease-out,opacity 150ms ease-out;
+}
+
+.c1.centered-card-animation-appear,
+.c1.centered-card-animation-enter {
+  opacity: 0;
+  -webkit-transform: translate(calc(-50% - 1rem),0%);
+  -ms-transform: translate(calc(-50% - 1rem),0%);
+  transform: translate(calc(-50% - 1rem),0%);
+}
+
+.c1.centered-card-animation-appear-active,
+.c1.centered-card-animation-enter-active {
+  opacity: 1;
+  -webkit-transform: translate(0%,0%);
+  -ms-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+}
+
+.c1.centered-card-animation-exit {
+  opacity: 1;
+  -webkit-transform: translate(0%,0%);
+  -ms-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+}
+
+.c1.centered-card-animation-exit-done,
+.c1.centered-card-animation-exit-active {
+  opacity: 0;
+  -webkit-transform: translate(-10%,0%);
+  -ms-transform: translate(-10%,0%);
+  transform: translate(-10%,0%);
+}
+
+.c0 {
+  background-color: #000F1F;
+  height: 100%;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  will-change: opacity;
+  -webkit-transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
+  transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
+}
+
+.c0.dimming-fade-animation-appear,
+.c0.dimming-fade-animation-enter {
+  opacity: 0;
+}
+
+.c0.dimming-fade-animation-appear-active,
+.c0.dimming-fade-animation-enter-active {
+  opacity: 0.6;
+}
+
+.c0.dimming-fade-animation-exit {
+  opacity: 0.6;
+}
+
+.c0.dimming-fade-animation-exit-done,
+.c0.dimming-fade-animation-exit-active {
+  opacity: 0;
+}
+
+.c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+@media (max-width:calc(28.375rem + 2rem)) {
+  .c1 {
+    width: calc(100% - 2rem);
+  }
+}
+
+<div>
+  <div
+    class="sc-AxhCb c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
+    data-testid="dimming-background"
+  />
+  <div
+    class="sc-AxjAm c1 centered-card-animation-appear centered-card-animation-appear-active"
+    width="28.375rem"
+  >
+    <svg
+      class="c2"
+      color="#001E3E"
+      data-testid="close-icon"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        fill="currentColor"
+        fill-rule="nonzero"
+      />
+    </svg>
+    Content
+  </div>
+</div>
+`;
+
+exports[`Modal renders the right side variation 1`] = `
+.c1 {
+  overflow: auto;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-radius: 0.125rem;
+  padding: 2.5rem;
+  width: 28.375rem;
+  box-shadow: 0 0 0.75rem 0.25rem rgba(0,0,0,0.12);
+  position: fixed;
+  top: 0;
+  left: unset;
+  right: 0;
+  -webkit-transform: translate(0%,0%);
+  -ms-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+  z-index: 1100;
+  height: 100%;
+  will-change: transform,opacity;
+  -webkit-transition: -webkit-transform 150ms ease-out,opacity 150ms ease-out;
+  -webkit-transition: transform 150ms ease-out,opacity 150ms ease-out;
+  transition: transform 150ms ease-out,opacity 150ms ease-out;
+}
+
+.c1.centered-card-animation-appear,
+.c1.centered-card-animation-enter {
+  opacity: 0;
+  -webkit-transform: translate(calc(50% + 1rem),0%);
+  -ms-transform: translate(calc(50% + 1rem),0%);
+  transform: translate(calc(50% + 1rem),0%);
+}
+
+.c1.centered-card-animation-appear-active,
+.c1.centered-card-animation-enter-active {
+  opacity: 1;
+  -webkit-transform: translate(0%,0%);
+  -ms-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+}
+
+.c1.centered-card-animation-exit {
+  opacity: 1;
+  -webkit-transform: translate(0%,0%);
+  -ms-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+}
+
+.c1.centered-card-animation-exit-done,
+.c1.centered-card-animation-exit-active {
+  opacity: 0;
+  -webkit-transform: translate(+10%,0%);
+  -ms-transform: translate(+10%,0%);
+  transform: translate(+10%,0%);
+}
+
+.c0 {
+  background-color: #000F1F;
+  height: 100%;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  will-change: opacity;
+  -webkit-transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
+  transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
+}
+
+.c0.dimming-fade-animation-appear,
+.c0.dimming-fade-animation-enter {
+  opacity: 0;
+}
+
+.c0.dimming-fade-animation-appear-active,
+.c0.dimming-fade-animation-enter-active {
+  opacity: 0.6;
+}
+
+.c0.dimming-fade-animation-exit {
+  opacity: 0.6;
+}
+
+.c0.dimming-fade-animation-exit-done,
+.c0.dimming-fade-animation-exit-active {
+  opacity: 0;
+}
+
+.c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+@media (max-width:calc(28.375rem + 2rem)) {
+  .c1 {
+    width: calc(100% - 2rem);
+  }
+}
+
+<div>
+  <div
+    class="sc-AxhCb c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
+    data-testid="dimming-background"
+  />
+  <div
+    class="sc-AxjAm c1 centered-card-animation-appear centered-card-animation-appear-active"
+    width="28.375rem"
+  >
+    <svg
+      class="c2"
+      color="#001E3E"
+      data-testid="close-icon"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        fill="currentColor"
+        fill-rule="nonzero"
+      />
+    </svg>
     Content
   </div>
 </div>
