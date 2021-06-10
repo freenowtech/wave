@@ -10,6 +10,12 @@ export const ModalPropsTable = () => {
             defaultValue: 'false'
         },
         {
+            name: 'side',
+            type: '"left" | "right"',
+            description: 'Show the modal on the side of the page: left or right.',
+            defaultValue: '-'
+        },
+        {
             name: 'dismissible',
             type: 'boolean',
             description: 'Makes the modal dismissible by the user.',

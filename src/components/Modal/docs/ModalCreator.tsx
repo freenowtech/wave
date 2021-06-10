@@ -18,6 +18,8 @@ const modalContent = dismiss => (
 enum ModalType {
     NONE,
     DEFAULT,
+    LEFT,
+    RIGHT,
     FULLSCREEN,
     NON_DISMISSIBLE
 }
@@ -38,6 +40,12 @@ const ModalCreator = () => {
             <Button size="small" mr={1} onClick={openModal(ModalType.DEFAULT)}>
                 Default Modal
             </Button>
+            <Button size="small" mr={1} onClick={openModal(ModalType.LEFT)}>
+                Left Modal
+            </Button>
+            <Button size="small" mr={1} onClick={openModal(ModalType.RIGHT)}>
+                Right Modal
+            </Button>
             <Button size="small" mr={1} onClick={openModal(ModalType.FULLSCREEN)}>
                 Fullscreen Modal
             </Button>
@@ -46,6 +54,16 @@ const ModalCreator = () => {
             </Button>
 
             {modal == ModalType.DEFAULT && <Modal onClose={hideModal}>{modalContent}</Modal>}
+            {modal == ModalType.LEFT && (
+                <Modal side="left" onClose={hideModal}>
+                    {modalContent}
+                </Modal>
+            )}
+            {modal == ModalType.RIGHT && (
+                <Modal side="right" onClose={hideModal}>
+                    {modalContent}
+                </Modal>
+            )}
             {modal == ModalType.FULLSCREEN && (
                 <Modal onClose={hideModal} fullscreen>
                     {modalContent}
