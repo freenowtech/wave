@@ -16,6 +16,14 @@ describe('Offcanvas', () => {
         expect(render(<Offcanvas side="right">Content</Offcanvas>).container).toMatchSnapshot();
     });
 
+    it('renders the top side variation', () => {
+        expect(render(<Offcanvas side="top">Content</Offcanvas>).container).toMatchSnapshot();
+    });
+
+    it('renders the bottom side variation', () => {
+        expect(render(<Offcanvas side="bottom">Content</Offcanvas>).container).toMatchSnapshot();
+    });
+
     describe('should call onClose function', () => {
         it('when clicking on close icon', async () => {
             const mockCloseHandler = jest.fn();
