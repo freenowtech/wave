@@ -20,6 +20,8 @@ enum OffcanvasType {
     DEFAULT,
     LEFT,
     RIGHT,
+    TOP,
+    BOTTOM,
     NON_DISMISSIBLE
 }
 
@@ -42,6 +44,12 @@ const OffcanvasCreator = () => {
             <Button size="small" mr={1} onClick={openOffcanvas(OffcanvasType.RIGHT)}>
                 Right Offcanvas
             </Button>
+            <Button size="small" mr={1} onClick={openOffcanvas(OffcanvasType.TOP)}>
+                Top Offcanvas
+            </Button>
+            <Button size="small" mr={1} onClick={openOffcanvas(OffcanvasType.BOTTOM)}>
+                Bottom Offcanvas
+            </Button>
             <Button size="small" onClick={openOffcanvas(OffcanvasType.NON_DISMISSIBLE)}>
                 Non-Dismissible Offcanvas
             </Button>
@@ -53,6 +61,16 @@ const OffcanvasCreator = () => {
             )}
             {offcanvas == OffcanvasType.RIGHT && (
                 <Offcanvas side="right" onClose={hideOffcanvas}>
+                    {offcanvasContent}
+                </Offcanvas>
+            )}
+            {offcanvas == OffcanvasType.TOP && (
+                <Offcanvas side="top" onClose={hideOffcanvas}>
+                    {offcanvasContent}
+                </Offcanvas>
+            )}
+            {offcanvas == OffcanvasType.BOTTOM && (
+                <Offcanvas side="bottom" onClose={hideOffcanvas}>
                     {offcanvasContent}
                 </Offcanvas>
             )}
