@@ -50,7 +50,7 @@ const Checkbox: FC<CheckboxProps> = props => {
 
     if (typeof label === 'string') {
         dynamicLabel = (
-            <Text disabled={disabled} fontSize={size}>
+            <Text onClick={e => e.stopPropagation()} disabled={disabled} fontSize={size}>
                 {label}
             </Text>
         );
