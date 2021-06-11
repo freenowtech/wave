@@ -8,7 +8,7 @@ interface CheckmarkProps {
 
 const Checkmark = styled.input<CheckmarkProps>`
     appearance: none;
-    outline: none;
+    outline-offset: 0.25rem;
     border: none;
 
     position: relative;
