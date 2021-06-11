@@ -162,7 +162,6 @@ const DatepickerSingleInput = ({
                             placeholder={placeholder}
                             value={inputText}
                             onFocus={() => setIsFocused(true)}
-                            onClick={e => e.stopPropagation()}
                             onBlur={handleDatepickerClose}
                             onChange={handleDateTextChange}
                             data-error={error}

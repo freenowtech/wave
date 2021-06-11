@@ -322,7 +322,6 @@ const DatepickerRangeInput = ({
                             onBlur={() => setFocusedInput(null)}
                             value={inputText.startText}
                             width="100%"
-                            onClick={e => e.stopPropagation()}
                             onChange={handleStartDateInputChange}
                             data-error={error.startDate}
                         />
@@ -338,7 +337,6 @@ const DatepickerRangeInput = ({
                             onFocus={() => setFocusedInput(!value.startDate ? START_DATE : END_DATE)}
                             onBlur={() => setFocusedInput(null)}
                             value={inputText.endText}
-                            onClick={e => e.stopPropagation()}
                             onChange={handleEndDateInputChange}
                             width="100%"
                             data-error={error.endDate}
