@@ -47,7 +47,10 @@ const PreventBackgroundScroll = createGlobalStyle`
     }
 `;
 
-const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_DURATION | CARD_ANIMATION_DURATION_SIDE);
+const ANIMATION_DURATION = Math.max(
+    DIMMING_ANIMATION_DURATION,
+    CARD_ANIMATION_DURATION || CARD_ANIMATION_DURATION_SIDE
+);
 
 /*
  * We define the types for the props twice because the render props won't be inferred correctly
