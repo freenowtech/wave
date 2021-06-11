@@ -34,6 +34,18 @@ const LogoLink = styled(Link)`
     }
 `;
 
+const SkipLink = styled.a`
+    color: white;
+    position: absolute;
+    padding: 0.5rem;
+    transform: translateY(-100%);
+
+    &:focus {
+        transition: 0.216s transform;
+        transform: translateY(0%);
+    }
+`;
+
 export const Header = ({ onOpen: onMenuOpen }) => {
     return (
         <>
@@ -47,6 +59,7 @@ export const Header = ({ onOpen: onMenuOpen }) => {
                 <LogoLink aria-label="go to home screen" to="/">
                     <WaveLogoAnimated />
                 </LogoLink>
+                <SkipLink href="#main">Skip to content</SkipLink>
                 <MenuButton onClick={onMenuOpen} />
             </HeaderWrapper>
         </>
