@@ -5,7 +5,7 @@ exports[`Checkbox renders large checkbox 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -152,7 +152,7 @@ exports[`Checkbox renders medium checkbox 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -299,7 +299,7 @@ exports[`Checkbox renders small checkbox 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -446,7 +446,7 @@ exports[`Checkbox renders the checked style 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -594,7 +594,7 @@ exports[`Checkbox renders the disabled checked style 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -739,7 +739,7 @@ exports[`Checkbox renders the disabled style 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -883,7 +883,7 @@ exports[`Checkbox renders the error checked style 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -1027,7 +1027,7 @@ exports[`Checkbox renders the error style 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
@@ -1174,7 +1174,7 @@ exports[`Checkbox renders with default props 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline-offset: 0.25rem;
   border: none;
   position: relative;
   width: 1rem;
