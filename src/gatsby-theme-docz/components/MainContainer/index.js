@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.main`
     position: relative;
     padding: 1.5rem;
     max-width: initial;

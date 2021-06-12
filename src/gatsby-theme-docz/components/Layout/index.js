@@ -44,7 +44,9 @@ export const Layout = ({ children }) => {
                         onBlur={() => setOpen(false)}
                         onClick={() => setOpen(false)}
                     />
-                    <MainContainer data-testid="main-container">{children}</MainContainer>
+                    <MainContainer id="main" data-testid="main-container">
+                        {children}
+                    </MainContainer>
                 </LayoutContainer>
             </MainBox>
         </div>
