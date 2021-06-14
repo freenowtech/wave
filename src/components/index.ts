@@ -45,3 +45,4 @@ export { Search, SearchProps } from './Search/Search';
 export { Password } from './Password/Password';
 export { VisuallyHidden } from './VisuallyHidden/VisuallyHidden';
 export { RadioButtonProps } from './RadioButton/RadioButtonProps';
+export { Offcanvas, OffcanvasProps} from './Offcanvas/Offcanvas';
