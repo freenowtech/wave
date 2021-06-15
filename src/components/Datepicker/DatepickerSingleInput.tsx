@@ -8,6 +8,7 @@ import { Input } from '../Input/Input';
 import { Datepicker } from './Datepicker';
 import { isValidDateText } from './utils/isValidDateText';
 import { Elevation } from '../../essentials';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { HelperText } from '../HelperText/HelperText';
 import { dateToDisplayText } from './utils/dateToDisplayText';
 import { useLocaleObject } from './utils/useLocaleObject';
@@ -66,6 +67,10 @@ interface DatepickerSingleInputProps extends MarginProps, WidthProps {
      * or fn to be trigger as a callback when error
      */
     errorHandler?: (() => void) | string;
+    /**
+     * The id to be assigned to the input field
+     */
+    inputId?: string;
 }
 
 const DatepickerSingleInput = ({
@@ -81,6 +86,7 @@ const DatepickerSingleInput = ({
     locale = 'en-US',
     value,
     errorHandler,
+    inputId,
     ...rest
 }: DatepickerSingleInputProps) => {
     const localeObject = useLocaleObject(locale);
@@ -89,6 +95,8 @@ const DatepickerSingleInput = ({
     const [inputText, setInputText] = useState(dateToDisplayText(localeObject, displayFormat, value));
     const [error, setError] = useState(false);
     const displayErrorMessage = typeof errorHandler === 'string';
+
+    const id = useGeneratedId(inputId);
 
     useEffect(() => {
         if (error && typeof errorHandler === 'function') {
@@ -155,6 +163,7 @@ const DatepickerSingleInput = ({
                                 inputRef.current = element;
                                 ref.current = element;
                             }}
+                            id={id}
                             autoComplete="off"
                             className="startDate"
                             data-testid="start-date-input"
