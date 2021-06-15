@@ -261,15 +261,16 @@ interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps
     inverted?: boolean;
     error?: boolean;
     label?: string;
+    inputId?: string;
 }
 
 const SelectList: FC<SelectListProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
-    const { components, isDisabled, variant, inverted, size, error, label } = restProps;
+    const { components, isDisabled, variant, inverted, size, error, label, inputId } = restProps;
 
-    const id = useGeneratedId();
+    const id = useGeneratedId(inputId);
 
     return (
         <Wrapper {...classNameProps} {...marginProps} {...widthProps}>
