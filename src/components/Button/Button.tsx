@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ButtonStyleProps, ResponsiveValue, variant } from 'styled-system';
-import { Colors } from '../../essentials';
+import { theme } from '../../essentials/theme';
+import { get } from '../../utils/themeGet';
 
 import { BaseButton, BaseButtonProps } from './BaseButton';
 
@@ -19,50 +20,61 @@ interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
 const variantStyles = variant({
     variants: {
         primary: {
-            background: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.AUTHENTIC_BLUE_900,
-            color: Colors.WHITE,
-            fill: Colors.WHITE,
+            color: get('semanticColors.button.primary.text'),
+            fill: get('semanticColors.button.primary.text'),
+            background: get('semanticColors.button.primary.background'),
+            borderColor: get('semanticColors.button.primary.borderColor'),
+
             '&:hover': {
-                background: Colors.AUTHENTIC_BLUE_1100,
-                borderColor: Colors.AUTHENTIC_BLUE_1100
+                color: get('semanticColors.button.primary.hoverText'),
+                fill: get('semanticColors.button.primary.hoverText'),
+                background: get('semanticColors.button.primary.hoverBackground'),
+                borderColor: get('semanticColors.button.primary.hoverBorderColor')
             },
+
             '&:disabled': {
-                color: Colors.WHITE,
-                fill: Colors.WHITE,
-                background: Colors.AUTHENTIC_BLUE_200,
-                borderColor: Colors.AUTHENTIC_BLUE_200
+                color: get('semanticColors.button.primary.disabledText'),
+                fill: get('semanticColors.button.primary.disabledText'),
+                background: get('semanticColors.button.primary.disabledBackground'),
+                borderColor: get('semanticColors.button.primary.disabledBorderColor')
             }
         },
         secondary: {
-            background: Colors.WHITE,
-            borderColor: Colors.AUTHENTIC_BLUE_200,
-            color: Colors.AUTHENTIC_BLUE_900,
-            fill: Colors.AUTHENTIC_BLUE_900,
+            color: get('semanticColors.button.secondary.text'),
+            fill: get('semanticColors.button.secondary.text'),
+            background: get('semanticColors.button.secondary.background'),
+            borderColor: get('semanticColors.button.secondary.borderColor'),
             '&:hover': {
-                background: Colors.AUTHENTIC_BLUE_50
+                color: get('semanticColors.button.secondary.hoverText'),
+                fill: get('semanticColors.button.secondary.hoverText'),
+                background: get('semanticColors.button.secondary.hoverBackground'),
+                borderColor: get('semanticColors.button.secondary.hoverBorderColor')
             },
             '&:disabled': {
-                color: Colors.AUTHENTIC_BLUE_200,
-                fill: Colors.AUTHENTIC_BLUE_200,
-                background: Colors.WHITE,
-                borderColor: Colors.AUTHENTIC_BLUE_200
+                color: get('semanticColors.button.secondary.disabledText'),
+                fill: get('semanticColors.button.secondary.disabledText'),
+                background: get('semanticColors.button.secondary.disabledBackground'),
+                borderColor: get('semanticColors.button.secondary.disabledBorderColor')
             }
         },
         danger: {
-            background: Colors.NEGATIVE_ORANGE_900,
-            borderColor: Colors.NEGATIVE_ORANGE_900,
-            color: Colors.WHITE,
-            fill: Colors.WHITE,
+            color: get('semanticColors.button.danger.text'),
+            fill: get('semanticColors.button.danger.text'),
+            background: get('semanticColors.button.danger.background'),
+            borderColor: get('semanticColors.button.danger.borderColor'),
+
             '&:hover': {
-                background: Colors.NEGATIVE_ORANGE_1000,
-                borderColor: Colors.NEGATIVE_ORANGE_1000
+                color: get('semanticColors.button.danger.hoverText'),
+                fill: get('semanticColors.button.danger.hoverText'),
+                background: get('semanticColors.button.danger.hoverBackground'),
+                borderColor: get('semanticColors.button.danger.hoverBorderColor')
             },
+
             '&:disabled': {
-                color: Colors.WHITE,
-                fill: Colors.WHITE,
-                background: Colors.AUTHENTIC_BLUE_200,
-                borderColor: Colors.AUTHENTIC_BLUE_200
+                color: get('semanticColors.button.danger.disabledText'),
+                fill: get('semanticColors.button.danger.disabledText'),
+                background: get('semanticColors.button.danger.disabledBackground'),
+                borderColor: get('semanticColors.button.danger.disabledBorderColor')
             }
         }
     }
@@ -71,61 +83,67 @@ const variantStyles = variant({
 const invertedVariantStyles = variant({
     variants: {
         primary: {
-            background: Colors.WHITE,
-            borderColor: Colors.WHITE,
-            color: Colors.ACTION_BLUE_900,
-            fill: Colors.ACTION_BLUE_900,
+            color: get('semanticColors.button.primary.textInverted'),
+            fill: get('semanticColors.button.primary.textInverted'),
+            background: get('semanticColors.button.primary.backgroundInverted'),
+            borderColor: get('semanticColors.button.primary.borderColorInverted'),
+
             '&:hover': {
-                background: Colors.ACTION_BLUE_900,
-                borderColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE,
-                fill: Colors.WHITE
+                color: get('semanticColors.button.primary.hoverTextInverted'),
+                fill: get('semanticColors.button.primary.hoverTextInverted'),
+                background: get('semanticColors.button.primary.hoverBackgroundInverted'),
+                borderColor: get('semanticColors.button.primary.hoverBorderColorInverted')
             },
             '&:disabled': {
-                background: Colors.AUTHENTIC_BLUE_550,
-                borderColor: Colors.AUTHENTIC_BLUE_550,
-                color: Colors.AUTHENTIC_BLUE_350,
-                fill: Colors.AUTHENTIC_BLUE_350
+                color: get('semanticColors.button.primary.disabledTextInverted'),
+                fill: get('semanticColors.button.primary.disabledTextInverted'),
+                background: get('semanticColors.button.primary.disabledBackgroundInverted'),
+                borderColor: get('semanticColors.button.primary.disabledBorderColorInverted')
             }
         },
         secondary: {
-            background: 'transparent',
-            borderColor: Colors.WHITE,
-            color: Colors.WHITE,
-            fill: Colors.WHITE,
+            color: get('semanticColors.button.secondary.textInverted'),
+            fill: get('semanticColors.button.secondary.textInverted'),
+            background: get('semanticColors.button.secondary.backgroundInverted'),
+            borderColor: get('semanticColors.button.secondary.borderColorInverted'),
+
             '&:hover': {
-                background: Colors.WHITE,
-                color: Colors.AUTHENTIC_BLUE_900,
-                fill: Colors.AUTHENTIC_BLUE_900
+                color: get('semanticColors.button.secondary.hoverTextInverted'),
+                fill: get('semanticColors.button.secondary.hoverTextInverted'),
+                background: get('semanticColors.button.secondary.hoverBackgroundInverted'),
+                borderColor: get('semanticColors.button.secondary.hoverBorderColorInverted')
             },
             '&:disabled': {
-                background: 'transparent',
-                borderColor: Colors.AUTHENTIC_BLUE_550,
-                color: Colors.AUTHENTIC_BLUE_550,
-                fill: Colors.AUTHENTIC_BLUE_550
+                color: get('semanticColors.button.secondary.disabledTextInverted'),
+                fill: get('semanticColors.button.secondary.disabledTextInverted'),
+                background: get('semanticColors.button.secondary.disabledBackgroundInverted'),
+                borderColor: get('semanticColors.button.secondary.disabledBorderColorInverted')
             }
         },
         danger: {
-            background: Colors.NEGATIVE_ORANGE_900,
-            borderColor: Colors.NEGATIVE_ORANGE_900,
-            color: Colors.WHITE,
-            fill: Colors.WHITE,
+            color: get('semanticColors.button.danger.textInverted'),
+            fill: get('semanticColors.button.danger.textInverted'),
+            background: get('semanticColors.button.danger.backgroundInverted'),
+            borderColor: get('semanticColors.button.danger.borderColorInverted'),
+
             '&:hover': {
-                background: Colors.NEGATIVE_ORANGE_1000,
-                borderColor: Colors.NEGATIVE_ORANGE_1000
+                color: get('semanticColors.button.danger.hoverTextInverted'),
+                fill: get('semanticColors.button.danger.hoverTextInverted'),
+                background: get('semanticColors.button.danger.hoverBackgroundInverted'),
+                borderColor: get('semanticColors.button.danger.hoverBorderColorInverted')
             },
             '&:disabled': {
-                background: Colors.AUTHENTIC_BLUE_550,
-                borderColor: Colors.AUTHENTIC_BLUE_550,
-                color: Colors.AUTHENTIC_BLUE_350,
-                fill: Colors.AUTHENTIC_BLUE_350
+                color: get('semanticColors.button.danger.disabledTextInverted'),
+                fill: get('semanticColors.button.danger.disabledTextInverted'),
+                background: get('semanticColors.button.danger.disabledBackgroundInverted'),
+                borderColor: get('semanticColors.button.danger.disabledBorderColorInverted')
             }
         }
     }
 });
 
-const Button: React.FC<ButtonProps> = styled(BaseButton)<ButtonProps>`
-    transition: background ease 216ms, border-color ease 216ms;
+const Button: React.FC<ButtonProps> = styled(BaseButton).attrs({ theme })<ButtonProps>`
+    transition: background ease 200ms, border-color ease 200ms, color ease 200ms, fill ease 200ms;
 
     ${p => (p.inverted ? invertedVariantStyles : variantStyles)};
 `;
