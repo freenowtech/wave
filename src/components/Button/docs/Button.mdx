@@ -42,9 +42,7 @@ Use the secondary button for less important actions and in multi button scenario
 
 ### Icons
 
-Sometimes an icon can help clarify the usage of the button.
-
-The recommended sizes for the icons:
+Sometimes an icon can help clarify the usage of the button. The recommended sizes for the icons:
 * `<IconName size={20} />` — 20px for regular button
 * `<IconName size={18} />` — 18px for small button
 
@@ -60,7 +58,14 @@ The recommended sizes for the icons:
 
 ## Combinations
 
-<Combination variant={["primary", "secondary", "danger"]} size={["medium", "small"]} inverted={[false, true]}>
+### Button
+
+<Combination disabled={[false, true]} variant={["primary", "secondary", "danger"]} size={["medium", "small"]} inverted={[false, true]}>
     {(props, i) => <Button key={i} {...props}>Button</Button>}
 </Combination>
 
+### TextButton
+
+<Combination disabled={[false, true]} variant={["default", "danger"]} size={["medium", "small"]} inverted={[false, true]}>
+    {(props, i) => <TextButton key={i} {...props}>Button</TextButton>}
+</Combination>
