@@ -15,7 +15,7 @@ export const TableRowSkeleton = ({ columns, animated }: TableRowSkeletonProps) =
                 .fill(0)
                 .map((_, index) => (
                     <TableCell key={index}>
-                        <Skeleton animated={animated} />
+                        <Skeleton aria-label="table-row-skeleton" aria-hidden animated={animated} />
                     </TableCell>
                 ))}
         </TableRow>

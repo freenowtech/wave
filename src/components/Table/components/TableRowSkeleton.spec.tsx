@@ -15,5 +15,6 @@ describe('TableRowSkeleton', () => {
         );
 
         expect(screen.getAllByRole('cell').length).toBe(columns);
+        expect(screen.getAllByLabelText('table-row-skeleton').length).toBe(columns);
     });
 });
