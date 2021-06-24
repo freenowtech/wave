@@ -16,15 +16,14 @@ const LayoutContainer = styled.div`
     display: block;
 
     @media screen and (min-width: 48rem) {
-        display: grid;
-        grid-template-columns: 19.5rem minmax(0, 1fr);
-        min-height: calc(100% - 52px);
+        margin-left: 19.5rem;
     }
 `;
 
 const MainBox = styled.div`
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 `;
 
 export const Layout = ({ children }) => {
