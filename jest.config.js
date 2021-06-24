@@ -7,5 +7,10 @@ module.exports = {
     testRegex: '(test|spec)\\.tsx?$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'svg'],
     setupFiles: ['jest-date-mock'],
-    setupFilesAfterEnv: ['<rootDir>/src/utils/testing.ts']
+    setupFilesAfterEnv: ['<rootDir>/src/utils/testing.ts'],
+    globals: {
+        'ts-jest': {
+            diagnostics: false
+        }
+    }
 };

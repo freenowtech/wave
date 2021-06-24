@@ -6,6 +6,7 @@
 # test files
 coverage/
 junit.xml
+__diff_output__/
 
 # project files
 .docz/
