@@ -38,95 +38,95 @@ export const SemanticColors = {
             background: Colors.AUTHENTIC_BLUE_900,
             borderColor: Colors.AUTHENTIC_BLUE_900,
 
-            hoverText: Colors.WHITE,
-            hoverBackground: Colors.AUTHENTIC_BLUE_1100,
-            hoverBorderColor: Colors.AUTHENTIC_BLUE_1100,
+            textHover: Colors.WHITE,
+            backgroundHover: Colors.AUTHENTIC_BLUE_1100,
+            borderColorHover: Colors.AUTHENTIC_BLUE_1100,
 
-            disabledText: Colors.WHITE,
-            disabledBackground: Colors.AUTHENTIC_BLUE_200,
-            disabledBorderColor: Colors.AUTHENTIC_BLUE_200,
+            textDisabled: Colors.WHITE,
+            backgroundDisabled: Colors.AUTHENTIC_BLUE_200,
+            borderColorDisabled: Colors.AUTHENTIC_BLUE_200,
 
             textInverted: Colors.ACTION_BLUE_900,
             backgroundInverted: Colors.WHITE,
             borderColorInverted: Colors.WHITE,
 
-            hoverTextInverted: Colors.WHITE,
-            hoverBackgroundInverted: Colors.ACTION_BLUE_900,
-            hoverBorderColorInverted: Colors.ACTION_BLUE_900,
+            textHoverInverted: Colors.WHITE,
+            backgroundHoverInverted: Colors.ACTION_BLUE_900,
+            borderColorHoverInverted: Colors.ACTION_BLUE_900,
 
-            disabledTextInverted: Colors.AUTHENTIC_BLUE_350,
-            disabledBackgroundInverted: Colors.AUTHENTIC_BLUE_550,
-            disabledBorderColorInverted: Colors.AUTHENTIC_BLUE_550
+            textDisabledInverted: Colors.AUTHENTIC_BLUE_350,
+            backgroundDisabledInverted: Colors.AUTHENTIC_BLUE_550,
+            borderColorDisabledInverted: Colors.AUTHENTIC_BLUE_550
         },
         secondary: {
             text: Colors.AUTHENTIC_BLUE_900,
             background: Colors.WHITE,
             borderColor: Colors.AUTHENTIC_BLUE_200,
 
-            hoverText: Colors.AUTHENTIC_BLUE_900,
-            hoverBackground: Colors.AUTHENTIC_BLUE_50,
-            hoverBorderColor: Colors.AUTHENTIC_BLUE_200,
+            textHover: Colors.AUTHENTIC_BLUE_900,
+            backgroundHover: Colors.AUTHENTIC_BLUE_50,
+            borderColorHover: Colors.AUTHENTIC_BLUE_200,
 
-            disabledText: Colors.AUTHENTIC_BLUE_200,
-            disabledBackground: Colors.WHITE,
-            disabledBorderColor: Colors.AUTHENTIC_BLUE_200,
+            textDisabled: Colors.AUTHENTIC_BLUE_200,
+            backgroundDisabled: Colors.WHITE,
+            borderColorDisabled: Colors.AUTHENTIC_BLUE_200,
 
             textInverted: Colors.WHITE,
             backgroundInverted: 'transparent',
             borderColorInverted: Colors.WHITE,
 
-            hoverTextInverted: Colors.AUTHENTIC_BLUE_900,
-            hoverBackgroundInverted: Colors.WHITE,
-            hoverBorderColorInverted: Colors.WHITE,
+            textHoverInverted: Colors.AUTHENTIC_BLUE_900,
+            backgroundHoverInverted: Colors.WHITE,
+            borderColorHoverInverted: Colors.WHITE,
 
-            disabledTextInverted: Colors.AUTHENTIC_BLUE_550,
-            disabledBackgroundInverted: 'transparent',
-            disabledBorderColorInverted: Colors.AUTHENTIC_BLUE_550
+            textDisabledInverted: Colors.AUTHENTIC_BLUE_550,
+            backgroundDisabledInverted: 'transparent',
+            borderColorDisabledInverted: Colors.AUTHENTIC_BLUE_550
         },
         danger: {
             text: Colors.WHITE,
             background: Colors.NEGATIVE_ORANGE_900,
             borderColor: Colors.NEGATIVE_ORANGE_900,
 
-            hoverText: Colors.WHITE,
-            hoverBackground: Colors.NEGATIVE_ORANGE_1000,
-            hoverBorderColor: Colors.NEGATIVE_ORANGE_1000,
+            textHover: Colors.WHITE,
+            backgroundHover: Colors.NEGATIVE_ORANGE_1000,
+            borderColorHover: Colors.NEGATIVE_ORANGE_1000,
 
-            disabledText: Colors.WHITE,
-            disabledBackground: Colors.AUTHENTIC_BLUE_200,
-            disabledBorderColor: Colors.AUTHENTIC_BLUE_200,
+            textDisabled: Colors.WHITE,
+            backgroundDisabled: Colors.AUTHENTIC_BLUE_200,
+            borderColorDisabled: Colors.AUTHENTIC_BLUE_200,
 
             textInverted: Colors.WHITE,
             backgroundInverted: Colors.NEGATIVE_ORANGE_900,
             borderColorInverted: Colors.NEGATIVE_ORANGE_900,
 
-            hoverTextInverted: Colors.WHITE,
-            hoverBackgroundInverted: Colors.NEGATIVE_ORANGE_1000,
-            hoverBorderColorInverted: Colors.NEGATIVE_ORANGE_1000,
+            textHoverInverted: Colors.WHITE,
+            backgroundHoverInverted: Colors.NEGATIVE_ORANGE_1000,
+            borderColorHoverInverted: Colors.NEGATIVE_ORANGE_1000,
 
-            disabledTextInverted: Colors.WHITE,
-            disabledBackgroundInverted: Colors.AUTHENTIC_BLUE_200,
-            disabledBorderColorInverted: Colors.AUTHENTIC_BLUE_200
+            textDisabledInverted: Colors.WHITE,
+            backgroundDisabledInverted: Colors.AUTHENTIC_BLUE_200,
+            borderColorDisabledInverted: Colors.AUTHENTIC_BLUE_200
         }
     },
     textButton: {
         primary: {
             text: Colors.ACTION_BLUE_900,
-            hoverText: Colors.ACTION_BLUE_1000,
-            disabledText: Colors.AUTHENTIC_BLUE_200,
+            textHover: Colors.ACTION_BLUE_1000,
+            textDisabled: Colors.AUTHENTIC_BLUE_200,
 
             textInverted: Colors.WHITE,
-            hoverTextInverted: Colors.AUTHENTIC_BLUE_350,
-            disabledTextInverted: Colors.AUTHENTIC_BLUE_550
+            textHoverInverted: Colors.AUTHENTIC_BLUE_350,
+            textDisabledInverted: Colors.AUTHENTIC_BLUE_550
         },
         danger: {
             text: Colors.NEGATIVE_ORANGE_900,
-            hoverText: Colors.NEGATIVE_ORANGE_1000,
-            disabledText: Colors.AUTHENTIC_BLUE_200,
+            textHover: Colors.NEGATIVE_ORANGE_1000,
+            textDisabled: Colors.AUTHENTIC_BLUE_200,
 
             textInverted: Colors.NEGATIVE_ORANGE_900,
-            hoverTextInverted: Colors.NEGATIVE_ORANGE_1000,
-            disabledTextInverted: Colors.AUTHENTIC_BLUE_550
+            textHoverInverted: Colors.NEGATIVE_ORANGE_1000,
+            textDisabledInverted: Colors.AUTHENTIC_BLUE_550
         }
     }
 };

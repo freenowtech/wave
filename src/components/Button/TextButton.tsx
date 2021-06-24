@@ -23,13 +23,13 @@ const variantStyles = variant({
             fill: get('semanticColors.textButton.primary.text'),
 
             '&:hover': {
-                color: get('semanticColors.textButton.primary.hoverText'),
-                fill: get('semanticColors.textButton.primary.hoverText')
+                color: get('semanticColors.textButton.primary.textHover'),
+                fill: get('semanticColors.textButton.primary.textHover')
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.primary.disabledText'),
-                fill: get('semanticColors.textButton.primary.disabledText')
+                color: get('semanticColors.textButton.primary.textDisabled'),
+                fill: get('semanticColors.textButton.primary.textDisabled')
             }
         },
         danger: {
@@ -37,13 +37,13 @@ const variantStyles = variant({
             fill: get('semanticColors.textButton.danger.text'),
 
             '&:hover': {
-                color: get('semanticColors.textButton.danger.hoverText'),
-                fill: get('semanticColors.textButton.danger.hoverText')
+                color: get('semanticColors.textButton.danger.textHover'),
+                fill: get('semanticColors.textButton.danger.textHover')
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.danger.disabledText'),
-                fill: get('semanticColors.textButton.danger.disabledText')
+                color: get('semanticColors.textButton.danger.textDisabled'),
+                fill: get('semanticColors.textButton.danger.textDisabled')
             }
         }
     }
@@ -56,13 +56,13 @@ const invertedVariantStyles = variant({
             fill: get('semanticColors.textButton.primary.textInverted'),
 
             '&:hover': {
-                color: get('semanticColors.textButton.primary.hoverTextInverted'),
-                fill: get('semanticColors.textButton.primary.hoverTextInverted')
+                color: get('semanticColors.textButton.primary.textHoverInverted'),
+                fill: get('semanticColors.textButton.primary.textHoverInverted')
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.primary.disabledTextInverted'),
-                fill: get('semanticColors.textButton.primary.disabledTextInverted')
+                color: get('semanticColors.textButton.primary.textDisabledInverted'),
+                fill: get('semanticColors.textButton.primary.textDisabledInverted')
             }
         },
         danger: {
@@ -70,13 +70,13 @@ const invertedVariantStyles = variant({
             fill: get('semanticColors.textButton.danger.textInverted'),
 
             '&:hover': {
-                color: get('semanticColors.textButton.danger.hoverTextInverted'),
-                fill: get('semanticColors.textButton.danger.hoverTextInverted')
+                color: get('semanticColors.textButton.danger.textHoverInverted'),
+                fill: get('semanticColors.textButton.danger.textHoverInverted')
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.danger.disabledTextInverted'),
-                fill: get('semanticColors.textButton.danger.disabledTextInverted')
+                color: get('semanticColors.textButton.danger.textDisabledInverted'),
+                fill: get('semanticColors.textButton.danger.textDisabledInverted')
             }
         }
     }
