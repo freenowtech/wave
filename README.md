@@ -26,6 +26,10 @@ yarn add @freenow/wave
 
 Thanks for being willing to contribute! Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) doc
 
+## Have doubts?
+
+Please don't hesitate to let know us what are your doubts, what can be improved or what is difficult for you to grasp from the documentation. Open issues to start the conversation! 
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
