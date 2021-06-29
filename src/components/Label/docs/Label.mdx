@@ -25,12 +25,15 @@ Use short labels for easy scanning. Use two words only if necessary to describe 
 ## Examples
 
 <Playground>
-    <Label variant="success">Label</Label>
+    <Label mr={1}>Default</Label>
+    <Label variant="success" filled mr={1}>Congratulations</Label>
+    <Label variant="warning" mr={1}>Caution</Label>
+    <Label variant="danger" filled mr={1}>Failed️</Label>
 </Playground>
 
 ## Combinations
 
-<Combination variant={["info", "success", "danger"]}>
+<Combination variant={["default", "info", "success", "warning", "danger"]} filled={[false, true]}>
     {(props, i) => <Label key={i} {...props}>Label</Label>}
 </Combination>
 
