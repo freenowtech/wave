@@ -6,7 +6,8 @@
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
     "sideEffects": [
-        "src/polyfills.ts"
+        "lib/esm/polyfills.js",
+        "lib/cjs/polyfills.js"
     ],
     "scripts": {
         "clean": "rm -rf lib",
