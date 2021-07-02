@@ -1,0 +1,10 @@
+# Ignore all files by default
+*
+
+# White list only the required files
+!src/
+!package.json
+!package-lock.json
+!jest.config.js
+!tsconfig.json
+!svgTransform.js

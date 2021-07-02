@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    update_snapshots:
+        build:
+            context: .
+        command: npm run test -- -u
+        volumes:
+            - './src:/app/src'
+
+    test:
+        build:
+            context: .
+        command: npm run test
+        volumes:
+            - './src:/app/src'
+
+    test_ci:
+        build:
+            context: .
+        environment:
+            - CI=true
+        command: npm run test

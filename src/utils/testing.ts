@@ -20,7 +20,7 @@ declare global {
 // TravisCI and Linux OS require --no-sandbox to be able to run the tests
 // https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-on-travis-ci
 setDefaultOptions({
-    launch: { args: process.env.CI === 'true' ? ['--no-sandbox'] : [] }
+    launch: { args: ['--no-sandbox'] }
 });
 
 // mock the source of randomness in all the tests

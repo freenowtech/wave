@@ -63,11 +63,7 @@ const BaseInput = styled.input<InternalInputComponentProps>`
         color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_350)};
     }
 
-    ${compose(
-        width,
-        sizeVariant,
-        inputVariants
-    )};
+    ${compose(width, sizeVariant, inputVariants)};
 
     &:disabled {
         color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};

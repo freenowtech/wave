@@ -2,91 +2,66 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Button } from './Button';
 import { Colors } from '../../essentials';
+import { generateImage } from 'jsdom-screenshot';
+import { Box } from '../Box/Box';
 
-describe('standard button', () => {
-    it('renders by default the primary variant', () => {
+describe('Button', () => {
+    it('should render the primary variant by default', () => {
         const { container: primaryTree } = render(<Button variant="primary">Click</Button>);
         const { container: defaultTree } = render(<Button>Click</Button>);
 
         expect(primaryTree).toEqual(defaultTree);
     });
 
-    describe('primary', () => {
-        it('renders as design system suggests', () => {
-            const { container } = render(<Button variant="primary">Click</Button>);
-            expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.AUTHENTIC_BLUE_900};
-              color: ${Colors.WHITE};
-            `);
-            expect(container.firstChild).toMatchSnapshot();
-        });
-    });
-
-    describe('secondary', () => {
-        it('renders as design system suggests', () => {
-            const { container } = render(<Button variant="secondary">Click</Button>);
-            expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.WHITE};
-              color: ${Colors.AUTHENTIC_BLUE_900};
-              border-color: ${Colors.AUTHENTIC_BLUE_200};
-            `);
-            expect(container.firstChild).toMatchSnapshot();
-        });
-    });
-
-    describe('danger', () => {
-        it('renders as design system suggests', () => {
-            const { container } = render(<Button variant="danger">Click</Button>);
-            expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.NEGATIVE_ORANGE_900};
-              color: ${Colors.WHITE};
-            `);
-            expect(container.firstChild).toMatchSnapshot();
-        });
-    });
-});
-
-describe('inverted button', () => {
-    it('renders by default the primary variant', () => {
-        const { container: primaryTree } = render(
-            <Button inverted variant="primary">
-                Click
-            </Button>
-        );
-        const { container: defaultTree } = render(<Button inverted>Click</Button>);
-
-        expect(primaryTree).toEqual(defaultTree);
-    });
-
-    describe('primary', () => {
-        it('renders as design system suggests', () => {
-            const { container } = render(
-                <Button variant="primary" inverted>
-                    Click
-                </Button>
-            );
-            expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.WHITE};
-              color: ${Colors.ACTION_BLUE_900};
-            `);
-            expect(container.firstChild).toMatchSnapshot();
-        });
-    });
-
-    describe('secondary', () => {
-        it('renders as design system suggests', () => {
-            const { container } = render(
-                <Button variant="secondary" inverted>
-                    Click
-                </Button>
+    test.each(['primary', 'secondary', 'danger'])(
+        'should render the variant %s correctly',
+        async (variant: 'primary' | 'secondary' | 'danger') => {
+            render(
+                <Box display="grid" gridTemplateColumns="repeat(auto-fill, 100px)" gridGap="1rem" p={3}>
+                    <Button variant={variant}>Medium</Button>
+                    <Button variant={variant} disabled>
+                        Disabled
+                    </Button>
+                    <Button variant={variant} size="small">
+                        Small
+                    </Button>
+                    <Button variant={variant} size="small" disabled>
+                        Small
+                    </Button>
+                </Box>
             );
 
-            expect(container.firstChild).toHaveStyle(`
-              background: transparent;
-              color: ${Colors.WHITE};
-              border-color: ${Colors.WHITE};
-            `);
-            expect(container.firstChild).toMatchSnapshot();
-        });
-    });
+            expect(await generateImage()).toMatchImageSnapshot();
+        }
+    );
+
+    test.each(['primary', 'secondary', 'danger'])(
+        'should render the inverted variant %s correctly',
+        async (variant: 'primary' | 'secondary' | 'danger') => {
+            render(
+                <Box
+                    display="grid"
+                    gridTemplateColumns="repeat(auto-fill, 100px)"
+                    gridGap="1rem"
+                    background={Colors.AUTHENTIC_BLUE_900}
+                    p={3}
+                >
+                    <Button inverted variant={variant}>
+                        Medium
+                    </Button>
+                    <Button inverted variant={variant} disabled>
+                        Disabled
+                    </Button>
+                    <Button inverted variant={variant} size="small">
+                        Small
+                    </Button>
+                    <Button inverted variant={variant} size="small" disabled>
+                        Small
+                    </Button>
+                </Box>
+            );
+
+            expect(await generateImage()).toMatchImageSnapshot();
+        }
+    );
 });
