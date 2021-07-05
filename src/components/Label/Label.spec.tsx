@@ -48,7 +48,7 @@ describe('Label', () => {
         expect(render(<Label variant="success" filled />).container.firstChild).toHaveStyle(`
             color: ${Colors.WHITE};
             border-color: ${Colors.POSITIVE_GREEN_900};
-            backgroundColor: ${Colors.POSITIVE_GREEN_900};
+            background-color: ${Colors.POSITIVE_GREEN_900};
         `);
     });
 });
