@@ -6,7 +6,7 @@ route: /essentials/colors
 
 import { ColorPalette } from './ColorPalette';
 import { Colors } from '../Colors.ts';
-import { Text, Headline } from '../../../components';
+import { SemanticColorsTable } from './SemanticColorsTable';
 import { ColorPaletteContainer } from './ColorPaletteContainer';
 
 # Colors
@@ -33,7 +33,7 @@ shades.
     />
 </ColorPaletteContainer>
 
-## Neutral Colors
+### Neutral Colors
 
 Text, backgrounds, lines and borders should use neutral colors. There are additional darker and lighter shades of
 Authentic Blue, especially for certain backgrounds.
@@ -52,7 +52,7 @@ Authentic Blue, especially for certain backgrounds.
     />
 </ColorPaletteContainer>
 
-## UI Colors
+### UI Colors
 
 Action buttons, alert messages, and form elements should use the main UI Colors. Input fields, for example, can
 get positive and negative feedback, whereas alert messages can have warning feedback.
@@ -90,3 +90,8 @@ get positive and negative feedback, whereas alert messages can have warning feed
         ]}
     />
 </ColorPaletteContainer>
+
+
+## Functional Colors
+
+<SemanticColorsTable />
