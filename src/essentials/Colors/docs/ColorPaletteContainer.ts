@@ -24,7 +24,7 @@ const ColorPaletteContainer = styled.div`
     }
 
     ${MediaQueries.xlarge} {
-        grid-template-columns: repeat(3, minmax(auto, 18.5rem));
+        grid-template-columns: repeat(3, fit-content(23.75rem));
         grid-gap: 2rem;
     }
 `;

@@ -5,7 +5,7 @@ export default {
                 "'Hack', 'Fira Code', 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier', monospace",
             color: '#001E3E',
             backgroundColor: '#F1F2F4',
-            fontSize: '0.875rem'
+            fontSize: '1rem'
         },
         styles: [
             {
