@@ -103,7 +103,7 @@ export const SemanticColors = {
         info: Colors.ACTION_BLUE_50,
         danger: Colors.NEGATIVE_ORANGE_50,
         success: Colors.POSITIVE_GREEN_50,
-        warning: Colors.ATTENTION_YELLOW_350,
+        warning: Colors.ATTENTION_YELLOW_50,
         primaryEmphasized: Colors.AUTHENTIC_BLUE_900,
         secondaryEmphasized: Colors.AUTHENTIC_BLUE_550,
         infoEmphasized: Colors.ACTION_BLUE_900,
