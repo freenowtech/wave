@@ -72,3 +72,4 @@ export { default as LightningIcon } from './LightningIcon';
 export { default as PenIcon } from './PenIcon';
 export { default as EyeOpenIcon } from './EyeOpenIcon';
 export { default as EyeClosedIcon } from './EyeClosedIcon';
+export { default as CopyIcon } from './CopyIcon';
