@@ -63,8 +63,6 @@ const TestButton: React.FC = () => (
         <Button variant="danger" />
         <Button size="small" />
         <Button size="medium" />
-        <Button block />
-        <Button block={false} />
         <Button onClick={voidFunction} />
     </>
 );
@@ -82,8 +80,6 @@ const TestTextButton: React.FC = () => (
         <TextButton variant="danger" />
         <TextButton size="small" />
         <TextButton size="medium" />
-        <TextButton block />
-        <TextButton block={false} />
         <TextButton onClick={voidFunction} />
     </>
 );
