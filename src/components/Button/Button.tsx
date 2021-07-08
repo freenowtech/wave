@@ -23,58 +23,58 @@ const variantStyles = variant({
             color: get('semanticColors.button.primary.text'),
             fill: get('semanticColors.button.primary.text'),
             background: get('semanticColors.button.primary.background'),
-            border: get('semanticColors.button.primary.border'),
+            borderColor: get('semanticColors.button.primary.border'),
 
             '&:hover': {
                 color: get('semanticColors.button.primary.textHover'),
                 fill: get('semanticColors.button.primary.textHover'),
                 background: get('semanticColors.button.primary.backgroundHover'),
-                border: get('semanticColors.button.primary.borderHover')
+                borderColor: get('semanticColors.button.primary.borderHover')
             },
 
             '&:disabled': {
                 color: get('semanticColors.button.primary.textDisabled'),
                 fill: get('semanticColors.button.primary.textDisabled'),
                 background: get('semanticColors.button.primary.backgroundDisabled'),
-                border: get('semanticColors.button.primary.borderDisabled')
+                borderColor: get('semanticColors.button.primary.borderDisabled')
             }
         },
         secondary: {
             color: get('semanticColors.button.secondary.text'),
             fill: get('semanticColors.button.secondary.text'),
             background: get('semanticColors.button.secondary.background'),
-            border: get('semanticColors.button.secondary.border'),
+            borderColor: get('semanticColors.button.secondary.border'),
             '&:hover': {
                 color: get('semanticColors.button.secondary.textHover'),
                 fill: get('semanticColors.button.secondary.textHover'),
                 background: get('semanticColors.button.secondary.backgroundHover'),
-                border: get('semanticColors.button.secondary.borderHover')
+                borderColor: get('semanticColors.button.secondary.borderHover')
             },
             '&:disabled': {
                 color: get('semanticColors.button.secondary.textDisabled'),
                 fill: get('semanticColors.button.secondary.textDisabled'),
                 background: get('semanticColors.button.secondary.backgroundDisabled'),
-                border: get('semanticColors.button.secondary.borderDisabled')
+                borderColor: get('semanticColors.button.secondary.borderDisabled')
             }
         },
         danger: {
             color: get('semanticColors.button.danger.text'),
             fill: get('semanticColors.button.danger.text'),
             background: get('semanticColors.button.danger.background'),
-            border: get('semanticColors.button.danger.border'),
+            borderColor: get('semanticColors.button.danger.border'),
 
             '&:hover': {
                 color: get('semanticColors.button.danger.textHover'),
                 fill: get('semanticColors.button.danger.textHover'),
                 background: get('semanticColors.button.danger.backgroundHover'),
-                border: get('semanticColors.button.danger.borderHover')
+                borderColor: get('semanticColors.button.danger.borderHover')
             },
 
             '&:disabled': {
                 color: get('semanticColors.button.danger.textDisabled'),
                 fill: get('semanticColors.button.danger.textDisabled'),
                 background: get('semanticColors.button.danger.backgroundDisabled'),
-                border: get('semanticColors.button.danger.borderDisabled')
+                borderColor: get('semanticColors.button.danger.borderDisabled')
             }
         }
     }
@@ -86,57 +86,57 @@ const invertedVariantStyles = variant({
             color: get('semanticColors.button.primary.textInverted'),
             fill: get('semanticColors.button.primary.textInverted'),
             background: get('semanticColors.button.primary.backgroundInverted'),
-            border: get('semanticColors.button.primary.borderInverted'),
+            borderColor: get('semanticColors.button.primary.borderInverted'),
 
             '&:hover': {
                 color: get('semanticColors.button.primary.textHoverInverted'),
                 fill: get('semanticColors.button.primary.textHoverInverted'),
                 background: get('semanticColors.button.primary.backgroundHoverInverted'),
-                border: get('semanticColors.button.primary.borderHoverInverted')
+                borderColor: get('semanticColors.button.primary.borderHoverInverted')
             },
             '&:disabled': {
                 color: get('semanticColors.button.primary.textDisabledInverted'),
                 fill: get('semanticColors.button.primary.textDisabledInverted'),
                 background: get('semanticColors.button.primary.backgroundDisabledInverted'),
-                border: get('semanticColors.button.primary.borderDisabledInverted')
+                borderColor: get('semanticColors.button.primary.borderDisabledInverted')
             }
         },
         secondary: {
             color: get('semanticColors.button.secondary.textInverted'),
             fill: get('semanticColors.button.secondary.textInverted'),
             background: get('semanticColors.button.secondary.backgroundInverted'),
-            border: get('semanticColors.button.secondary.borderInverted'),
+            borderColor: get('semanticColors.button.secondary.borderInverted'),
 
             '&:hover': {
                 color: get('semanticColors.button.secondary.textHoverInverted'),
                 fill: get('semanticColors.button.secondary.textHoverInverted'),
                 background: get('semanticColors.button.secondary.backgroundHoverInverted'),
-                border: get('semanticColors.button.secondary.borderHoverInverted')
+                borderColor: get('semanticColors.button.secondary.borderHoverInverted')
             },
             '&:disabled': {
                 color: get('semanticColors.button.secondary.textDisabledInverted'),
                 fill: get('semanticColors.button.secondary.textDisabledInverted'),
                 background: get('semanticColors.button.secondary.backgroundDisabledInverted'),
-                border: get('semanticColors.button.secondary.borderDisabledInverted')
+                borderColor: get('semanticColors.button.secondary.borderDisabledInverted')
             }
         },
         danger: {
             color: get('semanticColors.button.danger.textInverted'),
             fill: get('semanticColors.button.danger.textInverted'),
             background: get('semanticColors.button.danger.backgroundInverted'),
-            border: get('semanticColors.button.danger.borderInverted'),
+            borderColor: get('semanticColors.button.danger.borderInverted'),
 
             '&:hover': {
                 color: get('semanticColors.button.danger.textHoverInverted'),
                 fill: get('semanticColors.button.danger.textHoverInverted'),
                 background: get('semanticColors.button.danger.backgroundHoverInverted'),
-                border: get('semanticColors.button.danger.borderHoverInverted')
+                borderColor: get('semanticColors.button.danger.borderHoverInverted')
             },
             '&:disabled': {
                 color: get('semanticColors.button.danger.textDisabledInverted'),
                 fill: get('semanticColors.button.danger.textDisabledInverted'),
                 background: get('semanticColors.button.danger.backgroundDisabledInverted'),
-                border: get('semanticColors.button.danger.borderDisabledInverted')
+                borderColor: get('semanticColors.button.danger.borderDisabledInverted')
             }
         }
     }
