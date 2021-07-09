@@ -6,10 +6,14 @@ route: /components/Select
 
 import { Playground } from 'docz';
 import { Select } from '../Select';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { Headline } from '../..';
+import { Combination } from '../../../docs/Combination'
+import { SelectPropsTable } from './SelectPropsTable';
 
 # Select
+
+## Properties
+
+<SelectPropsTable />
 
 ## Usage
 
@@ -59,167 +63,10 @@ Errors are shown just in the cases the field is mandatory and just after user cl
 - Remove options that rarely get used.
 - Remove the options that we know cannot be selected (eg: countries where we don’t work)
 
-## Component
-
-### Default
-
-<ItemWrapper gridTemplate="60% 1fr">
-    <Select label="Boxed">
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select size="small" label="Boxed Small">
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" label="Bottom Lined">
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" size="small" label="Bottom Lined Small">
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-</ItemWrapper>
-
-### Error States
-
-<ItemWrapper gridTemplate="60% 1fr">
-    <Select label="Boxed" error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select size="small" label="Boxed Small" error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" label="Bottom Lined" error>
-        <option>Scooter</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" size="small" label="Bottom Lined Small" error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-</ItemWrapper>
-
-### Disabled States
-
-<ItemWrapper gridTemplate="60% 1fr">
-    <Select label="Boxed" disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select size="small" label="Boxed Small" disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" label="Bottom Lined" disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" size="small" label="Bottom Lined Small" disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-</ItemWrapper>
-
-<ItemWrapper mt={4} gridTemplate="60% 1fr" inverted>
-    <Headline as="h3" inverted>
-        Inverted
-    </Headline>
-    <div></div>
-    <Select label="Boxed" inverted>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select size="small" label="Boxed Small" inverted>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" label="Bottom Lined" inverted>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" size="small" label="Bottom Lined Small" inverted>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-</ItemWrapper>
-
-<ItemWrapper gridTemplate="60% 1fr" inverted>
-    <Headline as="h3" inverted>
-        Error States
-    </Headline>
-    <div></div>
-    <Select label="Boxed" inverted error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select size="small" label="Boxed Small" inverted error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" label="Bottom Lined" inverted error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" size="small" label="Bottom Lined Small" inverted error>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-</ItemWrapper>
-
-<ItemWrapper gridTemplate="60% 1fr" inverted>
-    <Headline as="h3" inverted>
-        Disabled States
-    </Headline>
-    <div></div>
-    <Select label="Boxed" inverted disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select size="small" label="Boxed Small" inverted disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" label="Bottom Lined" inverted disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-    <Select variant="bottom-lined" size="small" label="Bottom Lined Small" inverted disabled>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-</ItemWrapper>
-
-## Playground
+## Examples
 
 <Playground>
-    <Select variant="bottom-lined" size="small" label="City">
+    <Select variant="bottom-lined" size="small" label="City" mb={2}>
         <option>Scooter</option>
         <option>Ride (PHV)</option>
         <option>Taxi</option>
@@ -252,3 +99,8 @@ it('can be selected by label', () => {
     expect(screen.getByLabelText('Example')).toHaveDisplayValue('test 1');
 });
 ```
+
+## Combinations
+<Combination variant={["boxed", "bottom-lined"]} size={["medium", "small"]} inverted={[false, true]} error={[false, true]}>
+    {(props, i) => <Select key={i} label="Select label" {...props}><option>Option 1</option><option>Option 2</option></Select>}
+</Combination>
