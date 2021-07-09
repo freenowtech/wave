@@ -39,6 +39,11 @@ They mainly appear in forms but they can also be in other places, like dialog bo
 3. The user can then select a single option from that list.
 4. The input is updated to show the option selected by the user
 
+### Unselect option
+
+Passing the `placeholder` will allow users to unselect their selected option. The value sent to the `onChange` handler
+will be an empty string.
+
 ## Error state
 
 Errors are shown just in the cases the field is mandatory and just after user clicks the send/save button in the form and never after leaving the select.
@@ -218,6 +223,12 @@ Errors are shown just in the cases the field is mandatory and just after user cl
         <option>Scooter</option>
         <option>Ride (PHV)</option>
         <option>Taxi</option>
+    </Select>
+    <br/>
+    <Select label="City" placeholder="Select your destination">
+        <option>Barcelona</option>
+        <option>London</option>
+        <option>Hamburg</option>
     </Select>
 </Playground>
 

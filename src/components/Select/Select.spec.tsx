@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Select } from './Select';
-import userEvent from '@testing-library/user-event';
 
 describe('Select', () => {
     it('renders with default props', () => {
@@ -19,6 +19,26 @@ describe('Select', () => {
         userEvent.selectOptions(screen.getByRole('combobox', { name: /wave/i }), '1');
 
         expect(screen.getByLabelText('Wave')).toHaveDisplayValue('test 1');
+    });
+
+    it('should render an empty placeholder options when provided', () => {
+        const onChangeMock = jest.fn();
+
+        render(
+            <Select
+                label="Select"
+                placeholder="placeholder"
+                defaultValue="1"
+                onChange={e => onChangeMock(e.target.value)}
+            >
+                <option value="1">test 1</option>
+            </Select>
+        );
+
+        userEvent.selectOptions(screen.getByLabelText('Select'), '');
+
+        expect(screen.getByLabelText('Select')).toHaveDisplayValue('placeholder');
+        expect(onChangeMock).toHaveBeenCalledWith('');
     });
 
     describe('variant "boxed"', () => {
