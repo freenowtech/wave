@@ -16,6 +16,13 @@ module.exports = {
         [
             '@semantic-release/changelog',
             {
+                changelogTitle:
+                    '---\n' +
+                    'name: Changelog\n' +
+                    'route: /changelog\n' +
+                    'cardHeadline: Changelog\n' +
+                    'cardSubHeadline: Keep up to date with the latest releases of @freenow/wave\n' +
+                    '---',
                 changelogFile: 'docs/changelog.mdx'
             }
         ],
