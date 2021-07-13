@@ -125,7 +125,7 @@ const prefix = 'result-item';
 export const Search = ({
     results = [],
     value: propsValue,
-    setValue: setPropsValue = () => undefined,
+    setValue: setPropsValue,
     width,
     placeholder = 'Search...',
     disabled,
@@ -217,7 +217,7 @@ export const Search = ({
     const handleChangeValue = e => {
         setShowResults(true);
         const searchText: string = e.target.value;
-        isOnControl ? setPropsValue(searchText) : setStateValue(searchText);
+        isOnControl ? setPropsValue?.(searchText) : setStateValue(searchText);
         onInputChange?.(searchText);
     };
 
@@ -273,7 +273,7 @@ export const Search = ({
                         aria-label="clear-search"
                         style={{ margin: '1rem', marginLeft: 'auto', cursor: 'pointer', display: 'flex' }}
                         onClick={() => {
-                            isOnControl ? setPropsValue('') : setStateValue('');
+                            isOnControl ? setPropsValue?.('') : setStateValue('');
                             onClear?.();
                         }}
                         role="button"
