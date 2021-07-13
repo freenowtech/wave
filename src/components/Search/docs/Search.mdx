@@ -42,20 +42,28 @@ You can navigate among the search results using your keyboard arrow keys. Upon n
 ```jsx
 const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
 const mapName = (name, index) => (
-    <Box key={index} height="2.5rem"display="flex" alignItems="center" onClick={() => alert(`${name} was clicked!`)}>
+    <Box
+        key={index}
+        height="2.5rem"
+        display="flex"
+        alignItems="center"
+        onClick={() => alert(`${name} was clicked!`)}
+    >
         <Text marginLeft="1rem">{name}</Text>
     </Box>
 );
-const names = namesArray.map(mapName);
-const [results, setResults] = useState(names);
+const [value, setValue] = useState('');
+const results = namesArray
+    .filter(name => name.toLowerCase().includes(value.toLowerCase()))
+    .map(mapName);
+const clearValue = () => setValue('');
 return (
     <Search
+        value={value}
+        setValue={setValue}
         width="20rem"
         results={results}
-        onInputChange={val =>
-            setResults(namesArray.filter(name => name.toLowerCase().includes(val.toLowerCase())).map(mapName))
-        }
-        onClear={() => setResults(namesArray.map(mapName))}
+        onEnter={clearValue}
     />
 );
 ```

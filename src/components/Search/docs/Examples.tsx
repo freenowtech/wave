@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
@@ -19,18 +18,10 @@ export const TextExample = () => {
             <Text marginLeft="1rem">{name}</Text>
         </Box>
     );
-    const names = namesArray.map(mapName);
-    const [results, setResults] = useState(names);
-    return (
-        <Search
-            width="20rem"
-            results={results}
-            onInputChange={val =>
-                setResults(namesArray.filter(name => name.toLowerCase().includes(val.toLowerCase())).map(mapName))
-            }
-            onClear={() => setResults(namesArray.map(mapName))}
-        />
-    );
+    const [value, setValue] = useState('');
+    const results = namesArray.filter(name => name.toLowerCase().includes(value.toLowerCase())).map(mapName);
+    const clearValue = () => setValue('');
+    return <Search value={value} setValue={setValue} width="20rem" results={results} onEnter={clearValue} />;
 };
 
 export const DisabledExample = () => {
