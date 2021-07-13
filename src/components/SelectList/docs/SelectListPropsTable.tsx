@@ -29,6 +29,11 @@ export const SelectListPropsTable = () => {
             name: 'inverted',
             type: 'boolean',
             description: 'Adjust colors for display on a dark background'
+        },
+        {
+            name: 'inputId',
+            type: 'string',
+            description: 'Sets the id of the input field of the SelectList component'
         }
     ];
     return <PropsTable props={props} />;

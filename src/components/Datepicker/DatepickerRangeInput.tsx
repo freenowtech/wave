@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { Colors, Elevation, MediaQueries } from '../../essentials';
 import { theme } from '../../essentials/theme';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ChevronRightIcon } from '../../icons';
 import { Input } from '../Input/Input';
 
@@ -153,6 +154,20 @@ interface DatepickerRangeInputProps extends MarginProps, WidthProps {
      * or fn to be trigger as a callback when error
      */
     errorHandler?: (() => void) | string;
+    /**
+     * The id to be assigned to the start date input
+     */
+    startInputId?: string;
+    /**
+     * The id to be assigned to the end date input
+     */
+    endInputId?: string;
+    /**
+     * Determines the variant
+     * @value `'compact'` displays only a single month
+     * @default 'normal'
+     */
+    variant?: 'compact' | 'normal';
 }
 
 interface DateRangeInputText {
@@ -199,6 +214,9 @@ const DatepickerRangeInput = ({
     locale = 'en-US',
     value = {},
     errorHandler,
+    startInputId,
+    endInputId,
+    variant = 'normal',
     ...rest
 }: DatepickerRangeInputProps) => {
     const localeObject = useLocaleObject(locale);
@@ -210,6 +228,9 @@ const DatepickerRangeInput = ({
     );
     const [error, setError] = useState({ startDate: false, endDate: false });
     const displayErrorMessage = typeof errorHandler === 'string';
+
+    const startId = useGeneratedId(startInputId);
+    const endId = useGeneratedId(endInputId);
 
     useEffect(() => {
         if (!focusedInput && (error.startDate || error.endDate) && typeof errorHandler === 'function') {
@@ -312,6 +333,7 @@ const DatepickerRangeInput = ({
                 <>
                     <DateRangeWrapper ref={ref} {...rest}>
                         <Input
+                            id={startId}
                             ref={startDateRef}
                             autoComplete="off"
                             className="startDate"
@@ -328,6 +350,7 @@ const DatepickerRangeInput = ({
                         {focusedInput === START_DATE && <StartDateFocusedBlock />}
                         <DateArrow color={Colors.AUTHENTIC_BLUE_550} />
                         <Input
+                            id={endId}
                             ref={endDateRef}
                             tabIndex={!inputText.startText ? -1 : 0}
                             autoComplete="off"
@@ -353,7 +376,7 @@ const DatepickerRangeInput = ({
                     <Datepicker
                         ref={ref}
                         // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
-                        numberOfMonths={window.innerWidth >= 768 ? 2 : 1}
+                        numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
                         minBookingDays={1}
                         startDate={value.startDate || null}
                         endDate={value.endDate || null}
