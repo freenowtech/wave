@@ -13,6 +13,11 @@ interface SelectProps extends BaseSelectProps, WidthProps, MarginProps {
      * Set the label for the select input
      */
     label?: string;
+
+    /**
+     * Set a placeholder for the select component, allowing users to remove their selection
+     */
+    placeholder?: string;
 }
 
 const SelectWrapper = styled.div.attrs({ theme })`
@@ -39,12 +44,16 @@ const Select: React.FC<SelectProps> = props => {
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
-    const { label, ...rest } = restProps;
+    const { label, children, placeholder, ...rest } = restProps;
+
     const id = useGeneratedId(props.id);
 
     return (
         <SelectWrapper {...classNameProps} {...marginProps} {...widthProps}>
-            <SelectInput {...rest} id={id} />
+            <SelectInput {...rest} id={id}>
+                {placeholder ? <option value="">{placeholder}</option> : null}
+                {children}
+            </SelectInput>
             <IconNode className="svg-icon">
                 <ChevronDownIcon />
             </IconNode>
