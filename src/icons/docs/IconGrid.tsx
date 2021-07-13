@@ -1,32 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Text } from '../../components';
-import { Colors } from '../../essentials';
+import { Box, Text } from '../../components';
+import { Checkerboard } from '../../docs/Checkerboard';
 import { IconProps } from '../IconProps';
 
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(6rem, auto));
     grid-gap: 2rem 1rem;
     max-width: 100%;
     margin-top: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
 `;
 
 const Cell = styled.div`
-    width: 10rem;
+    width: 6rem;
     word-wrap: break-word;
-`;
-
-const IconComponentWrapper = styled.div`
-    padding-bottom: 0.5rem;
-    border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_50};
 `;
 
 export const Item = ({ children, name }) => {
     return (
         <Cell key={name}>
-            <IconComponentWrapper>{children}</IconComponentWrapper>
+            <Box p={2} position="relative" flexBasis="100%">
+                <Box position="absolute" top={0} left={0} right={0} bottom={0}>
+                    <Checkerboard />
+                </Box>
+                <Box position="relative" textAlign="center">
+                    {children}
+                </Box>
+            </Box>
             <Text as="p" fontSize={1} weak mt={1}>
                 {name}
             </Text>
