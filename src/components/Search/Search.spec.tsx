@@ -27,6 +27,27 @@ describe('Search', () => {
         });
     });
 
+    describe('controlled/state value in input', () => {
+        it('display the updated value when type', () => {
+            const value = 'value';
+
+            render(<Search />);
+            expect(screen.queryByDisplayValue('')).toBeInTheDocument();
+            user.type(screen.getByRole('searchbox'), value);
+            expect(screen.queryByDisplayValue(value)).toBeInTheDocument();
+        });
+
+        it('display the updated value from props', () => {
+            const firstValue = 'first';
+            const secondValue = 'second';
+
+            const { rerender } = render(<Search value={firstValue} />);
+            expect(screen.queryByDisplayValue(firstValue)).toBeInTheDocument();
+            rerender(<Search value={secondValue} />);
+            expect(screen.queryByDisplayValue(secondValue)).toBeInTheDocument();
+        });
+    });
+
     describe('has properties', () => {
         it('rendered as expected', () => {
             const placeholder = 'Placeholder';
