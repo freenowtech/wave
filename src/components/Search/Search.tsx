@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Input } from '../Input/Input';
 import { MagnifyingGlassIcon, CloseIcon } from '../../icons/index';
 import { Colors, Elevation } from '../../essentials';
+import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box } from '../Box/Box';
 
 const ActiveStyle = `
@@ -75,6 +76,14 @@ export interface SearchProps {
      */
     setValue?: (value: string) => void;
     /**
+     * show results dropdown
+     */
+    showResults?: boolean;
+    /**
+     * Function to show and hide the dropdown
+     */
+    setShowResults?: (value: boolean) => void;
+    /**
      * Sets the width of the search box
      */
     width?: string;
@@ -126,6 +135,8 @@ export const Search = ({
     results = [],
     value: propsValue,
     setValue: setPropsValue,
+    showResults: propsShowResults,
+    setShowResults: setPropsShowResults,
     width,
     placeholder = 'Search...',
     disabled,
@@ -140,19 +151,11 @@ export const Search = ({
 
     const [isInFocus, setIsInFocus] = React.useState<boolean>(false);
 
-    const [stateValue, setStateValue] = React.useState<string>('');
-
     const [activeIndex, setActiveIndex] = React.useState<number>(0);
 
-    const [showResults, setShowResults] = React.useState<boolean>(false);
+    const [value, setValue] = useControlledState<string>([propsValue, setPropsValue], '');
 
-    const isOnControl = propsValue !== undefined;
-
-    const getValue = () => {
-        return isOnControl ? propsValue : stateValue;
-    };
-
-    const value = getValue();
+    const [showResults, setShowResults] = useControlledState<boolean>([propsShowResults, setPropsShowResults], false);
 
     // this is to keep track of keypresses (up, down, enter, escape)
     React.useEffect(() => {
@@ -217,7 +220,8 @@ export const Search = ({
     const handleChangeValue = e => {
         setShowResults(true);
         const searchText: string = e.target.value;
-        isOnControl ? setPropsValue?.(searchText) : setStateValue(searchText);
+        // isOnControl ? setPropsValue?.(searchText) : setStateValue(searchText);
+        setValue(searchText);
         onInputChange?.(searchText);
     };
 
@@ -273,7 +277,8 @@ export const Search = ({
                         aria-label="clear-search"
                         style={{ margin: '1rem', marginLeft: 'auto', cursor: 'pointer', display: 'flex' }}
                         onClick={() => {
-                            isOnControl ? setPropsValue?.('') : setStateValue('');
+                            // isOnControl ? setPropsValue?.('') : setStateValue('');
+                            setValue('');
                             onClear?.();
                         }}
                         role="button"
