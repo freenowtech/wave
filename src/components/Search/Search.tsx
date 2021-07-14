@@ -220,8 +220,7 @@ export const Search = ({
     const handleChangeValue = e => {
         setShowResults(true);
         const searchText: string = e.target.value;
-        // isOnControl ? setPropsValue?.(searchText) : setStateValue(searchText);
-        setValue(searchText);
+        setValue?.(searchText);
         onInputChange?.(searchText);
     };
 
@@ -277,8 +276,7 @@ export const Search = ({
                         aria-label="clear-search"
                         style={{ margin: '1rem', marginLeft: 'auto', cursor: 'pointer', display: 'flex' }}
                         onClick={() => {
-                            // isOnControl ? setPropsValue?.('') : setStateValue('');
-                            setValue('');
+                            setValue?.('');
                             onClear?.();
                         }}
                         role="button"
