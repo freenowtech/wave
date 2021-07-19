@@ -15,7 +15,7 @@ interface PropsTableProps {
 }
 
 export const PropsTable: React.FC<PropsTableProps> = ({ props }) => (
-    <div style={{ overflow: 'scroll' }}>
+    <div>
         <Table rowStyle="lines" width="100%">
             <thead>
                 <TableRow>
