@@ -41,9 +41,9 @@ describe('Search', () => {
             const firstValue = 'first';
             const secondValue = 'second';
 
-            const { rerender } = render(<Search value={firstValue} setValue={() => {}} />);
+            const { rerender } = render(<Search value={firstValue} setValue={() => null} />);
             expect(screen.queryByDisplayValue(firstValue)).toBeInTheDocument();
-            rerender(<Search value={secondValue} setValue={() => {}} />);
+            rerender(<Search value={secondValue} setValue={() => null} />);
             expect(screen.queryByDisplayValue(secondValue)).toBeInTheDocument();
         });
     });
