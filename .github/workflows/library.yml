@@ -47,3 +47,17 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    merge-main:
+      if: github.ref == 'refs/heads/main'
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: Merge main -> next
+          uses: devmasx/merge-branch@v1.3.1
+          with:
+            type: now
+            target_branch: next
+            github_token: ${{ github.token }}

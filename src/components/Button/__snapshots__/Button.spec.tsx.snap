@@ -27,12 +27,12 @@ exports[`inverted button primary renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: #FFFFFF;
-  border-color: #FFFFFF;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #096BDB;
   fill: #096BDB;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
 .c0:disabled {
@@ -44,17 +44,17 @@ exports[`inverted button primary renders as design system suggests 1`] = `
 }
 
 .c0:hover {
-  background: #096BDB;
-  border-color: #096BDB;
   color: #FFFFFF;
   fill: #FFFFFF;
+  background: #096BDB;
+  border-color: #096BDB;
 }
 
 .c0:disabled {
-  background: #637689;
-  border-color: #637689;
   color: #9CA7B4;
   fill: #9CA7B4;
+  background: #637689;
+  border-color: #637689;
 }
 
 <button
@@ -91,12 +91,12 @@ exports[`inverted button secondary renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: transparent;
-  border-color: #FFFFFF;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #FFFFFF;
   fill: #FFFFFF;
+  background: transparent;
+  border-color: #FFFFFF;
 }
 
 .c0:disabled {
@@ -108,16 +108,17 @@ exports[`inverted button secondary renders as design system suggests 1`] = `
 }
 
 .c0:hover {
-  background: #FFFFFF;
   color: #001E3E;
   fill: #001E3E;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
 .c0:disabled {
-  background: transparent;
-  border-color: #637689;
   color: #637689;
   fill: #637689;
+  background: transparent;
+  border-color: #637689;
 }
 
 <button
@@ -154,12 +155,12 @@ exports[`standard button danger renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: #FF5E05;
-  border-color: #FF5E05;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #FFFFFF;
   fill: #FFFFFF;
+  background: #FF5E05;
+  border-color: #FF5E05;
 }
 
 .c0:disabled {
@@ -171,6 +172,8 @@ exports[`standard button danger renders as design system suggests 1`] = `
 }
 
 .c0:hover {
+  color: #FFFFFF;
+  fill: #FFFFFF;
   background: #BF4704;
   border-color: #BF4704;
 }
@@ -216,12 +219,12 @@ exports[`standard button primary renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: #001E3E;
-  border-color: #001E3E;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #FFFFFF;
   fill: #FFFFFF;
+  background: #001E3E;
+  border-color: #001E3E;
 }
 
 .c0:disabled {
@@ -233,6 +236,8 @@ exports[`standard button primary renders as design system suggests 1`] = `
 }
 
 .c0:hover {
+  color: #FFFFFF;
+  fill: #FFFFFF;
   background: #000F1F;
   border-color: #000F1F;
 }
@@ -278,12 +283,12 @@ exports[`standard button secondary renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: #FFFFFF;
-  border-color: #C6CDD4;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #001E3E;
   fill: #001E3E;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
 }
 
 .c0:disabled {
@@ -295,7 +300,10 @@ exports[`standard button secondary renders as design system suggests 1`] = `
 }
 
 .c0:hover {
+  color: #001E3E;
+  fill: #001E3E;
   background: #F1F2F4;
+  border-color: #C6CDD4;
 }
 
 .c0:disabled {

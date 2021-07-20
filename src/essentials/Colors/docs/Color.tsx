@@ -12,9 +12,9 @@ interface ColorProps {
 const ColorWrapper = styled.div<ColorProps>`
     box-sizing: border-box;
     display: inline-block;
-    padding: 1.5rem;
+    padding: 1.25rem;
     width: 100%;
-    height: 6.25rem;
+    height: 5.75rem;
     background-color: ${p => p.colorCode};
     transition: transform 75ms;
     border-width: 0.0625rem;
@@ -23,7 +23,7 @@ const ColorWrapper = styled.div<ColorProps>`
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.025);
     }
 `;
 
@@ -73,7 +73,7 @@ const Color: FC<ColorProps> = props => {
                     <Text as="p" inverted={props.invertedText} fontWeight="semibold" mb={1}>
                         {props.name}
                     </Text>
-                    <Text as="p" inverted={props.invertedText}>
+                    <Text as="p" inverted={props.invertedText} fontSize={1} style={{ fontFamily: 'monospace' }}>
                         {props.colorCode}
                     </Text>
                 </>

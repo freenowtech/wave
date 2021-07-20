@@ -73,3 +73,4 @@ export { default as PenIcon } from './PenIcon';
 export { default as EyeOpenIcon } from './EyeOpenIcon';
 export { default as EyeClosedIcon } from './EyeClosedIcon';
 export { default as MinusIcon } from './MinusIcon';
+export { default as CopyIcon } from './CopyIcon';
