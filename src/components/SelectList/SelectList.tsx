@@ -10,6 +10,7 @@ import {
     extractWidthProps,
     extractWrapperMarginProps
 } from '../../utils/extractProps';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
 import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
@@ -260,17 +261,21 @@ interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps
     inverted?: boolean;
     error?: boolean;
     label?: string;
+    inputId?: string;
 }
 
 const SelectList: FC<SelectListProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
-    const { components, isDisabled, variant, inverted, size, error, label } = restProps;
+    const { components, isDisabled, variant, inverted, size, error, label, inputId } = restProps;
+
+    const id = useGeneratedId(inputId);
 
     return (
         <Wrapper {...classNameProps} {...marginProps} {...widthProps}>
             <ReactSelect
+                inputId={id}
                 styles={customStyles}
                 components={{
                     DropdownIndicator,
@@ -282,7 +287,14 @@ const SelectList: FC<SelectListProps> = props => {
                 {...restProps}
             />
             {label && (
-                <Label isDisabled={isDisabled} variant={variant} inverted={inverted} size={size} error={error}>
+                <Label
+                    htmlFor={id}
+                    isDisabled={isDisabled}
+                    variant={variant}
+                    inverted={inverted}
+                    size={size}
+                    error={error}
+                >
                     {label}
                 </Label>
             )}
