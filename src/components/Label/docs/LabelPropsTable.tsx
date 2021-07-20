@@ -5,9 +5,14 @@ export const LabelPropsTable = () => {
     const props = [
         {
             name: 'variant',
-            type: '"info" | "success" | "danger"',
+            type: '"default" | "info" | "success" | "warning" | "danger"',
             description: 'Set the appropriate colors for the component',
-            defaultValue: '"info"'
+            defaultValue: '"default"'
+        },
+        {
+            name: 'filled',
+            type: 'boolean',
+            description: 'Adds additional emphasis or highlight critical status'
         }
     ];
     return <PropsTable props={props} />;

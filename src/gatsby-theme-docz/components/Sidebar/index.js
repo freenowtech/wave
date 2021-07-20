@@ -30,16 +30,15 @@ const BoxSidebar = styled.div`
     overflow: auto;
 
     @media screen and (min-width: 48rem) {
-        position: sticky;
-        top: 0;
+        padding-bottom: 1rem;
         z-index: 1;
         padding-right: 2.5rem;
         transform: translateY(0);
         opacity: 1;
         transition: none;
         will-change: none;
-        margin-top: 52px;
-        min-height: calc(100vh - 52px);
+        width: 19.5rem;
+        max-height: calc(100vh - 52px);
     }
 `;
 

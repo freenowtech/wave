@@ -27,8 +27,8 @@ exports[`inverted text button renders a white colored text as default 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: color 200ms;
-  transition: color 200ms;
+  -webkit-transition: color 200ms,fill 200ms;
+  transition: color 200ms,fill 200ms;
   color: #FFFFFF;
   fill: #FFFFFF;
 }
@@ -85,8 +85,8 @@ exports[`standard text button danger renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: color 200ms;
-  transition: color 200ms;
+  -webkit-transition: color 200ms,fill 200ms;
+  transition: color 200ms,fill 200ms;
   color: #FF5E05;
   fill: #FF5E05;
 }
@@ -143,8 +143,8 @@ exports[`standard text button renders a primary colored text as default 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: color 200ms;
-  transition: color 200ms;
+  -webkit-transition: color 200ms,fill 200ms;
+  transition: color 200ms,fill 200ms;
   color: #096BDB;
   fill: #096BDB;
 }
