@@ -46,5 +46,10 @@ export const getAttachmentFromPlacement = (
                 attachment: 'middle left',
                 targetAttachment: 'middle right'
             };
+        default:
+            return {
+                attachment: 'bottom center',
+                targetAttachment: 'top center'
+            };
     }
 };
