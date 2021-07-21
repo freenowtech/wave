@@ -7,16 +7,6 @@ route: /essentials/icons
 import { Playground } from 'docz';
 
 import { Colors, Headline } from '../..';
-import * as Icons from '..';
-import { Flag } from '../Flag';
-import * as BasicIcons from '../basic';
-import * as TripIcons from '../trip';
-import * as BatteryIcons from '../battery';
-import * as MobilityIcons from '../mobility';
-import * as OptionsIcons from '../options';
-import * as PaymentIcons from '../payment';
-import * as BrandIcons from '../brands';
-import * as ServiceTypeIcons from '../service-type';
 import { IconGrid, Item } from './IconGrid';
 import { FlagSelector } from './FlagSelector';
 import { LargeFlag } from './LargeFlag';
@@ -28,64 +18,48 @@ import RadiusSvg from './images/radius-detail.svg';
 import RadiusCrossedIconSvg from './images/radius-not-used.svg';
 import ColorSvg from './images/color-detail.svg';
 import BorderSvg from './images/border-detail.svg';
+import { SearchableIconGrid } from './SearchableIconGrid'
+import { IconPropsTable } from "./IconPropsTable";
+import * as Icons from '..';
+import { Flag } from "../..";
+
 
 # Icons
 
-### Basic
-<IconGrid entries={Object.entries(BasicIcons)} />
+## Usage
 
-### Trip
-<IconGrid entries={Object.entries(TripIcons)} />
+For each icon the library exposes a specific React component, which has the same name as the icon. They will render the
+connected SVG and allow you to change the size and (with some exceptions) color to suit your needs.
 
-### Battery/Fuel
-<IconGrid entries={Object.entries(BatteryIcons)} />
+```jsx
+<AlertIcon />
+```
 
-### Multimobility
-<IconGrid entries={Object.entries(MobilityIcons)} />
+## Properties
 
-### Options
-<IconGrid entries={Object.entries(OptionsIcons)} />
+<IconPropsTable />
 
-### Payment
-<IconGrid entries={Object.entries(PaymentIcons)} />
+## Examples
 
-### Brands
-<IconGrid entries={Object.entries(BrandIcons)} />
+To allow using all icons, they are imported with `import * as Icons from`, so you need to prefix every icon with `Icon.`
+so it can be rendered in the example area. This isn't necessary in your project, as you can import the icons explicitly.
 
-### Service Types
+<Playground>
+  <Icons.TrophyIcon />
+  <Icons.AlertIcon size="small" />
+  <Icons.FreeNowArrowIcon size="large" color={Colors.FREEDOM_RED_900} />
+</Playground>
 
-#### 28x28
-<IconGrid>
-    <Item name="TwoPeopleCircleIcon"><ServiceTypeIcons.TwoPeopleCircleIcon size="large" /></Item>
-    <Item name="BoltCircleIcon"><ServiceTypeIcons.BoltCircleIcon size="large" /></Item>
-    <Item name="LeafCircleIcon"><ServiceTypeIcons.LeafCircleIcon size="large" /></Item>
-    <Item name="WheelchairCircleIcon"><ServiceTypeIcons.WheelchairCircleIcon size="large" /></Item>
-    <Item name="LiteCircleIcon"><ServiceTypeIcons.LiteCircleIcon size="large" /></Item>
-</IconGrid>
+## Available Icons
 
-#### 24x24
-<IconGrid>
-    <Item name="TwoPeopleOutlineIcon"><ServiceTypeIcons.TwoPeopleOutlineIcon /></Item>
-    <Item name="BoltOutlineIcon"><ServiceTypeIcons.BoltOutlineIcon /></Item>
-    <Item name="LeafOutlineIcon"><ServiceTypeIcons.LeafOutlineIcon /></Item>
-    <Item name="WheelchairOutlineIcon"><ServiceTypeIcons.WheelchairOutlineIcon /></Item>
-    <Item name="LabelOutlineIcon"><ServiceTypeIcons.LabelOutlineIcon /></Item>
-    <Item name="TwoPeopleSolidIcon"><ServiceTypeIcons.TwoPeopleSolidIcon /></Item>
-    <Item name="BoltSolidIcon"><ServiceTypeIcons.BoltSolidIcon /></Item>
-    <Item name="LeafSolidIcon"><ServiceTypeIcons.LeafSolidIcon /></Item>
-    <Item name="WheelchairSolidIcon"><ServiceTypeIcons.WheelchairSolidIcon /></Item>
-    <Item name="LabelSolidIcon"><ServiceTypeIcons.LabelSolidIcon /></Item>
-</IconGrid>
+<SearchableIconGrid />
 
-### Inline icons
-#### 12x12
-<IconGrid>
-    <Item name="InfoCircleOutlineIcon"><BasicIcons.InfoCircleOutlineIcon size="small" /></Item>
-    <Item name="LabelSolidIcon"><ServiceTypeIcons.LabelSolidIcon size="small" color={Colors.POSITIVE_GREEN_900} /></Item>
-    <Item name="SurgeCircleSolidIcon"><TripIcons.SurgeCircleSolidIcon size="small" /></Item>
-</IconGrid>
+## Country Flags
 
-## Flags
+This library provides flags for almost every country of the world, identified by their two-character
+([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)) country code. The icon can be accessed by using the `<Flag />`
+component and the provided country code with the property `code`.
+
 <IconGrid>
     <Item name='code="EU"'><LargeFlag code="EU" /></Item>
     <Item name='code="DE"'><LargeFlag code="DE" /></Item>
@@ -97,11 +71,33 @@ import BorderSvg from './images/border-detail.svg';
     <Item name='code="RO"'><LargeFlag code="RO" /></Item>
     <Item name='code="IT"'><LargeFlag code="IT" /></Item>
     <Item name='code="SE"'><LargeFlag code="SE" /></Item>
+    <Item name='code="US"'><LargeFlag code="US" /></Item>
 </IconGrid>
+
+```jsx
+<Flag code="US" />
+```
 
 It is also possible to preview all flags included in this library with the selector below.
 
 <FlagSelector />
+
+### Special Flags
+
+There are a few additional, special flags included in this library, that do not represent a single country. You can
+find them below.
+
+<IconGrid>
+  <Item name='code="EU"'><LargeFlag code="EU" /></Item>
+  <Item name='code="WW"'><LargeFlag code="WW" /></Item>
+  <Item name='code="CAF"'><LargeFlag code="CAF" /></Item>
+  <Item name='code="CAS"'><LargeFlag code="CAS" /></Item>
+  <Item name='code="CEU"'><LargeFlag code="CEU" /></Item>
+  <Item name='code="CNA"'><LargeFlag code="CNA" /></Item>
+  <Item name='code="CSA"'><LargeFlag code="CSA" /></Item>
+  <Item name='code="COC"'><LargeFlag code="COC" /></Item>
+</IconGrid>
+
 
 
 ## Design Documentation

@@ -139,12 +139,12 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: #FFFFFF;
-  border-color: #C6CDD4;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #001E3E;
   fill: #001E3E;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
   font-size: 0.875rem;
   line-height: 1;
   font-weight: 400;
@@ -163,7 +163,10 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
 }
 
 .c10:hover {
+  color: #001E3E;
+  fill: #001E3E;
   background: #F1F2F4;
+  border-color: #C6CDD4;
 }
 
 .c10:disabled {
@@ -388,12 +391,12 @@ exports[`renders a composition with an input type file 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: background ease 216ms,border-color ease 216ms;
-  transition: background ease 216ms,border-color ease 216ms;
-  background: #FFFFFF;
-  border-color: #C6CDD4;
+  -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
+  transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #001E3E;
   fill: #001E3E;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
   font-size: 0.875rem;
   line-height: 1;
   font-weight: 400;
@@ -412,7 +415,10 @@ exports[`renders a composition with an input type file 1`] = `
 }
 
 .c9:hover {
+  color: #001E3E;
+  fill: #001E3E;
   background: #F1F2F4;
+  border-color: #C6CDD4;
 }
 
 .c9:disabled {
