@@ -25,13 +25,13 @@ const sizeVariant = variant({
     prop: 'size',
     variants: {
         small: {
-            fontSize: theme.fontSizes[1],
+            fontSize: get('fontSizes.1'),
             height: '2rem',
             minWidth: '5rem',
             padding: '0 0.75rem'
         },
         medium: {
-            fontSize: theme.fontSizes[2],
+            fontSize: get('fontSizes.2'),
             height: '3rem',
             minWidth: '6.25rem',
             padding: '0 1rem'

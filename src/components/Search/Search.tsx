@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Input } from '../Input/Input';
 import { MagnifyingGlassIcon, CloseIcon } from '../../icons/index';
 import { Colors, Elevation } from '../../essentials';
+import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box } from '../Box/Box';
 
 const ActiveStyle = `
@@ -67,9 +68,21 @@ const StyledInput = styled(Input)`
 export interface SearchProps {
     results?: React.ReactNode[];
     /**
-     * Sets the default value
+     * Sets the value
      */
     value?: string;
+    /**
+     * Function to set the value
+     */
+    setValue?: (value: string) => void;
+    /**
+     * show results dropdown
+     */
+    showResults?: boolean;
+    /**
+     * Function to show and hide the dropdown
+     */
+    setShowResults?: (value: boolean) => void;
     /**
      * Sets the width of the search box
      */
@@ -120,7 +133,10 @@ const prefix = 'result-item';
 
 export const Search = ({
     results = [],
-    value: valueProp,
+    value: propsValue,
+    setValue: setPropsValue,
+    showResults: propsShowResults,
+    setShowResults: setPropsShowResults,
     width,
     placeholder = 'Search...',
     disabled,
@@ -135,11 +151,11 @@ export const Search = ({
 
     const [isInFocus, setIsInFocus] = React.useState<boolean>(false);
 
-    const [value, setValue] = React.useState<string>(valueProp || '');
-
     const [activeIndex, setActiveIndex] = React.useState<number>(0);
 
-    const [showResults, setShowResults] = React.useState<boolean>(false);
+    const [value, setValue] = useControlledState<string>([propsValue, setPropsValue], '');
+
+    const [showResults, setShowResults] = useControlledState<boolean>([propsShowResults, setPropsShowResults], false);
 
     // this is to keep track of keypresses (up, down, enter, escape)
     React.useEffect(() => {
@@ -183,7 +199,7 @@ export const Search = ({
         return () => {
             document.removeEventListener('keydown', emitKeyEvent);
         };
-    }, [isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, results]);
+    }, [isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, propsValue, results]);
 
     // this is to keep track of clicks outside the component (useful to close the search results)
     React.useEffect(() => {
@@ -200,6 +216,13 @@ export const Search = ({
             document.removeEventListener('click', emitIfClickingOutsideSearch);
         };
     }, [showResults, setShowResults, disabled]);
+
+    const handleChangeValue = e => {
+        setShowResults(true);
+        const searchText: string = e.target.value;
+        setValue?.(searchText);
+        onInputChange?.(searchText);
+    };
 
     return (
         // this is a div to make attaching the ref a walk in the park :)
@@ -243,12 +266,7 @@ export const Search = ({
                     aria-label={placeholder}
                     placeholder={placeholder}
                     value={value}
-                    onChange={e => {
-                        setShowResults(true);
-                        const searchText: string = e.target.value;
-                        setValue(searchText);
-                        onInputChange?.(searchText);
-                    }}
+                    onChange={handleChangeValue}
                     onFocus={() => setIsInFocus(true)}
                     onBlur={() => setIsInFocus(false)}
                 />
@@ -258,7 +276,7 @@ export const Search = ({
                         aria-label="clear-search"
                         style={{ margin: '1rem', marginLeft: 'auto', cursor: 'pointer', display: 'flex' }}
                         onClick={() => {
-                            setValue('');
+                            setValue?.('');
                             onClear?.();
                         }}
                         role="button"

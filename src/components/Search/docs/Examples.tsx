@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
@@ -14,21 +13,26 @@ export const TextExample = () => {
             height="2.5rem"
             display="flex"
             alignItems="center"
-            onClick={() => alert(`${name} was clicked!`)}
+            onClick={() => {
+                alert(`${name} was clicked!`);
+                setValue(name);
+                setShowResults(false);
+            }}
         >
             <Text marginLeft="1rem">{name}</Text>
         </Box>
     );
-    const names = namesArray.map(mapName);
-    const [results, setResults] = useState(names);
+    const [value, setValue] = useState<string>('');
+    const [showResults, setShowResults] = useState<boolean>(false);
+    const results = namesArray.filter(name => name.toLowerCase().includes(value.toLowerCase())).map(mapName);
     return (
         <Search
+            value={value}
+            setValue={setValue}
             width="20rem"
             results={results}
-            onInputChange={val =>
-                setResults(namesArray.filter(name => name.toLowerCase().includes(val.toLowerCase())).map(mapName))
-            }
-            onClear={() => setResults(namesArray.map(mapName))}
+            showResults={showResults}
+            setShowResults={setShowResults}
         />
     );
 };
