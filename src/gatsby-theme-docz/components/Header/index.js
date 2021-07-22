@@ -46,6 +46,22 @@ const SkipLink = styled.a`
     }
 `;
 
+const GithubLink = styled.a`
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
+const MenuRightSection = styled.div`
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+`;
+
 export const Header = ({ onOpen: onMenuOpen }) => {
     return (
         <>
@@ -61,6 +77,11 @@ export const Header = ({ onOpen: onMenuOpen }) => {
                 </LogoLink>
                 <SkipLink href="#main">Skip to content</SkipLink>
                 <MenuButton onClick={onMenuOpen} />
+                <MenuRightSection>
+                    <GithubLink target="_blank" href="https://github.com/freenowtech/wave">
+                        GitHub
+                    </GithubLink>
+                </MenuRightSection>
             </HeaderWrapper>
         </>
     );
