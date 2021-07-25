@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Colors } from '../../essentials';
 
-const determineBackground = props => {
+const determineBackground = (props: SlideProps) => {
     if (props.disabled) {
         return Colors.AUTHENTIC_BLUE_50;
     }

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Box } from '../../Box/Box';
 import { FilePicker } from '../FilePicker';
 import { HelperText } from '../../HelperText/HelperText';
 
-const ControlledErrorFilePicker = () => {
+const ControlledErrorFilePicker: FC = () => {
     const [error, setError] = useState(false);
     const onError = file => {
+        // eslint-disable-next-line no-console
         console.log('onError', file);
         setError(!!file);
     };
@@ -18,14 +19,18 @@ const ControlledErrorFilePicker = () => {
                 label="A picture of you"
                 name="avatar"
                 error={error}
-                onChange={e => console.log('onChange', e)}
+                onChange={e => {
+                    // eslint-disable-next-line no-console
+                    console.log('onChange', e);
+                }}
                 onFileChange={(eventFile, e) => {
+                    // eslint-disable-next-line no-console
                     console.log('onFileChange', eventFile, e);
                     try {
                         if (eventFile.size > 0) {
                             throw new Error('Oops! I need a file with no size');
                         }
-                    } catch (error) {
+                    } catch {
                         onError(eventFile);
                     }
                 }}

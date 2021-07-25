@@ -196,17 +196,15 @@ const customStyles: StylesConfig = {
 
         return styles;
     },
-    multiValueLabel: (provided, { selectProps }) => {
-        return {
-            ...provided,
-            cursor: 'default',
-            color: 'inherit',
-            padding: '0.1875rem',
-            paddingLeft: '0.5rem',
-            fontWeight: get('fontWeights.semibold')(selectProps),
-            fontSize: '0.625rem'
-        };
-    },
+    multiValueLabel: (provided, { selectProps }) => ({
+        ...provided,
+        cursor: 'default',
+        color: 'inherit',
+        padding: '0.1875rem',
+        paddingLeft: '0.5rem',
+        fontWeight: get('fontWeights.semibold')(selectProps),
+        fontSize: '0.625rem'
+    }),
     multiValueRemove: provided => ({
         ...provided,
         cursor: 'pointer',
@@ -222,38 +220,30 @@ const customStyles: StylesConfig = {
 
 const getIconSize = sizeAsString => (sizeAsString === 'medium' ? 24 : 18);
 
-const DropdownIndicator = (props: IndicatorProps<any> & { selectProps: Props }) => {
-    return (
-        <ReactSelectComponents.DropdownIndicator {...props}>
-            {props.selectProps.menuIsOpen ? (
-                <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
-            ) : (
-                <ChevronDownIcon data-testid="open-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
-            )}
-        </ReactSelectComponents.DropdownIndicator>
-    );
-};
+const DropdownIndicator = (props: IndicatorProps<any> & { selectProps: Props }) => (
+    <ReactSelectComponents.DropdownIndicator {...props}>
+        {props.selectProps.menuIsOpen ? (
+            <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+        ) : (
+            <ChevronDownIcon data-testid="open-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+        )}
+    </ReactSelectComponents.DropdownIndicator>
+);
 
-const ClearIndicator = (props: IndicatorProps<any>) => {
-    return (
-        <ReactSelectComponents.ClearIndicator {...props}>
-            <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
-        </ReactSelectComponents.ClearIndicator>
-    );
-};
+const ClearIndicator = (props: IndicatorProps<any>) => (
+    <ReactSelectComponents.ClearIndicator {...props}>
+        <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
+    </ReactSelectComponents.ClearIndicator>
+);
 
 // Remove Separator component
-const IndicatorSeparator = () => {
-    return null;
-};
+const IndicatorSeparator = () => undefined;
 
-const MultiValueRemove = props => {
-    return (
-        <ReactSelectComponents.MultiValueRemove {...props}>
-            <CloseIcon size={14} color="inherit" />
-        </ReactSelectComponents.MultiValueRemove>
-    );
-};
+const MultiValueRemove = props => (
+    <ReactSelectComponents.MultiValueRemove {...props}>
+        <CloseIcon size={14} color="inherit" />
+    </ReactSelectComponents.MultiValueRemove>
+);
 
 interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps {
     variant?: Variant;
@@ -264,7 +254,7 @@ interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps
     inputId?: string;
 }
 
-const SelectList: FC<SelectListProps> = props => {
+const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);

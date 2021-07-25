@@ -1,10 +1,10 @@
-import React, { RefObject } from 'react';
+import React, { FC, RefObject } from 'react';
 import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 
 import { Colors, MediaQueries } from '../../essentials';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
-import Month from './Month';
+import { Month } from './Month';
 import { DatepickerContext } from './DatepickerContext';
 import { GlobalDatepickerStyle } from './GlobalDatepickerStyle';
 
@@ -66,7 +66,12 @@ interface BaseDatepickerProps extends UseDatepickerProps {
     locale: Locale;
 }
 
-export const BaseDatepicker = ({ forwardedRef, focusedInput, locale, ...datepickerProps }: BaseDatepickerProps) => {
+export const BaseDatepicker: FC<BaseDatepickerProps> = ({
+    forwardedRef,
+    focusedInput,
+    locale,
+    ...datepickerProps
+}: BaseDatepickerProps) => {
     const {
         firstDayOfWeek,
         activeMonths,

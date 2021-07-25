@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Button, Label, Select } from '../..';
 import { Colors } from '../../../essentials';
 import { EnvelopeIcon, PhoneIcon } from '../../../icons/basic';
 import { Text } from '../../Text/Text';
 
-export const LiveTable = () => {
+export const LiveTable: FC = () => {
     const [rowStyle, setRowStyle] = useState<'zebra' | 'lines' | 'blank'>('zebra');
     const [columnSpace, setColumnSpace] = useState('normal');
     const [rowSize, setRowSize] = useState('normal');
 
     const generatedTableCode = `<Table rowStyle="${rowStyle}"${
-        columnSpace != 'normal' ? ` columnSpace="${columnSpace}"` : ''
-    }${rowSize != 'normal' ? ` rowSize="${rowSize}"` : ''} />`;
+        columnSpace !== 'normal' ? ` columnSpace="${columnSpace}"` : ''
+    }${rowSize !== 'normal' ? ` rowSize="${rowSize}"` : ''} />`;
 
     return (
         <>
-            <Select label="rowStyle" width="10rem" onChange={e => setRowStyle(e.target.value)} value={rowStyle} mr={1}>
+            <Select
+                label="rowStyle"
+                width="10rem"
+                onChange={e => setRowStyle(e.target.value as 'zebra' | 'lines' | 'blank')}
+                value={rowStyle}
+                mr={1}
+            >
                 <option value="zebra">zebra</option>
                 <option value="lines">lines</option>
                 <option value="blank">blank</option>

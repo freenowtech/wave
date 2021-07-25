@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import * as React from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const InlineSpinnerPropsTable = () => {
+export const InlineSpinnerPropsTable: FC = () => {
     const props = [
         {
             name: 'size',

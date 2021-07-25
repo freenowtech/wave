@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button, Headline, Text, TextButton } from '../..';
 import { Offcanvas } from '../Offcanvas';
 
@@ -25,7 +25,7 @@ enum OffcanvasType {
     NON_DISMISSIBLE
 }
 
-const OffcanvasCreator = () => {
+const OffcanvasCreator: FC = () => {
     const [offcanvas, setOffcanvas] = useState(OffcanvasType.NONE);
 
     const openOffcanvas = (type: OffcanvasType) => () => {
@@ -54,27 +54,27 @@ const OffcanvasCreator = () => {
                 Non-Dismissible Offcanvas
             </Button>
 
-            {offcanvas == OffcanvasType.DEFAULT && (
+            {offcanvas === OffcanvasType.DEFAULT && (
                 <Offcanvas side="left" onClose={hideOffcanvas}>
                     {offcanvasContent}
                 </Offcanvas>
             )}
-            {offcanvas == OffcanvasType.RIGHT && (
+            {offcanvas === OffcanvasType.RIGHT && (
                 <Offcanvas side="right" onClose={hideOffcanvas}>
                     {offcanvasContent}
                 </Offcanvas>
             )}
-            {offcanvas == OffcanvasType.TOP && (
+            {offcanvas === OffcanvasType.TOP && (
                 <Offcanvas side="top" onClose={hideOffcanvas}>
                     {offcanvasContent}
                 </Offcanvas>
             )}
-            {offcanvas == OffcanvasType.BOTTOM && (
+            {offcanvas === OffcanvasType.BOTTOM && (
                 <Offcanvas side="bottom" onClose={hideOffcanvas}>
                     {offcanvasContent}
                 </Offcanvas>
             )}
-            {offcanvas == OffcanvasType.NON_DISMISSIBLE && (
+            {offcanvas === OffcanvasType.NON_DISMISSIBLE && (
                 <Offcanvas onClose={hideOffcanvas} dismissible={false}>
                     {offcanvasContent}
                 </Offcanvas>

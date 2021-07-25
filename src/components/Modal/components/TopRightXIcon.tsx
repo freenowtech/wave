@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Elevation, Spaces } from '../../../essentials';
 import { CloseIcon } from '../../../icons';

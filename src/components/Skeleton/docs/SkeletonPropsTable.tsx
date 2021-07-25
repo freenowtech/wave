@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import * as React from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const SkeletonPropsTable = () => {
+export const SkeletonPropsTable: FC = () => {
     const props = [
         {
             name: 'animated',

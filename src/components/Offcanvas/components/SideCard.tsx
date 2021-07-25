@@ -86,16 +86,15 @@ const StyledCard = styled(Card)<{ side?: string }>`
     }
 `;
 
-const SideCard: React.FC<CardProps & { visible: boolean; side: string }> = ({
-    visible,
-    width = '28.375rem',
-    ...rest
-}) => {
-    return (
-        <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-            <StyledCard {...rest} width={width} level={300} />
-        </CSSTransition>
-    );
-};
+interface SideCardProps extends CardProps {
+    visible: boolean;
+    side: string;
+}
+
+const SideCard: React.FC<SideCardProps> = ({ visible, width = '28.375rem', ...rest }: SideCardProps) => (
+    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        <StyledCard {...rest} width={width} level={300} />
+    </CSSTransition>
+);
 
 export { SideCard, ANIMATION_DURATION };

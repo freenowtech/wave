@@ -5,7 +5,10 @@ import { advanceTo, clear } from 'jest-date-mock';
 import * as React from 'react';
 import { DatepickerRangeInput, DatepickerRangeInputProps, DateRange } from './DatepickerRangeInput';
 
-const ControlledRangeInput: React.FC<DatepickerRangeInputProps> = ({ onChange, ...rest }) => {
+const ControlledRangeInput: React.FC<DatepickerRangeInputProps> = ({
+    onChange,
+    ...rest
+}: DatepickerRangeInputProps) => {
     const [range, setRange] = React.useState<DateRange>();
 
     return (
@@ -43,12 +46,12 @@ describe('DatepickerRangeInput', () => {
             // Open datepicker
             userEvent.click(getByTestId('start-date-input'));
 
-            // Сlick outside
+            // Click outside
             fireEvent.blur(getByTestId('start-date-input'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });
-        it('exactly once after non initial date selection', async () => {
+        it('exactly once after non initial date selection', () => {
             const mockCloseHandler = jest.fn();
             const { getByTestId, getAllByText } = render(<ControlledRangeInput onClose={mockCloseHandler} />);
             const selectDate = day => {
@@ -99,7 +102,7 @@ describe('DatepickerRangeInput', () => {
         );
     });
 
-    it('calls onChange function after update input value', async () => {
+    it('calls onChange function after update input value', () => {
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<ControlledRangeInput onChange={mockChangeHandler} />);
         const startInput = getByTestId('start-date-input');
@@ -118,8 +121,8 @@ describe('DatepickerRangeInput', () => {
         const formattedDateEnd = format(intendedRange.end, 'dd/MM/yyyy');
 
         // Simulate an input change
-        await userEvent.type(startInput, formattedDateStart);
-        await userEvent.type(endInput, formattedDateEnd);
+        userEvent.type(startInput, formattedDateStart);
+        userEvent.type(endInput, formattedDateEnd);
 
         expect(mockChangeHandler).toHaveBeenCalledTimes(2);
         expect(mockChangeHandler).toHaveBeenNthCalledWith(2, {
@@ -128,7 +131,7 @@ describe('DatepickerRangeInput', () => {
         });
     });
 
-    it('allows to set a range with a single day', async () => {
+    it('allows to set a range with a single day', () => {
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<ControlledRangeInput onChange={mockChangeHandler} />);
         const startInput = getByTestId('start-date-input');
@@ -147,8 +150,8 @@ describe('DatepickerRangeInput', () => {
         const formattedDateEnd = format(intendedRange.end, 'dd/MM/yyyy');
 
         // Simulate an input change
-        await userEvent.type(startInput, formattedDateStart);
-        await userEvent.type(endInput, formattedDateEnd);
+        userEvent.type(startInput, formattedDateStart);
+        userEvent.type(endInput, formattedDateEnd);
 
         expect(mockChangeHandler).toHaveBeenCalledTimes(2);
         expect(mockChangeHandler).toHaveBeenNthCalledWith(2, {
@@ -157,7 +160,7 @@ describe('DatepickerRangeInput', () => {
         });
     });
 
-    it('renders an error feedback if gets filled with invalid value', async () => {
+    it('renders an error feedback if gets filled with invalid value', () => {
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<ControlledRangeInput onChange={mockChangeHandler} />);
         const startInput = getByTestId('start-date-input');
@@ -176,8 +179,8 @@ describe('DatepickerRangeInput', () => {
         const formattedDateEnd = format(intendedRange.end, 'dd/MM/yyyy');
 
         // Simulate an input change
-        await userEvent.type(startInput, formattedDateStart);
-        await userEvent.type(endInput, formattedDateEnd);
+        userEvent.type(startInput, formattedDateStart);
+        userEvent.type(endInput, formattedDateEnd);
 
         expect(startInput).toHaveAttribute('data-error', 'false');
         expect(endInput).toHaveAttribute('data-error', 'true');
@@ -185,7 +188,7 @@ describe('DatepickerRangeInput', () => {
         expect(mockChangeHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('on error calls errorHandler as a fn if a callback is provided', async () => {
+    it('on error calls errorHandler as a fn if a callback is provided', () => {
         const mockChangeHandler = jest.fn();
         const mockErrorTextHandler = jest.fn();
         const { getByTestId } = render(
@@ -207,8 +210,8 @@ describe('DatepickerRangeInput', () => {
         const formattedDateEnd = format(intendedRange.end, 'dd/MM/yyyy');
 
         // Simulate an input change
-        await userEvent.type(startInput, formattedDateStart);
-        await userEvent.type(endInput, formattedDateEnd);
+        userEvent.type(startInput, formattedDateStart);
+        userEvent.type(endInput, formattedDateEnd);
 
         // Error is explicitly called after blur the input so we avoid calls while user type
         fireEvent.blur(startInput);
@@ -216,7 +219,7 @@ describe('DatepickerRangeInput', () => {
         expect(mockErrorTextHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('closes the calendar of the first datepicker and opens the calendar of the second', async () => {
+    it('closes the calendar of the first datepicker and opens the calendar of the second', () => {
         const { getAllByTestId, getAllByText } = render(
             <>
                 <DatepickerRangeInput />

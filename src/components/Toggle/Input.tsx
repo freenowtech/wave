@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Colors } from '../../essentials';
 import { Slide } from './Slide';
 
 interface InputProps {
@@ -12,11 +11,11 @@ const Input = styled.input<InputProps>`
     width: 0;
     visibility: hidden;
 
-    &:checked + ${/*sc-selector*/ Slide}::before {
+    &:checked + ${/* sc-selector */ Slide}::before {
         transform: translateX(calc(100% - 0.25rem));
     }
 
-    &:checked + ${/*sc-selector*/ Slide}::after {
+    &:checked + ${/* sc-selector */ Slide}::after {
         width: 2.25rem;
     }
 `;

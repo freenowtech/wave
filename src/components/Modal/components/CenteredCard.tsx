@@ -68,16 +68,15 @@ const StyledCard = styled(Card)<{ fullscreen?: boolean }>`
     }
 `;
 
-const CenteredCard: React.FC<CardProps & { visible: boolean; fullscreen?: boolean }> = ({
-    visible,
-    width = '37.5rem',
-    ...rest
-}) => {
-    return (
-        <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-            <StyledCard {...rest} width={width} level={rest.fullscreen ? 0 : 300} />
-        </CSSTransition>
-    );
-};
+interface CenteredCardProps extends CardProps {
+    visible: boolean;
+    fullscreen?: boolean;
+}
+
+const CenteredCard: React.FC<CenteredCardProps> = ({ visible, width = '37.5rem', ...rest }: CenteredCardProps) => (
+    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        <StyledCard {...rest} width={width} level={rest.fullscreen ? 0 : 300} />
+    </CSSTransition>
+);
 
 export { CenteredCard, ANIMATION_DURATION };

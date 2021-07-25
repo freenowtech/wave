@@ -91,9 +91,9 @@ describe('Input', () => {
 
     it('allows to be tested using accessible queries', () => {
         const spySubmit = jest.fn();
-        const onSubmit = e => {
-            e.preventDefault();
-            const formData = new FormData(e.currentTarget);
+        const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
             spySubmit({ username: formData.get('username-name'), password: formData.get('password-name') });
         };
 

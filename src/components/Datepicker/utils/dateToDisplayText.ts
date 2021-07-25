@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 
-const dateToDisplayText = (locale: Locale, displayFormat: string, value?: Date) => {
+const dateToDisplayText = (locale: Locale, displayFormat: string, value?: Date): string => {
     if (!value) {
         return '';
     }

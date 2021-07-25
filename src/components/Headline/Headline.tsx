@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled, { css } from 'styled-components';
 import { compose, margin, MarginProps, textAlign, TextAlignProps } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -6,7 +7,7 @@ import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
 interface HeadlineProps
-    extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>,
+    extends ComponentPropsWithoutRef<'h1'>,
         MarginProps,
         TextAlignProps {
     /**
@@ -38,7 +39,7 @@ function determineFontSize(props: HeadlineProps) {
         line-height: 3.75rem;
     `;
 
-    const size = props.size ?? DEFAULT_HEADLINE_SIZE[props.as];
+    const size = props.size ?? DEFAULT_HEADLINE_SIZE[ props.as ];
     switch (size) {
         case 'xxl':
             return h1Styles;

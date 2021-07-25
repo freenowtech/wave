@@ -1,13 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
+import { InputProps } from './InputProps';
 
-const activeBottomLinedPosition = size => css`
+const activeBottomLinedPosition = (size: Pick<InputProps, 'size'>): FlattenSimpleInterpolation => css`
     ${activePositionBaseStyles};
-    top: ${size == 'small' ? '0' : '0.25rem'};
-    font-size: ${size == 'small' ? '0.625rem' : get('fontSizes.0')};
+    top: ${size === 'small' ? '0' : '0.25rem'};
+    font-size: ${size === 'small' ? '0.625rem' : get('fontSizes.0')};
 `;
 
 const sizeVariant = variant({

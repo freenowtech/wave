@@ -1,14 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { InternalInputComponentProps } from './BaseInput';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
 
-const activeBoxedPosition = size => css`
+const activeBoxedPosition = (size: Pick<InternalInputComponentProps, 'size'>): FlattenSimpleInterpolation => css`
     ${activePositionBaseStyles};
 
-    top: ${size == 'small' ? '-0.375rem' : '-0.5rem'};
-    font-size: ${size == 'small' ? '0.625rem' : get('fontSizes.0')};
+    top: ${size === 'small' ? '-0.375rem' : '-0.5rem'};
+    font-size: ${size === 'small' ? '0.625rem' : get('fontSizes.0')};
 `;
 
 const sizeVariant = variant({

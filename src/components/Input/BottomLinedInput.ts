@@ -49,7 +49,7 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
     }
 
-    ${p => (p.error ? errorStyles : null)}
+    ${p => (p.error ? errorStyles : undefined)}
 
     &:disabled {
         & ~ ${BottomLinedInputLabel} {

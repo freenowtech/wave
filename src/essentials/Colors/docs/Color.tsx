@@ -19,7 +19,7 @@ const ColorWrapper = styled.div<ColorProps>`
     transition: transform 75ms;
     border-width: 0.0625rem;
     border-style: solid;
-    border-color: ${p => (p.colorCode == '#FFFFFF' ? Colors.AUTHENTIC_BLUE_200 : p.colorCode)};
+    border-color: ${p => (p.colorCode === '#FFFFFF' ? Colors.AUTHENTIC_BLUE_200 : p.colorCode)};
     cursor: pointer;
 
     &:hover {
@@ -30,14 +30,14 @@ const ColorWrapper = styled.div<ColorProps>`
 function fallbackCopyTextToClipboard(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-    document.body.appendChild(textArea);
+    document.body.append(textArea);
     textArea.focus();
     textArea.select();
 
     try {
         document.execCommand('copy');
     } finally {
-        document.body.removeChild(textArea);
+        textArea.remove();
     }
 }
 
@@ -47,10 +47,11 @@ function copyTextToClipboard(text) {
         return;
     }
 
-    navigator.clipboard.writeText(text);
+    // eslint-disable-next-line no-void
+    void navigator.clipboard.writeText(text);
 }
 
-const Color: FC<ColorProps> = props => {
+const Color: FC<ColorProps> = (props: ColorProps) => {
     const [hasCopied, setHasCopied] = useState(false);
 
     const handleClick = () => {
@@ -64,7 +65,7 @@ const Color: FC<ColorProps> = props => {
 
     return (
         <ColorWrapper {...props} onClick={handleClick}>
-            {hasCopied == true ? (
+            {hasCopied === true ? (
                 <Text as="p" inverted={props.invertedText} fontWeight="semibold">
                     Copied!
                 </Text>

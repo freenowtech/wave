@@ -1,17 +1,17 @@
-import React, { useRef, useState, DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Colors, MediaQueries } from '../../essentials';
-import { Button } from '../Button/Button';
-import { Box } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
 import { MarginProps } from 'styled-system';
+import { Colors, MediaQueries } from '../../essentials';
 import { CheckCircleOutlineIcon, ShareIcon } from '../../icons';
-import { shrinkFileName } from './utils/format';
 import { get } from '../../utils/themeGet';
+import { Box, BoxProps } from '../Box/Box';
+import { Button } from '../Button/Button';
+import { Text } from '../Text/Text';
+import { shrinkFileName } from './utils/format';
 
 interface FilePickerProps
     extends MarginProps,
-        DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+        ComponentPropsWithoutRef<'input'> {
     /**
      * Sets the name property of input element in the DOM.
      * https://developer.mozilla.org/en-US/docs/Web/API/Element/name
@@ -47,10 +47,27 @@ interface FilePickerProps
     onFileChange?: (file: File, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+const InputButton = styled(Button)`
+    font-size: ${get('fontSizes.1')};
+    line-height: 1;
+    font-weight: 400;
+    height: auto;
+    min-width: auto;
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+`;
+
 const ICON_FILE_FEEDBACK_COLOR = Colors.POSITIVE_GREEN_900;
 
+interface OutlinerProps extends BoxProps {
+    disabled: boolean;
+    error: boolean;
+    hasValidFile: boolean;
+    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+
 // NOTE: we want to affect the color of only one icon SVG and not the ICON_FILE_FEEDBACK_COLOR
-const Outliner = styled(Box)`
+const Outliner = styled(Box)<OutlinerProps>`
     border: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_200};
     box-sizing: border-box;
     cursor: pointer;
@@ -62,36 +79,37 @@ const Outliner = styled(Box)`
     }
 
     ${({ disabled }) =>
-        disabled &&
-        css`
-            opacity: 0.5;
+            disabled &&
+            css`
+                opacity: 0.5;
 
-            &,
-            ${InputButton}, ${Text} {
-                cursor: not-allowed;
-            }
-        `}
+                &,
+                ${InputButton}, ${Text} {
+                    cursor: not-allowed;
+                }
+            `}
 
     ${({ error }) =>
-        error &&
-        css`
-            box-shadow: inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900};
-            border-color: ${Colors.NEGATIVE_ORANGE_900};
-        `}
+            error &&
+            css`
+                box-shadow: inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900};
+                border-color: ${Colors.NEGATIVE_ORANGE_900};
+            `}
 
     ${({ hasValidFile }) =>
-        hasValidFile &&
-        css`
-            ${MediaQueries.medium} {
-                &:hover {
-                    background-color: ${Colors.ACTION_BLUE_50};
-                    border-color: ${Colors.ACTION_BLUE_50};
-                    svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
-                        fill: ${Colors.ACTION_BLUE_900};
+            hasValidFile &&
+            css`
+                ${MediaQueries.medium} {
+                    &:hover {
+                        background-color: ${Colors.ACTION_BLUE_50};
+                        border-color: ${Colors.ACTION_BLUE_50};
+
+                        svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
+                            fill: ${Colors.ACTION_BLUE_900};
+                        }
                     }
                 }
-            }
-        `}
+            `}
 `;
 
 const Input = styled.input`
@@ -109,32 +127,22 @@ const Input = styled.input`
     }
 `;
 
-const InputButton = styled(Button)`
-    font-size: ${get('fontSizes.1')};
-    line-height: 1;
-    font-weight: 400;
-    height: auto;
-    min-width: auto;
-    padding: 0.5rem 0.75rem;
-    white-space: nowrap;
-`;
-
-const FilePicker = ({
-    name,
-    accept = '*',
-    capture,
-    label,
-    buttonText,
-    error = false,
-    onFileChange = () => null,
-    onChange = () => null,
-    disabled = false,
-    ...nonInputProps
-}: FilePickerProps) => {
+const FilePicker: FC<FilePickerProps> = ({
+                                             name,
+                                             accept = '*',
+                                             capture,
+                                             label,
+                                             buttonText,
+                                             error = false,
+                                             onFileChange = () => undefined,
+                                             onChange = () => undefined,
+                                             disabled = false,
+                                             ...nonInputProps
+                                         }: FilePickerProps) => {
     const inputEl = useRef<HTMLInputElement>(null);
-    const [file, setFile] = useState<File | null>();
+    const [ file, setFile ] = useState<File | null>();
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const eventFile = e.target.files?.[0];
+        const eventFile = e.target.files?.[ 0 ];
 
         onChange(e);
         onFileChange(eventFile, e);

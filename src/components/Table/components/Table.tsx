@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, TableHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import styled from 'styled-components';
 import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../../essentials/theme';
@@ -11,7 +11,7 @@ interface TableProps
     extends MarginProps,
         HeightProps,
         WidthProps,
-        Omit<DetailedHTMLProps<TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>, 'ref'> {
+        ComponentPropsWithoutRef<'table'> {
     rowStyle: 'lines' | 'zebra' | 'blank';
     rowSize?: 'large' | 'normal' | 'small' | string;
     columnSpace?: 'normal' | 'small' | string;
@@ -31,7 +31,13 @@ const TableElement = styled.table.attrs({ theme })`
     ${compose(margin, width, height)}
 `;
 
-const Table: FC<TableProps> = ({ children, rowStyle, rowSize = 'normal', columnSpace = 'normal', ...props }) => {
+const Table: FC<TableProps> = ({
+                                   children,
+                                   rowStyle,
+                                   rowSize = 'normal',
+                                   columnSpace = 'normal',
+                                   ...props
+                               }: TableProps) => {
     const context = {
         columnSpace: getColumnSpace(columnSpace),
         rowSize: getRowSize(rowSize),

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Input } from '../Input';
 
-const ControlledInput = props => {
+const ControlledInput: FC = props => {
     const [value, setValue] = useState('');
-    const handleChange = e => {
-        setValue(e.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value);
     };
 
     return <Input {...props} value={value} onChange={handleChange} />;

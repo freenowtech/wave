@@ -1,24 +1,12 @@
-import * as React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import {
-    compose,
-    fontFamily,
-    FontFamilyProps,
-    fontSize,
-    FontSizeProps,
-    fontWeight,
-    margin,
-    MarginProps,
-    ResponsiveValue,
-    textAlign,
-    TextAlignProps
-} from 'styled-system';
+import { compose, fontFamily, FontFamilyProps, fontSize, FontSizeProps, fontWeight, margin, MarginProps, ResponsiveValue, textAlign, TextAlignProps } from 'styled-system';
 import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
 interface TextProps
-    extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
+    extends ComponentPropsWithoutRef<'span'>,
         MarginProps,
         FontSizeProps,
         FontFamilyProps,

@@ -44,17 +44,16 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
     ${sizeVariant}
 
     & + ${BoxedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : null)};
+        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
             `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                // @ts-ignore
                 p.size === 'small' ? '0.0825rem' : '0.0625rem'
             }), transparent 50%)`};
     }
 
-    ${p => (p.error ? errorStyles : null)}
+    ${p => (p.error ? errorStyles : undefined)}
 
     &:disabled {
         & + ${BoxedInputLabel} {
@@ -78,7 +77,6 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
             background: ${p =>
                 `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                    // @ts-ignore
                     p.size === 'small' ? '0.0825rem' : '0.0625rem'
                 }), transparent 50%)`};
         }

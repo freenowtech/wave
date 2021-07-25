@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-const useIsEscKeyPressed = () => {
-    const [keyPressed, setKeyPressed] = useState(false);
+const useIsEscKeyPressed = (): boolean => {
+    const [ keyPressed, setKeyPressed ] = useState(false);
 
     useEffect(() => {
-        const upHandler = event => {
+        const upHandler = (event: KeyboardEvent) => {
             const key = event.key || event.keyCode;
 
             if (key === 'Escape' || key === 'Esc' || key === 27) {

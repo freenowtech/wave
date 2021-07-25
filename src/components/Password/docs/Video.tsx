@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export const Video = ({ src }: { src: string }) => {
-    return <video src={src} controls />;
-};
+interface VideoProps {
+    src: string;
+}
+
+// eslint-disable-next-line jsx-a11y/media-has-caption
+export const Video: FC<VideoProps> = ({ src }: VideoProps) => <video src={src} controls />;

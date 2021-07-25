@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const SearchPropsTable = () => {
+export const SearchPropsTable: FC = () => {
     const props = [
         {
             name: 'value',

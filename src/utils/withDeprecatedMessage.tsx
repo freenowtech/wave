@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import warning from 'warning';
+
+type WithDeprecatedMessageFunc<T> = (deprecatedComponentName: string, PassedComponent: React.ComponentType, externalProps?: T) => FC<T>
 
 /**
  * Use this HOC to replace deprecated component with an alternative
@@ -13,24 +15,23 @@ import warning from 'warning';
  * @param PassedComponent Alternative component to use
  * @param externalProps Alternative component props
  */
-let withDeprecatedMessage = (deprecatedComponentName, PassedComponent, externalProps = {}) => {
-    return props => <PassedComponent {...props} {...externalProps} />;
-};
+// eslint-disable-next-line import/no-mutable-exports
+let withDeprecatedMessage: WithDeprecatedMessageFunc<Record<string, unknown>> = (deprecatedComponentName, PassedComponent, externalProps = {}) => props =>
+    <PassedComponent {...props} {...externalProps} />;
 
 if (process.env.NODE_ENV !== 'production') {
-    withDeprecatedMessage = (deprecatedComponentName, PassedComponent, externalProps = {}) => {
-        return props => {
-            const stringifiedProps = Object.entries(externalProps)
-                .map(([k, v]) => `${k}={${v}}`)
-                .join(' ');
+    withDeprecatedMessage = (deprecatedComponentName: string, PassedComponent: React.ComponentType, externalProps = {}) => (props: PropsWithChildren<Record<string, unknown>>): JSX.Element => {
+        const stringifiedProps = Object.entries(externalProps)
+            .map(([ k, v ]) => `${k}={${v.toString()}}`)
+            .join(' ');
 
-            warning(
-                false,
-                `The component ${deprecatedComponentName} is deprecated. Replace it with <${PassedComponent.name} ${stringifiedProps}/>`
-            );
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        warning(
+            false,
+            `The component ${deprecatedComponentName} is deprecated. Replace it with <${PassedComponent.name} ${stringifiedProps}/>`
+        );
 
-            return <PassedComponent {...props} {...externalProps} />;
-        };
+        return <PassedComponent {...props} {...externalProps} />;
     };
 }
 

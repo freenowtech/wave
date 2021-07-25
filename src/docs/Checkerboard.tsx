@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Colors } from '../essentials';
 
 interface CheckerboardProps {
     inverted?: boolean;
 }
 
-export const Checkerboard = ({ inverted }: CheckerboardProps) => {
+export const Checkerboard: FC<CheckerboardProps> = ({ inverted }: CheckerboardProps) => {
     const size = 8;
 
     let mainColor = 'rgba(0, 0, 0, 0.06)';

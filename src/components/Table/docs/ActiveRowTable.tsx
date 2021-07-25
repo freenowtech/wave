@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Checkbox, Input, Text } from '../..';
 
@@ -37,14 +37,14 @@ const data = [
     }
 ];
 
-export const ActiveRowTable = () => {
-    const [selectedRows, setSelectedRows] = useState([2]);
+export const ActiveRowTable: FC = () => {
+    const [selectedRows, setSelectedRows] = useState<number[]>([2]);
 
-    const updateSelectedRows = id => e => {
-        const checked = e.target.checked;
+    const updateSelectedRows = id => (event: ChangeEvent<HTMLInputElement>) => {
+        const { checked } = event.target;
 
         if (checked) {
-            setSelectedRows(selectedRows.concat(id));
+            setSelectedRows(current => [...current, id]);
         } else {
             setSelectedRows(selectedRows.filter(it => it !== id));
         }
@@ -52,8 +52,8 @@ export const ActiveRowTable = () => {
 
     const allChecked = selectedRows.length === data.length;
 
-    const handleCheckAll = e => {
-        if (e.target.checked) {
+    const handleCheckAll = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked) {
             setSelectedRows(data.map(it => it.id));
         } else {
             setSelectedRows([]);

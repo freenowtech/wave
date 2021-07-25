@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { compose, fontSize, FontSizeProps, margin, MarginProps, textAlign, TextAlignProps } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -6,7 +6,7 @@ import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
 interface LinkProps
-    extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+    extends ComponentPropsWithoutRef<'a'>,
         MarginProps,
         FontSizeProps,
         TextAlignProps {

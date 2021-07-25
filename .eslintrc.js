@@ -25,6 +25,10 @@ module.exports = {
         project: './tsconfig.eslint.json'
     },
     rules: {
+        'unicorn/no-useless-undefined': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        'react/require-default-props': 'off',
         // Often used for this library
         'react/jsx-props-no-spreading': 'off',
         'unicorn/filename-case': 'off',
@@ -65,6 +69,9 @@ module.exports = {
     'ignorePatterns': [
         'node_modules',
         '.docz',
-        'lib/**/*'
+        'lib',
+        // temporary exclusion
+        'src/icons',
+        'src/gatsby-theme-docz'
     ]
 };

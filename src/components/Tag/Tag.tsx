@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from 'react';
+import React, { FC, MouseEvent, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { margin, MarginProps } from 'styled-system';
 
@@ -66,15 +66,11 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     }
 `;
 
-const Tag: FC<TagProps> = ({ children, onDismiss, dismissible = true, ...rest }) => {
-    return (
-        <TagWrapper {...rest}>
-            <TagText dismissible={dismissible}>{children}</TagText>
-            {dismissible && (
-                <DismissIcon data-testid="dismiss-icon" color={Colors.ACTION_BLUE_900} onClick={onDismiss} />
-            )}
-        </TagWrapper>
-    );
-};
+const Tag: FC<TagProps> = ({ children, onDismiss, dismissible = true, ...rest }: PropsWithChildren<TagProps>) => (
+    <TagWrapper {...rest}>
+        <TagText dismissible={dismissible}>{children}</TagText>
+        {dismissible && <DismissIcon data-testid="dismiss-icon" color={Colors.ACTION_BLUE_900} onClick={onDismiss} />}
+    </TagWrapper>
+);
 
 export { Tag, TagProps };

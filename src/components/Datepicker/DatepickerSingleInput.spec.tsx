@@ -28,7 +28,7 @@ describe('DatepickerSingleInput', () => {
             // Open datepicker
             userEvent.click(getByTestId('start-date-input'));
 
-            // Сlick outside
+            // Click outside
             fireEvent.blur(getByTestId('start-date-input'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
@@ -51,7 +51,7 @@ describe('DatepickerSingleInput', () => {
         await waitFor(() => expect(mockChangeHandler).toHaveBeenCalledWith(new Date(currentYear, currentMonth, 1)));
     });
 
-    it('calls errorHandler as a fn if a callback is provided', async () => {
+    it('calls errorHandler as a fn if a callback is provided', () => {
         const mockChangeHandler = jest.fn();
         const mockErrorTextHandler = jest.fn();
         const { getByTestId } = render(
@@ -64,12 +64,12 @@ describe('DatepickerSingleInput', () => {
         const formattedDate = format(intendedDate, 'dd/MM/yy');
 
         // Simulate an input change
-        await userEvent.type(input, formattedDate);
+        userEvent.type(input, formattedDate);
 
         expect(mockErrorTextHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('calls onChange function after update input value', async () => {
+    it('calls onChange function after update input value', () => {
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<DatepickerSingleInput onChange={mockChangeHandler} />);
         const input = getByTestId('start-date-input');
@@ -83,12 +83,12 @@ describe('DatepickerSingleInput', () => {
         const formattedDate = format(intendedDate, 'dd/MM/yyyy');
 
         // Simulate an input change
-        await userEvent.type(input, formattedDate);
+        userEvent.type(input, formattedDate);
 
         expect(mockChangeHandler).toHaveBeenCalledWith(intendedDate);
     });
 
-    it('renders an error feedback if gets filled with invalid value', async () => {
+    it('renders an error feedback if gets filled with invalid value', () => {
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<DatepickerSingleInput onChange={mockChangeHandler} />);
         const input = getByTestId('start-date-input');
@@ -103,7 +103,7 @@ describe('DatepickerSingleInput', () => {
         const formattedDate = format(intendedDate, 'dd/MM/yy');
 
         // Simulate an input change
-        await userEvent.type(input, formattedDate);
+        userEvent.type(input, formattedDate);
 
         expect(mockChangeHandler).not.toHaveBeenCalled();
         expect(input).toHaveAttribute('data-error', 'true');
@@ -113,7 +113,7 @@ describe('DatepickerSingleInput', () => {
         expect(input).toHaveAttribute('data-error', 'false');
     });
 
-    it('closes the calendar of the first datepicker and opens the calendar of the second', async () => {
+    it('closes the calendar of the first datepicker and opens the calendar of the second', () => {
         const { getAllByTestId, getAllByText } = render(
             <>
                 <DatepickerSingleInput />
@@ -138,7 +138,7 @@ describe('DatepickerSingleInput', () => {
         const localizedCurrentMonth = 'Dezember';
         const currentYear = date.getFullYear();
 
-        await screen.findByDisplayValue(`15 ${localizedCurrentMonth} ${currentYear}`);
+        expect(await screen.findByDisplayValue(`15 ${localizedCurrentMonth} ${currentYear}`)).toBeInTheDocument();
     });
 
     it('localizes datepicker calendar month and weekdays', async () => {
@@ -151,7 +151,7 @@ describe('DatepickerSingleInput', () => {
         const localizedCurrentMonth = 'Dezember';
         const currentYear = date.getFullYear();
 
-        await screen.findByText(`${localizedCurrentMonth} ${currentYear}`);
-        await screen.findByText('Do');
+        expect(await screen.findByText(`${localizedCurrentMonth} ${currentYear}`)).toBeInTheDocument();
+        expect(await screen.findByText('Do')).toBeInTheDocument();
     });
 });

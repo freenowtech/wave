@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
+import { Box } from '../../Box/Box';
 
 import { Text } from '../../Text/Text';
-import { Box } from '../../Box/Box';
 
 import { Search } from '../Search';
 
-export const TextExample = () => {
+export const TextExample: FC = () => {
     const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
-    const mapName = (name, index) => (
+
+    const [value, setValue] = useState<string>('');
+    const [showResults, setShowResults] = useState<boolean>(false);
+
+    const mapName = (name: string, index: number) => (
         <Box
             key={index}
             height="2.5rem"
             display="flex"
             alignItems="center"
             onClick={() => {
+                // eslint-disable-next-line no-alert
                 alert(`${name} was clicked!`);
                 setValue(name);
                 setShowResults(false);
@@ -22,9 +27,11 @@ export const TextExample = () => {
             <Text marginLeft="1rem">{name}</Text>
         </Box>
     );
-    const [value, setValue] = useState<string>('');
-    const [showResults, setShowResults] = useState<boolean>(false);
-    const results = namesArray.filter(name => name.toLowerCase().includes(value.toLowerCase())).map(mapName);
+
+    const results = namesArray
+        .filter(name => name.toLowerCase().includes(value.toLowerCase()))
+        .map((element, index) => mapName(element, index));
+
     return (
         <Search
             value={value}
@@ -37,49 +44,56 @@ export const TextExample = () => {
     );
 };
 
-export const DisabledExample = () => {
+export const DisabledExample: FC = () => {
     const options = [1, 2, 3, 4].map(item => <Text>{item}</Text>);
     return <Search disabled width="12rem" results={options} />;
 };
 
-export const PlaceholderExample = () => {
+export const PlaceholderExample: FC = () => {
     const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
-    const mapName = (name, index) => (
+    const mapName = (name: string, index: number) => (
         <Box
             key={index}
             height="2.5rem"
             display="flex"
             alignItems="center"
-            onClick={() => alert(`${name} was clicked!`)}
+            onClick={() => {
+                // eslint-disable-next-line no-alert
+                alert(`${name} was clicked!`);
+            }}
         >
             <Text marginLeft="1rem">{name}</Text>
         </Box>
     );
-    const names = namesArray.map(mapName);
+    const names = namesArray.map((element, index) => mapName(element, index));
     return <Search width="12rem" placeholder="Search for a name" results={names} />;
 };
 
-export const APIExample = () => {
-    const searchAPI = (name: string) => `https://swapi.dev/api/people/?search=${name}`;
+const searchAPI = (name: string) => `https://swapi.dev/api/people/?search=${name}`;
 
-    const mapName = ({ name }, index) => (
+export const APIExample: FC = () => {
+    const [results, setResults] = useState([]);
+
+    const mapName = ({ name }: { name: string }, index) => (
         <Box
             key={index}
             height="2.5rem"
             display="flex"
             alignItems="center"
-            onClick={() => alert(`${name} was clicked!`)}
+            onClick={() => {
+                // eslint-disable-next-line no-alert
+                alert(`${name} was clicked!`);
+            }}
         >
             <Text marginLeft="1rem">{name}</Text>
         </Box>
     );
 
     const fetchCharacter = async (name: string) => {
-        const response = await (await fetch(searchAPI(name))).json();
+        const response: { results: { name: string }[] } = await (await fetch(searchAPI(name))).json();
         setResults(response.results?.map(mapName));
     };
 
-    const [results, setResults] = useState([]);
     return (
         <Search
             width="20rem"

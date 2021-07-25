@@ -1,10 +1,10 @@
-import React, { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { Colors, Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
-interface LinkProps extends Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> {
+interface LinkProps extends ComponentPropsWithoutRef<'a'> {
     /**
      * Indicates that the link is currently selected
      */
@@ -18,6 +18,7 @@ interface LinkProps extends Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnch
     /**
      * Replace the rendered component with an HTML tag or another component
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
 }
 
@@ -26,7 +27,7 @@ const DEFAULT_ACTIVE_CLASS_NAME = 'active';
 const UnderLine = styled.div`
     background-color: transparent;
     height: 0.1875rem;
-    margin-top: ${Spaces[1]};
+    margin-top: ${Spaces[ 1 ]};
 `;
 
 const InnerLink = styled.a.attrs({ theme })<LinkProps>`
@@ -34,7 +35,7 @@ const InnerLink = styled.a.attrs({ theme })<LinkProps>`
     cursor: pointer;
     font-size: ${get('fontSizes.1')};
     font-weight: ${get('fontWeights.semibold')};
-    margin-right: ${Spaces[3]};
+    margin-right: ${Spaces[ 3 ]};
     text-decoration: none;
 
     &:last-child {
@@ -51,7 +52,7 @@ const InnerLink = styled.a.attrs({ theme })<LinkProps>`
 `;
 
 const Link: React.FC<LinkProps> = ({ children, selected, ...rest }: LinkProps) => {
-    const combinedClassNames = [rest.className];
+    const combinedClassNames = [ rest.className ];
 
     if (selected) {
         combinedClassNames.push(rest.activeClassName ? rest.activeClassName : DEFAULT_ACTIVE_CLASS_NAME);

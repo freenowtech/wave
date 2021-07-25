@@ -1,3 +1,1 @@
-export const generateId = (): string => {
-    return 'random';
-};
+export const generateId = (): string => 'random';

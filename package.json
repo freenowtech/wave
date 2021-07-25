@@ -24,7 +24,7 @@
         "test:watch": "jest --watch",
         "lint": "npx concurrently \"npm run lint:eslint\" \"npm run lint:stylelint\"",
         "lint:stylelint": "stylelint --config .stylelintrc 'src/**/*.ts?(x)'",
-        "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+        "lint:eslint": "eslint --format pretty --ext .js,.jsx,.ts,.tsx",
         "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
         "husky:precommit": "npm run lint:eslint -- --fix --force && npm run prettier"
     },
@@ -72,6 +72,7 @@
         "eslint": "^7.31.0",
         "eslint-config-airbnb-typescript": "^12.3.1",
         "eslint-config-prettier": "^8.3.0",
+        "eslint-formatter-pretty": "^4.1.0",
         "eslint-plugin-eslint-comments": "^3.2.0",
         "eslint-plugin-import": "^2.23.4",
         "eslint-plugin-jest": "^24.3.7",

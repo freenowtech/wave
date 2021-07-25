@@ -17,7 +17,6 @@ export const shrinkFileName = (file: File, cap = 20): string => {
 
     const totalChars = cap - separator.length - format.length;
 
-    return `${name.substr(0, Math.ceil(totalChars / 2))}${separator}${name.substr(
-        name.length - Math.floor(totalChars / 2)
-    )}${format}`;
+    return `${name.slice(0, Math.max(0, Math.ceil(totalChars / 2)))}${separator}
+        ${name.slice(name.length - Math.floor(totalChars / 2))}${format}`;
 };

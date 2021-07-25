@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Button, Checkbox, Label, Text } from '../..';
 import { Colors } from '../../../essentials';
@@ -7,7 +7,7 @@ import { TableRowSkeleton } from '../components/TableRowSkeleton';
 
 function randomDate() {
     const start = new Date(2012, 0, 1);
-    return new Date(start.getTime() + Math.random() * (new Date().getTime() - start.getTime()));
+    return new Date(start.getTime() + Math.random() * (Date.now() - start.getTime()));
 }
 
 const data = [
@@ -53,7 +53,7 @@ const data = [
     }
 ];
 
-export const SkeletonTable = () => {
+export const SkeletonTable: FC = () => {
     const [loading, setLoading] = useState(true);
 
     return (
@@ -91,7 +91,7 @@ export const SkeletonTable = () => {
                                 <TableCell>
                                     <Box display="flex" alignItems="center">
                                         <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
-                                        &nbsp;+49&nbsp;{Math.round(Math.random() * 1000000000)}
+                                        &nbsp;+49&nbsp;{Math.round(Math.random() * 1_000_000_000)}
                                     </Box>
                                 </TableCell>
                                 <TableCell>

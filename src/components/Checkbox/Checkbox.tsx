@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import { MarginProps, ResponsiveValue } from 'styled-system';
 
@@ -10,7 +10,7 @@ import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
 
 interface CheckboxProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref' | 'size'>,
+    extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>,
         ClassNameProps,
         MarginProps {
     /**
@@ -38,7 +38,7 @@ const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
 
     height: 1rem;
     margin: 0 0.5rem 0 0;
-    ${({ textVerticalAlign }) => (textVerticalAlign == 'top' ? 'margin-top: 0.1875rem' : null)}
+    ${({ textVerticalAlign }) => (textVerticalAlign === 'top' ? 'margin-top: 0.1875rem' : undefined)}
 `;
 
 const Checkbox: FC<CheckboxProps> = props => {

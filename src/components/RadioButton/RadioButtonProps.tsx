@@ -1,9 +1,9 @@
-import { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { MarginProps } from 'styled-system';
 import { ClassNameProps } from '../../utils/extractProps';
 
 interface RadioButtonProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'>,
+    extends ComponentPropsWithoutRef<'input'>,
         ClassNameProps,
         MarginProps {
     /**

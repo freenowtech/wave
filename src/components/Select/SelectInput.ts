@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, FC, SelectHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef, FC } from 'react';
 import styled, { css } from 'styled-components';
 import { compose, ResponsiveValue, variant } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -8,7 +8,7 @@ import { SelectLabel } from './SelectLabel';
 import { bottomLinedSizeVariants, boxedSizeVariants } from './selectVariantSizes';
 
 interface BaseSelectProps
-    extends Omit<DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>, 'size'> {
+    extends Omit<ComponentPropsWithoutRef<'select'>, 'size'> {
     /**
      * Define the display variant with boxed as the default
      */
@@ -57,15 +57,17 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
     if (error) {
         return css`
             border-color: ${Colors.NEGATIVE_ORANGE_900};
-            box-shadow: ${variantProp == 'boxed'
-                ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
-                : `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`};
+            box-shadow: ${variantProp === 'boxed'
+                    ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
+                    : `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`};
 
             & ~ ${SelectLabel} {
                 color: ${Colors.NEGATIVE_ORANGE_900};
             }
         `;
     }
+
+    return undefined;
 };
 
 const disabledStyles = css<BaseSelectProps>`
@@ -104,18 +106,17 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     }
 
     ${p => {
-        if (p.variant == 'boxed') {
-            return compose(boxedSizeVariants, inputVariants)(p);
-        }
-
-        if (p.variant == 'bottom-lined') {
-            return compose(bottomLinedSizeVariants, inputVariants)(p);
+        switch (p.variant) {
+            case 'boxed':
+                return compose(boxedSizeVariants, inputVariants)(p);
+            case 'bottom-lined':
+                return compose(bottomLinedSizeVariants, inputVariants)(p);
+            default:
+                return undefined;
         }
     }}
-
     ${getErrorStyles}
-    ${p => (p.disabled ? disabledStyles : null)}
-
+    ${p => (p.disabled ? disabledStyles : undefined)}
     &:-moz-focusring {
         outline: none;
         text-shadow: 0 0 0 ${Colors.AUTHENTIC_BLUE_900};
@@ -133,7 +134,7 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
         & ~ ${SelectLabel} {
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
         }
-        
+
         & ~ .svg-icon svg > * {
             fill: ${p => (p.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900)};
         }

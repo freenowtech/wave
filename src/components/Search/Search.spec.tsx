@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import * as React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import user from '@testing-library/user-event';
+import * as React from 'react';
 
 import { Search } from './Search';
 
@@ -41,9 +41,9 @@ describe('Search', () => {
             const firstValue = 'first';
             const secondValue = 'second';
 
-            const { rerender } = render(<Search value={firstValue} setValue={() => null} />);
+            const { rerender } = render(<Search value={firstValue} setValue={() => undefined} />);
             expect(screen.queryByDisplayValue(firstValue)).toBeInTheDocument();
-            rerender(<Search value={secondValue} setValue={() => null} />);
+            rerender(<Search value={secondValue} setValue={() => undefined} />);
             expect(screen.queryByDisplayValue(secondValue)).toBeInTheDocument();
         });
     });
@@ -77,7 +77,7 @@ describe('Search', () => {
         });
 
         it('onChangeSelection on arrow down', () => {
-            const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
+            const namesArray = [ 'Adam', 'Barry', 'Charles', 'David' ];
             const mockOnChangeSelection = jest.fn();
 
             render(<Search results={namesArray} onChangeSelection={mockOnChangeSelection} />);
@@ -92,7 +92,7 @@ describe('Search', () => {
         });
 
         it('onChangeSelection on arrow up', () => {
-            const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
+            const namesArray = [ 'Adam', 'Barry', 'Charles', 'David' ];
             const mockOnChangeSelection = jest.fn();
 
             render(<Search results={namesArray} onChangeSelection={mockOnChangeSelection} />);
@@ -111,7 +111,7 @@ describe('Search', () => {
             const mockOnEnter = jest.fn();
             const item = <div onClick={mockOnClick}>Barry</div>;
 
-            render(<Search results={['Adam', item]} onEnter={mockOnEnter} />);
+            render(<Search results={[ 'Adam', item ]} onEnter={mockOnEnter} />);
 
             expect(mockOnClick).not.toHaveBeenCalled();
             expect(mockOnEnter).not.toHaveBeenCalled();
@@ -126,15 +126,15 @@ describe('Search', () => {
 
     describe('User interaction', () => {
         it('on arrow up/down should show the selected item', () => {
-            const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
+            const namesArray = [ 'Adam', 'Barry', 'Charles', 'David' ];
             render(<Search results={namesArray} />);
 
             //  Type in searchbox to show the list of results
             const searchBox = screen.getByRole('searchbox');
             user.type(searchBox, 'A');
 
-            const firstItem = screen.getByText(namesArray[0]);
-            const secondItem = screen.getByText(namesArray[1]);
+            const firstItem = screen.getByText(namesArray[ 0 ]);
+            const secondItem = screen.getByText(namesArray[ 1 ]);
 
             // The first item of the list is selected by default
             expect(firstItem).toHaveAttribute('aria-selected', 'true');

@@ -5,15 +5,15 @@ import { Link } from './Link';
 
 describe('Link', () => {
     it('renders a <a> by default', () => {
-        expect(render(<Link />)).toMatchHtmlTag('a');
+        expect(render(<Link href="#test" />)).toMatchHtmlTag('a');
     });
 
     it('renders the children', () => {
-        expect(render(<Link>Content</Link>).getByText('Content')).toBeInTheDocument();
+        expect(render(<Link href="#test">Content</Link>).getByText('Content')).toBeInTheDocument();
     });
 
     it('should render the correct inverted color', () => {
-        expect(render(<Link inverted />).container.firstChild).toHaveStyle(`
+        expect(render(<Link inverted href="#test" />).container.firstChild).toHaveStyle(`
             color: ${Colors.WHITE};
         `);
     });
