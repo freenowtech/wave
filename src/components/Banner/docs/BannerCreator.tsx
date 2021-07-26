@@ -9,7 +9,7 @@ const FlexContainer = styled.div`
     align-items: center;
 `;
 
-interface ExampleBannerProps extends BannerProps {
+interface ExampleBannerProps extends Pick<BannerProps, 'variant' | 'position'> {
     text: string;
 }
 
@@ -30,12 +30,8 @@ const DismissibleBanner = ({ text, variant, position }: ExampleBannerProps) => (
     </Banner>
 );
 
-interface ExampleBannerInformation extends Pick<BannerProps, 'variant' | 'position'> {
-    text: string;
-}
-
 export const BannerCreator: FC = () => {
-    const [banners, setBanners] = useState<ExampleBannerInformation[]>([]);
+    const [banners, setBanners] = useState<ExampleBannerProps[]>([]);
 
     const addBannerHandler = ({ variant, position }: Pick<BannerProps, 'variant' | 'position'>) => () => {
         setBanners(currentBanners => [
