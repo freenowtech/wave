@@ -22,7 +22,7 @@ const getColors = (isInverted, isMonochrome): [string, string, string] => {
         return isInverted ? ['#FFF', '#FFF', '#FFF'] : ['#005478', '#005478', '#005478'];
     }
 
-    return isInverted ? ['#FF0A2B', '#FFF', '#FFF'] : undefined;
+    return isInverted ? ['#FF0A2B', '#FFF', '#FFF'] : ['#FF0A2B', '#005478', '#005478'];
 };
 
 const Logo: React.FC<LogoProps> = ({ inverted, monochrome, variant }: LogoProps) => {

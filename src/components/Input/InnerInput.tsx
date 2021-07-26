@@ -17,7 +17,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
         const { label, onChange, size, id: providedId, variant, ...rest } = restProps;
         const id = useGeneratedId(providedId);
 
-        const [ hasValue, setHasValue ] = useState(rest.value && rest.value.toString().length > 0);
+        const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
 
         const handleChange = event => {
             if (onChange) {
@@ -27,12 +27,19 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
 
         useEffect(() => {
             setHasValue(rest.value && rest.value.toString().length > 0);
-        }, [ rest.value ]);
+        }, [rest.value]);
 
         if (variant === 'boxed') {
             return (
                 <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
-                    <BoxedInput {...rest} id={id} size={size} hasValue={hasValue} onChange={handleChange} />
+                    <BoxedInput
+                        {...rest}
+                        variant={variant}
+                        id={id}
+                        size={size}
+                        hasValue={hasValue}
+                        onChange={handleChange}
+                    />
                     {label && (
                         <BoxedInputLabel htmlFor={id} size={size}>
                             {label}
@@ -45,7 +52,14 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
         if (variant === 'bottom-lined') {
             return (
                 <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
-                    <BottomLinedInput {...rest} id={id} size={size} hasValue={hasValue} onChange={handleChange} />
+                    <BottomLinedInput
+                        {...rest}
+                        variant={variant}
+                        id={id}
+                        size={size}
+                        hasValue={hasValue}
+                        onChange={handleChange}
+                    />
                     {label && (
                         <BottomLinedInputLabel htmlFor={id} size={size}>
                             {label}

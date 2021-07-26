@@ -5,11 +5,7 @@ interface DefaultLogoProps {
     fill: [string, string, string];
 }
 
-const DefaultLogo: FC<DefaultLogoProps> = (
-    { fill }: DefaultLogoProps = {
-        fill: ['#FF0A2B', '#005478', '#005478']
-    }
-) => (
+const DefaultLogo: FC<DefaultLogoProps> = ({ fill }: DefaultLogoProps) => (
     <svg width="124" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g fill="none" fillRule="evenodd">
             <path
