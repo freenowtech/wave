@@ -1,6 +1,18 @@
 import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import { compose, fontFamily, FontFamilyProps, fontSize, FontSizeProps, fontWeight, margin, MarginProps, ResponsiveValue, textAlign, TextAlignProps } from 'styled-system';
+import {
+    compose,
+    fontFamily,
+    FontFamilyProps,
+    fontSize,
+    FontSizeProps,
+    fontWeight,
+    margin,
+    MarginProps,
+    ResponsiveValue,
+    textAlign,
+    TextAlignProps
+} from 'styled-system';
 import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';

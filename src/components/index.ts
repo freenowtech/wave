@@ -12,7 +12,7 @@ export { RadioButton } from './RadioButton/RadioButton';
 export { Modal, ModalProps, useModalDismiss } from './Modal/Modal';
 export { Textarea, TextAreaProps } from './Textarea/Textarea';
 export { Select, SelectProps } from './Select/Select';
-export { SelectList} from './SelectList/SelectList';
+export { SelectList } from './SelectList/SelectList';
 export { Logo, LogoProps } from './Logo/Logo';
 export { Label, LabelProps } from './Label/Label';
 export { HelperText, HelperTextProps } from './HelperText/HelperText';

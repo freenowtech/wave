@@ -28,8 +28,7 @@ interface BoxProps
         FlexboxProps,
         GridProps,
         BackgroundProps,
-        TextAlignProps {
-}
+        TextAlignProps {}
 
 const Box: StyledComponentBase<'div', never, BoxProps, 'theme'> = styled.div.attrs({ theme })<BoxProps>`
     ${compose(space, layout, position, color, flexbox, grid, background, textAlign)}

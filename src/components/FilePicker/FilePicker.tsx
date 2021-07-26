@@ -9,9 +9,7 @@ import { Button } from '../Button/Button';
 import { Text } from '../Text/Text';
 import { shrinkFileName } from './utils/format';
 
-interface FilePickerProps
-    extends MarginProps,
-        ComponentPropsWithoutRef<'input'> {
+interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'> {
     /**
      * Sets the name property of input element in the DOM.
      * https://developer.mozilla.org/en-US/docs/Web/API/Element/name
@@ -79,26 +77,26 @@ const Outliner = styled(Box)<OutlinerProps>`
     }
 
     ${({ disabled }) =>
-            disabled &&
-            css`
-                opacity: 0.5;
+        disabled &&
+        css`
+            opacity: 0.5;
 
-                &,
-                ${InputButton}, ${Text} {
-                    cursor: not-allowed;
-                }
-            `}
+            &,
+            ${InputButton}, ${Text} {
+                cursor: not-allowed;
+            }
+        `}
 
     ${({ error }) =>
-            error &&
-            css`
-                box-shadow: inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900};
-                border-color: ${Colors.NEGATIVE_ORANGE_900};
-            `}
+        error &&
+        css`
+            box-shadow: inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900};
+            border-color: ${Colors.NEGATIVE_ORANGE_900};
+        `}
 
     ${({ hasValidFile }) =>
-            hasValidFile &&
-            css`
+        hasValidFile &&
+        css`
                 ${MediaQueries.medium} {
                     &:hover {
                         background-color: ${Colors.ACTION_BLUE_50};
@@ -128,21 +126,21 @@ const Input = styled.input`
 `;
 
 const FilePicker: FC<FilePickerProps> = ({
-                                             name,
-                                             accept = '*',
-                                             capture,
-                                             label,
-                                             buttonText,
-                                             error = false,
-                                             onFileChange = () => undefined,
-                                             onChange = () => undefined,
-                                             disabled = false,
-                                             ...nonInputProps
-                                         }: FilePickerProps) => {
+    name,
+    accept = '*',
+    capture,
+    label,
+    buttonText,
+    error = false,
+    onFileChange = () => undefined,
+    onChange = () => undefined,
+    disabled = false,
+    ...nonInputProps
+}: FilePickerProps) => {
     const inputEl = useRef<HTMLInputElement>(null);
-    const [ file, setFile ] = useState<File | null>();
+    const [file, setFile] = useState<File | null>();
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const eventFile = e.target.files?.[ 0 ];
+        const eventFile = e.target.files?.[0];
 
         onChange(e);
         onFileChange(eventFile, e);

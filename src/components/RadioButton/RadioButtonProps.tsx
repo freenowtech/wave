@@ -2,10 +2,7 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { MarginProps } from 'styled-system';
 import { ClassNameProps } from '../../utils/extractProps';
 
-interface RadioButtonProps
-    extends ComponentPropsWithoutRef<'input'>,
-        ClassNameProps,
-        MarginProps {
+interface RadioButtonProps extends ComponentPropsWithoutRef<'input'>, ClassNameProps, MarginProps {
     /**
      * Provide a label for the input which will be shown next to the radio button
      */

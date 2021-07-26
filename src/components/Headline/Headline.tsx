@@ -6,10 +6,7 @@ import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
-interface HeadlineProps
-    extends ComponentPropsWithoutRef<'h1'>,
-        MarginProps,
-        TextAlignProps {
+interface HeadlineProps extends ComponentPropsWithoutRef<'h1'>, MarginProps, TextAlignProps {
     /**
      * Adjust color for display on a dark background
      */
@@ -39,7 +36,7 @@ function determineFontSize(props: HeadlineProps) {
         line-height: 3.75rem;
     `;
 
-    const size = props.size ?? DEFAULT_HEADLINE_SIZE[ props.as ];
+    const size = props.size ?? DEFAULT_HEADLINE_SIZE[props.as];
     switch (size) {
         case 'xxl':
             return h1Styles;

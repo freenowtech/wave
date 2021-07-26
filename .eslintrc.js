@@ -1,11 +1,5 @@
 module.exports = {
-    plugins: [
-        '@typescript-eslint',
-        'eslint-comments',
-        'jest',
-        'promise',
-        'unicorn'
-    ],
+    plugins: ['@typescript-eslint', 'eslint-comments', 'jest', 'promise', 'unicorn'],
     extends: [
         'airbnb-typescript',
         'plugin:@typescript-eslint/recommended',
@@ -66,7 +60,7 @@ module.exports = {
             }
         }
     ],
-    'ignorePatterns': [
+    ignorePatterns: [
         'node_modules',
         '.docz',
         'lib',

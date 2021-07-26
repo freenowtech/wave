@@ -46,9 +46,9 @@ const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
-                `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                        p.size === 'small' ? '0.0825rem' : '0.0625rem'
-                }), transparent 50%)`};
+            `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
+                p.size === 'small' ? '0.0825rem' : '0.0625rem'
+            }), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -73,9 +73,9 @@ const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
             background: ${p =>
-                    `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                            p.size === 'small' ? '0.0825rem' : '0.0625rem'
-                    }), transparent 50%)`};
+                `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
+                    p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                }), transparent 50%)`};
         }
     }
 `;

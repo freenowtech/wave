@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useIsEscKeyPressed = (): boolean => {
-    const [ keyPressed, setKeyPressed ] = useState(false);
+    const [keyPressed, setKeyPressed] = useState(false);
 
     useEffect(() => {
         const upHandler = (event: KeyboardEvent) => {

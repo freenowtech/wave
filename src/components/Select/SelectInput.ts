@@ -7,8 +7,7 @@ import { get } from '../../utils/themeGet';
 import { SelectLabel } from './SelectLabel';
 import { bottomLinedSizeVariants, boxedSizeVariants } from './selectVariantSizes';
 
-interface BaseSelectProps
-    extends Omit<ComponentPropsWithoutRef<'select'>, 'size'> {
+interface BaseSelectProps extends Omit<ComponentPropsWithoutRef<'select'>, 'size'> {
     /**
      * Define the display variant with boxed as the default
      */
@@ -58,8 +57,8 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
         return css`
             border-color: ${Colors.NEGATIVE_ORANGE_900};
             box-shadow: ${variantProp === 'boxed'
-                    ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
-                    : `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`};
+                ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
+                : `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`};
 
             & ~ ${SelectLabel} {
                 color: ${Colors.NEGATIVE_ORANGE_900};

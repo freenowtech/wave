@@ -4,9 +4,7 @@ import { compose, textAlign, TextAlignProps } from 'styled-system';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 
-type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
-    ComponentPropsWithoutRef<'td'> &
-    TextAlignProps;
+type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> & ComponentPropsWithoutRef<'td'> & TextAlignProps;
 
 const TableCellElement = styled.td<TableCellProps>`
     height: ${p => p.rowSize};

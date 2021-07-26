@@ -6,10 +6,7 @@ import { theme } from '../../essentials/theme';
 import { deprecatedProperty } from '../../utils/deprecatedProperty';
 import { get } from '../../utils/themeGet';
 
-interface BaseButtonProps
-    extends ComponentPropsWithoutRef<'button'>,
-        MarginProps,
-        WidthProps {
+interface BaseButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps, WidthProps {
     /**
      * Adjusts the size of the button
      */

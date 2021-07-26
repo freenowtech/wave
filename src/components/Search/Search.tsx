@@ -37,7 +37,7 @@ const SearchInputContainer = styled(Box)`
     background: white;
     border-radius: 0.25rem;
     border: ${p =>
-            p.isInFocus ? `0.0625rem solid ${Colors.ACTION_BLUE_900}` : `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`};
+        p.isInFocus ? `0.0625rem solid ${Colors.ACTION_BLUE_900}` : `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`};
     box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}` : 'none')};
     height: ${p => (p.size === 'small' ? '2.2rem' : '3.2rem')};
     transition: box-shadow 100ms ease, border 100ms ease;
@@ -138,30 +138,30 @@ export interface SearchProps {
 const prefix = 'result-item';
 
 export const Search: FC<SearchProps> = ({
-                           results = [],
-                           value: propsValue,
-                           setValue: setPropsValue,
-                           showResults: propsShowResults,
-                           setShowResults: setPropsShowResults,
-                           width,
-                           placeholder = 'Search...',
-                           disabled,
-                           inverted,
-                           size,
-                           onInputChange,
-                           onClear,
-                           onEnter,
-                           onChangeSelection
-                       }: SearchProps) => {
+    results = [],
+    value: propsValue,
+    setValue: setPropsValue,
+    showResults: propsShowResults,
+    setShowResults: setPropsShowResults,
+    width,
+    placeholder = 'Search...',
+    disabled,
+    inverted,
+    size,
+    onInputChange,
+    onClear,
+    onEnter,
+    onChangeSelection
+}: SearchProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
 
-    const [ isInFocus, setIsInFocus ] = React.useState<boolean>(false);
+    const [isInFocus, setIsInFocus] = React.useState<boolean>(false);
 
-    const [ activeIndex, setActiveIndex ] = React.useState<number>(0);
+    const [activeIndex, setActiveIndex] = React.useState<number>(0);
 
-    const [ value, setValue ] = useControlledState<string>([ propsValue, setPropsValue ], '');
+    const [value, setValue] = useControlledState<string>([propsValue, setPropsValue], '');
 
-    const [ showResults, setShowResults ] = useControlledState<boolean>([ propsShowResults, setPropsShowResults ], false);
+    const [showResults, setShowResults] = useControlledState<boolean>([propsShowResults, setPropsShowResults], false);
 
     // this is to keep track of keypress events (up, down, enter, escape)
     React.useEffect(() => {
@@ -185,13 +185,13 @@ export const Search: FC<SearchProps> = ({
                 case 'ArrowDown': {
                     const index = (activeIndex + 1) % elementLength;
                     setActiveIndex(index);
-                    onChangeSelection?.(index)
+                    onChangeSelection?.(index);
                     break;
                 }
 
                 case 'Enter': {
                     const el = document.querySelector(`#${prefix}-${activeIndex}`);
-                    (el?.children[ 0 ] as HTMLElement)?.click();
+                    (el?.children[0] as HTMLElement)?.click();
                     onEnter?.(value);
                     break;
                 }
@@ -208,7 +208,7 @@ export const Search: FC<SearchProps> = ({
         return () => {
             document.removeEventListener('keydown', emitKeyEvent);
         };
-    }, [ isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, propsValue, results ]);
+    }, [isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, propsValue, results]);
 
     // this is to keep track of clicks outside the component (useful to close the search results)
     React.useEffect(() => {
@@ -225,7 +225,7 @@ export const Search: FC<SearchProps> = ({
         return () => {
             document.removeEventListener('click', emitIfClickingOutsideSearch);
         };
-    }, [ showResults, setShowResults, disabled ]);
+    }, [showResults, setShowResults, disabled]);
 
     const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setShowResults(true);

@@ -12,7 +12,7 @@ import { disabledStyles, errorStyles, variantStyles } from './styles';
 import { SelectListProps } from './types';
 
 const customStyles: StylesConfig = {
-    container: (provided, { selectProps }: Props & {selectProps: SelectListProps}) => {
+    container: (provided, { selectProps }: Props & { selectProps: SelectListProps }) => {
         const bSize = {
             small: {
                 fontSize: get('fontSizes.1')(selectProps)
@@ -24,7 +24,7 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            ...bSize[ selectProps.size ]
+            ...bSize[selectProps.size]
         };
     },
     control: (_, state: Props & { selectProps: SelectListProps }) => {
@@ -145,9 +145,9 @@ const customStyles: StylesConfig = {
         };
 
         const colors = Object.keys(colorsByState)
-            .filter(key => state[ key ])
+            .filter(key => state[key])
             // eslint-disable-next-line unicorn/no-array-reduce
-            .reduce((acc, style) => ({ ...acc, ...colorsByState[ style ] }), defaultColors);
+            .reduce((acc, style) => ({ ...acc, ...colorsByState[style] }), defaultColors);
 
         return {
             ...provided,
@@ -283,4 +283,4 @@ SelectList.defaultProps = {
     size: 'medium'
 };
 
-export { SelectList};
+export { SelectList };

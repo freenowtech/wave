@@ -7,11 +7,7 @@ import { TableContext } from '../context/TableContext';
 import { getColumnSpace } from '../util/getColumnSpace';
 import { getRowSize } from '../util/getRowSize';
 
-interface TableProps
-    extends MarginProps,
-        HeightProps,
-        WidthProps,
-        ComponentPropsWithoutRef<'table'> {
+interface TableProps extends MarginProps, HeightProps, WidthProps, ComponentPropsWithoutRef<'table'> {
     rowStyle: 'lines' | 'zebra' | 'blank';
     rowSize?: 'large' | 'normal' | 'small' | string;
     columnSpace?: 'normal' | 'small' | string;
@@ -32,12 +28,12 @@ const TableElement = styled.table.attrs({ theme })`
 `;
 
 const Table: FC<TableProps> = ({
-                                   children,
-                                   rowStyle,
-                                   rowSize = 'normal',
-                                   columnSpace = 'normal',
-                                   ...props
-                               }: TableProps) => {
+    children,
+    rowStyle,
+    rowSize = 'normal',
+    columnSpace = 'normal',
+    ...props
+}: TableProps) => {
     const context = {
         columnSpace: getColumnSpace(columnSpace),
         rowSize: getRowSize(rowSize),

@@ -9,10 +9,7 @@ import { Checkmark } from './components/Checkmark';
 import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
 
-interface CheckboxProps
-    extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>,
-        ClassNameProps,
-        MarginProps {
+interface CheckboxProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>, ClassNameProps, MarginProps {
     /**
      * Provide a label for the input which will be shown next to the checkbox
      */
