@@ -65,7 +65,7 @@ describe('Modal', () => {
                 </Modal>
             );
 
-            fireEvent.click(getByText('button'));
+            fireEvent.click(getByText('dismiss'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });
