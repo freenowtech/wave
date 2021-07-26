@@ -26,7 +26,7 @@
         "lint:stylelint": "stylelint --config .stylelintrc 'src/**/*.ts?(x)'",
         "lint:eslint": "eslint --format pretty --ext .js,.jsx,.ts,.tsx src/",
         "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
-        "husky:precommit": "npm run lint:eslint -- --fix --force && npm run prettier"
+        "husky:precommit": "npm run lint:eslint -- --fix && npm run prettier"
     },
     "husky": {
         "hooks": {

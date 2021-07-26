@@ -63,7 +63,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...pr
                 width="8rem"
                 components={{
                     SingleValue,
-                    IndicatorSeparator: () => undefined,
+                    // eslint-disable-next-line unicorn/no-null
+                    IndicatorSeparator: () => null,
                     Option,
                     Menu: menuProps => <DynamicWidthMenu {...menuProps} width={containerRef.current?.offsetWidth} />
                 }}

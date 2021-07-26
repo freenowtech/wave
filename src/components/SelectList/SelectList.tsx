@@ -232,7 +232,8 @@ const ClearIndicator = (props: IndicatorProps<unknown>) => (
 );
 
 // Remove Separator component
-const IndicatorSeparator = () => undefined;
+// eslint-disable-next-line unicorn/no-null
+const IndicatorSeparator = () => null;
 
 const MultiValueRemove = props => (
     <ReactSelectComponents.MultiValueRemove {...props}>
