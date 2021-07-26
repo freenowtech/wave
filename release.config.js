@@ -16,16 +16,23 @@ module.exports = {
         [
             '@semantic-release/changelog',
             {
+                changelogTitle:
+                    '---\n' +
+                    'name: Changelog\n' +
+                    'route: /changelog\n' +
+                    'cardHeadline: Changelog\n' +
+                    'cardSubHeadline: Keep up to date with the latest releases of @freenow/wave\n' +
+                    '---',
                 changelogFile: 'docs/changelog.mdx'
             }
         ],
+        '@semantic-release/npm',
         [
             '@semantic-release/git',
             {
-                assets: ['docs/changelog.mdx']
+                assets: ['docs/changelog.mdx', 'package.json', 'package-lock.json']
             }
         ],
-        '@semantic-release/npm',
         '@semantic-release/github'
     ]
 };

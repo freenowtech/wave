@@ -11,7 +11,7 @@ const MinusIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =>
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 20 20">
-            <path d="M15.833 10.833V9.167H4.167v1.666z" fill="#001E3E" fillRule="nonzero" />
+            <path d="M15.833 10.833V9.167H4.167v1.666z" fill="currentColor" fillRule="nonzero" />
         </svg>
     );
 };
