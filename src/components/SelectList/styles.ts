@@ -1,40 +1,40 @@
-import { CSSProperties } from 'react';
+import { CSSObject } from 'styled-components';
 import { Colors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { SelectListProps } from './types';
 
 export const disabledStyles = {
-    control: ({ inverted }: SelectListProps): CSSProperties => ({
+    control: ({ inverted }: SelectListProps): CSSObject => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
         borderColor: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
         boxShadow: 'none'
     }),
-    placeholder: ({ inverted }: SelectListProps): CSSProperties => ({
+    placeholder: ({ inverted }: SelectListProps): CSSObject => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
     }),
-    label: ({ inverted }: SelectListProps): CSSProperties => ({
+    label: ({ inverted }: SelectListProps): CSSObject => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
     }),
-    icons: ({ inverted }: SelectListProps): CSSProperties => ({
+    icons: ({ inverted }: SelectListProps): CSSObject => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
     })
 };
 
 export const errorStyles = {
-    control: ({ variant }: SelectListProps): CSSProperties => ({
+    control: ({ variant }: SelectListProps): CSSObject => ({
         borderColor: Colors.NEGATIVE_ORANGE_900,
         boxShadow:
             variant === 'boxed'
                 ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
                 : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`
     }),
-    label: (): CSSProperties => ({
+    label: (): CSSObject => ({
         color: Colors.NEGATIVE_ORANGE_900
     })
 };
 
 export const variantStyles = {
-    control: (props: SelectListProps): CSSProperties => {
+    control: (props: SelectListProps): CSSObject => {
         switch (props.variant) {
             case 'boxed': {
                 const bSize = {
@@ -57,7 +57,7 @@ export const variantStyles = {
                     borderRadius: get('radii.2')(props),
                     border: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
                     ...isBFocused,
-                    ...bSize[props.size]
+                    ...bSize[ props.size ]
                 };
             }
             case 'bottom-lined': {
@@ -82,14 +82,14 @@ export const variantStyles = {
                     borderTopRightRadius: get('radii.1')(props),
                     borderBottom: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
                     ...isBLFocused,
-                    ...btSize[props.size]
+                    ...btSize[ props.size ]
                 };
             }
             default:
                 return {};
         }
     },
-    label: (props: SelectListProps): CSSProperties => {
+    label: (props: SelectListProps): CSSObject => {
         switch (props.variant) {
             case 'boxed': {
                 const bSize = {
@@ -107,7 +107,7 @@ export const variantStyles = {
                     }
                 };
 
-                return bSize[props.size];
+                return bSize[ props.size ];
             }
             case 'bottom-lined': {
                 const btSize = {
@@ -125,7 +125,7 @@ export const variantStyles = {
                     }
                 };
 
-                return btSize[props.size];
+                return btSize[ props.size ];
             }
             default:
                 return {};

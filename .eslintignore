@@ -1,0 +1,15 @@
+# libraries
+node_modules/
+
+# generated files
+.docz/
+lib/
+
+# other
+assets/
+
+# currently excluded
+fixtures/
+
+src/icons/
+src/gatsby-theme-docz

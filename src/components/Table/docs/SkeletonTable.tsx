@@ -91,7 +91,7 @@ export const SkeletonTable: FC = () => {
                                 <TableCell>
                                     <Box display="flex" alignItems="center">
                                         <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
-                                        &nbsp;+49&nbsp;{Math.round(Math.random() * 1_000_000_000)}
+                                        &nbsp;+49&nbsp;{Math.round(Math.random() * 1000000000)}
                                     </Box>
                                 </TableCell>
                                 <TableCell>

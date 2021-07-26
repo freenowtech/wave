@@ -15,7 +15,8 @@ const StyledSingleValue = styled(components.SingleValue)`
     }
 `;
 
-const SingleValue: FC<SingleValueProps<PhoneAreaCodeCountry>> = (props: SingleValueProps<PhoneAreaCodeCountry>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SingleValue: FC<SingleValueProps<any>> = (props: SingleValueProps<PhoneAreaCodeCountry>) => {
     if (!props.hasValue) {
         return props.children as ReactElement;
     }

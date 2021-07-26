@@ -2,14 +2,15 @@ import warning from 'warning';
 
 type DeprecatedWarningFunction = (
     componentName: string,
-    propValue: string | number | undefined,
+    propValue: string | number | boolean | undefined,
     oldProp: string,
     newProp?: string,
     comment?: string
 ) => void;
 
 // eslint-disable-next-line import/no-mutable-exports
-let deprecatedProperty: DeprecatedWarningFunction = function deprecatedFunction() {};
+let deprecatedProperty: DeprecatedWarningFunction = function deprecatedFunction() {
+};
 
 if (process.env.NODE_ENV !== 'production') {
     const hasWarned = {};
@@ -25,8 +26,8 @@ if (process.env.NODE_ENV !== 'production') {
         const newProperty = newProp ? `Use \`${newProp}\`` : '';
         const newPropertySentence = newProp ? ` ${newProperty} instead.` : '';
 
-        if (!hasWarned[componentName + oldProp]) {
-            hasWarned[componentName + oldProp] = propValue !== undefined;
+        if (!hasWarned[ componentName + oldProp ]) {
+            hasWarned[ componentName + oldProp ] = propValue !== undefined;
 
             // eslint-disable-next-line @typescript-eslint/no-unsafe-call
             warning(

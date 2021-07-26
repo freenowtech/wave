@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -39,10 +40,10 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return Colors.AUTHENTIC_BLUE_350;
 };
 
-const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
+const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
     & ~ ${BottomLinedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
+        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>) : '')};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
     }
@@ -59,13 +60,13 @@ const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size)};
+            ${p => activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
         }
     }
 
     &:focus:not(:disabled) {
         & ~ ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size)};
+            ${p => activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         }

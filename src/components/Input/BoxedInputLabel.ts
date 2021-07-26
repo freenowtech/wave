@@ -1,11 +1,11 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css, Interpolation, ThemeProps } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { InternalInputComponentProps } from './BaseInput';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
 
-const activeBoxedPosition = (size: Pick<InternalInputComponentProps, 'size'>): FlattenSimpleInterpolation => css`
+const activeBoxedPosition = (size: Pick<InternalInputComponentProps, 'size'>): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
     ${activePositionBaseStyles};
 
     top: ${size === 'small' ? '-0.375rem' : '-0.5rem'};

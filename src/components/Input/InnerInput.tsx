@@ -17,7 +17,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
         const { label, onChange, size, id: providedId, variant, ...rest } = restProps;
         const id = useGeneratedId(providedId);
 
-        const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
+        const [ hasValue, setHasValue ] = useState(rest.value && rest.value.toString().length > 0);
 
         const handleChange = event => {
             if (onChange) {
@@ -27,7 +27,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
 
         useEffect(() => {
             setHasValue(rest.value && rest.value.toString().length > 0);
-        }, [rest.value]);
+        }, [ rest.value ]);
 
         if (variant === 'boxed') {
             return (

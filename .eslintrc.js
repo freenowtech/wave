@@ -19,8 +19,13 @@ module.exports = {
         project: './tsconfig.eslint.json'
     },
     rules: {
+        // conflicts with styleline
+        'unicorn/numeric-separators-style': 'off',
+
         'unicorn/no-useless-undefined': 'off',
+
         '@typescript-eslint/no-unsafe-return': 'off',
+
         '@typescript-eslint/no-unsafe-assignment': 'off',
         'react/require-default-props': 'off',
         // Often used for this library
@@ -59,15 +64,5 @@ module.exports = {
                 '@typescript-eslint/no-var-requires': 'off'
             }
         }
-    ],
-    ignorePatterns: [
-        'node_modules',
-        '.docz',
-        'lib',
-        'assets',
-        'fixtures',
-        // temporary exclusion
-        'src/icons',
-        'src/gatsby-theme-docz'
     ]
 };

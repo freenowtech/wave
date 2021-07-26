@@ -1,7 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "./**/*"
+    ".github",
+    "docs",
+    "public",
+    "scripts",
+    "src",
   ],
   "exclude": [
     "node_modules",

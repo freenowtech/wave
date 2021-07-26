@@ -14,7 +14,8 @@ const OptionWithFlag = styled(components.Option).attrs({ role: 'option' })`
     }
 `;
 
-const Option: FC<OptionProps<PhoneAreaCodeCountry>> = (props: OptionProps<PhoneAreaCodeCountry>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Option: FC<OptionProps<any>> = (props: OptionProps<PhoneAreaCodeCountry>) => {
     const data = props.data as PhoneAreaCodeCountry;
 
     return (

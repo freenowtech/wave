@@ -30,7 +30,7 @@ describe.skip('PhoneInput', () => {
 
         expect(mockTextChangeHandler).not.toHaveBeenCalled();
         expect(mockCountryChangeHandler).toHaveBeenCalledWith({ value: 'AD', label: 'Andorra +376', dialCode: '+376' });
-    }, 10_000);
+    }, 10000);
 
     it('should focus on national number input after selecting a country', async () => {
         render(<PhoneInput country={defaultCountry} label="Phone Number" />);
