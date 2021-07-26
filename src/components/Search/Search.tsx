@@ -1,12 +1,13 @@
+import { FC } from 'react';
 import * as React from 'react';
 
 import styled from 'styled-components';
-
-import { Input } from '../Input/Input';
-import { MagnifyingGlassIcon, CloseIcon } from '../../icons/index';
 import { Colors, Elevation } from '../../essentials';
+import { CloseIcon, MagnifyingGlassIcon } from '../../icons/index';
 import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box } from '../Box/Box';
+
+import { Input } from '../Input/Input';
 
 const ActiveStyle = `
     background-color: ${Colors.ACTION_BLUE_50};
@@ -36,7 +37,7 @@ const SearchInputContainer = styled(Box)`
     background: white;
     border-radius: 0.25rem;
     border: ${p =>
-        p.isInFocus ? `0.0625rem solid ${Colors.ACTION_BLUE_900}` : `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`};
+            p.isInFocus ? `0.0625rem solid ${Colors.ACTION_BLUE_900}` : `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`};
     box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}` : 'none')};
     height: ${p => (p.size === 'small' ? '2.2rem' : '3.2rem')};
     transition: box-shadow 100ms ease, border 100ms ease;
@@ -44,20 +45,25 @@ const SearchInputContainer = styled(Box)`
 
 const StyledInput = styled(Input)`
     width: 100%;
+
     input {
         caret-color: ${Colors.ACTION_BLUE_900};
         background: transparent;
         border: 0;
+
         &:focus,
         &:active {
             outline: 0;
             border: 0;
             box-shadow: unset;
         }
+
         text-overflow: ellipsis;
+
         ::-webkit-search-cancel-button {
             display: none;
         }
+
         &::placeholder {
             color: ${p => (!p.disabled ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
             opacity: 1;
@@ -131,39 +137,39 @@ export interface SearchProps {
 
 const prefix = 'result-item';
 
-export const Search = ({
-    results = [],
-    value: propsValue,
-    setValue: setPropsValue,
-    showResults: propsShowResults,
-    setShowResults: setPropsShowResults,
-    width,
-    placeholder = 'Search...',
-    disabled,
-    inverted,
-    size,
-    onInputChange,
-    onClear,
-    onEnter,
-    onChangeSelection
-}: SearchProps) => {
-    const containerRef = React.useRef(null);
+export const Search: FC<SearchProps> = ({
+                           results = [],
+                           value: propsValue,
+                           setValue: setPropsValue,
+                           showResults: propsShowResults,
+                           setShowResults: setPropsShowResults,
+                           width,
+                           placeholder = 'Search...',
+                           disabled,
+                           inverted,
+                           size,
+                           onInputChange,
+                           onClear,
+                           onEnter,
+                           onChangeSelection
+                       }: SearchProps) => {
+    const containerRef = React.useRef<HTMLDivElement>(null);
 
-    const [isInFocus, setIsInFocus] = React.useState<boolean>(false);
+    const [ isInFocus, setIsInFocus ] = React.useState<boolean>(false);
 
-    const [activeIndex, setActiveIndex] = React.useState<number>(0);
+    const [ activeIndex, setActiveIndex ] = React.useState<number>(0);
 
-    const [value, setValue] = useControlledState<string>([propsValue, setPropsValue], '');
+    const [ value, setValue ] = useControlledState<string>([ propsValue, setPropsValue ], '');
 
-    const [showResults, setShowResults] = useControlledState<boolean>([propsShowResults, setPropsShowResults], false);
+    const [ showResults, setShowResults ] = useControlledState<boolean>([ propsShowResults, setPropsShowResults ], false);
 
-    // this is to keep track of keypresses (up, down, enter, escape)
+    // this is to keep track of keypress events (up, down, enter, escape)
     React.useEffect(() => {
         // we're trying to calculate how many search result options will be rendered, to enable moving up and down through them
         // if we specify customResultLength, that will be taken.
         // if not, we'll check if children is an array, and if so take its length
         // if not just assume there is only one child
-        const elementLength: number = (results instanceof Array && results.length) || 1;
+        const elementLength: number = Array.isArray(results) ? results.length : 1;
 
         // emits onChangeSelection on ArrowDown and ArrowUp, onEnter on Enter, onBlur on Escape
         const emitKeyEvent = ({ key }: KeyboardEvent) => {
@@ -172,40 +178,44 @@ export const Search = ({
                 case 'ArrowUp': {
                     const index = activeIndex > 0 ? (activeIndex - 1) % elementLength : elementLength - 1;
                     setActiveIndex(index);
-                    return onChangeSelection?.(index);
+                    onChangeSelection?.(index);
+                    break;
                 }
 
                 case 'ArrowDown': {
                     const index = (activeIndex + 1) % elementLength;
                     setActiveIndex(index);
-                    return onChangeSelection?.(index);
+                    onChangeSelection?.(index)
+                    break;
                 }
 
                 case 'Enter': {
-                    const el = document.getElementById(`${prefix}-${activeIndex}`);
-                    (el?.children[0] as HTMLElement)?.click();
-                    return onEnter?.(value);
+                    const el = document.querySelector(`#${prefix}-${activeIndex}`);
+                    (el?.children[ 0 ] as HTMLElement)?.click();
+                    onEnter?.(value);
+                    break;
                 }
 
                 case 'Escape':
                     setShowResults(false);
-                    return;
+                    break;
 
                 default:
-                    return;
+                    break;
             }
         };
         document.addEventListener('keydown', emitKeyEvent);
         return () => {
             document.removeEventListener('keydown', emitKeyEvent);
         };
-    }, [isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, propsValue, results]);
+    }, [ isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, propsValue, results ]);
 
     // this is to keep track of clicks outside the component (useful to close the search results)
     React.useEffect(() => {
-        const emitIfClickingOutsideSearch = (e: any) => {
+        // eslint-disable-next-line unicorn/consistent-function-scoping
+        const emitIfClickingOutsideSearch = (event: DocumentEventMap['click']) => {
             if (disabled) return;
-            if (!containerRef.current.contains(e.target)) {
+            if (!containerRef.current.contains(event.target as Element)) {
                 setShowResults(false);
             } else {
                 setShowResults(true);
@@ -215,11 +225,11 @@ export const Search = ({
         return () => {
             document.removeEventListener('click', emitIfClickingOutsideSearch);
         };
-    }, [showResults, setShowResults, disabled]);
+    }, [ showResults, setShowResults, disabled ]);
 
-    const handleChangeValue = e => {
+    const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setShowResults(true);
-        const searchText: string = e.target.value;
+        const searchText: string = event.target.value;
         setValue?.(searchText);
         onInputChange?.(searchText);
     };
@@ -271,7 +281,7 @@ export const Search = ({
                     onBlur={() => setIsInFocus(false)}
                 />
 
-                {!value ? null : (
+                {!value ? undefined : (
                     <Box
                         aria-label="clear-search"
                         style={{ margin: '1rem', marginLeft: 'auto', cursor: 'pointer', display: 'flex' }}
@@ -292,7 +302,10 @@ export const Search = ({
                         <ActiveBox
                             role="option"
                             id={`${prefix}-${index}`}
-                            key={index}
+                            key={
+                                // eslint-disable-next-line react/no-array-index-key
+                                index
+                            }
                             onMouseEnter={() => setActiveIndex(index)}
                             onMouseMove={() => setActiveIndex(index)}
                             aria-selected={activeIndex === index}

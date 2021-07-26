@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -40,9 +39,8 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return Colors.AUTHENTIC_BLUE_350;
 };
 
-const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
+const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
-
     & ~ ${BottomLinedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
         color: ${getLabelColor};
@@ -50,7 +48,6 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
     }
 
     ${p => (p.error ? errorStyles : undefined)}
-
     &:disabled {
         & ~ ${BottomLinedInputLabel} {
             color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};

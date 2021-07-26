@@ -3,41 +3,40 @@ import { Box, Text } from '../components';
 import { Checkerboard } from './Checkerboard';
 
 interface CombinationProps {
-    children: (props: {}, index: number) => React.ReactNode;
+    children: (props: Record<string, unknown>, index: number) => React.ReactNode;
     itemWidth: string;
 }
 
-const flatMap = (arr, fn) => arr.map(fn).reduce((a, b) => a.concat(b));
-
-const combinations: (variations: { [index: string]: any }) => {}[] = variationsByField => {
+const combinations: (variations: { [ index: string ]: unknown }) => Record<string, unknown>[] = variationsByField => {
     const fieldNames = Object.keys(variationsByField);
 
-    if (!fieldNames.length) {
-        return [{}];
+    if (fieldNames.length === 0) {
+        return [ {} ];
     }
 
-    const combine: (fieldNames: string[], acc: {}) => {}[] = ([fieldName, ...restFieldNames], acc) => {
-        const variationsForField = variationsByField[fieldName];
+    const combine: (fieldNames: string[], acc: Record<string, unknown>) => Record<string, unknown>[] = ([ fieldName, ...restFieldNames ], acc) => {
+        const variationsForField = variationsByField[ fieldName ];
 
-        if (!Array.isArray(variationsForField) || !variationsForField.length) {
+        if (!Array.isArray(variationsForField) || variationsForField.length === 0) {
             throw new Error(`Please provide a non-empty array of possible values for prop ${fieldName}`);
         }
 
-        const vs = variationsForField.map(fieldValue => ({
+        const vs: Record<string, unknown>[] = variationsForField.map(fieldValue => ({
             ...acc,
-            [fieldName]: fieldValue
+            [ fieldName ]: fieldValue
         }));
 
-        if (!restFieldNames.length) {
+        if (restFieldNames.length === 0) {
             return vs;
         }
-        return flatMap(vs, newAcc => combine(restFieldNames, newAcc));
+
+        return vs.flatMap(newAcc => combine(restFieldNames, newAcc))
     };
 
     return combine(fieldNames, {});
 };
 
-const toReactAttribute = (key, value) => {
+const toReactAttribute = (key: string, value: unknown) => {
     switch (typeof value) {
         case 'boolean':
             return value && key;
@@ -48,39 +47,41 @@ const toReactAttribute = (key, value) => {
     }
 };
 
-export const Combination: FC<CombinationProps> = ({ children, itemWidth = '10rem', ...props }) => {
-    return (
-        <Box
-            display="grid"
-            gridTemplateColumns={`repeat(auto-fit, minmax(${itemWidth}, 1fr))`}
-            gridGap="2rem"
-            width="100%"
-        >
-            {combinations(props).map((combination, i) => (
-                <Box
-                    key={i}
-                    textAlign="center"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    flexWrap="wrap"
-                >
-                    <Box flexBasis="100%">
-                        {Object.keys(combination).map(key => (
-                            <Text fontSize={1} fontFamily="monospace" key={`${i}-${key}`} as="p">
-                                {toReactAttribute(key, combination[key])}
-                            </Text>
-                        ))}
-                    </Box>
-
-                    <Box mt={1} p={2} position="relative" flexBasis="100%">
-                        <Box position="absolute" top={0} left={0} right={0} bottom={0}>
-                            <Checkerboard {...combination} />
-                        </Box>
-                        <Box position="relative">{children(combination, i)}</Box>
-                    </Box>
+export const Combination: FC<CombinationProps> = ({ children, itemWidth = '10rem', ...props }: CombinationProps) => (
+    <Box
+        display="grid"
+        gridTemplateColumns={`repeat(auto-fit, minmax(${itemWidth}, 1fr))`}
+        gridGap="2rem"
+        width="100%"
+    >
+        {combinations(props as Record<string, unknown>).map((combination, i) => (
+            <Box
+                key={
+                    // eslint-disable-next-line react/no-array-index-key
+                    i
+                }
+                textAlign="center"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexWrap="wrap"
+            >
+                <Box flexBasis="100%">
+                    {Object.keys(combination).map(key => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <Text fontSize={1} fontFamily="monospace" key={`${i}-${key}`} as="p">
+                            {toReactAttribute(key, combination[ key ])}
+                        </Text>
+                    ))}
                 </Box>
-            ))}
-        </Box>
-    );
-};
+
+                <Box mt={1} p={2} position="relative" flexBasis="100%">
+                    <Box position="absolute" top={0} left={0} right={0} bottom={0}>
+                        <Checkerboard {...combination} />
+                    </Box>
+                    <Box position="relative">{children(combination, i)}</Box>
+                </Box>
+            </Box>
+        ))}
+    </Box>
+);

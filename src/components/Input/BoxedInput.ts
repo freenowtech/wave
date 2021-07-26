@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -40,21 +39,19 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return Colors.AUTHENTIC_BLUE_350;
 };
 
-const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
+const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
-
     & + ${BoxedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
-            `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                p.size === 'small' ? '0.0825rem' : '0.0625rem'
-            }), transparent 50%)`};
+                `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
+                        p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                }), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
-
     &:disabled {
         & + ${BoxedInputLabel} {
             color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
@@ -76,9 +73,9 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
             background: ${p =>
-                `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                    p.size === 'small' ? '0.0825rem' : '0.0625rem'
-                }), transparent 50%)`};
+                    `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
+                            p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                    }), transparent 50%)`};
         }
     }
 `;

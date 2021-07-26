@@ -70,6 +70,8 @@ module.exports = {
         'node_modules',
         '.docz',
         'lib',
+        'assets',
+        'fixtures',
         // temporary exclusion
         'src/icons',
         'src/gatsby-theme-docz'
