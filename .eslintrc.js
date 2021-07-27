@@ -19,7 +19,7 @@ module.exports = {
         project: './tsconfig.eslint.json'
     },
     rules: {
-        // conflicts with styleline
+        // conflicts with stylelint rule
         'unicorn/numeric-separators-style': 'off',
 
         'unicorn/no-useless-undefined': 'off',
