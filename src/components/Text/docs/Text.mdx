@@ -6,9 +6,9 @@ route: /components/text
 
 import { Playground } from 'docz';
 import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { Text } from '../Text.tsx';
-import { Colors } from '../../../essentials/Colors/Colors.ts';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import { Text } from '../Text.tsx';
+import { TextPropsTable } from './TextPropsTable.tsx';
 
 # Text
 
@@ -19,6 +19,11 @@ The Text component is a wrapper component that will apply typography styles to t
 -   Text default size is medium
 
 <StyledSystemLinks component="Text" supportedProps={ ['margin', 'fontSize', 'fontWeight', 'fontFamily', 'textAlign'] }/>
+
+## Properties
+
+<TextPropsTable />
+
 
 ## Playground
 
@@ -50,14 +55,14 @@ The Text component is a wrapper component that will apply typography styles to t
     <Text as="p" inverted fontSize={0}>paragraph inverted small</Text>
 </ItemWrapper>
 <ItemWrapper>
-    <Text as="p" weak>paragraph weak large</Text>
-    <Text as="p" weak fontSize={1}>paragraph weak medium</Text>
-    <Text as="p" weak fontSize={0}>paragraph weak small</Text>
+    <Text as="p" secondary>paragraph secondary large</Text>
+    <Text as="p" secondary fontSize={1}>paragraph secondary medium</Text>
+    <Text as="p" secondary fontSize={0}>paragraph secondary small</Text>
 </ItemWrapper>
 <ItemWrapper inverted>
-    <Text as="p" weak inverted>paragraph weak inverted large</Text>
-    <Text as="p" weak fontSize={1} inverted>paragraph weak inverted medium</Text>
-    <Text as="p" weak fontSize={0} inverted>paragraph weak inverted small</Text>
+    <Text as="p" secondary inverted>paragraph secondary inverted large</Text>
+    <Text as="p" secondary fontSize={1} inverted>paragraph secondary inverted medium</Text>
+    <Text as="p" secondary fontSize={0} inverted>paragraph secondary inverted small</Text>
 </ItemWrapper>
 <ItemWrapper>
     <Text as="p" disabled>paragraph disabled large</Text>
