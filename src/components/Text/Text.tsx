@@ -13,9 +13,9 @@ import {
     textAlign,
     TextAlignProps
 } from 'styled-system';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { SemanticColors } from '../../essentials/Colors/Colors';
 
 interface TextProps
     extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
@@ -48,18 +48,18 @@ interface TextProps
 
 function determineTextColor({ weak, secondary, inverted, disabled }: TextProps) {
     if (disabled) {
-        return inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_200;
+        return inverted ? SemanticColors.text.disabledInverted : SemanticColors.text.disabled;
     }
 
     if (secondary || weak) {
-        return inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_550;
+        return inverted ? SemanticColors.text.secondaryInverted : SemanticColors.text.secondary;
     }
 
     if (inverted) {
-        return Colors.WHITE;
+        return SemanticColors.text.primaryInverted;
     }
 
-    return Colors.AUTHENTIC_BLUE_900;
+    return SemanticColors.text.primary;
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`
