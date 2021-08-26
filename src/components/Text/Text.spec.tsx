@@ -47,7 +47,7 @@ describe('Text', () => {
     describe('if the disabled property is set', () => {
         it('has the disabled color', () => {
             expect(render(<Text disabled />).container.firstChild).toHaveStyle(`
-                color: ${Colors.AUTHENTIC_BLUE_350};
+                color: ${Colors.AUTHENTIC_BLUE_200};
             `);
         });
         it('has a stronger disabled color if inverted', () => {
