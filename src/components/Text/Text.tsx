@@ -48,7 +48,7 @@ interface TextProps
 
 function determineTextColor({ weak, secondary, inverted, disabled }: TextProps) {
     if (disabled) {
-        return inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200;
+        return inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_200;
     }
 
     if (secondary || weak) {
