@@ -8,7 +8,7 @@ const mapping = {
     borderradius: 'border'
 };
 
-export const StyledSystemLinks = ({ component, supportedProps }) => {
+export const StyledSystemLinks = ({ component, supportedProps, ...rest }) => {
     const propToLink = prop => {
         const lowercaseProp = prop.toLowerCase();
         const anchor = mapping[lowercaseProp] ? mapping[lowercaseProp] : lowercaseProp;
@@ -32,7 +32,7 @@ export const StyledSystemLinks = ({ component, supportedProps }) => {
     }, []);
 
     return (
-        <Text as="p">
+        <Text {...rest} as="p">
             The {component} supports{' '}
             {supportedPropsTextParts.map((c, index) => (
                 <React.Fragment key={index}>{c}</React.Fragment>

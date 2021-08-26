@@ -18,12 +18,22 @@ The Text component is a wrapper component that will apply typography styles to t
 -   Avoid using sizes outside the given range
 -   Text default size is medium
 
-<StyledSystemLinks component="Text" supportedProps={ ['margin', 'fontSize', 'fontWeight', 'fontFamily', 'textAlign'] }/>
+## Usage
+
+By default, `Text` uses the primary color, which is the color for most interface text, whether body or headlines.
+
+Use the `secondary` color for supplemental information with diminished contrast (often, the “gray text”).
+Like form microcopy, captions, helper text, and other medium emphasized text elements.
+
+Use the `disabled` color for text in blocks, form elements, or other components that are not available
+to a user at the moment (due to either permissions, dependencies, or pre-requisites) and
+need to feature “incidental” states.
 
 ## Properties
 
 <TextPropsTable />
 
+<StyledSystemLinks component="Text" supportedProps={ ['margin', 'fontSize', 'fontWeight', 'fontFamily', 'textAlign'] } mt={2}/>
 
 ## Playground
 
