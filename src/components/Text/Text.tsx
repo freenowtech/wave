@@ -33,20 +33,25 @@ interface TextProps
     inverted?: boolean;
     /**
      * Adjust color to indicate secondary information
+     * @deprecated
      */
     weak?: boolean;
+    /**
+     * Adjust color to indicate secondary information
+     */
+    secondary?: boolean;
     /**
      * Adjust color to display a disabled text element
      */
     disabled?: boolean;
 }
 
-function determineTextColor({ weak, inverted, disabled }: TextProps) {
+function determineTextColor({ weak, secondary, inverted, disabled }: TextProps) {
     if (disabled) {
         return inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_350;
     }
 
-    if (weak) {
+    if (secondary || weak) {
         return inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_550;
     }
 
