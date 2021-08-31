@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode } from 'react';
+import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
 import { MarginProps, ResponsiveValue } from 'styled-system';
 
@@ -29,6 +29,10 @@ interface CheckboxProps
      * Define size of the checkbox component, defaults to large
      */
     size?: ResponsiveValue<'small' | 'medium' | 'large'>;
+    /**
+     * Decides whether the checkbox is in an "indeterminate"(partially selected) state
+     */
+    indeterminate?: boolean;
 }
 
 const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
@@ -45,7 +49,7 @@ const Checkbox: FC<CheckboxProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
 
-    const { disabled, error, label, textVerticalAlign, size, ...rest } = restProps;
+    const { disabled, error, label, textVerticalAlign, size, indeterminate, ...rest } = restProps;
     let dynamicLabel: ReactNode = label;
 
     if (typeof label === 'string') {
@@ -55,6 +59,12 @@ const Checkbox: FC<CheckboxProps> = props => {
             </Text>
         );
     }
+
+    const checkboxRef = React.createRef<HTMLInputElement>();
+
+    useEffect(() => {
+        checkboxRef.current.indeterminate = indeterminate ? true : false;
+    }, [indeterminate]);
 
     return (
         <LabelWrapper
@@ -66,7 +76,7 @@ const Checkbox: FC<CheckboxProps> = props => {
         >
             <WithTapAreaWrapper textVerticalAlign={textVerticalAlign}>
                 <TapArea />
-                <Checkmark type="checkbox" disabled={disabled} error={error} {...rest} />
+                <Checkmark ref={checkboxRef} type="checkbox" disabled={disabled} error={error} {...rest} />
             </WithTapAreaWrapper>
             {dynamicLabel}
         </LabelWrapper>
