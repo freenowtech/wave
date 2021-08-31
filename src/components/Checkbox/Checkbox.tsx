@@ -68,6 +68,7 @@ const Checkbox: FC<CheckboxProps> = props => {
 
     return (
         <LabelWrapper
+            indeterminate={indeterminate}
             disabled={disabled}
             error={error}
             textVerticalAlign={textVerticalAlign}

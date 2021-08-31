@@ -87,7 +87,9 @@ export const Layout = ({ children, doc }) => {
                         <TableOfContentsWrapper>
                             <TableOfContentsTitle>Table of contents</TableOfContentsTitle>
                             {displayableHeadings.map(heading => (
-                                <SectionLink href={`#${heading.slug}`}>{heading.value}</SectionLink>
+                                <SectionLink key={heading.slug} href={`#${heading.slug}`}>
+                                    {heading.value}
+                                </SectionLink>
                             ))}
                         </TableOfContentsWrapper>
                     )}
