@@ -63,6 +63,11 @@ const Checkbox: FC<CheckboxProps> = props => {
     const checkboxRef = React.createRef<HTMLInputElement>();
 
     useEffect(() => {
+        /**
+         * this hook exists to support the "indeterminate" state for the checkbox, which
+         * currently can be set only using javascript (non HTML)
+         * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate
+         */
         checkboxRef.current.indeterminate = indeterminate ? true : false;
     }, [indeterminate]);
 
