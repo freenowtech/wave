@@ -1,3 +1,4 @@
+export { Accordion, AccordionProps } from './Accordion/Accordion';
 export { Card, CardProps } from './Card/Card';
 export { Dimming } from './Dimming/Dimming';
 export { Headline, HeadlineProps } from './Headline/Headline';
