@@ -55,7 +55,7 @@ exports[`Checkbox renders large checkbox 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -208,7 +208,7 @@ exports[`Checkbox renders medium checkbox 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -361,7 +361,7 @@ exports[`Checkbox renders small checkbox 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -514,7 +514,7 @@ exports[`Checkbox renders the checked style 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -668,7 +668,7 @@ exports[`Checkbox renders the disabled checked style 1`] = `
 }
 
 .c4:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -819,7 +819,7 @@ exports[`Checkbox renders the disabled style 1`] = `
 }
 
 .c4:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -969,7 +969,7 @@ exports[`Checkbox renders the error checked style 1`] = `
 }
 
 .c4:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #FF5E05;
   box-shadow: inset 0 0 0 0.125rem #FF5E05;
 }
@@ -1119,7 +1119,7 @@ exports[`Checkbox renders the error style 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #FF5E05;
   box-shadow: inset 0 0 0 0.125rem #FF5E05;
 }
@@ -1272,7 +1272,7 @@ exports[`Checkbox renders the indeterminate disabled style 1`] = `
 }
 
 .c4:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -1422,7 +1422,7 @@ exports[`Checkbox renders the indeterminate error style 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #FF5E05;
   box-shadow: inset 0 0 0 0.125rem #FF5E05;
 }
@@ -1574,7 +1574,7 @@ exports[`Checkbox renders the indeterminate style 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
@@ -1726,7 +1726,7 @@ exports[`Checkbox renders with default props 1`] = `
 }
 
 .c5:indeterminate {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' data-reactroot=''%3E%3Cpath d='M15.833 10.833V9.167H4.167v1.666z' fill='%23FFF' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
   background-color: #096BDB;
   box-shadow: inset 0 0 0 0.125rem #096BDB;
 }
