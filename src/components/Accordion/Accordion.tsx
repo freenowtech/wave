@@ -23,14 +23,13 @@ const HorizontalDivider = styled(Box)`
 
 const HorizontalDividerTop = HorizontalDivider;
 
-const HorizontalDividerBottom = HorizontalDivider;
+const HorizontalDividerBottom = styled(HorizontalDivider)`
+    display: none;
+`;
 
 const RenderedSection = styled(Box)`
-    :nth-of-type(2n) ${HorizontalDividerTop} {
-        display: none;
-    }
-    :nth-of-type(2n) ${HorizontalDividerBottom} {
-        display: none;
+    :last-child ${HorizontalDividerBottom} {
+        display: inherit;
     }
 `;
 

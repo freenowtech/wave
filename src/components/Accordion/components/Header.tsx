@@ -9,4 +9,5 @@ export const Header = styled(Box).attrs({ p: '2', color: Colors.AUTHENTIC_BLUE_9
     justify-content: space-between;
 
     cursor: pointer;
+    min-height: 2.5rem;
 `;
