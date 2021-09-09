@@ -10,6 +10,7 @@ import { theme } from '../../../essentials/theme';
 type LabelWrapperProps = MarginProps & {
     disabled?: boolean;
     error?: boolean;
+    indeterminate?: boolean;
     textVerticalAlign?: ResponsiveValue<'top' | 'center'>;
 };
 
@@ -25,13 +26,26 @@ const textVerticalAlignVariant = variant({
     }
 });
 
-const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
+const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
     if (disabled) {
         return css`
             cursor: not-allowed;
 
             & > ${/*sc-selector*/ TapArea}:active {
                 background-color: transparent;
+            }
+        `;
+    }
+    if (indeterminate) {
+        return css`
+            cursor: pointer;
+
+            & ${/*sc-selector*/ TapArea}:not(:active) {
+                background-color: ${error ? Colors.NEGATIVE_ORANGE_50 : Colors.ACTION_BLUE_50};
+            }
+
+            & ${/*sc-selector*/ Checkmark}:not(:checked) {
+                box-shadow: inset 0 0 0 0.125rem ${error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900};
             }
         `;
     }
