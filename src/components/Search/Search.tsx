@@ -274,6 +274,7 @@ export const Search: FC<SearchProps> = ({
                     inverted={inverted}
                     disabled={disabled}
                     aria-label={placeholder}
+                    autoComplete="off"
                     placeholder={placeholder}
                     value={value}
                     onChange={handleChangeValue}

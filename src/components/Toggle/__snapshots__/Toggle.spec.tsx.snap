@@ -44,6 +44,7 @@ exports[`Toggle renders the checked style 1`] = `
 .c1 {
   height: 0;
   width: 0;
+  margin: 0;
   visibility: hidden;
 }
 
@@ -131,6 +132,7 @@ exports[`Toggle renders the disabled checked style 1`] = `
 .c1 {
   height: 0;
   width: 0;
+  margin: 0;
   visibility: hidden;
 }
 
@@ -221,6 +223,7 @@ exports[`Toggle renders the disabled style 1`] = `
 .c1 {
   height: 0;
   width: 0;
+  margin: 0;
   visibility: hidden;
 }
 
@@ -310,6 +313,7 @@ exports[`Toggle renders the error checked style 1`] = `
 .c1 {
   height: 0;
   width: 0;
+  margin: 0;
   visibility: hidden;
 }
 
@@ -399,6 +403,7 @@ exports[`Toggle renders the error style 1`] = `
 .c1 {
   height: 0;
   width: 0;
+  margin: 0;
   visibility: hidden;
 }
 
@@ -485,6 +490,7 @@ exports[`Toggle renders with default props 1`] = `
 .c1 {
   height: 0;
   width: 0;
+  margin: 0;
   visibility: hidden;
 }
 

@@ -33,6 +33,12 @@ export const CheckboxPropsTable: FC = () => {
             type: '"top" | "center"',
             description: 'Adjusts the vertical alignment of the checkbox',
             defaultValue: '"center"'
+        },
+        {
+            name: 'indeterminate',
+            type: 'boolean',
+            description: 'Sets the checkbox in the indeterminate state',
+            defaultValue: 'false'
         }
     ];
     return <PropsTable props={props} />;

@@ -29,6 +29,18 @@ describe('Checkbox', () => {
         expect(render(<Checkbox disabled defaultChecked />).container.firstChild).toMatchSnapshot();
     });
 
+    it('renders the indeterminate style', () => {
+        expect(render(<Checkbox indeterminate />).container.firstChild).toMatchSnapshot();
+    });
+
+    it('renders the indeterminate error style', () => {
+        expect(render(<Checkbox indeterminate error />).container.firstChild).toMatchSnapshot();
+    });
+
+    it('renders the indeterminate disabled style', () => {
+        expect(render(<Checkbox indeterminate disabled />).container.firstChild).toMatchSnapshot();
+    });
+
     it('renders small checkbox', () => {
         expect(render(<Checkbox size="small" />).container.firstChild).toMatchSnapshot();
     });

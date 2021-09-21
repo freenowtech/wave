@@ -9,6 +9,7 @@ interface InputProps {
 const Input = styled.input<InputProps>`
     height: 0;
     width: 0;
+    margin: 0;
     visibility: hidden;
 
     &:checked + ${/* sc-selector */ Slide}::before {
