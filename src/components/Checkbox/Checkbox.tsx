@@ -65,7 +65,7 @@ const Checkbox: FC<CheckboxProps> = props => {
          * currently can be set only using javascript (non HTML)
          * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate
          */
-        checkboxRef.current.indeterminate = indeterminate ? true : false;
+        checkboxRef.current.indeterminate = !!indeterminate;
     }, [indeterminate]);
 
     return (
