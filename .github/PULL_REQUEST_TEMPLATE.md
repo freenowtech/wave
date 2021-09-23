@@ -9,7 +9,7 @@ merge of your pull request!
 -->
 
 **What:**
-<!-- Declarative and short sentence of what this PR accomplish. If the PR contains visual changes, please add the design-review label to the PR -->
+<!-- Declarative and short sentence of what this PR accomplishes. If the PR contains visual changes, please add the design-review label to the PR -->
 ​
 **Why:**
 <!-- A brief explanation over why this need arise alonside a sentence with keyword to close related issue "Closes #N" or "relates #X, relates #Y" -->
