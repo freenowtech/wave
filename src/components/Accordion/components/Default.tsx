@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../../essentials';
@@ -62,7 +62,14 @@ const PanelBody = styled(Box).attrs({ my: '3' })`
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) =>
     isOpen ? <ChevronUp color={Colors.ACTION_BLUE_900} /> : <ChevronDown color={Colors.ACTION_BLUE_900} />;
 
-const DefaultPanel = ({ label, description, info, buttonLabel, expanded = false, children }: Props) => {
+export const DefaultPanel = ({
+    label,
+    description,
+    info,
+    buttonLabel,
+    expanded = false,
+    children
+}: PropsWithChildren<Props>) => {
     const [isOpen, setIsOpen] = useState<boolean>(expanded);
 
     return (
@@ -103,4 +110,3 @@ const DefaultPanel = ({ label, description, info, buttonLabel, expanded = false,
         </>
     );
 };
-export default DefaultPanel;

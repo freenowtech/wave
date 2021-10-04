@@ -33,7 +33,7 @@ const PanelHeader = styled(Header)`
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);
 
-const Compact = ({ label, description, expanded = false, children }: Props) => {
+export const Compact = ({ label, description, expanded = false, children }: Props) => {
     const [isOpen, setIsOpen] = useState<boolean>(expanded);
 
     return (
@@ -58,4 +58,3 @@ const Compact = ({ label, description, expanded = false, children }: Props) => {
         </>
     );
 };
-export default Compact;

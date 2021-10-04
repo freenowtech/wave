@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { Colors } from '../../essentials';
 import { Box } from '../Box/Box';
-import Compact from './components/Compact';
-import DefaultPanel from './components/Default';
+import { Compact } from './components/Compact';
+import { DefaultPanel } from './components/Default';
 
 interface AccordionProps {
     heading?: string;
@@ -12,7 +12,7 @@ interface AccordionProps {
     info?: string;
     buttonLabel?: string;
     variant?: 'compact' | 'default';
-    expanded?: boolean;
+    defaultExpanded?: boolean;
     children: ReactNode;
 }
 
@@ -33,11 +33,11 @@ const RenderedSection = styled(Box)`
     }
 `;
 
-const Accordion = ({ heading, description, info, buttonLabel, variant, expanded, children }: AccordionProps) => (
+const Accordion = ({ heading, description, info, buttonLabel, variant, defaultExpanded, children }: AccordionProps) => (
     <RenderedSection role="group">
         <HorizontalDividerTop />
         {variant === 'compact' ? (
-            <Compact label={heading ? heading : ''} description={description} expanded={expanded}>
+            <Compact label={heading ? heading : ''} description={description} expanded={defaultExpanded}>
                 {children}
             </Compact>
         ) : (
@@ -46,7 +46,7 @@ const Accordion = ({ heading, description, info, buttonLabel, variant, expanded,
                 description={description}
                 buttonLabel={buttonLabel}
                 info={info}
-                expanded={expanded}
+                expanded={defaultExpanded}
             >
                 {children}
             </DefaultPanel>
