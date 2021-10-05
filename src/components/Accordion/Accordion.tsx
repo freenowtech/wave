@@ -37,16 +37,16 @@ const Accordion = ({ heading, description, info, buttonLabel, variant, defaultEx
     <RenderedSection role="group">
         <HorizontalDividerTop />
         {variant === 'compact' ? (
-            <Compact label={heading ? heading : ''} description={description} expanded={defaultExpanded}>
+            <Compact heading={heading ? heading : ''} description={description} defaultExpanded={defaultExpanded}>
                 {children}
             </Compact>
         ) : (
             <DefaultPanel
-                label={heading ? heading : ''}
+                heading={heading ? heading : ''}
                 description={description}
                 buttonLabel={buttonLabel}
                 info={info}
-                expanded={defaultExpanded}
+                defaultExpanded={defaultExpanded}
             >
                 {children}
             </DefaultPanel>

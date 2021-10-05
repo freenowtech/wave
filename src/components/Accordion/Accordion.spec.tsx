@@ -6,7 +6,7 @@ import { Accordion } from './Accordion';
 describe('Accordion', () => {
     it('allows rendering react nodes as children', () => {
         render(
-            <Accordion expanded>
+            <Accordion defaultExpanded>
                 <button>button</button>
                 <p>paragraph</p>
             </Accordion>

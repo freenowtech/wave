@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../../essentials';
@@ -8,16 +8,12 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
+import { AccordionProps } from '../Accordion';
 
-interface Props {
-    label: string;
-    description?: string;
-    expanded?: boolean;
-    children?: ReactNode;
-}
+type Props = Pick<AccordionProps, 'heading' | 'description' | 'defaultExpanded' | 'children'>;
 
 const PanelHeader = styled(Header)`
-    // @ts-ignore
+    // @ts-ignore No overload matches this call.
     &:hover ${Headline} {
         color: ${Colors.ACTION_BLUE_1000};
     }
@@ -33,15 +29,15 @@ const PanelHeader = styled(Header)`
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);
 
-export const Compact = ({ label, description, expanded = false, children }: Props) => {
-    const [isOpen, setIsOpen] = useState<boolean>(expanded);
+export const Compact = ({ heading, description, defaultExpanded = false, children }: Props) => {
+    const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (
         <>
             <PanelHeader onClick={() => setIsOpen(!isOpen)}>
                 <Box display="flex" flexDirection="column" maxWidth="33%">
                     <Headline as="h4" mr="3">
-                        {label}
+                        {heading}
                     </Headline>
                     {isOpen && <Description mt="1" description={description} />}
                 </Box>

@@ -5,8 +5,9 @@ route: /components/accordion
 ---
 
 import { Playground } from 'docz';
-import { Accordion } from '../Accordion.tsx';
 import { Box } from '../../Box/Box.tsx';
+import { Accordion } from '../Accordion.tsx';
+import { AccordionPropsTable } from './AccordionPropsTable.tsx';
 
 # Accordion
 Accordion component is use to display large amount of content in a compress and progressive way.
@@ -20,7 +21,7 @@ Accordion component is use to display large amount of content in a compress and 
                 This is just a placeholder
             </div>
         </Accordion>
-        <Accordion heading="some header" expanded>
+        <Accordion heading="some header" defaultExpanded>
             <div>
                 This is just a placeholder
             </div>
@@ -48,3 +49,6 @@ Accordion component is use to display large amount of content in a compress and 
         </Accordion>
     </Box>
 </Playground>
+
+## API
+<AccordionPropsTable />

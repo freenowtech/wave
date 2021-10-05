@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, PropsWithChildren } from 'react';
+import React, { useState, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../../essentials';
@@ -9,15 +9,7 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
-
-interface Props {
-    label: string;
-    description?: string;
-    info?: string;
-    buttonLabel?: string;
-    expanded?: boolean;
-    children?: ReactNode;
-}
+import { AccordionProps } from '../Accordion';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`
     color: ${Colors.ACTION_BLUE_900};
@@ -63,14 +55,14 @@ const PanelIcon = ({ isOpen }: { isOpen: boolean }) =>
     isOpen ? <ChevronUp color={Colors.ACTION_BLUE_900} /> : <ChevronDown color={Colors.ACTION_BLUE_900} />;
 
 export const DefaultPanel = ({
-    label,
+    heading,
     description,
     info,
     buttonLabel,
-    expanded = false,
+    defaultExpanded = false,
     children
-}: PropsWithChildren<Props>) => {
-    const [isOpen, setIsOpen] = useState<boolean>(expanded);
+}: PropsWithChildren<AccordionProps>) => {
+    const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (
         <>
@@ -79,7 +71,7 @@ export const DefaultPanel = ({
                     <CardHeader onClick={() => setIsOpen(!isOpen)}>
                         <Box display="flex" flexDirection="column" maxWidth="33%">
                             <Headline as="h4" mr="3">
-                                {label}
+                                {heading}
                             </Headline>
                             <Description mt="1" description={description} />
                         </Box>
@@ -93,7 +85,7 @@ export const DefaultPanel = ({
             ) : (
                 <PanelHeader onClick={() => setIsOpen(!isOpen)}>
                     <Headline as="h4" mr="3">
-                        {label}
+                        {heading}
                     </Headline>
                     <Box>
                         <Description description={description} />
