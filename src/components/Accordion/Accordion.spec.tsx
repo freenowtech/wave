@@ -25,6 +25,7 @@ describe('Accordion', () => {
         expect(screen.getByText('some info')).toBeInTheDocument();
         expect(screen.getByText('some description')).toBeInTheDocument();
         expect(screen.getByText('button')).toBeInTheDocument();
+        expect(screen.queryByText('Place holder')).not.toBeInTheDocument();
     });
 
     it('render default variant open', () => {
