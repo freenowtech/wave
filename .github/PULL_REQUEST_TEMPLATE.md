@@ -10,7 +10,7 @@ merge of your pull request!
 
 **What:**
 
-<!-- Declarative and short sentence of what this PR accomplish -->
+<!-- Declarative and short sentence of what this PR accomplishes. If the PR contains visual changes, please add the design-review label to the PR -->
 
 ​
 **Why:**
