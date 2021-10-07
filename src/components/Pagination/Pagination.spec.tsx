@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
 import { render, RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
+import React from 'react';
 
 import { Pagination } from './Pagination';
 
@@ -12,38 +12,40 @@ describe('Pagination', () => {
 
     it('should have no AXE violations', async () => {
         const { container } = render(<Pagination value={1} pageSize={20} totalItems={200} />);
-        expect(axe(container)).resolves.toHaveNoViolations();
+
+        await expect(axe(container)).resolves.toHaveNoViolations();
     });
 
     // This test is used as an example in the documentation, so if it breaks and needs to be adapted make sure to also
     // update the documentation.
     it('should select by aria-label', () => {
         const { getByRole } = render(<Pagination value={1} pageSize={20} totalItems={200} />);
-        getByRole('button', { name: 'First' });
-        getByRole('button', { name: 'Previous' });
-        getByRole('button', { name: 'Next' });
-        getByRole('button', { name: 'Last' });
+
+        expect(getByRole('button', { name: 'First' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'Previous' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'Next' })).toBeInTheDocument();
+        expect(getByRole('button', { name: 'Last' })).toBeInTheDocument();
     });
 
     it('should render a label from a string', () => {
         const { getByText } = render(<Pagination value={1} pageSize={20} totalItems={200} label="test label" />);
-        getByText('test label');
+
+        expect(getByText('test label')).toBeInTheDocument();
     });
 
     it('should render a label from a component', () => {
         const { getByText } = render(
             <Pagination value={1} pageSize={20} totalItems={200} label={<span>test label</span>} />
         );
-        getByText('test label');
+
+        expect(getByText('test label')).toBeInTheDocument();
     });
 
     it('should switch to the next page when clicking forward', () => {
         const onNextMock = jest.fn();
-        const { getAllByRole } = render(
-            <Pagination value={1} pageSize={20} totalItems={200} onNextPage={onNextMock} />
-        );
+        const { getByRole } = render(<Pagination value={1} pageSize={20} totalItems={200} onNextPage={onNextMock} />);
 
-        const [skipBackwardBtn, backwardBtn, forwardBtn, skipForwardBtn] = getAllByRole('button');
+        const forwardBtn = getByRole('button', { name: 'Next' });
 
         userEvent.click(forwardBtn);
         expect(onNextMock).toHaveBeenCalled();

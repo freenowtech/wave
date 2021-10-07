@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import { Modal, useModalDismiss } from './Modal';
@@ -55,13 +55,17 @@ describe('Modal', () => {
 
         it('when calling the dismiss function', async () => {
             const mockCloseHandler = jest.fn();
-            const { getByTestId } = render(
+            const { getByText } = render(
                 <Modal onClose={mockCloseHandler}>
-                    {dismiss => <button onClick={dismiss} data-testid="dismiss-button" />}
+                    {dismiss => (
+                        <button type="button" onClick={dismiss}>
+                            dismiss
+                        </button>
+                    )}
                 </Modal>
             );
 
-            fireEvent.click(getByTestId('dismiss-button'));
+            fireEvent.click(getByText('dismiss'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });
@@ -71,7 +75,11 @@ describe('Modal', () => {
 
             const InnerComponent: React.FC = () => {
                 const dismiss = useModalDismiss();
-                return <button onClick={dismiss}>Click Me</button>;
+                return (
+                    <button type="button" onClick={dismiss}>
+                        Click Me
+                    </button>
+                );
             };
 
             render(
@@ -123,13 +131,17 @@ describe('Modal', () => {
 
         it('should call the onClose handler when calling the dismiss function', async () => {
             const mockCloseHandler = jest.fn();
-            const { getByTestId } = render(
+            const { getByText } = render(
                 <Modal onClose={mockCloseHandler} dismissible={false}>
-                    {dismiss => <button onClick={dismiss} data-testid="dismiss-button" />}
+                    {dismiss => (
+                        <button type="button" onClick={dismiss}>
+                            dismiss
+                        </button>
+                    )}
                 </Modal>
             );
 
-            fireEvent.click(getByTestId('dismiss-button'));
+            fireEvent.click(getByText('dismiss'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });

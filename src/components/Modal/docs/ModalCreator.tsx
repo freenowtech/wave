@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button, Headline, Text, TextButton } from '../..';
 import { Modal } from '../Modal';
 
@@ -22,7 +22,7 @@ enum ModalType {
     NON_DISMISSIBLE
 }
 
-const ModalCreator = () => {
+const ModalCreator: FC = () => {
     const [modal, setModal] = useState(ModalType.NONE);
 
     const openModal = (type: ModalType) => () => {
@@ -45,13 +45,13 @@ const ModalCreator = () => {
                 Non-Dismissible Modal
             </Button>
 
-            {modal == ModalType.DEFAULT && <Modal onClose={hideModal}>{modalContent}</Modal>}
-            {modal == ModalType.FULLSCREEN && (
+            {modal === ModalType.DEFAULT && <Modal onClose={hideModal}>{modalContent}</Modal>}
+            {modal === ModalType.FULLSCREEN && (
                 <Modal onClose={hideModal} fullscreen>
                     {modalContent}
                 </Modal>
             )}
-            {modal == ModalType.NON_DISMISSIBLE && (
+            {modal === ModalType.NON_DISMISSIBLE && (
                 <Modal onClose={hideModal} dismissible={false}>
                     {modalContent}
                 </Modal>

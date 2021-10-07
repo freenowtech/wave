@@ -1,24 +1,18 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC } from 'react';
 import ReactSelect, { components as ReactSelectComponents, IndicatorProps, Props, StylesConfig } from 'react-select';
-import { MarginProps, WidthProps } from 'styled-system';
 
 import { Colors, Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
-import {
-    ClassNameProps,
-    extractClassNameProps,
-    extractWidthProps,
-    extractWrapperMarginProps
-} from '../../utils/extractProps';
+import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
 import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
-import { Size, Variant } from './types';
+import { SelectListProps } from './types';
 
 const customStyles: StylesConfig = {
-    container: (provided, { selectProps }) => {
+    container: (provided, { selectProps }: Props & { selectProps: SelectListProps }) => {
         const bSize = {
             small: {
                 fontSize: get('fontSizes.1')(selectProps)
@@ -33,7 +27,7 @@ const customStyles: StylesConfig = {
             ...bSize[selectProps.size]
         };
     },
-    control: (_, state) => {
+    control: (_, state: Props & { selectProps: SelectListProps }) => {
         const disabled =
             state.isDisabled && disabledStyles.control({ isFocused: state.isFocused, ...state.selectProps });
         const error =
@@ -60,7 +54,7 @@ const customStyles: StylesConfig = {
         ...provided,
         boxShadow: `0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200}`
     }),
-    valueContainer: (provided, { selectProps: { size, variant } }) => {
+    valueContainer: (provided, { selectProps: { size, variant } }: Props & { selectProps: SelectListProps }) => {
         let margin;
 
         if (variant === 'boxed') {
@@ -99,7 +93,7 @@ const customStyles: StylesConfig = {
         ...provided,
         color: 'inherit'
     }),
-    dropdownIndicator: (provided, state) => {
+    dropdownIndicator: (provided, state: Props & { selectProps: SelectListProps }) => {
         const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
 
         return {
@@ -111,7 +105,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    clearIndicator: (provided, state) => {
+    clearIndicator: (provided, state: Props & { selectProps: SelectListProps }) => {
         const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
 
         return {
@@ -122,7 +116,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    placeholder: (provided, state) => {
+    placeholder: (provided: CSSProperties, state: Props & { selectProps: SelectListProps }) => {
         const disabled = state.isDisabled && disabledStyles.placeholder(state.selectProps);
 
         return {
@@ -131,7 +125,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    option: (provided, state) => {
+    option: (provided, state: Props & { selectProps: SelectListProps }) => {
         const colorsByState = {
             isDisabled: {
                 color: Colors.AUTHENTIC_BLUE_350
@@ -152,6 +146,7 @@ const customStyles: StylesConfig = {
 
         const colors = Object.keys(colorsByState)
             .filter(key => state[key])
+            // eslint-disable-next-line unicorn/no-array-reduce
             .reduce((acc, style) => ({ ...acc, ...colorsByState[style] }), defaultColors);
 
         return {
@@ -166,7 +161,7 @@ const customStyles: StylesConfig = {
             cursor: state.isDisabled ? 'not-allowed' : 'default'
         };
     },
-    multiValue: (provided, { selectProps }) => {
+    multiValue: (provided: CSSProperties, { selectProps }: { selectProps: Props }) => {
         const styles = {
             ...provided,
             color: Colors.ACTION_BLUE_900,
@@ -196,17 +191,15 @@ const customStyles: StylesConfig = {
 
         return styles;
     },
-    multiValueLabel: (provided, { selectProps }) => {
-        return {
-            ...provided,
-            cursor: 'default',
-            color: 'inherit',
-            padding: '0.1875rem',
-            paddingLeft: '0.5rem',
-            fontWeight: get('fontWeights.semibold')(selectProps),
-            fontSize: '0.625rem'
-        };
-    },
+    multiValueLabel: (provided, { selectProps }) => ({
+        ...provided,
+        cursor: 'default',
+        color: 'inherit',
+        padding: '0.1875rem',
+        paddingLeft: '0.5rem',
+        fontWeight: get('fontWeights.semibold')(selectProps) as number,
+        fontSize: '0.625rem'
+    }),
     multiValueRemove: provided => ({
         ...provided,
         cursor: 'pointer',
@@ -222,49 +215,33 @@ const customStyles: StylesConfig = {
 
 const getIconSize = sizeAsString => (sizeAsString === 'medium' ? 24 : 18);
 
-const DropdownIndicator = (props: IndicatorProps<any> & { selectProps: Props }) => {
-    return (
-        <ReactSelectComponents.DropdownIndicator {...props}>
-            {props.selectProps.menuIsOpen ? (
-                <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
-            ) : (
-                <ChevronDownIcon data-testid="open-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
-            )}
-        </ReactSelectComponents.DropdownIndicator>
-    );
-};
+const DropdownIndicator = (props: IndicatorProps<unknown> & { selectProps: Props }) => (
+    <ReactSelectComponents.DropdownIndicator {...props}>
+        {props.selectProps.menuIsOpen ? (
+            <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+        ) : (
+            <ChevronDownIcon data-testid="open-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+        )}
+    </ReactSelectComponents.DropdownIndicator>
+);
 
-const ClearIndicator = (props: IndicatorProps<any>) => {
-    return (
-        <ReactSelectComponents.ClearIndicator {...props}>
-            <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
-        </ReactSelectComponents.ClearIndicator>
-    );
-};
+const ClearIndicator = (props: IndicatorProps<unknown>) => (
+    <ReactSelectComponents.ClearIndicator {...props}>
+        <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
+    </ReactSelectComponents.ClearIndicator>
+);
 
 // Remove Separator component
-const IndicatorSeparator = () => {
-    return null;
-};
+// eslint-disable-next-line unicorn/no-null
+const IndicatorSeparator = () => null;
 
-const MultiValueRemove = props => {
-    return (
-        <ReactSelectComponents.MultiValueRemove {...props}>
-            <CloseIcon size={14} color="inherit" />
-        </ReactSelectComponents.MultiValueRemove>
-    );
-};
+const MultiValueRemove = props => (
+    <ReactSelectComponents.MultiValueRemove {...props}>
+        <CloseIcon size={14} color="inherit" />
+    </ReactSelectComponents.MultiValueRemove>
+);
 
-interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps {
-    variant?: Variant;
-    size?: Size;
-    inverted?: boolean;
-    error?: boolean;
-    label?: string;
-    inputId?: string;
-}
-
-const SelectList: FC<SelectListProps> = props => {
+const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
@@ -307,4 +284,4 @@ SelectList.defaultProps = {
     size: 'medium'
 };
 
-export { SelectList, SelectListProps };
+export { SelectList };

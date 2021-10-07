@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant, width, WidthProps } from 'styled-system';
 
@@ -6,10 +6,7 @@ import { theme } from '../../essentials/theme';
 import { deprecatedProperty } from '../../utils/deprecatedProperty';
 import { get } from '../../utils/themeGet';
 
-interface BaseButtonProps
-    extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-        MarginProps,
-        WidthProps {
+interface BaseButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps, WidthProps {
     /**
      * Adjusts the size of the button
      */
@@ -42,14 +39,16 @@ const sizeVariant = variant({
 /**
  * @deprecated
  */
-function handleBlockProp({ block }: BaseButtonProps) {
-    if (block != undefined) {
+function handleBlockProp({ block }: BaseButtonProps): string {
+    if (block !== undefined) {
         deprecatedProperty('Button', block, 'block', 'width');
     }
 
     if (block) {
         return 'width: 100%';
     }
+
+    return '';
 }
 
 // "svg path" fill set to "inherit" to being able to transition using button variants

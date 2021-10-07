@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const PasswordPropsTable = () => {
+export const PasswordPropsTable: FC = () => {
     const props = [
         {
             name: 'purpose',

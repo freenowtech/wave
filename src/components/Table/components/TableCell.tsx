@@ -1,12 +1,10 @@
-import React, { DetailedHTMLProps, TableHTMLAttributes, TdHTMLAttributes, useContext } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled from 'styled-components';
 import { compose, textAlign, TextAlignProps } from 'styled-system';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 
-type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
-    Omit<DetailedHTMLProps<TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>, 'ref'> &
-    TextAlignProps;
+type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> & ComponentPropsWithoutRef<'td'> & TextAlignProps;
 
 const TableCellElement = styled.td<TableCellProps>`
     height: ${p => p.rowSize};
@@ -25,7 +23,7 @@ const TableCellElement = styled.td<TableCellProps>`
     ${compose(textAlign)}
 `;
 
-const TableCell = props => {
+const TableCell: FC<TableCellProps> = (props: TableCellProps) => {
     const { rowSize, columnSpace } = useContext(TableContext);
 
     return <TableCellElement rowSize={rowSize} columnSpace={columnSpace} {...props} />;

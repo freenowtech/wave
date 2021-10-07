@@ -10,7 +10,7 @@ type DismissFunc = () => void;
 
 const DismissContext = React.createContext<DismissFunc>(undefined);
 
-const useModalDismiss = () => {
+const useModalDismiss = (): DismissFunc => {
     const dismiss = useContext(DismissContext);
 
     if (dismiss === undefined) {

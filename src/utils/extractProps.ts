@@ -1,9 +1,11 @@
 import { HeightProps, MarginProps, WidthProps } from 'styled-system';
 
-function removeUndefinedKeys(object) {
+function removeUndefinedKeys(object: Record<string, unknown>) {
+    // eslint-disable-next-line no-param-reassign
     Object.keys(object).forEach(key => (object[key] === undefined ? delete object[key] : ''));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ExtractProps<T extends { [key: string]: { [key: string]: any } }> = <Props extends T[keyof T]>(
     props: Props
 ) => T & { restProps: Omit<Props, keyof T[keyof T]> };

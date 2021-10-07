@@ -1,13 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled, { css, Interpolation, ThemeProps } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { InternalInputComponentProps } from './BaseInput';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
 
-const activeBottomLinedPosition = size => css`
+const activeBottomLinedPosition = (size?: Pick<InternalInputComponentProps, 'size'>): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
     ${activePositionBaseStyles};
-    top: ${size == 'small' ? '0' : '0.25rem'};
-    font-size: ${size == 'small' ? '0.625rem' : get('fontSizes.0')};
+    top: ${size === 'small' ? '0' : '0.25rem'};
+    font-size: ${size === 'small' ? '0.625rem' : get('fontSizes.0')};
 `;
 
 const sizeVariant = variant({

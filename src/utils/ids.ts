@@ -1,5 +1,3 @@
 import { nanoid } from 'nanoid';
 
-export const generateId = (): string => {
-    return `wave-${nanoid(6)}`;
-};
+export const generateId = (): string => `wave-${nanoid(6)}`;

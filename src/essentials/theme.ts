@@ -37,15 +37,24 @@ const theme = {
  * https://styled-system.com/theme-specification/#scale-aliases
  */
 
+/* eslint-disable prefer-destructuring */
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 theme.fontSizes.small = theme.fontSizes[1];
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 theme.fontSizes.medium = theme.fontSizes[2];
+
 // TODO: the alias large should match with scale on theme "fontSizes" but it may require a breaking change
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 theme.fontSizes.large = '1.125rem';
 
-function fontStack(fonts) {
+/* eslint-enable prefer-destructuring */
+
+function fontStack(fonts: string[]): string {
     return fonts.map(font => (font.includes(' ') ? `"${font}"` : font)).join(', ');
 }
 

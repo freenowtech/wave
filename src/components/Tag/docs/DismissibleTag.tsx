@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Tag } from '../Tag';
 
-const DismissibleTag = () => {
+const DismissibleTag: FC = () => {
     const [visible, setVisible] = useState(true);
 
     return (
         <>
             {visible && <Tag onDismiss={() => setVisible(false)}>Filter</Tag>}
-            {!visible && <button onClick={() => setVisible(true)}>Show again</button>}
+            {!visible && (
+                <button type="button" onClick={() => setVisible(true)}>
+                    Show again
+                </button>
+            )}
         </>
     );
 };

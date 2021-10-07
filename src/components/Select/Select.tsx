@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ChevronDownIcon } from '../../icons/basic';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BaseSelectProps, SelectInput } from './SelectInput';
 import { SelectLabel } from './SelectLabel';
 
@@ -39,7 +39,7 @@ const IconNode = styled.div`
     top: 0;
 `;
 
-const Select: React.FC<SelectProps> = props => {
+const Select: React.FC<SelectProps> = ({ variant = 'boxed', size = 'medium', ...props }: SelectProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
@@ -50,8 +50,8 @@ const Select: React.FC<SelectProps> = props => {
 
     return (
         <SelectWrapper {...classNameProps} {...marginProps} {...widthProps}>
-            <SelectInput {...rest} id={id}>
-                {placeholder ? <option value="">{placeholder}</option> : null}
+            <SelectInput variant={variant} size={size} {...rest} id={id}>
+                {placeholder ? <option value="">{placeholder}</option> : undefined}
                 {children}
             </SelectInput>
             <IconNode className="svg-icon">
@@ -64,11 +64,6 @@ const Select: React.FC<SelectProps> = props => {
             )}
         </SelectWrapper>
     );
-};
-
-Select.defaultProps = {
-    variant: 'boxed',
-    size: 'medium'
 };
 
 export { Select, SelectProps };

@@ -36,18 +36,19 @@ const DimmingFadeStyled = styled(Dimming)<{ fullscreen?: boolean }>`
     will-change: opacity;
 
     ${p => (p.fullscreen ? fadeInAnimation(1) : fadeInAnimation())};
-    ${p => (p.fullscreen ? fullscreenDimming : null)}
+    ${p => (p.fullscreen ? fullscreenDimming : undefined)}
 `;
 
-const DimmingFade: React.FC<{ visible: boolean; fullscreen?: boolean; onClick: () => void }> = ({
-    visible,
-    ...rest
-}) => {
-    return (
-        <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-            <DimmingFadeStyled {...rest} />
-        </CSSTransition>
-    );
-};
+interface DimmingFadeProps {
+    visible: boolean;
+    fullscreen?: boolean;
+    onClick: (event: React.MouseEvent) => void;
+}
+
+const DimmingFade: React.FC<DimmingFadeProps> = ({ visible, ...rest }: DimmingFadeProps) => (
+    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        <DimmingFadeStyled {...rest} />
+    </CSSTransition>
+);
 
 export { DimmingFade, ANIMATION_DURATION };

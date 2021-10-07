@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '../../../components/Table';
 
-export const BreakpointsTable = () => (
+export const BreakpointsTable: FC = () => (
     <div style={{ overflow: 'scroll' }}>
         <Table rowStyle="lines" rowSize="small" width="100%">
             <thead>

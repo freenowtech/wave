@@ -1,7 +1,7 @@
-import { DetailedHTMLProps, SVGAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { Colors } from '../essentials';
 
-export interface IconProps extends DetailedHTMLProps<SVGAttributes<SVGSVGElement>, SVGSVGElement> {
+export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
     color?: Colors | 'inherit';
     size?: 'small' | 'medium' | 'large' | number;
 }

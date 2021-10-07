@@ -1,6 +1,12 @@
+import { FC } from 'react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Modal } from '../../src/components';
+
+interface ImageModalProps {
+    src: string;
+    alt: string;
+}
 
 const ClickableImage = styled.img`
     cursor: pointer;
@@ -11,7 +17,7 @@ const ClickableImage = styled.img`
     }
 `;
 
-export const ImageModal = ({ src, alt }) => {
+export const ImageModal: FC<ImageModalProps> = ({ src, alt }: ImageModalProps) => {
     const [open, setOpen] = React.useState(false);
 
     return (

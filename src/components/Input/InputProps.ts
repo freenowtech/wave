@@ -1,8 +1,7 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { ResponsiveValue } from 'styled-system';
 
-interface InputProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'size' | 'width'> {
+interface InputProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size' | 'width'> {
     variant?: ResponsiveValue<'boxed' | 'bottom-lined'>;
     size?: ResponsiveValue<'small' | 'medium'>;
     inverted?: boolean;

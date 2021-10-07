@@ -1,6 +1,11 @@
+import { FC } from 'react';
 import * as React from 'react';
 
-const BusinessLogo = ({ fill }) => (
+interface BusinessLogoProps {
+    fill: [string, string, string];
+}
+
+const BusinessLogo: FC<BusinessLogoProps> = ({ fill }: BusinessLogoProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="124" height="34" viewBox="0 0 124 34" aria-hidden="true">
         <g fill="none" fillRule="evenodd">
             <path
@@ -19,9 +24,5 @@ const BusinessLogo = ({ fill }) => (
         </g>
     </svg>
 );
-
-BusinessLogo.defaultProps = {
-    fill: ['#FF0A2B', '#005478', '#005478']
-};
 
 export { BusinessLogo };

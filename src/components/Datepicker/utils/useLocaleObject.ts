@@ -1,29 +1,31 @@
+import { Locale } from 'date-fns';
 import { useCallback, useEffect, useState } from 'react';
 import { availableLocales } from './availableLocales';
 
-const useLocaleObject = (locale: string) => {
-    const [localeObject, setLocaleObject] = useState(null);
+const useLocaleObject = (locale: string): Locale | undefined => {
+    const [localeObject, setLocaleObject] = useState<Locale>();
 
-    const getLocaleObject = useCallback(async (currentLocale: string) => {
+    const getLocaleObject = useCallback((currentLocale: string) => {
         import(`date-fns/locale/${currentLocale}/index.js`)
-            .then(importedLocaleObject => setLocaleObject(importedLocaleObject.default))
-            .catch(e => {
+            .then((importedLocaleObject: { default: Locale }) => setLocaleObject(importedLocaleObject.default))
+            .catch(error => {
                 if (process.env.NODE_ENV === 'development') {
-                    // tslint:disable-next-line:no-console
+                    // eslint-disable-next-line no-console
                     console.log(`Available locales do not include selected locale ${currentLocale}`);
                 }
-                // tslint:disable-next-line:no-submodule-imports
+
+                // eslint-disable-next-line import/extensions,promise/no-nesting
                 import('date-fns/locale/en-US/index.js')
                     .then(importedLocaleObject => setLocaleObject(importedLocaleObject.default))
-                    .catch(e);
+                    .catch(error);
             });
     }, []);
 
     useEffect(() => {
         if (availableLocales.includes(locale)) {
             getLocaleObject(locale);
-        } else if (availableLocales.includes(locale.substr(0, 2))) {
-            getLocaleObject(locale.substr(0, 2));
+        } else if (availableLocales.includes(locale.slice(0, 2))) {
+            getLocaleObject(locale.slice(0, 2));
         } else {
             getLocaleObject('en-US');
         }

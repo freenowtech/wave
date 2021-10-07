@@ -6,7 +6,7 @@ interface DynamicWidthMenuProps {
 }
 
 const DynamicWidthMenu = styled(components.Menu)<DynamicWidthMenuProps>`
-    ${props => (props.width ? `width: ${props.width}px !important;` : null)}
+    ${props => (props.width ? `width: ${props.width}px !important;` : undefined)}
 `;
 
 export { DynamicWidthMenu };

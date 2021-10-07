@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Label, Link, Text } from '../..';
 import { Colors } from '../../../essentials';
 import { DigitalPaymentIcon } from '../../../icons/payment';
 
-export const ComplexDataTable = () => (
+export const ComplexDataTable: FC = () => (
     <Table rowStyle="lines" rowSize="large">
         <thead>
             <TableRow>
@@ -60,7 +60,7 @@ export const ComplexDataTable = () => (
                     </Box>
                 </TableCell>
             </TableRow>
-            <TableRow style={{ borderLeft: '4px solid ' + Colors.NEGATIVE_ORANGE_900 }}>
+            <TableRow style={{ borderLeft: `4px solid ${Colors.NEGATIVE_ORANGE_900}` }}>
                 <TableCell>
                     <Label>Advanced</Label>
                 </TableCell>
