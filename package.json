@@ -119,7 +119,7 @@
         "nanoid": "^3.1.23",
         "react-tether": "^2.0.7",
         "react-transition-group": "^4.3.0",
-        "react-windowed-select": "^2.0.5",
+        "react-windowed-select": "^2.0.2",
         "styled-system": "^5.1.5",
         "warning": "^4.0.3"
     }
