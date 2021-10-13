@@ -20,6 +20,12 @@ describe('DatepickerSingleInput', () => {
         expect(render(<DatepickerSingleInput />).container).toMatchSnapshot();
     });
 
+    it('can be disabled', () => {
+        const { getByRole } = render(<DatepickerSingleInput disabled />);
+        const input = getByRole('textbox');
+        expect(input).toBeDisabled();
+    });
+
     describe('should call onClose function', () => {
         it('when clicking outside', async () => {
             const mockCloseHandler = jest.fn();

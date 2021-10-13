@@ -168,6 +168,10 @@ interface DatepickerRangeInputProps extends MarginProps, WidthProps {
      * @default 'normal'
      */
     variant?: 'compact' | 'normal';
+    /**
+     * Determines whether the datePicker is disabled or not
+     */
+    disabled?: boolean;
 }
 
 interface DateRangeInputText {
@@ -217,6 +221,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     startInputId,
     endInputId,
     variant = 'normal',
+    disabled,
     ...rest
 }: DatepickerRangeInputProps) => {
     const localeObject = useLocaleObject(locale);
@@ -350,6 +355,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                             width="100%"
                             onChange={handleStartDateInputChange}
                             data-error={error.startDate}
+                            disabled={disabled}
                         />
                         {focusedInput === START_DATE && <StartDateFocusedBlock />}
                         <DateArrow color={Colors.AUTHENTIC_BLUE_550} />
@@ -367,6 +373,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                             onChange={handleEndDateInputChange}
                             width="100%"
                             data-error={error.endDate}
+                            disabled={disabled}
                         />
                         {focusedInput === END_DATE && <EndDateFocusedBlock />}
                     </DateRangeWrapper>
