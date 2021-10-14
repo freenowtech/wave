@@ -358,7 +358,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                             disabled={disabled}
                         />
                         {focusedInput === START_DATE && <StartDateFocusedBlock />}
-                        <DateArrow color={Colors.AUTHENTIC_BLUE_550} />
+                        <DateArrow color={disabled ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550} />
                         <Input
                             id={endId}
                             ref={endDateRef}
