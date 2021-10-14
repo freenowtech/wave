@@ -1,5 +1,6 @@
 import React, { CSSProperties, FC } from 'react';
-import ReactSelect, { components as ReactSelectComponents, IndicatorProps, Props, StylesConfig } from 'react-select';
+import { components as ReactSelectComponents, IndicatorProps, Props, StylesConfig } from 'react-select';
+import WindowedSelect from 'react-windowed-select';
 
 import { Colors, Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
@@ -251,7 +252,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
 
     return (
         <Wrapper {...classNameProps} {...marginProps} {...widthProps}>
-            <ReactSelect
+            <WindowedSelect
                 inputId={id}
                 styles={customStyles}
                 components={{
