@@ -1,6 +1,6 @@
 import { END_DATE, FirstDayOfWeek, FocusedInput, START_DATE } from '@datepicker-react/hooks';
 import { compareDesc, Locale, parse, startOfDay, endOfDay } from 'date-fns';
-import React, { ChangeEventHandler, MutableRefObject, useEffect, useRef, useState } from 'react';
+import React, { ChangeEventHandler, FC, MutableRefObject, useEffect, useRef, useState } from 'react';
 import TetherComponent from 'react-tether';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
@@ -184,8 +184,8 @@ const dateRangeToDisplayText = (locale: Locale, displayFormat?: string, dateRang
     }
 
     return {
-        startText: dateToDisplayText(locale, displayFormat, dateRange.startDate || null),
-        endText: dateToDisplayText(locale, displayFormat, dateRange.endDate || null)
+        startText: dateToDisplayText(locale, displayFormat, dateRange.startDate),
+        endText: dateToDisplayText(locale, displayFormat, dateRange.endDate)
     };
 };
 
@@ -199,7 +199,7 @@ const isValidRange = (startDate, endDate) => {
     return true;
 };
 
-const DatepickerRangeInput = ({
+const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     minDate,
     maxDate,
     firstDayOfWeek,
@@ -222,7 +222,7 @@ const DatepickerRangeInput = ({
     const localeObject = useLocaleObject(locale);
     const startDateRef = useRef<HTMLInputElement>();
     const endDateRef = useRef<HTMLInputElement>();
-    const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
+    const [focusedInput, setFocusedInput] = useState<FocusedInput>();
     const [inputText, setInputText] = useState<DateRangeInputText>(
         dateRangeToDisplayText(localeObject, displayFormat, value)
     );
@@ -246,7 +246,7 @@ const DatepickerRangeInput = ({
         // when the datepicker is open, bring focus to correct input
 
         switch (focusedInput) {
-            case START_DATE:
+            case START_DATE: {
                 const startInputTarget = startDateRef.current && (startDateRef.current.children[0] as HTMLInputElement);
 
                 if (startInputTarget) {
@@ -254,13 +254,17 @@ const DatepickerRangeInput = ({
                 }
 
                 break;
-            case END_DATE:
+            }
+            case END_DATE: {
                 const endInputTarget = endDateRef.current && (endDateRef.current.children[0] as HTMLInputElement);
 
                 if (endInputTarget) {
                     endInputTarget.focus();
                 }
 
+                break;
+            }
+            default:
                 break;
         }
     }, [focusedInput]);
@@ -341,7 +345,7 @@ const DatepickerRangeInput = ({
                             label={label}
                             placeholder={startPlaceholder}
                             onFocus={() => setFocusedInput(START_DATE)}
-                            onBlur={() => setFocusedInput(null)}
+                            onBlur={() => setFocusedInput(undefined)}
                             value={inputText.startText}
                             width="100%"
                             onChange={handleStartDateInputChange}
@@ -358,7 +362,7 @@ const DatepickerRangeInput = ({
                             data-testid="end-date-input"
                             placeholder={endPlaceholder}
                             onFocus={() => setFocusedInput(!value.startDate ? START_DATE : END_DATE)}
-                            onBlur={() => setFocusedInput(null)}
+                            onBlur={() => setFocusedInput(undefined)}
                             value={inputText.endText}
                             onChange={handleEndDateInputChange}
                             width="100%"
@@ -378,8 +382,8 @@ const DatepickerRangeInput = ({
                         // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
                         numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
                         minBookingDays={1}
-                        startDate={value.startDate || null}
-                        endDate={value.endDate || null}
+                        startDate={value.startDate}
+                        endDate={value.endDate}
                         minBookingDate={minDate}
                         maxBookingDate={maxDate}
                         firstDayOfWeek={firstDayOfWeek}

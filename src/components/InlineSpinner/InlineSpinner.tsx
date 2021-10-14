@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
@@ -50,7 +51,7 @@ const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.div<InlineSpinner
     ${compose(margin, sizeVariant)}
 `;
 
-const InlineSpinner = (props: InlineSpinnerProps) => (
+const InlineSpinner: FC<InlineSpinnerProps> = (props: InlineSpinnerProps) => (
     <span>
         <InlineSpinnerIcon {...props} />
     </span>

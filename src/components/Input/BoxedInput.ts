@@ -40,22 +40,19 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return Colors.AUTHENTIC_BLUE_350;
 };
 
-const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
+const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
-
     & + ${BoxedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : null)};
+        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size as Pick<InternalInputComponentProps, 'size'>) : undefined)};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
             `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                // @ts-ignore
-                p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                (p.size as Pick<InternalInputComponentProps, 'size'>) === 'small' ? '0.0825rem' : '0.0625rem'
             }), transparent 50%)`};
     }
 
-    ${p => (p.error ? errorStyles : null)}
-
+    ${p => (p.error ? errorStyles : undefined)}
     &:disabled {
         & + ${BoxedInputLabel} {
             color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
@@ -67,19 +64,18 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)`
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BoxedInputLabel} {
-            ${p => activeBoxedPosition(p.size)};
+            ${p => activeBoxedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
         }
     }
 
     &:focus:not(:disabled) {
         & + ${BoxedInputLabel} {
-            ${p => activeBoxedPosition(p.size)};
+            ${p => activeBoxedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
             background: ${p =>
                 `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                    // @ts-ignore
-                    p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                    (p.size as Pick<InternalInputComponentProps, 'size'>) === 'small' ? '0.0825rem' : '0.0625rem'
                 }), transparent 50%)`};
         }
     }

@@ -5,12 +5,6 @@ module.exports = {
     plugins: [
         {
             resolve: `gatsby-plugin-styled-components`
-        },
-        {
-            resolve: `gatsby-plugin-favicon`,
-            options: {
-                logo: './src/gatsby-theme-docz/favicon.png'
-            }
         }
     ]
 };

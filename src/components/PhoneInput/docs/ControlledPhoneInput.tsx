@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import * as React from 'react';
 import { COUNTRIES } from '../constants';
-import { PhoneInput } from '../PhoneInput';
+import { PhoneInput, PhoneInputProps } from '../PhoneInput';
 
-const ControlledPhoneInput = props => {
+const ControlledPhoneInput: FC<PhoneInputProps> = (props: PhoneInputProps) => {
     const [nationalNumber, setNationalNumber] = React.useState('');
-    const [country, setCountry] = React.useState(COUNTRIES.find(it => it.value == 'DE'));
+    const [country, setCountry] = React.useState(COUNTRIES.find(it => it.value === 'DE'));
 
     return (
         <PhoneInput

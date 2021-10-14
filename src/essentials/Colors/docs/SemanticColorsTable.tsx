@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Input, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { Colors, SemanticColors } from '../Colors';
 
-function flattenObj(obj: {}, parent?: {}, res: {} = {}): {} {
-    for (const key in obj) {
-        const propName = parent ? parent + '.' + key : key;
-        if (typeof obj[key] == 'object') {
-            flattenObj(obj[key], propName, res);
-        } else {
-            res[propName] = obj[key];
-        }
-    }
+function flattenObj(
+    obj: Record<string, unknown>,
+    parent?: string,
+    result: Map<string, string> = new Map()
+): Map<string, string> {
+    Object.keys(obj).forEach(key => {
+        const propName = parent ? `${parent}.${key}` : key;
 
-    return res;
+        if (typeof obj[key] === 'object') {
+            flattenObj(obj[key] as Record<string, unknown>, propName, result);
+        } else {
+            result.set(propName, obj[key] as string);
+        }
+    });
+
+    return result;
 }
 
 const ColorBlock = styled.div<{ color: string }>`
@@ -23,7 +28,7 @@ const ColorBlock = styled.div<{ color: string }>`
     width: 4rem;
 `;
 
-export const SemanticColorsTable = () => {
+export const SemanticColorsTable: FC = () => {
     const [nameSearchInput, setNameSearchInput] = useState('');
     const flatSemanticColors = flattenObj(SemanticColors);
 

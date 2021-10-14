@@ -1,14 +1,11 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant, width, WidthProps } from 'styled-system';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
-interface BaseButtonProps
-    extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-        MarginProps,
-        WidthProps {
+interface BaseButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps, WidthProps {
     /**
      * Adjusts the size of the button
      */

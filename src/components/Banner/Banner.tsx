@@ -102,7 +102,7 @@ interface BannerProps {
     onClose?: () => void;
 }
 
-const getBannerPosition = props => {
+const getBannerPosition = (props: BannerProps) => {
     if (props.position) {
         return props.position === 'top' ? fallDown : riseUp;
     }
@@ -128,9 +128,9 @@ const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
     ${bannerVariants}
 `;
 
-const DismissContext = React.createContext<DismissFunc>(undefined);
+const DismissContext = React.createContext<DismissFunc>(() => {});
 
-const useBannerDismiss = () => {
+const useBannerDismiss: () => DismissFunc = () => {
     const dismiss = useContext(DismissContext);
 
     if (dismiss === undefined) {
@@ -152,7 +152,7 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
 
     const renderChildren = () => {
         if (typeof children === 'function') {
-            return children(dismissFunction);
+            return children(dismissFunction) as ReactNode;
         }
 
         return children;
@@ -167,4 +167,4 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
     );
 };
 
-export { Banner, BannerProps, useBannerDismiss };
+export { Banner, BannerProps, useBannerDismiss, DismissFunc };

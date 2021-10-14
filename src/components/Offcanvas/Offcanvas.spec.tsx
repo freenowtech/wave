@@ -54,13 +54,17 @@ describe('Offcanvas', () => {
 
         it('when calling the dismiss function', async () => {
             const mockCloseHandler = jest.fn();
-            const { getByTestId } = render(
+            const { getByText } = render(
                 <Offcanvas onClose={mockCloseHandler}>
-                    {dismiss => <button onClick={dismiss} data-testid="dismiss-button" />}
+                    {dismiss => (
+                        <button type="button" onClick={dismiss}>
+                            dismiss
+                        </button>
+                    )}
                 </Offcanvas>
             );
 
-            fireEvent.click(getByTestId('dismiss-button'));
+            fireEvent.click(getByText('dismiss'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });
@@ -70,7 +74,11 @@ describe('Offcanvas', () => {
 
             const InnerComponent: React.FC = () => {
                 const dismiss = useOffcanvasDismiss();
-                return <button onClick={dismiss}>Click Me</button>;
+                return (
+                    <button type="button" onClick={dismiss}>
+                        Click Me
+                    </button>
+                );
             };
 
             render(
@@ -116,13 +124,17 @@ describe('Offcanvas', () => {
 
         it('should call the onClose handler when calling the dismiss function', async () => {
             const mockCloseHandler = jest.fn();
-            const { getByTestId } = render(
+            const { getByText } = render(
                 <Offcanvas onClose={mockCloseHandler} dismissible={false}>
-                    {dismiss => <button onClick={dismiss} data-testid="dismiss-button" />}
+                    {dismiss => (
+                        <button type="button" onClick={dismiss}>
+                            dismiss
+                        </button>
+                    )}
                 </Offcanvas>
             );
 
-            fireEvent.click(getByTestId('dismiss-button'));
+            fireEvent.click(getByText('dismiss'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });

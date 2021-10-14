@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const InputPropsTable = () => {
+export const InputPropsTable: FC = () => {
     const props = [
         {
             name: 'variant',

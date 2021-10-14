@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import {
     background,
@@ -31,7 +30,7 @@ interface BoxProps
         BackgroundProps,
         TextAlignProps {}
 
-const Box: React.FC<BoxProps> & StyledComponentBase<'div', any, {}, 'theme'> = styled.div.attrs({ theme })`
+const Box: StyledComponentBase<'div', never, BoxProps, 'theme'> = styled.div.attrs({ theme })<BoxProps>`
     ${compose(space, layout, position, color, flexbox, grid, background, textAlign)}
 `;
 

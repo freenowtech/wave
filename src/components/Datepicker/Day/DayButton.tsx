@@ -11,7 +11,9 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
             box-shadow: 0 0 0 0.0625rem ${Colors.ACTION_BLUE_1000};
             z-index: 2;
         `;
-    } else if (isSelected || isWithinHoverRange) {
+    }
+
+    if (isSelected || isWithinHoverRange) {
         return css`
             color: ${Colors.ACTION_BLUE_900};
             background: ${Colors.ACTION_BLUE_50};
@@ -25,23 +27,25 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
                 color: ${Colors.ACTION_BLUE_1000};
             }
         `;
-    } else if (disabledDate) {
+    }
+
+    if (disabledDate) {
         return css`
             color: ${Colors.AUTHENTIC_BLUE_200};
             box-shadow: 0 0 0 0.0625rem ${Colors.AUTHENTIC_BLUE_50};
             background: ${Colors.WHITE};
         `;
-    } else {
-        return css`
-            color: ${Colors.AUTHENTIC_BLUE_900};
-            background: ${Colors.WHITE};
-
-            &:hover {
-                cursor: pointer;
-                background: ${Colors.AUTHENTIC_BLUE_50};
-            }
-        `;
     }
+
+    return css`
+        color: ${Colors.AUTHENTIC_BLUE_900};
+        background: ${Colors.WHITE};
+
+        &:hover {
+            cursor: pointer;
+            background: ${Colors.AUTHENTIC_BLUE_50};
+        }
+    `;
 };
 
 interface DayButtonProps {

@@ -5,11 +5,12 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "jsx": "react",
-        "lib": ["dom", "es2018"],
+        "lib": ["dom", "es2020"],
         "declaration": true,
         "declarationDir": "lib/types/",
         "rootDir": "src/",
         "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
         "plugins": [
             {
                 "transform": "typescript-plugin-styled-components",
@@ -19,5 +20,5 @@
         ]
     },
     "include": ["src/**/*"],
-    "exclude": ["src/**/docs"]
+    "exclude": ["src/**/docs", "**/node_modules"]
 }

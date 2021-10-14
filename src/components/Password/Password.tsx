@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from 'react';
 import styled from 'styled-components';
 
+import { compose, MarginProps, margin, width, WidthProps } from 'styled-system';
 import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
 import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
 import { InnerInput as Input } from '../Input/InnerInput';
@@ -12,7 +13,6 @@ import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ToggleButton } from './ToggleButton';
 import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 import { extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
-import { compose, MarginProps, margin, width, WidthProps } from 'styled-system';
 
 type WrapperProps = MarginProps & WidthProps;
 const PasswordWrapper = styled.div<WrapperProps>`
@@ -28,7 +28,7 @@ const PasswordWrapper = styled.div<WrapperProps>`
     }
 `;
 
-interface PasswordProps extends InputWrapperProps, InputProps {
+export interface PasswordProps extends InputWrapperProps, InputProps {
     purpose?: 'login' | 'new-password';
     ariaStrings?: {
         showPasswordButton?: string;
@@ -51,7 +51,7 @@ const iconColors = {
 };
 
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
-    ({ ariaStrings, purpose, id, disabled, size, variant, inverted, ...rest }, ref) => {
+    ({ ariaStrings, purpose, id, disabled, size, variant, inverted, ...rest }: PasswordProps, ref) => {
         const [isHidden, setIsHidden] = useState<boolean>(true);
         const aria = {
             ...defaultAriaStrings,
@@ -89,8 +89,8 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
                             style={{
                                 // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
-                                ['--color' as any]: color,
-                                ['--hover-color' as any]: hover
+                                ['--color' as never]: color,
+                                ['--hover-color' as never]: hover
                             }}
                         >
                             {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}
@@ -99,7 +99,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}
                         </VisuallyHidden>
                     </>
-                ) : null}
+                ) : undefined}
             </PasswordWrapper>
         );
     }

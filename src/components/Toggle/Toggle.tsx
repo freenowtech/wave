@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, FC, ReactNode, Ref } from 'react';
 import { MarginProps } from 'styled-system';
 
 import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
@@ -7,7 +7,7 @@ import { Input } from './Input';
 import { Label } from './Label';
 import { Slide } from './Slide';
 
-type ToggleHtmlInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+type ToggleHtmlInputProps = ComponentPropsWithoutRef<'input'> & {
     ref?: Ref<HTMLInputElement>;
 };
 

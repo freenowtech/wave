@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { RadioButton, Tooltip } from '../..';
@@ -33,7 +34,7 @@ const ExampleContainer = styled.div`
     }
 `;
 
-const TooltipPlacementExample = () => {
+const TooltipPlacementExample: FC = () => {
     const [placement, setPlacement] = React.useState<TooltipPlacement>('top-center');
 
     const availablePlacements: TooltipPlacement[] = [

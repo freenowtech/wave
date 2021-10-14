@@ -10,8 +10,8 @@ const selectOption = async (currentValueText: string, selectOptionText: string) 
 
 // FIXME: These tests seems to take a very long time (more than 10s), not sure why.
 //
-// I disabled the tests for now and created an issue to fix this
-// see: https://github.com/freenowtech/wave/issues/27
+// I disabled the tests for now and created an issue to fix this see: https://github.com/freenowtech/wave/issues/27
+// eslint-disable-next-line jest/no-disabled-tests
 describe.skip('PhoneInput', () => {
     const defaultCountry = { value: 'DE', label: 'Germany', dialCode: '+49' };
 

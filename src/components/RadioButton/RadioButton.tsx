@@ -15,13 +15,13 @@ const WithTapAreaWrapper = styled.div<Pick<RadioButtonProps, 'textVerticalAlign'
     display: inline-flex;
     align-items: center;
 
-    ${({ textVerticalAlign }) => (textVerticalAlign == 'top' ? 'margin-top: 0.1875rem' : null)}
+    ${({ textVerticalAlign }) => (textVerticalAlign === 'top' ? 'margin-top: 0.1875rem' : undefined)}
 `;
 
-const RadioButton: FC<RadioButtonProps> = (props: RadioButtonProps = { textVerticalAlign: 'center' }) => {
+const RadioButton: FC<RadioButtonProps> = ({ textVerticalAlign = 'center', ...props }: RadioButtonProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
-    const { disabled, error, label, textVerticalAlign, ...rest } = restProps;
+    const { disabled, error, label, ...rest } = restProps;
 
     let dynamicLabel: ReactNode = label;
 

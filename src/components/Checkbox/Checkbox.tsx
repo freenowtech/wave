@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode, useEffect } from 'react';
+import React, { ComponentPropsWithoutRef, FC, ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
 import { MarginProps, ResponsiveValue } from 'styled-system';
 
@@ -9,10 +9,7 @@ import { Checkmark } from './components/Checkmark';
 import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
 
-interface CheckboxProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref' | 'size'>,
-        ClassNameProps,
-        MarginProps {
+interface CheckboxProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>, ClassNameProps, MarginProps {
     /**
      * Provide a label for the input which will be shown next to the checkbox
      */
@@ -42,7 +39,7 @@ const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
 
     height: 1rem;
     margin: 0 0.5rem 0 0;
-    ${({ textVerticalAlign }) => (textVerticalAlign == 'top' ? 'margin-top: 0.1875rem' : null)}
+    ${({ textVerticalAlign }) => (textVerticalAlign === 'top' ? 'margin-top: 0.1875rem' : undefined)}
 `;
 
 const Checkbox: FC<CheckboxProps> = props => {
@@ -68,7 +65,7 @@ const Checkbox: FC<CheckboxProps> = props => {
          * currently can be set only using javascript (non HTML)
          * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate
          */
-        checkboxRef.current.indeterminate = indeterminate ? true : false;
+        checkboxRef.current.indeterminate = !!indeterminate;
     }, [indeterminate]);
 
     return (

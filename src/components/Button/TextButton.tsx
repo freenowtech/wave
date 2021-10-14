@@ -85,7 +85,7 @@ const invertedVariantStyles = variant({
 const TextButton: React.FC<TextButtonProps> = styled(BaseButton)<TextButtonProps>`
     transition: color 200ms, fill 200ms;
 
-    ${p => (p.inverted ? invertedVariantStyles(p) : variantStyles(p))};
+    ${props => (props.inverted ? invertedVariantStyles(props) : variantStyles(props))};
 `;
 
 TextButton.defaultProps = {

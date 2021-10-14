@@ -31,7 +31,7 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
         return css`
             cursor: not-allowed;
 
-            & > ${/*sc-selector*/ TapArea}:active {
+            & > ${/* sc-selector */ TapArea}:active {
                 background-color: transparent;
             }
         `;
@@ -40,11 +40,11 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
         return css`
             cursor: pointer;
 
-            & ${/*sc-selector*/ TapArea}:not(:active) {
+            & ${/* sc-selector */ TapArea}:not(:active) {
                 background-color: ${error ? Colors.NEGATIVE_ORANGE_50 : Colors.ACTION_BLUE_50};
             }
 
-            & ${/*sc-selector*/ Checkmark}:not(:checked) {
+            & ${/* sc-selector */ Checkmark}:not(:checked) {
                 box-shadow: inset 0 0 0 0.125rem ${error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900};
             }
         `;
@@ -52,11 +52,11 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
     return css`
         cursor: pointer;
 
-        & ${/*sc-selector*/ TapArea}:not(:active) {
+        & ${/* sc-selector */ TapArea}:not(:active) {
             background-color: ${error ? Colors.NEGATIVE_ORANGE_50 : Colors.ACTION_BLUE_50};
         }
 
-        & ${/*sc-selector*/ Checkmark}:not(:checked) {
+        & ${/* sc-selector */ Checkmark}:not(:checked) {
             box-shadow: inset 0 0 0 0.125rem ${error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900};
             background-color: ${Colors.WHITE};
         }

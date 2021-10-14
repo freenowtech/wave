@@ -1,0 +1,22 @@
+---
+name: Versioning Policy
+route: /versioning-policy
+cardHeadline: Versioning Policy
+cardSubHeadline: Predictable and consistent versions for Wave
+---
+
+## Semantic Versioning
+
+Our goal is to release update to this library without breaking anyone's projects. Therefore, we are using [SemVer](https://semver.org)
+which has the following release types.
+
+- **Major** versions contain breaking changes and may also contain sweeping visual changes, like changing colors (usually includes a codemods).
+- **Minor** versions include new components or functionality and properties for existing components.
+- **Patch** versions provide internal fixes, documentation changes or package upgrades (anything that does not affect the consumers of this library).
+
+
+### Deprecations
+
+When deciding on the deprecation of a feature or component in the next major version, we add a warning indicating
+the feature is scheduled for deprecation or removal. This is sent to the console in development builds and excluded in
+production builds.

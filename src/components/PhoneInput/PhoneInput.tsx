@@ -36,20 +36,19 @@ const Box = styled.div<LayoutProps & WidthProps>`
     ${compose(layout, widthFn, marginFn)}
 `;
 
-const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...props }) => {
+const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...props }: PhoneInputProps) => {
     const { marginProps } = extractWrapperMarginProps(props);
 
     const nationalNumberInputRef = React.createRef<HTMLDivElement>();
     const containerRef = React.createRef<HTMLDivElement>();
-    const spaceBetweenInputs = variant == 'boxed' ? '0.25rem' : '0.75rem';
+    const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
 
     const handleCountrySelection = value => {
         if (props.onCountryChange) {
             props.onCountryChange(value);
         }
 
-        // @ts-ignore
-        nationalNumberInputRef.current.children[0].focus();
+        (nationalNumberInputRef.current.children[0] as HTMLInputElement).focus();
     };
 
     return (
@@ -64,6 +63,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...pr
                 width="8rem"
                 components={{
                     SingleValue,
+                    // eslint-disable-next-line unicorn/no-null
                     IndicatorSeparator: () => null,
                     Option,
                     Menu: menuProps => <DynamicWidthMenu {...menuProps} width={containerRef.current?.offsetWidth} />
