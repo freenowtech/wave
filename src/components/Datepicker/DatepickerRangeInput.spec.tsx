@@ -38,6 +38,15 @@ describe('DatepickerRangeInput', () => {
         expect(render(<DatepickerRangeInput />).container).toMatchSnapshot();
     });
 
+    it('can be disabled', () => {
+        const { getAllByRole } = render(<DatepickerRangeInput disabled />);
+        const inputs = getAllByRole('textbox');
+        expect(inputs).toHaveLength(2);
+        inputs.forEach(input => {
+            expect(input).toBeDisabled();
+        });
+    });
+
     describe('should call onClose function', () => {
         it('when clicking outside', async () => {
             const mockCloseHandler = jest.fn();
