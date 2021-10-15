@@ -71,6 +71,10 @@ interface DatepickerSingleInputProps extends MarginProps, WidthProps {
      * The id to be assigned to the input field
      */
     inputId?: string;
+    /**
+     * Determines whether the datePicker is disabled or not
+     */
+    disabled?: boolean;
 }
 
 const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
@@ -87,6 +91,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     value,
     errorHandler,
     inputId,
+    disabled,
     ...rest
 }: DatepickerSingleInputProps) => {
     const localeObject = useLocaleObject(locale);
@@ -174,6 +179,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
                         onBlur={handleDatepickerClose}
                         onChange={handleDateTextChange}
                         data-error={error}
+                        disabled={disabled}
                         {...rest}
                     />
                     {displayErrorMessage && error && !isFocused && (
