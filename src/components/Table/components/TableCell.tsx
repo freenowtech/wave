@@ -1,10 +1,13 @@
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled from 'styled-components';
-import { compose, textAlign, TextAlignProps } from 'styled-system';
+import { compose, LayoutProps, textAlign, TextAlignProps } from 'styled-system';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 
-type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> & ComponentPropsWithoutRef<'td'> & TextAlignProps;
+type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
+    ComponentPropsWithoutRef<'td'> &
+    TextAlignProps &
+    LayoutProps;
 
 const TableCellElement = styled.td<TableCellProps>`
     height: ${p => p.rowSize};
