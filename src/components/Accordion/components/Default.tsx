@@ -60,7 +60,9 @@ export const DefaultPanel = ({
     info,
     buttonLabel,
     defaultExpanded = false,
-    children
+    children,
+    onExpand,
+    onCollapse
 }: PropsWithChildren<AccordionProps>) => {
     const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
@@ -68,7 +70,12 @@ export const DefaultPanel = ({
         <>
             {isOpen ? (
                 <PanelBody>
-                    <CardHeader onClick={() => setIsOpen(!isOpen)}>
+                    <CardHeader
+                        onClick={() => {
+                            setIsOpen(!isOpen);
+                            onCollapse();
+                        }}
+                    >
                         <Box display="flex" flexDirection="column" maxWidth="33%">
                             <Headline as="h4" mr="3">
                                 {heading}
@@ -83,7 +90,12 @@ export const DefaultPanel = ({
                     <Box m="3">{children}</Box>
                 </PanelBody>
             ) : (
-                <PanelHeader onClick={() => setIsOpen(!isOpen)}>
+                <PanelHeader
+                    onClick={() => {
+                        setIsOpen(!isOpen);
+                        onExpand();
+                    }}
+                >
                     <Headline as="h4" mr="3">
                         {heading}
                     </Headline>

@@ -10,7 +10,10 @@ import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
 import { AccordionProps } from '../Accordion';
 
-type Props = Pick<AccordionProps, 'heading' | 'description' | 'defaultExpanded' | 'children'>;
+type Props = Pick<
+    AccordionProps,
+    'heading' | 'description' | 'defaultExpanded' | 'children' | 'onExpand' | 'onCollapse'
+>;
 
 const PanelHeader = styled(Header)`
     // @ts-ignore No overload matches this call.
@@ -29,12 +32,17 @@ const PanelHeader = styled(Header)`
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);
 
-export const Compact = ({ heading, description, defaultExpanded = false, children }: Props) => {
+export const Compact = ({ heading, description, defaultExpanded = false, children, onExpand, onCollapse }: Props) => {
     const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (
         <>
-            <PanelHeader onClick={() => setIsOpen(!isOpen)}>
+            <PanelHeader
+                onClick={() => {
+                    isOpen ? onExpand() : onCollapse();
+                    setIsOpen(!isOpen);
+                }}
+            >
                 <Box display="flex" flexDirection="column" maxWidth="33%">
                     <Headline as="h4" mr="3">
                         {heading}

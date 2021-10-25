@@ -38,6 +38,18 @@ export const AccordionPropsTable = () => {
             type: 'boolean | undefined',
             description: '',
             defaultValue: 'false'
+        },
+        {
+            name: 'onExpand',
+            type: 'callback | undefined',
+            description: 'Execute callback function on accordion expand',
+            defaultValue: '-'
+        },
+        {
+            name: 'onCollapse',
+            type: 'callback | undefined',
+            description: 'Execute callback function on accordion collapse',
+            defaultValue: '-'
         }
     ];
     return <PropsTable props={props} />;

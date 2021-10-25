@@ -14,6 +14,8 @@ interface AccordionProps {
     variant?: 'compact' | 'default';
     defaultExpanded?: boolean;
     children: ReactNode;
+    onExpand?: () => void;
+    onCollapse?: () => void;
 }
 
 const HorizontalDivider = styled(Box)`
@@ -33,11 +35,27 @@ const RenderedSection = styled(Box)`
     }
 `;
 
-const Accordion = ({ heading, description, info, buttonLabel, variant, defaultExpanded, children }: AccordionProps) => (
+const Accordion = ({
+    heading,
+    description,
+    info,
+    buttonLabel,
+    variant,
+    defaultExpanded,
+    children,
+    onExpand = () => undefined,
+    onCollapse = () => undefined
+}: AccordionProps) => (
     <RenderedSection role="group">
         <HorizontalDividerTop />
         {variant === 'compact' ? (
-            <Compact heading={heading ? heading : ''} description={description} defaultExpanded={defaultExpanded}>
+            <Compact
+                heading={heading ? heading : ''}
+                description={description}
+                defaultExpanded={defaultExpanded}
+                onExpand={onExpand}
+                onCollapse={onCollapse}
+            >
                 {children}
             </Compact>
         ) : (
@@ -47,6 +65,8 @@ const Accordion = ({ heading, description, info, buttonLabel, variant, defaultEx
                 buttonLabel={buttonLabel}
                 info={info}
                 defaultExpanded={defaultExpanded}
+                onExpand={onExpand}
+                onCollapse={onCollapse}
             >
                 {children}
             </DefaultPanel>

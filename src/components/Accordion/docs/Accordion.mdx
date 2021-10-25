@@ -8,6 +8,7 @@ import { Playground } from 'docz';
 import { Box } from '../../Box/Box.tsx';
 import { Accordion } from '../Accordion.tsx';
 import { AccordionPropsTable } from './AccordionPropsTable.tsx';
+import { OnExpandExample } from './OnExpandExample.tsx';
 
 # Accordion
 Accordion component is use to display large amount of content in a compress and progressive way.
@@ -50,5 +51,24 @@ Accordion component is use to display large amount of content in a compress and 
     </Box>
 </Playground>
 
+### onExpand / onCollapse
+ <OnExpandExample />
+
+ ```jsx
+ const OnExpandExample = () => {
+     const [label, setLabel] = useState('Close')
+
+     return (
+         <Accordion heading="some header" description="Description" buttonLabel={label} info="Secondary info" onExpand={() => setLabel('Open')} onCollapse={() => setLabel('Close')} >
+             <div>
+                 This is just a placeholder
+             </div>
+         </Accordion>
+     )
+ }
+ ```
+
 ## API
 <AccordionPropsTable />
+
+
