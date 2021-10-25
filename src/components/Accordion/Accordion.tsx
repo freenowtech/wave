@@ -5,22 +5,11 @@ import { Colors } from '../../essentials';
 import { Box } from '../Box/Box';
 import { Compact } from './components/Compact';
 import { DefaultPanel } from './components/Default';
-
-interface AccordionProps {
-    heading?: string;
-    description?: string;
-    info?: string;
-    buttonLabel?: string;
-    variant?: 'compact' | 'default';
-    defaultExpanded?: boolean;
-    children: ReactNode;
-    onExpand?: () => void;
-    onCollapse?: () => void;
-}
+import { AccordionProps } from './types';
 
 const HorizontalDivider = styled(Box)`
     border: 0;
-    border-top: solid 1px ${Colors.AUTHENTIC_BLUE_200};
+    border-top: solid 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
 `;
 
 const HorizontalDividerTop = HorizontalDivider;

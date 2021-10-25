@@ -9,7 +9,7 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
-import { AccordionProps } from '../Accordion';
+import { AccordionProps } from '../types';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`
     color: ${Colors.ACTION_BLUE_900};
@@ -31,7 +31,7 @@ const PanelHeader = styled(Header)`
 
 const CardHeader = styled(Header).attrs({ p: '3' })`
     background-color: ${Colors.AUTHENTIC_BLUE_50};
-    border-radius: 5px 5px 0 0;
+    border-radius: 0.3125rem 0.3125rem 0 0;
 
     &:hover {
         background-color: ${Colors.ACTION_BLUE_50};
@@ -47,8 +47,8 @@ const CardHeader = styled(Header).attrs({ p: '3' })`
 `;
 
 const PanelBody = styled(Box).attrs({ my: '3' })`
-    border: solid 1px ${Colors.AUTHENTIC_BLUE_200};
-    border-radius: 5px;
+    border: solid 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
+    border-radius: 0.3125rem;
 `;
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) =>

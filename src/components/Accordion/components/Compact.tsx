@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../../essentials';
@@ -8,16 +8,17 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
-import { AccordionProps } from '../Accordion';
+import { AccordionProps } from '../types';
 
 type Props = Pick<
     AccordionProps,
     'heading' | 'description' | 'defaultExpanded' | 'children' | 'onExpand' | 'onCollapse'
 >;
 
+const StyleHeadline = styled(Headline)``;
+
 const PanelHeader = styled(Header)`
-    // @ts-ignore No overload matches this call.
-    &:hover ${Headline} {
+    &:hover ${StyleHeadline} {
         color: ${Colors.ACTION_BLUE_1000};
     }
 
@@ -33,7 +34,7 @@ const PanelHeader = styled(Header)`
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);
 
 export const Compact = ({ heading, description, defaultExpanded = false, children, onExpand, onCollapse }: Props) => {
-    const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
+    const [isOpen, setIsOpen] = React.useState<boolean>(defaultExpanded);
 
     return (
         <>
