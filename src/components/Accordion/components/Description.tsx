@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from '../../Text/Text';
 import { MarginProps } from 'styled-system';
+import { Text } from '../../Text/Text';
 
 interface Props extends MarginProps {
     description?: string;

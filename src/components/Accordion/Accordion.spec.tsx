@@ -7,11 +7,11 @@ describe('Accordion', () => {
     it('allows rendering react nodes as children', () => {
         render(
             <Accordion defaultExpanded>
-                <button>button</button>
+                <button>click</button>
                 <p>paragraph</p>
             </Accordion>
         );
-        expect(screen.getByText('button')).toBeInTheDocument();
+        expect(screen.getByText('click')).toBeInTheDocument();
         expect(screen.getByText('paragraph')).toBeInTheDocument();
     });
 
@@ -57,7 +57,7 @@ describe('Accordion', () => {
         expect(screen.getByText('Some heading')).toBeInTheDocument();
         expect(screen.getByText('some description')).toBeInTheDocument();
         expect(screen.queryByText('some info')).toBeFalsy();
-        expect(screen.queryByText('button')).toBeFalsy();
+        expect(screen.queryByText('click')).toBeFalsy();
     });
 
     it('render compact variant open', () => {

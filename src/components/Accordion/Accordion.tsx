@@ -39,7 +39,7 @@ const Accordion = ({
         <HorizontalDividerTop />
         {variant === 'compact' ? (
             <Compact
-                heading={heading ? heading : ''}
+                heading={heading}
                 description={description}
                 defaultExpanded={defaultExpanded}
                 onExpand={onExpand}
@@ -49,7 +49,7 @@ const Accordion = ({
             </Compact>
         ) : (
             <DefaultPanel
-                heading={heading ? heading : ''}
+                heading={heading}
                 description={description}
                 buttonLabel={buttonLabel}
                 info={info}
