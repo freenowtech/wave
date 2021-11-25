@@ -15,7 +15,6 @@ import {
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { SemanticColors } from '../../essentials/Colors/Colors';
 
 interface TextProps
     extends ComponentPropsWithoutRef<'span'>,
@@ -46,20 +45,21 @@ interface TextProps
     disabled?: boolean;
 }
 
-function determineTextColor({ weak, secondary, inverted, disabled }: TextProps) {
+function determineTextColor(props: TextProps) {
+    const { weak, secondary, inverted, disabled } = props;
     if (disabled) {
-        return inverted ? SemanticColors.text.disabledInverted : SemanticColors.text.disabled;
+        return get(inverted ? 'semanticColors.text.disabledInverted' : 'semanticColors.text.disabled')(props);
     }
 
     if (secondary || weak) {
-        return inverted ? SemanticColors.text.secondaryInverted : SemanticColors.text.secondary;
+        return get(inverted ? 'semanticColors.text.secondaryInverted' : 'semanticColors.text.secondary')(props);
     }
 
     if (inverted) {
-        return SemanticColors.text.primaryInverted;
+        return get('semanticColors.text.primaryInverted')(props);
     }
 
-    return SemanticColors.text.primary;
+    return get('semanticColors.text.primary')(props);
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`
