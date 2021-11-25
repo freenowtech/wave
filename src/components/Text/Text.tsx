@@ -15,6 +15,7 @@ import {
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { deprecatedProperty } from '../../utils/deprecatedProperty';
 
 interface TextProps
     extends ComponentPropsWithoutRef<'span'>,
@@ -47,6 +48,10 @@ interface TextProps
 
 function determineTextColor(props: TextProps) {
     const { weak, secondary, inverted, disabled } = props;
+    if (weak !== undefined) {
+        deprecatedProperty('Text', weak, 'weak', 'secondary', 'Rename `weak` to `secondary` to remove the warning.');
+    }
+
     if (disabled) {
         return get(inverted ? 'semanticColors.text.disabledInverted' : 'semanticColors.text.disabled')(props);
     }
