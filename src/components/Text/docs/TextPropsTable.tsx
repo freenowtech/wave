@@ -10,6 +10,13 @@ export const TextPropsTable = () => {
             defaultValue: '"normal"'
         },
         {
+            name: 'disabled',
+            type: 'boolean',
+            description:
+                'Adjust color to display a disabled text element. Takes precedence over `inverted` and `secondary` props',
+            defaultValue: 'false'
+        },
+        {
             name: 'inverted',
             type: 'boolean',
             description: 'Adjust color for display on a dark background',
@@ -22,9 +29,9 @@ export const TextPropsTable = () => {
             defaultValue: 'false'
         },
         {
-            name: 'disabled',
+            name: 'weak (deprecated)',
             type: 'boolean',
-            description: 'Adjust color to display a disabled text element',
+            description: 'Same as `secondary`',
             defaultValue: 'false'
         }
     ];

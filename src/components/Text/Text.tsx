@@ -32,7 +32,7 @@ interface TextProps
     inverted?: boolean;
     /**
      * Adjust color to indicate secondary information
-     * @deprecated
+     * @deprecated use `secondary` instead
      */
     weak?: boolean;
     /**
