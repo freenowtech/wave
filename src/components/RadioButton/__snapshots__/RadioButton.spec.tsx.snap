@@ -99,6 +99,10 @@ exports[`Checkbox renders the checked style 1`] = `
   color: #001E3E;
   font-family: "Open Sans",sans-serif;
   line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -406,6 +410,10 @@ exports[`Checkbox renders the disabled checked style 1`] = `
   color: #9CA7B4;
   font-family: "Open Sans",sans-serif;
   line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -548,6 +556,10 @@ exports[`Checkbox renders the disabled style 1`] = `
   color: #9CA7B4;
   font-family: "Open Sans",sans-serif;
   line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -689,6 +701,10 @@ exports[`Checkbox renders the error checked style 1`] = `
   color: #9CA7B4;
   font-family: "Open Sans",sans-serif;
   line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -830,6 +846,10 @@ exports[`Checkbox renders the error style 1`] = `
   color: #001E3E;
   font-family: "Open Sans",sans-serif;
   line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -974,6 +994,10 @@ exports[`Checkbox renders with default props 1`] = `
   color: #001E3E;
   font-family: "Open Sans",sans-serif;
   line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {

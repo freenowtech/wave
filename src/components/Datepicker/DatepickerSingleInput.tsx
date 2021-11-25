@@ -1,6 +1,6 @@
 import { FirstDayOfWeek, START_DATE } from '@datepicker-react/hooks';
 import parse from 'date-fns/parse';
-import React, { ChangeEventHandler, MutableRefObject, useEffect, useRef, useState } from 'react';
+import React, { ChangeEventHandler, FC, MutableRefObject, useEffect, useRef, useState } from 'react';
 import TetherComponent from 'react-tether';
 import { MarginProps, WidthProps } from 'styled-system';
 import { Input } from '../Input/Input';
@@ -71,9 +71,13 @@ interface DatepickerSingleInputProps extends MarginProps, WidthProps {
      * The id to be assigned to the input field
      */
     inputId?: string;
+    /**
+     * Determines whether the datePicker is disabled or not
+     */
+    disabled?: boolean;
 }
 
-const DatepickerSingleInput = ({
+const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     minDate,
     maxDate,
     firstDayOfWeek,
@@ -87,6 +91,7 @@ const DatepickerSingleInput = ({
     value,
     errorHandler,
     inputId,
+    disabled,
     ...rest
 }: DatepickerSingleInputProps) => {
     const localeObject = useLocaleObject(locale);
@@ -155,57 +160,55 @@ const DatepickerSingleInput = ({
                     attachment: 'together'
                 }
             ]}
-            renderTarget={(ref: MutableRefObject<HTMLDivElement>) => {
-                return (
-                    <>
-                        <Input
-                            ref={element => {
-                                inputRef.current = element;
-                                ref.current = element;
-                            }}
-                            id={id}
-                            autoComplete="off"
-                            className="startDate"
-                            data-testid="start-date-input"
-                            label={label}
-                            placeholder={placeholder}
-                            value={inputText}
-                            onFocus={() => setIsFocused(true)}
-                            onBlur={handleDatepickerClose}
-                            onChange={handleDateTextChange}
-                            data-error={error}
-                            {...rest}
-                        />
-                        {displayErrorMessage && error && !isFocused && (
-                            <HelperText mt="1">{errorHandler || `error (${displayFormat})`}</HelperText>
-                        )}
-                    </>
-                );
-            }}
-            renderElement={(ref: MutableRefObject<HTMLDivElement>) => {
-                return (
-                    isFocused && (
-                        <Datepicker
-                            ref={ref}
-                            numberOfMonths={1}
-                            exactMinBookingDays
-                            minBookingDays={1}
-                            startDate={value || null}
-                            endDate={value || null}
-                            minBookingDate={minDate}
-                            maxBookingDate={maxDate}
-                            firstDayOfWeek={firstDayOfWeek}
-                            focusedInput={isFocused ? START_DATE : null}
-                            onDatesChange={({ focusedInput, startDate }) => {
-                                setIsFocused(focusedInput !== null);
-                                handleDateChange(startDate || undefined);
-                            }}
-                            isDateBlocked={isDateBlocked}
-                            locale={localeObject}
-                        />
-                    )
-                );
-            }}
+            renderTarget={(ref: MutableRefObject<HTMLDivElement>) => (
+                <>
+                    <Input
+                        ref={element => {
+                            inputRef.current = element;
+                            // eslint-disable-next-line no-param-reassign
+                            ref.current = element;
+                        }}
+                        id={id}
+                        autoComplete="off"
+                        className="startDate"
+                        data-testid="start-date-input"
+                        label={label}
+                        placeholder={placeholder}
+                        value={inputText}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={handleDatepickerClose}
+                        onChange={handleDateTextChange}
+                        data-error={error}
+                        disabled={disabled}
+                        {...rest}
+                    />
+                    {displayErrorMessage && error && !isFocused && (
+                        <HelperText mt="1">{errorHandler || `error (${displayFormat})`}</HelperText>
+                    )}
+                </>
+            )}
+            renderElement={(ref: MutableRefObject<HTMLDivElement>) =>
+                isFocused && (
+                    <Datepicker
+                        ref={ref}
+                        numberOfMonths={1}
+                        exactMinBookingDays
+                        minBookingDays={1}
+                        startDate={value}
+                        endDate={value}
+                        minBookingDate={minDate}
+                        maxBookingDate={maxDate}
+                        firstDayOfWeek={firstDayOfWeek}
+                        focusedInput={isFocused ? START_DATE : undefined}
+                        onDatesChange={({ focusedInput, startDate }) => {
+                            setIsFocused(focusedInput !== null);
+                            handleDateChange(startDate || undefined);
+                        }}
+                        isDateBlocked={isDateBlocked}
+                        locale={localeObject}
+                    />
+                )
+            }
             style={{ zIndex: Elevation.DATEPICKER }}
         />
     );

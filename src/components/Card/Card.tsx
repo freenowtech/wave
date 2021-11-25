@@ -1,4 +1,4 @@
-import styled, { css, StyledComponent } from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import {
     borderRadius,
     BorderRadiusProps,

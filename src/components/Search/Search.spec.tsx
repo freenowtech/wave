@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import * as React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import user from '@testing-library/user-event';
+import * as React from 'react';
 
 import { Search } from './Search';
 
@@ -41,9 +41,9 @@ describe('Search', () => {
             const firstValue = 'first';
             const secondValue = 'second';
 
-            const { rerender } = render(<Search value={firstValue} setValue={() => null} />);
+            const { rerender } = render(<Search value={firstValue} setValue={() => undefined} />);
             expect(screen.queryByDisplayValue(firstValue)).toBeInTheDocument();
-            rerender(<Search value={secondValue} setValue={() => null} />);
+            rerender(<Search value={secondValue} setValue={() => undefined} />);
             expect(screen.queryByDisplayValue(secondValue)).toBeInTheDocument();
         });
     });
@@ -109,6 +109,7 @@ describe('Search', () => {
         it('onEnter on enter after selecting item', () => {
             const mockOnClick = jest.fn();
             const mockOnEnter = jest.fn();
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
             const item = <div onClick={mockOnClick}>Barry</div>;
 
             render(<Search results={['Adam', item]} onEnter={mockOnEnter} />);

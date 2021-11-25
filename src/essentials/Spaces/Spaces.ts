@@ -2,7 +2,7 @@ const baseScale = 0.5;
 
 const subSpaces = [0.25, 0.5, 0.75] as const;
 
-export const subSpace = (spaceNumber: number, subSpaceValue: typeof subSpaces[number]) =>
+export const subSpace = (spaceNumber: number, subSpaceValue: typeof subSpaces[number]): string =>
     `${(spaceNumber + subSpaceValue) * baseScale}rem`;
 
 export const generateBaseSpaces = (size: number): string[] =>

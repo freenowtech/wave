@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import * as React from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const CheckboxPropsTable = () => {
+export const CheckboxPropsTable: FC = () => {
     const props = [
         {
             name: 'label',
@@ -32,6 +33,12 @@ export const CheckboxPropsTable = () => {
             type: '"top" | "center"',
             description: 'Adjusts the vertical alignment of the checkbox',
             defaultValue: '"center"'
+        },
+        {
+            name: 'indeterminate',
+            type: 'boolean',
+            description: 'Sets the checkbox in the indeterminate state',
+            defaultValue: 'false'
         }
     ];
     return <PropsTable props={props} />;

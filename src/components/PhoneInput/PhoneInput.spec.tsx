@@ -10,9 +10,9 @@ const selectOption = async (currentValueText: string, selectOptionText: string) 
 
 // FIXME: These tests seems to take a very long time (more than 10s), not sure why.
 //
-// I disabled the tests for now and created an issue to fix this
-// see: https://github.com/freenowtech/wave/issues/27
-describe.skip('PhoneInput', () => {
+// I disabled the tests for now and created an issue to fix this see: https://github.com/freenowtech/wave/issues/27
+// eslint-disable-next-line jest/no-disabled-tests
+describe('PhoneInput', () => {
     const defaultCountry = { value: 'DE', label: 'Germany', dialCode: '+49' };
 
     it('should call the country change handler when the user selects a country', async () => {
@@ -35,7 +35,9 @@ describe.skip('PhoneInput', () => {
     it('should focus on national number input after selecting a country', async () => {
         render(<PhoneInput country={defaultCountry} label="Phone Number" />);
 
-        await selectOption(defaultCountry.dialCode, 'Spain (España) +34');
+        // not all the countries are rendered at one go, they are rendered as you scroll
+        // so select a country that will come at the top, for example Andorra
+        await selectOption(defaultCountry.dialCode, 'Andorra +376');
 
         expect(document.activeElement).toEqual(screen.getByLabelText('Phone Number'));
     });

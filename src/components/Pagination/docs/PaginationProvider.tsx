@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
+import { Text } from '../../Text/Text';
 
 import { Pagination } from '../Pagination';
-import { Text } from '../../Text/Text';
 
 interface Props {
     children: (props: {
@@ -20,14 +20,35 @@ interface State {
 }
 
 class PaginationProvider extends React.Component<Props, State> {
-    public readonly state: State = {
-        currentPage: 1
-    };
-
     private PAGE_SIZE = 20;
+
     private TOTAL_ITEMS = 200;
 
-    public render() {
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            currentPage: 1
+        };
+    }
+
+    private handleNextPage = () => {
+        this.setState(current => ({ currentPage: current.currentPage + 1 }));
+    };
+
+    private handlePrevPage = () => {
+        this.setState(current => ({ currentPage: current.currentPage - 1 }));
+    };
+
+    private handleSkipForward = () => {
+        this.setState({ currentPage: Math.ceil(this.TOTAL_ITEMS / this.PAGE_SIZE) });
+    };
+
+    private handleSkipBackward = () => {
+        this.setState({ currentPage: 1 });
+    };
+
+    public render(): ReactNode {
         return this.props.children({
             currentPage: this.state.currentPage,
             pageSize: this.PAGE_SIZE,
@@ -38,22 +59,6 @@ class PaginationProvider extends React.Component<Props, State> {
             handleSkipBackward: this.handleSkipBackward
         });
     }
-
-    private handleNextPage = () => {
-        this.setState({ currentPage: this.state.currentPage + 1 });
-    };
-
-    private handlePrevPage = () => {
-        this.setState({ currentPage: this.state.currentPage - 1 });
-    };
-
-    private handleSkipForward = () => {
-        this.setState({ currentPage: Math.ceil(this.TOTAL_ITEMS / this.PAGE_SIZE) });
-    };
-
-    private handleSkipBackward = () => {
-        this.setState({ currentPage: 1 });
-    };
 }
 
 const NormalPagination: React.FC = () => (

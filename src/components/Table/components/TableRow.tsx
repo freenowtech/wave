@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, useContext } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Colors } from '../../../essentials';
 import { TableContext } from '../context/TableContext';
@@ -60,7 +60,7 @@ const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
     }
 );
 
-const TableRow = (props: TableRowProps) => {
+const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
     const { rowStyle } = useContext(TableContext);
 
     return <TableRowElement rowStyle={rowStyle} {...props} />;

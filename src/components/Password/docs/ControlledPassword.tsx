@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Password } from '../Password';
+import React, { FC, useState } from 'react';
+import { Password, PasswordProps } from '../Password';
 
-const ControlledPassword = props => {
+const ControlledPassword: FC<Omit<PasswordProps, 'ref'>> = (props: Omit<PasswordProps, 'ref'>) => {
     const [value, setValue] = useState('');
-    const handleChange = e => {
-        setValue(e.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value);
     };
 
     return <Password {...props} value={value} onChange={handleChange} />;

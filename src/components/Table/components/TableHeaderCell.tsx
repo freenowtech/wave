@@ -1,6 +1,6 @@
-import React, { DetailedHTMLProps, ThHTMLAttributes, useContext } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled from 'styled-components';
-import { compose, textAlign, TextAlignProps } from 'styled-system';
+import { compose, LayoutProps, textAlign, TextAlignProps } from 'styled-system';
 import { Colors } from '../../../essentials';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
@@ -8,8 +8,9 @@ import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 
 type TableHeaderCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
-    DetailedHTMLProps<ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement> &
-    TextAlignProps;
+    ComponentPropsWithoutRef<'th'> &
+    TextAlignProps &
+    LayoutProps;
 
 const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
     border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_550} !important;
@@ -31,7 +32,7 @@ const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
     ${compose(textAlign)}
 `;
 
-const TableHeaderCell = props => {
+const TableHeaderCell: FC<TableHeaderCellProps> = (props: TableHeaderCellProps) => {
     const { rowSize, columnSpace } = useContext(TableContext);
 
     return <TableHeaderCellElement rowSize={rowSize} columnSpace={columnSpace} {...props} />;

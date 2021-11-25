@@ -14,7 +14,7 @@ interface PropsTableProps {
     props: PropDefinition[];
 }
 
-export const PropsTable: React.FC<PropsTableProps> = ({ props }) => (
+export const PropsTable: React.FC<PropsTableProps> = ({ props: componentProps }: PropsTableProps) => (
     <div>
         <Table rowStyle="lines" width="100%">
             <thead>
@@ -25,7 +25,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({ props }) => (
                 </TableRow>
             </thead>
             <tbody>
-                {props.map(prop => (
+                {componentProps.map(prop => (
                     <TableRow key={prop.name} style={{ textDecoration: prop.deprecated ? 'line-through' : 'none' }}>
                         <TableCell>
                             <Text fontSize="inherit" fontFamily="monospace">

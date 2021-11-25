@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, FC } from 'react';
 import { useDay } from '@datepicker-react/hooks';
 
 import { DatepickerContext } from '../DatepickerContext';
@@ -9,7 +9,7 @@ interface DayProps {
     date: Date;
 }
 
-const Day = ({ dayLabel, date }: DayProps) => {
+const Day: FC<DayProps> = ({ dayLabel, date }: DayProps) => {
     const dayRef = useRef<HTMLButtonElement>(null);
     const datepickerContext = useContext(DatepickerContext);
     const dayProps = useDay({

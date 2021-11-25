@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import * as React from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const RadioButtonPropsTable = () => {
+export const RadioButtonPropsTable: FC = () => {
     const props = [
         {
             name: 'label',

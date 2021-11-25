@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import * as React from 'react';
 import TetherComponent from 'react-tether';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
@@ -149,7 +150,7 @@ const Tooltip: React.FC<TooltipProps> = ({
     placement = 'top-center',
     alwaysVisible = false,
     inverted = false
-}) => {
+}: PropsWithChildren<TooltipProps>) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
 
     let dynamicContent = content;

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { borderRadius, BorderRadiusProps, compose, layout, LayoutProps, margin, MarginProps } from 'styled-system';
 import { Colors } from '../../essentials';
@@ -47,5 +46,5 @@ export const Skeleton = styled.span<SkeletonProps>`
 
     ${compose(layout, margin, borderRadius)};
 
-    ${p => (p.animated ? animationStyles : null)}
+    ${p => (p.animated ? animationStyles : undefined)}
 `;

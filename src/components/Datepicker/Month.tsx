@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 import { format } from 'date-fns';
@@ -30,7 +30,7 @@ interface MonthProps {
     locale: Locale;
 }
 
-const Month = ({ year, month, firstDayOfWeek, locale }: MonthProps) => {
+const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthProps) => {
     const { days, weekdayLabels, monthLabel } = useMonth({
         year,
         month,
@@ -56,15 +56,16 @@ const Month = ({ year, month, firstDayOfWeek, locale }: MonthProps) => {
                 ))}
             </Weekdays>
             <DaysContainer>
-                {days.map((day, index) => {
+                {days.map(day => {
                     if (typeof day === 'object') {
                         return <Day date={day.date} key={day.date.toString()} dayLabel={day.dayLabel} />;
                     }
-                    return <div key={index} />;
+
+                    return <div key={day} />;
                 })}
             </DaysContainer>
         </div>
     );
 };
 
-export default Month;
+export { Month };

@@ -1,10 +1,10 @@
-import React, { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { Colors, Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
-interface LinkProps extends Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'> {
+interface LinkProps extends ComponentPropsWithoutRef<'a'> {
     /**
      * Indicates that the link is currently selected
      */
@@ -18,6 +18,7 @@ interface LinkProps extends Omit<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnch
     /**
      * Replace the rendered component with an HTML tag or another component
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
 }
 

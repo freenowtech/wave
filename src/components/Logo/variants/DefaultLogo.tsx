@@ -1,6 +1,11 @@
 import * as React from 'react';
+import { FC } from 'react';
 
-const DefaultLogo = ({ fill }) => (
+interface DefaultLogoProps {
+    fill: [string, string, string];
+}
+
+const DefaultLogo: FC<DefaultLogoProps> = ({ fill }: DefaultLogoProps) => (
     <svg width="124" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g fill="none" fillRule="evenodd">
             <path
@@ -15,9 +20,5 @@ const DefaultLogo = ({ fill }) => (
         </g>
     </svg>
 );
-
-DefaultLogo.defaultProps = {
-    fill: ['#FF0A2B', '#005478', '#005478']
-};
 
 export { DefaultLogo };

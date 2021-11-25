@@ -103,7 +103,7 @@ const Pagination: React.FC<PaginationProps> = ({
     onPrevPage,
     onSkipForward,
     onSkipBackward
-}) => {
+}: PaginationProps) => {
     const isFirstPage = value === 1;
     const isLastPage = totalItems > 0 ? value === Math.ceil(totalItems / pageSize) : true;
 

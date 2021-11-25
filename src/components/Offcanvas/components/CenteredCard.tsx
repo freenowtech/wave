@@ -86,16 +86,15 @@ const StyledCard = styled(Card)<{ side?: string }>`
     }
 `;
 
-const CenteredCard: React.FC<CardProps & { visible: boolean; side: string }> = ({
-    visible,
-    height = '28.375rem',
-    ...rest
-}) => {
-    return (
-        <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-            <StyledCard {...rest} height={height} level={300} />
-        </CSSTransition>
-    );
-};
+interface CenteredCardProps extends CardProps {
+    visible: boolean;
+    side: string;
+}
+
+const CenteredCard: React.FC<CenteredCardProps> = ({ visible, height = '28.375rem', ...rest }: CenteredCardProps) => (
+    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        <StyledCard {...rest} height={height} level={300} />
+    </CSSTransition>
+);
 
 export { CenteredCard, ANIMATION_DURATION };

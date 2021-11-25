@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import {
     compose,
@@ -18,7 +18,7 @@ import { get } from '../../utils/themeGet';
 import { SemanticColors } from '../../essentials/Colors/Colors';
 
 interface TextProps
-    extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
+    extends ComponentPropsWithoutRef<'span'>,
         MarginProps,
         FontSizeProps,
         FontFamilyProps,

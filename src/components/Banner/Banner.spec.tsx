@@ -12,7 +12,7 @@ describe('Banner', () => {
     it('allows rendering react nodes as children', () => {
         render(
             <Banner>
-                <button>button</button>
+                <button type="button">button</button>
                 <p>paragraph</p>
             </Banner>
         );
@@ -26,7 +26,11 @@ describe('Banner', () => {
             <Banner>
                 {dismiss => {
                     expect(dismiss).toBeDefined();
-                    return <button onClick={dismiss}>button</button>;
+                    return (
+                        <button type="button" onClick={dismiss}>
+                            button
+                        </button>
+                    );
                 }}
             </Banner>
         );
@@ -35,7 +39,15 @@ describe('Banner', () => {
     });
 
     it('can be dismissed by calling the dismiss function', async () => {
-        render(<Banner>{dismiss => <button onClick={dismiss}>dismiss</button>}</Banner>);
+        render(
+            <Banner>
+                {dismiss => (
+                    <button type="button" onClick={dismiss}>
+                        dismiss
+                    </button>
+                )}
+            </Banner>
+        );
 
         const banner = screen.getByText('dismiss');
         userEvent.click(banner);
@@ -47,7 +59,11 @@ describe('Banner', () => {
     it('can be dismissed by calling the dismiss function from the hook', async () => {
         const InnerComponent: React.FC = () => {
             const dismiss = useBannerDismiss();
-            return <button onClick={dismiss}>Close</button>;
+            return (
+                <button type="button" onClick={dismiss}>
+                    Close
+                </button>
+            );
         };
 
         render(
@@ -67,7 +83,15 @@ describe('Banner', () => {
         jest.useFakeTimers();
 
         const mockOnClose = jest.fn();
-        render(<Banner onClose={mockOnClose}>{dismiss => <button onClick={dismiss}>dismiss</button>}</Banner>);
+        render(
+            <Banner onClose={mockOnClose}>
+                {dismiss => (
+                    <button type="button" onClick={dismiss}>
+                        dismiss
+                    </button>
+                )}
+            </Banner>
+        );
         userEvent.click(screen.getByText('dismiss'));
 
         // We run the timer to just before the animation ends

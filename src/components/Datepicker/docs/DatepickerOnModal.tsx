@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import { Button, Headline, Modal, TextButton } from '../..';
 import { ControlledDatepickerSingleInput } from './ControlledDatepickerSingleInput';
 
-export const DatepickerOnModal = () => {
+export const DatepickerOnModal: FC = () => {
     const [showModal, setShowModal] = useState(false);
 
     return (

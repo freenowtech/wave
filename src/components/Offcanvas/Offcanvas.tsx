@@ -11,7 +11,7 @@ type DismissFunc = () => void;
 
 const DismissContext = React.createContext<DismissFunc>(undefined);
 
-const useOffcanvasDismiss = () => {
+const useOffcanvasDismiss = (): DismissFunc => {
     const dismiss = useContext(DismissContext);
 
     if (dismiss === undefined) {

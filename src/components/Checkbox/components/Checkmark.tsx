@@ -57,6 +57,12 @@ const Checkmark = styled.input<CheckmarkProps>`
         }
     }
 
+    &:indeterminate {
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
+        background-color: ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
+        box-shadow: inset 0 0 0 0.125rem ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
+    }
+
     &:disabled {
         cursor: not-allowed;
         background-color: ${Colors.AUTHENTIC_BLUE_50};

@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, FC, ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
 import { MarginProps, ResponsiveValue } from 'styled-system';
 
@@ -9,10 +9,7 @@ import { Checkmark } from './components/Checkmark';
 import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
 
-interface CheckboxProps
-    extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref' | 'size'>,
-        ClassNameProps,
-        MarginProps {
+interface CheckboxProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>, ClassNameProps, MarginProps {
     /**
      * Provide a label for the input which will be shown next to the checkbox
      */
@@ -29,6 +26,10 @@ interface CheckboxProps
      * Define size of the checkbox component, defaults to large
      */
     size?: ResponsiveValue<'small' | 'medium' | 'large'>;
+    /**
+     * Decides whether the checkbox is in an "indeterminate"(partially selected) state
+     */
+    indeterminate?: boolean;
 }
 
 const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
@@ -38,14 +39,14 @@ const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
 
     height: 1rem;
     margin: 0 0.5rem 0 0;
-    ${({ textVerticalAlign }) => (textVerticalAlign == 'top' ? 'margin-top: 0.1875rem' : null)}
+    ${({ textVerticalAlign }) => (textVerticalAlign === 'top' ? 'margin-top: 0.1875rem' : undefined)}
 `;
 
 const Checkbox: FC<CheckboxProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
 
-    const { disabled, error, label, textVerticalAlign, size, ...rest } = restProps;
+    const { disabled, error, label, textVerticalAlign, size, indeterminate, ...rest } = restProps;
     let dynamicLabel: ReactNode = label;
 
     if (typeof label === 'string') {
@@ -56,8 +57,20 @@ const Checkbox: FC<CheckboxProps> = props => {
         );
     }
 
+    const checkboxRef = React.createRef<HTMLInputElement>();
+
+    useEffect(() => {
+        /**
+         * this hook exists to support the "indeterminate" state for the checkbox, which
+         * currently can be set only using javascript (non HTML)
+         * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate
+         */
+        checkboxRef.current.indeterminate = !!indeterminate;
+    }, [indeterminate]);
+
     return (
         <LabelWrapper
+            indeterminate={indeterminate}
             disabled={disabled}
             error={error}
             textVerticalAlign={textVerticalAlign}
@@ -66,7 +79,7 @@ const Checkbox: FC<CheckboxProps> = props => {
         >
             <WithTapAreaWrapper textVerticalAlign={textVerticalAlign}>
                 <TapArea />
-                <Checkmark type="checkbox" disabled={disabled} error={error} {...rest} />
+                <Checkmark ref={checkboxRef} type="checkbox" disabled={disabled} error={error} {...rest} />
             </WithTapAreaWrapper>
             {dynamicLabel}
         </LabelWrapper>
