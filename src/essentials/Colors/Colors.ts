@@ -87,7 +87,7 @@ export const SemanticColors = {
         tertiary: Colors.AUTHENTIC_BLUE_350,
         tertiaryInverted: Colors.AUTHENTIC_BLUE_350,
         disabled: Colors.AUTHENTIC_BLUE_200,
-        disabledInverted: Colors.AUTHENTIC_BLUE_350,
+        disabledInverted: Colors.AUTHENTIC_BLUE_550,
         link: Colors.ACTION_BLUE_900,
         linkInverted: Colors.WHITE,
         linkHover: Colors.ACTION_BLUE_1000,
