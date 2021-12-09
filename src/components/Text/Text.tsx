@@ -13,9 +13,9 @@ import {
     textAlign,
     TextAlignProps
 } from 'styled-system';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { deprecatedProperty } from '../../utils/deprecatedProperty';
 
 interface TextProps
     extends ComponentPropsWithoutRef<'span'>,
@@ -33,28 +33,38 @@ interface TextProps
     inverted?: boolean;
     /**
      * Adjust color to indicate secondary information
+     * @deprecated use `secondary` instead
      */
     weak?: boolean;
+    /**
+     * Adjust color to indicate secondary information
+     */
+    secondary?: boolean;
     /**
      * Adjust color to display a disabled text element
      */
     disabled?: boolean;
 }
 
-function determineTextColor({ weak, inverted, disabled }: TextProps) {
-    if (disabled) {
-        return inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_350;
+function determineTextColor(props: TextProps) {
+    const { weak, secondary, inverted, disabled } = props;
+    if (weak !== undefined) {
+        deprecatedProperty('Text', weak, 'weak', 'secondary', 'Rename `weak` to `secondary` to remove the warning.');
     }
 
-    if (weak) {
-        return inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_550;
+    if (disabled) {
+        return get(inverted ? 'semanticColors.text.disabledInverted' : 'semanticColors.text.disabled')(props);
+    }
+
+    if (secondary || weak) {
+        return get(inverted ? 'semanticColors.text.secondaryInverted' : 'semanticColors.text.secondary')(props);
     }
 
     if (inverted) {
-        return Colors.WHITE;
+        return get('semanticColors.text.primaryInverted')(props);
     }
 
-    return Colors.AUTHENTIC_BLUE_900;
+    return get('semanticColors.text.primary')(props);
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`
