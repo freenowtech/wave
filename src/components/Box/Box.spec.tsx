@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import { Colors } from '../../essentials';
-import { Box } from './Box';
+import { Box, BoxProps } from './Box';
 
 describe('Box', () => {
     it('renders without any props', () => {
@@ -31,6 +31,13 @@ describe('Box', () => {
     it('renders grid layout', () => {
         expect(
             render(<Box gridColumnGap={2} gridTemplateRows="1fr auto 10%" />).container.firstChild
+        ).toMatchSnapshot();
+    });
+
+    it('accepts props spreading', () => {
+        const renderBox = (props: BoxProps) => <Box {...props} />;
+        expect(
+            render(renderBox({ backgroundColor: Colors.POSITIVE_GREEN_900 })).container.firstChild
         ).toMatchSnapshot();
     });
 });
