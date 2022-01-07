@@ -28,7 +28,6 @@ the semantics while following the design.
 
 <HeadlinePropsTable />
 
-
 ## Default headlines
 
 <ItemWrapper>
@@ -60,9 +59,24 @@ the semantics while following the design.
     </Headline>
 </ItemWrapper>
 
-## Examples
+## Responsive size
+
+The `size` property supports [responsive values](https://styled-system.com/responsive-styles/). Pass an array or an object
+and the design system use corresponding values for different viewport sizes.
+
+For example, the following snippet uses `s` size for mobile and `xl` size bigger screens:
+
+```jsx
+
+<Headline as="h2" size={{_: 's', medium: 'xl'}}>Small on mobile, big on bigger screens</Headline>
+
+```
+
+## Playground
+
 
 <Playground>
     <Headline as="h3">default headline h3</Headline>
     <Headline as="h1" size="xs">The smallest h1</Headline>
+    <Headline as="h4" size={{_: 'xs', medium: 'm'}}>Responsive headline</Headline>
 </Playground>
