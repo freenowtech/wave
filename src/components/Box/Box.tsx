@@ -24,7 +24,7 @@ interface BoxProps
     extends SpaceProps,
         LayoutProps,
         PositionProps,
-        ColorProps,
+        Omit<ColorProps, 'color'>, // HACK: avoid collision of `color` prop
         FlexboxProps,
         GridProps,
         BackgroundProps,

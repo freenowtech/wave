@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Box accepts props spreading 1`] = `
+.c0 {
+  background-color: #069D4F;
+}
+
+<div
+  class="c0"
+/>
+`;
+
 exports[`Box renders color 1`] = `
 .c0 {
   background-color: #069D4F;
