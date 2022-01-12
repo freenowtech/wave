@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import {
     background,
     BackgroundProps,
@@ -30,7 +30,7 @@ interface BoxProps
         BackgroundProps,
         TextAlignProps {}
 
-const Box: StyledComponentBase<'div', DefaultTheme, BoxProps, 'theme'> = styled.div.attrs({ theme })<BoxProps>`
+const Box = styled.div.attrs({ theme })<BoxProps>`
     ${compose(space, layout, position, color, flexbox, grid, background, textAlign)}
 `;
 
