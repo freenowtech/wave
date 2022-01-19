@@ -1,0 +1,189 @@
+---
+name: Grid System
+menu: Components
+route: /components/grid-system
+---
+
+import { Playground } from 'docz';
+import { Button } from '../../Button/Button.tsx';
+import { Headline } from '../../Headline/Headline.tsx';
+import { Input } from '../../Input/Input.tsx';
+import { Row, Column } from '../Grid.tsx';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import { Text } from '../../Text/Text.tsx';
+import { ColumnPropsTable } from './GridPropsTable';
+
+# Grid System
+
+The grid system is a set of components that can be used to create different layouts, composed of 12 vertical tracks of equal width.
+
+## Properties
+
+### Row
+
+<StyledSystemLinks component="Row" supportedProps={ ['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background'] }/>
+
+### Column
+
+<ColumnPropsTable /><br/>
+
+<StyledSystemLinks component="Column" supportedProps={ ['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background'] }/>
+
+## Examples
+
+The grid system is composed of 12 vertical tracks of equal width. Content can be placed in these tracks by using the `Row` and `Column` component.
+
+<Playground>
+<Row>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    1
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    2
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    3
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    4
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    5
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    6
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    7
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    8
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    9
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    10
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    11
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1}>
+    12
+  </Column>
+</Row>
+</Playground>
+
+`Column`s can occupy more than one vertical track, by changing the `span` prop to a number between 1 and 12.
+
+<Playground>
+<Row mb={3}>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={2}>
+    1
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={2}>
+    2
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={2}>
+    3
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={2}>
+    4
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={2}>
+    5
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={2}>
+    6
+  </Column>
+</Row>
+<Row mb={3}>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={3}>
+    7
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={3}>
+    8
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={3}>
+    9
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={3}>
+    10
+  </Column>
+</Row>
+<Row mb={3}>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={4}>
+    11
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={4}>
+    12
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={4}>
+    13
+  </Column>
+</Row>
+<Row mb={3}>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={6}>
+    14
+  </Column>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={6}>
+    15
+  </Column>
+</Row>
+<Row>
+  <Column bg="#f1f2f4" textAlign="center" p={1} span={12}>
+    16
+  </Column>
+</Row>
+</Playground>
+
+`Column`s can be given an offset, by changing the `offset` prop to a number between 0 and 11.
+
+<Playground>
+  <Row>
+    <Column bg="#f1f2f4" textAlign="center" p={1} span={4}>
+      1
+    </Column>
+    <Column bg="#f1f2f4" textAlign="center" p={1} span={4} offset={8}>
+      2
+    </Column>
+  </Row>
+</Playground>
+
+The `Row` and `Column` components can be used to create different kinds of layouts, combining them with other components of the design system.
+
+<Playground>
+<Row mb={3}>
+  <Column span={12}>
+    <Headline as="h2">Create a free Business Account</Headline>
+    <Text as="p">
+      Make managing employee and guest travel easier. It only takes a couple
+      of minutes to get started!
+    </Text>
+  </Column>
+</Row>
+<Row mb={3}>
+  <Column span={6}>
+    <Input label="First Name" width="100%" />
+  </Column>
+  <Column span={6}>
+    <Input label="Last Name" width="100%" />
+  </Column>
+</Row>
+<Row mb={3}>
+  <Column span={6}>
+    <Input label="Email" width="100%" />
+  </Column>
+  <Column span={2}>
+    <Input label="Area Code" width="100%" />
+  </Column>
+  <Column span={4}>
+    <Input label="Phone Number" width="100%" />
+  </Column>
+</Row>
+<Row>
+  <Column span={6} offset={6}>
+    <Button width="100%">Sign up for FREE NOW for Business</Button>
+  </Column>
+</Row>
+</Playground>
