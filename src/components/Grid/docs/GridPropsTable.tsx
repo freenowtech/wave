@@ -6,9 +6,9 @@ export const ColumnPropsTable: FC = () => {
     const props = [
         {
             name: 'offset',
-            type: '"auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11',
-            description: 'vertical track that the column starts at',
-            defaultValue: 'auto'
+            type: '0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11',
+            description: 'amount of vertical tracks that the column should be offset by',
+            defaultValue: '0'
         },
         {
             name: 'span',
