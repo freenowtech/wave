@@ -77,26 +77,26 @@ exports[`DatepickerSingleInput renders the default props 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .sc-AxhUy {
+.c1 + .sc-AxgMl {
   color: #9CA7B4;
   background: #FFFFFF;
   background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
-.c1:disabled + .sc-AxhUy {
+.c1:disabled + .sc-AxgMl {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .sc-AxhUy,
-.c1:-webkit-autofill:hover + .sc-AxhUy,
-.c1:-webkit-autofill:focus + .sc-AxhUy,
-.c1:-webkit-autofill:active + .sc-AxhUy {
+.c1:-webkit-autofill + .sc-AxgMl,
+.c1:-webkit-autofill:hover + .sc-AxgMl,
+.c1:-webkit-autofill:focus + .sc-AxgMl,
+.c1:-webkit-autofill:active + .sc-AxgMl {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) + .sc-AxhUy {
+.c1:focus:not(:disabled) + .sc-AxgMl {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
@@ -117,7 +117,7 @@ exports[`DatepickerSingleInput renders the default props 1`] = `
   >
     <input
       autocomplete="off"
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       data-error="false"
       data-testid="start-date-input"
       id="random"
