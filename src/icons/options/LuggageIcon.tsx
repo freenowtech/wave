@@ -5,21 +5,21 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
 
-const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const LuggageIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
+                d="M10.5 18H9V9h1.5v9zm4.5 0h-1.5V9H15v9zm0-12V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7a2 2 0 00-2 2v13h2c0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1h2V8a2 2 0 00-2-2h-2zm-4.5-2.5h3V6h-3V3.5zM17 19H7V8h10v11z"
                 fill="currentColor"
             />
         </svg>
     );
 };
 
-BikeRiderSolidIcon.defaultProps = {
+LuggageIcon.defaultProps = {
     color: Colors.AUTHENTIC_BLUE_900
 };
-export default BikeRiderSolidIcon;
+export default LuggageIcon;

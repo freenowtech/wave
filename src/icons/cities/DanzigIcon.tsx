@@ -5,21 +5,21 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
 
-const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const DanzigIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
+                d="M17.519 2.334L20 5.669v8.977l3 1.85V22H1v-5.457l3-2.172v-8.7l2.47-3.338L9 5.663V8h6V5.665l2.519-3.331zM4 16.839l-1 .724V20h1v-3.162zM6.491 5.665L6 6.33V20h1V6.337l-.509-.67zM15 10H9v10h2v-3a1 1 0 112 0v3h2V10zm2.505-4.334L17 6.334V20h1V6.331l-.495-.665zM20 16.994V20h1v-2.389l-1-.617zM12 12a1 1 0 110 2 1 1 0 010-2z"
                 fill="currentColor"
             />
         </svg>
     );
 };
 
-BikeRiderSolidIcon.defaultProps = {
+DanzigIcon.defaultProps = {
     color: Colors.AUTHENTIC_BLUE_900
 };
-export default BikeRiderSolidIcon;
+export default DanzigIcon;

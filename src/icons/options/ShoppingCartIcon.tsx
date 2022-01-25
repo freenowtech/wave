@@ -5,21 +5,21 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
 
-const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const ShoppingCartIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
+                d="M8.5 17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm8 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM3.86 4a3 3 0 012.902 2.238l.04.174 1.357 6.784c.073.392.438.747.863.797L9.14 14h7.53a1 1 0 00.912-.591l.042-.11L19.279 8H8.5l-.4-2H22l-2.467 7.895a3 3 0 01-2.677 2.1l-.187.005H9.14a3 3 0 01-2.901-2.239l-.04-.173L4.84 6.804a1 1 0 00-.863-.797L3.86 6H2V4h1.86z"
                 fill="currentColor"
             />
         </svg>
     );
 };
 
-BikeRiderSolidIcon.defaultProps = {
+ShoppingCartIcon.defaultProps = {
     color: Colors.AUTHENTIC_BLUE_900
 };
-export default BikeRiderSolidIcon;
+export default ShoppingCartIcon;

@@ -5,21 +5,21 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
 
-const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const MopedSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
+                d="M16 4l2.311 6.037c.154-.018.31-.03.466-.035l.225-.004H22v2l-2.939-.001.527 1.375a3.5 3.5 0 013.407 3.307l.005.192a3.5 3.5 0 11-5.352-2.97l-.545-1.425a4.002 4.002 0 00-2.098 3.324L15 16v1H9.996l-.001.063a3.5 3.5 0 01-6.99 0L3.003 17H1v-6a3 3 0 012.824-2.995L4 8h8v2H9.445a6.195 6.195 0 002.105 4.627l.196.165.258.208h1.08l.017-.103a6.011 6.011 0 013.282-4.3L14.624 6h-2.619V4H16zm-8.555 6H4a1 1 0 00-.993.883L3 11v4l6.168.001a8.197 8.197 0 01-1.723-5z"
                 fill="currentColor"
             />
         </svg>
     );
 };
 
-BikeRiderSolidIcon.defaultProps = {
+MopedSolidIcon.defaultProps = {
     color: Colors.AUTHENTIC_BLUE_900
 };
-export default BikeRiderSolidIcon;
+export default MopedSolidIcon;

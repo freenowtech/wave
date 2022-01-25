@@ -5,21 +5,21 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
 
-const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const BerlinIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
+                d="M17 7v2h5v2h-1v8h1v2H2v-2h1v-8H2V9h5V7h10zm2 4h-2v8h2v-8zm-4 0H9v8h6v-8zm-8 0H5v8h2v-8zm5-9a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"
                 fill="currentColor"
             />
         </svg>
     );
 };
 
-BikeRiderSolidIcon.defaultProps = {
+BerlinIcon.defaultProps = {
     color: Colors.AUTHENTIC_BLUE_900
 };
-export default BikeRiderSolidIcon;
+export default BerlinIcon;

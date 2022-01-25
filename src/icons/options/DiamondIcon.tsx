@@ -5,21 +5,21 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
 
-const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const DiamondIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
+                d="M17 2.5l5.495 6.494L22.5 9l-1.257 1.571-.007-.007L12 22 2.763 10.563l-.006.008L1.5 9 7 2.5h10zM14.505 10h-5.01L12 16.929 14.505 10zm-7.034 0H4.867l4.883 6.038L7.471 10zm11.661 0h-2.605l-2.277 6.037L19.132 10zm-9.073-5.5H7.916L4.942 8h2.597l2.52-3.5zm1.94.174L9.705 8h4.588l-2.294-3.326zm4.084-.174H13.94L16.461 8h2.596l-2.974-3.5z"
                 fill="currentColor"
             />
         </svg>
     );
 };
 
-BikeRiderSolidIcon.defaultProps = {
+DiamondIcon.defaultProps = {
     color: Colors.AUTHENTIC_BLUE_900
 };
-export default BikeRiderSolidIcon;
+export default DiamondIcon;
