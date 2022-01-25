@@ -7,6 +7,17 @@ import selectEvent from 'react-select-event';
 import { Pagination } from './Pagination';
 
 describe('Pagination', () => {
+    const examplePageSizes = [
+        {
+            label: '10',
+            value: '10'
+        },
+        {
+            label: '20',
+            value: '20'
+        }
+    ];
+
     beforeEach(() => {
         jest.restoreAllMocks();
     });
@@ -20,12 +31,15 @@ describe('Pagination', () => {
     // This test is used as an example in the documentation, so if it breaks and needs to be adapted make sure to also
     // update the documentation.
     it('should select by aria-label', () => {
-        const { getByRole } = render(<Pagination value={1} pageSize={20} totalItems={200} />);
+        const { getByRole, getByLabelText } = render(
+            <Pagination value={1} pageSize={20} totalItems={200} pageSizes={examplePageSizes} />
+        );
 
         expect(getByRole('button', { name: 'First' })).toBeInTheDocument();
         expect(getByRole('button', { name: 'Previous' })).toBeInTheDocument();
         expect(getByRole('button', { name: 'Next' })).toBeInTheDocument();
         expect(getByRole('button', { name: 'Last' })).toBeInTheDocument();
+        expect(getByLabelText('Select page size container')).toBeInTheDocument();
     });
 
     it('should render a label from a string', () => {
@@ -54,16 +68,6 @@ describe('Pagination', () => {
 
     it('should select a page size when clicking on the page size list', async () => {
         const onSelectPageSizeMock = jest.fn();
-        const examplePageSizes = [
-            {
-                label: '10',
-                value: '10'
-            },
-            {
-                label: '20',
-                value: '20'
-            }
-        ];
 
         const { queryByLabelText } = render(
             <Pagination

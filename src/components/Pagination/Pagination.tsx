@@ -84,6 +84,10 @@ interface PaginationProps {
      */
     ariaLabelLast?: string;
     /**
+     * Aria label for the container of the page size `SelectList`.
+     */
+    ariaLabelSelectPageSizeContainer?: string;
+    /**
      * Callback when the next button was pressed.
      */
     onNextPage?: () => void;
@@ -116,6 +120,7 @@ const Pagination: React.FC<PaginationProps> = ({
     ariaLabelPrevious = 'Previous',
     ariaLabelNext = 'Next',
     ariaLabelLast = 'Last',
+    ariaLabelSelectPageSizeContainer = 'Select page size container',
     onNextPage,
     onPrevPage,
     onSelectPageSize,
@@ -130,7 +135,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <Container>
             <ButtonsContainer>
                 {hasMultiplePageSizes && (
-                    <Box aria-label="Select page size container" position="absolute" left="0" width="4.5em">
+                    <Box aria-label={ariaLabelSelectPageSizeContainer} position="absolute" left="0" width="4.5em">
                         <SelectList
                             options={pageSizes}
                             onChange={onSelectPageSize}
