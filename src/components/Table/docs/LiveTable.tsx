@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Button, Label, Select } from '../..';
 import { Colors } from '../../../essentials';
-import { EnvelopeIcon, PhoneIcon } from '../../../icons/basic';
+import { EnvelopeIcon, PhoneIcon } from '../../../icons';
 import { Text } from '../../Text/Text';
 
 export const LiveTable: FC = () => {
