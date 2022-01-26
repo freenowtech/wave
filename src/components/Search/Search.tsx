@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Colors, Elevation } from '../../essentials';
 import { CloseIcon, MagnifyingGlassIcon } from '../../icons/index';
 import { useControlledState } from '../../utils/hooks/useControlledState';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 import { Input } from '../Input/Input';
 
@@ -14,7 +14,9 @@ const ActiveStyle = `
     color: ${Colors.ACTION_BLUE_900};
 `;
 
-const SearchResultsContainer = styled(Box)`
+interface SearchResultsContainerProps extends BoxProps, Pick<SearchProps, 'inverted'> {}
+
+const SearchResultsContainer = styled(Box)<SearchResultsContainerProps>`
     position: absolute;
     z-index: ${Elevation.SUGGESTIONS_LIST};
     margin-top: 0.0625rem;
@@ -32,7 +34,11 @@ const ActiveBox = styled(Box)`
     }
 `;
 
-const SearchInputContainer = styled(Box)`
+interface SearchInputContainerProps extends BoxProps {
+    isInFocus: boolean;
+}
+
+const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     box-sizing: border-box;
     background: white;
     border-radius: 0.25rem;

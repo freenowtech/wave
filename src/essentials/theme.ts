@@ -1,8 +1,9 @@
+import { DefaultTheme } from 'styled-components';
 import { Colors, SemanticColors } from './Colors/Colors';
 import { Spaces } from './Spaces/Spaces';
 import { Breakpoints, MediaQueries } from './Breakpoints/Breakpoints';
 
-const theme = {
+const theme: DefaultTheme = {
     breakpoints: Breakpoints,
     colors: Colors,
     // todo: rename semanticColors to colors in the next major release

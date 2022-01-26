@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, FC, MouseEventHandler, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MarginProps } from 'styled-system';
 import { Colors, MediaQueries } from '../../essentials';
@@ -61,7 +61,6 @@ interface OutlinerProps extends BoxProps {
     disabled: boolean;
     error: boolean;
     hasValidFile: boolean;
-    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 // NOTE: we want to affect the color of only one icon SVG and not the ICON_FILE_FEEDBACK_COLOR
@@ -146,7 +145,7 @@ const FilePicker: FC<FilePickerProps> = ({
         onFileChange(eventFile, e);
         setFile(eventFile);
     };
-    const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const onClickHandler: MouseEventHandler = e => {
         // Avoid label trigger file selection twice
         e.preventDefault();
         // Avoid button trigger file selection twice
