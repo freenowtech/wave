@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { FC, useState } from 'react';
 import { Text } from '../../Text/Text';
 
 import { Pagination } from '../Pagination';
@@ -14,75 +14,62 @@ interface Props {
         handleSelectPageSize: (selected: { label: string; value: string }) => void;
         handleSkipForward: () => void;
         handleSkipBackward: () => void;
-    }) => ReactNode;
+    }) => JSX.Element;
 }
 
-interface State {
-    currentPage: number;
-    pageSize: number;
-}
+const TOTAL_ITEMS = 200;
 
-class PaginationProvider extends React.Component<Props, State> {
-    private TOTAL_ITEMS = 200;
-
-    private PAGE_SIZES = [
-        {
-            label: '10',
-            value: '10'
-        },
-        {
-            label: '15',
-            value: '15'
-        },
-        {
-            label: '20',
-            value: '20'
-        }
-    ];
-
-    constructor(props: Props) {
-        super(props);
-
-        this.state = {
-            currentPage: 1,
-            pageSize: 10
-        };
+const PAGE_SIZES = [
+    {
+        label: '10',
+        value: '10'
+    },
+    {
+        label: '15',
+        value: '15'
+    },
+    {
+        label: '20',
+        value: '20'
     }
+];
 
-    private handleNextPage = () => {
-        this.setState(current => ({ ...current, currentPage: current.currentPage + 1 }));
+const PaginationProvider: FC<Props> = ({ children }: Props) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
+
+    const handleNextPage = () => {
+        setCurrentPage(current => current + 1);
     };
 
-    private handlePrevPage = () => {
-        this.setState(current => ({ ...current, currentPage: current.currentPage - 1 }));
+    const handlePrevPage = () => {
+        setCurrentPage(current => current - 1);
     };
 
-    private handleSelectPageSize = (selected: { label: string; value: string }) => {
-        this.setState(current => ({ ...current, pageSize: Number.parseInt(selected.value, 10) }));
+    const handleSelectPageSize = (selected: { label: string; value: string }) => {
+        setPageSize(Number.parseInt(selected.value, 10));
     };
 
-    private handleSkipForward = () => {
-        this.setState(current => ({ ...current, currentPage: Math.ceil(this.TOTAL_ITEMS / current.pageSize) }));
+    const handleSkipForward = () => {
+        setCurrentPage(current => Math.ceil(TOTAL_ITEMS / current));
     };
 
-    private handleSkipBackward = () => {
-        this.setState(current => ({ ...current, currentPage: 1 }));
+    const handleSkipBackward = () => {
+        setCurrentPage(1);
     };
 
-    public render(): ReactNode {
-        return this.props.children({
-            currentPage: this.state.currentPage,
-            pageSize: this.state.pageSize,
-            pageSizes: this.PAGE_SIZES,
-            totalItems: this.TOTAL_ITEMS,
-            handleNextPage: this.handleNextPage,
-            handlePrevPage: this.handlePrevPage,
-            handleSelectPageSize: this.handleSelectPageSize,
-            handleSkipForward: this.handleSkipForward,
-            handleSkipBackward: this.handleSkipBackward
-        });
-    }
-}
+    return children({
+        currentPage,
+        pageSize,
+        pageSizes: PAGE_SIZES,
+        totalItems: TOTAL_ITEMS,
+        handleNextPage,
+        handlePrevPage,
+        handleSelectPageSize,
+        handleSkipForward,
+        handleSkipBackward
+    });
+};
 
 const NormalPagination: React.FC = () => (
     <PaginationProvider>
