@@ -126,6 +126,7 @@ ARIA labels.
     ariaLabelPrevious="Previous"
     ariaLabelNext="Next"
     ariaLabelLast="Last"
+    ariaLabelSelectPageSizeContainer="Select page size container" /* Only if you are using using the `pageSizes` prop */
 />
 ```
 
@@ -134,12 +135,15 @@ ARIA labels.
 In tests you can use the `aria-label` attributes to select the individual buttons.
 Here is an example using `@testing-library/react`.
 
+You can see how to test the page sizes select in [Wave's SelectList](https://wave.free-now.com/components/select-list)
+
 ```jsx
 test('should select by aria-label', () => {
     const { getByRole } = render(<Pagination value={1} pageSize={20} totalItems={200} />);
-    getByRole('button', { name: 'First' });
-    getByRole('button', { name: 'Previous' });
-    getByRole('button', { name: 'Next' });
-    getByRole('button', { name: 'Last' });
+
+    expect(getByRole('button', { name: 'First' })).toBeInTheDocument();
+    expect(getByRole('button', { name: 'Previous' })).toBeInTheDocument();
+    expect(getByRole('button', { name: 'Next' })).toBeInTheDocument();
+    expect(getByRole('button', { name: 'Last' })).toBeInTheDocument();
 });
 ```
