@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Spaces } from '../..';
 import { Box, BoxProps } from '../Box/Box';
 
-const COLUMN_WIDTH_RATIO = 100 / 12;
+const COLUMN_WIDTH = 100 / 12;
 const GAP = Spaces[3];
 
 type ColumnOffset = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
@@ -25,10 +25,17 @@ interface ColumnProps extends BoxProps {
 }
 
 const Column: FC<ColumnProps> = ({ span = 1, offset = 0, ...restProps }: ColumnProps) => {
-    const marginLeft = `${offset * COLUMN_WIDTH_RATIO}%`;
-    const width = `${span * COLUMN_WIDTH_RATIO}%`;
+    const marginLeft = offset * COLUMN_WIDTH;
+    const width = span * COLUMN_WIDTH;
 
-    return <BorderBoxWrapper flex={`0 0 ${width}`} marginLeft={marginLeft} paddingRight={GAP} {...restProps} />;
+    return (
+        <BorderBoxWrapper
+            flex={`0 0 ${width}%`}
+            marginLeft={marginLeft ? `${marginLeft}%` : undefined}
+            paddingRight={GAP}
+            {...restProps}
+        />
+    );
 };
 
 export { Row, RowProps, Column, ColumnProps };

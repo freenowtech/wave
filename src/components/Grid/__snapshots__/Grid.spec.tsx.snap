@@ -16,7 +16,6 @@ exports[`Grid renders columns with offset 1`] = `
   -webkit-flex: 0 0 8.333333333333334%;
   -ms-flex: 0 0 8.333333333333334%;
   flex: 0 0 8.333333333333334%;
-  margin-left: 0%;
   padding-right: 1.5rem;
   box-sizing: border-box;
 }
@@ -63,7 +62,6 @@ exports[`Grid renders columns with span 1`] = `
   -webkit-flex: 0 0 33.333333333333336%;
   -ms-flex: 0 0 33.333333333333336%;
   flex: 0 0 33.333333333333336%;
-  margin-left: 0%;
   padding-right: 1.5rem;
   box-sizing: border-box;
 }
@@ -72,7 +70,6 @@ exports[`Grid renders columns with span 1`] = `
   -webkit-flex: 0 0 66.66666666666667%;
   -ms-flex: 0 0 66.66666666666667%;
   flex: 0 0 66.66666666666667%;
-  margin-left: 0%;
   padding-right: 1.5rem;
   box-sizing: border-box;
 }
@@ -110,7 +107,6 @@ exports[`Grid renders without props 1`] = `
   -webkit-flex: 0 0 8.333333333333334%;
   -ms-flex: 0 0 8.333333333333334%;
   flex: 0 0 8.333333333333334%;
-  margin-left: 0%;
   padding-right: 1.5rem;
   box-sizing: border-box;
 }
