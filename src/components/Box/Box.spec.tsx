@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import { Colors } from '../../essentials';
-import { Box, BoxProps } from './Box';
+import { Box } from './Box';
 
 describe('Box', () => {
     it('renders without any props', () => {
