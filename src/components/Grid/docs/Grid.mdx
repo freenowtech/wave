@@ -5,13 +5,14 @@ route: /components/grid-system
 ---
 
 import { Playground } from 'docz';
+import { Box } from '../../Box/Box.tsx';
 import { Button } from '../../Button/Button.tsx';
+import { ColumnPropsTable } from './GridPropsTable';
 import { Headline } from '../../Headline/Headline.tsx';
 import { Input } from '../../Input/Input.tsx';
 import { Row, Column } from '../Grid.tsx';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 import { Text } from '../../Text/Text.tsx';
-import { ColumnPropsTable } from './GridPropsTable';
 
 # Grid System
 
@@ -35,41 +36,41 @@ The grid system is composed of 12 vertical tracks of equal width. Content can be
 
 <Playground>
 <Row>
-  <Column bg="#f1f2f4" textAlign="center">
-    1
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">1</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    2
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">2</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    3
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">3</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    4
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">4</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    5
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">5</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    6
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">6</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    7
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">7</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    8
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">8</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    9
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">9</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    10
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">10</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    11
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">11</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center">
-    12
+  <Column>
+    <Box bg="#f1f2f4" textAlign="center">12</Box>
   </Column>
 </Row>
 </Playground>
@@ -78,61 +79,61 @@ The grid system is composed of 12 vertical tracks of equal width. Content can be
 
 <Playground>
 <Row mb={3}>
-  <Column bg="#f1f2f4" textAlign="center" span={2}>
-    1
+  <Column span={2}>
+    <Box bg="#f1f2f4" textAlign="center">1</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={2}>
-    2
+  <Column span={2}>
+    <Box bg="#f1f2f4" textAlign="center">2</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={2}>
-    3
+  <Column span={2}>
+    <Box bg="#f1f2f4" textAlign="center">3</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={2}>
-    4
+  <Column span={2}>
+    <Box bg="#f1f2f4" textAlign="center">4</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={2}>
-    5
+  <Column span={2}>
+    <Box bg="#f1f2f4" textAlign="center">5</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={2}>
-    6
-  </Column>
-</Row>
-<Row mb={3}>
-  <Column bg="#f1f2f4" textAlign="center" span={3}>
-    7
-  </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={3}>
-    8
-  </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={3}>
-    9
-  </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={3}>
-    10
+  <Column span={2}>
+    <Box bg="#f1f2f4" textAlign="center">6</Box>
   </Column>
 </Row>
 <Row mb={3}>
-  <Column bg="#f1f2f4" textAlign="center" span={4}>
-    11
+  <Column span={3}>
+    <Box bg="#f1f2f4" textAlign="center">7</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={4}>
-    12
+  <Column span={3}>
+    <Box bg="#f1f2f4" textAlign="center">8</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={4}>
-    13
+  <Column span={3}>
+    <Box bg="#f1f2f4" textAlign="center">9</Box>
+  </Column>
+  <Column span={3}>
+    <Box bg="#f1f2f4" textAlign="center">10</Box>
   </Column>
 </Row>
 <Row mb={3}>
-  <Column bg="#f1f2f4" textAlign="center" span={6}>
-    14
+  <Column span={4}>
+    <Box bg="#f1f2f4" textAlign="center">11</Box>
   </Column>
-  <Column bg="#f1f2f4" textAlign="center" span={6}>
-    15
+  <Column span={4}>
+    <Box bg="#f1f2f4" textAlign="center">12</Box>
+  </Column>
+  <Column span={4}>
+    <Box bg="#f1f2f4" textAlign="center">13</Box>
+  </Column>
+</Row>
+<Row mb={3}>
+  <Column span={6}>
+    <Box bg="#f1f2f4" textAlign="center">14</Box>
+  </Column>
+  <Column span={6}>
+    <Box bg="#f1f2f4" textAlign="center">15</Box>
   </Column>
 </Row>
 <Row>
-  <Column bg="#f1f2f4" textAlign="center" span={12}>
-    16
+  <Column span={12}>
+    <Box bg="#f1f2f4" textAlign="center">16</Box>
   </Column>
 </Row>
 </Playground>
@@ -141,11 +142,11 @@ The grid system is composed of 12 vertical tracks of equal width. Content can be
 
 <Playground>
   <Row>
-    <Column bg="#f1f2f4" textAlign="center" span={2} offset={2}>
-      1
+    <Column span={2} offset={2}>
+      <Box bg="#f1f2f4" textAlign="center">1</Box>
     </Column>
-    <Column bg="#f1f2f4" textAlign="center" span={2} offset={4}>
-      2
+    <Column span={2} offset={4}>
+      <Box bg="#f1f2f4" textAlign="center">2</Box>
     </Column>
   </Row>
 </Playground>
