@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid renders columns with offset 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -1.5rem;
+}
+
+.c1 {
+  -webkit-flex: 0 0 8.333333333333334%;
+  -ms-flex: 0 0 8.333333333333334%;
+  flex: 0 0 8.333333333333334%;
+  margin-left: 0%;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+.c2 {
+  -webkit-flex: 0 0 8.333333333333334%;
+  -ms-flex: 0 0 8.333333333333334%;
+  flex: 0 0 8.333333333333334%;
+  margin-left: 83.33333333333334%;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+<div
+  class="c0"
+  display="flex"
+>
+  <div
+    class="c1"
+  >
+    Column 1
+  </div>
+  <div
+    class="c2"
+  >
+    Column 2
+  </div>
+</div>
+`;
+
+exports[`Grid renders columns with span 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -1.5rem;
+}
+
+.c1 {
+  -webkit-flex: 0 0 33.333333333333336%;
+  -ms-flex: 0 0 33.333333333333336%;
+  flex: 0 0 33.333333333333336%;
+  margin-left: 0%;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+.c2 {
+  -webkit-flex: 0 0 66.66666666666667%;
+  -ms-flex: 0 0 66.66666666666667%;
+  flex: 0 0 66.66666666666667%;
+  margin-left: 0%;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+<div
+  class="c0"
+  display="flex"
+>
+  <div
+    class="c1"
+  >
+    Column 1
+  </div>
+  <div
+    class="c2"
+  >
+    Column 2
+  </div>
+</div>
+`;
+
+exports[`Grid renders without props 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -1.5rem;
+}
+
+.c1 {
+  -webkit-flex: 0 0 8.333333333333334%;
+  -ms-flex: 0 0 8.333333333333334%;
+  flex: 0 0 8.333333333333334%;
+  margin-left: 0%;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+<div
+  class="c0"
+  display="flex"
+>
+  <div
+    class="c1"
+  >
+    Column 1
+  </div>
+  <div
+    class="c1"
+  >
+    Column 2
+  </div>
+  <div
+    class="c1"
+  >
+    Column 3
+  </div>
+</div>
+`;
