@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Spaces } from '../..';
 import { Box, BoxProps } from '../Box/Box';
 
+const AMOUNT_OF_DECIMALS = 4;
 const COLUMN_WIDTH = 100 / 12;
 const GAP = Spaces[3];
 
@@ -30,8 +31,8 @@ const Column: FC<ColumnProps> = ({ span = 1, offset = 0, ...restProps }: ColumnP
 
     return (
         <BorderBoxWrapper
-            flex={`0 0 ${width}%`}
-            marginLeft={marginLeft ? `${marginLeft}%` : undefined}
+            flex={`0 0 ${width.toFixed(AMOUNT_OF_DECIMALS)}%`}
+            marginLeft={marginLeft ? `${marginLeft.toFixed(AMOUNT_OF_DECIMALS)}%` : undefined}
             paddingRight={GAP}
             {...restProps}
         />
