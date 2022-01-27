@@ -13,6 +13,7 @@ import { Input } from '../../Input/Input.tsx';
 import { Row, Column } from '../Grid.tsx';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 import { Text } from '../../Text/Text.tsx';
+import { Card } from '../../Card/Card.tsx';
 
 # Grid System
 
@@ -187,4 +188,64 @@ The `Row` and `Column` components can be used to create different kinds of layou
     <Button width="100%">Sign up for FREE NOW for Business</Button>
   </Column>
 </Row>
+</Playground>
+
+This other example, shows how to create a two `Column` layout with a number of stacking `Card`s.
+
+<Playground>
+<Box bg="#f1f2f4" p={3}>
+  <Row>
+    <Column span={6}>
+      <Card level={100} mb={3}>
+        <Text as="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Convallis aenean et tortor at risus viverra adipiscing at. Duis
+          ultricies lacus sed turpis.
+        </Text>
+      </Card>
+      <Card level={100} mb={3}>
+        <Text as="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu
+          tincidunt tortor aliquam nulla facilisi. Lobortis elementum nibh
+          tellus molestie nunc. Faucibus et molestie ac feugiat sed lectus.
+        </Text>
+      </Card>
+      <Card level={100}>
+        <Text as="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo
+          quis imperdiet massa tincidunt. Ipsum dolor sit amet consectetur
+          adipiscing elit pellentesque. Id cursus metus aliquam eleifend mi
+          in. Pretium fusce id velit ut tortor pretium viverra suspendisse.
+        </Text>
+      </Card>
+    </Column>
+    <Column span={6}>
+      <Card level={100} mb={3}>
+        <Text as="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Vel eros
+          donec ac odio tempor. Vulputate enim nulla aliquet porttitor lacus
+          luctus accumsan tortor. A diam maecenas sed enim ut. Maecenas sed
+          enim ut sem. Laoreet id donec ultrices tincidunt arcu. Nunc congue
+          nisi vitae suscipit tellus mauris. Euismod lacinia at quis risus
+          sed.
+        </Text>
+      </Card>
+      <Card level={100} mb={3}>
+        <Text as="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Vel eros
+          donec ac odio tempor. Vulputate enim nulla aliquet porttitor lacus
+          luctus accumsan tortor. A diam maecenas sed enim ut. Maecenas sed
+          enim ut sem. Laoreet id donec ultrices tincidunt arcu. Nunc congue
+          nisi vitae suscipit tellus mauris. Euismod lacinia at quis risus
+          sed.
+        </Text>
+      </Card>
+    </Column>
+  </Row>
+</Box>
 </Playground>
