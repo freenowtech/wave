@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { ChevronDownIcon } from '../../icons/basic';
+import { ChevronDownIcon } from '../../icons';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BaseSelectProps, SelectInput } from './SelectInput';

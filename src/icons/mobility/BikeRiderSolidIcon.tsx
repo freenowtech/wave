@@ -10,11 +10,10 @@ const BikeRiderSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: Icon
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
             <path
-                d="M6 13a4 4 0 110 8 4 4 0 010-8zm12 0a4 4 0 110 8 4 4 0 010-8zm-7-6.414l2.536 2.535a3 3 0 001.923.872l.198.007H17v2h-1.343a5 5 0 01-3.344-1.282l-.192-.182L11 9.414l-1.514 1.514.226.135a7.002 7.002 0 013.283 5.664L13 17v1h-2v-1c0-2.06-1.257-3.88-3.123-4.636l-.21-.08-.665-.235L7 10.587 11 6.586zM15 2a3 3 0 110 6 3 3 0 010-6zm0 2a1 1 0 100 2 1 1 0 000-2z"
+                d="M16.79 4l1.789 7.512a4.25 4.25 0 11-1.98.32l-.318-1.334-4.8 6.002H9.434A4.251 4.251 0 011 15.75a4.25 4.25 0 017.261-3l-1-3.25H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79z"
                 fill="currentColor"
-                fillRule="nonzero"
             />
         </svg>
     );
