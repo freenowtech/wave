@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Spaces } from '../..';
+import { Spaces } from '../../essentials/Spaces/Spaces';
 import { Box, BoxProps } from '../Box/Box';
 
 const AMOUNT_OF_DECIMALS = 4;
