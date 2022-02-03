@@ -10,7 +10,7 @@ export const Description = ({ description, ...rest }: Props) => (
     <Text
         as="p"
         fontSize="small"
-        weak
+        secondary
         style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
         {...rest}
     >
