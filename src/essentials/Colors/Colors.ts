@@ -1,5 +1,6 @@
 export enum Colors {
     WHITE = '#FFFFFF',
+    BLACK = '#000000',
     AUTHENTIC_BLUE_1100 = '#000F1F',
     AUTHENTIC_BLUE_900 = '#001E3E',
     AUTHENTIC_BLUE_550 = '#637689',
@@ -32,53 +33,6 @@ export enum Colors {
 }
 
 export const SemanticColors = {
-    brand: {
-        white: '#FFFFFF',
-        black: '#000000',
-        actionBlue: {
-            '50': '#F1F7FD',
-            '100': '#E4EFFB',
-            '150': '#D6E6F9',
-            '350': '#9FC5F1',
-            '900': '#096BDB',
-            '1000': '#0750A4'
-        },
-        freedomRed: {
-            '900': '#FF0A2B',
-            '1000': '#BF0820'
-        },
-        authenticBlue: {
-            '50': '#F1F2F4',
-            '200': '#C6CDD4',
-            '350': '#9CA7B4',
-            '550': '#637689',
-            '900': '#001E3E',
-            '1100': '#000F1F'
-        },
-        positiveGreen: {
-            '50': '#F1FAF5',
-            '350': '#9ED9BB',
-            '900': '#069D4F',
-            '1000': '#05763B'
-        },
-        attentionYellow: {
-            '50': '#FFFCF1',
-            '350': '#FFEB9C',
-            '900': '#FFCC00'
-        },
-        negativeOrange: {
-            '50': '#FFF6F1',
-            '350': '#FFC09E',
-            '900': '#FF5E05',
-            '1000': '#BF4704'
-        },
-        bumpyMagenta: {
-            '50': '#FFF1FF',
-            '350': '#FF9CFC',
-            '900': '#FF00F7',
-            '1000': '#BF00B9'
-        }
-    },
     text: {
         primary: Colors.AUTHENTIC_BLUE_900,
         primaryInverted: Colors.WHITE,
