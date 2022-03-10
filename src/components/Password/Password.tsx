@@ -2,8 +2,7 @@ import React, { forwardRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { compose, MarginProps, margin, width, WidthProps } from 'styled-system';
-import EyeOpenIcon from '../../icons/basic/EyeOpenIcon';
-import EyeClosedIcon from '../../icons/basic/EyeClosedIcon';
+import { EyeOpenIcon, EyeClosedIcon } from '../../icons';
 import { InnerInput as Input } from '../Input/InnerInput';
 import { InputProps } from '../Input/InputProps';
 import { InputWrapperProps } from '../Input/InputWrapper';

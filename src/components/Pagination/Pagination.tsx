@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Colors } from '../../essentials/Colors/Colors';
 import { Spaces } from '../../essentials/Spaces/Spaces';
-import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons/basic';
+import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons';
 import { Box } from '../Box/Box';
 import { SelectList } from '../SelectList/SelectList';
 
