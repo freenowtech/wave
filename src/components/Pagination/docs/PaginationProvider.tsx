@@ -51,7 +51,7 @@ const PaginationProvider: FC<Props> = ({ children }: Props) => {
     };
 
     const handleSkipForward = () => {
-        setCurrentPage(current => Math.ceil(TOTAL_ITEMS / current));
+        setCurrentPage(Math.ceil(TOTAL_ITEMS / pageSize));
     };
 
     const handleSkipBackward = () => {
