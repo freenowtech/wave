@@ -3,6 +3,7 @@ import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 
+import { generateId } from '../../utils/ids';
 import { Colors } from '../../essentials';
 import { Text } from '../Text/Text';
 import { Day } from './Day';
@@ -61,7 +62,7 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
                         return <Day date={day.date} key={day.date.toString()} dayLabel={day.dayLabel} />;
                     }
 
-                    return <div key={day} />;
+                    return <div key={generateId()} />;
                 })}
             </DaysContainer>
         </div>
