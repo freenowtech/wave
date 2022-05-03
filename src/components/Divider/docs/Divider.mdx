@@ -1,0 +1,88 @@
+---
+name: Divider
+menu: Components
+route: /components/divider
+---
+
+import { Playground } from 'docz';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { Divider } from '../Divider.tsx';
+import { WrappedHorizontalDivider, WrappedVerticalDivider } from './WrappedDivider.tsx';
+
+# Divider
+
+**Primary UI element for visually separating content**
+
+Renders a divider UI component: horizontal or vertical line that visually separates two pieces of data, content or UI.
+<br/>
+<hr/>
+
+### Default Behaviour
+Horizontal divider takes up full available width, vertical divider takes up full available height.
+
+Horizontal divider is rendered by default. Set **vertical** prop to __true__ to change divider orientation.
+<br/>
+<hr/>
+
+### Divider vs Border
+
+The default color of Divider is **$border.primary** (#C6CDD4), however...
+
+**Divider is NOT a border, and should not be used as such. Please do not use this component as a border for elements.**
+
+Divider is naturally expected to have a certain offset from the elements it is 'dividing' or separating.
+<br/>
+<hr/>
+
+### Style Props
+
+The Divider has following design props:
+- **offset** - set the divider offset from the content it is separating (uses _mx_, _my_ styled system props)
+
+<hr/>
+
+## Usage 
+
+### Horizontal (without offset)
+
+<ItemWrapper>
+    <WrappedHorizontalDivider offset={0} />
+</ItemWrapper>
+
+```jsx
+<Divider />
+```
+
+<hr/> 
+
+### Horizontal (with offset)
+
+<ItemWrapper>
+    <WrappedHorizontalDivider offset={5} />
+</ItemWrapper>
+
+```jsx
+<Divider offset={5} />
+```
+
+<hr/>
+
+### Vertical (without offset)
+
+<ItemWrapper>
+    <WrappedVerticalDivider offset={0} />
+</ItemWrapper>
+
+```jsx
+<Divider vertical />
+```
+
+### Vertical (with offset)
+
+<ItemWrapper>
+    <WrappedVerticalDivider offset={5} />
+</ItemWrapper>
+
+```jsx
+<Divider vertical offset={5} />
+```
