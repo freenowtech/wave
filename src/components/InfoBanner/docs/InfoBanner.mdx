@@ -1,0 +1,27 @@
+---
+name: InfoBanner
+menu: Components
+route: /components/info-banner
+---
+
+import { Playground } from 'docz';
+import { InfoBanner } from '../InfoBanner'
+import { InfoBannerPropsTable } from './InfoBannerPropsTable'
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+
+# InfoBanner
+
+Vibrant information messages used as page banners or within forms.
+
+## Properties
+
+<InfoBannerPropsTable />
+<br />
+<StyledSystemLinks component="InfoBanner" supportedProps={ ['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background'] }/>
+
+
+## Examples
+
+<Playground>
+    <InfoBanner title='Title' description='Description' />
+</Playground>
