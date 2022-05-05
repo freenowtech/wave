@@ -18,59 +18,31 @@ interface DividerProps extends SpaceProps {
 }
 
 const HorizontalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'> = styled.div.attrs({ theme })<
-    DividerProps
+    Pick<SpaceProps, 'my'>
 >`
     width: 100%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     border: 0;
-    border-top: 0.06rem solid ${get('semanticColors.border.primary')};
+    border-top: 1px solid ${get('semanticColors.border.primary')};
 
     ${compose(space)}
 `;
 
 const VerticalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'> = styled.div.attrs({ theme })<
-    DividerProps
+    Pick<SpaceProps, 'mx'>
 >`
     display: inline-block;
     width: 0.06rem;
-    margin: 0 auto;
+    margin-top: 0;
+    margin-bottom: 0;
     border: 0;
-    border-left: 0.06rem solid ${get('semanticColors.border.primary')};
+    border-left: 1px solid ${get('semanticColors.border.primary')};
 
     ${compose(space)}
 `;
 
-/**
- * ** Primary UI element for visually separating content **
- *
- * Renders a divider UI component: horizontal or vertical line that visually separates two pieces of data, content or UI immediately next to it.
- *
- * Horizontal divider will take up full available width, vertical divider will take up full available height.
- *
- * _Divider_ renders a horizontal divider by default. Set **vertical** prop to __true__ to change divider orientation.
- *
- *
- * ---
- *
- * <br/>
- *
- * #### Divider vs. Border
- *
- * The default color of _Divider_ is $border.primary (#C6CDD4) <span style="color: #C6CDD4">⬤</span>, however...
- *
- * ** Divider is NOT a border, and should not be used as such. Please do not use this component as a border for elements. **
- *
- * Divider is naturally expected to have a certain offset from the elements it is 'dividing' or separating.
- *
- * ---
- *
- * #### Style Props
- *
- * The Divider has following design props:
- * - **offset** - set the divider offset from the content it is separating (uses _mx_, _my_ styled system props)
- *
- */
-const Divider = ({ vertical = false, offset = 0 }: DividerProps): React.ReactElement =>
+const Divider: React.FC<DividerProps> = ({ vertical = false, offset = '1rem' }: DividerProps) =>
     vertical ? (
         <VerticalLine mx={offset} data-testid="vertical-divider" />
     ) : (

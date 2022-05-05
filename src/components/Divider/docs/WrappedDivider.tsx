@@ -18,7 +18,15 @@ const DividerSideElement = styled.div`
     padding: 4;
 `;
 
-const WrappedHorizontalDivider = (offset: DividerOffset): React.ReactNode => (
+const SectionPlaceholder = styled.div`
+    flex: 1;
+    height: '200px';
+    border: 1px black solid;
+    text-align: center;
+    padding: 20px;
+`;
+
+const WrappedHorizontalDivider = (offset: DividerOffset): React.ReactElement => (
     <DividerColumnWrapper>
         <DividerSideElement>Element 1</DividerSideElement>
         <Divider offset={offset} />
@@ -26,7 +34,7 @@ const WrappedHorizontalDivider = (offset: DividerOffset): React.ReactNode => (
     </DividerColumnWrapper>
 );
 
-const WrappedVerticalDivider = (offset: DividerOffset): React.ReactNode => (
+const WrappedVerticalDivider = (offset: DividerOffset): React.ReactElement => (
     <DividerWrapper>
         <DividerSideElement>Element 1</DividerSideElement>
         <Divider vertical offset={offset} />
@@ -34,4 +42,4 @@ const WrappedVerticalDivider = (offset: DividerOffset): React.ReactNode => (
     </DividerWrapper>
 );
 
-export { WrappedHorizontalDivider, WrappedVerticalDivider };
+export { WrappedHorizontalDivider, WrappedVerticalDivider, SectionPlaceholder };

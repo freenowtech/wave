@@ -7,7 +7,7 @@ route: /components/divider
 import { Playground } from 'docz';
 import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
 import { Divider } from '../Divider.tsx';
-import { WrappedHorizontalDivider, WrappedVerticalDivider } from './WrappedDivider.tsx';
+import { WrappedHorizontalDivider, WrappedVerticalDivider, SectionPlaceholder } from './WrappedDivider.tsx';
 
 # Divider
 
@@ -15,33 +15,39 @@ import { WrappedHorizontalDivider, WrappedVerticalDivider } from './WrappedDivid
 
 Renders a divider UI component: horizontal or vertical line that visually separates two pieces of data, content or UI.
 <br/>
-<hr/>
 
 ### Default Behaviour
 Horizontal divider takes up full available width, vertical divider takes up full available height.
 
 Horizontal divider is rendered by default. Set **vertical** prop to __true__ to change divider orientation.
 <br/>
-<hr/>
 
 ### Divider vs Border
-
 The default color of Divider is **$border.primary** (#C6CDD4), however...
 
 **Divider is NOT a border, and should not be used as such. Please do not use this component as a border for elements.**
 
 Divider is naturally expected to have a certain offset from the elements it is 'dividing' or separating.
 <br/>
-<hr/>
 
 ### Style Props
-
 The Divider has following design props:
 - **offset** - set the divider offset from the content it is separating (uses _mx_, _my_ styled system props)
-
-<hr/>
+<br/>
+<br/>
 
 ## Usage 
+
+### Horizontal (with default offset)
+
+<ItemWrapper>
+    <WrappedHorizontalDivider offset='1rem' />
+</ItemWrapper>
+
+```jsx
+<Divider />
+```
+<br/>
 
 ### Horizontal (without offset)
 
@@ -50,22 +56,20 @@ The Divider has following design props:
 </ItemWrapper>
 
 ```jsx
-<Divider />
+<Divider offset={0} />
 ```
+<br/>
 
-<hr/> 
-
-### Horizontal (with offset)
+### Vertical (with default offset)
 
 <ItemWrapper>
-    <WrappedHorizontalDivider offset={5} />
+    <WrappedVerticalDivider offset='1rem' />
 </ItemWrapper>
 
 ```jsx
-<Divider offset={5} />
+<Divider vertical />
 ```
-
-<hr/>
+<br/>
 
 ### Vertical (without offset)
 
@@ -76,13 +80,22 @@ The Divider has following design props:
 ```jsx
 <Divider vertical />
 ```
+<br/>
 
-### Vertical (with offset)
+# Playground
 
-<ItemWrapper>
-    <WrappedVerticalDivider offset={5} />
-</ItemWrapper>
+<Playground>
+    <section>Section 1</section>
+        <Divider />
+    <section>Section 2</section>
+</Playground>
 
-```jsx
-<Divider vertical offset={5} />
-```
+<Playground>
+    {/* We need the row flow to see vertical divider */}
+    <div style={{ display: 'flex' }}>
+        <SectionPlaceholder>Section 1</SectionPlaceholder>
+        <Divider vertical />
+        <SectionPlaceholder>Section 2</SectionPlaceholder>
+    </div>
+</Playground>
+
