@@ -9,13 +9,12 @@
   ],
   "rules": {
     "declaration-empty-line-before": null,
-    "unit-whitelist": [
-      "rem",
-      "deg",
-      "fr",
-      "ms",
-      "%"
-    ],
+    "declaration-property-unit-whitelist": {
+      "/.*/": ["rem", "deg", "fr", "ms", "%", "px"]
+    },
+    "declaration-property-value-blacklist": {
+      "/.*/": ["(\\d+[1]+px|[^1]+px)"]
+    },
     "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }]
   }
 }
