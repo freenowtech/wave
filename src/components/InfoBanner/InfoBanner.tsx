@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
-import { Colors } from '../../essentials';
-import { AlertIcon, InfoCircleSolidIcon } from '../../icons';
+import { get } from '../../utils/themeGet';
+import {
+    AlertIcon,
+    CheckCircleSolidIcon,
+    CloseCircleSolidIcon,
+    InfoCircleSolidIcon,
+    WarningSolidIcon
+} from '../../icons';
 import { BoxProps, Box } from '../Box/Box';
-import { Headline } from '../Headline/Headline';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 
@@ -17,80 +22,145 @@ interface Props extends BoxProps {
     linkUrl?: string;
 }
 
-// TODO use variant from styled-system instead of the Maps below
-const normalVariantStyles = styledVariant({
+export type BannerVariants = 'info' | 'success' | 'warning' | 'error';
+
+interface BoxWithVariant extends BoxProps {
+    variant: BannerVariants;
+    emphasized: boolean;
+}
+
+const bannerVariants = styledVariant({
     variants: {
         info: {
-            backgroundColor: Colors.ACTION_BLUE_50
+            background: get('semanticColors.background.info'),
+            borderColor: get('semanticColors.border.info')
         },
         success: {
-            backgroundColor: Colors.POSITIVE_GREEN_50
+            background: get('semanticColors.background.success'),
+            borderColor: get('semanticColors.border.success')
         },
         warning: {
-            backgroundColor: Colors.ATTENTION_YELLOW_50
+            background: get('semanticColors.background.warning'),
+            borderColor: get('semanticColors.border.warning')
         },
-        danger: {
-            backgroundColor: Colors.NEGATIVE_ORANGE_50
+        error: {
+            background: get('semanticColors.background.danger'),
+            borderColor: get('semanticColors.border.danger')
         }
     }
 });
 
-// TODO refactor to not use enum
-export enum BannerVariants {
-    info,
-    warning,
-    error
-}
+const emphasizedBannerVariants = styledVariant({
+    variants: {
+        info: {
+            background: get('semanticColors.background.infoEmphasized'),
+            borderColor: get('semanticColors.border.infoEmphasized')
+        },
+        success: {
+            background: get('semanticColors.background.successEmphasized'),
+            borderColor: get('semanticColors.border.successEmphasized')
+        },
+        warning: {
+            background: get('semanticColors.background.warningEmphasized'),
+            borderColor: get('semanticColors.border.warningEmphasized')
+        },
+        error: {
+            background: get('semanticColors.background.dangerEmphasized'),
+            borderColor: get('semanticColors.border.dangerEmphasized')
+        }
+    }
+});
 
-const VariantToBackgroundColorMap: { [key in BannerVariants]: Colors } = {
-    [BannerVariants.info]: Colors.ACTION_BLUE_50,
-    [BannerVariants.warning]: Colors.ATTENTION_YELLOW_900,
-    [BannerVariants.error]: Colors.NEGATIVE_ORANGE_900
-};
+const iconColorVariants = styledVariant({
+    variants: {
+        info: {
+            color: get('semanticColors.icon.action')
+        },
+        success: {
+            color: get('semanticColors.icon.success')
+        },
+        warning: {
+            color: get('semanticColors.icon.primary')
+        },
+        error: {
+            color: get('semanticColors.icon.danger')
+        }
+    }
+});
 
-const VariantToBorderColorMap: { [key in BannerVariants]: Colors } = {
-    [BannerVariants.info]: Colors.ACTION_BLUE_350,
-    [BannerVariants.warning]: Colors.ATTENTION_YELLOW_900,
-    [BannerVariants.error]: Colors.NEGATIVE_ORANGE_900
-};
+const emphasizedIconColorVariants = styledVariant({
+    variants: {
+        info: {
+            color: get('semanticColors.icon.primaryInverted')
+        },
+        success: {
+            color: get('semanticColors.icon.primaryInverted')
+        },
+        warning: {
+            color: get('semanticColors.icon.primary')
+        },
+        error: {
+            color: get('semanticColors.icon.primaryInverted')
+        }
+    }
+});
 
 export const MinWidthAlertIcon = styled(AlertIcon)`
     min-width: 1rem;
 `;
 
-const InfoBannerBox = styled(Box)`
+const RoundedBox = styled(Box)<BoxWithVariant>`
     display: flex;
-    border-radius: 8px;
-    border: 1px solid ${({ variant }: { variant: BannerVariants }) => VariantToBorderColorMap[variant]};
-    background-color: ${({ variant }: { variant: BannerVariants }) => VariantToBackgroundColorMap[variant]};
-    /* ${normalVariantStyles()} */
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 0.5rem;
+    border: 0.0625rem solid;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
 `;
+
+const IconBox = styled(Box)<BoxWithVariant>`
+    color: ${get('semanticColors.icon.primaryInverted')};
+    ${({ emphasized }) => (emphasized ? emphasizedIconColorVariants : iconColorVariants)};
+`;
+
+const ICON_VARIANTS = {
+    warning: WarningSolidIcon,
+    info: InfoCircleSolidIcon,
+    success: CheckCircleSolidIcon,
+    error: CloseCircleSolidIcon
+};
 
 export const InfoBanner = ({
     title,
     description,
-    variant = BannerVariants.info,
+    variant = 'info',
     linkText,
     linkUrl,
+    emphasized,
     ...props
-}: Props): JSX.Element => (
-    <InfoBannerBox mt="2" p="1" pr="2" variant={variant} {...props}>
-        {variant === BannerVariants.info && <InfoCircleSolidIcon color={Colors.ACTION_BLUE_900} />}
-        {(variant === BannerVariants.warning || variant === BannerVariants.error) && (
-            <MinWidthAlertIcon color={variant !== BannerVariants.warning ? Colors.WHITE : 'inherit'} />
-        )}
-        <Box ml="1">
-            <Headline as="h4" size="s" inverted={variant === BannerVariants.error}>
-                {title}
-            </Headline>
-            <Text as="p" fontSize="0" inverted={variant === BannerVariants.error}>
-                {description}
-            </Text>
-            {linkText && linkUrl && (
-                <Link fontSize="0" href={linkUrl} target="_blank" inverted={variant === BannerVariants.error}>
-                    {linkText}
-                </Link>
-            )}
-        </Box>
-    </InfoBannerBox>
-);
+}: Props): JSX.Element => {
+    const BannerIcon = ICON_VARIANTS[variant];
+    const isInverted = emphasized && variant !== 'warning';
+
+    return (
+        <RoundedBox variant={variant} emphasized={emphasized} {...props}>
+            <IconBox mr={1} variant={variant} emphasized={emphasized}>
+                <BannerIcon size={20} color="inherit" />
+            </IconBox>
+            <Box display="flex" flexDirection="column">
+                <Text fontWeight="bold" inverted={isInverted}>
+                    {title}
+                </Text>
+                <Text fontSize="small" inverted={isInverted}>
+                    {description}
+                </Text>
+                {linkText && linkUrl && (
+                    <Link fontSize="0" href={linkUrl} target="_blank" mt="0.25rem" inverted={isInverted}>
+                        {linkText}
+                    </Link>
+                )}
+            </Box>
+        </RoundedBox>
+    );
+};
