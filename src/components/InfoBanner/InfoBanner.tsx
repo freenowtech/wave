@@ -120,7 +120,6 @@ const RoundedBox = styled(Box)<BoxWithVariant>`
 `;
 
 const IconBox = styled(Box)<BoxWithVariant>`
-    color: ${get('semanticColors.icon.primaryInverted')};
     ${({ emphasized }) => (emphasized ? emphasizedIconColorVariants : iconColorVariants)};
 `;
 
@@ -145,7 +144,7 @@ export const InfoBanner = ({
 
     return (
         <RoundedBox variant={variant} emphasized={emphasized} {...props}>
-            <IconBox mr={1} variant={variant} emphasized={emphasized}>
+            <IconBox mr={1} variant={variant} emphasized={emphasized} data-testid="infobanner-icon-container">
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">
