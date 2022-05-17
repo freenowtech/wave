@@ -53,7 +53,7 @@ the row as active and change the background color.
 
 ```jsx
 <TableRow active={true}>
-    <TableCell><Checkbox checked={true} />
+    <TableCell><Checkbox checked={true} /></TableCell>
     <TableCell>Alex Ponomarenko</TableCell>
     <TableCell>a.ponomarenko@mytaxi.com</TableCell>
     <TableCell>Booker</TableCell>
@@ -86,7 +86,7 @@ will not work when you have multiple lines in one cells.
         </TableRow>
     </thead>
     <tbody>
-        {loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={2} />)}
+        {loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={6} />)}
     </tbody>
 </Table>
 ```
