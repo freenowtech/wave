@@ -2,16 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
-import {
-    AlertIcon,
-    CheckCircleSolidIcon,
-    CloseCircleSolidIcon,
-    InfoCircleSolidIcon,
-    WarningSolidIcon
-} from '../../icons';
+import { CheckCircleSolidIcon, CloseCircleSolidIcon, InfoCircleSolidIcon, WarningSolidIcon } from '../../icons';
 import { BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
+import { Spaces } from '../../essentials';
 
 interface Props extends BoxProps {
     title: string;
@@ -109,9 +104,9 @@ const RoundedBox = styled(Box)<BoxWithVariant>`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    border-radius: 0.5rem;
+    border-radius: ${get('radii.3')};
     border: 0.0625rem solid;
-    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    padding: ${`${Spaces[1]} ${Spaces[2]} ${Spaces[1]} ${Spaces[1]}`};
     ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
 `;
 
