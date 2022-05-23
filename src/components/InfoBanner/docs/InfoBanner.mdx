@@ -7,6 +7,7 @@ route: /components/info-banner
 import { Playground } from 'docz';
 import { InfoBanner } from '../InfoBanner'
 import { InfoBannerPropsTable } from './InfoBannerPropsTable'
+import { Combination } from '../../../docs/Combination'
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 
 # InfoBanner
@@ -17,11 +18,24 @@ Vibrant information messages used as page banners or within forms.
 
 <InfoBannerPropsTable />
 <br />
-<StyledSystemLinks component="InfoBanner" supportedProps={ ['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background'] }/>
+<StyledSystemLinks component='InfoBanner' supportedProps={ ['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background'] }/>
 
 
 ## Examples
 
+<InfoBanner title='Please do not share details about this information.' description='In case of uncertainty please contact Fraud department.' />
+<br />
+<InfoBanner title='Possible Fraud' description='This passenger has more than 20 linked accounts.' variant='warning' />
+
+
+## Playground
+
 <Playground>
     <InfoBanner title='Title' description='Description' linkUrl='https://wave.free-now.com/components/info-banner' linkText='Link' />
 </Playground>
+
+## Combinations
+
+<Combination variant={['info', 'success', 'warning', 'error']} emphasized={[false, true]} linkText={['Link', '']} >
+    {(props, i) => <InfoBanner key={i} title='Title' description='Description' linkUrl='https://wave.free-now.com/components/info-banner' {...props} />}
+</Combination>
