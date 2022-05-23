@@ -105,10 +105,6 @@ const emphasizedIconColorVariants = styledVariant({
     }
 });
 
-export const MinWidthAlertIcon = styled(AlertIcon)`
-    min-width: 1rem;
-`;
-
 const RoundedBox = styled(Box)<BoxWithVariant>`
     display: flex;
     flex-direction: row;
