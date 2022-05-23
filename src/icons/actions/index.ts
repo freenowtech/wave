@@ -27,3 +27,8 @@ export { default as ThumbUpOutlineIcon } from './ThumbUpOutlineIcon';
 export { default as ThumbUpSolidIcon } from './ThumbUpSolidIcon';
 export { default as TrashBinIcon } from './TrashBinIcon';
 export { default as WarningSolidIcon } from './WarningSolidIcon';
+export { default as FilterDisabledIcon } from './FilterDisabledIcon';
+export { default as FilterIcon } from './FilterIcon';
+export { default as SoundAlertsOnlyIcon } from './SoundAlertsOnlyIcon';
+export { default as SoundOffIcon } from './SoundOffIcon';
+export { default as SoundOnIcon } from './SoundOnIcon';
