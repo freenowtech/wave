@@ -23,3 +23,5 @@ export { default as PickUpIcon } from './PickUpIcon';
 export { default as SurgeCircleOutlineIcon } from './SurgeCircleOutlineIcon';
 export { default as SurgeCircleSolidIcon } from './SurgeCircleSolidIcon';
 export { default as VipIcon } from './VipIcon';
+export { default as DriverIcon } from './DriverIcon';
+export { default as TrendingUpIcon } from './TrendingUpIcon';
