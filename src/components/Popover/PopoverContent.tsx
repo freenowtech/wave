@@ -1,5 +1,6 @@
 import React, { MutableRefObject } from 'react';
 import styled, { css } from 'styled-components';
+import { compose } from 'styled-system';
 import { usePopper } from 'react-popper';
 import type { Placement } from '@popperjs/core/lib/enums';
 
@@ -40,9 +41,9 @@ interface PopoverContentProps {
 
 interface StyledPopoverProps extends React.CSSProperties {
     isShown: boolean;
-    transform?: string;
+    // transform?: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    translate?: any;
+    // translate?: any;
     top?: string | number | undefined;
     left?: string | number | undefined;
     bottom?: string | number | undefined;
@@ -97,7 +98,7 @@ export const PopoverContent = ({
         modifiers: [
             {
                 name: 'offset',
-                enabled: !!offset,
+                enabled: Boolean(offset),
                 options: {
                     offset: [0, offset]
                 }
