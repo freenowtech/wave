@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Placement } from '@popperjs/core/lib/enums';
 
@@ -10,7 +10,8 @@ import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
 import { Text } from '../Text/Text';
 
 import { PopoverContent } from './PopoverContent';
-import { useStateWithTimeout, handleKeyDown } from './utils';
+import { handleKeyDown } from '../../utils/hooks/useHandleKeyDown';
+import { useStateWithTimeout } from '../../utils/hooks/useStateWithTimeout';
 
 interface PopoverProps {
     /**

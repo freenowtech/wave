@@ -1,6 +1,5 @@
 import React, { MutableRefObject } from 'react';
 import styled, { css } from 'styled-components';
-import { compose } from 'styled-system';
 import { usePopper } from 'react-popper';
 import type { Placement } from '@popperjs/core/lib/enums';
 
@@ -10,7 +9,8 @@ import { Spaces } from '../../essentials';
 
 import { Card } from '../Card/Card';
 
-import { transition, useClickOutside } from './utils';
+import { mapTransitions } from '../../utils/transitions';
+import { useClickOutside } from '../../utils/hooks/useClickOutside';
 
 interface PopoverContentProps {
     /**
@@ -41,9 +41,9 @@ interface PopoverContentProps {
 
 interface StyledPopoverProps extends React.CSSProperties {
     isShown: boolean;
-    // transform?: string;
+    transform?: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // translate?: any;
+    translate?: any;
     top?: string | number | undefined;
     left?: string | number | undefined;
     bottom?: string | number | undefined;
@@ -63,7 +63,7 @@ const StyledPopoverParent = styled.div.attrs({ theme })<StyledPopoverProps>`
         bottom: ${bottom};
         right: ${right};
         transform: ${transform};
-        transition: ${transition(['opacity'], '0.15s', 'ease-in-out')};
+        transition: ${mapTransitions(['opacity'], '0.15s', 'ease-in-out')};
         width: auto;
         height: auto;
         z-index: 1000;
@@ -122,6 +122,7 @@ export const PopoverContent = ({
         if (update)
             update()
                 .then((): void => undefined)
+                // eslint-disable-next-line no-console
                 .catch(error => console.log('Error updating Popover position -', error));
 
         return () => {
@@ -135,8 +136,8 @@ export const PopoverContent = ({
     };
 
     // Hide the Popover content when user clicks outside
-    useClickOutside(popoverRef, ev => {
-        onClose(ev);
+    useClickOutside(popoverRef, event => {
+        onClose(event);
     });
 
     return (

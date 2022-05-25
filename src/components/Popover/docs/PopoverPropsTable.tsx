@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const PopoverPropsTable = () => {
+export const PopoverPropsTable = (): FC => {
     const props = [
         {
             name: 'children',
