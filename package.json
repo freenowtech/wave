@@ -114,6 +114,7 @@
     "dependencies": {
         "@datepicker-react/hooks": "^2.3.1",
         "@styled-system/theme-get": "^5.1.2",
+        "@testing-library/react-hooks": "^8.0.0",
         "@types/react-select": "^3.0.13",
         "@types/styled-system": "^5.1.9",
         "date-fns": "^2.11.1",
