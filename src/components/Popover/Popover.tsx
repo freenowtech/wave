@@ -1,17 +1,67 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import { Placement } from '@popperjs/core/lib/enums';
+import { usePopper } from 'react-popper';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { Colors, Spaces } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
+import { useClickOutside } from '../../utils/hooks/useClickOutside';
 
 import { Text } from '../Text/Text';
 
 import { PopoverContent } from './PopoverContent';
-import { handleKeyDown } from '../../utils/hooks/useHandleKeyDown';
-import { useStateWithTimeout } from '../../utils/hooks/useStateWithTimeout';
+
+interface PopoverRefObjectProps {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ref: any;
+}
+
+const PopoverTrigger = styled.div.attrs({ theme })<PopoverRefObjectProps>`
+    display: inline-block;
+    width: fit-content;
+    border-radius: ${get('radii.2')};
+`;
+
+const DefaultPopoverWrapper = styled.div.attrs({ theme })`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid ${get('semanticColors.button.secondary.borderHover')};
+    padding: 0.8125rem ${Spaces[2]};
+    border-radius: ${get('radii.2')};
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${get('semanticColors.background.secondary')} !important;
+    }
+`;
+
+const PopoverContentContainer = styled.div<PopoverRefObjectProps>`
+    display: inline-block;
+`;
+
+const PopoverContentWrapper = styled.div`
+    display: inline-block;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    z-index: 1000;
+    box-shadow: ${get('shadows.small')};
+    max-height: none;
+
+    &:focus {
+        outline: 0;
+    }
+`;
+
+const KEY_CODE_MAP = {
+    ENTER: 13,
+    SPACE: 32,
+    ESC: 27
+};
 
 interface PopoverProps {
     /**
@@ -31,7 +81,7 @@ interface PopoverProps {
      */
     offset?: number;
     /**
-     * Optional: Keep popover content open by default
+     * Optional: Render popover content open by default
      */
     isOpen?: boolean;
     /**
@@ -43,25 +93,6 @@ interface PopoverProps {
      */
     onClose?: () => void;
 }
-
-const PopoverTrigger = styled.div.attrs({ theme })`
-    display: inline-flex;
-    border-radius: ${get('radii.2')};
-`;
-
-const DefaultPopoverWrapper = styled.div.attrs({ theme })`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid ${get('semanticColors.button.secondary.borderHover')};
-    padding: 0.8125rem ${Spaces[2]};
-    border-radius: ${get('radii.2')};
-
-    &:hover {
-        cursor: pointer;
-        background-color: ${get('semanticColors.background.secondary')} !important;
-    }
-`;
 
 /**
  * ** Primary UI element for content whose visibility can be toggled with a click on trigger element **
@@ -100,10 +131,10 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
  *
  * The Popover supports:
  * - **placement** prop for specifying the Popover content attachment in relation to the Popover trigger
- * - **offset** prop for the margin between Trigger and Popover card.
+ * - **offset** prop for the margin between Popover trigger and Popover content.
  *
  */
-export const Popover = ({
+export const Popover: React.FC<PopoverProps> = ({
     children,
     content = '',
     placement = 'bottom-start',
@@ -111,24 +142,35 @@ export const Popover = ({
     isOpen = false,
     onOpen,
     onClose
-}: PopoverProps): JSX.Element => {
-    const triggerRef = React.useRef<HTMLDivElement | null>(null);
-    const [openByDefault, setOpenByDefault] = React.useState<boolean>(isOpen);
+}: PopoverProps) => {
+    const [triggerReference, setTriggerReference] = React.useState(undefined);
+    const [popperReference, setPopperReference] = React.useState(undefined);
+    const popoverTriggerRef = React.useRef<HTMLDivElement>(null);
+    const popoverContentRef = React.useRef<HTMLDivElement>(null);
 
-    const fadeInDuration = '0.05s';
-    const transitionLength = React.useMemo(() => Number.parseFloat(fadeInDuration) * 1000, [fadeInDuration]);
+    // Should Popover content be open by default?
+    const [openByDefault, setOpenByDefault] = React.useState(isOpen);
 
-    const [isShown, setIsShown, setIsShownWithTimeout, clearIsShownTimeout] = useStateWithTimeout<boolean>(
-        false,
-        transitionLength
-    );
+    const [render, setRender] = React.useState(openByDefault);
 
-    const [render, setRender, setRenderWithTimeout, clearRenderTimeout] = useStateWithTimeout<boolean>(
-        false,
-        transitionLength
-    );
+    const { styles, attributes } = usePopper(triggerReference, popperReference, {
+        placement,
+        strategy: 'fixed',
+        modifiers: [
+            {
+                name: 'offset',
+                enabled: !!offset,
+                options: {
+                    offset: [0, offset]
+                }
+            },
+            {
+                name: 'flip',
+                enabled: true
+            }
+        ]
+    });
 
-    // This callback makes sure our onOpen or onClose callbacks (if defined) get called on each Popover click action
     const resolveCallback = React.useCallback(
         state => {
             if (onClose && !state) onClose();
@@ -137,80 +179,85 @@ export const Popover = ({
         [onClose, onOpen]
     );
 
-    const handleOut: (ev) => void = React.useCallback(
-        ev => {
-            // If openByDefault -> ignore the custom handler
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            if (triggerRef.current && !triggerRef.current.contains(ev.target)) {
-                if (!openByDefault) {
-                    setIsShown(false);
-                    clearIsShownTimeout();
-                    setRenderWithTimeout(false);
-                    resolveCallback(false);
-                } else if (onClose) onClose();
-            }
-        },
-        [clearIsShownTimeout, onClose, openByDefault, resolveCallback, setRenderWithTimeout, setIsShown]
-    );
-
-    // Handle click on the trigger vith mouse and/or keyboard
-    const handleClick: () => void = React.useCallback(() => {
-        if (isShown) {
-            setIsShown(false);
-            clearIsShownTimeout();
-            setRenderWithTimeout(false);
-            resolveCallback(false);
-
-            if (openByDefault) {
-                setOpenByDefault(false);
-                resolveCallback(false);
-            }
+    const hidePopover: () => void = React.useCallback(() => {
+        if (openByDefault) {
+            setOpenByDefault(false);
         } else {
-            // If popover is not shown, render it (consequently clearing render timeout)
+            setRender(false);
+        }
+        resolveCallback(false);
+    }, [openByDefault, resolveCallback]);
+
+    const handleClose = React.useCallback(() => {
+        if (render) {
+            hidePopover();
+        }
+    }, [render, hidePopover]);
+
+    // Handle click on the trigger with mouse and/or keyboard
+    const handleClick: () => void = React.useCallback(() => {
+        if (render) {
+            hidePopover();
+        } else {
             setRender(true);
-            clearRenderTimeout();
-            setIsShownWithTimeout(true);
             resolveCallback(true);
         }
-    }, [
-        clearRenderTimeout,
-        clearIsShownTimeout,
-        openByDefault,
-        resolveCallback,
-        setRender,
-        setRenderWithTimeout,
-        setIsShown,
-        setIsShownWithTimeout,
-        isShown
-    ]);
+    }, [resolveCallback, setRender, render, hidePopover]);
+
+    // handleOut - handles click outside the trigger
+    const handleOut = React.useCallback(
+        ev => {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            if (popoverTriggerRef && popoverTriggerRef.current && !popoverTriggerRef.current.contains(ev.target)) {
+                if (!openByDefault) {
+                    handleClose();
+                } else {
+                    setOpenByDefault(false);
+                    resolveCallback(false);
+                }
+            }
+        },
+        [openByDefault, popoverTriggerRef, handleClose, resolveCallback]
+    );
+
+    const handleKeyControl = (ev: React.KeyboardEvent<HTMLElement>) => {
+        // eslint-disable-next-line default-case
+        switch (ev.keyCode) {
+            case KEY_CODE_MAP.ESC:
+                handleClose();
+                break;
+            case KEY_CODE_MAP.ENTER:
+                handleClick();
+                break;
+            case KEY_CODE_MAP.SPACE:
+                handleClick();
+        }
+    };
 
     React.useEffect(() => {
-        // Making Popover content open by default, based on openByDefault
         if (openByDefault) {
             setRender(true);
-            clearRenderTimeout();
-            setIsShownWithTimeout(true);
         } else {
-            setIsShown(false);
-            clearIsShownTimeout();
-            setRenderWithTimeout(false);
+            setRender(false);
         }
-    }, [
-        openByDefault,
-        clearRenderTimeout,
-        clearIsShownTimeout,
-        setRender,
-        setIsShown,
-        setIsShownWithTimeout,
-        setRenderWithTimeout
-    ]);
+    }, [openByDefault, setRender]);
+
+    useClickOutside(popoverContentRef, ev => handleOut(ev));
 
     return (
         <>
-            <PopoverTrigger ref={triggerRef} onClick={handleClick} tabIndex={0} onKeyDown={handleKeyDown(handleClick)}>
-                {/* If plain string is passed as the trigger, we apply the default state styling */}
+            <PopoverTrigger
+                ref={setTriggerReference}
+                onClick={handleClick}
+                tabIndex={0}
+                role="tooltip"
+                onKeyDown={ev => handleKeyControl(ev)}
+            >
                 {typeof children === 'string' ? (
-                    <DefaultPopoverWrapper style={{ background: render ? Colors.AUTHENTIC_BLUE_50 : 'none' }}>
+                    <DefaultPopoverWrapper
+                        ref={popoverTriggerRef}
+                        style={{ background: render ? Colors.AUTHENTIC_BLUE_50 : 'none' }}
+                    >
                         <Text fontWeight="semibold">{children}</Text>
                         {!render ? (
                             <ChevronDownIcon size={20} style={{ marginLeft: Spaces[1] }} />
@@ -219,21 +266,21 @@ export const Popover = ({
                         )}
                     </DefaultPopoverWrapper>
                 ) : (
-                    // ...otherwise, we use the passed component as a trigger
-                    children
+                    <div ref={popoverTriggerRef}>{children}</div>
                 )}
             </PopoverTrigger>
 
             {render && (
-                <PopoverContent
-                    isShown={isShown}
-                    triggerRef={triggerRef.current}
-                    onClose={handleOut}
-                    placement={placement}
-                    offset={offset}
+                <PopoverContentContainer
+                    ref={setPopperReference}
+                    // zIndex temporary until we have Portal component
+                    style={{ ...styles.popper, zIndex: 9999 }}
+                    {...attributes.popper}
                 >
-                    {content}
-                </PopoverContent>
+                    <PopoverContentWrapper ref={popoverContentRef}>
+                        <PopoverContent>{content}</PopoverContent>
+                    </PopoverContentWrapper>
+                </PopoverContentContainer>
             )}
         </>
     );

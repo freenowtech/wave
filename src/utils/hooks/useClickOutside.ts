@@ -3,15 +3,11 @@ import { useEffect } from 'react';
 /**
  * useClickOutside - Handle click outside a referenced element (e.g. Popover)
  */
-type UseClickOutside = (
-    ref: { current: HTMLElement | null | undefined },
-    handler: (ev: React.KeyboardEvent<HTMLDivElement>) => void
-) => void;
+type UseClickOutside = (ref: { current: HTMLElement | null | undefined }, handler: (ev) => void) => void;
 
 const useClickOutside: UseClickOutside = (ref, handler) => {
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const handleClose = (event: any) => {
+        const handleClose = event => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             if (ref.current && !ref.current.contains(event.target)) {
                 handler(event);
