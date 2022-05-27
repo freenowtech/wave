@@ -208,7 +208,8 @@ export const Popover: React.FC<PopoverProps> = ({
                 ref={setTriggerReference}
                 onClick={handleClick}
                 tabIndex={0}
-                role="tooltip"
+                aria-describedby="popover-content"
+                aria-haspopup
                 onKeyDown={ev => handleKeyControl(ev)}
             >
                 {typeof children === 'string' ? (
@@ -230,6 +231,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
             {render && (
                 <PopoverContentContainer
+                    id="popover-content"
                     ref={setPopperReference}
                     // zIndex temporary until we have Portal component
                     style={{ ...styles.popper, zIndex: 9999 }}

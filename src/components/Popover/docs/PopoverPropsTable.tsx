@@ -17,7 +17,23 @@ export const PopoverPropsTable = (): FC => {
         },
         {
             name: 'placement',
-            type: 'Placement',
+            type: [
+                'auto',
+                'auto-start',
+                'auto-end',
+                'top',
+                'top-start',
+                'top-end',
+                'bottom',
+                'bottom-start',
+                'bottom-end',
+                'left',
+                'left-start',
+                'left-end',
+                'right',
+                'right-start',
+                'right-end'
+            ],
             description:
                 'Optional: Specify the Popover content placement (placement changes automatically, if Popover content cannot fit inside viewport with selected placement)',
             defaultValue: 'bottom-start'
