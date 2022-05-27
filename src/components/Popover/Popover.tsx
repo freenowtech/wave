@@ -94,46 +94,6 @@ interface PopoverProps {
     onClose?: () => void;
 }
 
-/**
- * ** Primary UI element for content whose visibility can be toggled with a click on trigger element **
- *
- * Renders a UI component that opens a popup dialog on click of a trigger element.
- *
- * ---
- *
- * Popover components consist of 2 main elements:
- *  - **Popover Trigger** – an element that shows/hides the Popover.
- *  - **Popover Content** – card with content that is toggled by the Trigger.
- *
- * ---
- *
- * For **Trigger** you can use just a plain string (for default variant), or following components from Wave:
- * - **&lt;Text&gt;**
- * - **&lt;Button&gt;**
- * - **&lt;Button&gt; with Icon**
- * - **&lt;Icon&gt;**
- * - **&lt;Link&gt;**
- *
- * The **Popover Content** acts as a container for any content: text, form, or anything else...
- *
- * ---
- *
- * <br/>
- * #### Differences from a Tooltip component
- *
- * - Popover is toggled by clicking on (not hovering over) the Trigger. The second click (or click outside the Popover) hides the Popover.
- * - Popover scrolls with the page
- * - Popover content and trigger are not limited to text.
- *
- * ---
- *
- * #### Style Props
- *
- * The Popover supports:
- * - **placement** prop for specifying the Popover content attachment in relation to the Popover trigger
- * - **offset** prop for the margin between Popover trigger and Popover content.
- *
- */
 export const Popover: React.FC<PopoverProps> = ({
     children,
     content = '',
@@ -148,7 +108,6 @@ export const Popover: React.FC<PopoverProps> = ({
     const popoverTriggerRef = React.useRef<HTMLDivElement>(null);
     const popoverContentRef = React.useRef<HTMLDivElement>(null);
 
-    // Should Popover content be open by default?
     const [openByDefault, setOpenByDefault] = React.useState(isOpen);
 
     const [render, setRender] = React.useState(openByDefault);
@@ -194,7 +153,6 @@ export const Popover: React.FC<PopoverProps> = ({
         }
     }, [render, hidePopover]);
 
-    // Handle click on the trigger with mouse and/or keyboard
     const handleClick: () => void = React.useCallback(() => {
         if (render) {
             hidePopover();
