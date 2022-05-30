@@ -73,7 +73,7 @@ interface PopoverProps {
      */
     content: React.ReactNode;
     /**
-     * Optional: Specify the Popover content placement (placement changes automatically, if Popover content cannot fit inside viewport with selected placement)
+     * Optional: Specify the Popover content placement (it changes automatically if the Popover content cannot fit inside the viewport with the selected placement)
      */
     placement?: Placement;
     /**
