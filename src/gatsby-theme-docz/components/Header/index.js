@@ -60,6 +60,8 @@ const MenuRightSection = styled.div`
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
+    display: flex;
+    align-items: center;
 `;
 
 export const Header = ({ onOpen: onMenuOpen }) => {
@@ -76,11 +78,11 @@ export const Header = ({ onOpen: onMenuOpen }) => {
                     <WaveLogoAnimated />
                 </LogoLink>
                 <SkipLink href="#main">Skip to content</SkipLink>
-                <MenuButton onClick={onMenuOpen} />
                 <MenuRightSection>
                     <GithubLink target="_blank" href="https://github.com/freenowtech/wave">
                         GitHub
                     </GithubLink>
+                    <MenuButton onClick={onMenuOpen} />
                 </MenuRightSection>
             </HeaderWrapper>
         </>

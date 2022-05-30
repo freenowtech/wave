@@ -8,3 +8,5 @@ export { default as TouchIdIcon } from './TouchIdIcon';
 export { default as TravelExpensesIcon } from './TravelExpensesIcon';
 export { default as VoucherIcon } from './VoucherIcon';
 export { default as WalletIcon } from './WalletIcon';
+export { default as PaymentIcon } from './PaymentIcon';
+export { default as RefundIcon } from './RefundIcon';
