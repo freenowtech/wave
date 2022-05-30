@@ -104,7 +104,7 @@ export const Popover: React.FC<PopoverProps> = ({
     onClose
 }: PopoverProps) => {
     const [triggerReference, setTriggerReference] = React.useState(undefined);
-    const [popperReference, setPopperReference] = React.useState(undefined);
+    const [contentReference, setContentReference] = React.useState(undefined);
     const popoverTriggerRef = React.useRef<HTMLDivElement>(null);
     const popoverContentRef = React.useRef<HTMLDivElement>(null);
 
@@ -112,7 +112,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
     const [render, setRender] = React.useState(openByDefault);
 
-    const { styles, attributes } = usePopper(triggerReference, popperReference, {
+    const { styles, attributes } = usePopper(triggerReference, contentReference, {
         placement,
         strategy: 'fixed',
         modifiers: [
@@ -232,7 +232,7 @@ export const Popover: React.FC<PopoverProps> = ({
             {render && (
                 <PopoverContentContainer
                     id="popover-content"
-                    ref={setPopperReference}
+                    ref={setContentReference}
                     // zIndex temporary until we have Portal component
                     style={{ ...styles.popper, zIndex: 9999 }}
                     {...attributes.popper}
