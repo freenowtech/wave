@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
-import { CheckCircleSolidIcon, CloseCircleSolidIcon, InfoCircleSolidIcon, WarningSolidIcon } from '../../icons';
+import {
+    CheckCircleSolidIcon,
+    CloseCircleSolidIcon,
+    InfoCircleSolidIcon,
+    WarningSolidIcon,
+    IconProps
+} from '../../icons';
 import { BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
@@ -114,11 +120,22 @@ const IconBox = styled(Box)<BoxWithVariant>`
     ${({ emphasized }) => (emphasized ? emphasizedIconColorVariants : iconColorVariants)};
 `;
 
-const ICON_VARIANTS = {
+const ICON_VARIANTS: {
+    [key in BannerVariants]: React.FC<IconProps>;
+} = {
     warning: WarningSolidIcon,
     info: InfoCircleSolidIcon,
     success: CheckCircleSolidIcon,
     error: CloseCircleSolidIcon
+};
+
+const ROLE_VARIANTS: {
+    [key in BannerVariants]: string;
+} = {
+    error: 'alert',
+    info: 'status',
+    success: 'alert',
+    warning: 'status'
 };
 
 export const InfoBanner = ({
@@ -134,7 +151,7 @@ export const InfoBanner = ({
     const isInverted = emphasized && variant !== 'warning';
 
     return (
-        <RoundedBox variant={variant} emphasized={emphasized} {...props}>
+        <RoundedBox variant={variant} emphasized={emphasized} role={ROLE_VARIANTS[variant]} {...props}>
             <IconBox mr={1} variant={variant} emphasized={emphasized} data-testid="infobanner-icon-container">
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
