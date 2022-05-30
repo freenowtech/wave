@@ -162,7 +162,6 @@ export const Popover: React.FC<PopoverProps> = ({
         }
     }, [resolveCallback, setRender, render, hidePopover]);
 
-    // handleOut - handles click outside the trigger
     const handleOut = React.useCallback(
         ev => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -193,11 +192,7 @@ export const Popover: React.FC<PopoverProps> = ({
     };
 
     React.useEffect(() => {
-        if (openByDefault) {
-            setRender(true);
-        } else {
-            setRender(false);
-        }
+        setRender(openByDefault);
     }, [openByDefault, setRender]);
 
     useClickOutside(popoverContentRef, ev => handleOut(ev));
