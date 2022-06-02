@@ -45,7 +45,7 @@ jobs:
             - name: Release
               run: npx semantic-release
               env:
-                  GITHUB_TOKEN: ${{ secrets.FREE_NOW_GITHUB_ACCESS_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.NIK_TOKEN_TEST }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     merge-main:
