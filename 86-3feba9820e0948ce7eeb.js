@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[86],{"62qe":function(e,t,o){"use strict";o("d3/y"),Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t,o,r){return a[e]};var a={lastWeek:"'last' eeee 'at' p",yesterday:"'yesterday at' p",today:"'today at' p",tomorrow:"'tomorrow at' p",nextWeek:"eeee 'at' p",other:"P"};e.exports=t.default}}]);
-//# sourceMappingURL=86-3feba9820e0948ce7eeb.js.map
