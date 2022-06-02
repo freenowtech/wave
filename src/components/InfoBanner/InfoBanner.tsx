@@ -156,14 +156,21 @@ export const InfoBanner = ({
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">
-                <Text fontWeight="bold" inverted={isInverted}>
+                <Text fontWeight="bold" textAlign="left" inverted={isInverted}>
                     {title}
                 </Text>
-                <Text fontSize="small" inverted={isInverted}>
+                <Text fontSize="small" textAlign="left" inverted={isInverted}>
                     {description}
                 </Text>
                 {linkText && linkUrl && (
-                    <Link fontSize="0" href={linkUrl} target="_blank" mt="0.25rem" inverted={isInverted}>
+                    <Link
+                        fontSize="0"
+                        textAlign="left"
+                        href={linkUrl}
+                        target="_blank"
+                        mt="0.25rem"
+                        inverted={isInverted}
+                    >
                         {linkText}
                     </Link>
                 )}
