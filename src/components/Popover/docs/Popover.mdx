@@ -1,0 +1,125 @@
+---
+name: Popover
+menu: Components
+route: /components/Popover
+---
+
+import { Playground } from 'docz';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { SettingsIcon } from '../../../icons/index';
+
+import { Button } from '../../Button/Button';
+import { Text } from '../../Text/Text';
+import { Link } from '../../Link/Link';
+
+import { Popover } from '../Popover.tsx';
+
+import { PopoverPropsTable } from './PopoverPropsTable.tsx';
+
+
+# Popover
+
+**Primary UI element for content whose visibility can be toggled with a click on a trigger element**
+
+Renders a UI component that opens a popup dialog when user clicks on a trigger element.
+<br/>
+
+### Popover Trigger & Content
+Popover components consist of 2 main elements:
+- **Popover Trigger** – an element that shows/hides the Popover.
+- **Popover Content** – card with content that is toggled by the Trigger.
+<br/>
+<br/>
+
+For **Trigger** you can use just a plain string (for default variant), or following components from Wave:
+- **&lt;Text&gt;**
+- **&lt;Button&gt;**
+- **&lt;Button&gt; with Icon**
+- **&lt;Icon&gt;**
+- **&lt;Link&gt;**
+
+The **Popover Content** acts as a container for any content: text, form, or anything else...
+
+<br/>
+
+### Difference from a Tooltip component
+- Popover is toggled by clicking on (not hovering over) the Trigger. The second click (or click outside the Popover) hides the Popover.
+- Popover scrolls with the page
+- Popover content and trigger are not limited to text.
+
+<br/>
+
+### Style Props
+The Popover supports:
+- **placement** prop for specifying the Popover content attachment in relation to the Popover trigger
+- **offset** prop for the margin between Trigger and Popover card.
+<br/>
+<br/>
+
+<hr/>
+
+<br/>
+
+## API
+
+<PopoverPropsTable />
+
+<br/>
+
+## Usage 
+
+### Default (pass only string as trigger)
+
+<ItemWrapper>
+    <Popover content={<Text>Content for the Popover. Can contain Icons, Forms or other elements.</Text>}>
+        Trigger
+    </Popover>
+</ItemWrapper>
+
+```jsx
+<Popover content={<Text>Content for the Popover. Can contain Icons, Forms or other elements.</Text>}>
+    Trigger
+</Popover>
+```
+<br/>
+
+### With Button as trigger
+
+<ItemWrapper>
+    <Popover content={<Link>Open in Payment CRM</Link>}>
+        <Button size='small' variant="secondary"><SettingsIcon size={20} style={{marginRight: 5}} /> Manage Booking</Button>
+    </Popover>
+</ItemWrapper>
+
+```jsx
+<Popover content={<Link>Open in Payment CRM</Link>}>
+   <Button size='small' variant="secondary"><SettingsIcon size={20} /> Manage Booking</Button>
+</Popover>
+```
+<br/>
+
+### Bulk Actions
+
+<ItemWrapper>
+    <Popover content={<Link>Revert Action</Link>}>
+        <Button size='small' variant="secondary">...</Button>
+    </Popover>
+</ItemWrapper>
+
+```jsx
+<Popover content={<Link>Revert Action</Link>}>
+    <Button size='small' variant="secondary">...</Button>
+</Popover>
+```
+<br/>
+
+## Playground
+
+<Playground>
+    <Popover content={<Text>Content for the Popover. Can contain Icons, Forms or other elements.</Text>}>
+        Trigger
+    </Popover>
+</Playground>
+
+
+
