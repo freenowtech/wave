@@ -89,6 +89,17 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "JanHamara",
+      "name": "Jan Hamara",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14894844?v=4",
+      "profile": "https://github.com/JanHamara",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,

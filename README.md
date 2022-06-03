@@ -49,6 +49,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/lloydaf"><img src="https://avatars.githubusercontent.com/u/5729666?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lloyd Francis</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=lloydaf" title="Code">💻</a> <a href="https://github.com/freenowtech/wave/commits?author=lloydaf" title="Documentation">📖</a><a href="https://github.com/freenowtech/wave/issues?q=author%3Alloydaf" title="Bug reports">🐛</a> <a href="https://github.com/freenowtech/wave/pulls?q=is%3Apr+reviewed-by%3Alloydaf" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/JanHamara"><img src="https://avatars.githubusercontent.com/u/14894844?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jan Hamara</b></sub></a><br /><a href="https://github.com/freenowtech/wave/commits?author=JanHamara" title="Code">💻</a> <a href="https://github.com/freenowtech/wave/commits?author=JanHamara" title="Documentation">📖</a> <a href="https://github.com/freenowtech/wave/pulls?q=is%3Apr+reviewed-by%3AJanHamara" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
