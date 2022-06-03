@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled from 'styled-components';
-import { compose, LayoutProps, textAlign, TextAlignProps } from 'styled-system';
+import { compose, LayoutProps, textAlign, TextAlignProps, layout } from 'styled-system';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 
@@ -23,7 +23,7 @@ const TableCellElement = styled.td<TableCellProps>`
         padding-right: ${p => p.columnSpace};
     }
 
-    ${compose(textAlign)}
+    ${compose(textAlign, layout)}
 `;
 
 const TableCell: FC<TableCellProps> = (props: TableCellProps) => {
