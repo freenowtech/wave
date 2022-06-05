@@ -16,9 +16,11 @@ const OptionWithFlag = styled(components.Option).attrs({ role: 'option' })`
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Option: FC<OptionProps<any>> = (props: OptionProps<PhoneAreaCodeCountry>) => {
-    const data = props.data as PhoneAreaCodeCountry;
+    const { data } = props;
 
     return (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         <OptionWithFlag {...props}>
             <Flag code={isFlagAvailable(data.value) ? data.value : 'WW'} />
             {data.label}

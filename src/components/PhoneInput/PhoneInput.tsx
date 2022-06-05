@@ -66,6 +66,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...pr
                     // eslint-disable-next-line unicorn/no-null
                     IndicatorSeparator: () => null,
                     Option,
+                    // DynamicWidthMenu is a styled-component with its own `theme` prop since menuProps has `theme` prop
+                    // from emotion and conflicts in TS
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
                     Menu: menuProps => <DynamicWidthMenu {...menuProps} width={containerRef.current?.offsetWidth} />
                 }}
                 variant={variant}

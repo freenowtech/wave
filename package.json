@@ -116,14 +116,14 @@
         "@popperjs/core": "^2.11.5",
         "@styled-system/theme-get": "^5.1.2",
         "@testing-library/react-hooks": "^8.0.0",
-        "@types/react-select": "^3.0.13",
+        "@types/react-select": "^4.0.18",
         "@types/styled-system": "^5.1.9",
         "date-fns": "^2.11.1",
         "nanoid": "^3.1.23",
         "react-popper": "^2.3.0",
         "react-tether": "^2.0.7",
         "react-transition-group": "^4.3.0",
-        "react-windowed-select": "^3.1.2",
+        "react-windowed-select": "^4.0.0",
         "styled-system": "^5.1.5",
         "warning": "^4.0.3"
     }
