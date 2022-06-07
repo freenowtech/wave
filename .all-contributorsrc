@@ -103,6 +103,16 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "rafael-sepeda",
+      "name": "rafael-sepeda",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13061805?v=4",
+      "profile": "https://github.com/rafael-sepeda",
+      "contributions": [
+        "design",
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7,
