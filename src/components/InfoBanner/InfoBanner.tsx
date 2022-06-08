@@ -14,19 +14,19 @@ import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 import { Spaces } from '../../essentials';
 
-interface Props extends BoxProps {
+interface InfoBannerProps extends BoxProps {
     title: string;
     description: string;
-    variant?: BannerVariants;
+    variant?: InfoBannerVariants;
     emphasized?: boolean;
     linkText?: string;
     linkUrl?: string;
 }
 
-export type BannerVariants = 'info' | 'success' | 'warning' | 'error';
+type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
 
 interface BoxWithVariant extends BoxProps {
-    variant: BannerVariants;
+    variant: InfoBannerVariants;
     emphasized: boolean;
 }
 
@@ -121,7 +121,7 @@ const IconBox = styled(Box)<BoxWithVariant>`
 `;
 
 const ICON_VARIANTS: {
-    [key in BannerVariants]: React.FC<IconProps>;
+    [key in InfoBannerVariants]: React.FC<IconProps>;
 } = {
     warning: WarningSolidIcon,
     info: InfoCircleSolidIcon,
@@ -130,7 +130,7 @@ const ICON_VARIANTS: {
 };
 
 const ROLE_VARIANTS: {
-    [key in BannerVariants]: string;
+    [key in InfoBannerVariants]: string;
 } = {
     error: 'alert',
     info: 'status',
@@ -138,7 +138,7 @@ const ROLE_VARIANTS: {
     warning: 'status'
 };
 
-export const InfoBanner = ({
+const InfoBanner = ({
     title,
     description,
     variant = 'info',
@@ -146,7 +146,7 @@ export const InfoBanner = ({
     linkUrl,
     emphasized,
     ...props
-}: Props): JSX.Element => {
+}: InfoBannerProps): JSX.Element => {
     const BannerIcon = ICON_VARIANTS[variant];
     const isInverted = emphasized && variant !== 'warning';
 
@@ -178,3 +178,5 @@ export const InfoBanner = ({
         </RoundedBox>
     );
 };
+
+export { InfoBanner, InfoBannerProps, InfoBannerVariants };

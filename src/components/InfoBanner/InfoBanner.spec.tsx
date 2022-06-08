@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { get as themeGet } from '../../utils/themeGet';
 import { theme } from '../../essentials/theme';
-import { BannerVariants, InfoBanner } from './InfoBanner';
+import { InfoBannerVariants, InfoBanner } from './InfoBanner';
 
 const get = (path: string) => themeGet(path)({ theme });
 
@@ -47,7 +47,7 @@ describe('InfoBanner', () => {
             ]
         ] as const;
 
-        test.each(testCases)('"%s" with correct styles', (variant: BannerVariants, expectedStyles) => {
+        test.each(testCases)('"%s" with correct styles', (variant: InfoBannerVariants, expectedStyles) => {
             expect(
                 render(<InfoBanner title="Title" description="Description" variant={variant} />).container.firstChild
             ).toHaveStyle(`
@@ -99,7 +99,7 @@ describe('InfoBanner', () => {
             ]
         ] as const;
 
-        test.each(testCases)('"%s" with correct styles', (variant: BannerVariants, expectedStyles) => {
+        test.each(testCases)('"%s" with correct styles', (variant: InfoBannerVariants, expectedStyles) => {
             expect(
                 render(<InfoBanner title="Title" description="Description" variant={variant} emphasized />).container
                     .firstChild
