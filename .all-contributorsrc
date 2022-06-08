@@ -59,7 +59,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/12762609?v=4",
       "profile": "http://www.leonardodivittorio.com",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "bug",
+        "review"
       ]
     },
     {
@@ -88,6 +91,27 @@
       "contributions": [
         "doc",
         "code"
+      ]
+    },
+    {
+      "login": "JanHamara",
+      "name": "Jan Hamara",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14894844?v=4",
+      "profile": "https://github.com/JanHamara",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
+    },
+    {
+      "login": "rafael-sepeda",
+      "name": "rafael-sepeda",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13061805?v=4",
+      "profile": "https://github.com/rafael-sepeda",
+      "contributions": [
+        "design",
+        "blog"
       ]
     }
   ],
