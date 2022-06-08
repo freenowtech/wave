@@ -94,7 +94,7 @@ interface PopoverProps {
     onClose?: () => void;
 }
 
-export const Popover: React.FC<PopoverProps> = ({
+const Popover: React.FC<PopoverProps> = ({
     children,
     content = '',
     placement = 'bottom-start',
@@ -240,3 +240,5 @@ export const Popover: React.FC<PopoverProps> = ({
         </>
     );
 };
+
+export { Popover, PopoverProps };
