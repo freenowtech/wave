@@ -28,7 +28,7 @@ Thanks for being willing to contribute! Please read the [CONTRIBUTING.md](./CONT
 
 ## Have doubts?
 
-Please don't hesitate to let know us what are your doubts, what can be improved or what is difficult for you to grasp from the documentation. Open issues to start the conversation! 
+Please don't hesitate to let know us what are your doubts, what can be improved or what is difficult for you to grasp from the documentation. Open issues to start the conversation!
 
 ## Contributors ✨
 

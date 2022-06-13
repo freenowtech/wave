@@ -51,3 +51,4 @@ export { Offcanvas, OffcanvasProps } from './Offcanvas/Offcanvas';
 export { SelectListProps } from './SelectList/types';
 export { Row, RowProps, Column, ColumnProps } from './Grid/Grid';
 export { Popover, PopoverProps } from './Popover/Popover';
+export { InfoBanner, InfoBannerProps, InfoBannerVariants } from './InfoBanner/InfoBanner';
