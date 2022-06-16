@@ -81,7 +81,7 @@ describe('Pagination', () => {
 
         const container = queryByLabelText('Select page size container');
 
-        const pageSizeSelectList = within(container).queryByRole('textbox');
+        const pageSizeSelectList = within(container).queryByRole('combobox');
 
         userEvent.type(pageSizeSelectList, '1');
 

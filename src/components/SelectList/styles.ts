@@ -1,27 +1,28 @@
 import { CSSObject } from 'styled-components';
+import { CSSObjectWithLabel } from 'react-select';
 import { Colors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { SelectListProps } from './types';
 
 export const disabledStyles = {
-    control: ({ inverted }: SelectListProps): CSSObject => ({
+    control: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
         borderColor: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
         boxShadow: 'none'
     }),
-    placeholder: ({ inverted }: SelectListProps): CSSObject => ({
+    placeholder: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
     }),
-    label: ({ inverted }: SelectListProps): CSSObject => ({
+    label: ({ inverted }: Pick<SelectListProps, 'inverted'>): CSSObject => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
     }),
-    icons: ({ inverted }: SelectListProps): CSSObject => ({
+    icons: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
         color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
     })
 };
 
 export const errorStyles = {
-    control: ({ variant }: SelectListProps): CSSObject => ({
+    control: ({ variant }: SelectListProps): CSSObjectWithLabel => ({
         borderColor: Colors.NEGATIVE_ORANGE_900,
         boxShadow:
             variant === 'boxed'
@@ -34,7 +35,7 @@ export const errorStyles = {
 };
 
 export const variantStyles = {
-    control: (props: SelectListProps): CSSObject => {
+    control: (props: { isFocused: boolean } & SelectListProps): CSSObjectWithLabel => {
         switch (props.variant) {
             case 'boxed': {
                 const bSize = {
@@ -57,7 +58,7 @@ export const variantStyles = {
                     borderRadius: get('radii.2')(props),
                     border: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
                     ...isBFocused,
-                    ...bSize[ props.size ]
+                    ...bSize[props.size]
                 };
             }
             case 'bottom-lined': {
@@ -82,14 +83,14 @@ export const variantStyles = {
                     borderTopRightRadius: get('radii.1')(props),
                     borderBottom: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
                     ...isBLFocused,
-                    ...btSize[ props.size ]
+                    ...btSize[props.size]
                 };
             }
             default:
                 return {};
         }
     },
-    label: (props: SelectListProps): CSSObject => {
+    label: (props: Pick<SelectListProps, 'variant' | 'size'>): CSSObject => {
         switch (props.variant) {
             case 'boxed': {
                 const bSize = {
@@ -107,7 +108,7 @@ export const variantStyles = {
                     }
                 };
 
-                return bSize[ props.size ];
+                return bSize[props.size];
             }
             case 'bottom-lined': {
                 const btSize = {
@@ -125,7 +126,7 @@ export const variantStyles = {
                     }
                 };
 
-                return btSize[ props.size ];
+                return btSize[props.size];
             }
             default:
                 return {};

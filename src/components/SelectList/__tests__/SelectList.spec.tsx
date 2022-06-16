@@ -35,7 +35,7 @@ describe('SelectList', () => {
             />
         );
 
-        const selectInput = screen.getByRole('textbox');
+        const selectInput = screen.getByRole('combobox');
 
         expect(screen.getByTestId('open-icon')).toBeInTheDocument();
 

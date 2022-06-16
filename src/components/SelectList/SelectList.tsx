@@ -1,5 +1,12 @@
-import React, { CSSProperties, FC } from 'react';
-import { components as ReactSelectComponents, IndicatorProps, Props, StylesConfig } from 'react-select';
+import React, { FC } from 'react';
+import {
+    components as ReactSelectComponents,
+    DropdownIndicatorProps,
+    ClearIndicatorProps,
+    ControlProps,
+    Props,
+    StylesConfig
+} from 'react-select';
 import WindowedSelect from 'react-windowed-select';
 
 import { Colors, Elevation } from '../../essentials';
@@ -12,8 +19,10 @@ import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
 import { SelectListProps } from './types';
 
+type WithSelectProps<T> = T & { selectProps: SelectListProps };
+
 const customStyles: StylesConfig = {
-    container: (provided, { selectProps }: Props & { selectProps: SelectListProps }) => {
+    container: (provided, { selectProps }: WithSelectProps<Props>) => {
         const bSize = {
             small: {
                 fontSize: get('fontSizes.1')(selectProps)
@@ -28,11 +37,9 @@ const customStyles: StylesConfig = {
             ...bSize[selectProps.size]
         };
     },
-    control: (_, state: Props & { selectProps: SelectListProps }) => {
-        const disabled =
-            state.isDisabled && disabledStyles.control({ isFocused: state.isFocused, ...state.selectProps });
-        const error =
-            state.selectProps.error && errorStyles.control({ isFocused: state.isFocused, ...state.selectProps });
+    control: (_, state: WithSelectProps<ControlProps>) => {
+        const disabled = state.isDisabled && disabledStyles.control(state.selectProps);
+        const error = state.selectProps.error && errorStyles.control(state.selectProps);
         const variant = variantStyles.control({ isFocused: state.isFocused, ...state.selectProps });
 
         return {
@@ -55,7 +62,7 @@ const customStyles: StylesConfig = {
         ...provided,
         boxShadow: `0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200}`
     }),
-    valueContainer: (provided, { selectProps: { size, variant } }: Props & { selectProps: SelectListProps }) => {
+    valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
         let margin;
 
         if (variant === 'boxed') {
@@ -94,7 +101,7 @@ const customStyles: StylesConfig = {
         ...provided,
         color: 'inherit'
     }),
-    dropdownIndicator: (provided, state: Props & { selectProps: SelectListProps }) => {
+    dropdownIndicator: (provided, state: WithSelectProps<Props>) => {
         const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
 
         return {
@@ -106,7 +113,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    clearIndicator: (provided, state: Props & { selectProps: SelectListProps }) => {
+    clearIndicator: (provided, state: WithSelectProps<Props>) => {
         const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
 
         return {
@@ -117,7 +124,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    placeholder: (provided: CSSProperties, state: Props & { selectProps: SelectListProps }) => {
+    placeholder: (provided, state: WithSelectProps<Props>) => {
         const disabled = state.isDisabled && disabledStyles.placeholder(state.selectProps);
 
         return {
@@ -126,7 +133,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    option: (provided, state: Props & { selectProps: SelectListProps }) => {
+    option: (provided, state: WithSelectProps<Props>) => {
         const colorsByState = {
             isDisabled: {
                 color: Colors.AUTHENTIC_BLUE_350
@@ -162,7 +169,7 @@ const customStyles: StylesConfig = {
             cursor: state.isDisabled ? 'not-allowed' : 'default'
         };
     },
-    multiValue: (provided: CSSProperties, { selectProps }: { selectProps: Props }) => {
+    multiValue: (provided, { selectProps }: { selectProps: Props }) => {
         const styles = {
             ...provided,
             color: Colors.ACTION_BLUE_900,
@@ -216,7 +223,7 @@ const customStyles: StylesConfig = {
 
 const getIconSize = sizeAsString => (sizeAsString === 'medium' ? 24 : 18);
 
-const DropdownIndicator = (props: IndicatorProps<unknown> & { selectProps: Props }) => (
+const DropdownIndicator = (props: WithSelectProps<DropdownIndicatorProps>) => (
     <ReactSelectComponents.DropdownIndicator {...props}>
         {props.selectProps.menuIsOpen ? (
             <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
@@ -226,7 +233,7 @@ const DropdownIndicator = (props: IndicatorProps<unknown> & { selectProps: Props
     </ReactSelectComponents.DropdownIndicator>
 );
 
-const ClearIndicator = (props: IndicatorProps<unknown>) => (
+const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
     <ReactSelectComponents.ClearIndicator {...props}>
         <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
     </ReactSelectComponents.ClearIndicator>
@@ -255,6 +262,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
             <WindowedSelect
                 inputId={id}
                 styles={customStyles}
+                windowThreshold={100}
                 components={{
                     DropdownIndicator,
                     IndicatorSeparator,

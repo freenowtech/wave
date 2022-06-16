@@ -25,6 +25,6 @@ export const Label = styled.label<LabelProps>`
     transition: color 125ms ease;
 
     ${p => p.error && errorStyles.label()}
-    ${p => p.isDisabled && disabledStyles.label(p)}
-    ${p => variantStyles.label(p)}
+    ${({ isDisabled, inverted }) => isDisabled && disabledStyles.label({ inverted })}
+    ${({ variant, size }) => variantStyles.label({ variant, size })}
 `;
