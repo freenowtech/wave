@@ -13,6 +13,7 @@ const StyledSingleValue = styled(components.SingleValue)`
         min-width: 1.5rem;
         margin-right: 0.5rem;
     }
+    max-width: 100%;
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
