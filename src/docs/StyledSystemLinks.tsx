@@ -16,7 +16,8 @@ const mapping = {
 
 export const StyledSystemLinks: FC<StyledSystemLinksProps> = ({
     component,
-    supportedProps
+    supportedProps,
+    ...rest
 }: StyledSystemLinksProps) => {
     const propToLink = (prop: string) => {
         const lowercaseProp = prop.toLowerCase();
@@ -45,7 +46,7 @@ export const StyledSystemLinks: FC<StyledSystemLinksProps> = ({
         }, []);
 
     return (
-        <Text as="p">
+        <Text {...rest} as="p">
             The {component} supports{' '}
             {supportedPropsTextParts.map((c, index) => (
                 // eslint-disable-next-line react/no-array-index-key

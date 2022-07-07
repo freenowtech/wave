@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled from 'styled-components';
-import { compose, textAlign, TextAlignProps } from 'styled-system';
+import { compose, LayoutProps, textAlign, TextAlignProps, layout } from 'styled-system';
 import { Colors } from '../../../essentials';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
@@ -9,7 +9,8 @@ import { TableProps } from './Table';
 
 type TableHeaderCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     ComponentPropsWithoutRef<'th'> &
-    TextAlignProps;
+    TextAlignProps &
+    LayoutProps;
 
 const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
     border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_550} !important;
@@ -28,7 +29,7 @@ const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
         padding-right: ${p => p.columnSpace};
     }
 
-    ${compose(textAlign)}
+    ${compose(textAlign, layout)}
 `;
 
 const TableHeaderCell: FC<TableHeaderCellProps> = (props: TableHeaderCellProps) => {

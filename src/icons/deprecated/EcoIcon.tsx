@@ -1,7 +1,7 @@
 import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
-import { LeafSolidIcon } from '../service-type';
+import { LeafSolidIcon } from '../';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
 type Props = IconProps;
 

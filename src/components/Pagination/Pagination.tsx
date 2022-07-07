@@ -3,10 +3,18 @@ import styled from 'styled-components';
 
 import { Colors } from '../../essentials/Colors/Colors';
 import { Spaces } from '../../essentials/Spaces/Spaces';
-import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons/basic';
+import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons';
+import { Box } from '../Box/Box';
+import { SelectList } from '../SelectList/SelectList';
 
 const Container = styled.div`
     text-align: center;
+`;
+
+const ButtonsContainer = styled(Box)`
+    display: flex;
+    justify-content: center;
+    position: relative;
 `;
 
 const IconButton = styled.button`
@@ -48,6 +56,10 @@ interface PaginationProps {
      */
     pageSize: number;
     /**
+     * Allow the user to select between the given page sizes.
+     */
+    pageSizes?: { label: string; value: string }[];
+    /**
      * Total number of items.
      */
     totalItems: number;
@@ -72,6 +84,10 @@ interface PaginationProps {
      */
     ariaLabelLast?: string;
     /**
+     * Aria label for the container of the page size `SelectList`.
+     */
+    ariaLabelSelectPageSizeContainer?: string;
+    /**
      * Callback when the next button was pressed.
      */
     onNextPage?: () => void;
@@ -79,6 +95,10 @@ interface PaginationProps {
      * Callback when the previous button was pressed.
      */
     onPrevPage?: () => void;
+    /**
+     * Callback when a different page size was selected. Can only be used when `pageSizes` is passed.
+     */
+    onSelectPageSize?: (selected: { label: string; value: string }) => void;
     /**
      * Callback when the skip forward button was pressed.
      */
@@ -93,23 +113,36 @@ const Pagination: React.FC<PaginationProps> = ({
     size = 'normal',
     value,
     pageSize,
+    pageSizes = [],
     totalItems,
     label,
     ariaLabelFirst = 'First',
     ariaLabelPrevious = 'Previous',
     ariaLabelNext = 'Next',
     ariaLabelLast = 'Last',
+    ariaLabelSelectPageSizeContainer = 'Select page size container',
     onNextPage,
     onPrevPage,
+    onSelectPageSize,
     onSkipForward,
     onSkipBackward
 }: PaginationProps) => {
     const isFirstPage = value === 1;
     const isLastPage = totalItems > 0 ? value === Math.ceil(totalItems / pageSize) : true;
+    const hasMultiplePageSizes = pageSizes.length > 0;
 
     return (
         <Container>
-            <div>
+            <ButtonsContainer>
+                {hasMultiplePageSizes && (
+                    <Box aria-label={ariaLabelSelectPageSizeContainer} position="absolute" left="0" width="4.5em">
+                        <SelectList
+                            options={pageSizes}
+                            onChange={onSelectPageSize}
+                            value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
+                        />
+                    </Box>
+                )}
                 {size !== 'small' && (
                     <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
                         <BackwardLastIcon
@@ -141,7 +174,7 @@ const Pagination: React.FC<PaginationProps> = ({
                         />
                     </IconButton>
                 )}
-            </div>
+            </ButtonsContainer>
 
             {label && <LabelContainer>{label}</LabelContainer>}
         </Container>

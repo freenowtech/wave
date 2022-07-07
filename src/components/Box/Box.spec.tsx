@@ -33,4 +33,12 @@ describe('Box', () => {
             render(<Box gridColumnGap={2} gridTemplateRows="1fr auto 10%" />).container.firstChild
         ).toMatchSnapshot();
     });
+
+    it('accepts props spreading', () => {
+        const renderBox = () => {
+            const props = { backgroundColor: Colors.POSITIVE_GREEN_900 };
+            return <Box {...props} />;
+        };
+        expect(renderBox).not.toThrow();
+    });
 });

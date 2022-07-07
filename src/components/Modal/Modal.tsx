@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ReactNode, useContext } from 'react';
+import React, { useEffect, useState, ReactNode, useContext, useRef } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
@@ -56,12 +56,13 @@ const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_D
 const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }: ModalProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
+    const closeTimeout = useRef(null);
 
     const handleClose: DismissFunc = () => {
         setVisible(false);
 
         if (onClose) {
-            setTimeout(() => onClose(), ANIMATION_DURATION);
+            closeTimeout.current = setTimeout(() => onClose(), ANIMATION_DURATION);
         }
     };
 
@@ -76,6 +77,13 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }
             handleClose();
         }
     }, [dismissible, isEscKeyPressed]);
+
+    useEffect(
+        () => () => {
+            if (closeTimeout.current) clearTimeout(closeTimeout.current);
+        },
+        []
+    );
 
     const renderChildren = () => {
         if (typeof children === 'function') {
