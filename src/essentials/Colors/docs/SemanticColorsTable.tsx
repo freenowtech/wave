@@ -32,7 +32,7 @@ export const SemanticColorsTable: FC = () => {
     const [nameSearchInput, setNameSearchInput] = useState('');
     const flatSemanticColors = flattenObj(SemanticColors);
 
-    const filteredColorKeys = Object.keys(flatSemanticColors).filter(it => {
+    const filteredColorKeys = ([...flatSemanticColors.keys()] as string[]).filter(it => {
         if (nameSearchInput === '') {
             return true;
         }
@@ -64,13 +64,13 @@ export const SemanticColorsTable: FC = () => {
                     {filteredColorKeys.map(key => (
                         <TableRow key={key}>
                             <TableCell>
-                                <ColorBlock color={flatSemanticColors[key]} />
+                                <ColorBlock color={flatSemanticColors.get(key)} />
                             </TableCell>
                             <TableCell>
                                 <code>{key}</code>
                             </TableCell>
                             <TableCell>
-                                <code>{flatSemanticColors[key]}</code>
+                                <code>{flatSemanticColors.get(key)}</code>
                             </TableCell>
                         </TableRow>
                     ))}
