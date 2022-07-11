@@ -1,7 +1,7 @@
 import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
-import { InfoCircleOutlineIcon } from '../basic';
+import { InfoCircleOutlineIcon } from '../';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
 type Props = IconProps;
 

@@ -13,6 +13,7 @@ const StyledSingleValue = styled(components.SingleValue)`
         min-width: 1.5rem;
         margin-right: 0.5rem;
     }
+    max-width: 100%;
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,9 +22,11 @@ const SingleValue: FC<SingleValueProps<any>> = (props: SingleValueProps<PhoneAre
         return props.children as ReactElement;
     }
 
-    const selectedOption = props.getValue()[0] as PhoneAreaCodeCountry;
+    const selectedOption: PhoneAreaCodeCountry = props.getValue()[0];
 
     return (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         <StyledSingleValue {...props}>
             <Flag code={isFlagAvailable(selectedOption.value) ? selectedOption.value : 'WW'} />
             <Text>{selectedOption.dialCode}</Text>

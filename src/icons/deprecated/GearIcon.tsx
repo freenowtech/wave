@@ -2,7 +2,7 @@ import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
-import { CogIcon } from '../basic';
+import { CogIcon } from '../';
 type Props = IconProps;
 
 const GearIcon: React.FC<Props> = withDeprecatedMessage('GearIcon', CogIcon);

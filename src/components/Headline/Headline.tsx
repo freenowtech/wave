@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
-import styled, { css } from 'styled-components';
-import { compose, margin, MarginProps, textAlign, TextAlignProps } from 'styled-system';
+import styled from 'styled-components';
+import { compose, margin, system, MarginProps, textAlign, TextAlignProps, ResponsiveValue } from 'styled-system';
 import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -18,7 +18,7 @@ interface HeadlineProps extends ComponentPropsWithoutRef<'h1'>, MarginProps, Tex
     /**
      * Set the style of the headline
      */
-    size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs';
+    size?: ResponsiveValue<'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'>;
 }
 
 const DEFAULT_HEADLINE_SIZE = {
@@ -30,45 +30,33 @@ const DEFAULT_HEADLINE_SIZE = {
     h6: 'xs'
 } as const;
 
-function determineFontSize(props: HeadlineProps) {
-    const h1Styles = css`
-        font-size: ${get('fontSizes.7')};
-        line-height: 3.75rem;
-    `;
-
-    const size = props.size ?? DEFAULT_HEADLINE_SIZE[props.as];
-    switch (size) {
-        case 'xxl':
-            return h1Styles;
-        case 'xl':
-            return css`
-                font-size: ${get('fontSizes.5')};
-                line-height: 2.5rem;
-            `;
-        case 'l':
-            return css`
-                font-size: ${get('fontSizes.4')};
-                line-height: 2rem;
-            `;
-        case 'm':
-            return css`
-                font-size: ${get('fontSizes.2')};
-                line-height: 1.375rem;
-            `;
-        case 's':
-            return css`
-                font-size: ${get('fontSizes.1')};
-                line-height: 1.25rem;
-            `;
-        case 'xs':
-            return css`
-                font-size: ${get('fontSizes.0')};
-                line-height: 1.125rem;
-            `;
-        default:
-            return h1Styles;
+const parser = system({
+    fontSize: {
+        property: 'fontSize',
+        defaultScale: {
+            xs: '0.75rem',
+            s: '0.875rem',
+            m: '1rem',
+            l: '1.5rem',
+            xl: '2rem',
+            xxl: '3rem'
+        }
+    },
+    lh: {
+        property: 'lineHeight',
+        defaultScale: {
+            xs: '1.125rem',
+            s: '1.25rem',
+            m: '1.375rem',
+            l: '2rem',
+            xl: '2.5rem',
+            xxl: '3.75rem'
+        }
     }
-}
+});
+
+const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'> =>
+    size || DEFAULT_HEADLINE_SIZE[as];
 
 const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
     color: ${p => (p.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900)};
@@ -76,8 +64,7 @@ const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlinePro
     font-weight: ${get('fontWeights.bold')};
     margin: 0;
 
-    ${determineFontSize}
-
+    ${props => parser({ fontSize: getSize(props), lh: getSize(props), ...props })}
     ${compose(margin, textAlign)}
 `;
 

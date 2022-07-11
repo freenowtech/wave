@@ -1,0 +1,13 @@
+export { default as BriefcaseIcon } from './BriefcaseIcon';
+export { default as CompassIcon } from './CompassIcon';
+export { default as CrosshairsOffIcon } from './CrosshairsOffIcon';
+export { default as CrosshairsIcon } from './CrosshairsIcon';
+export { default as DirectionArrowCircleOutlineIcon } from './DirectionArrowCircleOutlineIcon';
+export { default as DirectionArrowOutlineIcon } from './DirectionArrowOutlineIcon';
+export { default as DirectionArrowSolidIcon } from './DirectionArrowSolidIcon';
+export { default as HotelIcon } from './HotelIcon';
+export { default as HouseIcon } from './HouseIcon';
+export { default as MortarboardIcon } from './MortarboardIcon';
+export { default as ParkingIcon } from './ParkingIcon';
+export { default as PinIcon } from './PinIcon';
+export { default as PlaneIcon } from './PlaneIcon';

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { FC, useState } from 'react';
 import { Text } from '../../Text/Text';
 
 import { Pagination } from '../Pagination';
@@ -7,59 +7,69 @@ interface Props {
     children: (props: {
         currentPage: number;
         pageSize: number;
+        pageSizes: { label: string; value: string }[];
         totalItems: number;
         handleNextPage: () => void;
         handlePrevPage: () => void;
+        handleSelectPageSize: (selected: { label: string; value: string }) => void;
         handleSkipForward: () => void;
         handleSkipBackward: () => void;
-    }) => ReactNode;
+    }) => JSX.Element;
 }
 
-interface State {
-    currentPage: number;
-}
+const TOTAL_ITEMS = 200;
 
-class PaginationProvider extends React.Component<Props, State> {
-    private PAGE_SIZE = 20;
-
-    private TOTAL_ITEMS = 200;
-
-    constructor(props: Props) {
-        super(props);
-
-        this.state = {
-            currentPage: 1
-        };
+const PAGE_SIZES = [
+    {
+        label: '10',
+        value: '10'
+    },
+    {
+        label: '15',
+        value: '15'
+    },
+    {
+        label: '20',
+        value: '20'
     }
+];
 
-    private handleNextPage = () => {
-        this.setState(current => ({ currentPage: current.currentPage + 1 }));
+const PaginationProvider: FC<Props> = ({ children }: Props) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
+
+    const handleNextPage = () => {
+        setCurrentPage(current => current + 1);
     };
 
-    private handlePrevPage = () => {
-        this.setState(current => ({ currentPage: current.currentPage - 1 }));
+    const handlePrevPage = () => {
+        setCurrentPage(current => current - 1);
     };
 
-    private handleSkipForward = () => {
-        this.setState({ currentPage: Math.ceil(this.TOTAL_ITEMS / this.PAGE_SIZE) });
+    const handleSelectPageSize = (selected: { label: string; value: string }) => {
+        setPageSize(Number.parseInt(selected.value, 10));
     };
 
-    private handleSkipBackward = () => {
-        this.setState({ currentPage: 1 });
+    const handleSkipForward = () => {
+        setCurrentPage(Math.ceil(TOTAL_ITEMS / pageSize));
     };
 
-    public render(): ReactNode {
-        return this.props.children({
-            currentPage: this.state.currentPage,
-            pageSize: this.PAGE_SIZE,
-            totalItems: this.TOTAL_ITEMS,
-            handleNextPage: this.handleNextPage,
-            handlePrevPage: this.handlePrevPage,
-            handleSkipForward: this.handleSkipForward,
-            handleSkipBackward: this.handleSkipBackward
-        });
-    }
-}
+    const handleSkipBackward = () => {
+        setCurrentPage(1);
+    };
+
+    return children({
+        currentPage,
+        pageSize,
+        pageSizes: PAGE_SIZES,
+        totalItems: TOTAL_ITEMS,
+        handleNextPage,
+        handlePrevPage,
+        handleSelectPageSize,
+        handleSkipForward,
+        handleSkipBackward
+    });
+};
 
 const NormalPagination: React.FC = () => (
     <PaginationProvider>
@@ -126,4 +136,40 @@ const SmallPagination: React.FC = () => (
     </PaginationProvider>
 );
 
-export { PaginationProvider, NormalPagination, SmallPagination };
+const PaginationWithPageSize: React.FC = () => (
+    <PaginationProvider>
+        {({
+            currentPage,
+            pageSize,
+            pageSizes,
+            totalItems,
+            handleNextPage,
+            handlePrevPage,
+            handleSelectPageSize,
+            handleSkipForward,
+            handleSkipBackward
+        }) => (
+            <Pagination
+                value={currentPage}
+                pageSize={pageSize}
+                pageSizes={pageSizes}
+                totalItems={totalItems}
+                label={
+                    <Text weak>
+                        Page{' '}
+                        <Text as="b" fontWeight="semibold" weak>
+                            {currentPage} of {Math.ceil(totalItems / pageSize)}
+                        </Text>
+                    </Text>
+                }
+                onNextPage={handleNextPage}
+                onPrevPage={handlePrevPage}
+                onSelectPageSize={handleSelectPageSize}
+                onSkipForward={handleSkipForward}
+                onSkipBackward={handleSkipBackward}
+            />
+        )}
+    </PaginationProvider>
+);
+
+export { PaginationProvider, NormalPagination, SmallPagination, PaginationWithPageSize };

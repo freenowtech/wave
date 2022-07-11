@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Button, Checkbox, Label, Text } from '../..';
 import { Colors } from '../../../essentials';
-import { EnvelopeIcon, PhoneIcon } from '../../../icons/basic';
+import { EnvelopeIcon, PhoneIcon } from '../../../icons';
 import { TableRowSkeleton } from '../components/TableRowSkeleton';
 
 function randomDate() {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
-import { ChevronDownIcon } from '../basic';
+import { ChevronDownIcon } from '../';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
 
 type Props = IconProps;

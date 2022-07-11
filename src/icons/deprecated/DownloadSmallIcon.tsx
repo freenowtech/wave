@@ -2,7 +2,7 @@ import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
-import { DownloadIcon } from '../basic';
+import { DownloadIcon } from '../';
 type Props = IconProps;
 
 const DownloadSmallIcon: React.FC<Props> = withDeprecatedMessage('DownloadSmallIcon', DownloadIcon, { size: 20 });
