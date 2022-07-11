@@ -28,17 +28,15 @@ const ColorBlock = styled.div<{ color: string }>`
     width: 4rem;
 `;
 
+const flatSemanticColors = flattenObj(SemanticColors);
+const flatSemanticColorsKeys = [...flatSemanticColors.keys()] as string[];
+
 export const SemanticColorsTable: FC = () => {
     const [nameSearchInput, setNameSearchInput] = useState('');
-    const flatSemanticColors = flattenObj(SemanticColors);
 
-    const filteredColorKeys = ([...flatSemanticColors.keys()] as string[]).filter(it => {
-        if (nameSearchInput === '') {
-            return true;
-        }
-
-        return it.toLowerCase().includes(nameSearchInput.toLowerCase());
-    });
+    const filteredColorKeys = !nameSearchInput
+        ? flatSemanticColorsKeys
+        : flatSemanticColorsKeys.filter(it => it.toLowerCase().includes(nameSearchInput.toLowerCase()));
 
     return (
         <>
