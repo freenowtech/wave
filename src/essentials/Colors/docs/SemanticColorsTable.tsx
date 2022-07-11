@@ -36,7 +36,7 @@ export const SemanticColorsTable: FC = () => {
 
     const filteredColorKeys = !nameSearchInput
         ? flatSemanticColorsKeys
-        : flatSemanticColorsKeys.filter(it => it.toLowerCase().includes(nameSearchInput.toLowerCase()));
+        : flatSemanticColorsKeys.filter(it => it.toLowerCase().includes(nameSearchInput.toLowerCase().trim()));
 
     return (
         <>
