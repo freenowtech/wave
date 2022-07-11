@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { components, OptionProps } from 'react-select';
+import { components, OptionProps } from 'react-windowed-select';
 import styled from 'styled-components';
 import { Flag } from '../../../icons';
 import { PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';

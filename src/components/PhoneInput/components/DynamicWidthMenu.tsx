@@ -1,4 +1,4 @@
-import { components } from 'react-select';
+import { components } from 'react-windowed-select';
 import styled from 'styled-components';
 
 interface DynamicWidthMenuProps {

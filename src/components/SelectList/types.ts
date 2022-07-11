@@ -1,4 +1,4 @@
-import { Props } from 'react-select';
+import { Props } from 'react-windowed-select';
 import { MarginProps, WidthProps } from 'styled-system';
 import { ClassNameProps } from '../../utils/extractProps';
 

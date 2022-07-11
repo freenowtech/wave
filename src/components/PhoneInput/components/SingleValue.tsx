@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from 'react';
-import { components, SingleValueProps } from 'react-select';
+import { components, SingleValueProps } from 'react-windowed-select';
 import styled from 'styled-components';
 import { Flag } from '../../../icons';
 import { Text } from '../../Text/Text';

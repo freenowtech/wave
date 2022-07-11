@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
-import {
+import WindowedSelect, {
     components as ReactSelectComponents,
     DropdownIndicatorProps,
     ClearIndicatorProps,
     ControlProps,
     Props,
     StylesConfig
-} from 'react-select';
-import WindowedSelect from 'react-windowed-select';
+} from 'react-windowed-select';
 
 import { Colors, Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';

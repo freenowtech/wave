@@ -1,5 +1,5 @@
 import { CSSObject } from 'styled-components';
-import { CSSObjectWithLabel } from 'react-select';
+import { CSSObjectWithLabel } from 'react-windowed-select';
 import { Colors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { SelectListProps } from './types';
