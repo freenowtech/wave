@@ -56,6 +56,25 @@ export const PhoneInputPropsTable: FC = () => {
             name: 'disabled',
             type: 'boolean',
             description: 'Disables both, the area code and national number inputs'
+        },
+        {
+            name: 'listPortalTarget',
+            type: 'HTMLElement',
+            description: 'HTML element which will be used as a parent for the prefix list'
+        },
+        {
+            name: 'inputProps',
+            type: 'Object',
+            description:
+                'Pass props directly to the internal input component. ' +
+                'Any value from the `Input` component props are allowed, but props from the `PhoneInput` take precedence'
+        },
+        {
+            name: 'selectListProps',
+            type: 'Object',
+            description:
+                'Pass props directly to the internal SelectList component used to show prefixes. ' +
+                'Any value from the `Input` component props are allowed, but props from the `PhoneInput` take precedence'
         }
     ];
     return <PropsTable props={props} />;

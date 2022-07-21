@@ -13,6 +13,7 @@ import { extractWrapperMarginProps } from '../../utils/extractProps';
 import { Input } from '../Input/Input';
 import { InputProps } from '../Input/InputProps';
 import { SelectList } from '../SelectList/SelectList';
+import { SelectListProps } from '../SelectList/types';
 import { DynamicWidthMenu } from './components/DynamicWidthMenu';
 import { Option } from './components/Option';
 import { SingleValue } from './components/SingleValue';
@@ -30,13 +31,22 @@ interface PhoneInputProps
     onTextChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     country?: PhoneAreaCodeCountry;
     onCountryChange?: (country?: PhoneAreaCodeCountry) => void;
+    listPortalTarget?: SelectListProps['menuPortalTarget'];
+    inputProps?: InputProps;
+    selectListProps?: SelectListProps;
 }
 
 const Box = styled.div<LayoutProps & WidthProps>`
     ${compose(layout, widthFn, marginFn)}
 `;
 
-const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...props }: PhoneInputProps) => {
+const PhoneInput: React.FC<PhoneInputProps> = ({
+    width,
+    variant = 'boxed',
+    inputProps = {},
+    selectListProps = {},
+    ...props
+}: PhoneInputProps) => {
     const { marginProps } = extractWrapperMarginProps(props);
 
     const nationalNumberInputRef = React.createRef<HTMLDivElement>();
@@ -54,6 +64,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...pr
     return (
         <Box display="inline-flex" width={width} {...marginProps} ref={containerRef}>
             <SelectList
+                {...selectListProps}
                 id={`${props.id}-area-code`}
                 name={`${props.name}-area-code`}
                 value={props.country}
@@ -75,8 +86,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ width, variant = 'boxed', ...pr
                 variant={variant}
                 size={props.size}
                 isDisabled={props.disabled}
+                menuPortalTarget={props.listPortalTarget}
             />
             <Input
+                {...inputProps}
                 id={`${props.id}-national-number`}
                 name={`${props.name}-national-number`}
                 ml={spaceBetweenInputs}
