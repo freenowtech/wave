@@ -233,8 +233,7 @@ const Popover: React.FC<PopoverProps> = ({
                 <PopoverContentContainer
                     id="popover-content"
                     ref={setContentReference}
-                    // zIndex temporary until we have Portal component
-                    style={{ ...styles.popper, zIndex: 9999 }}
+                    style={{ ...styles.popper, zIndex: 999 }}
                     {...attributes.popper}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
