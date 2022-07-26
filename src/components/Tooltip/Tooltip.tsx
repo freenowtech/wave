@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react';
 import * as React from 'react';
-import TetherComponent from 'react-tether';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import { Colors, Elevation, MediaQueries } from '../../essentials';
+import { usePopper } from 'react-popper';
+import { Placement } from '@popperjs/core/lib/enums';
+import { Colors, MediaQueries } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { TooltipPlacement } from './TooltipPlacement';
-import { getAttachmentFromPlacement } from './util/getAttachmentFromPlacement';
+import { mapTooltipPlacementToPopperPlacement, TooltipPlacement } from './TooltipPlacement';
 
 const fadeAnimation = keyframes`
     from {
@@ -48,78 +48,64 @@ const TooltipBody = styled.div<Pick<TooltipProps, 'inverted'>>`
     }
 `;
 
-const GlobalTetherStyles = createGlobalStyle`
-    body > .tether-element {
-        z-index: ${Elevation.TOOLTIP};
-    }
-
-    .tether-target-attached-bottom {
-        & > ${TooltipBody} {
-            margin-top: 0.5rem;
-
+const PopStyles = createGlobalStyle`
+    .bottom {
+        &, ${TooltipBody} {
             &::after {
-                top: -0.5rem;
+                right: 50%;
             }
         }
     }
-
-    .tether-target-attached-top {
-        & > ${TooltipBody} {
-            top: -0.5rem;
-
+    .bottom-end {
+        &, ${TooltipBody} {
+            &::after {
+                right: 0.3rem;
+            }
+        }
+    }
+    .top-start {
+        &, ${TooltipBody} {
             &::after {
                 bottom: -0.5rem;
                 transform: rotate(-180deg);
             }
         }
     }
-    
-    .tether-target-attached-center {
-        & > ${TooltipBody} {
+    .top {
+        &, ${TooltipBody} {
             &::after {
-                left: 50%;
+                bottom: -0.5rem;
+                transform: rotate(-180deg);
+                right: 50%;
             }
         }
     }
-    
-    .tether-target-attached-left {
-        & > ${TooltipBody} {
+    .top-end {
+        &, ${TooltipBody} {
             &::after {
-                left: 1rem;
+                bottom: -0.5rem;
+                transform: rotate(-180deg);
+                right: 0.3rem;
             }
         }
     }
-
-    .tether-target-attached-right {
-        & > ${TooltipBody} {
-            &::after {
-                right: 1rem;
-            }
-        }
-    }
-
-    .tether-target-attached-middle.tether-target-attached-right {
-        & > ${TooltipBody} {
-            margin-left: 0.5rem;
-
-            &::after {
-                top: calc(50% - 0.25rem);
-                left: -0.25rem;
-                right: auto;
-                transform: rotate(-90deg);
-            }
-        }
-    }
-
-    .tether-target-attached-middle.tether-target-attached-left {
-        & > ${TooltipBody} {
-           left: -0.5rem;
-
+    .left {
+        &, ${TooltipBody} {
             &::after {
                 top: calc(50% - 0.25rem);
                 left: auto;
                 right: -0.5rem;
                 transform: rotate(90deg);
+            }
+        }
+    }
+    .right {
+        &, ${TooltipBody} {
+            &::after {
+                top: calc(50% - 0.25rem);
+                left: -0.25rem;
+                right: auto;
+                transform: rotate(-90deg);
             }
         }
     }
@@ -133,7 +119,7 @@ interface TooltipProps {
     /**
      * Set the position of where the tooltip is attached to the target, defaults to "top-center"
      */
-    placement?: TooltipPlacement;
+    placement?: TooltipPlacement | Placement;
     /**
      * Adjust the component for display on dark backgrounds
      */
@@ -152,6 +138,28 @@ const Tooltip: React.FC<TooltipProps> = ({
     inverted = false
 }: PropsWithChildren<TooltipProps>) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
+    const [triggerReference, setTriggerReference] = React.useState(undefined);
+    const [contentReference, setContentReference] = React.useState(undefined);
+
+    const mappedPlacement = mapTooltipPlacementToPopperPlacement(placement) ?? (placement as Placement);
+
+    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+        placement: mappedPlacement,
+        strategy: 'fixed',
+        modifiers: [
+            {
+                name: 'offset',
+                enabled: true,
+                options: {
+                    offset: [0, 5]
+                }
+            },
+            {
+                name: 'flip',
+                enabled: true
+            }
+        ]
+    });
 
     let dynamicContent = content;
 
@@ -171,30 +179,23 @@ const Tooltip: React.FC<TooltipProps> = ({
 
     return (
         <>
-            <TetherComponent
-                {...getAttachmentFromPlacement(placement)}
-                constraints={[
-                    {
-                        to: 'window',
-                        attachment: 'together'
-                    }
-                ]}
-                renderTarget={ref =>
-                    React.cloneElement(children as React.ReactElement, {
-                        onMouseOver: () => handleVisibilityChange(true),
-                        onMouseOut: () => handleVisibilityChange(false),
-                        ref
-                    })
-                }
-                renderElement={(ref: React.RefObject<HTMLDivElement>) =>
-                    isVisible && (
-                        <TooltipBody ref={ref} inverted={inverted}>
-                            {dynamicContent}
-                        </TooltipBody>
-                    )
-                }
-            />
-            <GlobalTetherStyles />
+            {React.cloneElement(children as React.ReactElement, {
+                onMouseOver: () => handleVisibilityChange(true),
+                onMouseOut: () => handleVisibilityChange(false),
+                ref: setTriggerReference
+            })}
+            {isVisible && (
+                <TooltipBody
+                    className={mappedPlacement}
+                    ref={setContentReference}
+                    inverted={inverted}
+                    style={{ ...styles.popper }}
+                    {...attributes.popper}
+                >
+                    {dynamicContent}
+                </TooltipBody>
+            )}
+            <PopStyles />
         </>
     );
 };
