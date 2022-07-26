@@ -74,7 +74,7 @@ export const PhoneInputPropsTable: FC = () => {
             type: 'Object',
             description:
                 'Pass props directly to the internal SelectList component used to show prefixes. ' +
-                'Any value from the `Input` component props are allowed, but props from the `PhoneInput` take precedence'
+                'Any value from the `SelectList` component props are allowed, but props from the `PhoneInput` take precedence'
         }
     ];
     return <PropsTable props={props} />;
