@@ -1,8 +1,9 @@
 import { PropsWithChildren } from 'react';
 import * as React from 'react';
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
+import { variant } from 'styled-system';
 import { Colors, MediaQueries } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
@@ -18,7 +19,49 @@ const fadeAnimation = keyframes`
     }
 `;
 
-const TooltipBody = styled.div<Pick<TooltipProps, 'inverted'>>`
+const arrowPlacementStyles = variant({
+    variants: {
+        bottom: {
+            right: '50%'
+        },
+        'bottom-end': {
+            right: '0.3rem'
+        },
+        'top-start': {
+            bottom: '-0.5rem',
+            transform: 'rotate(-180deg)'
+        },
+        top: {
+            bottom: '-0.5rem',
+            transform: 'rotate(-180deg)',
+            right: '50%'
+        },
+        'top-end': {
+            bottom: '-0.5rem',
+            transform: 'rotate(-180deg)',
+            right: '0.3rem'
+        },
+        left: {
+            top: 'calc(50% - 0.25rem)',
+            left: 'auto',
+            right: '-0.5rem',
+            transform: 'rotate(90deg)'
+        },
+        right: {
+            top: 'calc(50% - 0.25rem)',
+            left: '-0.25rem',
+            right: 'auto',
+            transform: 'rotate(-90deg)'
+        }
+    }
+});
+
+interface TooltipBodyProps {
+    inverted?: boolean;
+    variant: string;
+}
+
+const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     background-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_900)};
     padding: 0.25rem 0.5rem;
@@ -45,69 +88,8 @@ const TooltipBody = styled.div<Pick<TooltipProps, 'inverted'>>`
         border: 0.25rem solid rgba(0, 0, 0, 0);
         border-bottom-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_900)};
         margin-left: -0.25rem;
-    }
-`;
 
-const PopStyles = createGlobalStyle`
-    .bottom {
-        &, ${TooltipBody} {
-            &::after {
-                right: 50%;
-            }
-        }
-    }
-    .bottom-end {
-        &, ${TooltipBody} {
-            &::after {
-                right: 0.3rem;
-            }
-        }
-    }
-    .top-start {
-        &, ${TooltipBody} {
-            &::after {
-                bottom: -0.5rem;
-                transform: rotate(-180deg);
-            }
-        }
-    }
-    .top {
-        &, ${TooltipBody} {
-            &::after {
-                bottom: -0.5rem;
-                transform: rotate(-180deg);
-                right: 50%;
-            }
-        }
-    }
-    .top-end {
-        &, ${TooltipBody} {
-            &::after {
-                bottom: -0.5rem;
-                transform: rotate(-180deg);
-                right: 0.3rem;
-            }
-        }
-    }
-    .left {
-        &, ${TooltipBody} {
-            &::after {
-                top: calc(50% - 0.25rem);
-                left: auto;
-                right: -0.5rem;
-                transform: rotate(90deg);
-            }
-        }
-    }
-    .right {
-        &, ${TooltipBody} {
-            &::after {
-                top: calc(50% - 0.25rem);
-                left: -0.25rem;
-                right: auto;
-                transform: rotate(-90deg);
-            }
-        }
+        ${arrowPlacementStyles}
     }
 `;
 
@@ -145,7 +127,6 @@ const Tooltip: React.FC<TooltipProps> = ({
 
     const { styles, attributes } = usePopper(triggerReference, contentReference, {
         placement: mappedPlacement,
-        strategy: 'fixed',
         modifiers: [
             {
                 name: 'offset',
@@ -153,10 +134,6 @@ const Tooltip: React.FC<TooltipProps> = ({
                 options: {
                     offset: [0, 5]
                 }
-            },
-            {
-                name: 'flip',
-                enabled: true
             }
         ]
     });
@@ -186,16 +163,15 @@ const Tooltip: React.FC<TooltipProps> = ({
             })}
             {isVisible && (
                 <TooltipBody
-                    className={mappedPlacement}
                     ref={setContentReference}
                     inverted={inverted}
                     style={{ ...styles.popper }}
+                    variant={attributes.popper?.['data-popper-placement']}
                     {...attributes.popper}
                 >
                     {dynamicContent}
                 </TooltipBody>
             )}
-            <PopStyles />
         </>
     );
 };
