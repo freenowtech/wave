@@ -2,12 +2,17 @@ import React, { FC } from 'react';
 
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const DatePickerSingleInputPropsTable: FC = () => {
+export const DatepickerRangeInputPropsTable: FC = () => {
     const props = [
         {
-            name: 'placeholder',
+            name: 'startPlaceholder',
             type: 'string',
-            description: 'Placeholder for the input.'
+            description: 'Placeholder for start date.'
+        },
+        {
+            name: 'endPlaceholder',
+            type: 'string',
+            description: 'Placeholder for end date.'
         },
         {
             name: 'label',
@@ -20,8 +25,13 @@ export const DatePickerSingleInputPropsTable: FC = () => {
             description: 'Function that is used when datepicker closes without selected date.'
         },
         {
+            name: 'value',
+            type: 'DateRange (interface containing startDate and endDate properties)',
+            description: 'Set the value for the date.'
+        },
+        {
             name: 'onChange',
-            type: 'Function => void',
+            type: 'Function (change: DateRange) => void',
             description: 'Function that is used when datepicker selects new date.'
         },
         {
@@ -47,6 +57,12 @@ export const DatePickerSingleInputPropsTable: FC = () => {
             defaultValue: '() => false'
         },
         {
+            name: 'placement',
+            type: "'left' | 'right' | 'center'",
+            description: 'Used to align the datepicker in relation to input.',
+            defaultValue: 'left'
+        },
+        {
             name: 'displayFormat',
             type: 'string',
             description: 'String to format dates.',
@@ -59,19 +75,25 @@ export const DatePickerSingleInputPropsTable: FC = () => {
             defaultValue: 'en-US'
         },
         {
-            name: 'value',
-            type: 'Date',
-            description: 'Set the value of the input.'
-        },
-        {
             name: 'errorHandler',
             type: '(Function => void) | string',
             description: 'Text to be shown if error filling the input or fn to be trigger as a callback when error.'
         },
         {
-            name: 'inputId',
+            name: 'startInputId',
             type: 'string',
-            description: 'The id to be assigned to the input field.'
+            description: 'The id to be assigned to the start date input.'
+        },
+        {
+            name: 'endInputId',
+            type: 'string',
+            description: 'The id to be assigned to the end date input.'
+        },
+        {
+            name: 'variant',
+            type: "'compact' | 'normal'",
+            description: "Determines the variant, 'compact' displays only a single month",
+            defaultValue: "'normal'"
         },
         {
             name: 'disabled',
