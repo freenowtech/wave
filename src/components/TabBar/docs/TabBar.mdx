@@ -6,9 +6,11 @@ route: /components/TabBar
 
 import { Playground } from 'docz';
 import { TabBar } from '../TabBar';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
 import { Headline } from '../..';
 import { TabBarExample } from './TabBarExample';
+import { TabBarLinkPropsTable } from './TabBarLinkPropsTable';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 
 # TabBar
 
@@ -18,6 +20,18 @@ import { TabBarExample } from './TabBarExample';
 -   Horizontal spacing is space 3 per default which could be overwritten
 
 <TabBarExample />
+
+## API
+
+### TabBar
+
+<StyledSystemLinks component="TabBar" supportedProps={['margin']} />
+
+### TabBar.Link
+
+<TabBarLinkPropsTable />
+
+The TabBar.Link supports all the props that can be passed to `<a>` tag.
 
 ### Usage with react-router
 
