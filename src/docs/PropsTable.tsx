@@ -32,12 +32,12 @@ export const PropsTable: React.FC<PropsTableProps> = ({ props: componentProps }:
                                 {prop.name}
                             </Text>
                         </TableCell>
-                        <TableCell>
+                        <TableCell style={{ whiteSpace: 'normal' }}>
                             <Text fontSize="inherit" fontFamily="monospace" as="p">
                                 {prop.type}
                             </Text>
                             {prop.description && (
-                                <Text weak fontSize="inherit">
+                                <Text secondary fontSize="inherit">
                                     {prop.description}
                                 </Text>
                             )}
