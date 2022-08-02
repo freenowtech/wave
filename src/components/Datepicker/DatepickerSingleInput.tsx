@@ -23,11 +23,11 @@ interface DatepickerSingleInputProps extends MarginProps, WidthProps {
      */
     label?: string;
     /**
-     * Function that used when datepicker closes without selected date.
+     * Function that is used when datepicker closes without selected date.
      */
     onClose?: () => void;
     /**
-     * Function that used when datepicker selects new date.
+     * Function that is used when datepicker selects new date.
      */
     onChange?: (date?: Date) => void;
     /**
