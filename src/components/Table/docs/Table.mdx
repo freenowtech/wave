@@ -8,10 +8,44 @@ import { LiveTable } from './LiveTable'
 import { ActiveRowTable } from './ActiveRowTable'
 import { ComplexDataTable } from './ComplexDataTable'
 import { SkeletonTable } from './SkeletonTable'
+import {
+    TablePropsTable,
+    TableRowPropsTable,
+    TableHeaderCellPropsTable,
+    TableCellPropsTable,
+    TableRowSkeletonPropsTable,
+} from './TablePropsTable'
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 
 # Table
 
 Tables are used to render tabular data in a basic grid, making it easier for people to scan it. Tables are comprised of cells, columns, and rows.
+
+## Properties
+
+### Table
+<TablePropsTable />
+<br />
+<StyledSystemLinks component="Table" supportedProps={ ['margin', 'width', 'height'] }/>
+<br />
+
+### TableRow
+<TableRowPropsTable />
+<br />
+
+### TableHeaderCell
+<StyledSystemLinks component="TableHeaderCell" supportedProps={ ['textAlign', 'layout'] }/>
+<br />
+
+### TableCell
+<StyledSystemLinks component="TableCell" supportedProps={ ['textAlign', 'layout'] }/>
+<br />
+
+### TableRowSkeleton
+<TableRowSkeletonPropsTable />
+<br />
+
+## Examples
 
 <LiveTable />
 
@@ -41,7 +75,7 @@ Tables are used to render tabular data in a basic grid, making it easier for peo
 </Table>
 ```
 
-> Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component. 
+> Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component.
 > To better understand some of the props in the above table, an in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
 
 ## Active Row
@@ -66,7 +100,9 @@ the row as active and change the background color.
 When dealing with complex data, it is possible to use up to two lines of text in one row. Keep in mind, that the smallest row size
 will not work when you have multiple lines in one cells.
 
-<ComplexDataTable />
+<div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+    <ComplexDataTable />
+</div>
 
 
 ## Loading State
@@ -91,6 +127,6 @@ will not work when you have multiple lines in one cells.
 </Table>
 ```
 
-> By default cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`. 
+> By default cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`.
 > If you really want to fix a width make sure to override `whiteSpace` property too. On top of that make sure to check your table a11y.
 > An in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
