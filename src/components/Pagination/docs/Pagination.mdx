@@ -4,9 +4,10 @@ menu: Components
 route: /components/pagination
 ---
 
-import { Text } from '../../Text/Text.tsx';
-import { Pagination } from '../Pagination.tsx';
-import { NormalPagination, SmallPagination, PaginationWithPageSize } from './PaginationProvider.tsx';
+import { Text } from '../../Text/Text';
+import { Pagination } from '../Pagination';
+import { PaginationPropsTable } from './PaginationPropsTable'
+import { NormalPagination, SmallPagination, PaginationWithPageSize } from './PaginationProvider';
 
 # Pagination
 
@@ -129,6 +130,10 @@ ARIA labels.
     ariaLabelSelectPageSizeContainer="Select page size container" /* Only if you are using the `pageSizes` prop */
 />
 ```
+
+### Properties
+
+<PaginationPropsTable />
 
 ## Testing
 
