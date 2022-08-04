@@ -5,9 +5,10 @@ route: /components/toggle
 ---
 
 import { Playground } from 'docz';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { Toggle } from '../Toggle';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { TogglePropsTable } from './TogglePropsTable'
+import { TogglePropsTable } from './TogglePropsTable';
 
 # Toggle
 
@@ -23,6 +24,7 @@ actions that occur immediately after the user “flips” the toggle switch. The
 
 ## Properties
 <TogglePropsTable />
+<StyledSystemLinks component="Toggle" supportedProps={['margin']} />
 
 ## Behaviour
 

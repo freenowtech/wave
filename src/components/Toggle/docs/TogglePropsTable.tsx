@@ -13,6 +13,11 @@ export const TogglePropsTable: FC = () => {
             name: 'error',
             type: 'boolean',
             description: 'Add styles to show the toggle has errors'
+        },
+        {
+            name: 'className',
+            type: 'string',
+            description: 'Classes to set to the label of the toggle.'
         }
     ];
     return <PropsTable props={props} />;
