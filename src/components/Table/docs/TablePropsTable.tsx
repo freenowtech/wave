@@ -45,46 +45,6 @@ export const TableRowPropsTable: FC = () => {
     return <PropsTable props={props} />;
 };
 
-export const TableHeaderCellPropsTable: FC = () => {
-    const props = [
-        {
-            name: 'textAlign',
-            type: 'center | end | justify | left | match-parent | right | start | <string>',
-            description:
-                'The text-align CSS property specifies the horizontal alignment of an inline or table-cell box. More info: https://developer.mozilla.org/en-US/docs/Web/CSS/text-align',
-            defaultValue: 'start'
-        },
-        {
-            name: 'LayoutProps',
-            type: '(any valid CSS value)',
-            description:
-                'A convenience style group containing props related to layout such as width, height, and display. More info: https://styled-system.com/api#layout',
-            defaultValue: ''
-        }
-    ];
-    return <PropsTable props={props} />;
-};
-
-export const TableCellPropsTable: FC = () => {
-    const props = [
-        {
-            name: 'textAlign',
-            type: 'center | end | justify | left | match-parent | right | start | <string>',
-            description:
-                'The text-align CSS property specifies the horizontal alignment of an inline or table-cell box. More info: https://developer.mozilla.org/en-US/docs/Web/CSS/text-align',
-            defaultValue: 'start'
-        },
-        {
-            name: 'LayoutProps',
-            type: '(any valid CSS value)',
-            description:
-                'A convenience style group containing props related to layout such as width, height, and display. More info: https://styled-system.com/api#layout',
-            defaultValue: ''
-        }
-    ];
-    return <PropsTable props={props} />;
-};
-
 export const TableRowSkeletonPropsTable: FC = () => {
     const props = [
         {
