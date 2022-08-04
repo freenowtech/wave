@@ -5,9 +5,10 @@ route: /components/link
 ---
 
 import { Playground } from 'docz';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { Link } from '../Link.tsx';
-import { LinkPropsTable } from './LinkPropsTable.tsx';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Link } from '../Link';
+import { LinkPropsTable } from './LinkPropsTable';
 
 # Link
 
@@ -20,7 +21,7 @@ The Link component styles anchor tags with default blue styling and hover text d
 
 <LinkPropsTable />
 <br/>
-
+<StyledSystemLinks component="Link" supportedProps={['margin', 'fontSize', 'textAlign']} />
 
 <ItemWrapper mt={4}>
     <Link href="#">Link large (default)</Link>
