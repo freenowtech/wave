@@ -5,9 +5,10 @@ route: /components/tag
 ---
 
 import { Playground } from 'docz';
-import { Tag } from '../Tag.tsx';
-import { DismissibleTag } from './DismissibleTag.tsx';
-import { DismissableTagPropsTable } from './DismissableTagPropsTable.tsx';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Tag } from '../Tag';
+import { DismissibleTag } from './DismissibleTag';
+import { DismissableTagPropsTable } from './DismissableTagPropsTable';
 
 # Tag
 
@@ -18,6 +19,9 @@ should be avoided as well.
 
 <DismissableTagPropsTable />
 <br/>
+<StyledSystemLinks component="Tag" supportedProps={['margin']} />
+
+## Example
 
 <DismissibleTag />
 
