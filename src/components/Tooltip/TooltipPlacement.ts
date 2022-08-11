@@ -1,4 +1,4 @@
-import { Placement } from '@popperjs/core/lib/enums';
+import { Placement } from '@popperjs/core';
 
 export type TooltipPlacement =
     | 'bottom-left'
@@ -10,7 +10,7 @@ export type TooltipPlacement =
     | 'center-left'
     | 'center-right';
 
-const tooltipPlacementMap = {
+export const TOOLTIP_TO_POPPER_PLACEMENT_MAP: { [key in TooltipPlacement]: Placement } = {
     'bottom-left': 'bottom-start',
     'bottom-center': 'bottom',
     'bottom-right': 'bottom-end',
@@ -20,6 +20,3 @@ const tooltipPlacementMap = {
     'center-left': 'left',
     'center-right': 'right'
 };
-
-export const mapTooltipPlacementToPopperPlacement = (tooltipPlacement: TooltipPlacement | Placement): Placement =>
-    tooltipPlacementMap[tooltipPlacement];

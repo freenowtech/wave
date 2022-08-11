@@ -7,7 +7,7 @@ import { variant } from 'styled-system';
 import { Colors, MediaQueries } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { mapTooltipPlacementToPopperPlacement, TooltipPlacement } from './TooltipPlacement';
+import { TooltipPlacement, TOOLTIP_TO_POPPER_PLACEMENT_MAP } from './TooltipPlacement';
 
 const fadeAnimation = keyframes`
     from {
@@ -120,10 +120,17 @@ const Tooltip: React.FC<TooltipProps> = ({
     inverted = false
 }: PropsWithChildren<TooltipProps>) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
+    /**
+     * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
+     */
     const [triggerReference, setTriggerReference] = React.useState(undefined);
     const [contentReference, setContentReference] = React.useState(undefined);
 
-    const mappedPlacement = mapTooltipPlacementToPopperPlacement(placement) ?? (placement as Placement);
+    /**
+     * Map the older placement values to Popper placaement  as we need to get the correct placement for the tooltip from the Popper library
+     * without introduce any breaking changes to the Tooltip componnent
+     */
+    const mappedPlacement = TOOLTIP_TO_POPPER_PLACEMENT_MAP[placement as TooltipPlacement] ?? (placement as Placement);
 
     const { styles, attributes } = usePopper(triggerReference, contentReference, {
         placement: mappedPlacement,
