@@ -38,14 +38,21 @@ const TooltipPlacementExample: FC = () => {
     const [placement, setPlacement] = React.useState<TooltipPlacement>('top-center');
 
     const availablePlacements: TooltipPlacement[] = [
-        'top-left',
-        'top-center',
-        'top-right',
-        'bottom-left',
-        'bottom-center',
-        'bottom-right',
-        'center-left',
-        'center-right'
+        'top-start',
+        'top-end',
+        'bottom-start',
+        'bottom-end',
+        'right-start',
+        'right-end',
+        'left-start',
+        'left-end',
+        'top',
+        'bottom',
+        'right',
+        'left',
+        'auto',
+        'auto-start',
+        'auto-end'
     ];
 
     return (
