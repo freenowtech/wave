@@ -6,6 +6,7 @@ import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
 import { Colors, MediaQueries } from '../../essentials';
 import { get } from '../../utils/themeGet';
+import { deprecatedProperty } from '../../utils/deprecatedProperty';
 import { Text } from '../Text/Text';
 import { TooltipPlacement, TOOLTIP_TO_POPPER_PLACEMENT_MAP } from './TooltipPlacement';
 
@@ -22,7 +23,7 @@ const fadeAnimation = keyframes`
 const arrowPlacementStyles = variant({
     variants: {
         bottom: {
-            right: '50%'
+            right: 'calc(50% - 0.25rem)'
         },
         'bottom-end': {
             right: '0.3rem'
@@ -34,7 +35,7 @@ const arrowPlacementStyles = variant({
         top: {
             bottom: '-0.5rem',
             transform: 'rotate(-180deg)',
-            right: '50%'
+            right: 'calc(50% - 0.25rem)'
         },
         'top-end': {
             bottom: '-0.5rem',
@@ -47,7 +48,31 @@ const arrowPlacementStyles = variant({
             right: '-0.5rem',
             transform: 'rotate(90deg)'
         },
+        'left-end': {
+            top: 'calc(50% - 0.25rem)',
+            left: 'auto',
+            right: '-0.5rem',
+            transform: 'rotate(90deg)'
+        },
+        'left-start': {
+            top: 'calc(50% - 0.25rem)',
+            left: 'auto',
+            right: '-0.5rem',
+            transform: 'rotate(90deg)'
+        },
         right: {
+            top: 'calc(50% - 0.25rem)',
+            left: '-0.25rem',
+            right: 'auto',
+            transform: 'rotate(-90deg)'
+        },
+        'right-end': {
+            top: 'calc(50% - 0.25rem)',
+            left: '-0.25rem',
+            right: 'auto',
+            transform: 'rotate(-90deg)'
+        },
+        'right-start': {
             top: 'calc(50% - 0.25rem)',
             left: '-0.25rem',
             right: 'auto',
@@ -99,7 +124,7 @@ interface TooltipProps {
      */
     content: React.ReactNode;
     /**
-     * Set the position of where the tooltip is attached to the target, defaults to "top-center"
+     * Set the position of where the tooltip is attached to the target, defaults to "top"
      */
     placement?: TooltipPlacement | Placement;
     /**
@@ -112,10 +137,18 @@ interface TooltipProps {
     alwaysVisible?: boolean;
 }
 
+// TODO: Find the right place
+const mapWithDeprecationWarning = (placement: TooltipPlacement | Placement): Placement => {
+    const mappedPlacement = TOOLTIP_TO_POPPER_PLACEMENT_MAP[placement as TooltipPlacement];
+    if (mappedPlacement)
+        deprecatedProperty('Tooltip', placement, `Value '${placement}' for placement`, mappedPlacement);
+    return mappedPlacement ?? (placement as Placement);
+};
+
 const Tooltip: React.FC<TooltipProps> = ({
     content,
     children,
-    placement = 'top-center',
+    placement = 'top',
     alwaysVisible = false,
     inverted = false
 }: PropsWithChildren<TooltipProps>) => {
@@ -126,11 +159,14 @@ const Tooltip: React.FC<TooltipProps> = ({
     const [triggerReference, setTriggerReference] = React.useState(undefined);
     const [contentReference, setContentReference] = React.useState(undefined);
 
+    if (!content) return children;
+
     /**
-     * Map the older placement values to Popper placaement  as we need to get the correct placement for the tooltip from the Popper library
-     * without introduce any breaking changes to the Tooltip componnent
+     * Map the older placement values to Popper placement  as we need to get the correct placement for the tooltip from the Popper library
+     * without introduce any breaking changes to the Tooltip component.
+     * TODO: Remove in the next major release.
      */
-    const mappedPlacement = TOOLTIP_TO_POPPER_PLACEMENT_MAP[placement as TooltipPlacement] ?? (placement as Placement);
+    const mappedPlacement = mapWithDeprecationWarning(placement);
 
     const { styles, attributes } = usePopper(triggerReference, contentReference, {
         placement: mappedPlacement,
