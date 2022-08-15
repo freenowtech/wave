@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import * as React from 'react';
 import styled from 'styled-components';
+import { Placement } from '@popperjs/core/lib/enums';
 import { RadioButton, Tooltip } from '../..';
 import { Colors, MediaQueries } from '../../../essentials';
-import { TooltipPlacement } from '../TooltipPlacement';
 
 const TargetSquare = styled.div`
     background: ${Colors.BUMPY_MAGENTA_50};
@@ -35,9 +35,9 @@ const ExampleContainer = styled.div`
 `;
 
 const TooltipPlacementExample: FC = () => {
-    const [placement, setPlacement] = React.useState<TooltipPlacement>('top-center');
+    const [placement, setPlacement] = React.useState<Placement>('top');
 
-    const availablePlacements: TooltipPlacement[] = [
+    const availablePlacements: Placement[] = [
         'top-start',
         'top-end',
         'bottom-start',
