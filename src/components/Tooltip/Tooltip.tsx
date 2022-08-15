@@ -159,7 +159,6 @@ const Tooltip: React.FC<TooltipProps> = ({
     const [triggerReference, setTriggerReference] = React.useState(undefined);
     const [contentReference, setContentReference] = React.useState(undefined);
 
-    if (!content) return children;
 
     /**
      * Map the older placement values to Popper placement  as we need to get the correct placement for the tooltip from the Popper library
@@ -204,7 +203,7 @@ const Tooltip: React.FC<TooltipProps> = ({
                 onMouseOut: () => handleVisibilityChange(false),
                 ref: setTriggerReference
             })}
-            {isVisible && (
+            {content && isVisible && (
                 <TooltipBody
                     ref={setContentReference}
                     inverted={inverted}
