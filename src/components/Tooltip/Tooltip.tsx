@@ -48,13 +48,13 @@ const arrowPlacementStyles = variant({
             transform: 'rotate(90deg)'
         },
         'left-end': {
-            top: 'calc(50% - 0.25rem)',
+            bottom: '0.5rem',
             left: 'auto',
             right: '-0.5rem',
             transform: 'rotate(90deg)'
         },
         'left-start': {
-            top: 'calc(50% - 0.25rem)',
+            top: '0.5rem',
             left: 'auto',
             right: '-0.5rem',
             transform: 'rotate(90deg)'
@@ -65,14 +65,16 @@ const arrowPlacementStyles = variant({
             right: 'auto',
             transform: 'rotate(-90deg)'
         },
+        // TODO: Fix arrow placement
         'right-end': {
-            top: 'calc(50% - 0.25rem)',
+            bottom: '0.5rem',
             left: '-0.25rem',
             right: 'auto',
             transform: 'rotate(-90deg)'
         },
+        // TODO: Fix arrow placement
         'right-start': {
-            top: 'calc(50% - 0.25rem)',
+            top: '0.5rem',
             left: '-0.25rem',
             right: 'auto',
             transform: 'rotate(-90deg)'
