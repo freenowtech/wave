@@ -6,9 +6,8 @@ import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
 import { Colors, MediaQueries } from '../../essentials';
 import { get } from '../../utils/themeGet';
-import { deprecatedProperty } from '../../utils/deprecatedProperty';
 import { Text } from '../Text/Text';
-import { TooltipPlacement, TOOLTIP_TO_POPPER_PLACEMENT_MAP } from './TooltipPlacement';
+import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
 
 const fadeAnimation = keyframes`
     from {
@@ -137,14 +136,6 @@ interface TooltipProps {
     alwaysVisible?: boolean;
 }
 
-// TODO: Find the right place
-const mapWithDeprecationWarning = (placement: TooltipPlacement | Placement): Placement => {
-    const mappedPlacement = TOOLTIP_TO_POPPER_PLACEMENT_MAP[placement as TooltipPlacement];
-    if (mappedPlacement)
-        deprecatedProperty('Tooltip', placement, `Value '${placement}' for placement`, mappedPlacement);
-    return mappedPlacement ?? (placement as Placement);
-};
-
 const Tooltip: React.FC<TooltipProps> = ({
     content,
     children,
@@ -165,7 +156,7 @@ const Tooltip: React.FC<TooltipProps> = ({
      * without introduce any breaking changes to the Tooltip component.
      * TODO: Remove in the next major release.
      */
-    const mappedPlacement = mapWithDeprecationWarning(placement);
+    const mappedPlacement = mapPlacementWithDeprecationWarning(placement);
 
     const { styles, attributes } = usePopper(triggerReference, contentReference, {
         placement: mappedPlacement,
