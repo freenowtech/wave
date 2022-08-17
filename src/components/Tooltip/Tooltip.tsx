@@ -65,14 +65,12 @@ const arrowPlacementStyles = variant({
             right: 'auto',
             transform: 'rotate(-90deg)'
         },
-        // TODO: Fix arrow placement
         'right-end': {
             bottom: '0.5rem',
             left: '-0.25rem',
             right: 'auto',
             transform: 'rotate(-90deg)'
         },
-        // TODO: Fix arrow placement
         'right-start': {
             top: '0.5rem',
             left: '-0.25rem',
