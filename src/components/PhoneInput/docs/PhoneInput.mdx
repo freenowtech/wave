@@ -5,15 +5,19 @@ route: /components/phone-input
 ---
 
 import { Playground } from 'docz';
-import { PhoneInput } from '../PhoneInput.tsx';
-import { PhoneInputPropsTable } from './PhoneInputPropsTable.tsx';
-import { ControlledPhoneInput } from './ControlledPhoneInput.tsx';
+import { PhoneInput } from '../PhoneInput';
+import { PhoneInputPropsTable } from './PhoneInputPropsTable';
+import { ControlledPhoneInput } from './ControlledPhoneInput';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 import {useState} from 'react';
 
 import { COUNTRIES } from '../constants';
 
 # PhoneInput
+
+The `PhoneInput` is a component to input a phone number in international format.
+
+The component consists of two controls: a select to pick a prefix and an input to type in the phone number. The select shows all the country codes available world-wide.
 
 ## Properties
 
@@ -40,3 +44,21 @@ return (
     />
 );
 ```
+
+## Playground
+
+<Playground>
+    <ControlledPhoneInput label="Mobile Phone Number" />
+</Playground>
+
+## Troubleshooting
+
+### The list of prefixes is not fully visible
+
+If the list of prefixes is not fully visible when opened, like in [this Sandbox example](https://codesandbox.io/s/inspiring-austin-2006xl?file=/src/index.js), use `listPortalTarget` prop to attach the popup to the document's body:
+
+```jsx
+<PhoneInput listPortalTarget={document.body} />
+```
+
+The reason of the issue is that the prefix selection popup is rendered inside the same container as the component by default. If the container does not allow content to overflow (e.g. via `overflow: hidden;`), everything that overflows the container borders will be hidden.

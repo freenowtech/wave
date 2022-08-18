@@ -36,7 +36,7 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
      */
     buttonText: string;
     /**
-     * Weather or not the component should render a error state
+     * Whether or not the component should render an error state
      */
     error?: boolean;
     /**

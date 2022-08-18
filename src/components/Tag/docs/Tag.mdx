@@ -5,13 +5,23 @@ route: /components/tag
 ---
 
 import { Playground } from 'docz';
-import { Tag } from '../Tag.tsx';
-import { DismissibleTag } from './DismissibleTag.tsx';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Tag } from '../Tag';
+import { DismissibleTag } from './DismissibleTag';
+import { DismissableTagPropsTable } from './DismissableTagPropsTable';
 
 # Tag
 
 The Tag component is used to categorize items. The text inside the Tag should be kept as short as possible. Multi-labels
 should be avoided as well.
+
+## Properties
+
+<DismissableTagPropsTable />
+<br/>
+<StyledSystemLinks component="Tag" supportedProps={['margin']} />
+
+## Example
 
 <DismissibleTag />
 

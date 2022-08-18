@@ -5,9 +5,10 @@ route: /components/helper-text
 ---
 
 import { Playground } from 'docz';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { Input } from '../../Input/Input.tsx';
-import { HelperText } from '../HelperText.tsx';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { Input } from '../../Input/Input';
+import { HelperText } from '../HelperText';
+import { HelperTextPropsTable } from './HelperTextPropsTable';
 
 # HelperText
 
@@ -18,6 +19,13 @@ for an users action or to provide further information in advance.
 -   Occurring error message will replace existing hint notifications
 -   They are placed underneath its regarding source and they are left align
 -   In case of multiple error notifications you should additionally show an error banner to provide global feedback
+
+## Properties
+
+<HelperTextPropsTable />
+
+`HelperText` also supports all the properties of the [`Text`](/components/text).
+
 
 ## Variants
 

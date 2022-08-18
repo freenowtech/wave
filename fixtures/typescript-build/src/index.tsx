@@ -21,6 +21,7 @@ import {
     Logo,
     Modal,
     Pagination,
+    PhoneInput,
     RadioButton,
     Select,
     TabBar,
@@ -439,6 +440,26 @@ const TestTooltip: React.FC = () => (
     </>
 );
 
+const TestPhoneInput = () => (
+    <>
+        <PhoneInput />
+        <PhoneInput id="hello" />
+        <PhoneInput variant="boxed" size="medium" />
+        <PhoneInput variant="bottom-lined" size="small" />
+        <PhoneInput text="my text" />
+        <PhoneInput
+            inputProps={{
+                onFocus: () => {}
+            }}
+        />
+        <PhoneInput
+            selectListProps={{
+                onFocus: () => {}
+            }}
+        />
+    </>
+);
+
 const App: React.FC = () => (
     <>
         <TestBanner />
@@ -467,6 +488,7 @@ const App: React.FC = () => (
         <TestTextarea />
         <TestToggle />
         <TestTooltip />
+        <TestPhoneInput />
     </>
 );
 

@@ -5,16 +5,16 @@ route: /components/Popover
 ---
 
 import { Playground } from 'docz';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
 import { SettingsIcon } from '../../../icons/index';
 
 import { Button } from '../../Button/Button';
 import { Text } from '../../Text/Text';
 import { Link } from '../../Link/Link';
 
-import { Popover } from '../Popover.tsx';
+import { Popover } from '../Popover';
 
-import { PopoverPropsTable } from './PopoverPropsTable.tsx';
+import { PopoverPropsTable } from './PopoverPropsTable';
 
 
 # Popover
@@ -109,6 +109,21 @@ The Popover supports:
 ```jsx
 <Popover content={<Link>Revert Action</Link>}>
     <Button size='small' variant="secondary">...</Button>
+</Popover>
+```
+<br/>
+
+### With No Padding
+
+<ItemWrapper>
+    <Popover content={'There is no padding...'} padding={0}>
+        <Button size='small' variant="secondary"><SettingsIcon size={20} style={{marginRight: 5}} /> Manage Booking</Button>
+    </Popover>
+</ItemWrapper>
+
+```jsx
+<Popover content={'There is no padding...'} padding={0}>
+    <Button size='small' variant="secondary"><SettingsIcon size={20} /> Manage Booking</Button>
 </Popover>
 ```
 <br/>

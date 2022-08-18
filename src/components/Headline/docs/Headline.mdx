@@ -5,8 +5,9 @@ route: /components/headline
 ---
 
 import { Playground } from 'docz';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper.ts';
-import { Headline } from '../Headline.tsx';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Headline } from '../Headline';
 import { HeadlinePropsTable } from './HeadlinePropsTable';
 
 
@@ -27,6 +28,8 @@ the semantics while following the design.
 ## Properties
 
 <HeadlinePropsTable />
+<br />
+<StyledSystemLinks component="Headline" supportedProps={ ['margin', 'textAlign']} />
 
 ## Default headlines
 
@@ -78,5 +81,5 @@ For example, the following snippet uses `s` size for mobile and `xl` size bigger
 <Playground>
     <Headline as="h3">default headline h3</Headline>
     <Headline as="h1" size="xs">The smallest h1</Headline>
-    <Headline as="h4" size={{_: 'xs', medium: 'm'}}>Responsive headline</Headline>
+    <Headline as="h4" size={{ _: 'xs', medium: 'm' }}>Responsive headline</Headline>
 </Playground>
