@@ -1,29 +1,32 @@
-import React, { FC } from 'react';
-
+import * as React from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const TooltipPropsTable: FC = () => {
+export const TooltipPropsTable = () => {
     const props = [
         {
             name: 'content',
-            type: 'React.ReactNode',
-            description: 'The content that will be shown inside of the tooltip body.'
+            type: 'React.ReactNode | string',
+            description: 'The content that will be shown inside of the tooltip body',
+            defaultValue: '-'
         },
         {
             name: 'placement',
-            type: 'TooltipPlacement (see the Placement section below for values)',
-            description: 'Set the position of where the tooltip is attached to the target.',
-            defaultValue: 'top-center'
+            type:
+                '"top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end" | "top" | "bottom" | "right" | "left" | "auto" | "auto-start" | "auto-end"',
+            description: 'Set the position of where the tooltip is attached to the target',
+            defaultValue: 'top'
         },
         {
             name: 'inverted',
             type: 'boolean',
-            description: 'Adjust the component for display on dark backgrounds.'
+            description: 'Adjust color for display on a dark background',
+            defaultValue: 'false'
         },
         {
             name: 'alwaysVisible',
             type: 'boolean',
-            description: 'Force the tooltip to always be visible, regardless of user interaction.'
+            description: 'Force the tooltip to always be visible, regardless of user interaction',
+            defaultValue: 'false'
         }
     ];
     return <PropsTable props={props} />;

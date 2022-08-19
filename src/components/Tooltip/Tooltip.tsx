@@ -1,12 +1,13 @@
 import { PropsWithChildren } from 'react';
 import * as React from 'react';
-import TetherComponent from 'react-tether';
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import { Colors, Elevation, MediaQueries } from '../../essentials';
+import styled, { keyframes } from 'styled-components';
+import { usePopper } from 'react-popper';
+import { Placement } from '@popperjs/core/lib/enums';
+import { variant } from 'styled-system';
+import { Colors, MediaQueries } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { TooltipPlacement } from './TooltipPlacement';
-import { getAttachmentFromPlacement } from './util/getAttachmentFromPlacement';
+import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
 
 const fadeAnimation = keyframes`
     from {
@@ -18,7 +19,73 @@ const fadeAnimation = keyframes`
     }
 `;
 
-const TooltipBody = styled.div<Pick<TooltipProps, 'inverted'>>`
+const arrowPlacementStyles = variant({
+    variants: {
+        bottom: {
+            right: 'calc(50% - 0.25rem)'
+        },
+        'bottom-end': {
+            right: '0.3rem'
+        },
+        'top-start': {
+            bottom: '-0.5rem',
+            transform: 'rotate(-180deg)'
+        },
+        top: {
+            bottom: '-0.5rem',
+            transform: 'rotate(-180deg)',
+            right: 'calc(50% - 0.25rem)'
+        },
+        'top-end': {
+            bottom: '-0.5rem',
+            transform: 'rotate(-180deg)',
+            right: '0.3rem'
+        },
+        left: {
+            top: 'calc(50% - 0.25rem)',
+            left: 'auto',
+            right: '-0.5rem',
+            transform: 'rotate(90deg)'
+        },
+        'left-end': {
+            bottom: '0.5rem',
+            left: 'auto',
+            right: '-0.5rem',
+            transform: 'rotate(90deg)'
+        },
+        'left-start': {
+            top: '0.5rem',
+            left: 'auto',
+            right: '-0.5rem',
+            transform: 'rotate(90deg)'
+        },
+        right: {
+            top: 'calc(50% - 0.25rem)',
+            left: '-0.25rem',
+            right: 'auto',
+            transform: 'rotate(-90deg)'
+        },
+        'right-end': {
+            bottom: '0.5rem',
+            left: '-0.25rem',
+            right: 'auto',
+            transform: 'rotate(-90deg)'
+        },
+        'right-start': {
+            top: '0.5rem',
+            left: '-0.25rem',
+            right: 'auto',
+            transform: 'rotate(-90deg)'
+        }
+    }
+});
+
+interface TooltipBodyProps {
+    inverted?: boolean;
+    variant: string;
+}
+
+const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     background-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_900)};
     padding: 0.25rem 0.5rem;
@@ -45,83 +112,8 @@ const TooltipBody = styled.div<Pick<TooltipProps, 'inverted'>>`
         border: 0.25rem solid rgba(0, 0, 0, 0);
         border-bottom-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_900)};
         margin-left: -0.25rem;
-    }
-`;
 
-const GlobalTetherStyles = createGlobalStyle`
-    body > .tether-element {
-        z-index: ${Elevation.TOOLTIP};
-    }
-
-    .tether-target-attached-bottom {
-        & > ${TooltipBody} {
-            margin-top: 0.5rem;
-
-            &::after {
-                top: -0.5rem;
-            }
-        }
-    }
-
-    .tether-target-attached-top {
-        & > ${TooltipBody} {
-            top: -0.5rem;
-
-            &::after {
-                bottom: -0.5rem;
-                transform: rotate(-180deg);
-            }
-        }
-    }
-    
-    .tether-target-attached-center {
-        & > ${TooltipBody} {
-            &::after {
-                left: 50%;
-            }
-        }
-    }
-    
-    .tether-target-attached-left {
-        & > ${TooltipBody} {
-            &::after {
-                left: 1rem;
-            }
-        }
-    }
-
-    .tether-target-attached-right {
-        & > ${TooltipBody} {
-            &::after {
-                right: 1rem;
-            }
-        }
-    }
-
-    .tether-target-attached-middle.tether-target-attached-right {
-        & > ${TooltipBody} {
-            margin-left: 0.5rem;
-
-            &::after {
-                top: calc(50% - 0.25rem);
-                left: -0.25rem;
-                right: auto;
-                transform: rotate(-90deg);
-            }
-        }
-    }
-
-    .tether-target-attached-middle.tether-target-attached-left {
-        & > ${TooltipBody} {
-           left: -0.5rem;
-
-            &::after {
-                top: calc(50% - 0.25rem);
-                left: auto;
-                right: -0.5rem;
-                transform: rotate(90deg);
-            }
-        }
+        ${arrowPlacementStyles}
     }
 `;
 
@@ -131,9 +123,9 @@ interface TooltipProps {
      */
     content: React.ReactNode;
     /**
-     * Set the position of where the tooltip is attached to the target, defaults to "top-center"
+     * Set the position of where the tooltip is attached to the target, defaults to "top"
      */
-    placement?: TooltipPlacement;
+    placement?: TooltipPlacement | Placement;
     /**
      * Adjust the component for display on dark backgrounds
      */
@@ -147,11 +139,37 @@ interface TooltipProps {
 const Tooltip: React.FC<TooltipProps> = ({
     content,
     children,
-    placement = 'top-center',
+    placement = 'top',
     alwaysVisible = false,
     inverted = false
 }: PropsWithChildren<TooltipProps>) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
+    /**
+     * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
+     */
+    const [triggerReference, setTriggerReference] = React.useState(undefined);
+    const [contentReference, setContentReference] = React.useState(undefined);
+
+
+    /**
+     * Map the older placement values to Popper placement  as we need to get the correct placement for the tooltip from the Popper library
+     * without introduce any breaking changes to the Tooltip component.
+     * TODO: Remove in the next major release.
+     */
+    const mappedPlacement = mapPlacementWithDeprecationWarning(placement);
+
+    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+        placement: mappedPlacement,
+        modifiers: [
+            {
+                name: 'offset',
+                enabled: true,
+                options: {
+                    offset: [0, 5]
+                }
+            }
+        ]
+    });
 
     let dynamicContent = content;
 
@@ -171,30 +189,22 @@ const Tooltip: React.FC<TooltipProps> = ({
 
     return (
         <>
-            <TetherComponent
-                {...getAttachmentFromPlacement(placement)}
-                constraints={[
-                    {
-                        to: 'window',
-                        attachment: 'together'
-                    }
-                ]}
-                renderTarget={ref =>
-                    React.cloneElement(children as React.ReactElement, {
-                        onMouseOver: () => handleVisibilityChange(true),
-                        onMouseOut: () => handleVisibilityChange(false),
-                        ref
-                    })
-                }
-                renderElement={(ref: React.RefObject<HTMLDivElement>) =>
-                    isVisible && (
-                        <TooltipBody ref={ref} inverted={inverted}>
-                            {dynamicContent}
-                        </TooltipBody>
-                    )
-                }
-            />
-            <GlobalTetherStyles />
+            {React.cloneElement(children as React.ReactElement, {
+                onMouseOver: () => handleVisibilityChange(true),
+                onMouseOut: () => handleVisibilityChange(false),
+                ref: setTriggerReference
+            })}
+            {content && isVisible && (
+                <TooltipBody
+                    ref={setContentReference}
+                    inverted={inverted}
+                    style={{ ...styles.popper }}
+                    variant={attributes.popper?.['data-popper-placement']}
+                    {...attributes.popper}
+                >
+                    {dynamicContent}
+                </TooltipBody>
+            )}
         </>
     );
 };
