@@ -73,6 +73,10 @@ interface PopoverProps {
      */
     content: React.ReactNode;
     /**
+     * Popover content padding
+     */
+    padding?: string | number;
+    /**
      * Optional: Specify the Popover content placement (it changes automatically if the Popover content cannot fit inside the viewport with the selected placement)
      */
     placement?: Placement;
@@ -97,6 +101,7 @@ interface PopoverProps {
 const Popover: React.FC<PopoverProps> = ({
     children,
     content = '',
+    padding = undefined,
     placement = 'bottom-start',
     offset = 5,
     isOpen = false,
@@ -228,12 +233,11 @@ const Popover: React.FC<PopoverProps> = ({
                 <PopoverContentContainer
                     id="popover-content"
                     ref={setContentReference}
-                    // zIndex temporary until we have Portal component
-                    style={{ ...styles.popper, zIndex: 9999 }}
+                    style={{ ...styles.popper, zIndex: 999 }}
                     {...attributes.popper}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
-                        <PopoverContent>{content}</PopoverContent>
+                        <PopoverContent padding={padding}>{content}</PopoverContent>
                     </PopoverContentWrapper>
                 </PopoverContentContainer>
             )}

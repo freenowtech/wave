@@ -5,11 +5,14 @@ route: /components/date-picker
 ---
 
 import { Playground } from 'docz';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { DatepickerRangeInput as DateRangePicker } from '../DatepickerRangeInput';
 import { DatepickerSingleInput as DatePicker } from '../DatepickerSingleInput';
 import { ControlledDatepickerSingleInput } from './ControlledDatepickerSingleInput';
 import { ControlledDatepickerRangeInput } from './ControlledDatepickerRangeInput';
 import { DatepickerOnModal } from './DatepickerOnModal';
+import { DatepickerSingleInputPropsTable } from './DatepickerSingleInputPropsTable';
+import { DatepickerRangeInputPropsTable } from './DatepickerRangeInputPropsTable';
 
 # Datepicker
 
@@ -19,7 +22,9 @@ import { DatepickerOnModal } from './DatepickerOnModal';
 
 ### Single datepicker props
 
-<Props of={DatePicker} />
+<DatepickerSingleInputPropsTable />
+<br />
+<StyledSystemLinks component="DatePicker" supportedProps={['margin', 'width']} />
 
 ## Range
 
@@ -27,7 +32,9 @@ import { DatepickerOnModal } from './DatepickerOnModal';
 
 ### Range datepicker props
 
-<Props of={DateRangePicker} />
+<DatepickerRangeInputPropsTable />
+<br />
+<StyledSystemLinks component="DateRangePicker" supportedProps={['margin', 'width']} />
 
 ## Datepicker on Modal
 

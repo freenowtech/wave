@@ -4,20 +4,28 @@ import styled from 'styled-components';
 import { Spaces } from '../../essentials';
 import { Card } from '../Card/Card';
 
+const DEFAULT_PADDING = Spaces[2];
+
 interface PopoverContentProps {
     /**
      * Popover content (can be any valid React Element or component)
      */
     children: React.ReactNode;
+    /**
+     * Popover content padding
+     */
+    padding: string | number;
 }
 
-const PopoverContentContainer = styled(Card)`
+const PopoverContentContainer = styled(Card)<{ padding: string | number }>`
     display: block;
-    padding: ${Spaces[2]};
+    padding: ${props => props.padding};
 `;
 
-export const PopoverContent = ({ children }: PopoverContentProps): React.ReactElement => (
+export const PopoverContent = ({ padding = DEFAULT_PADDING, children }: PopoverContentProps): React.ReactElement => (
     <>
-        <PopoverContentContainer level={200}>{children}</PopoverContentContainer>
+        <PopoverContentContainer padding={padding} level={200}>
+            {children}
+        </PopoverContentContainer>
     </>
 );
