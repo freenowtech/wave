@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Accordion } from '../Accordion';
 
-export const OnExpandExample = () => {
+export const OnExpandExample = (): ReactElement => {
     const [label, setLabel] = useState('Close');
 
     return (

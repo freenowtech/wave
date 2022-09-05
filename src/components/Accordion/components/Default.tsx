@@ -1,4 +1,4 @@
-import React, { useState, PropsWithChildren } from 'react';
+import React, { useState, PropsWithChildren, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../../essentials';
@@ -63,7 +63,7 @@ export const DefaultPanel = ({
     children,
     onExpand,
     onCollapse
-}: PropsWithChildren<AccordionProps>) => {
+}: PropsWithChildren<AccordionProps>): ReactElement => {
     const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (
