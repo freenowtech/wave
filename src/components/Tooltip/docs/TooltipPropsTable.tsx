@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const TooltipPropsTable = () => {
+export const TooltipPropsTable = (): ReactElement => {
     const props = [
         {
             name: 'content',
