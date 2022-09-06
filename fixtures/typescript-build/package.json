@@ -8,7 +8,7 @@
     },
     "license": "UNLICENSED",
     "dependencies": {
-        "@freenow/wave": "file:../../freenow-wave-1.25.1.tgz",
+        "@freenow/wave": "file:../../freenow-wave-1.27.0.tgz",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "styled-components": "^5.0.1"

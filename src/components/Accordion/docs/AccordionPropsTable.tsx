@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const AccordionPropsTable = () => {
+export const AccordionPropsTable = (): ReactElement => {
     const props = [
         {
             name: 'heading',

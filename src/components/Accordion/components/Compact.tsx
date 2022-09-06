@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../../essentials';
@@ -33,8 +33,15 @@ const PanelHeader = styled(Header)`
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);
 
-export const Compact = ({ heading, description, defaultExpanded = false, children, onExpand, onCollapse }: Props) => {
-    const [isOpen, setIsOpen] = React.useState<boolean>(defaultExpanded);
+export const Compact = ({
+    heading,
+    description,
+    defaultExpanded = false,
+    children,
+    onExpand,
+    onCollapse
+}: Props): ReactElement => {
+    const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (
         <>

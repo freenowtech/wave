@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const TextPropsTable = () => {
+export const TextPropsTable = (): ReactElement => {
     const props = [
         {
             name: 'fontWeight',

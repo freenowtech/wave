@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import {
+    Accordion,
     Banner,
     Button,
     TextButton,
@@ -35,6 +36,20 @@ import {
 const voidFunction: () => void = () => {
     /* void */
 };
+
+const TestAccordion: React.FC = () => (
+    <>
+        <Accordion>Hello</Accordion>
+        <Accordion defaultExpanded>opened</Accordion>
+        <Accordion variant="compact">Compact</Accordion>
+        <Accordion onCollapse={voidFunction} onExpand={voidFunction}>
+            with callbacks
+        </Accordion>
+        <Accordion heading="some header" description="Description" buttonLabel="Button" info="Secondary info">
+            <div>This is just a placeholder</div>
+        </Accordion>
+    </>
+);
 
 const TestBanner: React.FC = () => (
     <>
@@ -466,6 +481,7 @@ const TestPhoneInput = () => (
 
 const App: React.FC = () => (
     <>
+        <TestAccordion />
         <TestBanner />
         <TestButton />
         <TestTextButton />

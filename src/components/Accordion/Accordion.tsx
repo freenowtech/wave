@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../essentials';
@@ -34,7 +34,7 @@ const Accordion = ({
     children,
     onExpand = () => undefined,
     onCollapse = () => undefined
-}: AccordionProps) => (
+}: AccordionProps): ReactElement => (
     <RenderedSection role="group">
         <HorizontalDividerTop />
         {variant === 'compact' ? (
