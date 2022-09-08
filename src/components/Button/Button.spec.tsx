@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Button } from './Button';
-import { Colors } from '../../essentials';
+import { SemanticColors } from '../../essentials';
 
 describe('standard button', () => {
     it('renders by default the primary variant', () => {
@@ -15,8 +15,8 @@ describe('standard button', () => {
         it('renders as design system suggests', () => {
             const { container } = render(<Button variant="primary">Click</Button>);
             expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.AUTHENTIC_BLUE_900};
-              color: ${Colors.WHITE};
+              background: ${SemanticColors.button.primary.background};
+              color: ${SemanticColors.button.primary.text};
             `);
             expect(container.firstChild).toMatchSnapshot();
         });
@@ -26,9 +26,9 @@ describe('standard button', () => {
         it('renders as design system suggests', () => {
             const { container } = render(<Button variant="secondary">Click</Button>);
             expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.WHITE};
-              color: ${Colors.AUTHENTIC_BLUE_900};
-              border-color: ${Colors.AUTHENTIC_BLUE_200};
+              background: ${SemanticColors.button.secondary.background};
+              color: ${SemanticColors.button.secondary.text};
+              border-color: ${SemanticColors.button.secondary.border};
             `);
             expect(container.firstChild).toMatchSnapshot();
         });
@@ -38,8 +38,8 @@ describe('standard button', () => {
         it('renders as design system suggests', () => {
             const { container } = render(<Button variant="danger">Click</Button>);
             expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.NEGATIVE_ORANGE_900};
-              color: ${Colors.WHITE};
+              background: ${SemanticColors.button.danger.background};
+              color: ${SemanticColors.button.danger.text};
             `);
             expect(container.firstChild).toMatchSnapshot();
         });
@@ -66,8 +66,8 @@ describe('inverted button', () => {
                 </Button>
             );
             expect(container.firstChild).toHaveStyle(`
-              background: ${Colors.WHITE};
-              color: ${Colors.ACTION_BLUE_900};
+              background: ${SemanticColors.button.primary.backgroundInverted};
+              color: ${SemanticColors.button.primary.textInverted};
             `);
             expect(container.firstChild).toMatchSnapshot();
         });
@@ -83,8 +83,8 @@ describe('inverted button', () => {
 
             expect(container.firstChild).toHaveStyle(`
               background: transparent;
-              color: ${Colors.WHITE};
-              border-color: ${Colors.WHITE};
+              color: ${SemanticColors.button.secondary.textInverted};
+              border-color: ${SemanticColors.button.secondary.borderInverted};
             `);
             expect(container.firstChild).toMatchSnapshot();
         });
