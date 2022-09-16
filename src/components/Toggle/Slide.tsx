@@ -18,15 +18,13 @@ interface SlideProps {
     error?: boolean;
 }
 
+// TODO use SemanticColors.forms once https://github.com/freenowtech/wave/issues/286 is done
 const Slide = styled.div<SlideProps>`
     width: 2.25rem;
     height: 1rem;
 
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-    background: ${props =>
-        props.disabled
-            ? SemanticColors.background.secondary
-            : SemanticColors.border.primary}; // TODO should this come from background
+    background: ${props => (props.disabled ? SemanticColors.background.secondary : SemanticColors.border.primary)};
     display: inline-block;
     border-radius: 0.5rem;
     position: relative;
