@@ -1,7 +1,7 @@
 import React, { useState, ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { Colors } from '../../../essentials';
+import { SemanticColors } from '../../../essentials';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
 import { Header } from './Header';
@@ -19,15 +19,15 @@ const StyleHeadline = styled(Headline)``;
 
 const PanelHeader = styled(Header)`
     &:hover ${StyleHeadline} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 
     &:hover ${ChevronDown} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 
     &:hover ${ChevronUp} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 `;
 

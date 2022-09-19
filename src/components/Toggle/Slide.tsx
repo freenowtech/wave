@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import { Colors } from '../../essentials';
+import { SemanticColors } from '../../essentials';
 
 const determineBackground = (props: SlideProps) => {
     if (props.disabled) {
-        return Colors.AUTHENTIC_BLUE_50;
+        return SemanticColors.background.secondary;
     }
 
     if (props.error) {
-        return Colors.NEGATIVE_ORANGE_900;
+        return SemanticColors.background.dangerEmphasized;
     }
 
-    return Colors.ACTION_BLUE_900;
+    return SemanticColors.background.infoEmphasized;
 };
 
 interface SlideProps {
@@ -18,12 +18,13 @@ interface SlideProps {
     error?: boolean;
 }
 
+// TODO use SemanticColors.forms once https://github.com/freenowtech/wave/issues/286 is done
 const Slide = styled.div<SlideProps>`
     width: 2.25rem;
     height: 1rem;
 
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-    background: ${props => (props.disabled ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_200)};
+    background: ${props => (props.disabled ? SemanticColors.background.secondary : SemanticColors.border.primary)};
     display: inline-block;
     border-radius: 0.5rem;
     position: relative;
@@ -36,7 +37,8 @@ const Slide = styled.div<SlideProps>`
         left: 0;
         width: 1.25rem;
         height: 1.25rem;
-        background: ${props => (props.disabled ? Colors.AUTHENTIC_BLUE_50 : Colors.WHITE)};
+        background: ${props =>
+            props.disabled ? SemanticColors.background.secondary : SemanticColors.background.primary};
         border-radius: 50%;
         box-shadow: 0 0 0.0625rem 0 rgba(0, 0, 0, 0.05), 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.4);
         transform: translateX(0);

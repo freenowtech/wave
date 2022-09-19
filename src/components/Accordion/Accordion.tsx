@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { Colors } from '../../essentials';
+import { SemanticColors } from '../../essentials';
 import { Box } from '../Box/Box';
 import { Compact } from './components/Compact';
 import { DefaultPanel } from './components/Default';
@@ -9,7 +9,7 @@ import { AccordionProps } from './types';
 
 const HorizontalDivider = styled(Box)`
     border: 0;
-    border-top: solid 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
+    border-top: solid 0.0625rem ${SemanticColors.border.primary};
 `;
 
 const HorizontalDividerTop = HorizontalDivider;
