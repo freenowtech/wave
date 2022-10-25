@@ -70,7 +70,8 @@ const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
         cursor: not-allowed;
     }
 
-    svg path {
+    svg,
+    svg * {
         fill: inherit;
     }
 
