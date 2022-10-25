@@ -71,7 +71,9 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/539801?v=4",
       "profile": "http://arturmiglio.com",
       "contributions": [
-        "doc"
+        "doc",
+        "code",
+        "bug"
       ]
     },
     {
@@ -120,5 +122,6 @@
   "projectOwner": "freenowtech",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
