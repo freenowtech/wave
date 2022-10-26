@@ -10,7 +10,7 @@ const VipIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path d="M3 4h18v18h2V4a2 2 0 00-2-2H3a2 2 0 00-2 2v16a2 2 0 002 2h16v-2H3V4z" fill="currentColor" />
             <path
                 fillRule="evenodd"

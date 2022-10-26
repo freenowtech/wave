@@ -10,7 +10,7 @@ const DuesseldorfIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPro
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path
                 d="M13 2v2.5h3v2h-3V8h5v2h-5v1.5h5.034l-1.753 6H13V22h-2v-4.5H7.77l-1.754-6H11V10H6V8h5V6.5H8v-2h3V2h2zm2.366 11.5H8.683l.585 2h5.513l.585-2z"
                 fill="currentColor"
