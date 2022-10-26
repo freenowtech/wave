@@ -9,7 +9,7 @@ const CytricIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path
                 d="M19 5.636c0 2.009-1.672 3.637-3.733 3.637-2.062 0-3.734-1.628-3.734-3.637C11.533 3.628 13.205 2 15.267 2 17.328 2 19 3.628 19 5.636zM19 18.364C19 20.372 17.328 22 15.267 22c-2.062 0-3.734-1.628-3.734-3.636 0-2.009 1.672-3.637 3.734-3.637 2.061 0 3.733 1.628 3.733 3.637zM8.733 15.636c2.062 0 3.734-1.628 3.734-3.636s-1.672-3.636-3.734-3.636C6.671 8.364 5 9.992 5 12s1.671 3.636 3.733 3.636z"
                 fill="#001E3E"

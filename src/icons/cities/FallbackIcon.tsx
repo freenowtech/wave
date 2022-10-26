@@ -10,7 +10,7 @@ const FallbackIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path
                 d="M8 2v2h3v6.3l-2 1.4V6H5v16H3V4h3V2h2zm13 5v15h-2V9h-4v2.7l-2-1.4V7h8zm-9 5l5 3.5V22H7v-6.5l5-3.5zm0 2.441L9 16.54V20h2v-2h2v2h2v-3.459l-3-2.1z"
                 fill="currentColor"

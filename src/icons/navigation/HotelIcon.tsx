@@ -10,7 +10,7 @@ const HotelIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =>
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path
                 d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm14-3H11v8H3V5H1v15h2v-3h18v3h2V9a2 2 0 00-2-2zm0 8h-8V9h8v6z"
                 fill="currentColor"

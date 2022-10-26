@@ -10,7 +10,7 @@ const ProfileSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPr
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path
                 d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 00-6.37 12.84A4.004 4.004 0 019 15h6c1.414 0 2.657.734 3.368 1.841A8 8 0 0012 4zm0 3a3.5 3.5 0 110 7 3.5 3.5 0 010-7z"
                 fill="currentColor"

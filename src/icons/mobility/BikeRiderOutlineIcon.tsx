@@ -10,7 +10,7 @@ const BikeRiderOutlineIcon: React.FC<Props> = ({ size = 'medium', ...props }: Ic
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
             <path
                 d="M16.79 4l1.666 7h.044a4.5 4.5 0 11-1.99.463l-.229-.965-4.8 6.002-1.593.001A4.502 4.502 0 011 15.5a4.5 4.5 0 016.944-3.78L7.26 9.5H5v-2h3.739l2.049 6.663 4.905-6.131L15.21 6H13V4h3.79zM5.5 13a2.5 2.5 0 102.292 3.5H5.5v-2h2.292A2.5 2.5 0 005.5 13zm13.442.039l.53 2.23-1.945.463-.531-2.23a2.5 2.5 0 101.946-.464z"
                 fill="currentColor"
