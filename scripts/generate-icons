@@ -151,6 +151,9 @@ for (let file of getSvgSources(argv.input, { recursive: argv.recursive })) {
         colorProp
     };
 
+    const svgProps = {width: '{sizePx}', height: '{sizePx}'}
+    colorProp && (svgProps.className = 'svg-inherit')
+
     const code = svgr.sync(
         jsx,
         {
@@ -160,7 +163,7 @@ for (let file of getSvgSources(argv.input, { recursive: argv.recursive })) {
                 parser: 'typescript'
             },
             template,
-            svgProps: { width: '{sizePx}', height: '{sizePx}' },
+            svgProps,
             replaceAttrValues: colorProp
                 ? {
                       [Colors.AUTHENTIC_BLUE_900]: 'currentColor'
