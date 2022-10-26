@@ -115,6 +115,18 @@
         "design",
         "blog"
       ]
+    },
+    {
+      "login": "martimalek",
+      "name": "martimalek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46452321?v=4",
+      "profile": "https://github.com/martimalek",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
