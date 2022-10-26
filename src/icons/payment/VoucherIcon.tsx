@@ -10,7 +10,7 @@ const VoucherIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <g fill="none" fillRule="evenodd">
                 <path
                     d="M20 5a2 2 0 012 2v3a2 2 0 100 4v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3a2 2 0 100-4V7a2 2 0 012-2h16zm0 2H4l.001 1.536A3.998 3.998 0 016 12c0 1.48-.804 2.772-1.999 3.464L4 17h16v-1.535A3.998 3.998 0 0118 12c0-1.48.804-2.773 2-3.465V7zm-6 6a1 1 0 110 2 1 1 0 010-2zm.5-4L11 15H9.5L13 9h1.5zM10 9a1 1 0 110 2 1 1 0 010-2z"

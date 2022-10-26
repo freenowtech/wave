@@ -10,7 +10,7 @@ const CrosshairsIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M13 11h-2v2h2v-2zm4.988 1.382a5.98 5.98 0 01-1.745 3.86A5.98 5.98 0 0112 18v2H12v-2a5.98 5.98 0 01-4.243-1.757A5.98 5.98 0 016 12H4V12h2a6.104 6.104 0 01.012-.381 5.978 5.978 0 011.745-3.862A5.978 5.978 0 0112 6V4l.001 2a5.98 5.98 0 014.241 1.757A5.98 5.98 0 0118 12h2l-2 .001c0 .128-.004.255-.012.38z"
                 stroke="#000"

@@ -19,7 +19,14 @@ const SB: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     <stop stopColor="#0660D4" offset="0%" />
                     <stop stopColor="#0051BB" offset="100%" />
                 </linearGradient>
-                <filter x="-5.4%" y="-7.5%" width="118.3%" height="119.7%" filterUnits="objectBoundingBox" id="SB__d">
+                <filter
+                    x="-5.4%"
+                    y="-7.5%"
+                    width="118.3%"
+                    height="119.7%"
+                    filterUnits="objectBoundingBox"
+                    id="SB__d"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />

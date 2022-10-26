@@ -10,7 +10,7 @@ const CalculatorIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M16 2a4 4 0 014 4v2h-2V6a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-8h2v8a4 4 0 01-4 4H8a4 4 0 01-4-4V6a4 4 0 014-4h8zM9 16a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3-3a1 1 0 011 1v3a1 1 0 01-2 0v-3a1 1 0 011-1zm-6 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm-3-3a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm1-4v2H8V6h8z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const AlertIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =>
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M11.71 2l10.71 19.04H1L11.71 2zm0 4.08L4.42 19.04H19L11.71 6.08zm0 9.56a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zm1-5.8v4.8h-2v-4.8h2z"
                 fill="currentColor"

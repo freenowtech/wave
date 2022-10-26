@@ -10,7 +10,7 @@ const WheelchairSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: Ico
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M16 17a6 6 0 11-4.51-5.814l.82-1.847A8 8 0 0010 9a7.965 7.965 0 00-4.8 1.6L3.867 9.1A9.957 9.957 0 0110 7c1.79 0 3.47.47 4.925 1.295l-1.612 3.702A6.017 6.017 0 0115.66 15h2.959l2.276 4.553-1.788.894L17.382 17H16zm.5-9a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"
                 fill="currentColor"

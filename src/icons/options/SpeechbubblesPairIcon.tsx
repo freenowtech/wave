@@ -10,7 +10,7 @@ const SpeechbubblesPairIcon: React.FC<Props> = ({ size = 'medium', ...props }: I
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M23 10v13l-3-3h-6a4 4 0 01-4-4v-6h13zm-2 2h-9v4a2 2 0 002 2h7v-6zm-6-9v5h-2V5H4v6h4v2H5l-3 3V3h13z"
                 fill="currentColor"

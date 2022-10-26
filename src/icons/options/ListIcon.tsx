@@ -10,7 +10,7 @@ const ListIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M4.5 15.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM20 16v2H8v-2h12zM4.5 10.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM18 11v2H8v-2h10zM4.5 5.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM21 6v2H8V6h13z"
                 fill="currentColor"

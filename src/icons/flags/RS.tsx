@@ -74,7 +74,13 @@ const RS: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#RS__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#e1444d" d="M0 0h28v6.7H0z" />
+            <path
+                mask="url(#RS__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#e1444d"
+                d="M0 0h28v6.7H0z"
+            />
             <defs>
                 <filter
                     id="RS__Adobe_OpacityMaskFilter_2_"

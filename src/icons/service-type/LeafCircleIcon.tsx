@@ -10,7 +10,7 @@ const LeafCircleIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 28">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 28" className="svg-inherit">
             <path
                 d="M14 2c6.627 0 12 5.373 12 12s-5.373 12-12 12S2 20.627 2 14 7.373 2 14 2zm0 2C8.477 4 4 8.477 4 14s4.477 10 10 10c.685 0 1.354-.069 2.001-.2L16 16a4 4 0 00-4-4v1.6a2.4 2.4 0 012.4 2.4v5.2h-.2a5.4 5.4 0 01-5.4-5.4v-4.6a.8.8 0 00-.8-.8V8h6.4a5.6 5.6 0 015.6 5.6V16c0 1.64-.987 3.05-2.4 3.667v3.665A10.004 10.004 0 0024 14c0-5.523-4.477-10-10-10z"
                 fill="#069D4F"

@@ -10,7 +10,7 @@ const ArrowUpLeftIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPro
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M17.9 8H9.414l8.95 8.95-1.414 1.414L8 9.414v8.484l-2-2V6h9.9z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const LightningIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 17 22">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 17 22" className="svg-inherit">
             <path
                 d="M12 0l-1 8h6L5 22l.448-3.586 2.363-2.781-.002.016L12.652 10H8.734l.457-3.65L4.348 12h3.918l-.376 3H5.875L6 14H0L12 0z"
                 fillRule="nonzero"

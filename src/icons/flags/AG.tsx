@@ -17,12 +17,26 @@ const AG: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     d="M14 11l-2.296 2.543.175-3.422-3.422.175L11 8 8 5.333 11.879 6l-.546-4L14 5.333 16.667 2l-.546 4L20 5.333 17 8l2.543 2.296-3.422-.175.175 3.422z"
                 />
                 <path id="AG__h" d="M0 8h28v5.333H0z" />
-                <filter x="-31.5%" y="-34.2%" width="163%" height="162.4%" filterUnits="objectBoundingBox" id="AG__e">
+                <filter
+                    x="-31.5%"
+                    y="-34.2%"
+                    width="163%"
+                    height="162.4%"
+                    filterUnits="objectBoundingBox"
+                    id="AG__e"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>
-                <filter x="-5.4%" y="-28.1%" width="110.7%" height="156.2%" filterUnits="objectBoundingBox" id="AG__g">
+                <filter
+                    x="-5.4%"
+                    y="-28.1%"
+                    width="110.7%"
+                    height="156.2%"
+                    filterUnits="objectBoundingBox"
+                    id="AG__g"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />

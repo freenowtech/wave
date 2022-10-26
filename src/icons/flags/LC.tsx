@@ -11,7 +11,14 @@ const LC: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
             <defs>
-                <filter x="-4.2%" y="-3.4%" width="108.3%" height="113.6%" filterUnits="objectBoundingBox" id="LC__c">
+                <filter
+                    x="-4.2%"
+                    y="-3.4%"
+                    width="108.3%"
+                    height="113.6%"
+                    filterUnits="objectBoundingBox"
+                    id="LC__c"
+                >
                     <feOffset dy={1} in="SourceAlpha" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>

@@ -10,7 +10,7 @@ const BoltCircleIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 28">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 28" className="svg-inherit">
             <path
                 d="M14 2c6.627 0 12 5.373 12 12s-5.373 12-12 12S2 20.627 2 14 7.373 2 14 2zm0 2C8.477 4 4 8.477 4 14s4.477 10 10 10 10-4.477 10-10S19.523 4 14 4zm2.47 2l-.705 5.818H20L11.53 22l.705-5.818H8L16.47 6z"
                 fill="currentColor"

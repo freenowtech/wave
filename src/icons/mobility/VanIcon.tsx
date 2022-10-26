@@ -10,7 +10,7 @@ const VanIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M16.33 3a3 3 0 012.952 2.463l.552 3.037H21.5v2H20V19h-2v2h-3v-2H9v2H6v-2H4v-8.5H2.5v-2h1.665l.553-3.037A3 3 0 017.669 3h8.662zM18 10.5H6V17h12v-6.5zM8.5 12a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm7 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm.83-7H7.67a1 1 0 00-.985.821L6.198 8.5h11.604l-.487-2.679A1 1 0 0016.33 5z"
                 fill="currentColor"

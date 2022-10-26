@@ -10,7 +10,7 @@ const InfoCircleSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: Ico
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm1 8.4h-2v6h2v-6zm-1-3.6a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"
                 fill="currentColor"

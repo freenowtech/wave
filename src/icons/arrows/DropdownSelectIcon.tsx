@@ -10,7 +10,7 @@ const DropdownSelectIcon: React.FC<Props> = ({ size = 'medium', ...props }: Icon
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none" className="svg-inherit">
             <path d="M12 16l-2.598-3-2.598-3h10.392l-2.598 3L12 16z" fill="currentColor" />
         </svg>
     );

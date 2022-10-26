@@ -10,7 +10,7 @@ const HouseIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =>
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M6 19v-8.54l6-5.143 6 5.143V21h2V9.54l-8-6.857L4 9.54V21h12v-2z"
                 fill="currentColor"

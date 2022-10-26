@@ -10,7 +10,7 @@ const ShieldIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 2l9 4.495v.618a16.71 16.71 0 01-6.882 13.515L12 22.168l-2.118-1.54A16.71 16.71 0 013 7.113v-.618L12 2zm0 2.236l-6.987 3.49.02.382a14.711 14.711 0 006.025 10.902l.942.685.942-.685a14.711 14.711 0 006.045-11.285L12 4.235zm3.944 3.767l1.407 1.421-5.95 5.887-3.468-3.105 1.334-1.49 2.065 1.85 4.612-4.563z"
                 fill="currentColor"

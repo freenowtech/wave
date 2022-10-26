@@ -10,7 +10,7 @@ const TwoPeopleOutlineIcon: React.FC<Props> = ({ size = 'medium', ...props }: Ic
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M10 11c1.48 0 2.773.804 3.465 2H18a4 4 0 014 4v5h-6v-2h4v-3a2 2 0 00-2-2h-4v7h-2v-7a2 2 0 00-2-2H6a2 2 0 00-2 2v5h6v2H2v-7a4 4 0 014-4zm7-7a4 4 0 110 8 4 4 0 010-8zM8 2a4 4 0 110 8 4 4 0 010-8zm9 4a2 2 0 100 4 2 2 0 000-4zM8 4a2 2 0 100 4 2 2 0 000-4z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const ChevronDownIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPro
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path d="M12 13.726l7-6.175v2.676l-7 6.222-7-6.222V7.55z" fill="currentColor" fillRule="nonzero" />
         </svg>
     );

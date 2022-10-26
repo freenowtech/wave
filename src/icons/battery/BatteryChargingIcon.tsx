@@ -10,7 +10,7 @@ const BatteryChargingIcon: React.FC<Props> = ({ size = 'medium', ...props }: Ico
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <g fillRule="nonzero" fill="none">
                 <path d="M18 13v8H6v-7h2v5h8v-4l2-2zM14 2v2h4v6h-2V6H8v3l-2 2V4h4V2h4z" fill="currentColor" />
                 <path fill="#FC0" d="M8 12l5-5v5h3l-5 5v-5z" />

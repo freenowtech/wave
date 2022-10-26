@@ -10,7 +10,7 @@ const LabelPlusIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <g fillRule="nonzero" fill="none">
                 <path
                     d="M5 7v4.757a2 2 0 00.467 1.285l.119.13 6 6a2 2 0 002.701.116l.127-.116.171-.172h2.828l-1.585 1.586a4 4 0 01-5.497.15l-.16-.15-6-6a4 4 0 01-1.165-2.602L3 11.757V7h2zm3.5 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3.257-4a4 4 0 012.664 1.016l.165.156L17.414 7h-2.828l-1.414-1.414a2 2 0 00-1.239-.578L11.757 5H3V3h8.757z"

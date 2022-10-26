@@ -10,7 +10,7 @@ const MenuIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path d="M21 16v2H3v-2h18zm0-5v2H3v-2h18zm0-5v2H3V6h18z" fill="currentColor" fillRule="nonzero" />
         </svg>
     );

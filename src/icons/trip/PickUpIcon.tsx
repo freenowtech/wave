@@ -10,7 +10,7 @@ const PickUpIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <circle cx={12} cy={12} r={6} fill="currentColor" fillRule="nonzero" />
         </svg>
     );

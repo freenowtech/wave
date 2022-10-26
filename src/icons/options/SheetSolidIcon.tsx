@@ -10,7 +10,7 @@ const SheetSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M20 2v20H4V2h16zm-8 12H8v2h4v-2zm4-4H8v2h8v-2zm-2-4H8v2h6V6z"
                 fill="currentColor"

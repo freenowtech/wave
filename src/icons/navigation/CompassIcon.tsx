@@ -10,7 +10,7 @@ const CompassIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm4.95 3.05l-2.844 7.087L7.05 16.95l2.832-7.075L16.95 7.05z"
                 fill="currentColor"

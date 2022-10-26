@@ -25,7 +25,14 @@ const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                 fill="#fff"
             />
             <defs>
-                <filter id="CR__Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x={0} y={0} width={28} height={4}>
+                <filter
+                    id="CR__Adobe_OpacityMaskFilter"
+                    filterUnits="userSpaceOnUse"
+                    x={0}
+                    y={0}
+                    width={28}
+                    height={4}
+                >
                     <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
                 </filter>
             </defs>
@@ -67,7 +74,13 @@ const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#CR__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#06358f" d="M0 16h28v4H0z" />
+            <path
+                mask="url(#CR__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#06358f"
+                d="M0 16h28v4H0z"
+            />
             <defs>
                 <filter
                     id="CR__Adobe_OpacityMaskFilter_2_"

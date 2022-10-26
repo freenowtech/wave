@@ -10,7 +10,7 @@ const FreeNowArrowIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPr
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M1.356 4.765h3.279L10.4 9.28v5.229l9.526-9.745h2.72L8.4 19.5v-9.243z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const CogIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 1.5L21 7v10l-9 5.5L3 17V7l9-5.5zm0 2.29L5 8.177v7.646l7 4.387 7-4.387V8.177L12 3.79zM12 8a4 4 0 110 8 4 4 0 010-8zm0 2a2 2 0 100 4 2 2 0 000-4z"
                 fill="currentColor"

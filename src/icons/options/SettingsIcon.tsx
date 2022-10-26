@@ -10,7 +10,7 @@ const SettingsIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M8 12v8H6v-3H2v-2h4v-3h2zm14 3v2H10v-2h12zM16 4v8h-2V9H2V7h12V4h2zm6 3v2h-4V7h4z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const TravelExpensesIcon: React.FC<Props> = ({ size = 'medium', ...props }: Icon
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M22 8v14H11V8h11zm-2 2h-7v10h7V10zm-1.5 7v1.8h-4V17h4zM12.222 1c.933 0 1.698.718 1.772 1.632l.006.146V4h4v2H4v8h5v2H2V4h5V2.778c0-.933.718-1.698 1.632-1.772L8.778 1h3.444zM17.5 14v1.8h-3V14h3zm1-3v1.8h-4V11h4zM12 3H9v1h3V3z"
                 fill="currentColor"

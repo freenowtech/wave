@@ -10,7 +10,7 @@ const SheetOutlineIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPr
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M20 2v20H4V2h16zm-2 2H6v16h12V4zm-6 10v2H8v-2h4zm4-4v2H8v-2h8zm-2-4v2H8V6h6z"
                 fill="currentColor"

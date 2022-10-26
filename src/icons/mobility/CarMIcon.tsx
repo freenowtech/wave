@@ -10,7 +10,7 @@ const CarMIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none" className="svg-inherit">
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"

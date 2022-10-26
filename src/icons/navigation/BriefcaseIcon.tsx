@@ -10,7 +10,7 @@ const BriefcaseIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M14 2a2 2 0 012 2v2h6v2H4v11h16v-9h2v11H2V6h6V4a2 2 0 012-2h4zm0 2h-4v2h4V4z"
                 fill="currentColor"

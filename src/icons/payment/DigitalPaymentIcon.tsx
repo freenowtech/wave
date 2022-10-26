@@ -10,7 +10,7 @@ const DigitalPaymentIcon: React.FC<Props> = ({ size = 'medium', ...props }: Icon
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 5a1 1 0 00-1-1H5a1 1 0 00-1 1v14a1 1 0 001 1h6a1 1 0 001-1v-6H8v-2h11.435L15.88 7h2.676L23 12l-4.445 5h-2.676l3.556-4H14v6a3 3 0 01-3 3H5a3 3 0 01-3-3V5a3 3 0 013-3h6a3 3 0 013 3v4h-2V5zM8 17a1 1 0 110 2 1 1 0 010-2z"
                 fill="currentColor"

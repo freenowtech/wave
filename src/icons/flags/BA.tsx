@@ -11,7 +11,14 @@ const BA: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
             <defs>
-                <filter x="-17.3%" y="-7.5%" width="128%" height="125.9%" filterUnits="objectBoundingBox" id="BA__c">
+                <filter
+                    x="-17.3%"
+                    y="-7.5%"
+                    width="128%"
+                    height="125.9%"
+                    filterUnits="objectBoundingBox"
+                    id="BA__c"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />

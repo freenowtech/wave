@@ -10,7 +10,7 @@ const LockClosedIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M8 10H6V8a6 6 0 1112 0v2h-2V8a4 4 0 10-8 0v2zm12 0v12h-2V12H6v8h10v2H4V10h16zm-8 4a2 2 0 110 4 2 2 0 010-4z"
                 fill="currentColor"

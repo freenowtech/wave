@@ -10,7 +10,7 @@ const DownloadIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M19 19v2H5v-2h14zM13 3v10.436l5-4.445v2.676L12 17l-6-5.333V8.991l5 4.445V3h2z"
                 fill="currentColor"

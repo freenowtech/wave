@@ -11,17 +11,38 @@ const AO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
             <defs>
-                <filter x="-5.4%" y="-16.1%" width="110.7%" height="132.1%" filterUnits="objectBoundingBox" id="AO__d">
+                <filter
+                    x="-5.4%"
+                    y="-16.1%"
+                    width="110.7%"
+                    height="132.1%"
+                    filterUnits="objectBoundingBox"
+                    id="AO__d"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>
-                <filter x="-5.4%" y="-14.1%" width="110.7%" height="128.1%" filterUnits="objectBoundingBox" id="AO__f">
+                <filter
+                    x="-5.4%"
+                    y="-14.1%"
+                    width="110.7%"
+                    height="128.1%"
+                    filterUnits="objectBoundingBox"
+                    id="AO__f"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>
-                <filter x="-8.1%" y="-6.3%" width="116.3%" height="125.4%" filterUnits="objectBoundingBox" id="AO__h">
+                <filter
+                    x="-8.1%"
+                    y="-6.3%"
+                    width="116.3%"
+                    height="125.4%"
+                    filterUnits="objectBoundingBox"
+                    id="AO__h"
+                >
                     <feOffset dy={1} in="SourceAlpha" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>

@@ -10,7 +10,7 @@ const LabelCheckedIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPr
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <g fillRule="nonzero" fill="none">
                 <path
                     d="M4 6v4.757a2 2 0 00.467 1.285l.119.13 6 6a2 2 0 002.701.116l.127-.116 2.158-2.159h.001l5.052-5.037a4 4 0 01-.888 3.693l-.151.16-4.758 4.757a4 4 0 01-5.497.15l-.16-.15-6-6a4 4 0 01-1.165-2.602L2 10.757V6h2zm3.5 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3.257-4a4 4 0 012.664 1.016l.165.156 3.002 3.002-1.422 1.406-2.994-2.994a2 2 0 00-1.239-.578L10.757 4H2V2h8.757z"

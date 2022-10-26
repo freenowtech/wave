@@ -10,7 +10,7 @@ const StopWatchIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M15 1v2h-2v1.055A9.001 9.001 0 0112 22a9 9 0 01-1-17.945V3H9V1h6zm-3 5a7 7 0 100 14 7 7 0 000-14zm3.316 2.27l1.368 1.46-4 3.75-1.368-1.46 4-3.75z"
                 fill="currentColor"

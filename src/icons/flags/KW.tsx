@@ -74,7 +74,13 @@ const KW: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#KW__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#169a53" d="M0 0h28v6.7H0z" />
+            <path
+                mask="url(#KW__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#169a53"
+                d="M0 0h28v6.7H0z"
+            />
             <defs>
                 <filter
                     id="KW__Adobe_OpacityMaskFilter_2_"

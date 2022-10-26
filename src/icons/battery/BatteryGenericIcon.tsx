@@ -10,7 +10,7 @@ const BatteryGenericIcon: React.FC<Props> = ({ size = 'medium', ...props }: Icon
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path d="M14 2v2h4v17H6V4h4V2h4zm2 4H8v13h8V6zm-2 2v9h-4V8h4z" fill="currentColor" fillRule="nonzero" />
         </svg>
     );

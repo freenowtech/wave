@@ -10,7 +10,7 @@ const BankNoteIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M22 5v14H2V5h20zM12 9a3 3 0 110 6 3 3 0 010-6zm-8 8h14v-2h2V7H6v2H4v8z"
                 fill="currentColor"

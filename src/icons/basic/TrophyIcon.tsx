@@ -10,7 +10,7 @@ const TrophyIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 20 20">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 20 20" className="svg-inherit">
             <path
                 d="M12 2H6v9a2 2 0 002 2h4a2 2 0 002-2V0h2v2h4v6a4 4 0 01-4 4l-.125-.003A4.002 4.002 0 0112 15h-1v3h1a2 2 0 012 2H6a2 2 0 012-2h1v-3H8a4.002 4.002 0 01-3.875-3.003L4 12a4 4 0 01-4-4V2h4V0h8v2zM4 4H2v4a2 2 0 002 2V4zm14 0h-2v6l.15-.005A2 2 0 0018 8V4z"
                 fillRule="nonzero"

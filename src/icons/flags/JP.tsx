@@ -38,7 +38,15 @@ const JP: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                 <stop offset={0} stopColor="#d81441" />
                 <stop offset={1} stopColor="#bb0831" />
             </linearGradient>
-            <circle cx={14} cy={10} r={6} mask="url(#JP__b)" fillRule="evenodd" clipRule="evenodd" fill="url(#JP__c)" />
+            <circle
+                cx={14}
+                cy={10}
+                r={6}
+                mask="url(#JP__b)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="url(#JP__c)"
+            />
         </svg>
     );
 };

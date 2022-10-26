@@ -10,7 +10,7 @@ const TrashBinIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M7.074 7l.857 13h8.138l.725-11h2.013l-.743 11.142A2 2 0 0116.069 22H7.93a2 2 0 01-1.995-1.858L5.06 7H4V5h16v2H7.074zM14 2v2h-4V2h4z"
                 fill="currentColor"

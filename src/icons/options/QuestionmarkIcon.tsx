@@ -10,7 +10,7 @@ const QuestionmarkIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPr
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-13a5 5 0 011 9.9V16h-2v-4h1a3 3 0 10-3-3H7a5 5 0 015-5z"
                 fill="currentColor"

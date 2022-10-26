@@ -10,7 +10,7 @@ const FlashlightOffIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconP
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M13 12.465V19a1 1 0 01-2 0v-6.535l-3-2V9h6V7H6v4.535l3 2V19a3 3 0 006 0v-5.465l3-2V7h-2v3.465l-3 2z"
                 fill="currentColor"

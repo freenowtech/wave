@@ -10,7 +10,7 @@ const PlaneIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =>
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M22 19v2H2v-2h20zM11.321 3.596l3.742 2.895 3.996-1.792.222-.088a2.792 2.792 0 013.489 1.535 2.876 2.876 0 01-1.44 3.735L6.03 17 2 9.887l3.431-1.26 2.162 1.396L9.87 8.98 5.827 4.174 8.606 3.17a2.855 2.855 0 012.715.426zM9.288 5.042l-.093.033 3.889 4.622-5.655 2.594-2.246-1.45-.286.105 1.966 3.469 13.62-6.338a.89.89 0 00.445-1.154.788.788 0 00-1.031-.415l-5.111 2.29-4.693-3.63a.846.846 0 00-.805-.126z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const PlusIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path d="M19 13v-2h-6V5h-2v6H5v2h5.989L11 19h2v-6z" fill="currentColor" fillRule="nonzero" />
         </svg>
     );

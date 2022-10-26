@@ -10,7 +10,7 @@ const QrCodeIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M11 13v9H2v-9h9zm5 6v3h-3v-3h3zm6 0v3h-3v-3h3zM9 15H4v5h5v-5zm10 1v3h-3v-3h3zm3-3v3h-3v-3h3zm-6 0v3h-3v-3h3zM11 2v9H2V2h9zm11 0v9h-9V2h9zM9 4H4v5h5V4zm11 0h-5v5h5V4zM8 5v3H5V5h3z"
                 fill="currentColor"

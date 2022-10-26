@@ -10,7 +10,7 @@ const BoltSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path d="M15 1l-1 8h6L8 23l1-8H3z" fill="currentColor" fillRule="nonzero" />
         </svg>
     );

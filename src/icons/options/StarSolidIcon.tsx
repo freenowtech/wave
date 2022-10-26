@@ -10,7 +10,7 @@ const StarSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 3l3.09 5.925 6.91.95-5 4.613L18.18 21 12 17.925 5.82 21 7 14.488 2 9.875l6.91-.95z"
                 fill="currentColor"

@@ -11,12 +11,26 @@ const VU: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
     return (
         <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
             <defs>
-                <filter x="-5.4%" y="-18.8%" width="110.7%" height="137.5%" filterUnits="objectBoundingBox" id="VU__c">
+                <filter
+                    x="-5.4%"
+                    y="-18.8%"
+                    width="110.7%"
+                    height="137.5%"
+                    filterUnits="objectBoundingBox"
+                    id="VU__c"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>
-                <filter x="-5.4%" y="-18.8%" width="110.7%" height="137.5%" filterUnits="objectBoundingBox" id="VU__e">
+                <filter
+                    x="-5.4%"
+                    y="-18.8%"
+                    width="110.7%"
+                    height="137.5%"
+                    filterUnits="objectBoundingBox"
+                    id="VU__e"
+                >
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />

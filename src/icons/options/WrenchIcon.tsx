@@ -10,7 +10,7 @@ const WrenchIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M16.036 7.05l1.414 1.414 3.482-3.48a6.502 6.502 0 01-6.648 10.183l-7.087 7.086-4.95-4.95 7.087-7.085a6.502 6.502 0 0110.184-6.649L16.035 7.05zM12.5 5.636a4.5 4.5 0 00-1.1 4.572l.19.582-6.515 6.513 2.122 2.122 6.514-6.514.582.188a4.5 4.5 0 005.882-4.53l-2.725 2.724-4.243-4.243 2.726-2.725A4.489 4.489 0 0012.5 5.636z"
                 fill="currentColor"

@@ -10,7 +10,7 @@ const PinIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M15 19.375l-1.527-1.336.373-.31 3.474-3.052a2 2 0 00.68-1.502V6a2 2 0 00-2-2H8a2 2 0 00-2 2v7.175a2 2 0 00.68 1.502l6.83 6.002L12 22l-6.634-5.805A4 4 0 014 13.185V6a4 4 0 014-4h8a4 4 0 014 4v7.185a4 4 0 01-1.366 3.01L15 19.375z"
                 fill="currentColor"

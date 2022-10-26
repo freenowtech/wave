@@ -10,7 +10,7 @@ const CreditCardPlusIcon: React.FC<Props> = ({ size = 'medium', ...props }: Icon
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M14 5v2H4v6h18v4a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2h10zm6 10H4v2h16v-2zm0-10v1.999L22 7v2h-2v2h-2V9h-2V7h2V5h2z"
                 fill="currentColor"

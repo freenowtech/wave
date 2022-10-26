@@ -10,7 +10,7 @@ const GiftIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => 
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M14.75 3a3.75 3.75 0 013.317 5.501L19.5 8.5v13h-15v-13l1.433.001a3.75 3.75 0 016.068-4.3A3.735 3.735 0 0114.75 3zM11 10.5H6.5v9H11v-9zm6.5 0H13v9h4.5v-9zM9.25 5a1.75 1.75 0 000 3.5H11V6.75A1.75 1.75 0 009.25 5zm5.5 0A1.75 1.75 0 0013 6.75V8.5h1.75a1.75 1.75 0 000-3.5z"
                 fill="currentColor"

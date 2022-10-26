@@ -10,7 +10,7 @@ const FavoriteBannerSolidIcon: React.FC<Props> = ({ size = 'medium', ...props }:
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M20 2v20.508l-8-3.379-8 3.379V2h16zm-8 3.87l-1.508 3.055-3.37.49 2.439 2.378-.576 3.357L12 13.565l3.015 1.585-.576-3.357 2.44-2.378-3.371-.49L12 5.87z"
                 fill="currentColor"

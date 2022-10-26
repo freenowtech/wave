@@ -10,7 +10,7 @@ const DirectionArrowCircleOutlineIcon: React.FC<Props> = ({ size = 'medium', ...
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm4.674 3.326l-4.492 10.482-.999-4.992-4.992-.998 10.483-4.492z"
                 fill="currentColor"

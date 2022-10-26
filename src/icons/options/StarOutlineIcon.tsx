@@ -10,7 +10,7 @@ const StarOutlineIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconPro
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" className="svg-inherit">
             <path
                 d="M12 3l3.09 5.925 6.91.95-5 4.613L18.18 21 12 17.925 5.82 21 7 14.488 2 9.875l6.91-.95L12 3zm-1.794 7.766l-3.734.513 2.692 2.484-.665 3.67L12 15.691l3.501 1.742-.665-3.67 2.692-2.484-3.734-.513L12 7.326l-1.794 3.44z"
                 fill="currentColor"
