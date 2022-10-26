@@ -69,12 +69,12 @@ const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
     &:disabled {
         cursor: not-allowed;
     }
-
-    svg,
-    svg * {
+    
+    svg.svg-inherit, 
+    svg.svg-inherit *{
         fill: inherit;
     }
-
+    
     ${compose(margin, sizeVariant, width)}
 `;
 
