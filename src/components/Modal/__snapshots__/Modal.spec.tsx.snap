@@ -55,7 +55,7 @@ exports[`Modal renders the default props 1`] = `
 }
 
 .c0 {
-  background-color: #000F1F;
+  background-color: rgba(0,15,31,0.6);
   height: 100%;
   left: 0;
   opacity: 0.6;
@@ -184,7 +184,7 @@ exports[`Modal renders the fullscreen variation 1`] = `
 }
 
 .c0 {
-  background-color: #000F1F;
+  background-color: rgba(0,15,31,0.6);
   height: 100%;
   left: 0;
   opacity: 0.6;

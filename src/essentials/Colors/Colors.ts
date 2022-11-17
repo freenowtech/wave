@@ -216,5 +216,64 @@ export const SemanticColors = {
             textDisabledInverted: Colors.AUTHENTIC_BLUE_550,
             iconDisabledInverted: Colors.AUTHENTIC_BLUE_550
         }
+    },
+    forms: {
+        toggle: {
+            default: {
+                slideOff: Colors.WHITE,
+                slideOn: Colors.WHITE,
+                frameOff: Colors.AUTHENTIC_BLUE_200,
+                frameOn: Colors.ACTION_BLUE_900
+            },
+            error: {
+                slideOff: Colors.WHITE,
+                slideOn: Colors.WHITE,
+                frameOff: Colors.AUTHENTIC_BLUE_200,
+                frameOn: Colors.NEGATIVE_ORANGE_900
+            },
+            disabled: {
+                slideOff: Colors.AUTHENTIC_BLUE_50,
+                slideOn: Colors.AUTHENTIC_BLUE_50,
+                frameOff: Colors.AUTHENTIC_BLUE_50,
+                frameOn: Colors.AUTHENTIC_BLUE_50
+            }
+        },
+        datePicker: {
+            calendar: {
+                border: Colors.AUTHENTIC_BLUE_200,
+                borderHover: Colors.AUTHENTIC_BLUE_200,
+                borderRange: Colors.ACTION_BLUE_350,
+                borderSelected: Colors.ACTION_BLUE_1000,
+                borderRangeHover: Colors.ACTION_BLUE_350,
+                background: Colors.WHITE,
+                backgroundHover: Colors.AUTHENTIC_BLUE_50,
+                backgroundRange: Colors.ACTION_BLUE_50,
+                backgroundSelected: Colors.ACTION_BLUE_900,
+                backgroundRangeHover: Colors.ACTION_BLUE_350
+            }
+        }
+    },
+    table: {
+        skeleton: Colors.AUTHENTIC_BLUE_50,
+        zebraStyles: {
+            backgroundSecondary: 'rgba(241, 242, 244, 0.4)',
+            backgroundHover: Colors.ACTION_BLUE_100,
+            backgroundActive: Colors.ACTION_BLUE_150
+        },
+        linesStyles: {
+            backgroundHover: Colors.ACTION_BLUE_50,
+            backgroundActive: Colors.ACTION_BLUE_100,
+            border: Colors.AUTHENTIC_BLUE_200
+        },
+        blank: {
+            backgroundHover: Colors.ACTION_BLUE_50,
+            backgroundActive: Colors.ACTION_BLUE_100
+        },
+        header: {
+            border: Colors.AUTHENTIC_BLUE_550
+        }
+    },
+    dialog: {
+        dimming: 'rgba(0, 15, 31, 0.6)'
     }
 };
