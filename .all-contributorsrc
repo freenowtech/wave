@@ -71,7 +71,9 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/539801?v=4",
       "profile": "http://arturmiglio.com",
       "contributions": [
-        "doc"
+        "doc",
+        "code",
+        "bug"
       ]
     },
     {
@@ -113,6 +115,18 @@
         "design",
         "blog"
       ]
+    },
+    {
+      "login": "martimalek",
+      "name": "martimalek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46452321?v=4",
+      "profile": "https://github.com/martimalek",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -120,5 +134,6 @@
   "projectOwner": "freenowtech",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
