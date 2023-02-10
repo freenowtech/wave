@@ -18,7 +18,7 @@
         "generate": "npm run generate:icons",
         "generate:icons": "node ./scripts/generate-icons assets/icons -r -o src/icons --exclude-color-prop **/brands/** **/flags/** --exclude-suffix **/flags/**",
         "prettier": "pretty-quick --staged",
-        "start": "docz dev",
+        "start": "NODE_OPTIONS=--openssl-legacy-provider docz dev",
         "test": "jest",
         "test:fixture": "./scripts/run_fixtures.sh",
         "test:watch": "jest --watch",
