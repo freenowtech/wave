@@ -116,14 +116,6 @@ export interface SearchProps {
      */
     size?: 'small' | 'medium';
     /**
-     * This function will be called when the search component is focused
-     */
-    onFocus?: () => void;
-    /**
-     * This function is called when the search component is not focused
-     */
-    onBlur?: () => void;
-    /**
      * This function is called when the "Enter" key is pressed or the search icon is clicked
      */
     onEnter?: (value: string) => void;

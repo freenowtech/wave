@@ -50,7 +50,19 @@ const iconColors = {
 };
 
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
-    ({ ariaStrings, purpose, id, disabled, size, variant, inverted, ...rest }: PasswordProps, ref) => {
+    (
+        {
+            ariaStrings = {},
+            purpose = 'login',
+            id,
+            disabled,
+            size = 'medium',
+            variant = 'boxed',
+            inverted,
+            ...rest
+        }: PasswordProps,
+        ref
+    ) => {
         const [isHidden, setIsHidden] = useState<boolean>(true);
         const aria = {
             ...defaultAriaStrings,
@@ -103,12 +115,5 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
         );
     }
 );
-
-Password.defaultProps = {
-    purpose: 'login',
-    size: 'medium',
-    variant: 'boxed',
-    ariaStrings: {}
-};
 
 export { Password };
