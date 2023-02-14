@@ -38,7 +38,7 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
     /**
      * Keep the action button displayed instead of showing the success state.
      */
-    keepActionButton: boolean;
+    keepActionButton?: boolean;
     /**
      * Whether or not the component should render an error state
      */
