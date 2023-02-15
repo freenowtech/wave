@@ -38,7 +38,7 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
     /**
      * Keep the action button displayed instead of showing the success state.
      */
-    keepActionButton?: boolean;
+    alwaysShowActionButton?: boolean;
     /**
      * Whether or not the component should render an error state
      */
@@ -138,7 +138,7 @@ const FilePicker: FC<FilePickerProps> = ({
     onFileChange = () => undefined,
     onChange = () => undefined,
     disabled = false,
-    keepActionButton = false,
+    alwaysShowActionButton = false,
     ...nonInputProps
 }: FilePickerProps) => {
     const inputEl = useRef<HTMLInputElement>(null);
@@ -195,7 +195,7 @@ const FilePicker: FC<FilePickerProps> = ({
                     </Text>
                 </Box>
                 <Box display={{ _: 'none', medium: 'flex' }} alignItems="center" justifyContent="top">
-                    {!keepActionButton && validFileSelected ? (
+                    {!alwaysShowActionButton && validFileSelected ? (
                         <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} />
                     ) : (
                         <InputButton variant="secondary" type="button" tabIndex={-1} onClick={onClickHandler}>
@@ -206,7 +206,7 @@ const FilePicker: FC<FilePickerProps> = ({
                 <Box display={{ _: 'flex', medium: 'none' }} alignItems="top">
                     {validFileSelected ? <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} /> : <ShareIcon />}
                 </Box>
-            </Outliner>
+            </Outliner> 
         </Box>
     );
 };
