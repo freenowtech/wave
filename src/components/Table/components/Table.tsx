@@ -7,13 +7,18 @@ import { TableContext } from '../context/TableContext';
 import { getColumnSpace } from '../util/getColumnSpace';
 import { getRowSize } from '../util/getRowSize';
 
-interface TableProps extends MarginProps, HeightProps, WidthProps, ComponentPropsWithoutRef<'table'> {
+interface TableElementProps
+    extends Omit<ComponentPropsWithoutRef<'table'>, 'height' | 'width'>,
+        MarginProps,
+        HeightProps,
+        WidthProps {}
+interface TableProps extends TableElementProps {
     rowStyle: 'lines' | 'zebra' | 'blank';
     rowSize?: 'large' | 'normal' | 'small' | string;
     columnSpace?: 'normal' | 'small' | string;
 }
 
-const TableElement = styled.table.attrs({ theme })`
+const TableElement = styled.table.attrs({ theme })<TableElementProps>`
     font-size: ${get('fontSizes.1')};
     font-family: ${get('fonts.normal')};
     border-collapse: collapse;
@@ -41,6 +46,7 @@ const Table: FC<TableProps> = ({
     };
 
     return (
+        // @ts-expect-error table props (height, width) conflict with HeightProps and WidthProps from styled-system
         <TableElement {...props}>
             <TableContext.Provider value={context}>{children}</TableContext.Provider>
         </TableElement>
