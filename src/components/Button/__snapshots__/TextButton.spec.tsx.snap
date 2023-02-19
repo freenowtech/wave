@@ -27,10 +27,6 @@ exports[`inverted text button renders a white colored text as default 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: color 200ms,fill 200ms;
-  transition: color 200ms,fill 200ms;
-  color: #FFFFFF;
-  fill: #FFFFFF;
 }
 
 .c0:disabled {
@@ -41,18 +37,25 @@ exports[`inverted text button renders a white colored text as default 1`] = `
   fill: inherit;
 }
 
-.c0:hover {
+.c1 {
+  -webkit-transition: color 200ms,fill 200ms;
+  transition: color 200ms,fill 200ms;
+  color: #FFFFFF;
+  fill: #FFFFFF;
+}
+
+.c1:hover {
   color: #9CA7B4;
   fill: #9CA7B4;
 }
 
-.c0:disabled {
+.c1:disabled {
   color: #637689;
   fill: #637689;
 }
 
 <button
-  class="sc-AxjAm c0"
+  class="c0 c1"
 >
   Click
 </button>
@@ -85,10 +88,6 @@ exports[`standard text button danger renders as design system suggests 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: color 200ms,fill 200ms;
-  transition: color 200ms,fill 200ms;
-  color: #FF5E05;
-  fill: #FF5E05;
 }
 
 .c0:disabled {
@@ -99,18 +98,25 @@ exports[`standard text button danger renders as design system suggests 1`] = `
   fill: inherit;
 }
 
-.c0:hover {
+.c1 {
+  -webkit-transition: color 200ms,fill 200ms;
+  transition: color 200ms,fill 200ms;
+  color: #FF5E05;
+  fill: #FF5E05;
+}
+
+.c1:hover {
   color: #BF4704;
   fill: #BF4704;
 }
 
-.c0:disabled {
+.c1:disabled {
   color: #C6CDD4;
   fill: #C6CDD4;
 }
 
 <button
-  class="sc-AxjAm c0"
+  class="c0 c1"
 >
   Click
 </button>
@@ -143,10 +149,6 @@ exports[`standard text button renders a primary colored text as default 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
-  -webkit-transition: color 200ms,fill 200ms;
-  transition: color 200ms,fill 200ms;
-  color: #096BDB;
-  fill: #096BDB;
 }
 
 .c0:disabled {
@@ -157,18 +159,25 @@ exports[`standard text button renders a primary colored text as default 1`] = `
   fill: inherit;
 }
 
-.c0:hover {
+.c1 {
+  -webkit-transition: color 200ms,fill 200ms;
+  transition: color 200ms,fill 200ms;
+  color: #096BDB;
+  fill: #096BDB;
+}
+
+.c1:hover {
   color: #0750A4;
   fill: #0750A4;
 }
 
-.c0:disabled {
+.c1:disabled {
   color: #C6CDD4;
   fill: #C6CDD4;
 }
 
 <button
-  class="sc-AxjAm c0"
+  class="c0 c1"
 >
   Click
 </button>

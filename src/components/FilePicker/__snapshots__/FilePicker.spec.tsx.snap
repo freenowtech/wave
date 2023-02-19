@@ -5,7 +5,27 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   position: relative;
 }
 
-.c4 {
+.c3 {
+  min-height: 5.125rem;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,7 +40,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   padding-right: 1rem;
 }
 
-.c8 {
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -32,7 +52,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   justify-content: top;
 }
 
-.c11 {
+.c14 {
   -webkit-align-items: top;
   -webkit-box-align: top;
   -ms-flex-align: top;
@@ -43,25 +63,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   display: flex;
 }
 
-.c6 {
-  color: #001E3E;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  line-height: 1.4;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.c7 {
-  color: #637689;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  line-height: 1.4;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.c10 {
+.c11 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -87,12 +89,58 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
+}
+
+.c11:disabled {
+  cursor: not-allowed;
+}
+
+.c11 svg path {
+  fill: inherit;
+}
+
+.c12 {
   -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #001E3E;
   fill: #001E3E;
   background: #FFFFFF;
   border-color: #C6CDD4;
+}
+
+.c12:hover {
+  color: #001E3E;
+  fill: #001E3E;
+  background: #F1F2F4;
+  border-color: #C6CDD4;
+}
+
+.c12:disabled {
+  color: #C6CDD4;
+  fill: #C6CDD4;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
+}
+
+.c7 {
+  color: #001E3E;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c8 {
+  color: #637689;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c13 {
   font-size: 0.875rem;
   line-height: 1;
   font-weight: 400;
@@ -102,46 +150,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   white-space: nowrap;
 }
 
-.c10:disabled {
-  cursor: not-allowed;
-}
-
-.c10 svg path {
-  fill: inherit;
-}
-
-.c10:hover {
-  color: #001E3E;
-  fill: #001E3E;
-  background: #F1F2F4;
-  border-color: #C6CDD4;
-}
-
-.c10:disabled {
-  color: #C6CDD4;
-  fill: #C6CDD4;
-  background: #FFFFFF;
-  border-color: #C6CDD4;
-}
-
-.c3 {
-  min-height: 5.125rem;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.c4 {
   border: 0.0625rem solid #C6CDD4;
   box-sizing: border-box;
   cursor: pointer;
@@ -151,13 +160,13 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
   opacity: 0.5;
 }
 
-.c3 .c5 {
+.c4 .c6 {
   cursor: pointer;
 }
 
-.c3,
-.c3 .c9,
-.c3 .c5 {
+.c4,
+.c4 .c10,
+.c4 .c6 {
   cursor: not-allowed;
 }
 
@@ -177,7 +186,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
 }
 
 @media screen and (min-width:48rem) {
-  .c8 {
+  .c9 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -186,7 +195,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
 }
 
 @media screen and (min-width:48rem) {
-  .c11 {
+  .c14 {
     display: none;
   }
 }
@@ -204,33 +213,33 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
       type="file"
     />
     <div
-      class="c2 c3"
+      class="c2 c3 c4"
       data-testid="filepicker-outliner"
       disabled=""
       display="flex"
     >
       <div
-        class="c4"
+        class="c5"
         display="flex"
       >
         <label
-          class="c5 c6"
+          class="c6 c7"
           font-size="1"
           for="avatar"
         >
           A picture of you
         </label>
         <span
-          class="c5 c7"
+          class="c6 c8"
           font-size="1"
         />
       </div>
       <div
-        class="c8"
+        class="c9"
         display="[object Object]"
       >
         <button
-          class="sc-AxiKw sc-AxhCb c9 c10"
+          class="c10 c11 c12 c13"
           tabindex="-1"
           type="button"
         >
@@ -238,7 +247,7 @@ exports[`accepts an disabled prop that will change the component appareance 1`] 
         </button>
       </div>
       <div
-        class="c11"
+        class="c14"
         display="[object Object]"
       >
         <svg
@@ -264,7 +273,27 @@ exports[`renders a composition with an input type file 1`] = `
   position: relative;
 }
 
-.c4 {
+.c3 {
+  min-height: 5.125rem;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -279,7 +308,7 @@ exports[`renders a composition with an input type file 1`] = `
   padding-right: 1rem;
 }
 
-.c8 {
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -291,7 +320,7 @@ exports[`renders a composition with an input type file 1`] = `
   justify-content: top;
 }
 
-.c10 {
+.c13 {
   -webkit-align-items: top;
   -webkit-box-align: top;
   -ms-flex-align: top;
@@ -302,25 +331,7 @@ exports[`renders a composition with an input type file 1`] = `
   display: flex;
 }
 
-.c6 {
-  color: #001E3E;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  line-height: 1.4;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.c7 {
-  color: #637689;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  line-height: 1.4;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.c9 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -346,12 +357,58 @@ exports[`renders a composition with an input type file 1`] = `
   height: 3rem;
   min-width: 6.25rem;
   padding: 0 1rem;
+}
+
+.c10:disabled {
+  cursor: not-allowed;
+}
+
+.c10 svg path {
+  fill: inherit;
+}
+
+.c11 {
   -webkit-transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   transition: background ease 200ms,border-color ease 200ms,color ease 200ms,fill ease 200ms;
   color: #001E3E;
   fill: #001E3E;
   background: #FFFFFF;
   border-color: #C6CDD4;
+}
+
+.c11:hover {
+  color: #001E3E;
+  fill: #001E3E;
+  background: #F1F2F4;
+  border-color: #C6CDD4;
+}
+
+.c11:disabled {
+  color: #C6CDD4;
+  fill: #C6CDD4;
+  background: #FFFFFF;
+  border-color: #C6CDD4;
+}
+
+.c7 {
+  color: #001E3E;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c8 {
+  color: #637689;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c12 {
   font-size: 0.875rem;
   line-height: 1;
   font-weight: 400;
@@ -361,46 +418,7 @@ exports[`renders a composition with an input type file 1`] = `
   white-space: nowrap;
 }
 
-.c9:disabled {
-  cursor: not-allowed;
-}
-
-.c9 svg path {
-  fill: inherit;
-}
-
-.c9:hover {
-  color: #001E3E;
-  fill: #001E3E;
-  background: #F1F2F4;
-  border-color: #C6CDD4;
-}
-
-.c9:disabled {
-  color: #C6CDD4;
-  fill: #C6CDD4;
-  background: #FFFFFF;
-  border-color: #C6CDD4;
-}
-
-.c3 {
-  min-height: 5.125rem;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.c4 {
   border: 0.0625rem solid #C6CDD4;
   box-sizing: border-box;
   cursor: pointer;
@@ -409,7 +427,7 @@ exports[`renders a composition with an input type file 1`] = `
   transition: background-color ease 200ms,border-color ease 200ms;
 }
 
-.c3 .c5 {
+.c4 .c6 {
   cursor: pointer;
 }
 
@@ -429,7 +447,7 @@ exports[`renders a composition with an input type file 1`] = `
 }
 
 @media screen and (min-width:48rem) {
-  .c8 {
+  .c9 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -438,7 +456,7 @@ exports[`renders a composition with an input type file 1`] = `
 }
 
 @media screen and (min-width:48rem) {
-  .c10 {
+  .c13 {
     display: none;
   }
 }
@@ -455,32 +473,32 @@ exports[`renders a composition with an input type file 1`] = `
     type="file"
   />
   <div
-    class="c2 c3"
+    class="c2 c3 c4"
     data-testid="filepicker-outliner"
     display="flex"
   >
     <div
-      class="c4"
+      class="c5"
       display="flex"
     >
       <label
-        class="c5 c6"
+        class="c6 c7"
         font-size="1"
         for="avatar"
       >
         A picture of you
       </label>
       <span
-        class="c5 c7"
+        class="c6 c8"
         font-size="1"
       />
     </div>
     <div
-      class="c8"
+      class="c9"
       display="[object Object]"
     >
       <button
-        class="sc-AxiKw sc-AxhCb c9"
+        class="c10 c11 c12"
         tabindex="-1"
         type="button"
       >
@@ -488,7 +506,7 @@ exports[`renders a composition with an input type file 1`] = `
       </button>
     </div>
     <div
-      class="c10"
+      class="c13"
       display="[object Object]"
     >
       <svg
@@ -513,7 +531,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   position: relative;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -528,7 +546,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   padding-right: 1rem;
 }
 
-.c8 {
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -540,7 +558,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   justify-content: top;
 }
 
-.c9 {
+.c10 {
   -webkit-align-items: top;
   -webkit-box-align: top;
   -ms-flex-align: top;
@@ -549,28 +567,6 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c6 {
-  color: #001E3E;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  line-height: 1.4;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.c7 {
-  color: #637689;
-  font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
-  line-height: 1.4;
-  margin: 0;
-  font-size: 0.875rem;
-}
-
-.c10 .c5 {
-  cursor: pointer;
 }
 
 .c3 {
@@ -591,6 +587,31 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   padding-right: 1rem;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.c7 {
+  color: #001E3E;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c8 {
+  color: #637689;
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.c11 .c6 {
+  cursor: pointer;
+}
+
+.c4 {
   border: 0.0625rem solid #C6CDD4;
   box-sizing: border-box;
   cursor: pointer;
@@ -599,7 +620,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   transition: background-color ease 200ms,border-color ease 200ms;
 }
 
-.c3 .c5 {
+.c4 .c6 {
   cursor: pointer;
 }
 
@@ -619,7 +640,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
 }
 
 @media screen and (min-width:48rem) {
-  .c8 {
+  .c9 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -628,18 +649,18 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
 }
 
 @media screen and (min-width:48rem) {
-  .c9 {
+  .c10 {
     display: none;
   }
 }
 
 @media screen and (min-width:48rem) {
-  .c3:hover {
+  .c4:hover {
     background-color: #F1F7FD;
     border-color: #F1F7FD;
   }
 
-  .c3:hover svg:not([color='#069D4F']) path {
+  .c4:hover svg:not([color='#069D4F']) path {
     fill: #096BDB;
   }
 }
@@ -656,30 +677,30 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
     type="file"
   />
   <div
-    class="c2 c3"
+    class="c2 c3 c4"
     data-testid="filepicker-outliner"
     display="flex"
   >
     <div
-      class="c4"
+      class="c5"
       display="flex"
     >
       <label
-        class="c5 c6"
+        class="c6 c7"
         font-size="1"
         for="avatar"
       >
         A picture of you
       </label>
       <span
-        class="c5 c7"
+        class="c6 c8"
         font-size="1"
       >
         carnet.png
       </span>
     </div>
     <div
-      class="c8"
+      class="c9"
       display="[object Object]"
     >
       <svg
@@ -696,7 +717,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
       </svg>
     </div>
     <div
-      class="c9"
+      class="c10"
       display="[object Object]"
     >
       <svg
