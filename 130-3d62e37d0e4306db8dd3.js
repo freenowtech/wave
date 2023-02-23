@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[130],{i6BA:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=l(a("miyg")),i=l(a("2RlK")),u=l(a("B37C")),d=l(a("BwkM")),f=l(a("o9/i"));function l(e){return e&&e.__esModule?e:{default:e}}var n={code:"ja-Hira",formatDistance:o.default,formatLong:i.default,formatRelative:u.default,localize:d.default,match:f.default,options:{weekStartsOn:0,firstWeekContainsDate:1}};t.default=n,e.exports=t.default}}]);
+//# sourceMappingURL=130-3d62e37d0e4306db8dd3.js.map
