@@ -207,8 +207,8 @@ const TestHelperText: React.FC = () => (
         <HelperText variant="danger" />
         <HelperText inverted />
         <HelperText inverted={false} />
-        <HelperText weak />
-        <HelperText weak={false} />
+        <HelperText secondary />
+        <HelperText secondary={false} />
         <HelperText margin={1} />
         <HelperText fontSize={1} />
         <HelperText textAlign="center" />
@@ -392,8 +392,8 @@ const TestText: React.FC = () => (
         <Text fontWeight="bold" />
         <Text inverted />
         <Text inverted={false} />
-        <Text weak />
-        <Text weak={false} />
+        <Text secondary />
+        <Text secondary={false} />
         <Text margin={1} />
         <Text fontSize={1} />
         <Text fontSize="large" />
