@@ -204,7 +204,7 @@ const FilePicker: FC<FilePickerProps> = ({
                     )}
                 </Box>
                 <Box display={{ _: 'flex', medium: 'none' }} alignItems="top">
-                    {validFileSelected ? <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} /> : <ShareIcon />}
+                    {!alwaysShowActionButton && validFileSelected ? <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} /> : <ShareIcon />}
                 </Box>
             </Outliner> 
         </Box>
