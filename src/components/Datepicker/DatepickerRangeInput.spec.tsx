@@ -1,5 +1,5 @@
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
-import { format, startOfDay, endOfDay } from 'date-fns';
+import { endOfDay, format, startOfDay } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { advanceTo, clear } from 'jest-date-mock';
 import * as React from 'react';
@@ -76,12 +76,11 @@ describe('DatepickerRangeInput', () => {
 
             // initial date selection
             selectDate('01');
-
-            mockCloseHandler.mockReset();
+            expect(mockCloseHandler).toBeCalledTimes(1);
 
             selectDate('02');
 
-            expect(mockCloseHandler).toBeCalledTimes(1);
+            expect(mockCloseHandler).toBeCalledTimes(2);
         });
     });
 
