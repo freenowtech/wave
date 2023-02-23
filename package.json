@@ -14,7 +14,7 @@
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
         "build:cjs": "ttsc --target es5 --module commonjs --outDir lib/cjs",
         "build:esm": "ttsc --target es6 --module esnext --outDir lib/esm",
-        "build:documentation": "docz build",
+        "build:documentation": "NODE_OPTIONS=--openssl-legacy-provider docz build",
         "generate": "npm run generate:icons",
         "generate:icons": "node ./scripts/generate-icons assets/icons -r -o src/icons --exclude-color-prop **/brands/** **/flags/** --exclude-suffix **/flags/**",
         "prettier": "pretty-quick --staged",
