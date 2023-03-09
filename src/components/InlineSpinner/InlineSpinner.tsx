@@ -52,7 +52,7 @@ const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.span<InlineSpinne
 `;
 
 const InlineSpinner: FC<InlineSpinnerProps> = (props: InlineSpinnerProps) => (
-    <span>
+    <span role="progressbar">
         <InlineSpinnerIcon {...props} />
     </span>
 );
