@@ -37,7 +37,7 @@ const rotation = keyframes`
     }
 `;
 
-const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.div<InlineSpinnerProps>`
+const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.span<InlineSpinnerProps>`
     display: inline-block;
     box-sizing: border-box;
     width: 1.25rem;
