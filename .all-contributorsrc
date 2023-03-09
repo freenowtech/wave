@@ -127,6 +127,15 @@
         "bug",
         "review"
       ]
+    },
+    {
+      "login": "alatielle",
+      "name": "Elena Rashkovan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1089670?v=4",
+      "profile": "https://github.com/alatielle",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
