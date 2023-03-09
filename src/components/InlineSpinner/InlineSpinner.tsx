@@ -37,7 +37,7 @@ const rotation = keyframes`
     }
 `;
 
-const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.span<InlineSpinnerProps>`
+const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.div<InlineSpinnerProps>`
     display: inline-block;
     box-sizing: border-box;
     width: 1.25rem;
@@ -52,7 +52,7 @@ const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.span<InlineSpinne
 `;
 
 const InlineSpinner: FC<InlineSpinnerProps> = (props: InlineSpinnerProps) => (
-    <span role="progressbar">
+    <span>
         <InlineSpinnerIcon {...props} />
     </span>
 );
