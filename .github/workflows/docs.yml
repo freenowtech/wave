@@ -12,15 +12,15 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v2
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
               with:
-                  node-version: 14
+                  node-version: 18
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
             - name: Build docs
               run: npm run build:documentation
-            - uses: actions/upload-artifact@v2
+            - uses: actions/upload-artifact@v3
               with:
                   name: docz-dist
                   path: .docz/dist
@@ -30,7 +30,7 @@ jobs:
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/download-artifact@v2
+            - uses: actions/download-artifact@v3
               with:
                   name: docz-dist
                   path: public

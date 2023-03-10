@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Divider } from '../Divider';
-import type DividerOffset from '../Divider';
+import type { DividerOffset } from '../Divider';
 
 const DividerWrapper = styled.div`
     height: auto;

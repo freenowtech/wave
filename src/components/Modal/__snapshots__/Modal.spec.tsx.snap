@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders the default props 1`] = `
-.c1 {
+.c2 {
   overflow: auto;
   box-sizing: border-box;
   background-color: #FFFFFF;
@@ -9,6 +9,9 @@ exports[`Modal renders the default props 1`] = `
   padding: 2.5rem;
   width: 37.5rem;
   box-shadow: 0 0 0.75rem 0.25rem rgba(0,0,0,0.12);
+}
+
+.c3 {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -23,31 +26,31 @@ exports[`Modal renders the default props 1`] = `
   transition: transform 150ms ease-out,opacity 150ms ease-out;
 }
 
-.c1.centered-card-animation-appear,
-.c1.centered-card-animation-enter {
+.c3.centered-card-animation-appear,
+.c3.centered-card-animation-enter {
   opacity: 0;
   -webkit-transform: translate(-50%,calc(-50% - 1rem));
   -ms-transform: translate(-50%,calc(-50% - 1rem));
   transform: translate(-50%,calc(-50% - 1rem));
 }
 
-.c1.centered-card-animation-appear-active,
-.c1.centered-card-animation-enter-active {
+.c3.centered-card-animation-appear-active,
+.c3.centered-card-animation-enter-active {
   opacity: 1;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
 
-.c1.centered-card-animation-exit {
+.c3.centered-card-animation-exit {
   opacity: 1;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
 
-.c1.centered-card-animation-exit-done,
-.c1.centered-card-animation-exit-active {
+.c3.centered-card-animation-exit-done,
+.c3.centered-card-animation-exit-active {
   opacity: 0;
   -webkit-transform: translate(-50%,-50%) scale(0.98);
   -ms-transform: translate(-50%,-50%) scale(0.98);
@@ -55,7 +58,7 @@ exports[`Modal renders the default props 1`] = `
 }
 
 .c0 {
-  background-color: #000F1F;
+  background-color: rgba(0,15,31,0.6);
   height: 100%;
   left: 0;
   opacity: 0.6;
@@ -63,31 +66,34 @@ exports[`Modal renders the default props 1`] = `
   top: 0;
   width: 100%;
   z-index: 1000;
+}
+
+.c1 {
   will-change: opacity;
   -webkit-transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
   transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
 }
 
-.c0.dimming-fade-animation-appear,
-.c0.dimming-fade-animation-enter {
+.c1.dimming-fade-animation-appear,
+.c1.dimming-fade-animation-enter {
   opacity: 0;
 }
 
-.c0.dimming-fade-animation-appear-active,
-.c0.dimming-fade-animation-enter-active {
+.c1.dimming-fade-animation-appear-active,
+.c1.dimming-fade-animation-enter-active {
   opacity: 0.6;
 }
 
-.c0.dimming-fade-animation-exit {
+.c1.dimming-fade-animation-exit {
   opacity: 0.6;
 }
 
-.c0.dimming-fade-animation-exit-done,
-.c0.dimming-fade-animation-exit-active {
+.c1.dimming-fade-animation-exit-done,
+.c1.dimming-fade-animation-exit-active {
   opacity: 0;
 }
 
-.c2 {
+.c4 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -96,22 +102,22 @@ exports[`Modal renders the default props 1`] = `
 }
 
 @media (max-width:calc(37.5rem + 2rem)) {
-  .c1 {
+  .c3 {
     width: calc(100% - 2rem);
   }
 }
 
 <div>
   <div
-    class="sc-AxiKw c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
+    class="c0 c1 dimming-fade-animation-appear dimming-fade-animation-appear-active"
     data-testid="dimming-background"
   />
   <div
-    class="sc-AxjAm c1 centered-card-animation-appear centered-card-animation-appear-active"
+    class="c2 c3 centered-card-animation-appear centered-card-animation-appear-active"
     width="37.5rem"
   >
     <svg
-      class="c2"
+      class="c4"
       color="#001E3E"
       data-testid="close-icon"
       height="24"
@@ -130,7 +136,7 @@ exports[`Modal renders the default props 1`] = `
 `;
 
 exports[`Modal renders the fullscreen variation 1`] = `
-.c2 {
+.c3 {
   overflow: auto;
   box-sizing: border-box;
   background-color: #FFFFFF;
@@ -138,6 +144,9 @@ exports[`Modal renders the fullscreen variation 1`] = `
   padding: 2.5rem;
   width: 37.5rem;
   box-shadow: none;
+}
+
+.c4 {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -152,31 +161,31 @@ exports[`Modal renders the fullscreen variation 1`] = `
   transition: transform 150ms ease-out,opacity 150ms ease-out;
 }
 
-.c2.centered-card-animation-appear,
-.c2.centered-card-animation-enter {
+.c4.centered-card-animation-appear,
+.c4.centered-card-animation-enter {
   opacity: 0;
   -webkit-transform: translate(-50%,-50%) scale(0.94);
   -ms-transform: translate(-50%,-50%) scale(0.94);
   transform: translate(-50%,-50%) scale(0.94);
 }
 
-.c2.centered-card-animation-appear-active,
-.c2.centered-card-animation-enter-active {
+.c4.centered-card-animation-appear-active,
+.c4.centered-card-animation-enter-active {
   opacity: 1;
   -webkit-transform: translate(-50%,-50%) scale(1);
   -ms-transform: translate(-50%,-50%) scale(1);
   transform: translate(-50%,-50%) scale(1);
 }
 
-.c2.centered-card-animation-exit {
+.c4.centered-card-animation-exit {
   opacity: 1;
   -webkit-transform: translate(-50%,-50%) scale(1);
   -ms-transform: translate(-50%,-50%) scale(1);
   transform: translate(-50%,-50%) scale(1);
 }
 
-.c2.centered-card-animation-exit-done,
-.c2.centered-card-animation-exit-active {
+.c4.centered-card-animation-exit-done,
+.c4.centered-card-animation-exit-active {
   opacity: 0;
   -webkit-transform: translate(-50%,-50%) scale(0.98);
   -ms-transform: translate(-50%,-50%) scale(0.98);
@@ -184,7 +193,7 @@ exports[`Modal renders the fullscreen variation 1`] = `
 }
 
 .c0 {
-  background-color: #000F1F;
+  background-color: rgba(0,15,31,0.6);
   height: 100%;
   left: 0;
   opacity: 0.6;
@@ -192,6 +201,9 @@ exports[`Modal renders the fullscreen variation 1`] = `
   top: 0;
   width: 100%;
   z-index: 1000;
+}
+
+.c1 {
   will-change: opacity;
   -webkit-transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
   transition: opacity 200ms cubic-bezier(0.215,0.61,0.355,1);
@@ -199,26 +211,26 @@ exports[`Modal renders the fullscreen variation 1`] = `
   opacity: 1;
 }
 
-.c0.dimming-fade-animation-appear,
-.c0.dimming-fade-animation-enter {
+.c1.dimming-fade-animation-appear,
+.c1.dimming-fade-animation-enter {
   opacity: 0;
 }
 
-.c0.dimming-fade-animation-appear-active,
-.c0.dimming-fade-animation-enter-active {
+.c1.dimming-fade-animation-appear-active,
+.c1.dimming-fade-animation-enter-active {
   opacity: 1;
 }
 
-.c0.dimming-fade-animation-exit {
+.c1.dimming-fade-animation-exit {
   opacity: 1;
 }
 
-.c0.dimming-fade-animation-exit-done,
-.c0.dimming-fade-animation-exit-active {
+.c1.dimming-fade-animation-exit-done,
+.c1.dimming-fade-animation-exit-active {
   opacity: 0;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -227,18 +239,18 @@ exports[`Modal renders the fullscreen variation 1`] = `
 }
 
 @media (max-width:calc(37.5rem + 2rem)) {
-  .c2 {
+  .c4 {
     width: calc(100% - 2rem);
   }
 }
 
 <div>
   <div
-    class="sc-AxiKw c0 dimming-fade-animation-appear dimming-fade-animation-appear-active"
+    class="c0 c1 dimming-fade-animation-appear dimming-fade-animation-appear-active"
     data-testid="dimming-background"
   >
     <svg
-      class="c1"
+      class="c2"
       color="#001E3E"
       data-testid="close-icon"
       height="24"
@@ -253,7 +265,7 @@ exports[`Modal renders the fullscreen variation 1`] = `
     </svg>
   </div>
   <div
-    class="sc-AxjAm c2 centered-card-animation-appear centered-card-animation-appear-active"
+    class="c3 c4 centered-card-animation-appear centered-card-animation-appear-active"
     width="37.5rem"
   >
     Content

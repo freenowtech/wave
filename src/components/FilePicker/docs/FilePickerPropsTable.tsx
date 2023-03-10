@@ -31,6 +31,12 @@ export const FilePickerPropsTable: FC = () => {
                 'Text to display within component button, it describes the main action, it works better when short.'
         },
         {
+            name: 'alwaysShowActionButton',
+            type: 'boolean',
+            description: 'Keep the action button displayed instead of showing the success state.',
+            defaultValue: 'false'
+        },
+        {
             name: 'error',
             type: 'boolean',
             description: 'Whether or not the component should render an error state.'

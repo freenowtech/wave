@@ -1,7 +1,7 @@
 import { render, waitForElementToBeRemoved, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import { Colors } from '../../essentials';
+import { SemanticColors } from '../../essentials';
 import { ANIMATION_DURATION, Banner, useBannerDismiss } from './Banner';
 
 describe('Banner', () => {
@@ -106,19 +106,19 @@ describe('Banner', () => {
     describe('renders the variant', () => {
         it('"info" correctly', () => {
             expect(render(<Banner variant="info" />).container.firstChild).toHaveStyle(`
-                background-color: ${Colors.AUTHENTIC_BLUE_550};
+                background-color: ${SemanticColors.background.secondaryEmphasized};
             `);
         });
 
         it('"success" correctly', () => {
             expect(render(<Banner variant="success" />).container.firstChild).toHaveStyle(`
-                background-color: ${Colors.POSITIVE_GREEN_900};
+                background-color: ${SemanticColors.background.successEmphasized};
             `);
         });
 
         it('"danger" correctly', () => {
             expect(render(<Banner variant="danger" />).container.firstChild).toHaveStyle(`
-                background-color: ${Colors.NEGATIVE_ORANGE_900};
+                background-color: ${SemanticColors.background.dangerEmphasized};
             `);
         });
     });

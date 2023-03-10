@@ -1,7 +1,7 @@
-import React, { useState, PropsWithChildren } from 'react';
+import React, { useState, PropsWithChildren, ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { Colors } from '../../../essentials';
+import { SemanticColors } from '../../../essentials';
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
@@ -12,47 +12,47 @@ import { Description } from './Description';
 import { AccordionProps } from '../types';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`
-    color: ${Colors.ACTION_BLUE_900};
+    color: ${SemanticColors.text.link};
 `;
 
 const PanelHeader = styled(Header)`
     &:hover {
-        background-color: ${Colors.ACTION_BLUE_50};
+        background-color: ${SemanticColors.background.info};
     }
 
     &:hover ${ButtonLabel} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 
     &:hover ${ChevronDown} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 `;
 
 const CardHeader = styled(Header).attrs({ p: '3' })`
-    background-color: ${Colors.AUTHENTIC_BLUE_50};
+    background-color: ${SemanticColors.background.secondary};
     border-radius: 0.3125rem 0.3125rem 0 0;
 
     &:hover {
-        background-color: ${Colors.ACTION_BLUE_50};
+        background-color: ${SemanticColors.background.info};
     }
 
     &:hover ${ButtonLabel} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 
     &:hover ${ChevronUp} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 `;
 
 const PanelBody = styled(Box).attrs({ my: '3' })`
-    border: solid 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
+    border: solid 0.0625rem ${SemanticColors.border.primary};
     border-radius: 0.3125rem;
 `;
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) =>
-    isOpen ? <ChevronUp color={Colors.ACTION_BLUE_900} /> : <ChevronDown color={Colors.ACTION_BLUE_900} />;
+    isOpen ? <ChevronUp color={SemanticColors.icon.action} /> : <ChevronDown color={SemanticColors.icon.action} />;
 
 export const DefaultPanel = ({
     heading,
@@ -63,7 +63,7 @@ export const DefaultPanel = ({
     children,
     onExpand,
     onCollapse
-}: PropsWithChildren<AccordionProps>) => {
+}: PropsWithChildren<AccordionProps>): ReactElement => {
     const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (

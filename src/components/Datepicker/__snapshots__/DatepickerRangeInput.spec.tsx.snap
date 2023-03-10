@@ -19,8 +19,6 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
 }
 
 .c2::-webkit-input-placeholder {
@@ -77,32 +75,9 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c2 + .sc-AxgMl {
-  color: #9CA7B4;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
-}
-
-.c2:disabled + .sc-AxgMl {
-  color: #C6CDD4;
-}
-
-.c2:-webkit-autofill + .sc-AxgMl,
-.c2:-webkit-autofill:hover + .sc-AxgMl,
-.c2:-webkit-autofill:focus + .sc-AxgMl,
-.c2:-webkit-autofill:active + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-}
-
-.c2:focus:not(:disabled) + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-  color: #096BDB;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
+.c3 {
+  height: 3rem;
+  padding: 0 0.75rem;
 }
 
 .c1 {
@@ -146,7 +121,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
   text-align: center;
 }
 
-.c3 {
+.c4 {
   position: absolute;
   left: calc(50% - 0.75rem);
   z-index: 1;
@@ -173,7 +148,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
     >
       <input
         autocomplete="off"
-        class="sc-AxirZ c2"
+        class="c2 c3"
         data-error="false"
         data-testid="start-date-input"
         id="random"
@@ -182,7 +157,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
       />
     </div>
     <svg
-      class="c3"
+      class="c4"
       color="#637689"
       height="24"
       viewBox="0 0 24 24"
@@ -200,7 +175,7 @@ exports[`DatepickerRangeInput renders the default props 1`] = `
     >
       <input
         autocomplete="off"
-        class="sc-AxirZ c2"
+        class="c2 c3"
         data-error="false"
         data-testid="end-date-input"
         id="random"

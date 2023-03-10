@@ -7,6 +7,9 @@ exports[`Tag renders with default props 1`] = `
   font-family: "Open Sans",sans-serif;
   line-height: 1.4;
   margin: 0;
+}
+
+.c3 {
   color: #096BDB;
   margin-left: 0.75rem;
   margin-right: 0.25rem;
@@ -17,13 +20,13 @@ exports[`Tag renders with default props 1`] = `
   transition: color 125ms ease;
 }
 
-.c4 {
+.c5 {
   margin-right: 0.5rem;
   -webkit-transition: color 125ms ease;
   transition: color 125ms ease;
 }
 
-.c4:hover {
+.c5:hover {
   cursor: pointer;
 }
 
@@ -56,7 +59,7 @@ exports[`Tag renders with default props 1`] = `
   color: #FFFFFF;
 }
 
-.c0:hover > .c3 {
+.c0:hover > .c4 {
   color: #FFFFFF;
 }
 
@@ -64,12 +67,12 @@ exports[`Tag renders with default props 1`] = `
   class="c0"
 >
   <span
-    class="sc-AxirZ c1 c2"
+    class="c1 c2 c3"
   >
     Lorem
   </span>
   <svg
-    class="c3 c4"
+    class="c4 c5"
     color="#096BDB"
     data-testid="dismiss-icon"
     height="18"

@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { useState, ReactElement } from 'react';
 import styled from 'styled-components';
 
-import { Colors } from '../../../essentials';
+import { SemanticColors } from '../../../essentials';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
 import { Header } from './Header';
@@ -19,22 +19,29 @@ const StyleHeadline = styled(Headline)``;
 
 const PanelHeader = styled(Header)`
     &:hover ${StyleHeadline} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 
     &:hover ${ChevronDown} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 
     &:hover ${ChevronUp} {
-        color: ${Colors.ACTION_BLUE_1000};
+        color: ${SemanticColors.text.linkHover};
     }
 `;
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);
 
-export const Compact = ({ heading, description, defaultExpanded = false, children, onExpand, onCollapse }: Props) => {
-    const [isOpen, setIsOpen] = React.useState<boolean>(defaultExpanded);
+export const Compact = ({
+    heading,
+    description,
+    defaultExpanded = false,
+    children,
+    onExpand,
+    onCollapse
+}: Props): ReactElement => {
+    const [isOpen, setIsOpen] = useState<boolean>(defaultExpanded);
 
     return (
         <>

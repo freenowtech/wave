@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
-import { Colors } from '../../essentials';
+import { SemanticColors } from '../../essentials';
 import { Box } from './Box';
 
 describe('Box', () => {
@@ -21,7 +21,9 @@ describe('Box', () => {
     });
 
     it('renders color', () => {
-        expect(render(<Box backgroundColor={Colors.POSITIVE_GREEN_900} />).container.firstChild).toMatchSnapshot();
+        expect(
+            render(<Box backgroundColor={SemanticColors.background.successEmphasized} />).container.firstChild
+        ).toMatchSnapshot();
     });
 
     it('renders flexbox', () => {
@@ -36,7 +38,7 @@ describe('Box', () => {
 
     it('accepts props spreading', () => {
         const renderBox = () => {
-            const props = { backgroundColor: Colors.POSITIVE_GREEN_900 };
+            const props = { backgroundColor: SemanticColors.background.successEmphasized };
             return <Box {...props} />;
         };
         expect(renderBox).not.toThrow();

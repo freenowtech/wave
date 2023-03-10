@@ -36,6 +36,10 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
      */
     buttonText: string;
     /**
+     * Keep the action button displayed instead of showing the success state.
+     */
+    alwaysShowActionButton?: boolean;
+    /**
      * Whether or not the component should render an error state
      */
     error?: boolean;
@@ -96,17 +100,17 @@ const Outliner = styled(Box)<OutlinerProps>`
     ${({ hasValidFile }) =>
         hasValidFile &&
         css`
-                ${MediaQueries.medium} {
-                    &:hover {
-                        background-color: ${Colors.ACTION_BLUE_50};
-                        border-color: ${Colors.ACTION_BLUE_50};
+            ${MediaQueries.medium} {
+                &:hover {
+                    background-color: ${Colors.ACTION_BLUE_50};
+                    border-color: ${Colors.ACTION_BLUE_50};
 
-                        svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
-                            fill: ${Colors.ACTION_BLUE_900};
-                        }
+                    svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
+                        fill: ${Colors.ACTION_BLUE_900};
                     }
                 }
-            `}
+            }
+        `}
 `;
 
 const Input = styled.input`
@@ -134,6 +138,7 @@ const FilePicker: FC<FilePickerProps> = ({
     onFileChange = () => undefined,
     onChange = () => undefined,
     disabled = false,
+    alwaysShowActionButton = false,
     ...nonInputProps
 }: FilePickerProps) => {
     const inputEl = useRef<HTMLInputElement>(null);
@@ -190,7 +195,7 @@ const FilePicker: FC<FilePickerProps> = ({
                     </Text>
                 </Box>
                 <Box display={{ _: 'none', medium: 'flex' }} alignItems="center" justifyContent="top">
-                    {validFileSelected ? (
+                    {!alwaysShowActionButton && validFileSelected ? (
                         <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} />
                     ) : (
                         <InputButton variant="secondary" type="button" tabIndex={-1} onClick={onClickHandler}>
@@ -199,7 +204,11 @@ const FilePicker: FC<FilePickerProps> = ({
                     )}
                 </Box>
                 <Box display={{ _: 'flex', medium: 'none' }} alignItems="top">
-                    {validFileSelected ? <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} /> : <ShareIcon />}
+                    {!alwaysShowActionButton && validFileSelected ? (
+                        <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} />
+                    ) : (
+                        <ShareIcon />
+                    )}
                 </Box>
             </Outliner>
         </Box>

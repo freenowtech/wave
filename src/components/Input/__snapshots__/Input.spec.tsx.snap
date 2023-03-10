@@ -21,8 +21,6 @@ exports[`Input variant "bottom-lined" renders 1`] = `
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3.5rem;
-  padding: 1.625rem 0.25rem 0.625rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -79,30 +77,9 @@ exports[`Input variant "bottom-lined" renders 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .sc-AxhCb {
-  color: #9CA7B4;
-  background: #FFFFFF;
-}
-
-.c1:disabled ~ .sc-AxhCb {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .sc-AxhCb,
-.c1:-webkit-autofill:hover + .sc-AxhCb,
-.c1:-webkit-autofill:focus + .sc-AxhCb,
-.c1:-webkit-autofill:active + .sc-AxhCb {
-  font-weight: 600;
-  top: 0.25rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) ~ .sc-AxhCb {
-  font-weight: 600;
-  top: 0.25rem;
-  font-size: 0.75rem;
-  color: #096BDB;
-  background: #FFFFFF;
+.c2 {
+  height: 3.5rem;
+  padding: 1.625rem 0.25rem 0.625rem;
 }
 
 .c0 {
@@ -115,7 +92,7 @@ exports[`Input variant "bottom-lined" renders 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -143,10 +120,6 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3.5rem;
-  padding: 1.625rem 0.25rem 0.625rem;
-  box-shadow: inset 0 -0.0625rem 0 0 #FF5E05;
-  border-color: #FF5E05;
 }
 
 .c1::-webkit-input-placeholder {
@@ -203,34 +176,11 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .sc-AxhCb {
-  color: #9CA7B4;
-  background: #FFFFFF;
-}
-
-.c1 ~ .sc-AxhCb {
-  color: #FF5E05;
-}
-
-.c1:disabled ~ .sc-AxhCb {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .sc-AxhCb,
-.c1:-webkit-autofill:hover + .sc-AxhCb,
-.c1:-webkit-autofill:focus + .sc-AxhCb,
-.c1:-webkit-autofill:active + .sc-AxhCb {
-  font-weight: 600;
-  top: 0.25rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) ~ .sc-AxhCb {
-  font-weight: 600;
-  top: 0.25rem;
-  font-size: 0.75rem;
-  color: #096BDB;
-  background: #FFFFFF;
+.c2 {
+  height: 3.5rem;
+  padding: 1.625rem 0.25rem 0.625rem;
+  box-shadow: inset 0 -0.0625rem 0 0 #FF5E05;
+  border-color: #FF5E05;
 }
 
 .c0 {
@@ -243,7 +193,7 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -251,23 +201,6 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
 `;
 
 exports[`Input variant "bottom-lined" renders the error state with label and placeholder 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  left: 0;
-  top: 1.375rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
 .c1 {
   margin: 0;
   box-sizing: border-box;
@@ -288,10 +221,6 @@ exports[`Input variant "bottom-lined" renders the error state with label and pla
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3.5rem;
-  padding: 1.625rem 0.25rem 0.625rem;
-  box-shadow: inset 0 -0.0625rem 0 0 #FF5E05;
-  border-color: #FF5E05;
 }
 
 .c1::-webkit-input-placeholder {
@@ -348,7 +277,34 @@ exports[`Input variant "bottom-lined" renders the error state with label and pla
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .c2 {
+.c4 {
+  position: absolute;
+  pointer-events: none;
+  background-color: transparent;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+}
+
+.c5 {
+  left: 0;
+  top: 1.375rem;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+}
+
+.c2 {
+  height: 3.5rem;
+  padding: 1.625rem 0.25rem 0.625rem;
+  box-shadow: inset 0 -0.0625rem 0 0 #FF5E05;
+  border-color: #FF5E05;
+}
+
+.c2 ~ .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
@@ -356,24 +312,24 @@ exports[`Input variant "bottom-lined" renders the error state with label and pla
   background: #FFFFFF;
 }
 
-.c1 ~ .c2 {
+.c2 ~ .c3 {
   color: #FF5E05;
 }
 
-.c1:disabled ~ .c2 {
+.c2:disabled ~ .c3 {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
+.c2:-webkit-autofill + .c3,
+.c2:-webkit-autofill:hover + .c3,
+.c2:-webkit-autofill:focus + .c3,
+.c2:-webkit-autofill:active + .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) ~ .c2 {
+.c2:focus:not(:disabled) ~ .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
@@ -391,13 +347,13 @@ exports[`Input variant "bottom-lined" renders the error state with label and pla
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
-    class="sc-AxiKw c2 c3"
+    class="c3 c4 c5"
     for="random"
   >
     Name
@@ -426,8 +382,6 @@ exports[`Input variant "bottom-lined" renders the inverted style 1`] = `
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3.5rem;
-  padding: 1.625rem 0.25rem 0.625rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -484,30 +438,9 @@ exports[`Input variant "bottom-lined" renders the inverted style 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .sc-AxhCb {
-  color: #C6CDD4;
-  background: #001E3E;
-}
-
-.c1:disabled ~ .sc-AxhCb {
-  color: #637689;
-}
-
-.c1:-webkit-autofill + .sc-AxhCb,
-.c1:-webkit-autofill:hover + .sc-AxhCb,
-.c1:-webkit-autofill:focus + .sc-AxhCb,
-.c1:-webkit-autofill:active + .sc-AxhCb {
-  font-weight: 600;
-  top: 0.25rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) ~ .sc-AxhCb {
-  font-weight: 600;
-  top: 0.25rem;
-  font-size: 0.75rem;
-  color: #FFFFFF;
-  background: #001E3E;
+.c2 {
+  height: 3.5rem;
+  padding: 1.625rem 0.25rem 0.625rem;
 }
 
 .c0 {
@@ -520,7 +453,7 @@ exports[`Input variant "bottom-lined" renders the inverted style 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -528,23 +461,6 @@ exports[`Input variant "bottom-lined" renders the inverted style 1`] = `
 `;
 
 exports[`Input variant "bottom-lined" renders the label 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  left: 0;
-  top: 1.375rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
 .c1 {
   margin: 0;
   box-sizing: border-box;
@@ -565,8 +481,6 @@ exports[`Input variant "bottom-lined" renders the label 1`] = `
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3.5rem;
-  padding: 1.625rem 0.25rem 0.625rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -623,25 +537,50 @@ exports[`Input variant "bottom-lined" renders the label 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .c2 {
+.c4 {
+  position: absolute;
+  pointer-events: none;
+  background-color: transparent;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+}
+
+.c5 {
+  left: 0;
+  top: 1.375rem;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+}
+
+.c2 {
+  height: 3.5rem;
+  padding: 1.625rem 0.25rem 0.625rem;
+}
+
+.c2 ~ .c3 {
   color: #9CA7B4;
   background: #FFFFFF;
 }
 
-.c1:disabled ~ .c2 {
+.c2:disabled ~ .c3 {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
+.c2:-webkit-autofill + .c3,
+.c2:-webkit-autofill:hover + .c3,
+.c2:-webkit-autofill:focus + .c3,
+.c2:-webkit-autofill:active + .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) ~ .c2 {
+.c2:focus:not(:disabled) ~ .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
@@ -659,12 +598,12 @@ exports[`Input variant "bottom-lined" renders the label 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
   <label
-    class="sc-AxiKw c2 c3"
+    class="c3 c4 c5"
     for="random"
   >
     Name
@@ -673,23 +612,6 @@ exports[`Input variant "bottom-lined" renders the label 1`] = `
 `;
 
 exports[`Input variant "bottom-lined" renders the label and the placeholder 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  left: 0;
-  top: 1.375rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
 .c1 {
   margin: 0;
   box-sizing: border-box;
@@ -710,8 +632,6 @@ exports[`Input variant "bottom-lined" renders the label and the placeholder 1`] 
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3.5rem;
-  padding: 1.625rem 0.25rem 0.625rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -768,7 +688,32 @@ exports[`Input variant "bottom-lined" renders the label and the placeholder 1`] 
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .c2 {
+.c4 {
+  position: absolute;
+  pointer-events: none;
+  background-color: transparent;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+}
+
+.c5 {
+  left: 0;
+  top: 1.375rem;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+}
+
+.c2 {
+  height: 3.5rem;
+  padding: 1.625rem 0.25rem 0.625rem;
+}
+
+.c2 ~ .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
@@ -776,20 +721,20 @@ exports[`Input variant "bottom-lined" renders the label and the placeholder 1`] 
   background: #FFFFFF;
 }
 
-.c1:disabled ~ .c2 {
+.c2:disabled ~ .c3 {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
+.c2:-webkit-autofill + .c3,
+.c2:-webkit-autofill:hover + .c3,
+.c2:-webkit-autofill:focus + .c3,
+.c2:-webkit-autofill:active + .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) ~ .c2 {
+.c2:focus:not(:disabled) ~ .c3 {
   font-weight: 600;
   top: 0.25rem;
   font-size: 0.75rem;
@@ -807,13 +752,13 @@ exports[`Input variant "bottom-lined" renders the label and the placeholder 1`] 
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
-    class="sc-AxiKw c2 c3"
+    class="c3 c4 c5"
     for="random"
   >
     Name
@@ -842,8 +787,6 @@ exports[`Input variant "bottom-lined" renders the small size 1`] = `
   border-top-right-radius: 0.125rem;
   border-bottom: 0.0625rem solid #C6CDD4;
   font-size: 0.875rem;
-  height: 2.5rem;
-  padding: 1rem 0.125rem 0.375rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -900,30 +843,9 @@ exports[`Input variant "bottom-lined" renders the small size 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 ~ .sc-AxhCb {
-  color: #9CA7B4;
-  background: #FFFFFF;
-}
-
-.c1:disabled ~ .sc-AxhCb {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .sc-AxhCb,
-.c1:-webkit-autofill:hover + .sc-AxhCb,
-.c1:-webkit-autofill:focus + .sc-AxhCb,
-.c1:-webkit-autofill:active + .sc-AxhCb {
-  font-weight: 600;
-  top: 0;
-  font-size: 0.625rem;
-}
-
-.c1:focus:not(:disabled) ~ .sc-AxhCb {
-  font-weight: 600;
-  top: 0;
-  font-size: 0.625rem;
-  color: #096BDB;
-  background: #FFFFFF;
+.c2 {
+  height: 2.5rem;
+  padding: 1rem 0.125rem 0.375rem;
 }
 
 .c0 {
@@ -936,7 +858,7 @@ exports[`Input variant "bottom-lined" renders the small size 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -962,8 +884,6 @@ exports[`Input variant "boxed" renders 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1020,32 +940,9 @@ exports[`Input variant "boxed" renders 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .sc-AxgMl {
-  color: #9CA7B4;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
-}
-
-.c1:disabled + .sc-AxgMl {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .sc-AxgMl,
-.c1:-webkit-autofill:hover + .sc-AxgMl,
-.c1:-webkit-autofill:focus + .sc-AxgMl,
-.c1:-webkit-autofill:active + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-  color: #096BDB;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
+.c2 {
+  height: 3rem;
+  padding: 0 0.75rem;
 }
 
 .c0 {
@@ -1058,7 +955,7 @@ exports[`Input variant "boxed" renders 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -1084,10 +981,6 @@ exports[`Input variant "boxed" renders the error state 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
-  box-shadow: inset 0 0 0 0.0625rem #FF5E05;
-  border-color: #FF5E05;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1144,36 +1037,11 @@ exports[`Input variant "boxed" renders the error state 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .sc-AxgMl {
-  color: #9CA7B4;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
-}
-
-.c1 ~ .sc-AxgMl {
-  color: #FF5E05;
-}
-
-.c1:disabled + .sc-AxgMl {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .sc-AxgMl,
-.c1:-webkit-autofill:hover + .sc-AxgMl,
-.c1:-webkit-autofill:focus + .sc-AxgMl,
-.c1:-webkit-autofill:active + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-  color: #096BDB;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
+.c2 {
+  height: 3rem;
+  padding: 0 0.75rem;
+  box-shadow: inset 0 0 0 0.0625rem #FF5E05;
+  border-color: #FF5E05;
 }
 
 .c0 {
@@ -1186,7 +1054,7 @@ exports[`Input variant "boxed" renders the error state 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -1194,23 +1062,6 @@ exports[`Input variant "boxed" renders the error state 1`] = `
 `;
 
 exports[`Input variant "boxed" renders the error state with label and placeholder 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  top: 0.75rem;
-  left: 0.5rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
 .c1 {
   margin: 0;
   box-sizing: border-box;
@@ -1229,10 +1080,6 @@ exports[`Input variant "boxed" renders the error state with label and placeholde
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
-  box-shadow: inset 0 0 0 0.0625rem #FF5E05;
-  border-color: #FF5E05;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1289,7 +1136,34 @@ exports[`Input variant "boxed" renders the error state with label and placeholde
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .c2 {
+.c4 {
+  position: absolute;
+  pointer-events: none;
+  background-color: transparent;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+}
+
+.c5 {
+  top: 0.75rem;
+  left: 0.5rem;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+}
+
+.c2 {
+  height: 3rem;
+  padding: 0 0.75rem;
+  box-shadow: inset 0 0 0 0.0625rem #FF5E05;
+  border-color: #FF5E05;
+}
+
+.c2 + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
@@ -1298,24 +1172,24 @@ exports[`Input variant "boxed" renders the error state with label and placeholde
   background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
-.c1 ~ .c2 {
+.c2 ~ .c3 {
   color: #FF5E05;
 }
 
-.c1:disabled + .c2 {
+.c2:disabled + .c3 {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
+.c2:-webkit-autofill + .c3,
+.c2:-webkit-autofill:hover + .c3,
+.c2:-webkit-autofill:focus + .c3,
+.c2:-webkit-autofill:active + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) + .c2 {
+.c2:focus:not(:disabled) + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
@@ -1334,13 +1208,13 @@ exports[`Input variant "boxed" renders the error state with label and placeholde
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
-    class="sc-AxiKw c2 c3"
+    class="c3 c4 c5"
     for="random"
   >
     Name
@@ -1367,8 +1241,6 @@ exports[`Input variant "boxed" renders the inverted style 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1425,32 +1297,9 @@ exports[`Input variant "boxed" renders the inverted style 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .sc-AxgMl {
-  color: #C6CDD4;
-  background: #001E3E;
-  background: linear-gradient(0deg,#001E3E calc(50% + 0.0625rem),transparent 50%);
-}
-
-.c1:disabled + .sc-AxgMl {
-  color: #637689;
-}
-
-.c1:-webkit-autofill + .sc-AxgMl,
-.c1:-webkit-autofill:hover + .sc-AxgMl,
-.c1:-webkit-autofill:focus + .sc-AxgMl,
-.c1:-webkit-autofill:active + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-}
-
-.c1:focus:not(:disabled) + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.5rem;
-  font-size: 0.75rem;
-  color: #FFFFFF;
-  background: #001E3E;
-  background: linear-gradient(0deg,#001E3E calc(50% + 0.0625rem),transparent 50%);
+.c2 {
+  height: 3rem;
+  padding: 0 0.75rem;
 }
 
 .c0 {
@@ -1463,7 +1312,7 @@ exports[`Input variant "boxed" renders the inverted style 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
@@ -1471,23 +1320,6 @@ exports[`Input variant "boxed" renders the inverted style 1`] = `
 `;
 
 exports[`Input variant "boxed" renders the label 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  top: 0.75rem;
-  left: 0.5rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
 .c1 {
   margin: 0;
   box-sizing: border-box;
@@ -1506,8 +1338,6 @@ exports[`Input variant "boxed" renders the label 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1564,26 +1394,51 @@ exports[`Input variant "boxed" renders the label 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .c2 {
+.c4 {
+  position: absolute;
+  pointer-events: none;
+  background-color: transparent;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+}
+
+.c5 {
+  top: 0.75rem;
+  left: 0.5rem;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+}
+
+.c2 {
+  height: 3rem;
+  padding: 0 0.75rem;
+}
+
+.c2 + .c3 {
   color: #9CA7B4;
   background: #FFFFFF;
   background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
-.c1:disabled + .c2 {
+.c2:disabled + .c3 {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
+.c2:-webkit-autofill + .c3,
+.c2:-webkit-autofill:hover + .c3,
+.c2:-webkit-autofill:focus + .c3,
+.c2:-webkit-autofill:active + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) + .c2 {
+.c2:focus:not(:disabled) + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
@@ -1602,12 +1457,12 @@ exports[`Input variant "boxed" renders the label 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />
   <label
-    class="sc-AxiKw c2 c3"
+    class="c3 c4 c5"
     for="random"
   >
     Name
@@ -1616,23 +1471,6 @@ exports[`Input variant "boxed" renders the label 1`] = `
 `;
 
 exports[`Input variant "boxed" renders the label and the placeholder 1`] = `
-.c3 {
-  position: absolute;
-  pointer-events: none;
-  background-color: transparent;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 2rem);
-  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
-  top: 0.75rem;
-  left: 0.5rem;
-  padding: 0 0.25rem;
-  font-size: 1rem;
-}
-
 .c1 {
   margin: 0;
   box-sizing: border-box;
@@ -1651,8 +1489,6 @@ exports[`Input variant "boxed" renders the label and the placeholder 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 1rem;
-  height: 3rem;
-  padding: 0 0.75rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1709,7 +1545,32 @@ exports[`Input variant "boxed" renders the label and the placeholder 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .c2 {
+.c4 {
+  position: absolute;
+  pointer-events: none;
+  background-color: transparent;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  -webkit-transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+  transition: top 100ms ease-out,left 100ms ease-out, padding 100ms ease-out,font-size 100ms ease-out, color 100ms ease-out,background 100ms ease-out;
+}
+
+.c5 {
+  top: 0.75rem;
+  left: 0.5rem;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+}
+
+.c2 {
+  height: 3rem;
+  padding: 0 0.75rem;
+}
+
+.c2 + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
@@ -1718,20 +1579,20 @@ exports[`Input variant "boxed" renders the label and the placeholder 1`] = `
   background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0625rem),transparent 50%);
 }
 
-.c1:disabled + .c2 {
+.c2:disabled + .c3 {
   color: #C6CDD4;
 }
 
-.c1:-webkit-autofill + .c2,
-.c1:-webkit-autofill:hover + .c2,
-.c1:-webkit-autofill:focus + .c2,
-.c1:-webkit-autofill:active + .c2 {
+.c2:-webkit-autofill + .c3,
+.c2:-webkit-autofill:hover + .c3,
+.c2:-webkit-autofill:focus + .c3,
+.c2:-webkit-autofill:active + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
 }
 
-.c1:focus:not(:disabled) + .c2 {
+.c2:focus:not(:disabled) + .c3 {
   font-weight: 600;
   top: -0.5rem;
   font-size: 0.75rem;
@@ -1750,13 +1611,13 @@ exports[`Input variant "boxed" renders the label and the placeholder 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     placeholder="FREE NOW"
     type="text"
   />
   <label
-    class="sc-AxiKw c2 c3"
+    class="c3 c4 c5"
     for="random"
   >
     Name
@@ -1783,8 +1644,6 @@ exports[`Input variant "boxed" renders the small size 1`] = `
   border-radius: 0.25rem;
   border: 0.0625rem solid #C6CDD4;
   font-size: 0.875rem;
-  height: 2rem;
-  padding: 0 0.5rem;
 }
 
 .c1::-webkit-input-placeholder {
@@ -1841,32 +1700,9 @@ exports[`Input variant "boxed" renders the small size 1`] = `
   transition: background-color 99999999ms ease 99999999ms;
 }
 
-.c1 + .sc-AxgMl {
-  color: #9CA7B4;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0825rem),transparent 50%);
-}
-
-.c1:disabled + .sc-AxgMl {
-  color: #C6CDD4;
-}
-
-.c1:-webkit-autofill + .sc-AxgMl,
-.c1:-webkit-autofill:hover + .sc-AxgMl,
-.c1:-webkit-autofill:focus + .sc-AxgMl,
-.c1:-webkit-autofill:active + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.375rem;
-  font-size: 0.625rem;
-}
-
-.c1:focus:not(:disabled) + .sc-AxgMl {
-  font-weight: 600;
-  top: -0.375rem;
-  font-size: 0.625rem;
-  color: #096BDB;
-  background: #FFFFFF;
-  background: linear-gradient(0deg,#FFFFFF calc(50% + 0.0825rem),transparent 50%);
+.c2 {
+  height: 2rem;
+  padding: 0 0.5rem;
 }
 
 .c0 {
@@ -1879,7 +1715,7 @@ exports[`Input variant "boxed" renders the small size 1`] = `
   class="c0"
 >
   <input
-    class="sc-AxirZ c1"
+    class="c1 c2"
     id="random"
     type="text"
   />

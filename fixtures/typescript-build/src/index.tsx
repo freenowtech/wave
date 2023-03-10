@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import {
+    Accordion,
     Banner,
     Button,
     TextButton,
@@ -35,6 +36,20 @@ import {
 const voidFunction: () => void = () => {
     /* void */
 };
+
+const TestAccordion: React.FC = () => (
+    <>
+        <Accordion>Hello</Accordion>
+        <Accordion defaultExpanded>opened</Accordion>
+        <Accordion variant="compact">Compact</Accordion>
+        <Accordion onCollapse={voidFunction} onExpand={voidFunction}>
+            with callbacks
+        </Accordion>
+        <Accordion heading="some header" description="Description" buttonLabel="Button" info="Secondary info">
+            <div>This is just a placeholder</div>
+        </Accordion>
+    </>
+);
 
 const TestBanner: React.FC = () => (
     <>
@@ -188,8 +203,8 @@ const TestHelperText: React.FC = () => (
         <HelperText variant="danger" />
         <HelperText inverted />
         <HelperText inverted={false} />
-        <HelperText weak />
-        <HelperText weak={false} />
+        <HelperText secondary />
+        <HelperText secondary={false} />
         <HelperText margin={1} />
         <HelperText fontSize={1} />
         <HelperText textAlign="center" />
@@ -373,8 +388,8 @@ const TestText: React.FC = () => (
         <Text fontWeight="bold" />
         <Text inverted />
         <Text inverted={false} />
-        <Text weak />
-        <Text weak={false} />
+        <Text secondary />
+        <Text secondary={false} />
         <Text margin={1} />
         <Text fontSize={1} />
         <Text fontSize="large" />
@@ -462,6 +477,7 @@ const TestPhoneInput = () => (
 
 const App: React.FC = () => (
     <>
+        <TestAccordion />
         <TestBanner />
         <TestButton />
         <TestTextButton />

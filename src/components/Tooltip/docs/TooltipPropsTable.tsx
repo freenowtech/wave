@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
 import { PropsTable } from '../../../docs/PropsTable';
 
-export const TooltipPropsTable = () => {
+export const TooltipPropsTable = (): ReactElement => {
     const props = [
         {
             name: 'content',
@@ -11,8 +11,7 @@ export const TooltipPropsTable = () => {
         },
         {
             name: 'placement',
-            type:
-                '"top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end" | "top" | "bottom" | "right" | "left" | "auto" | "auto-start" | "auto-end"',
+            type: '"top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end" | "top" | "bottom" | "right" | "left" | "auto" | "auto-start" | "auto-end"',
             description: 'Set the position of where the tooltip is attached to the target',
             defaultValue: 'top'
         },

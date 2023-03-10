@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { MarginProps } from 'styled-system';
 import { Text } from '../../Text/Text';
 
@@ -6,7 +6,7 @@ interface Props extends MarginProps {
     description?: string;
 }
 
-export const Description = ({ description, ...rest }: Props) => (
+export const Description = ({ description, ...rest }: Props): ReactElement => (
     <Text
         as="p"
         fontSize="small"

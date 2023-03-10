@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
-import { Colors, MediaQueries } from '../../essentials';
+import { MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
@@ -87,7 +87,8 @@ interface TooltipBodyProps {
 
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
-    background-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_900)};
+    background-color: ${p =>
+        p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -110,7 +111,8 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         position: absolute;
         pointer-events: none;
         border: 0.25rem solid rgba(0, 0, 0, 0);
-        border-bottom-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_50 : Colors.AUTHENTIC_BLUE_900)};
+        border-bottom-color: ${p =>
+            p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
         margin-left: -0.25rem;
 
         ${arrowPlacementStyles}
@@ -149,7 +151,6 @@ const Tooltip: React.FC<TooltipProps> = ({
      */
     const [triggerReference, setTriggerReference] = React.useState(undefined);
     const [contentReference, setContentReference] = React.useState(undefined);
-
 
     /**
      * Map the older placement values to Popper placement  as we need to get the correct placement for the tooltip from the Popper library

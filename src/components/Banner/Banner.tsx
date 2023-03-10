@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { Colors, Elevation } from '../../essentials';
+import { Elevation, SemanticColors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
@@ -60,13 +60,13 @@ const riseUp = css`
 const bannerVariants = variant({
     variants: {
         info: {
-            backgroundColor: Colors.AUTHENTIC_BLUE_550
+            backgroundColor: SemanticColors.background.secondaryEmphasized
         },
         success: {
-            backgroundColor: Colors.POSITIVE_GREEN_900
+            backgroundColor: SemanticColors.background.successEmphasized
         },
         danger: {
-            backgroundColor: Colors.NEGATIVE_ORANGE_900
+            backgroundColor: SemanticColors.background.dangerEmphasized
         }
     }
 });
@@ -114,7 +114,7 @@ const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
     overflow: auto;
     box-sizing: border-box;
     padding: ${get('space.3')};
-    background-color: ${Colors.AUTHENTIC_BLUE_550};
+    background-color: ${SemanticColors.background.secondaryEmphasized};
 
     position: fixed;
     left: 0;

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BottomLinedInput } from './BottomLinedInput';
@@ -13,20 +13,24 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
         const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
+        // TODO replace with ref when implementing https://github.com/freenowtech/wave/issues/169
+        const inputRef = useRef<HTMLInputElement>();
 
         const { label, onChange, size, id: providedId, variant, ...rest } = restProps;
         const id = useGeneratedId(providedId);
 
-        const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
+        const [hasValue, setHasValue] = useState(rest?.value?.toString().length > 0);
+        const hasUncontrolledValue = inputRef?.current?.value?.length > 0;
 
-        const handleChange = event => {
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+            setHasValue(event.target.value.length > 0);
             if (onChange) {
                 onChange(event);
             }
         };
 
         useEffect(() => {
-            setHasValue(rest.value && rest.value.toString().length > 0);
+            setHasValue(rest?.value?.toString().length > 0);
         }, [rest.value]);
 
         if (variant === 'boxed') {
@@ -34,10 +38,11 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
                 <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
                     <BoxedInput
                         {...rest}
+                        ref={inputRef}
                         variant={variant}
                         id={id}
                         size={size}
-                        hasValue={hasValue}
+                        hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
                     />
                     {label && (
@@ -57,7 +62,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
                         variant={variant}
                         id={id}
                         size={size}
-                        hasValue={hasValue}
+                        hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
                     />
                     {label && (
