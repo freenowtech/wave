@@ -152,7 +152,7 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
 
     const renderChildren = () => {
         if (typeof children === 'function') {
-            return children(dismissFunction) as ReactNode;
+            return children(dismissFunction);
         }
 
         return children;

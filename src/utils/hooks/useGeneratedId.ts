@@ -1,6 +1,8 @@
-import { useMemo } from 'react';
-import { generateId } from '../ids';
+import { useId } from 'react';
 
-const useGeneratedId = (id?: string): string => useMemo(() => id || generateId(), [id]);
+const useGeneratedId = (id?: string): string => {
+    const generatedId = useId();
+    return id || generatedId;
+};
 
 export { useGeneratedId };
