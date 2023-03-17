@@ -10,8 +10,7 @@ export default {
             description: 'Sets a label for the checkbox',
             type: {
                 name: 'string'
-            },
-            defaultValue: 'Checkbox'
+            }
         },
         error: {
             description: 'Sets styles to indicate an error',
@@ -48,18 +47,24 @@ export default {
 const Template: ComponentStory<typeof Checkbox> = args => <Checkbox {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+    label: 'Checkbox'
+};
 
 export const Error = Template.bind({});
 Error.args = {
+    label: 'Checkbox',
     error: true
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+    label: 'Checkbox',
     disabled: true
 };
 
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
+    label: 'Checkbox',
     indeterminate: true
 };
