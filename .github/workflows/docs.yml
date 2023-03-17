@@ -22,8 +22,8 @@ jobs:
               run: npm run build:documentation
             - uses: actions/upload-artifact@v3
               with:
-                  name: docz-dist
-                  path: .docz/dist
+                  name: storybook-dist
+                  path: storybook-static
 
     deploy:
         if: github.ref == 'refs/heads/main'
@@ -32,7 +32,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v3
               with:
-                  name: docz-dist
+                  name: storybook-dist
                   path: public
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3

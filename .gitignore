@@ -8,7 +8,7 @@ coverage/
 junit.xml
 
 # project files
-.docz/
+storybook-static/
 *.tgz
 .npmrc
 node_modules/
