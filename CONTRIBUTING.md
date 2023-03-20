@@ -104,17 +104,18 @@ If an unreviewed ticket reports a bug, try and reproduce it. If you can reproduc
 
 Our documentation is great but it can always be improved. Did you find a typo? Do you think that something should be clarified? Go ahead and suggest a documentation patch!
 
-We use [Docz](https://www.docz.site) to run our documentation site at [wave.free-now.com](https://wave.free-now.com/).
+We use [Storybook](https://storybook.js.org) to run our documentation site at [wave.free-now.com](https://wave.free-now.com/).
 
 To add a new component to our documentation site:
 
-1. Create a new file with the `.md` extension for your component in `/components/[component]/docs`.
-2. Add the markdown header for the page name, route and parent menu
-3. Include a brief description, examples as well as the the `Playground` and `Props` components of [Docz].
+1. Create a new file with the `.stories.tsx` prefix for your component in `/src/stories`.
+2. Include a brief description and examples. Props should be configurable via Storybook
+
+To learn more how to add stories go to [Storybook docs](https://storybook.js.org/docs/react/writing-stories/introduction)
 
 ### Reporting pains and use cases
 
-Speak outloud for us to understand your pains is valuable, challenge current approaches and help us to understand how to do better. Make sure to verify that the topic hasn't being touched yet on the issues poll otherwise open a new one and let's start the conversation
+Speak out loud for us to understand your pains is valuable, challenge current approaches and help us to understand how to do better. Make sure to verify that the topic hasn't being touched yet on the issues poll otherwise open a new one and let's start the conversation
 
 ### Take from the backlog
 

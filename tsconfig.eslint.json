@@ -1,17 +1,5 @@
 {
-  "extends": "./tsconfig.json",
-  "include": [
-    ".github",
-    "docs",
-    "public",
-    "scripts",
-    "src",
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    ".docz",
-    "fixtures",
-    "src/icons"
-  ]
+    "extends": "./tsconfig.json",
+    "include": [".github", "docs", "public", "scripts", "src"],
+    "exclude": ["node_modules", "lib", "fixtures", "src/icons"]
 }
