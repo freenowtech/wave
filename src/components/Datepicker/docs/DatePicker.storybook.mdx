@@ -1,0 +1,76 @@
+import { Meta, ArgTypes, Primary, Story, Stories, Unstyled } from '@storybook/blocks';
+
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { DatepickerOnModal } from './DatepickerOnModal';
+import * as DatePickerStories from './DatePicker.stories';
+
+<Meta of={DatePickerStories} />
+
+# Datepicker
+
+<Primary />
+
+### Properties
+
+<ArgTypes of={DatePickerStories.Default} />
+
+<StyledSystemLinks component="DatePicker" supportedProps={['margin', 'width']} />
+
+## Usage
+
+### Restricted dates range
+
+There are two ways to restrict selectable dates.
+
+If you need to allow dates no later than some date or only after a certain date, use `minDate` and `maxDate`
+properties. They accept plain JavaScript `Date`.
+
+For example, the datepicker allow to select dates one month away from the current date:
+
+<Story of={DatePickerStories.WithRestrictedDays} />
+
+If the restriction is more complex, provide a restriction function to the `isDateBlocked` property.
+The function will be called for each date at render, passing the `Date` object to it.
+
+For example, a function which disables every even day in the calendar `(date:Date) => date.getDate() % 2 === 0`:
+
+<Story of={DatePickerStories.WithDayAvailabilityFunction} />
+
+### Datepicker on Modal
+
+If you need to show the Datepicker in a Modal window, we recommend to set the modal `dismissable` prop to `false` to avoid
+occasional closing.
+
+<Unstyled>
+    <DatepickerOnModal />
+</Unstyled>
+
+Example code:
+
+```tsx
+export const DatepickerOnModal = () => {
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [value, setValue] = useState<Date>();
+
+    return (
+        <>
+            {!showModal && <Button onClick={() => setShowModal(true)}>Open Modal with Datepicker</Button>}
+            {showModal && (
+                <Modal dismissible={false} onClose={() => setShowModal(false)}>
+                    {dismiss => (
+                        <>
+                            <Headline as="h2">New Event</Headline>
+                            <DatePicker value={value} onChange={setValue} />
+                            <br />
+                            <Button onClick={dismiss}>Add Event</Button>
+                            <TextButton onClick={dismiss}>Cancel</TextButton>
+                        </>
+                    )}
+                </Modal>
+            )}
+        </>
+    );
+};
+```
+
+<Stories includePrimary={false} />

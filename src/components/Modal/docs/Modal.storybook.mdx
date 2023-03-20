@@ -1,0 +1,77 @@
+import { Primary, Story, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import * as ModalStories from './Modal.stories';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+<Meta of={ModalStories} />
+
+# Modal
+
+The Modal should only contain content or flows which are related to the current page and not replace pages, therefore
+its complexity level has to be simple. Consider the fullscreen state if you want to focus the users attention to the modal
+content.
+
+Modal is responsive per default but the width can be adjusted (the default is 600px or 37.5rem). Content on the modal
+is scrollable and has a space5 bounding box.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={ModalStories} />
+
+<StyledSystemLinks component="Modal" supportedProps={['width']} />
+
+## Usage
+
+### Basic use
+
+```jsx
+const [showModal, setShowModal] = useState(true);
+
+<Modal onClose={() => setShowModal(false)}>
+    {dismiss => (
+        <>
+            <Headline as="h2">Add Note</Headline>
+            <Text as="p" my={3}>
+                Ensure that all participants are aware of the change.
+            </Text>
+            <Button onClick={dismiss}>Add Note</Button>
+            <TextButton onClick={dismiss}>Cancel</TextButton>
+        </>
+    )}
+</Modal>;
+```
+
+### Close Modal
+
+Modal provides a function to dismiss the component with an animation. The
+dismiss function is available either through render props or a hook. After the
+animation has finished the `onClose` callback will be called.
+
+#### Via Render Props
+
+Pass render function as a child to Modal. Call the function passed as an argument to close the modal:
+
+```jsx
+<Modal>{dismiss => <Button onClick={dismiss}>Close</Button>}</Modal>
+```
+
+#### Via Hook
+
+Use the `useModalDismiss` hook to get the dismiss function. It is only available inside the Modal component because
+it uses React context to get the dismiss function.
+
+```jsx
+const Content = () => {
+    const dismiss = useModalDismiss();
+    return <button onClick={dismiss}>Close</button>;
+};
+
+const ModalWrapper = () => (
+    <Modal>
+        <Content />
+    </Modal>
+);
+```
+
+<Stories includePrimary={false} />

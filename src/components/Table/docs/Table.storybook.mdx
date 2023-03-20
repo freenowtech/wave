@@ -1,0 +1,113 @@
+import { Story, ArgTypes, Meta, Primary } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { TableRow } from '../components/TableRow';
+import { TableRowSkeleton } from '../components/TableRowSkeleton';
+import { TableSortableHeaderCell } from '../components/TableSortableHeaderCell';
+import * as TableStories from './Table.stories';
+
+# Table
+
+<Meta of={TableStories} />
+
+Tables are used to render tabular data in a basic grid, making it easier for people to scan it. Tables are comprised of cells, columns, and rows.
+
+<Primary />
+
+## Properties
+
+### Table
+
+<ArgTypes of={TableStories} />
+
+<StyledSystemLinks component="Table" supportedProps={['margin', 'width', 'height']} />
+
+### TableRow
+
+<ArgTypes of={TableRow} />
+
+### TableHeaderCell
+
+<StyledSystemLinks component="TableHeaderCell" supportedProps={['textAlign', 'layout']} />
+
+### TableCell
+
+<StyledSystemLinks component="TableCell" supportedProps={['textAlign', 'layout']} />
+
+### TableRowSkeleton
+
+<ArgTypes of={TableRowSkeleton} />
+
+### TableSortableHeaderCell
+
+<ArgTypes of={TableSortableHeaderCell} />
+
+## Usage
+
+☝️ Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component.
+To better understand some of the props in the above table, an in-depth guide of accessible tables can be found at the [a11y-101 article](https://a11y-101.com/development/tables).
+
+### Active Row
+
+To highlight an active (or selected) row, you can add set `active` to true on the `TableRow` component. This will mark
+the row as active and change the background color.
+
+<Story of={TableStories.WithActiveRow} />
+
+### Complex Data
+
+When dealing with complex data, it is possible to use up to two lines of text in one row. Keep in mind, that the smallest row size
+will not work when you have multiple lines in one cell.
+
+<Story of={TableStories.WithComplexData} />
+
+## Loading State
+
+<Story of={TableStories.WithSkeletonLoader} />
+
+```jsx
+<Table rowStyle="zebra">
+    <thead>
+        <TableRow>
+            <TableHeaderCell style={{ width: '10rem', whiteSpace: 'normal' }}>Creation Date / Activity</TableHeaderCell>
+            <TableHeaderCell style={{ width: '6.5rem' }}>Name</TableHeaderCell>
+            <TableHeaderCell style={{ width: '3rem' }}>Status</TableHeaderCell>
+            <TableHeaderCell style={{ width: '7.5rem' }}>Phone</TableHeaderCell>
+            <TableHeaderCell style={{ width: '13rem' }}>E-Mail</TableHeaderCell>
+            <TableHeaderCell style={{ width: '6.5rem' }}>Actions</TableHeaderCell>
+        </TableRow>
+    </thead>
+    <tbody>{loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={6} />)}</tbody>
+</Table>
+```
+
+> By default, cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`.
+> If you really want to fix a width make sure to override `whiteSpace` property too. On top of that make sure to check your table a11y.
+> An in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
+
+## Sortable Table
+
+For sorting rows in a Table, there is a variation of the TableHeaderCell component which includes the sorting direction indicator. This component accepts special props related to sorting, as well as a callback function to be called when the User clicks the header, which will announce the field name and it's direction. With that information you can handle the logic for re-sorting the data.
+
+We also expose a custom hook that will handle the state logic for the sorting: `useSortBy`. The hook will cycle through ascending, descending and none – and will return an object with the current field key and direction, as well a setter function that accepts the field key.
+
+```
+const { sortBy, setSortBy } = useSortBy();
+```
+
+### Example
+
+<Story of={TableStories.WithSortableTable} />
+
+> Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTable.tsx).
+
+### Example with a default column sorting
+
+Sometimes the data will already be received sorted by default according to one of the columns displayed. That can be defined passing a default field and direction to `useSortBy`:
+
+```
+const { sortBy, setSortBy } = useSortBy('id', 'ASC');
+```
+
+<Story of={TableStories.WithDefaultSortedTable} />
+
+> Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTableDefault.tsx).

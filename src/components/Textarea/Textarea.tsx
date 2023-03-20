@@ -40,15 +40,36 @@ const TextareaField: FC<TextAreaProps & Pick<InternalInputComponentProps, 'hasVa
     resize: ${p => p.resize};
 `;
 
+// TODO looks like neither variant nor size props are used
 interface TextAreaProps
     extends WrapperProps,
         Omit<ComponentPropsWithoutRef<'textarea'>, 'size' | 'width'>,
         Pick<CSSProperties, 'resize'> {
+    /**
+     * Sets the variant of the textarea
+     * @default 'boxed'
+     */
     variant?: ResponsiveValue<'boxed' | 'bottom-lined'>;
+    /**
+     * Sets the size of the input
+     * @default 'medium'
+     */
     size?: ResponsiveValue<'small' | 'medium'>;
+    /**
+     * Inverts the colors of the input
+     */
     inverted?: boolean;
+    /**
+     * Sets the input label
+     */
     label?: string;
+    /**
+     * Sets the input placeholder
+     */
     placeholder?: string;
+    /**
+     * Shows the error state
+     */
     error?: boolean;
 }
 

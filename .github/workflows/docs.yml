@@ -18,12 +18,14 @@ jobs:
                   node-version: 18
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm i --legacy-peer-deps
             - name: Build docs
               run: npm run build:documentation
             - uses: actions/upload-artifact@v3
               with:
-                  name: docz-dist
-                  path: .docz/dist
+                  name: storybook-dist
+                  path: storybook-static
 
     deploy:
         if: github.ref == 'refs/heads/main'
@@ -32,7 +34,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v3
               with:
-                  name: docz-dist
+                  name: storybook-dist
                   path: public
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3

@@ -1,0 +1,76 @@
+import { ArgTypes, Meta, Primary, Stories, Unstyled } from '@storybook/blocks';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Headline } from '../Headline';
+import * as HeadlineStories from './Headline.stories';
+
+<Meta of={HeadlineStories} />
+
+# Headline
+
+The Headline component will render an html `h1-6` tag. Please reference the
+[w3 recommendations for headings](https://www.w3.org/WAI/tutorials/page-structure/headings/) to ensure your headings
+provide an accessible experience for screen reader users.
+
+<Primary />
+
+Prefer to use headlines starting from level one and not skip levels. Use combination of `as` and `size` property to keep
+the semantics while following the design.
+
+-   Use different headlines and paragraphs to structure your content hierarchically
+-   Avoid using headline lengths, breaking more than two times (three times on mobile)
+-   Avoid using sizes outside the given range
+-   Recommended width of headline is between 500px and 700px
+
+## Properties
+
+<ArgTypes of={HeadlineStories} />
+<StyledSystemLinks component="Headline" supportedProps={['margin', 'textAlign']} />
+
+## Default headlines
+
+<Unstyled>
+    <ItemWrapper>
+        <Headline as="h1">headline h1</Headline>
+        <Headline as="h2">headline h2</Headline>
+        <Headline as="h3">headline h3</Headline>
+        <Headline as="h4">headline h4</Headline>
+        <Headline as="h5">headline h5</Headline>
+        <Headline as="h6">headline h6</Headline>
+    </ItemWrapper>
+    <ItemWrapper inverted>
+        <Headline as="h1" inverted>
+            headline h1 inverted
+        </Headline>
+        <Headline as="h2" inverted>
+            headline h2 inverted
+        </Headline>
+        <Headline as="h3" inverted>
+            headline h3 inverted
+        </Headline>
+        <Headline as="h4" inverted>
+            headline h4 inverted
+        </Headline>
+        <Headline as="h5" inverted>
+            headline h5 inverted
+        </Headline>
+        <Headline as="h6" inverted>
+            headline h6 inverted
+        </Headline>
+    </ItemWrapper>
+</Unstyled>
+
+## Responsive size
+
+The `size` property supports [responsive values](https://styled-system.com/responsive-styles/). Pass an array or an object
+and the design system use corresponding values for different viewport sizes.
+
+For example, the following snippet uses `s` size for mobile and `xl` size bigger screens:
+
+```jsx
+<Headline as="h2" size={{ _: 's', medium: 'xl' }}>
+    Small on mobile, big on bigger screens
+</Headline>
+```
+
+<Stories includePrimary={false} />

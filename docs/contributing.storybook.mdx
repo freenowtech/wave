@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+import workflowImageUrl from './contributing-new-pattern-workflow.svg';
+import { ImageModal } from './components/ImageModal';
+
+<Meta title="Contributing" />
+
+# Contributing
+
+Everyone is welcome to make contributions to the design system. To make sure that everyone can contribute, we have decided to write out a few steps that help you add your contributions.
+
+## Reporting Bugs
+
+The design system is used in many places. We have a hard time keeping our eyes on all of them to keep up with the issues
+you’re having. If you see something amiss, please [create a Github issue](https://github.com/freenowtech/wave/issues/new)
+so we have insight in order to resolve it.
+
+## Submitting Components
+
+When you feel that a specific feature, component, or essential is missing, read this section to find out how you can
+submit a new pattern to the design system.
+
+To figure out if it belongs in the design system, please check out the workflow below to scope whether a new component
+should be added to the design system.
+
+<ImageModal src={workflowImageUrl} alt="Workflow" />
+
+This is the submission process for new components, essentials and improvements to existing components:
+
+1. [Create a Github issue](https://github.com/freenowtech/wave/issues/new) with the basic information and gather
+   feedback from the maintainers and your fellow developers
+2. Align with the maintainers and other developers on the API of the component
+3. After the development is done, open a pull request, keeping the
+   [development guidelines](../CONTRIBUTING.md) in mind. You will get feedback here, but we recommend check-ins with
+   designers and developers during the development
+4. With the required approvals, you can merge your branch to main and it will be released by the maintainers in the
+   next version of `@freenow/wave`
+
+If you need any help during the process, don't hesitate to reach out to one of the maintainers.
+
+### Roadmap
+
+If you're looking for something to work on, a great place to start is our [issues labeled "help wanted"](https://github.com/freenowtech/wave/labels/help%20wanted)!
+
+## Improve Documentation
+
+The documentation is the most valuable part of the design system. It is hard to keep it updated and informative enough to
+help others.
+
+We encourage you to add to the documentation page any information you were lack of when using the library.
+Descriptions, FAQs and explanations are all valuable for us! Documentation PRs are the fastest way to get involved.
+
+All the documentation pages are Markdown-based. You don't need to know how to write code to contribute.
+
+## Other Contributions
+
+Not all contributions have to be made in design, code and pull requests. You can for example help your team adopt the
+design system components or answer questions in issues or discussions.

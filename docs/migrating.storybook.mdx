@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Migrating" />
+
+# Migrating
+
+Migrating from one major version to the next with ease.
+
+## From v1 to v2
+
+A codemod exists to upgrade your components for this version.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/codemods/v2.ts path/to/src
+```
+
+### Button and TextButton
+
+The `block` property used to act as a shortcut to give the button components a width of 100%. In the future, use the `width` property
+directly. It uses the styled-system variable, which is a lot more flexible than just the boolean flag.
+
+## Codemods
+
+Codemods are scripted transformations that you can run on your code to take care of most of the repetitive work involved
+in upgrading from one major version to the next. The codemod instructions for each major release assume that your code
+has already been upgraded to the previous major release. If this is not the case, you should run the codemods for all
+previous major versions first. Beware that codemods are not 100% fool-proof and may break your code.
+
+If you're working in a typescript environment, you need to add `--parser=tsx` to the command in each codemod command to
+allow jscodeshift to parse your typescript/jsx files.

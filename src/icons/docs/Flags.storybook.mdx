@@ -1,0 +1,80 @@
+import { Primary, Meta, ArgTypes, IconGallery, IconItem } from '@storybook/blocks';
+
+import { Flag } from '../Flag';
+import * as FlagStories from './Flags.stories';
+
+<Meta of={FlagStories} />
+
+# Flags
+
+The icon can be accessed by using the `<Icons.Flag />` component and the provided country code with the property `code`.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={Flag} />
+
+### Country Flags
+
+This library provides flags for almost every country of the world, identified by their two-character
+([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)) country code.
+
+<IconGallery>
+    <IconItem name='code="DE"'>
+        <Flag code="DE" />
+    </IconItem>
+    <IconItem name='code="AT"'>
+        <Flag code="AT" />
+    </IconItem>
+    <IconItem name='code="NL"'>
+        <Flag code="NL" />
+    </IconItem>
+    <IconItem name='code="BE"'>
+        <Flag code="BE" />
+    </IconItem>
+    <IconItem name='code="ES"'>
+        <Flag code="ES" />
+    </IconItem>
+    <IconItem name='code="PE"'>
+        <Flag code="PE" />
+    </IconItem>
+    <IconItem name='code="IT"'>
+        <Flag code="IT" />
+    </IconItem>
+    <IconItem name='code="SE"'>
+        <Flag code="SE" />
+    </IconItem>
+</IconGallery>
+
+### Special Flags
+
+There are a few additional, special flags included in this library, that do not represent a single country. You can
+find them below.
+
+<IconGallery>
+    <IconItem name='code="EU"'>
+        <Flag code="EU" />
+    </IconItem>
+    <IconItem name='code="WW"'>
+        <Flag code="WW" />
+    </IconItem>
+    <IconItem name='code="CAF"'>
+        <Flag code="CAF" />
+    </IconItem>
+    <IconItem name='code="CAS"'>
+        <Flag code="CAS" />
+    </IconItem>
+    <IconItem name='code="CEU"'>
+        <Flag code="CEU" />
+    </IconItem>
+    <IconItem name='code="CNA"'>
+        <Flag code="CNA" />
+    </IconItem>
+    <IconItem name='code="CSA"'>
+        <Flag code="CSA" />
+    </IconItem>
+    <IconItem name='code="COC"'>
+        <Flag code="COC" />
+    </IconItem>
+</IconGallery>

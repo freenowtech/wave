@@ -25,7 +25,7 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
      * What source to use for capturing image or video data.
      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
      */
-    capture?: string;
+    capture?: boolean | 'user' | 'environment';
     /**
      * Text to provide a clear description of what the user should upload
      */
@@ -40,7 +40,7 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
      */
     alwaysShowActionButton?: boolean;
     /**
-     * Whether or not the component should render an error state
+     * Whether the component should render an error state
      */
     error?: boolean;
     /**

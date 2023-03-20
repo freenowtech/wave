@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-import { Table, TableCell, TableHeaderCell, TableRow } from '..';
+import { Table, TableCell, TableHeaderCell, TableRow, TableRowProps } from '..';
 import { Box, Checkbox, Input, Text } from '../..';
 
 const data = [
@@ -37,7 +37,7 @@ const data = [
     }
 ];
 
-export const ActiveRowTable: FC = () => {
+export const ActiveRowTable: FC = args => {
     const [selectedRows, setSelectedRows] = useState<number[]>([2]);
 
     const updateSelectedRows = id => (event: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +61,7 @@ export const ActiveRowTable: FC = () => {
     };
 
     return (
-        <Table rowStyle="lines" rowSize="small">
+        <Table rowStyle="lines" rowSize="small" {...args}>
             <thead>
                 <TableRow>
                     <TableHeaderCell>

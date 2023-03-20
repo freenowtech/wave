@@ -5,7 +5,15 @@ import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 
 type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
+    /**
+     * Show active state styling on the row
+     * @default false
+     */
     active?: boolean;
+    /**
+     * Show the hover state styling on the row
+     * @default true
+     */
     hover?: boolean;
 };
 

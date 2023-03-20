@@ -8,7 +8,9 @@ module.exports = {
         'plugin:jest/recommended',
         'plugin:promise/recommended',
         'plugin:unicorn/recommended',
-        'prettier'
+        'prettier',
+        'plugin:storybook/recommended',
+        'plugin:storybook/recommended'
     ],
     env: {
         node: true,
@@ -21,11 +23,8 @@ module.exports = {
     rules: {
         // conflicts with stylelint rule
         'unicorn/numeric-separators-style': 'off',
-
         'unicorn/no-useless-undefined': 'off',
-
         '@typescript-eslint/no-unsafe-return': 'off',
-
         '@typescript-eslint/no-unsafe-assignment': 'off',
         'react/require-default-props': 'off',
         // Often used for this library
@@ -35,7 +34,7 @@ module.exports = {
         'no-prototype-builtins': 'off',
         // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
         'import/prefer-default-export': 'off',
-        'import/no-default-export': 'error',
+        'import/no-default-export': 'off',
         // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
         'react/destructuring-assignment': 'off',
         // No jsx extension: https://github.com/facebook/create-react-app/issues/87#issuecomment-234627904
@@ -47,14 +46,21 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-use-before-define': [
             'error',
-            { functions: false, classes: true, variables: true, typedefs: true }
+            {
+                functions: false,
+                classes: true,
+                variables: true,
+                typedefs: true
+            }
         ],
         // Common abbreviations are known and readable
         'unicorn/prevent-abbreviations': 'off',
         // Airbnb prefers forEach
         'unicorn/no-array-for-each': 'off',
         // It's not accurate in the monorepo style
-        'import/no-extraneous-dependencies': 'off'
+        'import/no-extraneous-dependencies': 'off',
+        // Storybook Template.bind returns any type
+        '@typescript-eslint/no-unsafe-member-access': 'off'
     },
     overrides: [
         {

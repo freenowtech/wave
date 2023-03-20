@@ -1,0 +1,20 @@
+import { Meta, Primary, Stories } from '@storybook/blocks';
+import * as BoxStories from './Box.stories';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+<Meta of={BoxStories} />
+
+# Box
+
+This component serves as a wrapper component for most layout related needs. Use Box to set values such as display, width, height, and more. In practice, this component is used frequently as a wrapper around other components to achieve Box Model related styling.
+
+<Primary />
+
+## Properties
+
+<StyledSystemLinks
+    component="Box"
+    supportedProps={['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background']}
+/>
+
+<Stories includePrimary={false} />
