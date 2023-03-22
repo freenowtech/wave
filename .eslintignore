@@ -2,7 +2,7 @@
 node_modules/
 
 # generated files
-.docz/
+storybook-static/
 lib/
 
 # other
@@ -12,4 +12,3 @@ assets/
 fixtures/
 
 src/icons/
-src/gatsby-theme-docz
