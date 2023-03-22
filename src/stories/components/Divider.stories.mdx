@@ -1,0 +1,96 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import { Box, Divider, InfoBanner, Text } from '../../components';
+
+<Meta
+    title="Components/Divider"
+    component={Divider}
+    argTypes={{
+        offset: {
+            description: 'Set margins from surrounding content in css units or Space scale',
+            control: {
+                type: 'text'
+            }
+        }
+    }}
+    decorators={[
+        (Story, context) => (
+            <Box display={context.args.vertical ? 'flex' : null}>
+                <Text>One</Text>
+                <Story />
+                <Text>Two</Text>
+            </Box>
+        )
+    ]}
+/>
+
+export const Template = args => <Divider {...args} />;
+
+# Divider
+
+**Primary UI element for visually separating content**
+
+Renders a divider UI component: horizontal or vertical line that visually separates two pieces of data, content or UI.
+
+<br />
+
+## Default Behaviour
+
+The horizontal divider takes up the full available width and the vertical divider takes up the full available height.
+
+The horizontal divider is rendered by default. Set **vertical** prop to `true` to change the divider orientation.
+
+<br />
+
+## Divider vs Border
+
+The default color of Divider is _$border.primary_ (#C6CDD4), however...
+
+<InfoBanner
+    variant="warning"
+    description="Divider is NOT a border, and should not be used as such. Please do not use this component as a border for elements."
+    title=""
+/>
+
+Divider is naturally expected to have a certain offset from the elements it is 'dividing' or separating.
+
+<br />
+
+### Style Props
+
+<ArgsTable of={Divider} />
+
+## Usage
+
+### Horizontal
+
+With default offset:
+
+<Canvas>
+    <Story name="Horizontal">{Template.bind({})}</Story>
+</Canvas>
+
+Without offset:
+
+<Canvas>
+    <Story name="Horizontal without offset" args={{ offset: 0 }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Vertical
+
+With default offset:
+
+<Canvas>
+    <Story name="Vertical" args={{ vertical: true }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+Without offset:
+
+<Canvas>
+    <Story name="Vertical without offset" args={{ offset: 0, vertical: true }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
