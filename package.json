@@ -26,7 +26,8 @@
         "lint:eslint": "eslint --format pretty --ext .js,.jsx,.ts,.tsx src/",
         "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
         "husky:precommit": "npm run lint:eslint -- --fix && npm run prettier",
-        "storybook": "start-storybook -p 6006"
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook"
     },
     "husky": {
         "hooks": {
@@ -45,6 +46,10 @@
         "lib/"
     ],
     "license": "Apache-2.0",
+    "overrides": {
+        "react-refresh": "0.11.0",
+        "react-is": "17.0.2"
+    },
     "peerDependencies": {
         "react": ">16.8",
         "react-dom": ">16.8",

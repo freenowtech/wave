@@ -40,7 +40,7 @@ interface FilePickerProps extends MarginProps, ComponentPropsWithoutRef<'input'>
      */
     alwaysShowActionButton?: boolean;
     /**
-     * Whether or not the component should render an error state
+     * Whether the component should render an error state
      */
     error?: boolean;
     /**
