@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Button, Headline, Text, TextButton } from '../..';
 import { Offcanvas } from '../Offcanvas';
 
-const offcanvasContent = dismiss => (
+export const offcanvasContent = (dismiss: () => void): React.ReactElement => (
     <>
         <Headline as="h2">Add Note</Headline>
         <Text as="p" weak my={3}>
@@ -38,9 +38,6 @@ const OffcanvasCreator: FC = () => {
 
     return (
         <>
-            <Button size="small" mr={1} onClick={openOffcanvas(OffcanvasType.DEFAULT)}>
-                Default (Left) Offcanvas
-            </Button>
             <Button size="small" mr={1} onClick={openOffcanvas(OffcanvasType.RIGHT)}>
                 Right Offcanvas
             </Button>
@@ -53,12 +50,6 @@ const OffcanvasCreator: FC = () => {
             <Button size="small" onClick={openOffcanvas(OffcanvasType.NON_DISMISSIBLE)}>
                 Non-Dismissible Offcanvas
             </Button>
-
-            {offcanvas === OffcanvasType.DEFAULT && (
-                <Offcanvas side="left" onClose={hideOffcanvas}>
-                    {offcanvasContent}
-                </Offcanvas>
-            )}
             {offcanvas === OffcanvasType.RIGHT && (
                 <Offcanvas side="right" onClose={hideOffcanvas}>
                     {offcanvasContent}
