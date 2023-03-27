@@ -1,0 +1,158 @@
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Text } from '../Text';
+import { TextPropsTable } from './TextPropsTable';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+
+# Text
+
+<Meta title="Components/Text" component={Text} />
+
+export const Template = args => <Text {...args} />;
+
+The Text component is a wrapper component that will apply typography styles to the text inside.
+
+-   Use different headlines and copies to structure your content hierarchically
+-   Avoid using sizes outside the given range
+-   Text default size is medium
+
+## Usage
+
+By default, `Text` uses the primary color, which is the color for most interface text, whether body or headlines.
+
+Use the `secondary` color for supplemental information with diminished contrast (often, the “gray text”).
+Like form microcopy, captions, helper text, and other medium emphasized text elements.
+
+Use the `disabled` color for text in blocks, form elements, or other components that are not available
+to a user at the moment (due to either permissions, dependencies, or pre-requisites) and
+need to feature “incidental” states.
+
+## Properties
+
+<ArgsTable of={Text} />
+
+<StyledSystemLinks
+    component="Text"
+    supportedProps={['margin', 'fontSize', 'fontWeight', 'fontFamily', 'textAlign']}
+    mt={2}
+/>
+
+## Playground
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            children: 'default text'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story
+        name="custom paragraph"
+        args={{
+            children: 'custom paragraph',
+            as: 'p',
+            fontWeight: 'semibold',
+            marginTop: 3,
+            fontSize: 1
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story
+        name="fontSize alias"
+        args={{
+            children: 'using fontSize alias you can set (small, medium or large)',
+            as: 'p',
+            fontSize: 'small'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="styles"
+        args={{
+            children: 'You can apply responsive styles',
+            as: 'p',
+            fontSize: [1, 'medium', 'large']
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Design
+
+### Appearance
+
+<ItemWrapper mt={4}>
+    <Text as="p">paragraph large</Text>
+    <Text as="p" fontSize={1}>
+        paragraph medium
+    </Text>
+    <Text as="p" fontSize={0}>
+        paragraph small
+    </Text>
+</ItemWrapper>
+<ItemWrapper inverted>
+    <Text as="p" inverted>
+        paragraph inverted large
+    </Text>
+    <Text as="p" inverted fontSize={1}>
+        paragraph inverted medium
+    </Text>
+    <Text as="p" inverted fontSize={0}>
+        paragraph inverted small
+    </Text>
+</ItemWrapper>
+<ItemWrapper>
+    <Text as="p" secondary>
+        paragraph secondary large
+    </Text>
+    <Text as="p" secondary fontSize={1}>
+        paragraph secondary medium
+    </Text>
+    <Text as="p" secondary fontSize={0}>
+        paragraph secondary small
+    </Text>
+</ItemWrapper>
+<ItemWrapper inverted>
+    <Text as="p" secondary inverted>
+        paragraph secondary inverted large
+    </Text>
+    <Text as="p" secondary fontSize={1} inverted>
+        paragraph secondary inverted medium
+    </Text>
+    <Text as="p" secondary fontSize={0} inverted>
+        paragraph secondary inverted small
+    </Text>
+</ItemWrapper>
+<ItemWrapper>
+    <Text as="p" disabled>
+        paragraph disabled large
+    </Text>
+    <Text as="p" disabled fontSize={1}>
+        paragraph disabled medium
+    </Text>
+    <Text as="p" disabled fontSize={0}>
+        paragraph disabled small
+    </Text>
+</ItemWrapper>
+<ItemWrapper inverted>
+    <Text as="p" disabled inverted>
+        paragraph disabled inverted large
+    </Text>
+    <Text as="p" disabled fontSize={1} inverted>
+        paragraph disabled inverted medium
+    </Text>
+    <Text as="p" disabled fontSize={0} inverted>
+        paragraph disabled inverted small
+    </Text>
+</ItemWrapper>

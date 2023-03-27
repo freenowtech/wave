@@ -1,0 +1,58 @@
+import { ControlledTextarea } from './ControlledTextarea';
+import { Textarea } from '../Textarea';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { TextareaPropsTable } from './TextareaPropsTable';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+
+# Textarea
+
+<Meta title="Components/Textarea" component={Textarea} />
+
+export const Template = args => <Textarea {...args} />;
+
+<ArgsTable of={Textarea} />
+<StyledSystemLinks component="Textarea" supportedProps={['margin', 'height', 'width']} />
+
+## Properties
+
+<ArgsTable of={Textarea} />
+
+## Playground
+
+<Canvas>
+    <Story
+        name="Basic"
+        args={{
+            placeholder: 'user@free-now.com',
+            label: 'E-Mail Address',
+            resize: 'vertical'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Appearance
+
+### Default
+
+<Textarea label="Default" />
+
+### Default placeholder
+
+<Textarea label="Default" placeholder="Placeholder" />
+
+### Error
+
+<Textarea label="Default" error />
+
+### Disabled
+
+<Textarea label="Default" disabled />
+
+### Inverted
+
+<ItemWrapper inverted gridTemplate="60% 1fr" mt={4}>
+    <Textarea inverted label="Default" />
+</ItemWrapper>

@@ -1,0 +1,130 @@
+import { LiveTable } from './LiveTable';
+import { ActiveRowTable } from './ActiveRowTable';
+import { ComplexDataTable } from './ComplexDataTable';
+import { SkeletonTable } from './SkeletonTable';
+import { TablePropsTable, TableRowPropsTable, TableRowSkeletonPropsTable } from './TablePropsTable';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+# Table
+
+<Meta title="Components/Table" component={Table} />
+
+export const Template = args => <Table {...args} />;
+
+Tables are used to render tabular data in a basic grid, making it easier for people to scan it. Tables are comprised of cells, columns, and rows.
+
+## Properties
+
+### Table
+
+<TablePropsTable />
+<br />
+<StyledSystemLinks component="Table" supportedProps={['margin', 'width', 'height']} />
+<br />
+
+### TableRow
+
+<TableRowPropsTable />
+<br />
+
+### TableHeaderCell
+
+<StyledSystemLinks component="TableHeaderCell" supportedProps={['textAlign', 'layout']} />
+<br />
+
+### TableCell
+
+<StyledSystemLinks component="TableCell" supportedProps={['textAlign', 'layout']} />
+<br />
+
+### TableRowSkeleton
+
+<TableRowSkeletonPropsTable />
+<br />
+
+## Examples
+
+<LiveTable />
+
+<LiveTable />
+
+```jsx
+<Table rowStyle="zebra">
+    <caption style={{ captionSide: 'bottom', padding: '1rem' }}>The wonderful Wave list</caption>
+    <thead>
+        <TableRow>
+            <TableHeaderCell scope="col">Name</TableHeaderCell>
+            <TableHeaderCell scope="col">E-Mail</TableHeaderCell>
+        </TableRow>
+    </thead>
+    <tbody>
+        <TableRow>
+            <TableCell scope="row">Luka Hartwig</TableCell>
+            <TableCell>l.hartwig@mytaxi.com</TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell scope="row">Alba Gonzales</TableCell>
+            <TableCell>alba.gonzales@free-now.com</TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell scope="row">Alexis Duran</TableCell>
+            <TableCell>alexis.duran@free-now.com</TableCell>
+        </TableRow>
+    </tbody>
+</Table>
+```
+
+> Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component.
+> To better understand some of the props in the above table, an in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
+
+## Active Row
+
+To highlight an active (or selected) row, you can add set `active` to true on the `TableRow` component. This will mark
+the row as active and change the background color.
+
+<ActiveRowTable />
+
+```jsx
+<TableRow active={true}>
+    <TableCell>
+        <Checkbox checked={true} />
+    </TableCell>
+    <TableCell>Alex Ponomarenko</TableCell>
+    <TableCell>a.ponomarenko@mytaxi.com</TableCell>
+    <TableCell>Booker</TableCell>
+    <TableCell>Product</TableCell>
+</TableRow>
+```
+
+## Complex Data
+
+When dealing with complex data, it is possible to use up to two lines of text in one row. Keep in mind, that the smallest row size
+will not work when you have multiple lines in one cells.
+
+<div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+    <ComplexDataTable />
+</div>
+
+## Loading State
+
+<SkeletonTable />
+
+```jsx
+<Table rowStyle="zebra">
+    <thead>
+        <TableRow>
+            <TableHeaderCell style={{ width: '10rem', whiteSpace: 'normal' }}>Creation Date / Activity</TableHeaderCell>
+            <TableHeaderCell style={{ width: '6.5rem' }}>Name</TableHeaderCell>
+            <TableHeaderCell style={{ width: '3rem' }}>Status</TableHeaderCell>
+            <TableHeaderCell style={{ width: '7.5rem' }}>Phone</TableHeaderCell>
+            <TableHeaderCell style={{ width: '13rem' }}>E-Mail</TableHeaderCell>
+            <TableHeaderCell style={{ width: '6.5rem' }}>Actions</TableHeaderCell>
+        </TableRow>
+    </thead>
+    <tbody>{loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={6} />)}</tbody>
+</Table>
+```
+
+> By default cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`.
+> If you really want to fix a width make sure to override `whiteSpace` property too. On top of that make sure to check your table a11y.
+> An in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
