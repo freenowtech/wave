@@ -6,7 +6,22 @@ import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { Combination } from '../../../docs/Combination';
 import { InputPropsTable } from './InputPropsTable';
 
-<Meta title="Components/Input" component={Input} />
+<Meta
+    title="Components/Input"
+    component={Input}
+    argTypes={{
+        variant: {
+            options: ['boxed', 'bottom-lined'],
+            defaultValue: 'boxed',
+            control: 'select'
+        },
+        size: {
+            options: ['small', 'medium'],
+            defaultValue: 'medium',
+            control: 'select'
+        }
+    }}
+/>
 
 export const Template = args => <Input {...args} />;
 

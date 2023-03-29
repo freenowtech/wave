@@ -4,7 +4,17 @@ import { LabelPropsTable } from './LabelPropsTable';
 import { Combination } from '../../../docs/Combination';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 
-<Meta title="Components/Label" component={Label} />
+<Meta
+    title="Components/Label"
+    component={Label}
+    argTypes={{
+        variant: {
+            options: ['default', 'info', 'success', 'warning', 'danger'],
+            defaultValue: 'default',
+            control: 'select'
+        }
+    }}
+/>
 
 export const Template = args => <Label {...args} />;
 
