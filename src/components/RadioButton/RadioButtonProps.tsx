@@ -4,6 +4,14 @@ import { ClassNameProps } from '../../utils/extractProps';
 
 interface RadioButtonProps extends ComponentPropsWithoutRef<'input'>, ClassNameProps, MarginProps {
     /**
+     * Set radio button to render in checked state
+     */
+    checked?: boolean;
+    /**
+     * Disables the radio button
+     */
+    disabled?: boolean;
+    /**
      * Provide a label for the input which will be shown next to the radio button
      */
     label?: ReactNode;
