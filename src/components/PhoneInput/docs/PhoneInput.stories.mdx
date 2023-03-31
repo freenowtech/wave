@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from 'react';
 import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { PhoneInput } from '../PhoneInput';
+import { COUNTRIES } from '../constants';
 
 <Meta
     title="Form Elements/Phone Input"
@@ -20,7 +21,20 @@ import { PhoneInput } from '../PhoneInput';
     }}
 />
 
-export const Template = args => <PhoneInput {...args} />;
+export const Template = args => {
+    const [nationalNumber, setNationalNumber] = React.useState('');
+    const [country, setCountry] = React.useState(COUNTRIES.find(it => it.value == 'DE'));
+
+    return (
+        <PhoneInput
+            text={nationalNumber}
+            country={country}
+            onCountryChange={c => setCountry(c)}
+            onTextChange={event => setNationalNumber(event.target.value)}
+            {...args}
+        />
+    );
+};
 
 # Phone Input
 
