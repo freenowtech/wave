@@ -1,0 +1,243 @@
+import { useState, ChangeEvent } from 'react';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { PhoneInput } from '../PhoneInput';
+
+<Meta
+    title="Form Elements/Phone Input"
+    component={PhoneInput}
+    argTypes={{
+        variant: {
+            options: ['boxed', 'bottom-lined'],
+            defaultValue: 'boxed',
+            control: 'radio'
+        },
+        size: {
+            options: ['small', 'medium'],
+            defaultValue: 'medium',
+            control: 'radio'
+        }
+    }}
+/>
+
+export const Template = args => <PhoneInput {...args} />;
+
+# Phone Input
+
+The `PhoneInput` is a form component for inputting a phone number in international format with usage of country selector.
+
+The component consists of two controls: a select to pick a prefix and an input to type in the phone number. The select shows all the country codes available world-wide.
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            variant: 'boxed',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            }
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<br />
+
+## Properties
+
+<ArgsTable of={PhoneInput} />
+
+<StyledSystemLinks component="PhoneInput" supportedProps={['margin', 'width']} />
+
+<br />
+
+## Troubleshooting
+
+<br />
+
+### The list of prefixes is not fully visible
+
+If the list of prefixes is not fully visible when opened, like in [this Sandbox example](https://codesandbox.io/s/inspiring-austin-2006xl?file=/src/index.js), use `listPortalTarget` prop to attach the popup to the document's body:
+
+```jsx
+<PhoneInput listPortalTarget={document.body} />
+```
+
+The reason of the issue is that the prefix selection popup is rendered inside the same container as the component by default. If the container does not allow content to overflow (e.g. via `overflow: hidden;`), everything that overflows the container borders will be hidden.
+
+<br />
+
+# Stories
+
+<br />
+
+### Default | Boxed
+
+<Canvas>
+    <Story
+        name="Boxed"
+        args={{
+            variant: 'boxed',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            }
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Default | Bottom-lined
+
+<Canvas>
+    <Story
+        name="Bottom-Lined"
+        args={{
+            variant: 'bottom-lined',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            }
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Default | Boxed | Small
+
+<Canvas>
+    <Story
+        name="Boxed | Small"
+        args={{
+            variant: 'boxed',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            },
+            size: 'small'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Default | Bottom-lined | Small
+
+<Canvas>
+    <Story
+        name="Bottom-lined | Small"
+        args={{
+            variant: 'bottom-lined',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            },
+            size: 'small'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Error | Boxed
+
+<Canvas>
+    <Story
+        name="Error | Boxed"
+        args={{
+            variant: 'boxed',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            },
+            error: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Error | Bottom-lined
+
+<Canvas>
+    <Story
+        name="Error | Bottom-Lined"
+        args={{
+            variant: 'bottom-lined',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            },
+            error: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Disabled | Boxed
+
+<Canvas>
+    <Story
+        name="Disabled | Boxed"
+        args={{
+            variant: 'boxed',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            },
+            disabled: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Disabled | Bottom-lined
+
+<Canvas>
+    <Story
+        name="Disabled | Bottom-Lined"
+        args={{
+            variant: 'bottom-lined',
+            label: 'Phone Number',
+            id: 'phone',
+            country: {
+                label: 'DE',
+                value: 'DE',
+                dialCode: '+49'
+            },
+            disabled: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
