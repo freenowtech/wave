@@ -1,0 +1,59 @@
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Skeleton } from '../Skeleton';
+import { SkeletonPropsTable } from './SkeletonPropsTable';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Combination } from '../../../docs/Combination';
+
+<Meta
+    title="Components/Skeleton"
+    component={Skeleton}
+    argTypes={{
+        animated: {
+            options: [true, false],
+            defaultValue: false,
+            control: 'radio'
+        }
+    }}
+/>
+
+export const Template = args => <Skeleton {...args} />;
+
+# Skeleton
+
+Provide a placeholder while you wait for content to load, or to visualise content that doesn't exist yet.
+
+## Properties
+
+<ArgsTable of={Skeleton} />
+
+<StyledSystemLinks component="Skeleton" supportedProps={['layout', 'margin', 'borderRadius']} />
+
+<br />
+
+# Stories
+
+### Not animated
+
+<Canvas>
+    <Story
+        name="Not animated"
+        args={{
+            animated: false
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Animated
+
+<Canvas>
+    <Story
+        name="Animated"
+        args={{
+            animated: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
