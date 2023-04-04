@@ -8,10 +8,13 @@ import { LiveTable } from './LiveTable'
 import { ActiveRowTable } from './ActiveRowTable'
 import { ComplexDataTable } from './ComplexDataTable'
 import { SkeletonTable } from './SkeletonTable'
+import { SortableTable } from './SortableTable'
+import { SortableTableDefault } from './SortableTableDefault'
 import {
     TablePropsTable,
     TableRowPropsTable,
     TableRowSkeletonPropsTable,
+    TableSortableHeaderCellPropsTable,
 } from './TablePropsTable'
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
 
@@ -46,6 +49,13 @@ Tables are used to render tabular data in a basic grid, making it easier for peo
 ### TableRowSkeleton
 
 <TableRowSkeletonPropsTable />
+<br />
+
+### TableSortableHeaderCell
+
+Supports the same props as TableHeaderCell, and the following specific ones:
+
+<TableSortableHeaderCellPropsTable />
 <br />
 
 ## Examples
@@ -133,3 +143,32 @@ will not work when you have multiple lines in one cells.
 > By default cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`.
 > If you really want to fix a width make sure to override `whiteSpace` property too. On top of that make sure to check your table a11y.
 > An in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
+
+
+## Sortable Table
+
+For sorting rows in a Table, there is a variation of the TableHeaderCell component which includes the sorting direction indicator. This component accepts special props related to sorting, as well as a callback function to be called when the User clicks the header, which will announce the field name and it's direction. With that information you can handle the logic for re-sorting the data.
+
+We also expose a custom hook that will handle the state logic for the sorting: `useSortBy`. The hook will cycle through ascending, descending and none – and will return an object with the current field key and direction, as well a setter function that accepts the field key.
+
+```
+const { sortBy, setSortBy } = useSortBy();
+```
+
+### Example
+
+<SortableTable />
+
+> Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTable.tsx).
+
+### Example with a default column sorting
+
+Sometimes the data will already be received sorted by default according to one of the columns displayed. That can be defined passing a default field and direction to `useSortBy`:
+
+```
+const { sortBy, setSortBy } = useSortBy('id', 'ASC');
+```
+
+<SortableTableDefault />
+
+> Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTableDefault.tsx).

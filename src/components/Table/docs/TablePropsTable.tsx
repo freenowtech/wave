@@ -62,3 +62,31 @@ export const TableRowSkeletonPropsTable: FC = () => {
     ];
     return <PropsTable props={props} />;
 };
+
+export const TableSortableHeaderCellPropsTable: FC = () => {
+    const props = [
+        {
+            name: 'active',
+            type: 'boolean',
+            description: 'Enables the sorting indicator arrows'
+        },
+        {
+            name: 'field',
+            type: 'string',
+            description:
+                'The key/name of the column to be used for sorting (should match the property of the data that will be sorted)'
+        },
+        {
+            name: 'direction',
+            type: 'string',
+            description: 'The direction of the sorting: ASC or DESC'
+        },
+        {
+            name: 'onSortChange',
+            type: 'function',
+            description:
+                'A handler to be called when the headers are clicked in order to change the sorting. It must accept the field key and the direction as parameters'
+        }
+    ];
+    return <PropsTable props={props} />;
+};
