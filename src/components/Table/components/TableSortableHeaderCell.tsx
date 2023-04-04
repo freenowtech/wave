@@ -34,7 +34,7 @@ const TableSortableHeaderCell: FC<TableSortableHeaderCellProps> = ({
             {children}
             <Box mr="0.25rem" />
             <Box flexShrink="0" display="inline-flex" alignItems="center">
-                <SortingIndicator direction={active ? direction : ''} />
+                <SortingIndicator direction={active ? direction : 'NONE'} />
             </Box>
         </Box>
     </TableHeaderCellWithPointer>

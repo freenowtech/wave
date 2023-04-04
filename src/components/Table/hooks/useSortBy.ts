@@ -30,18 +30,14 @@ function useSortBy(defaultField: Sorting['field'] = '', initialDirection: Sortin
      */
     const setSortBy = useCallback(
         (targetField: string) => {
-            if (field === '') {
+            if (field !== targetField) {
                 // if not sorting by a field, use the incoming field and reset to initial direction
                 setField(targetField);
                 setDirection(initialDirection);
-            } else if (field === targetField && direction === initialDirection) {
+            } else if (direction === initialDirection) {
                 // if sorting by a field switch to the next direction
                 setDirection(initialDirection === 'ASC' ? 'DESC' : 'ASC');
-            } else if (field !== targetField) {
-                // if sorting by a different field, use the incoming field and reset to initial direction
-                setField(targetField);
-                setDirection(initialDirection);
-            } else if (field && direction !== initialDirection) {
+            } else if (direction !== initialDirection) {
                 // if sorting by a field and direction is not initial, reset direction and field to initial
                 setField(defaultField);
                 setDirection(initialDirection);

@@ -3,7 +3,7 @@ import { Colors } from '../../../essentials';
 import { IconProps } from '../../../icons';
 
 type Props = IconProps & {
-    direction: 'ASC' | 'DESC' | '';
+    direction: 'ASC' | 'DESC' | 'NONE';
 };
 
 const SortingIndicator: React.FC<Props> = ({
