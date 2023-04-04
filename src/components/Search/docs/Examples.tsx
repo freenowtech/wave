@@ -72,11 +72,11 @@ export const PlaceholderExample: FC = () => {
 const searchAPI = (name: string) => `https://swapi.dev/api/people/?search=${name}`;
 
 export const APIExample: FC = () => {
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState<JSX.Element[]>([]);
 
-    const mapName = ({ name }: { name: string }, index) => (
+    const mapName = ({ name }: { name: string }, index: number) => (
         <Box
-            key={index}
+            key={`${name}-${index}`}
             height="2.5rem"
             display="flex"
             alignItems="center"

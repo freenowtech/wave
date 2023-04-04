@@ -1,0 +1,196 @@
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { SearchPropsTable } from './SearchProps';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { Headline } from '../../Headline/Headline';
+
+import { Search } from '../Search';
+import { TextExample, DisabledExample, PlaceholderExample, APIExample } from './Examples';
+
+<Meta
+    title="Components/Search"
+    component={Search}
+    argTypes={{
+        size: {
+            options: ['small', 'medium'],
+            defaultValue: 'medium',
+            control: 'radio'
+        },
+        disabled: {
+            options: [true, false],
+            defaultValue: false,
+            control: 'radio'
+        },
+        inverted: {
+            options: [true, false],
+            defaultValue: false,
+            control: 'radio'
+        }
+    }}
+/>
+
+export const Template = args => <Search {...args} />;
+
+# Search
+
+Use the component to act as a minimal search box. It provides you with a `Search` component, which can be imported and used.
+The results property passed into this component show up as the search results.
+
+<Canvas>
+    <Search />
+</Canvas>
+
+<br />
+
+## Properties
+
+<ArgsTable of={Search} />
+
+<br />
+
+## Appearance
+
+-   placeholder: This describes the text value to display as a placeholder in the search box
+-   value: This describes the default value to be taken by the search box
+-   results: The search results. This is an array of components (whatever you want to render as a result object)
+
+## Navigation
+
+You can navigate among the search results using your keyboard arrow keys. Upon navigating to an element and pressing `Enter`, the `onClick` function of that element is called.
+
+## Examples
+
+### Basic
+
+<TextExample />
+
+```jsx
+const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
+const mapName = (name, index) => (
+    <Box
+        key={index}
+        height="2.5rem"
+        display="flex"
+        alignItems="center"
+        onClick={() => {
+            alert(`${name} was clicked!`);
+            setValue(name);
+            setShowResults(false);
+        }}
+    >
+        <Text marginLeft="1rem">{name}</Text>
+    </Box>
+);
+const [value, setValue] = useState < string > '';
+const [showResults, setShowResults] = useState < boolean > false;
+const results = namesArray.filter(name => name.toLowerCase().includes(value.toLowerCase())).map(mapName);
+return (
+    <Search
+        value={value}
+        setValue={setValue}
+        width="20rem"
+        results={results}
+        showResults={showResults}
+        setShowResults={setShowResults}
+    />
+);
+```
+
+### With Placeholder
+
+<PlaceholderExample />
+
+```jsx
+const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
+const mapName = (name, index) => (
+    <Box key={index} height="2.5rem" display="flex" alignItems="center" onClick={() => alert(`${name} was clicked!`)}>
+        <Text marginLeft="1rem">{name}</Text>
+    </Box>
+);
+const names = namesArray.map(mapName);
+return <Search width="12rem" placeholder="Search for a name" results={names} />;
+```
+
+### Disabled
+
+<DisabledExample />
+
+```jsx
+const options = [1, 2, 3, 4].map(item => <Text>{item}</Text>);
+return <Search disabled width="12rem" results={options} />;
+```
+
+### Integration with API
+
+<APIExample />
+
+```jsx
+const searchAPI = (name: string) => `https://swapi.dev/api/people/?search=${name}`;
+
+const mapName = ({ name }, index) => (
+    <Box key={index} height="2.5rem" display="flex" alignItems="center" onClick={() => alert(`${name} was clicked!`)}>
+        <Text marginLeft="1rem">{name}</Text>
+    </Box>
+);
+
+const fetchCharacter = async (name: string) => {
+    const response = await (await fetch(searchAPI(name))).json();
+    setResults(response.results?.map(mapName));
+};
+
+const [results, setResults] = useState([]);
+return (
+    <Search
+        width="20rem"
+        placeholder="Enter a name"
+        results={results}
+        onInputChange={name => fetchCharacter(name)}
+        onClear={() => setResults([])}
+    />
+);
+```
+
+## Variants
+
+### Medium (default)
+
+<Search width="12rem" placeholder="Search for a name" results={[]} />
+
+### Small
+
+<Search width="12rem" placeholder="Search for a name" size="small" results={[]} />
+
+# Stories
+
+<br />
+
+### Basic | Normal size
+
+<Canvas>
+    <Story name="Basic">
+        <TextExample />
+    </Story>
+</Canvas>
+
+### With Placeholder
+
+<Canvas>
+    <Story name="With Placeholder">
+        <PlaceholderExample />
+    </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+    <Story name="Disabled">
+        <DisabledExample />
+    </Story>
+</Canvas>
+
+### Integration with API
+
+<Canvas>
+    <Story name="Integration with API">
+        <APIExample />
+    </Story>
+</Canvas>
