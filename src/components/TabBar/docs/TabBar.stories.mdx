@@ -1,0 +1,81 @@
+import { useState } from 'react';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { TabBar } from '../TabBar';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { Headline } from '../..';
+import { TabBarExample } from './TabBarExample';
+import { TabBarLinkPropsTable } from './TabBarLinkPropsTable';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+<Meta
+    title="Components/TabBar"
+    component={TabBar}
+    argTypes={{
+        selected: {
+            options: [true, false],
+            defaultValue: false,
+            control: 'radio'
+        }
+    }}
+/>
+
+export const Template = args => <TabBar my={5} {...args} />;
+
+# TabBar
+
+-   This component is a sub-navigation to organize different categories of a content on the same page
+-   The recommended amount of tabs is 2-5
+-   Consider to wrap the tabbed content e.g. into cards
+-   Horizontal spacing is space 3 per default which could be overwritten
+
+<Canvas>
+    <TabBar>
+        <TabBar.Link href="#" selected>
+            A New Hope
+        </TabBar.Link>
+        <TabBar.Link href="#">Empire Strikes Back</TabBar.Link>
+        <TabBar.Link href="#">Return of the Jedi</TabBar.Link>
+    </TabBar>
+</Canvas>
+
+### Properties
+
+<ArgsTable of={TabBar.Link} />
+<StyledSystemLinks component="TabBar" supportedProps={['margin']} />
+
+### TabBar.Link
+
+The `TabBar.Link` supports all the props that can be passed to `<a>` tag.
+
+### Usage with react-router
+
+When using this component as a navigational element with the `NavLink` from react-router, the class name `active` on the
+`TabBar.Link` element can also be used to indicate that the element is active and is the default that react-router adds
+to active `NavLink` elements.
+
+# Stories
+
+### Default
+
+<Canvas>
+    <Story name="Default" args={{ selected: true }}>
+        <TabBarExample />
+    </Story>
+</Canvas>
+
+```jsx
+const TabBarExample: FC = () => {
+    const items = ['A New Hope', 'Empire Strikes Back', 'Return of the Jedi'];
+    const [selected, setSelected] = React.useState(items[0]);
+
+    return (
+        <TabBar my={5}>
+            {items.map(it => (
+                <TabBar.Link key={it} href="" onClick={() => setSelected(it)} selected={selected === it}>
+                    {it}
+                </TabBar.Link>
+            ))}
+        </TabBar>
+    );
+};
+```
