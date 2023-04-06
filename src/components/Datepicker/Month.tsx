@@ -3,7 +3,6 @@ import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 
-import { generateId } from '../../utils/ids';
 import { Colors } from '../../essentials';
 import { Text } from '../Text/Text';
 import { Day } from './Day';
@@ -57,12 +56,13 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
                 ))}
             </Weekdays>
             <DaysContainer>
-                {days.map(day => {
+                {days.map((day, index) => {
                     if (typeof day === 'object') {
                         return <Day date={day.date} key={day.date.toString()} dayLabel={day.dayLabel} />;
                     }
 
-                    return <div key={generateId()} />;
+                    // eslint-disable-next-line react/no-array-index-key
+                    return <div key={index} />; // we can use index as a key since the array is never reordered
                 })}
             </DaysContainer>
         </div>
