@@ -103,11 +103,11 @@ test('allows to be tested using accessible queries', () => {
     const passwordInput = screen.getByLabelText(/password/i);
     const submitBtn = screen.getByRole('button', { name: /submit/i });
 
-    userEvent.type(usernameInput, 'jaimito');
-    userEvent.type(passwordInput, 'tontoelquelolea');
+    userEvent.type(usernameInput, 'nikola');
+    userEvent.type(passwordInput, 'Tesla1743');
     userEvent.click(submitBtn);
 
-    expect(spySubmit).toHaveBeenCalledWith({ username: 'jaimito', password: 'tontoelquelolea' });
+    expect(spySubmit).toHaveBeenCalledWith({ username: 'nikola', password: 'Tesla1743' });
     // Because input type password doesn't have implicit roles (type is passing as prop as expected) https://www.w3.org/TR/html-aria/#docconformance
     expect(screen.queryByRole('textbox', { name: 'password' })).not.toBeInTheDocument();
 });
