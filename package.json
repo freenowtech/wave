@@ -5,10 +5,6 @@
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
-    "sideEffects": [
-        "lib/esm/polyfills.js",
-        "lib/cjs/polyfills.js"
-    ],
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
@@ -124,7 +120,6 @@
         "@types/react-select": "^4.0.18",
         "@types/styled-system": "^5.1.9",
         "date-fns": "^2.11.1",
-        "nanoid": "^3.1.23",
         "react-popper": "^2.3.0",
         "react-tether": "^2.0.7",
         "react-transition-group": "^4.3.0",
