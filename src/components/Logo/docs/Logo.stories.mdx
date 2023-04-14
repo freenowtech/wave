@@ -1,0 +1,41 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Logo } from '../Logo';
+import { LogoPropsTable } from './LogoPropsTable';
+import { Combination } from '../../../docs/Combination';
+
+<Meta title="Essentials/Logo" />
+
+export const Template = args => <Logo {...args} />;
+
+# Logo
+
+## Properties
+
+<LogoPropsTable />
+
+## Examples
+
+<Canvas>
+    <Logo variant="business" />
+</Canvas>
+
+## Combinations
+
+<Combination variant={['default', 'business']} inverted={[false, true]} monochrome={[false, true]}>
+    {(props, i) => <Logo key={i} {...props} />}
+</Combination>
+
+## Stories
+
+### Basic
+
+<Canvas>
+    <Story
+        name="Basic"
+        args={{
+            variant: 'default'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

@@ -1,13 +1,9 @@
----
-name: Breakpoints
-menu: Essentials
-route: /essentials/breakpoints
----
-
-import { Playground } from 'docz';
+import { Canvas, Story, Meta } from '@storybook/addon-docs';
 import { Breakpoints } from '../Breakpoints';
 import { Text } from '../../../components';
-import { BreakpointsTable } from './BreakpointsTable'
+import { BreakpointsTable } from './BreakpointsTable';
+
+<Meta title="Essentials/Breakpoints" component={Breakpoints} />
 
 # Breakpoints
 
@@ -65,6 +61,6 @@ const Container = styled.div`
 
 ## Examples
 
-<Playground>
+<Canvas>
     <Text fontSize={[1, 2, 3, 4, 5]}>Sample text</Text>
-</Playground>
+</Canvas>
