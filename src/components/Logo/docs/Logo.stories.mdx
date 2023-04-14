@@ -1,7 +1,5 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Logo } from '../Logo';
-import { LogoPropsTable } from './LogoPropsTable';
-import { Combination } from '../../../docs/Combination';
 
 <Meta title="Essentials/Logo" component={Logo} />
 
@@ -9,9 +7,11 @@ export const Template = args => <Logo {...args} />;
 
 # Logo
 
-## Properties
+<Canvas>
+    <Story name="Logo">{Template.bind({})}</Story>
+</Canvas>
 
-<ArgsTable of={Logo} />
+<ArgsTable story="Logo" />
 
 ## Stories
 
