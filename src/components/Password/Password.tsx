@@ -28,7 +28,13 @@ const PasswordWrapper = styled.div<WrapperProps>`
 `;
 
 export interface PasswordProps extends InputWrapperProps, InputProps {
+    /**
+     * Sets the purpose of the password input element
+     */
     purpose?: 'login' | 'new-password';
+    /**
+     * If you project supports multiple languages it is recommended to pass translated labels to these properties
+     */
     ariaStrings?: {
         showPasswordButton?: string;
         hidePasswordButton?: string;
@@ -52,13 +58,13 @@ const iconColors = {
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
     (
         {
-            ariaStrings = {},
             purpose = 'login',
             id,
             disabled,
             size = 'medium',
             variant = 'boxed',
             inverted,
+            ariaStrings = {},
             ...rest
         }: PasswordProps,
         ref
