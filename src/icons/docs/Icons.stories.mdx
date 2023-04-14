@@ -1,15 +1,10 @@
----
-name: Icons
-menu: Essentials
-route: /essentials/icons
----
-
-import { Playground } from 'docz';
+import { Canvas, Story, Meta, ArgsTable, IconGallery, IconItem } from '@storybook/addon-docs';
 
 import { Colors, Headline } from '../..';
-import { IconGrid, Item } from './IconGrid';
-import { FlagSelector } from './FlagSelector';
+import * as FlagIcons from '../flags';
+import { Flag } from '../Flag';
 import { LargeFlag } from './LargeFlag';
+import { SearchableIconGrid } from './SearchableIconGrid';
 import { GuidelineBlock, GuidelineImage, GuidelineList, GuidelineContent } from './GuidelineBlock';
 import SpecsSvg from './images/specs-detail.svg';
 import GapSvg from './images/gap-detail.svg';
@@ -18,11 +13,13 @@ import RadiusSvg from './images/radius-detail.svg';
 import RadiusCrossedIconSvg from './images/radius-not-used.svg';
 import ColorSvg from './images/color-detail.svg';
 import BorderSvg from './images/border-detail.svg';
-import { SearchableIconGrid } from './SearchableIconGrid'
-import { IconPropsTable } from "./IconPropsTable";
 import * as Icons from '..';
-import { Flag } from "../..";
+import { Icon as IconExample } from './Icon';
 
+<Meta title="Essentials/Icons" />
+
+export const IconTemplate = args => <IconExample {...args} />;
+export const FlagTemplate = args => <LargeFlag {...args} />;
 
 # Icons
 
@@ -35,70 +32,139 @@ connected SVG and allow you to change the size and (with some exceptions) color 
 <AlertIcon />
 ```
 
-## Properties
-
-<IconPropsTable />
-
-## Examples
-
 To allow using all icons, they are imported with `import * as Icons from`, so you need to prefix every icon with `Icon.`
 so it can be rendered in the example area. This isn't necessary in your project, as you can import the icons explicitly.
 
-<Playground>
-  <Icons.TrophyIcon />
-  <Icons.AlertIcon size="small" />
-  <Icons.FreeNowArrowIcon size="large" color={Colors.FREEDOM_RED_900} />
-</Playground>
+```jsx
+<Icons.AlertIcon />
+```
+
+## Properties
+
+<ArgsTable of={Icons.AlertIcon} />
+
+## Examples
+
+<Canvas>
+    <Story
+        name="Icons"
+        args={{
+            name: 'AlertIcon',
+            color: Colors.ATTENTION_YELLOW_900,
+            size: 40
+        }}
+        argTypes={{
+            name: {
+                description: 'Name of the icon\n\n**Example Only!**',
+                control: 'select',
+                options: Object.keys(Icons).filter(key => !['Flag', 'IconProps'].includes(key))
+            },
+            color: {
+                control: 'color'
+            },
+            size: {
+                control: 'select',
+                options: ['small', 'medium', 'large', 40]
+            }
+        }}
+    >
+        {IconTemplate.bind({})}
+    </Story>
+</Canvas>
+
+<ArgsTable story="Icons" />
 
 ## Available Icons
 
 <SearchableIconGrid />
 
-## Country Flags
+## Flags
+
+The icon can be accessed by using the `<Icons.Flag />` component and the provided country code with the property `code`.
+
+<Canvas>
+    <Story
+        name="Flags"
+        args={{
+            code: 'US'
+        }}
+        argTypes={{
+            code: {
+                description: 'Two letters ISO country code.',
+                control: 'select',
+                options: Object.entries(FlagIcons).map(it => it[0])
+            }
+        }}
+    >
+        {FlagTemplate.bind({})}
+    </Story>
+</Canvas>
+
+<ArgsTable story="Flags" />
+
+### Country Flags
 
 This library provides flags for almost every country of the world, identified by their two-character
-([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)) country code. The icon can be accessed by using the `<Flag />`
-component and the provided country code with the property `code`.
+([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)) country code.
 
-<IconGrid>
-    <Item name='code="EU"'><LargeFlag code="EU" /></Item>
-    <Item name='code="DE"'><LargeFlag code="DE" /></Item>
-    <Item name='code="AT"'><LargeFlag code="AT" /></Item>
-    <Item name='code="NL"'><LargeFlag code="NL" /></Item>
-    <Item name='code="BE"'><LargeFlag code="BE" /></Item>
-    <Item name='code="ES"'><LargeFlag code="ES" /></Item>
-    <Item name='code="PE"'><LargeFlag code="PE" /></Item>
-    <Item name='code="RO"'><LargeFlag code="RO" /></Item>
-    <Item name='code="IT"'><LargeFlag code="IT" /></Item>
-    <Item name='code="SE"'><LargeFlag code="SE" /></Item>
-    <Item name='code="US"'><LargeFlag code="US" /></Item>
-</IconGrid>
-
-```jsx
-<Flag code="US" />
-```
-
-It is also possible to preview all flags included in this library with the selector below.
-
-<FlagSelector />
+<IconGallery>
+    <IconItem name='code="DE"'>
+        <Flag code="DE" />
+    </IconItem>
+    <IconItem name='code="AT"'>
+        <Flag code="AT" />
+    </IconItem>
+    <IconItem name='code="NL"'>
+        <Flag code="NL" />
+    </IconItem>
+    <IconItem name='code="BE"'>
+        <Flag code="BE" />
+    </IconItem>
+    <IconItem name='code="ES"'>
+        <Flag code="ES" />
+    </IconItem>
+    <IconItem name='code="PE"'>
+        <Flag code="PE" />
+    </IconItem>
+    <IconItem name='code="IT"'>
+        <Flag code="IT" />
+    </IconItem>
+    <IconItem name='code="SE"'>
+        <Flag code="SE" />
+    </IconItem>
+</IconGallery>
 
 ### Special Flags
 
 There are a few additional, special flags included in this library, that do not represent a single country. You can
 find them below.
 
-<IconGrid>
-  <Item name='code="EU"'><LargeFlag code="EU" /></Item>
-  <Item name='code="WW"'><LargeFlag code="WW" /></Item>
-  <Item name='code="CAF"'><LargeFlag code="CAF" /></Item>
-  <Item name='code="CAS"'><LargeFlag code="CAS" /></Item>
-  <Item name='code="CEU"'><LargeFlag code="CEU" /></Item>
-  <Item name='code="CNA"'><LargeFlag code="CNA" /></Item>
-  <Item name='code="CSA"'><LargeFlag code="CSA" /></Item>
-  <Item name='code="COC"'><LargeFlag code="COC" /></Item>
-</IconGrid>
-
-
+<IconGallery>
+    <IconItem name='code="EU"'>
+        <Flag code="EU" />
+    </IconItem>
+    <IconItem name='code="WW"'>
+        <Flag code="WW" />
+    </IconItem>
+    <IconItem name='code="CAF"'>
+        <Flag code="CAF" />
+    </IconItem>
+    <IconItem name='code="CAS"'>
+        <Flag code="CAS" />
+    </IconItem>
+    <IconItem name='code="CEU"'>
+        <Flag code="CEU" />
+    </IconItem>
+    <IconItem name='code="CNA"'>
+        <Flag code="CNA" />
+    </IconItem>
+    <IconItem name='code="CSA"'>
+        <Flag code="CSA" />
+    </IconItem>
+    <IconItem name='code="COC"'>
+        <Flag code="COC" />
+    </IconItem>
+</IconGallery>
 
 ## Design Documentation
 
@@ -126,7 +192,6 @@ find them below.
 The content of an icon should remain inside of the inner safe zone and should only extend into the padding between
 the save and trim area if additional visual weight is needed. Do not place any part of the icon outside of the trim area.
 
-
 ### Gap
 
 <GuidelineBlock>
@@ -148,7 +213,6 @@ the save and trim area if additional visual weight is needed. Do not place any p
 Most of the icons contain an open edge which is part of our unique brand style.
 The 2x width gap is only used in icons, where it is not breaking the meaning of the icon.
 The multimodality icons, which are used in the tab bar are not including the gap.
-
 
 ### Corner Radius
 
@@ -172,7 +236,6 @@ The border radius of 2px is used in every icon where it makes sense.
 The corner radius is based on our UI components e.g. buttons and annotations.
 Often it is a combination of 2px and 0px border radius to create a round and friendly but also stable icon.
 
-
 ### Color
 
 <GuidelineBlock>
@@ -192,7 +255,6 @@ Often it is a combination of 2px and 0px border radius to create a round and fri
 </GuidelineBlock>
 
 The default color for our icons is Authentic Blue 900.
-
 
 ### Outline
 
