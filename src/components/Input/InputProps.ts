@@ -1,13 +1,34 @@
 import { ComponentPropsWithRef } from 'react';
-import { ResponsiveValue } from 'styled-system';
 
 interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'width'> {
-    variant?: ResponsiveValue<'boxed' | 'bottom-lined'>;
-    size?: ResponsiveValue<'small' | 'medium'>;
+    /**
+     * Sets the variant of the input element
+     */
+    variant?: 'boxed' | 'bottom-lined';
+    /**
+     * Sets the size of the input element
+     */
+    size?: 'small' | 'medium';
+    /**
+     * Enables the inverted variant
+     */
     inverted?: boolean;
-    label?: string;
-    placeholder?: string;
+    /**
+     * Enables the disabled variant
+     */
+    disabled?: boolean;
+    /**
+     * Enables the error state
+     */
     error?: boolean;
+    /**
+     * Sets the input label
+     */
+    label?: string;
+    /**
+     * Sets the input placeholder
+     */
+    placeholder?: string;
 }
 
 export { InputProps };

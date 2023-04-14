@@ -1,0 +1,117 @@
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Link } from '../Link';
+import { LinkPropsTable } from './LinkPropsTable';
+
+<Meta title="Components/Link" component={Link} />
+
+export const Template = args => <Link {...args} />;
+
+# Link
+
+The Link component styles anchor tags with default blue styling and hover text decoration. Link is used for destinations, or moving from one page to another.
+
+-   Use links to navigate on and between pages and flows
+-   For interactions consider Buttons
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            href: 'https://free-now.com/',
+            target: '_blank',
+            children: 'https://free-now.com/'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={Link} />
+
+<StyledSystemLinks component="Link" supportedProps={['margin', 'fontSize', 'textAlign']} />
+
+<Canvas>
+    <Story
+        name="Large"
+        args={{
+            href: '#',
+            children: 'Link large (default)'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Medium"
+        args={{
+            href: '#',
+            children: 'Link medium',
+            fontSize: 1
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Small"
+        args={{
+            href: '#',
+            children: 'Link small',
+            fontSize: 0
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<Canvas style={{ background: 'rgb(0, 30, 62)' }}>
+    <Story
+        name="Large inverted"
+        args={{
+            href: '#',
+            children: 'Link large (default)',
+            inverted: true
+        }}
+        parameters={{
+            backgrounds: {
+                default: 'dark'
+            }
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Medium inverted"
+        args={{
+            href: '#',
+            children: 'Link medium',
+            inverted: true,
+            fontSize: 1
+        }}
+        parameters={{
+            backgrounds: {
+                default: 'dark'
+            }
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Small inverted"
+        args={{
+            href: '#',
+            children: 'Link small',
+            inverted: true,
+            fontSize: 0
+        }}
+        parameters={{
+            backgrounds: {
+                default: 'dark'
+            }
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
