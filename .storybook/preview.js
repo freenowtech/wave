@@ -14,5 +14,10 @@ export const parameters = {
             { name: 'light', value: '#FFFFFF' },
             { name: 'dark', value: '#001E3E' }
         ]
+    },
+    options: {
+        storySort: {
+            order: ['Get Started']
+        }
     }
 };
