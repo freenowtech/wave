@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DatePicker } from '../..';
 
 export default {
-    title: 'Components/Datepicker',
+    title: 'Form Elements/Datepicker',
     component: DatePicker,
     argTypes: {
         firstDayOfWeek: {

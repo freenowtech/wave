@@ -24,15 +24,45 @@ interface PhoneInputProps
     extends WidthProps,
         MarginProps,
         Pick<InputProps, 'name' | 'label' | 'placeholder' | 'error' | 'disabled'> {
+    /**
+     * Sets the variant of the phone input element
+     */
     variant?: 'boxed' | 'bottom-lined';
+    /**
+     * Sets the size of the phone input element
+     */
     size?: 'small' | 'medium';
+    /**
+     * Sets the ID for the phone input element
+     */
     id?: string;
+    /**
+     * National number text value
+     */
     text?: string;
+    /**
+     * Change handler for national number text input
+     */
     onTextChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    /**
+     * Country object for determining the area code
+     */
     country?: PhoneAreaCodeCountry;
+    /**
+     * Change handler for the area code country
+     */
     onCountryChange?: (country?: PhoneAreaCodeCountry) => void;
+    /**
+     * HTML element which will be used as a parent for the prefix list
+     */
     listPortalTarget?: SelectListProps['menuPortalTarget'];
+    /**
+     * Pass props directly to the internal input component. Any value from the `Input` component props are allowed, but props from the `PhoneInput` take precedence
+     */
     inputProps?: InputProps;
+    /**
+     * Pass props directly to the internal SelectList component used to show prefixes. Any value from the `SelectList` component props are allowed, but props from the `PhoneInput` take precedence
+     */
     selectListProps?: SelectListProps;
 }
 
