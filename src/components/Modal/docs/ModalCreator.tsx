@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Button, Headline, Text, TextButton } from '../..';
 import { Modal } from '../Modal';
 
-const modalContent = dismiss => (
+export const modalContent = (dismiss: () => void): React.ReactElement => (
     <>
         <Headline as="h2">Add Note</Headline>
         <Text as="p" weak my={3}>
@@ -35,17 +35,12 @@ const ModalCreator: FC = () => {
 
     return (
         <>
-            <Button size="small" mr={1} onClick={openModal(ModalType.DEFAULT)}>
-                Default Modal
-            </Button>
             <Button size="small" mr={1} onClick={openModal(ModalType.FULLSCREEN)}>
                 Fullscreen Modal
             </Button>
             <Button size="small" onClick={openModal(ModalType.NON_DISMISSIBLE)}>
                 Non-Dismissible Modal
             </Button>
-
-            {modal === ModalType.DEFAULT && <Modal onClose={hideModal}>{modalContent}</Modal>}
             {modal === ModalType.FULLSCREEN && (
                 <Modal onClose={hideModal} fullscreen>
                     {modalContent}

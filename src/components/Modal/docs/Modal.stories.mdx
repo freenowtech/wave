@@ -1,13 +1,25 @@
----
-name: Modal
-menu: Components
-route: /components/Modal
----
-
+import { useState } from 'react';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
 import { Modal } from '../Modal';
-import { ModalCreator } from './ModalCreator';
-import { ModalPropsTable } from './ModalPropsTable';
-import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import { ModalCreator, modalContent } from './ModalCreator';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Button } from '../..';
+
+<Meta title="Components/Modal" component={Modal} />
+
+export const Template = args => {
+    const [open, setOpen] = useState(false);
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
+    return (
+        <>
+            <Button size="small" mr={1} onClick={openModal}>
+                Open Modal
+            </Button>
+            {open && <Modal {...args} onClose={closeModal} />}
+        </>
+    );
+};
 
 # Modal
 
@@ -18,7 +30,16 @@ content.
 Modal is responsive per default but the width can be adjusted (the default is 600px or 37.5rem). Content on the modal
 is scrollable and has a space5 bounding box.
 
-<ModalCreator />
+<Canvas withSource="none">
+    <Story
+        name="Default"
+        args={{
+            children: modalContent
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ### Example Code
 
@@ -41,13 +62,17 @@ const [showModal, setShowModal] = useState(true);
 </Modal>;
 ```
 
+### More examples
+
+<Canvas withSource="none">
+    <ModalCreator />
+</Canvas>
+
 ## API
 
-<ModalPropsTable />
+<ArgsTable of={Modal} />
 
-<br />
-
-<StyledSystemLinks component="Modal" supportedProps={ ['width'] }/>
+<StyledSystemLinks component="Modal" supportedProps={['width']} />
 
 ### Dismiss
 
@@ -58,9 +83,7 @@ animation has finished the `onClose` callback will be called.
 #### Render Props
 
 ```jsx
-<Modal>
-    {dismiss => <Button onClick={dismiss}>Close</Button>}
-</Moal>
+<Modal>{dismiss => <Button onClick={dismiss}>Close</Button>}</Modal>
 ```
 
 #### Hook
@@ -69,7 +92,7 @@ animation has finished the `onClose` callback will be called.
 const InsideModal = () => {
     const dismiss = useModalDismiss();
     return <button onClick={dismiss}>Close</button>;
-}
+};
 
 const ModalWrapper = () => (
     <Modal>
