@@ -4,7 +4,15 @@ import { TableCell } from './TableCell';
 import { TableRow } from './TableRow';
 
 export interface TableRowSkeletonProps {
+    /**
+     * Number of columns to simulate
+     * @default 0
+     */
     columns: number;
+    /**
+     * Play the Skeleton animation
+     * @default false
+     */
     animated?: boolean;
 }
 
