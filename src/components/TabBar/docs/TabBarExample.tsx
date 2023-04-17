@@ -1,15 +1,20 @@
-import { FC } from 'react';
 import * as React from 'react';
 import { TabBar } from '../TabBar';
 
-const TabBarExample: FC = () => {
+const TabBarExample = ({ initiallySelected = 'Empire Strikes Back' }: { initiallySelected: string }) => {
     const items = ['A New Hope', 'Empire Strikes Back', 'Return of the Jedi'];
-    const [selected, setSelected] = React.useState(items[0]);
 
     return (
-        <TabBar my={5}>
+        <TabBar>
             {items.map(it => (
-                <TabBar.Link key={it} href="#" onClick={() => setSelected(it)} selected={selected === it}>
+                <TabBar.Link
+                    key={it}
+                    href="#"
+                    onClick={e => {
+                        e.preventDefault();
+                    }}
+                    selected={initiallySelected === it}
+                >
                     {it}
                 </TabBar.Link>
             ))}
