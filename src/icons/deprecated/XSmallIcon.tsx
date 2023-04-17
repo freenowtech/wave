@@ -1,6 +1,6 @@
 import React from 'react';
 import { Colors } from '../../essentials';
-import { CloseIcon } from '../';
+import CloseIcon from '../actions/CloseIcon';
 import { IconProps } from '../IconProps';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
 
