@@ -1,7 +1,5 @@
 import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
 import { Label } from '../Label';
-import { LabelPropsTable } from './LabelPropsTable';
-import { Combination } from '../../../docs/Combination';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 
 <Meta
@@ -32,26 +30,16 @@ Use short labels for easy scanning. Use two words only if necessary to describe 
 ## Examples
 
 <Canvas>
-    <Story name="Default" args={{ mr: 1, children: 'Default' }}>
+    <Story name="Default" args={{ children: 'Default' }}>
         {Template.bind({})}
     </Story>
-    <Story name="Success" args={{ variant: 'success', mr: 1, filled: true, children: 'Congratulations' }}>
+    <Story name="Success" args={{ variant: 'success', filled: true, children: 'Congratulations' }}>
         {Template.bind({})}
     </Story>
-    <Story name="Warning" args={{ variant: 'warning', mr: 1, children: 'Caution' }}>
+    <Story name="Warning" args={{ variant: 'warning', children: 'Caution' }}>
         {Template.bind({})}
     </Story>
-    <Story name="Danger" args={{ variant: 'danger', mr: 1, filled: true, children: 'Failed️' }}>
+    <Story name="Danger" args={{ variant: 'danger', filled: true, children: 'Failed️' }}>
         {Template.bind({})}
     </Story>
 </Canvas>
-
-## Combinations
-
-<Combination variant={['default', 'info', 'success', 'warning', 'danger']} filled={[false, true]}>
-    {(props, i) => (
-        <Label key={i} {...props}>
-            Label
-        </Label>
-    )}
-</Combination>

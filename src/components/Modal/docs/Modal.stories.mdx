@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
 import { Modal } from '../Modal';
 import { ModalCreator, modalContent } from './ModalCreator';
-import { ModalPropsTable } from './ModalPropsTable';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { Button } from '../..';
 
@@ -84,9 +83,7 @@ animation has finished the `onClose` callback will be called.
 #### Render Props
 
 ```jsx
-<Modal>
-    {dismiss => <Button onClick={dismiss}>Close</Button>}
-</Moal>
+<Modal>{dismiss => <Button onClick={dismiss}>Close</Button>}</Modal>
 ```
 
 #### Hook

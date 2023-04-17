@@ -1,10 +1,22 @@
 import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { Link } from '../Link';
-import { LinkPropsTable } from './LinkPropsTable';
 
-<Meta title="Components/Link" component={Link} />
+<Meta
+    title="Components/Link"
+    component={Link}
+    argTypes={{
+        inverted: {
+            defaultValue: 'false',
+            control: 'boolean'
+        },
+        fontSize: {
+            options: [0, 1, 2, 3, 4],
+            defaultValue: 2,
+            control: 'select'
+        }
+    }}
+/>
 
 export const Template = args => <Link {...args} />;
 
@@ -33,6 +45,10 @@ The Link component styles anchor tags with default blue styling and hover text d
 <ArgsTable of={Link} />
 
 <StyledSystemLinks component="Link" supportedProps={['margin', 'fontSize', 'textAlign']} />
+
+## Stories
+
+### Sizes
 
 <Canvas>
     <Story
@@ -66,45 +82,15 @@ The Link component styles anchor tags with default blue styling and hover text d
     </Story>
 </Canvas>
 
+### Inverted
+
 <Canvas style={{ background: 'rgb(0, 30, 62)' }}>
     <Story
-        name="Large inverted"
+        name="Inverted"
         args={{
             href: '#',
             children: 'Link large (default)',
             inverted: true
-        }}
-        parameters={{
-            backgrounds: {
-                default: 'dark'
-            }
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-    <Story
-        name="Medium inverted"
-        args={{
-            href: '#',
-            children: 'Link medium',
-            inverted: true,
-            fontSize: 1
-        }}
-        parameters={{
-            backgrounds: {
-                default: 'dark'
-            }
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-    <Story
-        name="Small inverted"
-        args={{
-            href: '#',
-            children: 'Link small',
-            inverted: true,
-            fontSize: 0
         }}
         parameters={{
             backgrounds: {
