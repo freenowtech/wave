@@ -1,12 +1,28 @@
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { Text } from '../Text';
-import { TextPropsTable } from './TextPropsTable';
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
 
 # Text
 
-<Meta title="Components/Text" component={Text} />
+<Meta
+    title="Components/Text"
+    component={Text}
+    argTypes={{
+        as: {
+            name: 'as',
+            description: 'HTML tag to use',
+            defaultValue: 'span',
+            table: {
+                type: { summary: 'string' },
+                defaultValue: { summary: 'span' }
+            },
+            control: {
+                type: 'text',
+                value: 'span'
+            }
+        }
+    }}
+/>
 
 export const Template = args => <Text {...args} />;
 
@@ -15,6 +31,17 @@ The Text component is a wrapper component that will apply typography styles to t
 -   Use different headlines and copies to structure your content hierarchically
 -   Avoid using sizes outside the given range
 -   Text default size is medium
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            children: 'This is text'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ## Usage
 
@@ -29,7 +56,7 @@ need to feature “incidental” states.
 
 ## Properties
 
-<ArgsTable of={Text} />
+<ArgsTable of={Text} exclude={['forwardedAs', 'theme', 'ref']} />
 
 <StyledSystemLinks
     component="Text"
@@ -37,122 +64,95 @@ need to feature “incidental” states.
     mt={2}
 />
 
-## Playground
+## Stories
+
+### Disabled
 
 <Canvas>
     <Story
-        name="Default"
+        name="Disabled"
         args={{
-            children: 'default text'
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-<Canvas>
-    <Story
-        name="custom paragraph"
-        args={{
-            children: 'custom paragraph',
+            children: 'I am disabled',
             as: 'p',
-            fontWeight: 'semibold',
-            marginTop: 3,
-            fontSize: 1
+            disabled: true
         }}
     >
         {Template.bind({})}
     </Story>
 </Canvas>
+
+### Secondary
+
+<Canvas>
+    <Story
+        name="Secondary"
+        args={{
+            children: 'I have secondary color',
+            as: 'p',
+            secondary: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Inverted
+
+<Canvas style={{ background: '#001E3E' }}>
+    <Story
+        name="Inverted"
+        args={{
+            children: 'I am inverted',
+            as: 'p',
+            inverted: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Using arbitrary HTML tags
+
+<Canvas>
+    <Story
+        name="Use paragraph tag"
+        args={{
+            children: 'Use paragraph tag',
+            as: 'p'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Using fontSize alias
 
 <Canvas>
     <Story
         name="fontSize alias"
         args={{
-            children: 'using fontSize alias you can set (small, medium or large)',
+            children: 'Using fontSize alias you can set (small, medium or large)',
             as: 'p',
             fontSize: 'small'
         }}
     >
         {Template.bind({})}
     </Story>
+</Canvas>
+
+### With arbitrary styles
+
+<Canvas>
     <Story
         name="styles"
         args={{
             children: 'You can apply responsive styles',
             as: 'p',
-            fontSize: [1, 'medium', 'large']
+            fontSize: [1, 'medium', 'large'],
+            fontWeight: 'semibold',
+            marginTop: 3
         }}
     >
         {Template.bind({})}
     </Story>
 </Canvas>
-
-## Design
-
-### Appearance
-
-<ItemWrapper mt={4}>
-    <Text as="p">paragraph large</Text>
-    <Text as="p" fontSize={1}>
-        paragraph medium
-    </Text>
-    <Text as="p" fontSize={0}>
-        paragraph small
-    </Text>
-</ItemWrapper>
-<ItemWrapper inverted>
-    <Text as="p" inverted>
-        paragraph inverted large
-    </Text>
-    <Text as="p" inverted fontSize={1}>
-        paragraph inverted medium
-    </Text>
-    <Text as="p" inverted fontSize={0}>
-        paragraph inverted small
-    </Text>
-</ItemWrapper>
-<ItemWrapper>
-    <Text as="p" secondary>
-        paragraph secondary large
-    </Text>
-    <Text as="p" secondary fontSize={1}>
-        paragraph secondary medium
-    </Text>
-    <Text as="p" secondary fontSize={0}>
-        paragraph secondary small
-    </Text>
-</ItemWrapper>
-<ItemWrapper inverted>
-    <Text as="p" secondary inverted>
-        paragraph secondary inverted large
-    </Text>
-    <Text as="p" secondary fontSize={1} inverted>
-        paragraph secondary inverted medium
-    </Text>
-    <Text as="p" secondary fontSize={0} inverted>
-        paragraph secondary inverted small
-    </Text>
-</ItemWrapper>
-<ItemWrapper>
-    <Text as="p" disabled>
-        paragraph disabled large
-    </Text>
-    <Text as="p" disabled fontSize={1}>
-        paragraph disabled medium
-    </Text>
-    <Text as="p" disabled fontSize={0}>
-        paragraph disabled small
-    </Text>
-</ItemWrapper>
-<ItemWrapper inverted>
-    <Text as="p" disabled inverted>
-        paragraph disabled inverted large
-    </Text>
-    <Text as="p" disabled fontSize={1} inverted>
-        paragraph disabled inverted medium
-    </Text>
-    <Text as="p" disabled fontSize={0} inverted>
-        paragraph disabled inverted small
-    </Text>
-</ItemWrapper>
