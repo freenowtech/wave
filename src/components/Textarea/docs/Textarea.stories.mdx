@@ -1,58 +1,102 @@
-import { ControlledTextarea } from './ControlledTextarea';
 import { Textarea } from '../Textarea';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { TextareaPropsTable } from './TextareaPropsTable';
 import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
 
 # Textarea
 
-<Meta title="Components/Textarea" component={Textarea} />
+<Meta
+    title="Form Elements/Textarea"
+    component={Textarea}
+    argTypes={{
+        variant: {
+            options: ['boxed', 'bottom-lined'],
+            defaultValue: 'boxed',
+            control: 'select'
+        },
+        size: {
+            options: ['small', 'medium'],
+            defaultValue: 'medium',
+            control: 'select'
+        }
+    }}
+/>
 
 export const Template = args => <Textarea {...args} />;
 
-<ArgsTable of={Textarea} />
-<StyledSystemLinks component="Textarea" supportedProps={['margin', 'height', 'width']} />
-
-## Properties
-
-<ArgsTable of={Textarea} />
-
-## Playground
-
 <Canvas>
     <Story
-        name="Basic"
+        name="Default"
         args={{
-            placeholder: 'user@free-now.com',
-            label: 'E-Mail Address',
-            resize: 'vertical'
+            label: 'E-Mail Address'
         }}
     >
         {Template.bind({})}
     </Story>
 </Canvas>
 
-## Appearance
+## Props
 
-### Default
+<ArgsTable of={Textarea} />
 
-<Textarea label="Default" />
+<StyledSystemLinks component="Textarea" supportedProps={['margin', 'height', 'width']} />
 
-### Default placeholder
+## Stories
 
-<Textarea label="Default" placeholder="Placeholder" />
+### With placeholder
 
-### Error
+<Canvas>
+    <Story
+        name="With placeholder"
+        args={{
+            placeholder: 'user@free-now.com',
+            label: 'E-Mail Address'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
-<Textarea label="Default" error />
+### With Error
+
+<Canvas>
+    <Story
+        name="With Error"
+        args={{
+            placeholder: 'user@free-now.com',
+            label: 'E-Mail Address',
+            error: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ### Disabled
 
-<Textarea label="Default" disabled />
+<Canvas>
+    <Story
+        name="Disabled"
+        args={{
+            placeholder: 'user@free-now.com',
+            label: 'E-Mail Address',
+            disabled: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ### Inverted
 
-<ItemWrapper inverted gridTemplate="60% 1fr" mt={4}>
-    <Textarea inverted label="Default" />
-</ItemWrapper>
+<Canvas style={{ background: '#001E3E' }}>
+    <Story
+        name="Inverted"
+        args={{
+            placeholder: 'user@free-now.com',
+            label: 'E-Mail Address',
+            inverted: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
