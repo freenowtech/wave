@@ -1,44 +1,62 @@
----
-name: Toggle
-menu: Components
-route: /components/toggle
----
-
-import { Playground } from 'docz';
-import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { Toggle } from '../Toggle';
-import { TogglePropsTable } from './TogglePropsTable';
+
+<Meta title="Components/Toggle" component={Toggle} />
+
+export const Template = args => <Toggle {...args} />;
 
 # Toggle
 
 Toggle is a control that is used to quickly switch between two possible states. Toggles are only used for these binary
 actions that occur immediately after the user “flips” the toggle switch. They are commonly used for “on/off” switches.
 
-<ItemWrapper gridTemplate="auto auto auto auto 1fr">
-    <Toggle defaultChecked />
-    <Toggle />
-    <Toggle error defaultChecked />
-    <Toggle disabled />
-</ItemWrapper>
+<Canvas>
+    <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
 
 ## Properties
-<TogglePropsTable />
+
+<ArgsTable of={Toggle} />
 <StyledSystemLinks component="Toggle" supportedProps={['margin']} />
 
 ## Behaviour
 
 -   Use toggle to swap the state of a functionality or preference (usually between „on“ and „off“)
 -   For multi-state scenarios consider radio buttons or checkboxes
--   Toggles should take affect automatically (without saving)
+-   Toggles should take effect automatically (without saving)
 
 ## Technical Information
 
 Inside the toggle component is a checkbox and therefore the api and usage works similarly. For example, instead
 of passing the `value` prop, the `checked` prop must be used instead.
 
-## Playground
+## Stories
 
-<Playground>
-    <Toggle />
-</Playground>
+### With error
+
+<Canvas>
+    <Story
+        name="With Error"
+        args={{
+            defaultChecked: true,
+            error: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### With label
+
+<Canvas>
+    <Story
+        name="With Label"
+        args={{
+            label: 'Turn off the light',
+            defaultChecked: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

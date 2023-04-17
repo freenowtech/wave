@@ -44,11 +44,29 @@ interface TextAreaProps
     extends WrapperProps,
         Omit<ComponentPropsWithoutRef<'textarea'>, 'size' | 'width'>,
         Pick<CSSProperties, 'resize'> {
+    /**
+     * Sets the variant of the textarea
+     */
     variant?: ResponsiveValue<'boxed' | 'bottom-lined'>;
+    /**
+     * Sets the size of the input
+     */
     size?: ResponsiveValue<'small' | 'medium'>;
+    /**
+     * Inverts the colors of the input
+     */
     inverted?: boolean;
+    /**
+     * Sets the input label
+     */
     label?: string;
+    /**
+     * Sets the input placeholder
+     */
     placeholder?: string;
+    /**
+     * Shows the error state
+     */
     error?: boolean;
 }
 
