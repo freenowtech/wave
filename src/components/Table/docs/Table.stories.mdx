@@ -1,24 +1,30 @@
----
-name: Table
-menu: Components
-route: /components/Table
----
-
-import { LiveTable } from './LiveTable'
-import { ActiveRowTable } from './ActiveRowTable'
-import { ComplexDataTable } from './ComplexDataTable'
-import { SkeletonTable } from './SkeletonTable'
-import { SortableTable } from './SortableTable'
-import { SortableTableDefault } from './SortableTableDefault'
-import {
-    TablePropsTable,
-    TableRowPropsTable,
-    TableRowSkeletonPropsTable,
-    TableSortableHeaderCellPropsTable,
-} from './TablePropsTable'
-import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
+import { Canvas, Story, ArgsTable, Meta, Unstyled } from '@storybook/blocks';
+import { DefaultTable } from './DefaultTable';
+import { ActiveRowTable } from './ActiveRowTable';
+import { ComplexDataTable } from './ComplexDataTable';
+import { SkeletonTable } from './SkeletonTable';
+import { SortableTable } from './SortableTable';
+import { SortableTableDefault } from './SortableTableDefault';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { TableRow } from '../components/TableRow';
+import { Table } from '../components/Table';
+import { TableRowSkeleton } from '../components/TableRowSkeleton';
+import { TableSortableHeaderCell } from '../components/TableSortableHeaderCell';
 
 # Table
+
+<Meta
+    title="Components/Table"
+    component={Table}
+    argTypes={{
+        rowStyle: {
+            control: {
+                type: 'radio',
+                options: ['zebra', 'striped', 'lines']
+            }
+        }
+    }}
+/>
 
 Tables are used to render tabular data in a basic grid, making it easier for people to scan it. Tables are comprised of cells, columns, and rows.
 
@@ -26,81 +32,55 @@ Tables are used to render tabular data in a basic grid, making it easier for peo
 
 ### Table
 
-<TablePropsTable />
-<br />
-<StyledSystemLinks component="Table" supportedProps={ ['margin', 'width', 'height'] }/>
-<br />
+<ArgsTable of={Table} />
+
+<StyledSystemLinks component="Table" supportedProps={['margin', 'width', 'height']} />
 
 ### TableRow
 
-<TableRowPropsTable />
-<br />
+<ArgsTable of={TableRow} />
 
 ### TableHeaderCell
 
-<StyledSystemLinks component="TableHeaderCell" supportedProps={ ['textAlign', 'layout'] }/>
-<br />
+<StyledSystemLinks component="TableHeaderCell" supportedProps={['textAlign', 'layout']} />
 
 ### TableCell
 
-<StyledSystemLinks component="TableCell" supportedProps={ ['textAlign', 'layout'] }/>
-<br />
+<StyledSystemLinks component="TableCell" supportedProps={['textAlign', 'layout']} />
 
 ### TableRowSkeleton
 
-<TableRowSkeletonPropsTable />
-<br />
+<ArgsTable of={TableRowSkeleton} />
 
 ### TableSortableHeaderCell
 
-Supports the same props as TableHeaderCell, and the following specific ones:
+<ArgsTable of={TableSortableHeaderCell} />
 
-<TableSortableHeaderCellPropsTable />
-<br />
+## Stories
 
-## Examples
+<Canvas>
+    <Story name="Default" args={{}}>
+        {DefaultTable.bind({})}
+    </Story>
+</Canvas>
 
-<LiveTable />
-
-```jsx
-<Table rowStyle="zebra">
-    <caption style={{ captionSide: 'bottom', padding: '1rem' }}>The wonderful Wave list</caption>
-    <thead>
-        <TableRow>
-            <TableHeaderCell scope="col">Name</TableHeaderCell>
-            <TableHeaderCell scope="col">E-Mail</TableHeaderCell>
-        </TableRow>
-    </thead>
-    <tbody>
-        <TableRow>
-            <TableCell scope="row">Luka Hartwig</TableCell>
-            <TableCell>l.hartwig@mytaxi.com</TableCell>
-        </TableRow>
-        <TableRow>
-            <TableCell scope="row">Alba Gonzales</TableCell>
-            <TableCell>alba.gonzales@free-now.com</TableCell>
-        </TableRow>
-        <TableRow>
-            <TableCell scope="row">Alexis Duran</TableCell>
-            <TableCell>alexis.duran@free-now.com</TableCell>
-        </TableRow>
-    </tbody>
-</Table>
-```
-
-> Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component.
-> To better understand some of the props in the above table, an in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
+☝️ Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component.
+To better understand some of the props in the above table, an in-depth guide of accessible tables can be found at the [a11y-101 article](https://a11y-101.com/development/tables).
 
 ## Active Row
 
 To highlight an active (or selected) row, you can add set `active` to true on the `TableRow` component. This will mark
 the row as active and change the background color.
 
-<ActiveRowTable />
+<Unstyled>
+    <ActiveRowTable />
+</Unstyled>
 
 ```jsx
 <TableRow active={true}>
-    <TableCell><Checkbox checked={true} /></TableCell>
+    <TableCell>
+        <Checkbox checked={true} />
+    </TableCell>
     <TableCell>Alex Ponomarenko</TableCell>
     <TableCell>a.ponomarenko@mytaxi.com</TableCell>
     <TableCell>Booker</TableCell>
@@ -113,14 +93,17 @@ the row as active and change the background color.
 When dealing with complex data, it is possible to use up to two lines of text in one row. Keep in mind, that the smallest row size
 will not work when you have multiple lines in one cells.
 
-<div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-    <ComplexDataTable />
-</div>
-
+<Unstyled>
+    <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+        <ComplexDataTable />
+    </div>
+</Unstyled>
 
 ## Loading State
 
-<SkeletonTable />
+<Unstyled>
+    <SkeletonTable />
+</Unstyled>
 
 ```jsx
 <Table rowStyle="zebra">
@@ -134,16 +117,13 @@ will not work when you have multiple lines in one cells.
             <TableHeaderCell style={{ width: '6.5rem' }}>Actions</TableHeaderCell>
         </TableRow>
     </thead>
-    <tbody>
-        {loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={6} />)}
-    </tbody>
+    <tbody>{loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={6} />)}</tbody>
 </Table>
 ```
 
-> By default cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`.
+> By default, cells has `whiteSpace` set to `nowrap` which will make cells expand depending on the content instead the given `width`.
 > If you really want to fix a width make sure to override `whiteSpace` property too. On top of that make sure to check your table a11y.
 > An in-depth guide of accessible tables can be found at https://a11y-101.com/development/tables
-
 
 ## Sortable Table
 
@@ -157,7 +137,9 @@ const { sortBy, setSortBy } = useSortBy();
 
 ### Example
 
-<SortableTable />
+<Unstyled>
+    <SortableTable />
+</Unstyled>
 
 > Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTable.tsx).
 
@@ -169,6 +151,8 @@ Sometimes the data will already be received sorted by default according to one o
 const { sortBy, setSortBy } = useSortBy('id', 'ASC');
 ```
 
-<SortableTableDefault />
+<Unstyled>
+    <SortableTableDefault />
+</Unstyled>
 
 > Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTableDefault.tsx).

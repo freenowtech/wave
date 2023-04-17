@@ -1,0 +1,48 @@
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Tag } from '../Tag';
+
+# Tag
+
+<Meta title="Components/Tag" component={Tag} />
+
+export const Template = args => <Tag {...args} />;
+
+The Tag component is used to categorize items. The text inside the Tag should be kept as short as possible. Multi-labels
+should be avoided as well.
+
+<Canvas>
+    <Story
+        name="Basic"
+        args={{
+            dismissible: false,
+            children: 'Taxi'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={Tag} />
+<StyledSystemLinks component="Tag" supportedProps={['margin']} />
+
+## Stories
+
+### Dismissible
+
+<Canvas>
+    <Story name="Dismissible">
+        {() => {
+            const [visible, setVisible] = useState(true);
+            return (
+                <>
+                    {visible && <Tag onDismiss={() => setVisible(false)}>Hive</Tag>}
+                    {!visible && <button onClick={() => setVisible(true)}>show</button>}
+                </>
+            );
+        }}
+    </Story>
+</Canvas>

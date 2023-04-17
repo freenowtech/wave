@@ -66,7 +66,7 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     }
 `;
 
-const Tag: FC<TagProps> = ({ children, onDismiss, dismissible = true, ...rest }: PropsWithChildren<TagProps>) => (
+const Tag: FC<PropsWithChildren<TagProps>> = ({ children, onDismiss, dismissible = true, ...rest }) => (
     <TagWrapper {...rest}>
         <TagText dismissible={dismissible}>{children}</TagText>
         {dismissible && <DismissIcon data-testid="dismiss-icon" color={Colors.ACTION_BLUE_900} onClick={onDismiss} />}

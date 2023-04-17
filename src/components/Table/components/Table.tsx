@@ -15,8 +15,18 @@ interface TableElementProps
         Omit<ComponentPropsWithoutRef<'table'>, 'width'> {}
 
 interface TableProps extends TableElementProps {
+    /**
+     * Row style (background colors, borders, etc.)
+     * @default lines
+     */
     rowStyle: 'lines' | 'zebra' | 'blank';
+    /**
+     * The height of the table rows. More info on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+     */
     rowSize?: 'large' | 'normal' | 'small' | string;
+    /**
+     * The space between columns of the table (any CSS value will be divided by 2 using `calc`)
+     */
     columnSpace?: 'normal' | 'small' | string;
 }
 
