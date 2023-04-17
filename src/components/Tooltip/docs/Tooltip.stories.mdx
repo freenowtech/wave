@@ -1,8 +1,7 @@
 import { Tooltip } from '../Tooltip';
 import { TooltipPlacementExample } from './TooltipPlacementExample';
 import { SimpleTooltipExample } from './SimpleTooltipExample';
-import { TooltipPropsTable } from './TooltipPropsTable';
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Canvas, Story, ArgsTable, Meta, Unstyled } from '@storybook/blocks';
 
 # Tooltip
 
@@ -16,13 +15,27 @@ export const Template = args => (
 
 This component provides informative text to an UI element.
 
-<SimpleTooltipExample />
+<Unstyled>
+    <SimpleTooltipExample />
+</Unstyled>
 
-```jsx
-<Tooltip content="This is a regular tooltip 🏓">
-    <div>target</div>
-</Tooltip>
-```
+<Canvas>
+    <Story
+        name="Default"
+        decorators={[
+            Story => (
+                <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
+                    <Story />
+                </div>
+            )
+        ]}
+        args={{
+            content: 'This is a regular tooltip 🏓'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ## Properties
 
@@ -31,10 +44,6 @@ This component provides informative text to an UI element.
 ## Usage
 
 Use the tooltip for user on-boarding, guiding information about a new feature, detailed interactive workflows or for a contextual help (eg. over a button).
-
-## Properties
-
-<ArgsTable of={Tooltip} />
 
 ## Appearance
 
@@ -58,20 +67,9 @@ of possible options which are represented in the square next to it. It is import
 will be moved to a different position if it cannot be shown on the desired side due to screen sizes. Read more about the
 Popper library [here](https://popper.js.org/).
 
-<TooltipPlacementExample />
-
-## Playground
-
-<Canvas>
-    <Story
-        name="Basic"
-        args={{
-            content: 'Tooltip Content!'
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Unstyled>
+    <TooltipPlacementExample />
+</Unstyled>
 
 ## Technical Usage
 
