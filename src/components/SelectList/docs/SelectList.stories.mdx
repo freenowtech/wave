@@ -1,8 +1,6 @@
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
 import { SelectList } from '../SelectList';
-import { SelectListPropsTable } from './SelectListPropsTable';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { Combination } from '../../../docs/Combination';
 
 <Meta
     title="Form Elements/SelectList"
@@ -35,8 +33,37 @@ export const Template = args => <SelectList {...args} />;
 
 # SelectList
 
-The `SelectList` component mainly appears in forms but it can also be in other places, like dialog boxes.
+The `SelectList` component mainly appears in forms, but it can also be in other places, like dialog boxes.
 The main advance using the SelectList is the `isMulti` prop, that allows the user to pick multiple options.
+
+<Canvas>
+    <Story
+        name="Single Select"
+        args={{
+            id: 'select-list',
+            label: 'City',
+            onChange: change => console.log(change),
+            menuPortalTarget: document.body,
+            options: [
+                {
+                    label: 'Barcelona',
+                    value: 'bcn'
+                },
+                {
+                    label: 'Hamburg',
+                    value: 'ham'
+                },
+                {
+                    label: 'Paris',
+                    value: 'par',
+                    isDisabled: true
+                }
+            ]
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ## Properties
 
@@ -64,37 +91,7 @@ The following properties have been disabled since they aren't supported by this 
 
 <br />
 
-# Stories
-
-### Single Select
-
-<Canvas>
-    <Story
-        name="Single Select"
-        args={{
-            id: 'select-list-multi',
-            label: 'City',
-            onChange: change => console.log(change),
-            options: [
-                {
-                    label: 'Barcelona',
-                    value: 'bcn'
-                },
-                {
-                    label: 'Hamburg',
-                    value: 'ham'
-                },
-                {
-                    label: 'Paris',
-                    value: 'par',
-                    isDisabled: true
-                }
-            ]
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+## Stories
 
 ### Multi Select
 
@@ -106,6 +103,7 @@ The following properties have been disabled since they aren't supported by this 
             id: 'select-list-multi',
             label: 'City',
             onChange: change => console.log(change),
+            menuPortalTarget: document.body,
             options: [
                 {
                     label: 'Barcelona',
@@ -126,6 +124,136 @@ The following properties have been disabled since they aren't supported by this 
         {Template.bind({})}
     </Story>
 </Canvas>
+
+### Bottom Lined
+
+<Canvas>
+    <Story
+        name="Bottom Lined"
+        args={{
+            isMulti: true,
+            id: 'bottom-lined',
+            label: 'City',
+            onChange: change => console.log(change),
+            menuPortalTarget: document.body,
+            variant: 'bottom-lined',
+            options: [
+                {
+                    label: 'Barcelona',
+                    value: 'bcn'
+                },
+                {
+                    label: 'Hamburg',
+                    value: 'ham'
+                },
+                {
+                    label: 'Paris',
+                    value: 'par',
+                    isDisabled: true
+                }
+            ]
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### With error
+
+<Canvas>
+    <Story
+        name="With error"
+        args={{
+            id: 'select-list',
+            label: 'City',
+            onChange: change => console.log(change),
+            menuPortalTarget: document.body,
+            error: true,
+            options: [
+                {
+                    label: 'Barcelona',
+                    value: 'bcn'
+                },
+                {
+                    label: 'Hamburg',
+                    value: 'ham'
+                },
+                {
+                    label: 'Paris',
+                    value: 'par',
+                    isDisabled: true
+                }
+            ]
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Inverted
+
+<Canvas style={{ background: '#001E3E' }}>
+    <Story
+        name="Inverted"
+        parameters={{
+            backgrounds: {
+                default: 'dark'
+            }
+        }}
+        args={{
+            id: 'select-list',
+            label: 'City',
+            onChange: change => console.log(change),
+            menuPortalTarget: document.body,
+            inverted: true,
+            options: [
+                {
+                    label: 'Barcelona',
+                    value: 'bcn'
+                },
+                {
+                    label: 'Hamburg',
+                    value: 'ham'
+                },
+                {
+                    label: 'Paris',
+                    value: 'par',
+                    isDisabled: true
+                }
+            ]
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Pitfalls
+
+### The dropdown list is cut off
+
+By default, the dropdown list is rendered inside the container of the `SelectList`. If this container is not long enough, the dropdown list will be cut off.
+To avoid this issue, use `menuPortalTarget` property, set to `document.body` to render the dropdown list outside the container:
+
+```jsx
+<SelectList
+    label="City"
+    menuPortalTarget={document.body}
+    options={[
+        {
+            label: 'Barcelona',
+            value: 'bcn'
+        },
+        {
+            label: 'Hamburg',
+            value: 'ham'
+        },
+        {
+            label: 'Paris',
+            value: 'par'
+        }
+    ]}
+/>
+```
 
 ## Testing
 
@@ -174,18 +302,5 @@ test('should select option', () => {
 
     // use react-select-event to select the option you want
     await selectEvent.select(container, ['Barcelona'])
-
 });
 ```
-
-## Combinations
-
-<Combination
-    variant={['boxed', 'bottom-lined']}
-    size={['medium', 'small']}
-    inverted={[false, true]}
-    error={[false, true]}
-    isMulti={[false, true]}
->
-    {(props, i) => <SelectList key={i} {...props} value={{ label: 'Group' }} isClearable={false} />}
-</Combination>
