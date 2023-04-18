@@ -1,8 +1,6 @@
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { Combination } from '../../../docs/Combination';
 import { Select } from '../Select';
-import { SelectPropsTable } from './SelectPropsTable';
 
 <Meta
     title="Form Elements/Select"
@@ -31,17 +29,22 @@ import { SelectPropsTable } from './SelectPropsTable';
     }}
 />
 
-export const Template = args => <Select {...args} />;
+export const Template = args => (
+    <Select {...args}>
+        <option>Scooter</option>
+        <option>Ride (PHV)</option>
+        <option>Taxi</option>
+    </Select>
+);
 
 # Select
 
 This component is providing a dropdown select. It uses the native [HTML select](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) for a lightweight and efficient approach to file uploading.
 
 <Canvas>
-    <Select placeholder="Select..." label="Example" id="test">
-        <option value="1">test 1</option>
-        <option value="2">test 2</option>
-    </Select>
+    <Story name="Default" args={{ label: 'City', id: 'city' }}>
+        {Template.bind({})}
+    </Story>
 </Canvas>
 
 ## Properties
@@ -49,8 +52,6 @@ This component is providing a dropdown select. It uses the native [HTML select](
 <ArgsTable of={Select} />
 
 <StyledSystemLinks component="Select" supportedProps={['margin', 'width']} />
-
-<br />
 
 ## Usage
 
@@ -95,42 +96,44 @@ Errors are shown just in the cases the field is mandatory and just after user cl
 -   Remove options that rarely get used.
 -   Remove the options that we know cannot be selected (eg: countries where we don’t work)
 
-# Stories
-
-### Boxed
-
-<Canvas>
-    <Story name="Boxed">
-        <Select label="City" placeholder="Select your destination">
-            <option>Barcelona</option>
-            <option>London</option>
-            <option>Hamburg</option>
-        </Select>
-    </Story>
-</Canvas>
+## Stories
 
 ### Bottom lined
 
 <Canvas>
-    <Story name="Bottom lined">
-        <Select variant="bottom-lined" size="small" label="City" mb={2}>
-            <option>Scooter</option>
-            <option>Ride (PHV)</option>
-            <option>Taxi</option>
-        </Select>
+    <Story name="Bottom lined" args={{ label: 'City', id: 'city', variant: 'bottom-lined' }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Error
+
+<Canvas>
+    <Story name="With error" args={{ label: 'City', id: 'city', error: true }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Inverted
+
+<Canvas style={{ background: '#001E3E' }}>
+    <Story
+        name="Inverted"
+        parameters={{
+            backgrounds: {
+                default: 'dark'
+            }
+        }}
+        args={{
+            label: 'City',
+            inverted: true
+        }}
+    >
+        {Template.bind({})}
     </Story>
 </Canvas>
 
 ## Testing
-
-<Canvas>
-    <Story name="Testing">
-        <Select defaultValue="2" label="Example" id="test">
-            <option value="1">test 1</option>
-            <option value="2">test 2</option>
-        </Select>
-    </Story>
-</Canvas>
 
 It is recommended for each Select component to set the `id`. This helps with a11y and allows to use the
 `getByLabelText` selector in `@testing-library/react`.
@@ -151,19 +154,3 @@ it('can be selected by label', () => {
     expect(screen.getByLabelText('Example')).toHaveDisplayValue('test 1');
 });
 ```
-
-## Combinations
-
-<Combination
-    variant={['boxed', 'bottom-lined']}
-    size={['medium', 'small']}
-    inverted={[false, true]}
-    error={[false, true]}
->
-    {(props, i) => (
-        <Select key={i} label="Select label" {...props}>
-            <option>Option 1</option>
-            <option>Option 2</option>
-        </Select>
-    )}
-</Combination>
