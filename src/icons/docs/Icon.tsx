@@ -1,7 +1,8 @@
 import React from 'react';
 import * as Icons from '..';
+import type { IconProps as RealIconProps } from '../IconProps';
 
-export interface IconProps {
+export interface IconProps extends RealIconProps {
     /**
      Sets the name of the icon.
      */

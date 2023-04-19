@@ -1,9 +1,6 @@
-import { Canvas, Story, Meta, ArgsTable, IconGallery, IconItem } from '@storybook/addon-docs';
+import { Primary, Meta, ArgsTable } from '@storybook/blocks';
 
 import { Colors, Headline } from '../..';
-import * as FlagIcons from '../flags';
-import { Flag } from '../Flag';
-import { LargeFlag } from './LargeFlag';
 import { SearchableIconGrid } from './SearchableIconGrid';
 import { GuidelineBlock, GuidelineImage, GuidelineList, GuidelineContent } from './GuidelineBlock';
 import SpecsSvg from './images/specs-detail.svg';
@@ -14,16 +11,11 @@ import RadiusCrossedIconSvg from './images/radius-not-used.svg';
 import ColorSvg from './images/color-detail.svg';
 import BorderSvg from './images/border-detail.svg';
 import * as Icons from '..';
-import { Icon as IconExample } from './Icon';
+import IconsStories from './Icons.stories';
 
-<Meta title="Essentials/Icons" />
-
-export const IconTemplate = args => <IconExample {...args} />;
-export const FlagTemplate = args => <LargeFlag {...args} />;
+<Meta of={IconsStories} />
 
 # Icons
-
-<br />
 
 ## Usage
 
@@ -47,126 +39,13 @@ so it can be rendered in the example area. This isn't necessary in your project,
 
 ## Examples
 
-<Canvas>
-    <Story
-        name="Icons"
-        args={{
-            name: 'AlertIcon',
-            color: Colors.ATTENTION_YELLOW_900,
-            size: 40
-        }}
-        argTypes={{
-            name: {
-                description: 'Name of the icon\n\n**Example Only!**',
-                control: 'select',
-                options: Object.keys(Icons).filter(key => !['Flag', 'IconProps'].includes(key))
-            },
-            color: {
-                control: 'color'
-            },
-            size: {
-                control: 'select',
-                options: ['small', 'medium', 'large', 40]
-            }
-        }}
-    >
-        {IconTemplate.bind({})}
-    </Story>
-</Canvas>
+<Primary />
 
 <ArgsTable story="Icons" />
 
 ## Available Icons
 
 <SearchableIconGrid />
-
-## Flags
-
-The icon can be accessed by using the `<Icons.Flag />` component and the provided country code with the property `code`.
-
-<Canvas>
-    <Story
-        name="Flags"
-        args={{
-            code: 'US'
-        }}
-        argTypes={{
-            code: {
-                description: 'Two letters ISO country code.',
-                control: 'select',
-                options: Object.entries(FlagIcons).map(it => it[0])
-            }
-        }}
-    >
-        {FlagTemplate.bind({})}
-    </Story>
-</Canvas>
-
-<ArgsTable story="Flags" />
-
-### Country Flags
-
-This library provides flags for almost every country of the world, identified by their two-character
-([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)) country code.
-
-<IconGallery>
-    <IconItem name='code="DE"'>
-        <Flag code="DE" />
-    </IconItem>
-    <IconItem name='code="AT"'>
-        <Flag code="AT" />
-    </IconItem>
-    <IconItem name='code="NL"'>
-        <Flag code="NL" />
-    </IconItem>
-    <IconItem name='code="BE"'>
-        <Flag code="BE" />
-    </IconItem>
-    <IconItem name='code="ES"'>
-        <Flag code="ES" />
-    </IconItem>
-    <IconItem name='code="PE"'>
-        <Flag code="PE" />
-    </IconItem>
-    <IconItem name='code="IT"'>
-        <Flag code="IT" />
-    </IconItem>
-    <IconItem name='code="SE"'>
-        <Flag code="SE" />
-    </IconItem>
-</IconGallery>
-
-### Special Flags
-
-There are a few additional, special flags included in this library, that do not represent a single country. You can
-find them below.
-
-<IconGallery>
-    <IconItem name='code="EU"'>
-        <Flag code="EU" />
-    </IconItem>
-    <IconItem name='code="WW"'>
-        <Flag code="WW" />
-    </IconItem>
-    <IconItem name='code="CAF"'>
-        <Flag code="CAF" />
-    </IconItem>
-    <IconItem name='code="CAS"'>
-        <Flag code="CAS" />
-    </IconItem>
-    <IconItem name='code="CEU"'>
-        <Flag code="CEU" />
-    </IconItem>
-    <IconItem name='code="CNA"'>
-        <Flag code="CNA" />
-    </IconItem>
-    <IconItem name='code="CSA"'>
-        <Flag code="CSA" />
-    </IconItem>
-    <IconItem name='code="COC"'>
-        <Flag code="COC" />
-    </IconItem>
-</IconGallery>
 
 ## Design Documentation
 
