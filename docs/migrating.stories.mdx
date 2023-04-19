@@ -1,9 +1,10 @@
----
-name: Migrating
-route: /migrating
-cardHeadline: Migrating
-cardSubHeadline: Migrating from one major version to the next with ease.
----
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Migrating" />
+
+# Migrating
+
+Migrating from one major version to the next with ease.
 
 ## From v1 to v2
 
@@ -17,7 +18,6 @@ npx jscodeshift -t node_modules/@freenow/wave/codemods/v2.ts path/to/src
 
 The `block` property used to act as a shortcut to give the button components a width of 100%. In the future, use the `width` property
 directly. It uses the styled-system variable, which is a lot more flexible than just the boolean flag.
-
 
 ## Codemods
 

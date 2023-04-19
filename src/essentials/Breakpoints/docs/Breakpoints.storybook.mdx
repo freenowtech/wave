@@ -1,17 +1,13 @@
----
-name: Breakpoints
-menu: Essentials
-route: /essentials/breakpoints
----
-
-import { Playground } from 'docz';
+import { Canvas, Meta } from '@storybook/blocks';
 import { Breakpoints } from '../Breakpoints';
 import { Text } from '../../../components';
-import { BreakpointsTable } from './BreakpointsTable'
+import { BreakpointsTable } from './BreakpointsTable';
+
+<Meta title="Essentials/Breakpoints" component={Breakpoints} />
 
 # Breakpoints
 
-We use the following breakpoints ranges. Breakpoints values represent lowest point of the range
+We use the following breakpoints ranges. Breakpoints values represent the lowest point of the range
 and should be used only with `min-width` property.
 
 <BreakpointsTable />
@@ -65,6 +61,6 @@ const Container = styled.div`
 
 ## Examples
 
-<Playground>
+<Canvas withToolbar={true}>
     <Text fontSize={[1, 2, 3, 4, 5]}>Sample text</Text>
-</Playground>
+</Canvas>
