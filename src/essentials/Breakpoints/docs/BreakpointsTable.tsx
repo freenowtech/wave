@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '../../../components/Table';
 
 export const BreakpointsTable: FC = () => (
-    <div style={{ overflow: 'scroll' }}>
+    <div style={{ overflow: 'auto' }}>
         <Table rowStyle="lines" rowSize="small" width="100%">
             <thead>
                 <TableRow>
