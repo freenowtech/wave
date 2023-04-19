@@ -5,14 +5,17 @@ import { BusinessLogo } from './variants/BusinessLogo';
 interface LogoProps {
     /**
      * Adjust component for display on a dark background
+     * @default false
      */
     inverted?: boolean;
     /**
      * Change the logo appearance to reflect the respective part of the organization
+     * @default default
      */
     variant?: 'default' | 'business';
     /**
      * Change the logo to monochrome version (blue letters for regular version and white letters for inverted)
+     * @default false
      */
     monochrome?: boolean;
 }
