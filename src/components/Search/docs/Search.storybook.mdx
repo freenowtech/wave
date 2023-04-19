@@ -1,0 +1,80 @@
+import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
+
+import * as SearchStories from './Search.stories';
+import { Search } from '../Search';
+
+<Meta of={SearchStories} />
+
+# Search
+
+Use the component to act as a minimal search box. It provides you with a `Search` component, which can be imported and used.
+The results property passed into this component show up as the search results.
+
+<Canvas of={SearchStories.Default} />
+
+## Properties
+
+<ArgsTable of={Search} />
+
+## Appearance
+
+-   placeholder: This describes the text value to display as a placeholder in the search box
+-   value: This describes the default value to be taken by the search box
+-   results: The search results. This is an array of components (whatever you want to render as a result object)
+
+## Navigation
+
+You can navigate among the search results using your keyboard arrow keys. Upon navigating to an element and pressing `Enter`, the `onClick` function of that element is called.
+
+## Usage
+
+### Basic
+
+```tsx
+const SearchNames = () => {
+    const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
+    const mapName = (name, index) => (
+        <Box
+            key={index}
+            height="2.5rem"
+            display="flex"
+            alignItems="center"
+            onClick={() => {
+                alert(`${name} was clicked!`);
+                setValue(name);
+                setShowResults(false);
+            }}
+        >
+            <Text marginLeft="1rem">{name}</Text>
+        </Box>
+    );
+    const [value, setValue] = useState<string>('');
+    const [showResults, setShowResults] = useState<boolean>(false);
+    const results = namesArray.filter(name => name.toLowerCase().includes(value.toLowerCase())).map(mapName);
+
+    return (
+        <Search
+            value={value}
+            setValue={setValue}
+            width="20rem"
+            results={results}
+            showResults={showResults}
+            setShowResults={setShowResults}
+        />
+    );
+};
+```
+
+## Stories
+
+### With Placeholder
+
+<Canvas of={SearchStories.WithPlaceholder} />
+
+### Disabled
+
+<Canvas of={SearchStories.Disabled} />
+
+### With API integration
+
+<Canvas of={SearchStories.WithAPI} />
