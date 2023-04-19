@@ -7,6 +7,7 @@ import { get } from '../../utils/themeGet';
 interface LinkProps extends ComponentPropsWithoutRef<'a'> {
     /**
      * Indicates that the link is currently selected
+     * @default false
      */
     selected?: boolean;
 
@@ -17,6 +18,7 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'> {
 
     /**
      * Replace the rendered component with an HTML tag or another component
+     * @default 'a'
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;

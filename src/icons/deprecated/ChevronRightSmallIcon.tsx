@@ -2,7 +2,7 @@ import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
-import { ChevronRightIcon } from '../';
+import ChevronRightIcon from '../arrows/ChevronRightIcon';
 type Props = IconProps;
 
 const ChevronRightSmallIcon: React.FC<Props> = withDeprecatedMessage('ChevronRightSmallIcon', ChevronRightIcon, {

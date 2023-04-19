@@ -2,23 +2,23 @@ import { ComponentPropsWithRef } from 'react';
 
 interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'width'> {
     /**
-     * Sets the variant of the input element
+     * Sets the variant of the input
      */
     variant?: 'boxed' | 'bottom-lined';
     /**
-     * Sets the size of the input element
+     * Sets the size of the input
      */
     size?: 'small' | 'medium';
     /**
-     * Enables the inverted variant
+     * Inverts the colors of the input
      */
     inverted?: boolean;
     /**
-     * Enables the disabled variant
+     * Disable the input
      */
     disabled?: boolean;
     /**
-     * Enables the error state
+     * Shows the error state
      */
     error?: boolean;
     /**

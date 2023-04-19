@@ -1,37 +1,49 @@
----
-name: Tooltip
-menu: Components
-route: /components/tooltip
----
-
-import { Playground } from 'docz';
 import { Tooltip } from '../Tooltip';
 import { TooltipPlacementExample } from './TooltipPlacementExample';
 import { SimpleTooltipExample } from './SimpleTooltipExample';
-import { TooltipPropsTable } from './TooltipPropsTable';
+import { Canvas, Story, ArgsTable, Meta, Unstyled } from '@storybook/blocks';
 
 # Tooltip
 
+<Meta title="Components/Tooltip" component={Tooltip} />
+
+export const Template = args => (
+    <Tooltip {...args}>
+        <span>Target</span>
+    </Tooltip>
+);
+
 This component provides informative text to an UI element.
 
-<SimpleTooltipExample />
+<Unstyled>
+    <SimpleTooltipExample />
+</Unstyled>
 
-```jsx
-<Tooltip content="This is a regular tooltip 🏓">
-    <div>target</div>
-</Tooltip>
-```
+<Canvas>
+    <Story
+        name="Default"
+        decorators={[
+            Story => (
+                <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
+                    <Story />
+                </div>
+            )
+        ]}
+        args={{
+            content: 'This is a regular tooltip 🏓'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
 
 ## Properties
-<TooltipPropsTable />
+
+<ArgsTable of={Tooltip} />
 
 ## Usage
 
 Use the tooltip for user on-boarding, guiding information about a new feature, detailed interactive workflows or for a contextual help (eg. over a button).
-
-## Properties
-
-<TooltipPropsTable />
 
 ## Appearance
 
@@ -55,15 +67,9 @@ of possible options which are represented in the square next to it. It is import
 will be moved to a different position if it cannot be shown on the desired side due to screen sizes. Read more about the
 Popper library [here](https://popper.js.org/).
 
-<TooltipPlacementExample />
-
-## Playground
-
-<Playground>
-    <Tooltip content="Tooltip Content!">
-        <span>Target</span>
-    </Tooltip>
-</Playground>
+<Unstyled>
+    <TooltipPlacementExample />
+</Unstyled>
 
 ## Technical Usage
 
@@ -82,5 +88,5 @@ const WithTooltip = () => (
     <Tooltip content="Information about your feature">
         <CustomComponent />
     </Tooltip>
-)
+);
 ```
