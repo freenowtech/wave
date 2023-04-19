@@ -1,4 +1,7 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
+import { Card } from '../src/components/Card/Card';
+import { Headline } from '../src/components/Headline/Headline';
+import { Text } from '../src/components/Text/Text';
 
 <Meta title="Get Started" />
 
@@ -19,15 +22,22 @@ npm i @freenow/wave
 All of our components are exported by name from `@freenow/wave`, so you can import them with:
 
 ```jsx
-import { Button, Card, Headline, Text } from '@freenow/wave';
+import { Card, Headline, Text } from '@freenow/wave';
 
 export default () => (
-    <Card>
+    <Card level={200}>
         <Headline>Welcome</Headline>
         <Text>FREE NOW Design System</Text>
     </Card>
 );
 ```
+
+You'll see this:
+
+<Card level={200}>
+    <Headline>Welcome</Headline>
+    <Text>FREE NOW Design System</Text>
+</Card>
 
 ## Dynamic Imports & Create React App
 
