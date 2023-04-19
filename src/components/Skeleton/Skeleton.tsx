@@ -32,6 +32,10 @@ const animationStyles = css`
 `;
 
 export interface SkeletonProps extends LayoutProps, MarginProps, BorderRadiusProps {
+    /**
+     * Show skeleton animation
+     * @default false
+     */
     animated?: boolean;
 }
 
