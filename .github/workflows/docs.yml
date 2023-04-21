@@ -18,6 +18,8 @@ jobs:
                   node-version: 18
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm i --legacy-peer-deps
             - name: Build docs
               run: npm run build:documentation
             - uses: actions/upload-artifact@v3
