@@ -1,17 +1,13 @@
----
-name: InlineSpinner
-menu: Components
-route: /components/inline-spinner
----
-
-import { Playground } from 'docz';
+import { Meta, ArgsTable, Primary, Stories } from '@storybook/blocks';
 import { InlineSpinner } from '../InlineSpinner';
-import { Colors } from '../../../essentials';
-import { InlineSpinnerPropsTable } from './InlineSpinnerPropsTable';
-import { Combination } from '../../../docs/Combination';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as InlineSpinnerStories from './InlineSpinner.stories';
+
+<Meta of={InlineSpinnerStories} />
 
 # InlineSpinner
+
+<Primary />
 
 A spinner is a visual indicator of an ongoing, user-initiated process. Place the spinner where you want to focus users’
 attention when the process completes. Provide a brief description of the process, for example, “Loading…”. Inline spinners
@@ -23,18 +19,8 @@ more than 200 milliseconds. Additionally it is recommended that the verb on the 
 
 ## Properties
 
-<InlineSpinnerPropsTable />
-<br />
+<ArgsTable of={InlineSpinner} />
+
 <StyledSystemLinks component="InlineSpinner" supportedProps={['margin']} />
 
-## Examples
-
-<Playground>
-    <InlineSpinner />
-</Playground>
-
-## Combinations
-
-<Combination size={["small", "medium"]}>
-    {(props, i) => <InlineSpinner key={i} {...props} />}
-</Combination>
+<Stories />
