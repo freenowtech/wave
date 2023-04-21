@@ -18,6 +18,8 @@ jobs:
                   node-version: 18
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm i --legacy-peer-deps
             - name: Build docs
               run: npm run build:documentation
             - uses: actions/upload-artifact@v3
@@ -26,7 +28,7 @@ jobs:
                   path: storybook-static
 
     deploy:
-        if: github.ref == 'refs/heads/main'
+        # if: github.ref == 'refs/heads/main'
         needs: build
         runs-on: ubuntu-latest
         steps:
@@ -39,4 +41,4 @@ jobs:
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: public
-                  cname: wave.free-now.com
+                  cname: wave.prelive.free-now.com
