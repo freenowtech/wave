@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[95],{"o+mV":function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=l(a("Jj+T")),n=l(a("sD1U")),u=l(a("Hi9c")),d=l(a("+XQ7")),f=l(a("nvA5"));function l(e){return e&&e.__esModule?e:{default:e}}var i={code:"ca",formatDistance:o.default,formatLong:n.default,formatRelative:u.default,localize:d.default,match:f.default,options:{weekStartsOn:1,firstWeekContainsDate:4}};t.default=i,e.exports=t.default}}]);
+//# sourceMappingURL=95-7aebd397b65f2e147386.js.map

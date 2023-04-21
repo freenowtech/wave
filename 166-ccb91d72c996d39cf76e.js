@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[166],{wl21:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=f(a("PC8J")),u=f(a("GnmZ")),l=f(a("xD1C")),n=f(a("q0ws")),d=f(a("8GZ1"));function f(e){return e&&e.__esModule?e:{default:e}}var r={code:"uz-Cyrl",formatDistance:o.default,formatLong:u.default,formatRelative:l.default,localize:n.default,match:d.default,options:{weekStartsOn:1,firstWeekContainsDate:1}};t.default=r,e.exports=t.default}}]);
+//# sourceMappingURL=166-ccb91d72c996d39cf76e.js.map

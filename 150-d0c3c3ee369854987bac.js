@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[150],{"/AjS":function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=l(a("0y8z")),n=l(a("cBkn")),u=l(a("w/VN")),d=l(a("LJ5P")),f=l(a("NjiN"));function l(e){return e&&e.__esModule?e:{default:e}}var i={code:"pt-BR",formatDistance:o.default,formatLong:n.default,formatRelative:u.default,localize:d.default,match:f.default,options:{weekStartsOn:0,firstWeekContainsDate:1}};t.default=i,e.exports=t.default}}]);
+//# sourceMappingURL=150-d0c3c3ee369854987bac.js.map
