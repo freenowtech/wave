@@ -1,0 +1,311 @@
+import { ArgsTable, Meta, Primary, Unstyled } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as GridStories from './Grid.stories';
+import { Box } from '../../Box/Box';
+import { Column, Row } from '../Grid';
+import { Input } from '../../Input/Input';
+import { Button } from '../../Button/Button';
+import { Headline } from '../../Headline/Headline';
+import { Text } from '../../Text/Text';
+
+<Meta of={GridStories} />
+
+# Grid System
+
+The grid system is a set of components that can be used to create different layouts, composed of 12 vertical tracks of equal width.
+
+## Properties
+
+### Row
+
+<StyledSystemLinks
+    component="Row"
+    supportedProps={['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background']}
+/>
+
+### Column
+
+<ArgsTable of={Column} />
+
+<StyledSystemLinks
+    component="Column"
+    supportedProps={['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background']}
+/>
+
+## Examples
+
+The grid system is composed of 12 vertical tracks of equal width. Content can be placed in these tracks by using the `Row` and `Column` component.
+
+<Primary />
+
+```jsx
+<Row>
+    <Column>
+        <Box bg="#f1f2f4" textAlign="center">
+            1
+        </Box>
+    </Column>
+    <Column>
+        <Box bg="#f1f2f4" textAlign="center">
+            2
+        </Box>
+    </Column>
+    ...
+    <Column>
+        <Box bg="#f1f2f4" textAlign="center">
+            12
+        </Box>
+    </Column>
+</Row>
+```
+
+Columns can occupy more than one vertical track, by changing the `span` prop to a number between 1 and 12.
+
+<Row mb={3}>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            1
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            2
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            3
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            4
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            5
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            6
+        </Box>
+    </Column>
+</Row>
+
+```jsx
+<Row mb={3}>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            1
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            2
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            3
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            4
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            5
+        </Box>
+    </Column>
+    <Column span={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            6
+        </Box>
+    </Column>
+</Row>
+```
+
+<Row mb={3}>
+    <Column span={3}>
+        <Box bg="#f1f2f4" textAlign="center">
+            7
+        </Box>
+    </Column>
+    <Column span={3}>
+        <Box bg="#f1f2f4" textAlign="center">
+            8
+        </Box>
+    </Column>
+    <Column span={3}>
+        <Box bg="#f1f2f4" textAlign="center">
+            9
+        </Box>
+    </Column>
+    <Column span={3}>
+        <Box bg="#f1f2f4" textAlign="center">
+            10
+        </Box>
+    </Column>
+</Row>
+<Row mb={3}>
+    <Column span={4}>
+        <Box bg="#f1f2f4" textAlign="center">
+            11
+        </Box>
+    </Column>
+    <Column span={4}>
+        <Box bg="#f1f2f4" textAlign="center">
+            12
+        </Box>
+    </Column>
+    <Column span={4}>
+        <Box bg="#f1f2f4" textAlign="center">
+            13
+        </Box>
+    </Column>
+</Row>
+<Row mb={3}>
+    <Column span={6}>
+        <Box bg="#f1f2f4" textAlign="center">
+            14
+        </Box>
+    </Column>
+    <Column span={6}>
+        <Box bg="#f1f2f4" textAlign="center">
+            15
+        </Box>
+    </Column>
+</Row>
+<Row>
+    <Column span={12}>
+        <Box bg="#f1f2f4" textAlign="center">
+            16
+        </Box>
+    </Column>
+</Row>
+
+Columns can be given an offset, by changing the `offset` prop to a number between 0 and 11.
+
+<Unstyled>
+    <Row>
+        <Column span={2} offset={2}>
+            <Box bg="#f1f2f4" textAlign="center">
+                1
+            </Box>
+        </Column>
+        <Column span={2} offset={4}>
+            <Box bg="#f1f2f4" textAlign="center">
+                2
+            </Box>
+        </Column>
+    </Row>
+</Unstyled>
+
+```jsx
+<Row>
+    <Column span={2} offset={2}>
+        <Box bg="#f1f2f4" textAlign="center">
+            1
+        </Box>
+    </Column>
+    <Column span={2} offset={4}>
+        <Box bg="#f1f2f4" textAlign="center">
+            2
+        </Box>
+    </Column>
+</Row>
+```
+
+The `Row` and `Column` components can be used to create different kinds of layouts, combining them with other components of the design system.
+
+<Unstyled>
+    <Row mb={3}>
+        <Column span={12}>
+            <Headline as="h2">Create a free Business Account</Headline>
+            <Text as="p">
+                Make managing employee and guest travel easier. It only takes a couple of minutes to get started!
+            </Text>
+        </Column>
+    </Row>
+    <Row mb={3}>
+        <Column span={6}>
+            <Input label="First Name" width="100%" />
+        </Column>
+        <Column span={6}>
+            <Input label="Last Name" width="100%" />
+        </Column>
+    </Row>
+    <Row mb={3}>
+        <Column span={6}>
+            <Input label="Email" width="100%" />
+        </Column>
+        <Column span={2}>
+            <Input label="Area Code" width="100%" />
+        </Column>
+        <Column span={4}>
+            <Input label="Phone Number" width="100%" />
+        </Column>
+    </Row>
+    <Row>
+        <Column span={6} offset={6}>
+            <Button width="100%">Sign up for FREE NOW for Business</Button>
+        </Column>
+    </Row>
+</Unstyled>
+
+This other example, shows how to create a two `Column` layout with a number of stacking `Card`s.
+
+```jsx
+<Box bg="#f1f2f4" p={3}>
+    <Row>
+        <Column span={6}>
+            <Card level={100} mb={3}>
+                <Text as="p">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Convallis aenean et tortor at risus viverra adipiscing at. Duis ultricies
+                    lacus sed turpis.
+                </Text>
+            </Card>
+            <Card level={100} mb={3}>
+                <Text as="p">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Eu tincidunt tortor aliquam nulla facilisi. Lobortis elementum nibh tellus
+                    molestie nunc. Faucibus et molestie ac feugiat sed lectus.
+                </Text>
+            </Card>
+            <Card level={100}>
+                <Text as="p">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Commodo quis imperdiet massa tincidunt. Ipsum dolor sit amet consectetur
+                    adipiscing elit pellentesque. Id cursus metus aliquam eleifend mi in. Pretium fusce id velit ut
+                    tortor pretium viverra suspendisse.
+                </Text>
+            </Card>
+        </Column>
+        <Column span={6}>
+            <Card level={100} mb={3}>
+                <Text as="p">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Vel eros donec ac odio tempor. Vulputate enim nulla aliquet porttitor lacus
+                    luctus accumsan tortor. A diam maecenas sed enim ut. Maecenas sed enim ut sem. Laoreet id donec
+                    ultrices tincidunt arcu. Nunc congue nisi vitae suscipit tellus mauris. Euismod lacinia at quis
+                    risus sed.
+                </Text>
+            </Card>
+            <Card level={100} mb={3}>
+                <Text as="p">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Vel eros donec ac odio tempor. Vulputate enim nulla aliquet porttitor lacus
+                    luctus accumsan tortor. A diam maecenas sed enim ut. Maecenas sed enim ut sem. Laoreet id donec
+                    ultrices tincidunt arcu. Nunc congue nisi vitae suscipit tellus mauris. Euismod lacinia at quis
+                    risus sed.
+                </Text>
+            </Card>
+        </Column>
+    </Row>
+</Box>
+```
