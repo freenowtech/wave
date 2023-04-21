@@ -1,0 +1,68 @@
+import { Primary, Stories, ArgTypes, Meta, Unstyled } from '@storybook/blocks';
+
+import { TooltipPlacementExample } from './TooltipPlacementExample';
+import * as TooltipStories from './Tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+This component provides informative text to a UI element.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={TooltipStories} />
+
+## Usage
+
+Use the tooltip for user on-boarding, guiding information about a new feature, detailed interactive workflows or for a contextual help (eg. over a button).
+
+### Appearance
+
+-   The font size is 12px and font weight is regular.
+-   Top and bottom padding around the text area is 4px and 8px for right and left.
+-   The max-width for the tooltip is 300px in desktop and 160px on mobile devices.
+-   The copy should be instructional and concise. Max 200 characters are allowed.
+-   Emojis are allowed to be used 😇
+
+### Behavior
+
+-   The tooltip is accessible on hover or on tap (mobile) and should be automatically dismissed when the user stops hovering
+    the target area (or taps somewhere else on mobile devices)
+-   The tooltip should be eased-out.
+-   **Don’ts:** don't change the shape of the tooltip (rounded corners, etc), don’t crop it, don’t hide the element it hovers over
+
+### Placement
+
+It is possible to adjust the position of the tooltip connection to the target with the `placement` prop. Below is a list
+of possible options which are represented in the square next to it. It is important to keep in mind that the tooltip
+will be moved to a different position if it cannot be shown on the desired side due to screen sizes. Read more about the
+Popper library [here](https://popper.js.org/).
+
+<Unstyled>
+    <TooltipPlacementExample />
+</Unstyled>
+
+## Technical Usage
+
+For the Tooltip to work properly, it needs to have a single child component to bind the mouse-enter and -leave events to.
+The library `react-tether` which is used internally works with setting a `ref` to the child. To avoid complications, make
+sure the child component supports the `ref` property.
+
+```jsx
+const CustomComponent = React.forwardRef((props, ref) => (
+    <div {...props}>
+        <button ref={ref}>Hover to show tooltip</button>
+    </div>
+));
+
+const WithTooltip = () => (
+    <Tooltip content="Information about your feature">
+        <CustomComponent />
+    </Tooltip>
+);
+```
+
+<Stories includePrimary={false} />

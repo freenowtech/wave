@@ -1,25 +1,19 @@
-import { Primary, Meta, ArgsTable, IconGallery, IconItem } from '@storybook/blocks';
+import { Primary, Meta, ArgTypes, IconGallery, IconItem } from '@storybook/blocks';
 
 import { Flag } from '../Flag';
-import FlagStories from './Flags.stories';
+import * as FlagStories from './Flags.stories';
 
 <Meta of={FlagStories} />
 
 # Flags
 
-## Usage
-
 The icon can be accessed by using the `<Icons.Flag />` component and the provided country code with the property `code`.
-
-## Properties
-
-<ArgsTable of={Flag} />
-
-## Examples
 
 <Primary />
 
-<ArgsTable story="Flags" exclude={['theme', 'as', 'forwardedAs']} />
+## Properties
+
+<ArgTypes of={Flag} />
 
 ### Country Flags
 

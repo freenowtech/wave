@@ -1,11 +1,7 @@
 import { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-    stories: [
-        '../docs/**/*.(stories|storybook).mdx',
-        '../src/**/*.(stories|storybook).mdx',
-        '../src/**/*.stories.@(ts|tsx)'
-    ],
+    stories: ['../**/*.storybook.mdx', '../src/**/*.stories.@(ts|tsx)'],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
@@ -18,7 +14,8 @@ const config: StorybookConfig = {
     },
     docs: {
         autodocs: true
-    }
+    },
+    staticDirs: ['../public']
 };
 
 export default config;

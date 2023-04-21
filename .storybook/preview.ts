@@ -64,16 +64,11 @@ export const preview: Preview = {
         },
         options: {
             storySort: {
-                order: ['Get Started']
+                method: 'alphabetical',
+                order: ['Get Started', 'Essentials', 'Components', 'Form Elements']
             }
         }
     }
 };
 
 export default preview;
-
-// (default)	0	-	Mobile (portrait)
-// 30rem (480px)	1	small	Mobile (landscape)
-// 48rem (768px)	2	medium	Tablet (portrait)
-// 62rem (992px)	3	large	Tablet (landscape)
-// 75rem (1200px)	4	xlarge	Laptops (and Desktops)

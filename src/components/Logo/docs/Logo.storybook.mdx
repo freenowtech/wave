@@ -1,17 +1,14 @@
-import { Primary, Meta, Stories, ArgsTable } from '@storybook/blocks';
-import { Logo } from '../Logo';
+import { Primary, Meta, Stories, ArgTypes } from '@storybook/blocks';
 import * as LogoStories from './Logo.stories';
 
 <Meta of={LogoStories} />
-
-export const Template = args => <Logo {...args} />;
 
 # Logo
 
 <Primary />
 
-## Props
+## Properties
 
-<ArgsTable of={Logo} />
+<ArgTypes of={LogoStories} />
 
 <Stories includePrimary={false} />

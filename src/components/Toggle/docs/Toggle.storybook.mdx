@@ -1,0 +1,32 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as ToggleStories from './Toggle.stories';
+
+<Meta of={ToggleStories} />
+
+export const Template = args => <Toggle {...args} />;
+
+# Toggle
+
+Toggle is a control that is used to quickly switch between two possible states. Toggles are only used for these binary
+actions that occur immediately after the user “flips” the toggle switch. They are commonly used for “on/off” switches.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={ToggleStories} />
+<StyledSystemLinks component="Toggle" supportedProps={['margin']} />
+
+## Behaviour
+
+-   Use toggle to swap the state of a functionality or preference (usually between „on“ and „off“)
+-   For multi-state scenarios consider radio buttons or checkboxes
+-   Toggles should take effect automatically (without saving)
+
+## Technical Information
+
+Inside the toggle component is a checkbox and therefore the api and usage works similarly. For example, instead
+of passing the `value` prop, the `checked` prop must be used instead.
+
+<Stories includePrimary={false} />

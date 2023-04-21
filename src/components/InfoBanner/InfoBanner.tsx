@@ -15,11 +15,31 @@ import { Text } from '../Text/Text';
 import { Spaces } from '../../essentials';
 
 interface InfoBannerProps extends BoxProps {
+    /**
+     * The title of the banner
+     */
     title: string;
+    /**
+     * The description of the banner
+     */
     description: string;
+    /**
+     * Color and message type for the component
+     * @default info
+     */
     variant?: InfoBannerVariants;
+    /**
+     * Adds additional emphasis or highlights critical status of the message
+     * @default false
+     */
     emphasized?: boolean;
+    /**
+     * Sets the text of the link contained in the banner
+     */
     linkText?: string;
+    /**
+     * Sets the url where the user will be redirected when clicking on the link
+     */
     linkUrl?: string;
 }
 

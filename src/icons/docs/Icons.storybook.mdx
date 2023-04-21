@@ -1,4 +1,4 @@
-import { Primary, Meta, ArgsTable } from '@storybook/blocks';
+import { Primary, Meta, ArgTypes } from '@storybook/blocks';
 
 import { Colors, Headline } from '../..';
 import { SearchableIconGrid } from './SearchableIconGrid';
@@ -11,13 +11,13 @@ import RadiusCrossedIconSvg from './images/radius-not-used.svg';
 import ColorSvg from './images/color-detail.svg';
 import BorderSvg from './images/border-detail.svg';
 import * as Icons from '..';
-import IconsStories from './Icons.stories';
+import * as IconsStories from './Icons.stories';
 
 <Meta of={IconsStories} />
 
 # Icons
 
-## Usage
+<Primary />
 
 For each icon the library exposes a specific React component, which has the same name as the icon. They will render the
 connected SVG and allow you to change the size and (with some exceptions) color to suit your needs.
@@ -35,13 +35,7 @@ so it can be rendered in the example area. This isn't necessary in your project,
 
 ## Properties
 
-<ArgsTable of={Icons.AlertIcon} />
-
-## Examples
-
-<Primary />
-
-<ArgsTable story="Icons" />
+<ArgTypes of={Icons.AlertIcon} />
 
 ## Available Icons
 

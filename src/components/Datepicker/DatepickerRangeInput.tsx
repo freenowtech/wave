@@ -126,12 +126,12 @@ interface DatepickerRangeInputProps extends MarginProps, WidthProps {
     maxDate?: Date;
     /**
      * Accepts a number for first day of the week from 0 (Sunday) to 6 (Saturday).
-     * Default: 1
+     * @default 1
      */
     firstDayOfWeek?: FirstDayOfWeek;
     /**
      * Function that runs for each date and returns boolean whether date is disabled or not.
-     * Default: () => false
+     * @default () => false
      */
     isDateBlocked?: (date: Date) => boolean;
     /**
@@ -140,13 +140,13 @@ interface DatepickerRangeInputProps extends MarginProps, WidthProps {
      */
     placement?: 'left' | 'right' | 'center';
     /**
-     * String to format dates.
-     * Default: dd/MM/yyyy
+     * String to format dates. See the format at [date-fns docs](https://date-fns.org/v2.29.3/docs/format)
+     * @default dd/MM/yyyy
      */
     displayFormat?: string;
     /**
      * String to define the locale in ISO-639-1
-     * Default: en-US
+     * @default en-US
      */
     locale?: string;
     /**
@@ -163,7 +163,7 @@ interface DatepickerRangeInputProps extends MarginProps, WidthProps {
      */
     endInputId?: string;
     /**
-     * Determines the variant
+     * Show two (`'normal'`) or one (`'compact'`) month in the datepicker
      * @value `'compact'` displays only a single month
      * @default 'normal'
      */

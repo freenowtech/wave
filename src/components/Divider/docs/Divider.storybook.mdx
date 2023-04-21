@@ -1,0 +1,39 @@
+import { Meta, ArgTypes, Primary, Stories, Unstyled } from '@storybook/blocks';
+import { Divider, InfoBanner } from '../../index';
+import * as DividerStories from './Divider.stories';
+
+<Meta of={DividerStories} />
+
+# Divider
+
+**Primary UI element for visually separating content**
+
+Renders a divider UI component: horizontal or vertical line that visually separates two pieces of data, content or UI.
+
+<Primary />
+
+### Properties
+
+<ArgTypes of={Divider} />
+
+## Default Behaviour
+
+The horizontal divider takes up the full available width and the vertical divider takes up the full available height.
+
+The horizontal divider is rendered by default. Set **vertical** prop to `true` to change the divider orientation.
+
+## Divider vs Border
+
+The default color of Divider is _$border.primary_ (#C6CDD4), however...
+
+<Unstyled>
+    <InfoBanner
+        variant="warning"
+        description="Divider is NOT a border, and should not be used as such. Please do not use this component as a border for elements."
+        title=""
+    />
+</Unstyled>
+
+Divider is naturally expected to have a certain offset from the elements it is 'dividing' or separating.
+
+<Stories includePrimary={false} />

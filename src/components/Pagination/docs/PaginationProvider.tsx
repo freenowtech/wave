@@ -103,39 +103,6 @@ const NormalPagination: React.FC = () => (
     </PaginationProvider>
 );
 
-const SmallPagination: React.FC = () => (
-    <PaginationProvider>
-        {({
-            currentPage,
-            pageSize,
-            totalItems,
-            handleNextPage,
-            handlePrevPage,
-            handleSkipForward,
-            handleSkipBackward
-        }) => (
-            <Pagination
-                size="small"
-                value={currentPage}
-                pageSize={pageSize}
-                totalItems={totalItems}
-                label={
-                    <Text weak>
-                        Page{' '}
-                        <Text as="b" fontWeight="semibold" weak>
-                            {currentPage} of {Math.ceil(totalItems / pageSize)}
-                        </Text>
-                    </Text>
-                }
-                onNextPage={handleNextPage}
-                onPrevPage={handlePrevPage}
-                onSkipForward={handleSkipForward}
-                onSkipBackward={handleSkipBackward}
-            />
-        )}
-    </PaginationProvider>
-);
-
 const PaginationWithPageSize: React.FC = () => (
     <PaginationProvider>
         {({
@@ -172,4 +139,4 @@ const PaginationWithPageSize: React.FC = () => (
     </PaginationProvider>
 );
 
-export { PaginationProvider, NormalPagination, SmallPagination, PaginationWithPageSize };
+export { NormalPagination, PaginationWithPageSize };

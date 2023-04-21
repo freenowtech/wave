@@ -1,0 +1,22 @@
+import { Meta, Primary, ArgTypes, Stories } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as TextButtonStories from './TextButton.stories';
+
+<Meta of={TextButtonStories} />
+
+# Button
+
+Renders a `button` tag.
+
+The purpose of the buttons is to trigger an interaction like order, confirmation or submit. For navigation
+targets consider a link.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={TextButtonStories} />
+
+<StyledSystemLinks component="TextButton" supportedProps={['margin', 'width']} />
+
+<Stories includePrimary={false} />
