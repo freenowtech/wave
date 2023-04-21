@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[76,75,77],{h49F:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){return function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=e.width?String(e.width):t.defaultWidth,d=t.formats[n]||t.formats[t.defaultWidth];return d}},t.exports=e.default}}]);
-//# sourceMappingURL=76-a50a8728bd8071cc6a97.js.map
