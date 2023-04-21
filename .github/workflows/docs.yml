@@ -28,7 +28,7 @@ jobs:
                   path: storybook-static
 
     deploy:
-        # if: github.ref == 'refs/heads/main'
+        # if: github.ref == 'refs/heads/main' # Hi!
         needs: build
         runs-on: ubuntu-latest
         steps:
