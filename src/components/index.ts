@@ -36,7 +36,10 @@ export {
     TableCellProps,
     TableHeaderCellProps,
     TableRowProps,
-    TableRowSkeletonProps
+    TableRowSkeletonProps,
+    TableSortableHeaderCell,
+    TableSortableHeaderCellProps,
+    useSortBy
 } from './Table';
 export { FilePicker, FilePickerProps } from './FilePicker';
 export { PhoneInput, PhoneInputProps } from './PhoneInput/PhoneInput';

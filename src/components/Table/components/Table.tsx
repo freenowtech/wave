@@ -46,7 +46,13 @@ const TableElement: StyledComponent<FC<TableElementProps>, typeof theme> = style
     ${compose(margin, width, height)}
 `;
 
-const Table: FC<TableProps> = ({ children, rowStyle, rowSize = 'normal', columnSpace = 'normal', ...props }) => {
+const Table: FC<TableProps> = ({
+    children,
+    rowStyle,
+    rowSize = 'normal',
+    columnSpace = 'normal',
+    ...props
+}: TableProps) => {
     const context = {
         columnSpace: getColumnSpace(columnSpace),
         rowSize: getRowSize(rowSize),
