@@ -9,6 +9,7 @@ import { Text, TextProps } from '../Text/Text';
 interface HelperTextProps extends TextProps {
     /**
      * Set the appropriate colors for component with 'info' as default
+     * @default info
      */
     variant?: ResponsiveValue<'info' | 'danger'>;
     /**
