@@ -1,0 +1,35 @@
+import { Meta, Primary, ArgsTable, Story, Stories, Source } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Renders a `button` tag. This module exposes two types of buttons `<TextButton />` and `<Button />`.
+Take a look to the [MDN web docs - Button](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to know more
+about some of the default props supported by a button along with some accessibility concerns.
+
+The purpose of the buttons is to trigger an interaction like order, confirmation or submit. For navigation
+targets consider a link. Use the primary button only once per screen and avoid putting two primary buttons next to each other.
+Use the secondary button for less important actions and in multi button scenarios.
+
+<Primary />
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<StyledSystemLinks component="Button" supportedProps={['margin', 'width']} />
+
+## Icons
+
+Sometimes an icon can help clarify the usage of the button. The recommended sizes for the icons:
+
+-   `<IconName size={20} />` — 20px for regular button
+-   `<IconName size={18} />` — 18px for small button
+
+<Story of={ButtonStories.WithIcon} />
+<Source of={ButtonStories.WithIcon} />
+
+<Stories includePrimary={false} />
