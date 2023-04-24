@@ -71,9 +71,3 @@ export const preview: Preview = {
 };
 
 export default preview;
-
-// (default)	0	-	Mobile (portrait)
-// 30rem (480px)	1	small	Mobile (landscape)
-// 48rem (768px)	2	medium	Tablet (portrait)
-// 62rem (992px)	3	large	Tablet (landscape)
-// 75rem (1200px)	4	xlarge	Laptops (and Desktops)
