@@ -1,0 +1,20 @@
+import { Meta, Primary, ArgsTable, Stories } from '@storybook/blocks';
+import * as CheckboxStories from './Checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+Checkboxes are used for a list of options where the user may select multiple options, including all or none. A
+stand-alone checkbox is used for a single option that the user can turn on or off.
+
+You can provide the label as either a `string` or as a React component. If a `string` is provided as the label, it
+will be wrapped with the [Text](/components/Text) component.
+
+<Primary />
+
+## Properties
+
+<ArgsTable story="Default" />
+
+<Stories includePrimary={false} />{' '}
