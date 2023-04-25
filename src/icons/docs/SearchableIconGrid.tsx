@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Subheading } from '@storybook/addon-docs';
+import { Subheading } from '@storybook/blocks';
 import { Box, Input } from '../../components';
 import * as ActionsIcons from '../actions';
 import * as ArrowsIcons from '../arrows';
