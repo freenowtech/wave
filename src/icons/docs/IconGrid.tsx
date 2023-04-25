@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconGallery, IconItem } from '@storybook/addon-docs';
+import { IconGallery, IconItem } from '@storybook/blocks';
 import { IconProps } from '../IconProps';
 
 interface IconGridProps {
