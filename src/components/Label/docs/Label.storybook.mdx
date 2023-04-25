@@ -1,0 +1,20 @@
+import { Primary, ArgTypes, Meta, Stories } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as LabelStories from './Label.stories';
+
+<Meta of={LabelStories} />
+
+# Label
+
+Multiple or single labels can be used to categorize items.
+Use short labels for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={LabelStories} />
+
+<StyledSystemLinks component="Label" supportedProps={['margin']} />
+
+<Stories />
