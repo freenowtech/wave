@@ -13,6 +13,7 @@ interface LabelProps extends MarginProps {
 
     /**
      * Use the alternative version of the label for critical status and extra emphasis
+     * @default false
      */
     filled?: boolean;
 }
