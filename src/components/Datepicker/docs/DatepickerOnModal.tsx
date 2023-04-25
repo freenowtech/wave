@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react';
 
 import { Button, Headline, Modal, TextButton } from '../..';
-import { ControlledDatepickerSingleInput } from './ControlledDatepickerSingleInput';
+import { DatePicker } from '../index';
 
 export const DatepickerOnModal: FC = () => {
     const [showModal, setShowModal] = useState(false);
+    const [value, setValue] = useState<Date>();
 
     return (
         <>
@@ -17,7 +18,7 @@ export const DatepickerOnModal: FC = () => {
                         <>
                             <Headline as="h2">New Event</Headline>
 
-                            <ControlledDatepickerSingleInput />
+                            <DatePicker value={value} onChange={setValue} />
 
                             <br />
                             <Button onClick={dismiss}>Add Event</Button>
