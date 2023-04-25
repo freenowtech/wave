@@ -1,38 +1,23 @@
-import { Canvas, Story, ArgsTable, Meta, Unstyled } from '@storybook/blocks';
-import { DefaultTable } from './DefaultTable';
-import { ActiveRowTable } from './ActiveRowTable';
-import { ComplexDataTable } from './ComplexDataTable';
-import { SkeletonTable } from './SkeletonTable';
-import { SortableTable } from './SortableTable';
-import { SortableTableDefault } from './SortableTableDefault';
+import { Story, ArgTypes, ArgsTable, Meta, Primary } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { TableRow } from '../components/TableRow';
-import { Table } from '../components/Table';
 import { TableRowSkeleton } from '../components/TableRowSkeleton';
 import { TableSortableHeaderCell } from '../components/TableSortableHeaderCell';
+import * as TableStories from './Table.stories';
 
 # Table
 
-<Meta
-    title="Components/Table"
-    component={Table}
-    argTypes={{
-        rowStyle: {
-            control: {
-                type: 'radio',
-                options: ['zebra', 'striped', 'lines']
-            }
-        }
-    }}
-/>
+<Meta of={TableStories} />
 
 Tables are used to render tabular data in a basic grid, making it easier for people to scan it. Tables are comprised of cells, columns, and rows.
+
+<Primary />
 
 ## Properties
 
 ### Table
 
-<ArgsTable of={Table} />
+<ArgTypes of={TableStories} />
 
 <StyledSystemLinks component="Table" supportedProps={['margin', 'width', 'height']} />
 
@@ -56,54 +41,28 @@ Tables are used to render tabular data in a basic grid, making it easier for peo
 
 <ArgsTable of={TableSortableHeaderCell} />
 
-## Stories
-
-<Canvas>
-    <Story name="Default" args={{}}>
-        {DefaultTable.bind({})}
-    </Story>
-</Canvas>
+## Usage
 
 ☝️ Tables are not width 100% by default, if required, you must set `width: 100%` to the `Table` Component.
 To better understand some of the props in the above table, an in-depth guide of accessible tables can be found at the [a11y-101 article](https://a11y-101.com/development/tables).
 
-## Active Row
+### Active Row
 
 To highlight an active (or selected) row, you can add set `active` to true on the `TableRow` component. This will mark
 the row as active and change the background color.
 
-<Unstyled>
-    <ActiveRowTable />
-</Unstyled>
+<Story of={TableStories.WithActiveRow} />
 
-```jsx
-<TableRow active={true}>
-    <TableCell>
-        <Checkbox checked={true} />
-    </TableCell>
-    <TableCell>Alex Ponomarenko</TableCell>
-    <TableCell>a.ponomarenko@mytaxi.com</TableCell>
-    <TableCell>Booker</TableCell>
-    <TableCell>Product</TableCell>
-</TableRow>
-```
-
-## Complex Data
+### Complex Data
 
 When dealing with complex data, it is possible to use up to two lines of text in one row. Keep in mind, that the smallest row size
-will not work when you have multiple lines in one cells.
+will not work when you have multiple lines in one cell.
 
-<Unstyled>
-    <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-        <ComplexDataTable />
-    </div>
-</Unstyled>
+<Story of={TableStories.WithComplexData} />
 
 ## Loading State
 
-<Unstyled>
-    <SkeletonTable />
-</Unstyled>
+<Story of={TableStories.WithSkeletonLoader} />
 
 ```jsx
 <Table rowStyle="zebra">
@@ -137,9 +96,7 @@ const { sortBy, setSortBy } = useSortBy();
 
 ### Example
 
-<Unstyled>
-    <SortableTable />
-</Unstyled>
+<Story of={TableStories.WithSortableTable} />
 
 > Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTable.tsx).
 
@@ -151,8 +108,6 @@ Sometimes the data will already be received sorted by default according to one o
 const { sortBy, setSortBy } = useSortBy('id', 'ASC');
 ```
 
-<Unstyled>
-    <SortableTableDefault />
-</Unstyled>
+<Story of={TableStories.WithDefaultSortedTable} />
 
 > Check the example [code](https://github.com/freenowtech/wave/blob/main/src/components/Table/docs/SortableTableDefault.tsx).

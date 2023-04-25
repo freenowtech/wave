@@ -20,22 +20,6 @@ const data = [
         emailAddress: 'leander.klein@free-now.com'
     },
     {
-        id: 2,
-        date: randomDate().toDateString(),
-        activity: '13 Trips',
-        name: 'Jonathan Roolf',
-        status: <Label variant="success">Active</Label>,
-        emailAddress: 'jonathan.roolf@free-now.com'
-    },
-    {
-        id: 3,
-        date: randomDate().toDateString(),
-        activity: 'No Activity',
-        name: 'John Doe',
-        status: <Label variant="danger">Fraud</Label>,
-        emailAddress: 'j.doe@mytaxi.com'
-    },
-    {
         id: 4,
         date: randomDate().toDateString(),
         activity: 'No activity',
@@ -75,7 +59,7 @@ export const SkeletonTable: FC = () => {
                     </TableRow>
                 </thead>
                 <tbody>
-                    {loading && [0, 1, 2, 3, 4].map(key => <TableRowSkeleton key={key} columns={6} />)}
+                    {loading && [0, 1, 2].map(key => <TableRowSkeleton key={key} columns={6} />)}
                     {!loading &&
                         data.map(entry => (
                             <TableRow key={entry.id}>

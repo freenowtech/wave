@@ -51,36 +51,6 @@ export const DefaultTable: FC = (args: TableProps) => (
             </TableRow>
             <TableRow>
                 <TableCell>
-                    31 January 2020 - 02:48
-                    <br />
-                    <Text fontSize={0} weak>
-                        No activity yet
-                    </Text>
-                </TableCell>
-                <TableCell scope="row">Marc Berg</TableCell>
-                <TableCell>
-                    <Label variant="success">Active</Label>
-                </TableCell>
-                <TableCell>
-                    <Box display="flex" alignItems="center">
-                        <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
-                        &nbsp;+4915139912828
-                    </Box>
-                </TableCell>
-                <TableCell>
-                    <Box display="flex" alignItems="center">
-                        <EnvelopeIcon size={18} color={Colors.ACTION_BLUE_900} />
-                        &nbsp;m.berg@free-now.com
-                    </Box>
-                </TableCell>
-                <TableCell>
-                    <Button variant="secondary" size="small">
-                        ...
-                    </Button>
-                </TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell>
                     27 February 2020 - 16:02
                     <br />
                     <Text fontSize={0} weak>
