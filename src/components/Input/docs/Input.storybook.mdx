@@ -1,45 +1,18 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/blocks';
-import { Input } from '../Input';
+import { ArgTypes, Meta, Primary, Story, Stories } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import InputStories from './Input.stories';
 
-<Meta
-    title="Form Elements/Input"
-    component={Input}
-    argTypes={{
-        variant: {
-            options: ['boxed', 'bottom-lined'],
-            defaultValue: 'boxed',
-            control: 'select'
-        },
-        size: {
-            options: ['small', 'medium'],
-            defaultValue: 'medium',
-            control: 'select'
-        }
-    }}
-/>
-
-export const Template = args => <Input {...args} />;
+<Meta of={InputStories} />
 
 # Input
 
 Inputs are mainly used in forms to introduce alphanumeric content and edit it.
 
-<Canvas>
-    <Story
-        name="Basic"
-        args={{
-            label: 'E-Mail Address',
-            id: 'email'
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Primary />
 
 ## Properties
 
-<ArgsTable of={Input} />
+<ArgTypes of={InputStories} />
 
 <StyledSystemLinks component="Input" supportedProps={['margin', 'width']} />
 
@@ -125,50 +98,4 @@ Ideally the inputs should be placed in one column, in order to provide an easy r
 -   Mandatory errors: Don’t show errors when a field is mandatory until user click/tap on the action button in the form to save/send changes.
 -   **Disable**: when the user cannot make any action with the input. It’s recommended to show a tooltip when user is focused on the input explaining the reasons.
 
-## Stories
-
-### Input with label and placeholder
-
-<Canvas>
-    <Story name="With label and placeholder" args={{ label: 'Email', placeholder: 'user@free-now.com' }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### Disabled input
-
-<Canvas>
-    <Story name="Disabled" args={{ label: 'Disabled', disabled: true }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### Input with error
-
-<Canvas>
-    <Story name="With error" args={{ label: 'Error', error: true }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### Bottom lined input
-
-<Canvas>
-    <Story name="Bottom lined" args={{ label: 'Bottom lined', variant: 'bottom-lined' }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### Input with inverted colors
-
-<Canvas style={{ background: '#001E3E' }}>
-    <Story
-        name="Inverted"
-        args={{ label: 'Inverted', inverted: true }}
-        parameters={{
-            backgrounds: { default: 'dark' }
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Stories includePrimary={false} />
