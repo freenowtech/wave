@@ -1,0 +1,18 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+import * as TextareaStories from './Textarea.stories';
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={TextareaStories} />
+
+<StyledSystemLinks component="Textarea" supportedProps={['margin', 'height', 'width']} />
+
+<Stories includePrimary={false} />
