@@ -1,55 +1,18 @@
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { Select } from '../Select';
+import * as SelectStories from './Select.stories';
 
-<Meta
-    title="Form Elements/Select"
-    component={Select}
-    argTypes={{
-        size: {
-            options: ['normal', 'small'],
-            defaultValue: 'normal',
-            control: 'radio'
-        },
-        variant: {
-            options: ['boxed', 'bottom-lined'],
-            defaultValue: 'boxed',
-            control: 'radio'
-        },
-        inverted: {
-            options: [true, false],
-            defaultValue: false,
-            control: 'radio'
-        },
-        error: {
-            options: [true, false],
-            defaultValue: false,
-            control: 'radio'
-        }
-    }}
-/>
-
-export const Template = args => (
-    <Select {...args}>
-        <option>Scooter</option>
-        <option>Ride (PHV)</option>
-        <option>Taxi</option>
-    </Select>
-);
+<Meta of={SelectStories} />
 
 # Select
 
 This component is providing a dropdown select. It uses the native [HTML select](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) for a lightweight and efficient approach to file uploading.
 
-<Canvas>
-    <Story name="Default" args={{ label: 'City', id: 'city' }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Primary />
 
 ## Properties
 
-<ArgsTable of={Select} />
+<ArgTypes of={SelectStories} />
 
 <StyledSystemLinks component="Select" supportedProps={['margin', 'width']} />
 
@@ -96,43 +59,6 @@ Errors are shown just in the cases the field is mandatory and just after user cl
 -   Remove options that rarely get used.
 -   Remove the options that we know cannot be selected (eg: countries where we don’t work)
 
-## Stories
-
-### Bottom lined
-
-<Canvas>
-    <Story name="Bottom lined" args={{ label: 'City', id: 'city', variant: 'bottom-lined' }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### Error
-
-<Canvas>
-    <Story name="With error" args={{ label: 'City', id: 'city', error: true }}>
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### Inverted
-
-<Canvas style={{ background: '#001E3E' }}>
-    <Story
-        name="Inverted"
-        parameters={{
-            backgrounds: {
-                default: 'dark'
-            }
-        }}
-        args={{
-            label: 'City',
-            inverted: true
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
 ## Testing
 
 It is recommended for each Select component to set the `id`. This helps with a11y and allows to use the
@@ -154,3 +80,5 @@ it('can be selected by label', () => {
     expect(screen.getByLabelText('Example')).toHaveDisplayValue('test 1');
 });
 ```
+
+<Stories includePrimary={false} />
