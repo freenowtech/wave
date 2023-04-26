@@ -1,0 +1,103 @@
+import { Primary, Unstyled, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { NormalPagination, PaginationWithPageSize } from './PaginationProvider';
+import * as PaginationStories from './Pagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+-   Use pagination to split long datasets like tables and lists
+-   As a rule of thumb set pagination after **10, 15 or 20 items**
+-   Use small navigation on mobile and for small datasets
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={PaginationStories} />
+
+## Usage
+
+The component provides the UI, but the state of the pages needs to be managed by the consuming component.
+
+### Basic usage
+
+<NormalPagination />
+
+```jsx
+export default () => {
+    const PAGE_SIZE = 20;
+    const TOTAL_ITEMS = 200;
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const lastPage = Math.ceil(TOTAL_ITEMS / PAGE_SIZE);
+
+    return (
+        <Pagination
+            value={currentPage}
+            pageSize={PAGE_SIZE}
+            totalItems={TOTAL_ITEMS}
+            label={
+                <Text secondary={}>
+                    Page{' '}
+                    <Text as="b" fontWeight="semibold" secondary={}>
+                        {currentPage} of {lastPage}
+                    </Text>
+                </Text>
+            }
+            onNextPage={() => setCurrentPage(current => current + 1)}
+            onPrevPage={() => setCurrentPage(current => current - 1)}
+            onSkipForward={() => setCurrentPage(lastPage)}
+            onSkipBackward={() => setCurrentPage(1)}
+        />
+    );
+};
+```
+
+### Page size selector
+
+When using the selector for the page size, provide a set of possible page size values and a callback `onSelectPageSize` to handle the change.
+When new `pageSize` prop is passed to the component, the amount of pages will be recalculated.
+
+<PaginationWithPageSize />
+
+```jsx
+const PageSizeOptions = [
+    { label: '10', value: '10' },
+    { label: '20', value: '20' }
+];
+
+const WithPageSize = () => {
+    const TOTAL_ITEMS = 200;
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(PageSizeOptions[0]);
+
+    const lastPage = Math.ceil(TOTAL_ITEMS / PAGE_SIZE);
+
+    return (
+        <Pagination
+            value={currentPage}
+            pageSize={pageSize}
+            totalItems={TOTAL_ITEMS}
+            label={
+                <Text secondary>
+                    Page{' '}
+                    <Text as="b" fontWeight="semibold" secondary>
+                        {currentPage} of {lastPage}
+                    </Text>
+                </Text>
+            }
+            pageSizeOptions={PageSizeOptions}
+            onSelectPageSize={selected => setPageSize(Number.parseInt(selected.value, 10))}
+            onNextPage={() => setCurrentPage(current => current + 1)}
+            onPrevPage={() => setCurrentPage(current => current - 1)}
+            onSkipForward={() => setCurrentPage(lastPage)}
+            onSkipBackward={() => setCurrentPage(1)}
+        />
+    );
+};
+```
+
+<Stories includePrimary={false} />
