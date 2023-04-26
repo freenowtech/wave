@@ -1,4 +1,4 @@
-import { Meta, ArgsTable, Primary, Stories } from '@storybook/blocks';
+import { Meta, ArgTypes, Primary, Stories } from '@storybook/blocks';
 import * as AccordionStories from './Accordion.stories';
 
 <Meta of={AccordionStories} />
@@ -11,6 +11,6 @@ Accordion component is used to display large amount of content in a compress and
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgTypes of={AccordionStories} />
 
 <Stories includePrimary={false} />

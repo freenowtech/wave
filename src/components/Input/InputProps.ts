@@ -3,10 +3,12 @@ import { ComponentPropsWithRef } from 'react';
 interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'width'> {
     /**
      * Sets the variant of the input
+     * @default boxed
      */
     variant?: 'boxed' | 'bottom-lined';
     /**
      * Sets the size of the input
+     * @default medium
      */
     size?: 'small' | 'medium';
     /**

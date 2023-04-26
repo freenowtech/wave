@@ -22,7 +22,9 @@ The component provides the UI, but the state of the pages needs to be managed by
 
 ### Basic usage
 
-<NormalPagination />
+<Unstyled>
+    <NormalPagination />
+</Unstyled>
 
 ```jsx
 export default () => {
@@ -60,7 +62,9 @@ export default () => {
 When using the selector for the page size, provide a set of possible page size values and a callback `onSelectPageSize` to handle the change.
 When new `pageSize` prop is passed to the component, the amount of pages will be recalculated.
 
-<PaginationWithPageSize />
+<Unstyled>
+    <PaginationWithPageSize />
+</Unstyled>
 
 ```jsx
 const PageSizeOptions = [

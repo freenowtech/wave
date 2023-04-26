@@ -1,4 +1,4 @@
-import { Meta, Primary, ArgsTable, Stories } from '@storybook/blocks';
+import { Meta, Primary, ArgTypes, Stories } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import * as TextButtonStories from './TextButton.stories';
 
@@ -15,7 +15,7 @@ targets consider a link.
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgTypes of={TextButtonStories} />
 
 <StyledSystemLinks component="TextButton" supportedProps={['margin', 'width']} />
 

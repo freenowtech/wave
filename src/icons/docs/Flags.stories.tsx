@@ -4,7 +4,24 @@ import { LargeFlag } from './LargeFlag';
 
 const meta: Meta = {
     title: 'Essentials/Icons/Flags',
-    component: LargeFlag
+    component: LargeFlag,
+    argTypes: {
+        theme: {
+            table: {
+                disable: true
+            }
+        },
+        as: {
+            table: {
+                disable: true
+            }
+        },
+        forwardedAs: {
+            table: {
+                disable: true
+            }
+        }
+    }
 };
 
 export default meta;
