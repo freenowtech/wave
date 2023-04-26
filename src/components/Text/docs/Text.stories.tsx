@@ -13,7 +13,12 @@ const meta: Meta = {
             options: [0, 1, 2, 3, 4],
             defaultValue: 2,
             control: 'select',
-            description: 'Font size of the text'
+            description: 'Font size of the text',
+            table: {
+                defaultValue: {
+                    summary: 2
+                }
+            }
         },
         fontWeight: {
             control: 'radio',
