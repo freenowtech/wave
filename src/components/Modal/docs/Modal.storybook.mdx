@@ -1,25 +1,8 @@
-import { useState } from 'react';
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
-import { Modal } from '../Modal';
-import { ModalCreator, modalContent } from './ModalCreator';
+import { Primary, Story, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import * as ModalStories from './Modal.stories';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { Button } from '../..';
 
-<Meta title="Components/Modal" component={Modal} />
-
-export const Template = args => {
-    const [open, setOpen] = useState(false);
-    const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
-    return (
-        <>
-            <Button size="small" mr={1} onClick={openModal}>
-                Open Modal
-            </Button>
-            {open && <Modal {...args} onClose={closeModal} />}
-        </>
-    );
-};
+<Meta of={ModalStories} />
 
 # Modal
 
@@ -30,25 +13,22 @@ content.
 Modal is responsive per default but the width can be adjusted (the default is 600px or 37.5rem). Content on the modal
 is scrollable and has a space5 bounding box.
 
-<Canvas withSource="none">
-    <Story
-        name="Default"
-        args={{
-            children: modalContent
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Primary />
 
-### Example Code
+## Properties
 
-The following contains a simple example, with a resulting modal similar to the live examples above.
+<ArgTypes of={ModalStories} />
+
+<StyledSystemLinks component="Modal" supportedProps={['width']} />
+
+## Usage
+
+### Basic use
 
 ```jsx
 const [showModal, setShowModal] = useState(true);
 
-<Modal onClose={() => setShowModal(false)} fullscreen={true}>
+<Modal onClose={() => setShowModal(false)}>
     {dismiss => (
         <>
             <Headline as="h2">Add Note</Headline>
@@ -62,41 +42,36 @@ const [showModal, setShowModal] = useState(true);
 </Modal>;
 ```
 
-### More examples
-
-<Canvas withSource="none">
-    <ModalCreator />
-</Canvas>
-
-## API
-
-<ArgsTable of={Modal} />
-
-<StyledSystemLinks component="Modal" supportedProps={['width']} />
-
-### Dismiss
+### Close Modal
 
 Modal provides a function to dismiss the component with an animation. The
 dismiss function is available either through render props or a hook. After the
 animation has finished the `onClose` callback will be called.
 
-#### Render Props
+#### Via Render Props
+
+Pass render function as a child to Modal. Call the function passed as an argument to close the modal:
 
 ```jsx
 <Modal>{dismiss => <Button onClick={dismiss}>Close</Button>}</Modal>
 ```
 
-#### Hook
+#### Via Hook
+
+Use the `useModalDismiss` hook to get the dismiss function. It is only available inside the Modal component because
+it uses React context to get the dismiss function.
 
 ```jsx
-const InsideModal = () => {
+const Content = () => {
     const dismiss = useModalDismiss();
     return <button onClick={dismiss}>Close</button>;
 };
 
 const ModalWrapper = () => (
     <Modal>
-        <InsideModal />
+        <Content />
     </Modal>
 );
 ```
+
+<Stories includePrimary={false} />
