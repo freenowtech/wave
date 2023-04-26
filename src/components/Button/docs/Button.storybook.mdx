@@ -1,4 +1,4 @@
-import { Meta, Primary, ArgsTable, Story, Stories, Source } from '@storybook/blocks';
+import { Meta, Primary, ArgTypes, Story, Stories, Source } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import * as ButtonStories from './Button.stories';
 
@@ -18,7 +18,7 @@ Use the secondary button for less important actions and in multi button scenario
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgTypes of={ButtonStories} />
 
 <StyledSystemLinks component="Button" supportedProps={['margin', 'width']} />
 

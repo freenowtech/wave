@@ -1,4 +1,4 @@
-import { Meta, ArgsTable, Primary, Stories } from '@storybook/blocks';
+import { Meta, ArgTypes, Primary, Stories } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import * as CardStories from './Card.stories';
 
@@ -10,7 +10,7 @@ import * as CardStories from './Card.stories';
 
 ## Properties
 
-<ArgsTable story="Default" />
+<ArgTypes of={CardStories} />
 
 <StyledSystemLinks component="Card" supportedProps={['space', 'height', 'width']} />
 

@@ -1,5 +1,4 @@
-import { Meta, ArgsTable, Primary, Stories } from '@storybook/blocks';
-import { InfoBanner } from '../InfoBanner';
+import { Meta, ArgTypes, Primary, Stories } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import * as InfoBannerStories from './InfoBanner.stories';
 
@@ -13,7 +12,7 @@ The InfoBanner is used to communicate a vibrant message, state change or importa
 
 ## Properties
 
-<ArgsTable of={InfoBanner} />
+<ArgTypes of={InfoBannerStories} />
 <StyledSystemLinks
     component="InfoBanner"
     supportedProps={['space', 'layout', 'position', 'color', 'flexbox', 'grid-layout', 'background']}
