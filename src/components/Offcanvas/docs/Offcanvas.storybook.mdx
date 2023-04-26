@@ -1,25 +1,8 @@
-import { useState } from 'react';
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
-import { Offcanvas } from '../Offcanvas';
-import { OffcanvasCreator, offcanvasContent } from './OffcanvasCreator';
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { Button } from '../..';
+import * as OffcanvasStories from './Offcanvas.stories';
 
-<Meta title="Components/Offcanvas" component={Offcanvas} />
-
-export const Template = args => {
-    const [open, setOpen] = useState(false);
-    const openCanvas = () => setOpen(true);
-    const closeCanvas = () => setOpen(false);
-    return (
-        <>
-            <Button size="small" mr={1} onClick={openCanvas}>
-                Open Offcanvas
-            </Button>
-            {open && <Offcanvas {...args} onClose={closeCanvas} />}
-        </>
-    );
-};
+<Meta of={OffcanvasStories} />
 
 # Offcanvas
 
@@ -30,20 +13,17 @@ content.
 Offcanvas is responsive per default but the width can be adjusted (the default is 600px or 37.5rem). Content on the Offcanvas
 is scrollable and has a space5 bounding box.
 
-<Canvas withSource="none">
-    <Story
-        name="Default"
-        args={{
-            children: offcanvasContent
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Primary />
 
-### Example Code
+## Properties
 
-The following contains a simple example, with a resulting Offcanvas similar to the live examples above.
+<ArgTypes of={OffcanvasStories} />
+
+<StyledSystemLinks component="Offcanvas" supportedProps={['width']} />
+
+## Usage
+
+### Basic use
 
 ```jsx
 const [showOffcanvas, setShowOffcanvas] = useState(true);
@@ -62,31 +42,24 @@ const [showOffcanvas, setShowOffcanvas] = useState(true);
 </Offcanvas>;
 ```
 
-### More examples
-
-<Canvas withSource="none">
-    <OffcanvasCreator />
-</Canvas>
-
-## API
-
-<ArgsTable of={Offcanvas} />
-
-<StyledSystemLinks component="Offcanvas" supportedProps={['width']} />
-
-### Dismiss
+### Dismissing the Offcanvas
 
 Offcanvas provides a function to dismiss the component with an animation. The
 dismiss function is available either through render props or a hook. After the
 animation has finished the `onClose` callback will be called.
 
-#### Render Props
+#### Via Render Props
+
+Pass render function as a child to `Offcanvas`. Call the function passed as an argument to close the Offcanvas:
 
 ```jsx
 <Offcanvas>{dismiss => <Button onClick={dismiss}>Close</Button>}</Offcanvas>
 ```
 
-#### Hook
+#### Via Hook
+
+Use the `useOffcanvasDismiss` hook to get the dismiss function. It is only available inside the `Offcanvas` component because
+it uses React context to get the dismiss function.
 
 ```jsx
 const InsideOffcanvas = () => {
@@ -100,3 +73,5 @@ const OffcanvasWrapper = () => (
     </Offcanvas>
 );
 ```
+
+<Stories includePrimary={false} />
