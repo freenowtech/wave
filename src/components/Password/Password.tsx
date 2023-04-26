@@ -95,6 +95,12 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             type="button"
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
+
+                                // set input focus
+                                const inputElement = document.querySelector(`input[id=${inputId}]`);
+                                if (inputElement) {
+                                    inputElement.focus();
+                                }
                             }}
                             aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
