@@ -1,0 +1,19 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as TagStories from './Tag.stories';
+
+<Meta of={TagStories} />
+
+# Tag
+
+The Tag component is used to categorize items. The text inside the Tag should be kept as short as possible. Multi-labels
+should be avoided as well.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={TagStories} />
+<StyledSystemLinks component="Tag" supportedProps={['margin']} />
+
+<Stories includePrimary={false} />
