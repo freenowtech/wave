@@ -1,0 +1,21 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as SkeletonStories from './Skeleton.stories';
+
+<Meta of={SkeletonStories} />
+
+# Skeleton
+
+Provide a placeholder while you wait for content to load, or to visualise content that doesn't exist yet.
+Skeleton fills the container it's in, and can be animated.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={SkeletonStories} />
+
+<StyledSystemLinks component="Skeleton" supportedProps={['layout', 'margin', 'borderRadius']} />
+
+<Stories includePrimary={false} />
