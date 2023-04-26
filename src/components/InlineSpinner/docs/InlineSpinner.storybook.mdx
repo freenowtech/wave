@@ -6,8 +6,6 @@ import * as InlineSpinnerStories from './InlineSpinner.stories';
 
 # InlineSpinner
 
-<Primary />
-
 A spinner is a visual indicator of an ongoing, user-initiated process. Place the spinner where you want to focus users’
 attention when the process completes. Provide a brief description of the process, for example, “Loading…”. Inline spinners
 are used for showing the progress of an operation related to a specific component (buttons, etc...) and the default size
@@ -16,10 +14,12 @@ is 24x24 pixels.
 To improve the perceived performance of the application, the inline spinner should only be shown when the operation takes
 more than 200 milliseconds. Additionally, it is recommended that the verb on the component should change to the gerund form.
 
+<Primary />
+
 ## Properties
 
 <ArgTypes of={InlineSpinnerStories} />
 
 <StyledSystemLinks component="InlineSpinner" supportedProps={['margin']} />
 
-<Stories />
+<Stories includePrimary={false} />

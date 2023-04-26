@@ -70,47 +70,43 @@ You can test it easily using the [react-select-event](https://github.com/romgain
 (check [here](https://testing-library.com/docs/ecosystem-react-select-event/) for more info)
 
 ```jsx
-import { render, within } from '@testing-library/react'
-import selectEvent from 'react-select-event'
+import { render, within } from '@testing-library/react';
+import selectEvent from 'react-select-event';
 
-test('should select option', () => {
+test('should select option', async () => {
     const { queryByLabelText } = render(
         <Box aria-label="SearchList Container">
             <SelectList
                 id="select-list-playground"
                 label="City"
-                onChange={(change) => console.log(change)}
+                onChange={change => console.log(change)}
                 options={[
                     {
-                        label: "Barcelona",
-                        value: "bcn"
+                        label: 'Barcelona',
+                        value: 'bcn'
                     },
                     {
-                        label: "Hamburg",
-                        value: "ham"
+                        label: 'Hamburg',
+                        value: 'ham'
                     },
                     {
-                        label: "Paris",
-                        value: "par"
+                        label: 'Paris',
+                        value: 'par'
                     }
                 ]}
             />
         </Box>
     );
-    const container = queryByLabelText(
-        'SearchList Container',
-    )
+    const container = queryByLabelText('SearchList Container');
 
-    const inputbox = within(
-        container,
-    ).queryByRole('textbox')
+    const inputbox = within(container).queryByRole('textbox');
 
     // this will open the menu
-    user.type(inputbox, 'Bar')
+    user.type(inputbox, 'Bar');
 
     // use react-select-event to select the option you want
-    await selectEvent.select(container, ['Barcelona'])
+    await selectEvent.select(container, ['Barcelona']);
 });
 ```
 
-<Stories />
+<Stories includePrimary={false} />
