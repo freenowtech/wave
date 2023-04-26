@@ -1,51 +1,25 @@
-import { Tooltip } from '../Tooltip';
+import { Primary, Stories, ArgTypes, Meta, Unstyled } from '@storybook/blocks';
+
 import { TooltipPlacementExample } from './TooltipPlacementExample';
-import { SimpleTooltipExample } from './SimpleTooltipExample';
-import { Canvas, Story, ArgsTable, Meta, Unstyled } from '@storybook/blocks';
+import * as TooltipStories from './Tooltip.stories';
+
+<Meta of={TooltipStories} />
 
 # Tooltip
 
-<Meta title="Components/Tooltip" component={Tooltip} />
+This component provides informative text to a UI element.
 
-export const Template = args => (
-    <Tooltip {...args}>
-        <span>Target</span>
-    </Tooltip>
-);
-
-This component provides informative text to an UI element.
-
-<Unstyled>
-    <SimpleTooltipExample />
-</Unstyled>
-
-<Canvas>
-    <Story
-        name="Default"
-        decorators={[
-            Story => (
-                <div style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
-                    <Story />
-                </div>
-            )
-        ]}
-        args={{
-            content: 'This is a regular tooltip 🏓'
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Primary />
 
 ## Properties
 
-<ArgsTable of={Tooltip} />
+<ArgTypes of={TooltipStories} />
 
 ## Usage
 
 Use the tooltip for user on-boarding, guiding information about a new feature, detailed interactive workflows or for a contextual help (eg. over a button).
 
-## Appearance
+### Appearance
 
 -   The font size is 12px and font weight is regular.
 -   Top and bottom padding around the text area is 4px and 8px for right and left.
@@ -53,14 +27,14 @@ Use the tooltip for user on-boarding, guiding information about a new feature, d
 -   The copy should be instructional and concise. Max 200 characters are allowed.
 -   Emojis are allowed to be used 😇
 
-## Behavior
+### Behavior
 
 -   The tooltip is accessible on hover or on tap (mobile) and should be automatically dismissed when the user stops hovering
     the target area (or taps somewhere else on mobile devices)
 -   The tooltip should be eased-out.
 -   **Don’ts:** don't change the shape of the tooltip (rounded corners, etc), don’t crop it, don’t hide the element it hovers over
 
-## Placement
+### Placement
 
 It is possible to adjust the position of the tooltip connection to the target with the `placement` prop. Below is a list
 of possible options which are represented in the square next to it. It is important to keep in mind that the tooltip
@@ -90,3 +64,5 @@ const WithTooltip = () => (
     </Tooltip>
 );
 ```
+
+<Stories includePrimary={false} />
