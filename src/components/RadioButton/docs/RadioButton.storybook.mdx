@@ -1,0 +1,24 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as RadioButtonStories from './RadioButton.stories';
+
+<Meta of={RadioButtonStories} />
+
+# RadioButton
+
+Use radio buttons when you have a few options that a user can choose from. Never use radio buttons if the user can
+select more than one option from a list (consider using a [Checkbox](/components/Checkbox) instead).
+
+You can provide the label as either a `string` or as a react component. If a `string` is provided as the label, it
+will be wrapped with the [Text](/components/text) component.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={RadioButtonStories} />
+
+<StyledSystemLinks component="RadioButton" supportedProps={['margin']} />
+
+<Stories includePrimary={false} />

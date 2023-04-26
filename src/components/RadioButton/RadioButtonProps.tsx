@@ -21,6 +21,7 @@ interface RadioButtonProps extends ComponentPropsWithoutRef<'input'>, ClassNameP
     error?: boolean;
     /**
      * Align the label text relatively to the radio button
+     * @default center
      */
     textVerticalAlign?: 'top' | 'center';
 }
