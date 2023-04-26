@@ -1,8 +1,8 @@
-import { Canvas, Story, ArgsTable, Meta } from '@storybook/blocks';
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
-import { Toggle } from '../Toggle';
+import * as ToggleStories from './Toggle.stories';
 
-<Meta title="Components/Toggle" component={Toggle} />
+<Meta of={ToggleStories} />
 
 export const Template = args => <Toggle {...args} />;
 
@@ -11,13 +11,11 @@ export const Template = args => <Toggle {...args} />;
 Toggle is a control that is used to quickly switch between two possible states. Toggles are only used for these binary
 actions that occur immediately after the user “flips” the toggle switch. They are commonly used for “on/off” switches.
 
-<Canvas>
-    <Story name="Default">{Template.bind({})}</Story>
-</Canvas>
+<Primary />
 
 ## Properties
 
-<ArgsTable of={Toggle} />
+<ArgTypes of={ToggleStories} />
 <StyledSystemLinks component="Toggle" supportedProps={['margin']} />
 
 ## Behaviour
@@ -31,32 +29,4 @@ actions that occur immediately after the user “flips” the toggle switch. The
 Inside the toggle component is a checkbox and therefore the api and usage works similarly. For example, instead
 of passing the `value` prop, the `checked` prop must be used instead.
 
-## Stories
-
-### With error
-
-<Canvas>
-    <Story
-        name="With Error"
-        args={{
-            defaultChecked: true,
-            error: true
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
-
-### With label
-
-<Canvas>
-    <Story
-        name="With Label"
-        args={{
-            label: 'Turn off the light',
-            defaultChecked: true
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-</Canvas>
+<Stories includePrimary={false} />
