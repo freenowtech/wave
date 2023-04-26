@@ -4,7 +4,7 @@ import { Textarea } from '../Textarea';
 import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
-    title: 'Components/Textarea',
+    title: 'Form Elements/Textarea',
     component: Textarea,
     argTypes: {
         variant: {

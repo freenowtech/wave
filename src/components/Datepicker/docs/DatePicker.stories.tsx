@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { DatePicker } from '../index';
 
 const meta: Meta<typeof DatePicker> = {
-    title: 'Form Elements/Date/DatePicker',
+    title: 'Form Elements/Datepicker/DatePicker',
     component: DatePicker,
     argTypes: {
         firstDayOfWeek: {
