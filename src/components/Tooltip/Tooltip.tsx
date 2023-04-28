@@ -1,4 +1,3 @@
-import { PropsWithChildren } from 'react';
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { usePopper } from 'react-popper';
@@ -8,6 +7,8 @@ import { MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
+
+import type { ReactNode } from 'react';
 
 const fadeAnimation = keyframes`
     from {
@@ -136,6 +137,10 @@ interface TooltipProps {
      * Force the tooltip to always be visible, regardless of user interaction
      */
     alwaysVisible?: boolean;
+    /**
+     * The node(s) passed as children will be used as the anchor point for the tooltip
+     */
+    children: ReactNode;
 }
 
 const Tooltip: React.FC<TooltipProps> = ({
@@ -144,7 +149,7 @@ const Tooltip: React.FC<TooltipProps> = ({
     placement = 'top',
     alwaysVisible = false,
     inverted = false
-}: PropsWithChildren<TooltipProps>) => {
+}) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
      * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
