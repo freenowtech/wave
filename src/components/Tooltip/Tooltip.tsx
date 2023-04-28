@@ -3,12 +3,13 @@ import styled, { keyframes } from 'styled-components';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
+
+import type { ReactNode } from 'react';
+
 import { MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
-
-import type { ReactNode } from 'react';
 
 const fadeAnimation = keyframes`
     from {
