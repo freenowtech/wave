@@ -4,7 +4,7 @@ import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
 
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
@@ -138,13 +138,9 @@ interface TooltipProps {
      * Force the tooltip to always be visible, regardless of user interaction
      */
     alwaysVisible?: boolean;
-    /**
-     * The node(s) passed as children will be used as the anchor point for the tooltip
-     */
-    children: ReactNode;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({
+const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
     content,
     children,
     placement = 'top',
