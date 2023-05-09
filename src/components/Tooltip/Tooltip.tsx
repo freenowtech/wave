@@ -1,9 +1,11 @@
-import { PropsWithChildren } from 'react';
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
+
+import type { PropsWithChildren } from 'react';
+
 import { MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
@@ -138,13 +140,13 @@ interface TooltipProps {
     alwaysVisible?: boolean;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({
+const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
     content,
     children,
     placement = 'top',
     alwaysVisible = false,
     inverted = false
-}: PropsWithChildren<TooltipProps>) => {
+}) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
      * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
