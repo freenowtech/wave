@@ -1,6 +1,7 @@
 import React from 'react';
 import { StoryObj, Meta } from '@storybook/react';
 import { TextButton } from '../TextButton';
+import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Components/Button/TextButton',
@@ -76,8 +77,6 @@ export const Inverted: Story = {
         inverted: true
     },
     parameters: {
-        backgrounds: {
-            default: 'dark'
-        }
+        ...onDarkBackground
     }
 };

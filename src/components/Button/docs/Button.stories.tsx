@@ -2,6 +2,7 @@ import { StoryObj, Meta } from '@storybook/react';
 import React from 'react';
 import { Button } from '../Button';
 import TrashBinIcon from '../../../icons/actions/TrashBinIcon';
+import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Components/Button/Button',
@@ -83,9 +84,7 @@ export const Inverted: Story = {
         inverted: true
     },
     parameters: {
-        backgrounds: {
-            default: 'dark'
-        }
+        ...onDarkBackground
     }
 };
 

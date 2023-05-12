@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { HelperText } from '../HelperText';
+import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Components/HelperText',
@@ -32,8 +33,6 @@ export const Inverted: Story = {
         inverted: true
     },
     parameters: {
-        backgrounds: {
-            default: 'dark'
-        }
+        ...onDarkBackground
     }
 };
