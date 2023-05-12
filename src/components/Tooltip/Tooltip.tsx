@@ -138,13 +138,13 @@ interface TooltipProps {
     alwaysVisible?: boolean;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({
+const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
     content,
     children,
     placement = 'top',
     alwaysVisible = false,
     inverted = false
-}: PropsWithChildren<TooltipProps>) => {
+}) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
      * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
