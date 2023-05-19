@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/addon-docs';
 import WaveLogo from './assets/wave-ds-logo.svg';
 import ByFreenow from './assets/by-freenow.svg';
+import FreenowLogo from './assets/freenow.svg';
 import WaveBackground from './assets/wave-background.svg';
 import Map from './assets/map.svg';
 import ColorIcon from './assets/color-icon.svg';
@@ -9,6 +10,8 @@ import SpacingIcon from './assets/spacing-icon.svg';
 import ComponentsIcon from './assets/components-icon.svg';
 import MenuIcon from './assets/menu-icon.svg';
 import FigmaIcon from './assets/figma-logo.svg';
+import FigmaLogo from './assets/figma-logo-with-text.svg';
+import GithubLogo from './assets/github-logo.svg';
 import WarningIcon from './assets/warning-icon.svg';
 
 import {
@@ -111,12 +114,10 @@ import { Link } from '../src/components/Link/Link';
 
 <Box className='main-content'>
   {/* Logo */}
-  <Box display='flex' mb='40px !important'>
+  <Box className='sb-unstyled' display='flex' mb='40px'>
     <img src={WaveLogo} width='170px' alt='wave-logo' />
     <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
   </Box>
-
-{/* Main Banner */}
 
   <Card className='hero-banner' level={200}>
     <Box display='flex' flexDirection='column'>
@@ -124,7 +125,7 @@ import { Link } from '../src/components/Link/Link';
 
       <Text>Our Wave design system offers a comprehensive suite <br/>of UI components to help you ship new features faster.</Text>
 
-      <Box display='flex' mt='24px !important' alignItems='center'>
+      <Box className='sb-unstyled' display='flex' mt='24px' alignItems='center'>
         <a href='/?path=/docs/get-started--docs'>
           <Button>Get started &nbsp; <ArrowRightIcon /></Button>
         </a>
@@ -138,8 +139,6 @@ import { Link } from '../src/components/Link/Link';
     <img src={Map} className='hero-illustration' alt='map-illustration' />
 
   </Card>
-
-{/* Foundations */}
 
 {' '}
 <Headline className="sb-unstyled" as="h3" mt="80px" mb="30px">
@@ -162,7 +161,7 @@ import { Link } from '../src/components/Link/Link';
         </a>
     </Card>
 
-    {/* TODO: Create Typography docs page */}
+    {/* TODO: Create Typography docs page - Example: https://orbit.kiwi/foundation/typography */}
     <Card level={200} className='card'>
         <Box className='sb-unstyled' display='flex' alignItems='center' mb='24px'>
           <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
@@ -195,8 +194,6 @@ import { Link } from '../src/components/Link/Link';
 
   </Box>
 
-{/* Building blocks */}
-
 {' '}
 <Headline className="sb-unstyled" as="h3" mt="80px" mb="30px">
     Building blocks
@@ -214,13 +211,13 @@ import { Link } from '../src/components/Link/Link';
         <Text className='sb-unstyled' fontSize='14px' secondary>A comprehensive collection of our reusable interface components that are ready for use in production out of the box. Utilize these components to swiftly build new experiences and benefit from prebuilt features integrated in these building blocks.</Text>
 
         <Box>
-          <a href='/?path=/docs/essentials-colors--docs'>
+          {/* For now link to Button, in future this could link to page with grid-like preview of components like e.g. https://www.uiguideline.com/components */}
+          <a href='/?path=/docs/components-button-button--docs'>
             <Button mt='24px' size='small' variant='secondary'>Browse components &nbsp; <ArrowRightIcon /></Button>
           </a>
         </Box>
     </Card>
 
-    {/* TODO: Create Typography docs page */}
     <Card level={200} className='card-half-width'>
         <Box className='sb-unstyled' display='flex' alignItems='center' mb='24px'>
           <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
@@ -229,10 +226,10 @@ import { Link } from '../src/components/Link/Link';
           <Headline as='h3' m='0' ml='12px'>Icons</Headline>
         </Box>
 
-        <Text className='sb-unstyled' fontSize='14px' secondary>Icons are a crucial part of any design system, as they help indicate semantic meaning, draw an attention to specific actions or can be utilised in conjunction with text content to emphasise the meaning  of the content, like in a button component along with label.</Text>
+        <Text className='sb-unstyled' fontSize='14px' secondary>Icons are a crucial part of any design system, as they help indicate semantic meaning, draw an attention to specific actions or can be utilised in conjunction with text content to emphasise the meaning of the content, like in a button component along with label.</Text>
 
         <Box>
-          <a href='/?path=/docs/components-text--docs'>
+          <a href='/?path=/docs/essentials-icons-icons--docs'>
             <Button mt='24px' size='small' variant='secondary'>Browse icons &nbsp; <ArrowRightIcon /></Button>
           </a>
         </Box>
@@ -258,14 +255,16 @@ import { Link } from '../src/components/Link/Link';
 
         <Text className='sb-unstyled' fontSize='14px' style={{ color: '#F1F2F4'}} secondary>Explore the core resources of our Figma components library including the color palette, design tokens mapping, icons and flags, guidelines for contribution of new components and more.</Text>
 
-        <Box>
-          <a href='/?path=/docs/essentials-colors--docs'>
-            <Button mt='24px' size='small' variant='secondary' inverted><PenIcon size={18} /> &nbsp; Go to Figma library</Button>
+        <Box className='sb-unstyled' mt='24px' display='flex' justifyContent='space-between'>
+          {/* This link has limited access only for FREENOW employees at the moment, but could link in the future to a publicly accessible Figma UI Kit (as library itself is open-source as well, it would make sense imo) */}
+          <a href='https://www.figma.com/files/934505907400252834/project/25370412/WAVE-DS' target='_blank'>
+            <Button size='small' variant='secondary' inverted><PenIcon size={18} /> &nbsp; Go to Figma library</Button>
           </a>
+
+          <img height='32px' src={FigmaLogo} alt='figma-logo-with-text' />
         </Box>
     </Card>
 
-    {/* TODO: Create Typography docs page */}
     <Card level={300} className='card-half-width' style={{ background: '#444444' }}>
         <Box className='sb-unstyled' display='flex' alignItems='center' mb='24px'>
           <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper icon-wrapper-white'>
@@ -274,14 +273,26 @@ import { Link } from '../src/components/Link/Link';
           <Headline as='h3' m='0' ml='12px' style={{ color: '#FFFFFF'}}>Bug Report</Headline>
         </Box>
 
-        <Text className='sb-unstyled' fontSize='14px' style={{ color: '#F1F2F4'}} secondary>Did you find a bug in any of our components? No worries! Create an issue for the bug on our Github and we’ll make sure  to fix it as soon as possible.</Text>
+        <Text className='sb-unstyled' fontSize='14px' style={{ color: '#F1F2F4'}} secondary>Did you find a bug in any of our components? No worries! Create an issue for the bug on our Github and we’ll make sure to fix it as soon as possible.</Text>
 
-        <Box>
-          <a href='/?path=/docs/components-text--docs'>
-            <Button mt='24px' size='small' variant='secondary' inverted><AlertIcon size={18} /> &nbsp; Report a bug</Button>
+        <Box className='sb-unstyled' mt='24px' display='flex' justifyContent='space-between'>
+          <a href='https://github.com/freenowtech/wave/issues/new/choose' target='_blank'>
+            <Button size='small' variant='secondary' inverted><AlertIcon size={18} /> &nbsp; Report a bug</Button>
           </a>
+
+          <img height='32px' src={GithubLogo} alt='github-logo-with-text' />
         </Box>
     </Card>
 
+  </Box>
+
+  <Box className='sb-unstyled' display='flex' alignItems='center' justifyContent='center' mt='120px'>
+    <Text className='sb-unstyled' fontSize='12px' style={{ color: '#637689', fontWeight: 500, marginRight: '6px', transform: 'translateY(1px)' }} secondary>
+        Built, maintained and open-sourced with <span style={{ color: '#CA0928', margin: '0 1px' }}>♥</span> by
+    </Text>    
+    
+    <a href='https://www.free-now.com/' target='_blank'>
+      <img src={FreenowLogo} height='14px' alt='by-freenow-logo' />
+    </a>
   </Box>
 </Box>
