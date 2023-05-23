@@ -43,12 +43,12 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
 const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
     & + ${BoxedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size as Pick<InternalInputComponentProps, 'size'>) : undefined)};
+        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
             `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                (p.size as Pick<InternalInputComponentProps, 'size'>) === 'small' ? '0.0825rem' : '0.0625rem'
+                p.size === 'small' ? '0.0825rem' : '0.0625rem'
             }), transparent 50%)`};
     }
 
@@ -64,18 +64,18 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BoxedInputLabel} {
-            ${p => activeBoxedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
+            ${p => activeBoxedPosition(p.size)};
         }
     }
 
     &:focus:not(:disabled) {
         & + ${BoxedInputLabel} {
-            ${p => activeBoxedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
+            ${p => activeBoxedPosition(p.size)};
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
             background: ${p =>
                 `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                    (p.size as Pick<InternalInputComponentProps, 'size'>) === 'small' ? '0.0825rem' : '0.0625rem'
+                    p.size === 'small' ? '0.0825rem' : '0.0625rem'
                 }), transparent 50%)`};
         }
     }

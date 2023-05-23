@@ -43,7 +43,7 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
 const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
     & ~ ${BottomLinedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>) : '')};
+        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
         color: ${getLabelColor};
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
     }
@@ -60,13 +60,13 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
+            ${p => activeBottomLinedPosition(p.size)};
         }
     }
 
     &:focus:not(:disabled) {
         & ~ ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
+            ${p => activeBottomLinedPosition(p.size)};
             color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         }
