@@ -23,7 +23,7 @@ interface InfoBannerProps extends BoxProps {
     linkUrl?: string;
 }
 
-export type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
+type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
 
 interface BoxWithVariant extends BoxProps {
     variant: InfoBannerVariants;
