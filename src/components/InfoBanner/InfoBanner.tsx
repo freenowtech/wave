@@ -12,7 +12,7 @@ import {
 import { BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
-import { Spaces } from '../../essentials';
+import { Colors, Spaces } from '../../essentials';
 
 interface InfoBannerProps extends BoxProps {
     title: string;
@@ -23,7 +23,7 @@ interface InfoBannerProps extends BoxProps {
     linkUrl?: string;
 }
 
-type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
+export type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
 
 interface BoxWithVariant extends BoxProps {
     variant: InfoBannerVariants;
@@ -106,7 +106,7 @@ const emphasizedIconColorVariants = styledVariant({
     }
 });
 
-const RoundedBox = styled(Box)<BoxWithVariant>`
+export const RoundedBox = styled(Box)<BoxWithVariant>`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -114,13 +114,33 @@ const RoundedBox = styled(Box)<BoxWithVariant>`
     border: 0.0625rem solid;
     padding: ${`${Spaces[1]} ${Spaces[2]} ${Spaces[1]} ${Spaces[1]}`};
     ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
+
+    .Infobanner__Title,
+    .Infobanner__Description {
+        color: ${({ emphasized, variant }) =>
+            emphasized && variant !== 'warning' ? 'white' : Colors.AUTHENTIC_BLUE_900};
+    }
+
+    .Infobanner__Link {
+        &:link,
+        &:visited {
+            color: ${({ emphasized, variant }) =>
+                emphasized && variant !== 'warning' ? 'white' : Colors.ACTION_BLUE_900};
+        }
+
+        &:hover,
+        &:active {
+            color: ${({ emphasized, variant }) =>
+                emphasized && variant !== 'warning' ? Colors.AUTHENTIC_BLUE_350 : Colors.ACTION_BLUE_1000};
+        }
+    }
 `;
 
-const IconBox = styled(Box)<BoxWithVariant>`
+export const IconBox = styled(Box)<BoxWithVariant>`
     ${({ emphasized }) => (emphasized ? emphasizedIconColorVariants : iconColorVariants)};
 `;
 
-const ICON_VARIANTS: {
+export const ICON_VARIANTS: {
     [key in InfoBannerVariants]: React.FC<IconProps>;
 } = {
     warning: WarningSolidIcon,
@@ -129,7 +149,7 @@ const ICON_VARIANTS: {
     error: CloseCircleSolidIcon
 };
 
-const ROLE_VARIANTS: {
+export const ROLE_VARIANTS: {
     [key in InfoBannerVariants]: string;
 } = {
     error: 'alert',
