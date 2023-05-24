@@ -1,4 +1,4 @@
-// .storybook/YourTheme.ts
+// .storybook/FreenowTheme.ts
 import { create } from '@storybook/theming/create';
 import logo from '../public/assets/freenow-logo.svg';
 
@@ -10,7 +10,7 @@ export default create({
     fontCode: 'monospace',
 
     brandTitle: 'FREENOW',
-    brandUrl: 'https://www.free-now.com/',
+    brandUrl: 'https://wave.free-now.com/',
     brandImage: logo,
     brandTarget: '_self',
 

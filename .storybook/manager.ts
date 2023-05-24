@@ -1,8 +1,7 @@
 // .storybook/manager.ts
-
 import { addons } from '@storybook/manager-api';
-import yourTheme from './YourTheme';
+import FreenowTheme from './FreenowTheme';
 
 addons.setConfig({
-    theme: yourTheme
+    theme: FreenowTheme
 });

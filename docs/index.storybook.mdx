@@ -113,7 +113,6 @@ import { Link } from '../src/components/Link/Link';
 <img src={WaveBackground} className="wave-bg" width="100%" alt="wave-background" />
 
 <Box className='main-content'>
-  {/* Logo */}
   <Box className='sb-unstyled' display='flex' mb='40px'>
     <img src={WaveLogo} width='170px' alt='wave-logo' />
     <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
@@ -141,6 +140,7 @@ import { Link } from '../src/components/Link/Link';
   </Card>
 
 {' '}
+
 <Headline className="sb-unstyled" as="h3" mt="80px" mb="30px">
     Foundations
 </Headline>
@@ -195,6 +195,7 @@ import { Link } from '../src/components/Link/Link';
   </Box>
 
 {' '}
+
 <Headline className="sb-unstyled" as="h3" mt="80px" mb="30px">
     Building blocks
 </Headline>
@@ -237,9 +238,8 @@ import { Link } from '../src/components/Link/Link';
 
   </Box>
 
-{/* Support */}
-
 {' '}
+
 <Headline className="sb-unstyled" as="h3" mt="80px" mb="30px">
     Support
 </Headline>
@@ -280,7 +280,9 @@ import { Link } from '../src/components/Link/Link';
             <Button size='small' variant='secondary' inverted><AlertIcon size={18} /> &nbsp; Report a bug</Button>
           </a>
 
-          <img height='32px' src={GithubLogo} alt='github-logo-with-text' />
+          <a href='https://github.com/freenowtech/wave' target='_blank'>
+            <img height='32px' src={GithubLogo} alt='github-logo-with-text' />
+          </a>
         </Box>
     </Card>
 

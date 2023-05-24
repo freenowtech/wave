@@ -9,9 +9,6 @@ import { Text } from '../src/components/Text/Text';
 
 <Meta title="Get Started" />
 
-{/* Logo */}
-
-{' '}
 <Box className="sb-unstyled" display="flex" mb="40px">
     <img src={WaveLogo} width="170px" alt="wave-logo" />
     <img src={ByFreenow} width="170px" alt="by-freenow-logo" />
@@ -48,23 +45,3 @@ You'll see this:
     <Headline>Welcome</Headline>
     <Text>FREE NOW Design System</Text>
 </Card>
-
-## Dynamic Imports & Create React App
-
-If you are using create-react-app for your project, you are already set up and can use the library without additional
-configuration. If you're configuring babel and webpack on your own, please make sure you have the
-[dynamic imports plugin](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import) set up in your configuration.
-
-```bash
-npm install --save-dev @babel/plugin-syntax-dynamic-import
-```
-
-```js
-// babel.config.js
-module.exports = {
-    plugins: ['@babel/plugin-syntax-dynamic-import']
-};
-```
-
-We've decided to use dynamic imports to better support tree shaking and reduce the bundle
-size this library will take up in your project.
