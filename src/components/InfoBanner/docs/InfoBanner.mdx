@@ -6,6 +6,7 @@ route: /components/info-banner
 
 import { Playground } from 'docz';
 import { InfoBanner } from '../InfoBanner'
+import { InfoBannerCard } from '../blocks/InfoBannerCard'
 import { InfoBannerPropsTable } from './InfoBannerPropsTable'
 import { Combination } from '../../../docs/Combination'
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks'
@@ -22,11 +23,33 @@ The InfoBanner is used to communicate a vibrant message, state change or importa
 
 
 ## Examples
-
-<InfoBanner title='Please do not share details about this information.' description='In case of uncertainty please contact Fraud department.' />
+<InfoBanner mt={2} title='Please do not share details about this information.' description='In case of uncertainty please contact Fraud department.' />
 <br />
 <InfoBanner title='Possible Fraud' description='This passenger has more than 20 linked accounts.' variant='warning' />
 
+<br/>
+
+## Compound components approach
+
+You may also use compound components approach to build up your InfoBanner (e.g. when you need multiple links in a single banner as below)
+
+Available compound components:
+- **InfoBannerCard** (Wrapper)
+- **InfoBannerCard.Title**
+- **InfoBannerCard.Description**
+- **InfoBannerCard.Link**
+
+The wrapper component (**InfoBannerCard**) accepts same props as **InfoBanner** component, if variant is applied, it's styling will get automatically applied to children compound components.
+
+<Playground>
+    <InfoBannerCard variant='warning'>
+        <InfoBannerCard.Title>Issue with documents</InfoBannerCard.Title>
+        <InfoBannerCard.Description>Your uploaded documents don't match the records. Please check the following sources:</InfoBannerCard.Description>
+            <InfoBannerCard.Link linkText='Driver documents' linkUrl='https://wave.free-now.com' />
+            <InfoBannerCard.Link linkText='Vehicle documents' linkUrl='https://wave.free-now.com' />
+            <InfoBannerCard.Link linkText='Driver Profile' linkUrl='https://wave.free-now.com' />
+    </InfoBannerCard>
+</Playground>
 
 ## Playground
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
+import { theme } from '../../essentials/theme';
 import {
     CheckCircleSolidIcon,
     CloseCircleSolidIcon,
@@ -12,6 +13,7 @@ import {
 import { BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
+import { Headline } from '../Headline/Headline';
 import { Spaces } from '../../essentials';
 
 interface InfoBannerProps extends BoxProps {
@@ -106,7 +108,7 @@ const emphasizedIconColorVariants = styledVariant({
     }
 });
 
-const RoundedBox = styled(Box)<BoxWithVariant>`
+export const RoundedBox = styled(Box).attrs({ theme })<BoxWithVariant>`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -114,13 +116,26 @@ const RoundedBox = styled(Box)<BoxWithVariant>`
     border: 0.0625rem solid;
     padding: ${`${Spaces[1]} ${Spaces[2]} ${Spaces[1]} ${Spaces[1]}`};
     ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
+
+    --info-banner-text-color: ${({ emphasized, variant }) =>
+        emphasized && variant !== 'warning'
+            ? get('semanticColors.text.primaryInverted')
+            : get('semanticColors.text.primary')};
+    --info-banner-link-color: ${({ emphasized, variant }) =>
+        emphasized && variant !== 'warning'
+            ? get('semanticColors.text.primaryInverted')
+            : get('semanticColors.text.link')};
+    --info-banner-link-hover-color: ${({ emphasized, variant }) =>
+        emphasized && variant !== 'warning'
+            ? get('semanticColors.text.tertiary')
+            : get('semanticColors.text.linkHover')};
 `;
 
-const IconBox = styled(Box)<BoxWithVariant>`
+export const IconBox = styled(Box)<BoxWithVariant>`
     ${({ emphasized }) => (emphasized ? emphasizedIconColorVariants : iconColorVariants)};
 `;
 
-const ICON_VARIANTS: {
+export const ICON_VARIANTS: {
     [key in InfoBannerVariants]: React.FC<IconProps>;
 } = {
     warning: WarningSolidIcon,
@@ -129,7 +144,7 @@ const ICON_VARIANTS: {
     error: CloseCircleSolidIcon
 };
 
-const ROLE_VARIANTS: {
+export const ROLE_VARIANTS: {
     [key in InfoBannerVariants]: string;
 } = {
     error: 'alert',
@@ -156,9 +171,9 @@ const InfoBanner = ({
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">
-                <Text fontWeight="bold" textAlign="left" inverted={isInverted}>
+                <Headline as="h4" textAlign="left" inverted={isInverted}>
                     {title}
-                </Text>
+                </Headline>
                 <Text fontSize="small" textAlign="left" inverted={isInverted}>
                     {description}
                 </Text>
