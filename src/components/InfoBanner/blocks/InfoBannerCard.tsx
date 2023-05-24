@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { BoxProps, Box } from '../../Box/Box';
+import { Headline } from '../../Headline/Headline';
 import { Link as WaveLink } from '../../Link/Link';
 import { Text } from '../../Text/Text';
 
@@ -13,32 +14,32 @@ interface CardProps extends BoxProps {
     emphasized?: boolean;
 }
 
-const LinkList = styled.ul`
-    margin-block-start: 0.3rem;
-    margin-block-end: 0.3rem;
-    padding-inline-start: 1.5rem;
+const StyledTitle = styled(Headline).attrs({ as: 'h4', textAlign: 'left' })`
+    color: var(--info-banner-text-color);
+`;
 
-    li {
-        line-height: 1.1;
+const StyledDescription = styled(Text).attrs({ fontSize: 'small', textAlign: 'left' })`
+    color: var(--info-banner-text-color);
+`;
+
+const StyledLink = styled(WaveLink).attrs({ fontSize: 0, textAlign: 'left', target: '_blank', marginTop: '0.25rem' })`
+    &:link,
+    &:visited {
+        color: var(--info-banner-link-color);
+    }
+
+    &:hover,
+    &:active {
+        color: var(--info-banner-link-hover-color);
     }
 `;
 
-const Title = ({ children }: { children: string }) => (
-    <Text className="Infobanner__Title" fontWeight="bold" textAlign="left">
-        {children}
-    </Text>
-);
+const Title = ({ children }: { children: string }) => <StyledTitle>{children}</StyledTitle>;
 
-const Description = ({ children }: { children: string }) => (
-    <Text className="Infobanner__Description" fontSize="small" textAlign="left">
-        {children}
-    </Text>
-);
+const Description = ({ children }: { children: string }) => <StyledDescription>{children}</StyledDescription>;
 
 const Link = ({ linkUrl, linkText }: { linkUrl: string; linkText: string }) => (
-    <WaveLink className="Infobanner__Link" fontSize="0" textAlign="left" href={linkUrl} target="_blank" mt="0.25rem">
-        {linkText}
-    </WaveLink>
+    <StyledLink href={linkUrl}>{linkText}</StyledLink>
 );
 
 // TODO: Document this compound component properly when Storybook migration is complete
@@ -60,6 +61,5 @@ const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: Ca
 InfoBannerCard.Title = Title;
 InfoBannerCard.Description = Description;
 InfoBannerCard.Link = Link;
-InfoBannerCard.LinkList = LinkList;
 
 export { InfoBannerCard };

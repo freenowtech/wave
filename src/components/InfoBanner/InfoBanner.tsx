@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
+import { theme } from '../../essentials/theme';
 import {
     CheckCircleSolidIcon,
     CloseCircleSolidIcon,
@@ -12,7 +13,8 @@ import {
 import { BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
-import { Colors, Spaces } from '../../essentials';
+import { Headline } from '../Headline/Headline';
+import { Spaces } from '../../essentials';
 
 interface InfoBannerProps extends BoxProps {
     title: string;
@@ -106,7 +108,7 @@ const emphasizedIconColorVariants = styledVariant({
     }
 });
 
-export const RoundedBox = styled(Box)<BoxWithVariant>`
+export const RoundedBox = styled(Box).attrs({ theme })<BoxWithVariant>`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -115,25 +117,18 @@ export const RoundedBox = styled(Box)<BoxWithVariant>`
     padding: ${`${Spaces[1]} ${Spaces[2]} ${Spaces[1]} ${Spaces[1]}`};
     ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
 
-    .Infobanner__Title,
-    .Infobanner__Description {
-        color: ${({ emphasized, variant }) =>
-            emphasized && variant !== 'warning' ? 'white' : Colors.AUTHENTIC_BLUE_900};
-    }
-
-    .Infobanner__Link {
-        &:link,
-        &:visited {
-            color: ${({ emphasized, variant }) =>
-                emphasized && variant !== 'warning' ? 'white' : Colors.ACTION_BLUE_900};
-        }
-
-        &:hover,
-        &:active {
-            color: ${({ emphasized, variant }) =>
-                emphasized && variant !== 'warning' ? Colors.AUTHENTIC_BLUE_350 : Colors.ACTION_BLUE_1000};
-        }
-    }
+    --info-banner-text-color: ${({ emphasized, variant }) =>
+        emphasized && variant !== 'warning'
+            ? get('semanticColors.text.primaryInverted')
+            : get('semanticColors.text.primary')};
+    --info-banner-link-color: ${({ emphasized, variant }) =>
+        emphasized && variant !== 'warning'
+            ? get('semanticColors.text.primaryInverted')
+            : get('semanticColors.text.link')};
+    --info-banner-link-hover-color: ${({ emphasized, variant }) =>
+        emphasized && variant !== 'warning'
+            ? get('semanticColors.text.tertiary')
+            : get('semanticColors.text.linkHover')};
 `;
 
 export const IconBox = styled(Box)<BoxWithVariant>`
@@ -176,9 +171,9 @@ const InfoBanner = ({
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">
-                <Text fontWeight="bold" textAlign="left" inverted={isInverted}>
+                <Headline as="h4" textAlign="left" inverted={isInverted}>
                     {title}
-                </Text>
+                </Headline>
                 <Text fontSize="small" textAlign="left" inverted={isInverted}>
                     {description}
                 </Text>

@@ -23,7 +23,6 @@ The InfoBanner is used to communicate a vibrant message, state change or importa
 
 
 ## Examples
-
 <InfoBanner mt={2} title='Please do not share details about this information.' description='In case of uncertainty please contact Fraud department.' />
 <br />
 <InfoBanner title='Possible Fraud' description='This passenger has more than 20 linked accounts.' variant='warning' />
@@ -38,21 +37,17 @@ Available compound components:
 - **InfoBannerCard** (Wrapper)
 - **InfoBannerCard.Title**
 - **InfoBannerCard.Description**
-- **InfoBannerCard.LinkList**
 - **InfoBannerCard.Link**
 
 The wrapper component (**InfoBannerCard**) accepts same props as **InfoBanner** component, if variant is applied, it's styling will get automatically applied to children compound components.
-
 
 <Playground>
     <InfoBannerCard variant='warning'>
         <InfoBannerCard.Title>Issue with documents</InfoBannerCard.Title>
         <InfoBannerCard.Description>Your uploaded documents don't match the records. Please check the following sources:</InfoBannerCard.Description>
-        <InfoBannerCard.LinkList>
-            <li><InfoBannerCard.Link linkText='Driver documents' linkUrl='https://wave.free-now.com' /></li>
-            <li><InfoBannerCard.Link linkText='Vehicle documents' linkUrl='https://wave.free-now.com' /></li>
-            <li><InfoBannerCard.Link linkText='Driver Profile' linkUrl='https://wave.free-now.com' /></li>
-        </InfoBannerCard.LinkList>
+            <InfoBannerCard.Link linkText='Driver documents' linkUrl='https://wave.free-now.com' />
+            <InfoBannerCard.Link linkText='Vehicle documents' linkUrl='https://wave.free-now.com' />
+            <InfoBannerCard.Link linkText='Driver Profile' linkUrl='https://wave.free-now.com' />
     </InfoBannerCard>
 </Playground>
 
