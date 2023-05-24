@@ -9,6 +9,29 @@
         "lib/esm/polyfills.js",
         "lib/cjs/polyfills.js"
     ],
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./lib/types/index.d.ts",
+                "default": "./lib/esm/index.js"
+            },
+            "require": {
+                "types": "./lib/types/index.d.ts",
+                "default": "./lib/cjs/index.js"
+            }
+        },
+        "./components/InfoBanner/blocks": {
+            "import": {
+                "types": "./lib/types/components/InfoBanner/blocks/index.d.ts",
+                "default": "./lib/esm/components/InfoBanner/blocks/index.js"
+            },
+            "require": {
+                "types": "./lib/types/components/InfoBanner/blocks/index.d.ts",
+                "default": "./lib/cjs/components/InfoBanner/blocks/index.js"
+            }
+        },
+        "./package.json": "./package.json"
+    },
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
