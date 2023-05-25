@@ -6,7 +6,7 @@ export default create({
     base: 'light',
 
     // Typography
-    fontBase: '"YOURNOWSans-Medium", "Open Sans", sans-serif',
+    fontBase: '"Open Sans", sans-serif',   
     fontCode: 'monospace',
 
     brandTitle: 'FREENOW',
