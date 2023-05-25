@@ -48,7 +48,7 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
         background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
             `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small' ? '0.0825rem' : '0.0625rem'
             }), transparent 50%)`};
     }
 
@@ -75,7 +75,9 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
             background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
             background: ${p =>
                 `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                    p.size === 'small' ? '0.0825rem' : '0.0625rem'
+                    (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small'
+                        ? '0.0825rem'
+                        : '0.0625rem'
                 }), transparent 50%)`};
         }
     }
