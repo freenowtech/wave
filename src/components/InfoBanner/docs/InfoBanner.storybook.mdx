@@ -1,5 +1,6 @@
-import { Meta, ArgTypes, Primary, Stories } from '@storybook/blocks';
+import { Meta, ArgTypes, Primary, Stories, Unstyled } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { InfoBannerCard } from '../blocks/InfoBannerCard';
 import * as InfoBannerStories from './InfoBanner.stories';
 
 <Meta of={InfoBannerStories} />
@@ -19,3 +20,40 @@ The InfoBanner is used to communicate a vibrant message, state change or importa
 />
 
 <Stories includePrimary={false} />
+
+## Compound components approach
+
+You may also use the compound components approach to build up your InfoBanner (e.g. when you need multiple links in a single banner as below)
+
+Available compound components:
+
+-   **InfoBannerCard** (Wrapper)
+-   **InfoBannerCard.Title**
+-   **InfoBannerCard.Description**
+-   **InfoBannerCard.Link**
+
+The wrapper component (**InfoBannerCard**) accepts the same props as the **InfoBanner** component, if variant is applied, it's styling will get automatically applied to children compound components.
+
+<Unstyled>
+    <InfoBannerCard variant="warning">
+        <InfoBannerCard.Title>Issue with documents</InfoBannerCard.Title>
+        <InfoBannerCard.Description>
+            Your uploaded documents don't match the records. Please check the following sources:
+        </InfoBannerCard.Description>
+        <InfoBannerCard.Link linkText="Driver documents" linkUrl="https://wave.free-now.com" />
+        <InfoBannerCard.Link linkText="Vehicle documents" linkUrl="https://wave.free-now.com" />
+        <InfoBannerCard.Link linkText="Driver Profile" linkUrl="https://wave.free-now.com" />
+    </InfoBannerCard>
+</Unstyled>
+
+```tsx
+<InfoBannerCard variant="warning">
+    <InfoBannerCard.Title>Issue with documents</InfoBannerCard.Title>
+    <InfoBannerCard.Description>
+        Your uploaded documents don't match the records. Please check the following sources:
+    </InfoBannerCard.Description>
+    <InfoBannerCard.Link linkText="Driver documents" linkUrl="https://wave.free-now.com" />
+    <InfoBannerCard.Link linkText="Vehicle documents" linkUrl="https://wave.free-now.com" />
+    <InfoBannerCard.Link linkText="Driver Profile" linkUrl="https://wave.free-now.com" />
+</InfoBannerCard>
+```
