@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+import WaveLogo from './assets/wave-ds-logo.svg';
+import ByFreenow from './assets/by-freenow.svg';
+
+import { Box } from '../src/components/Box/Box';
+import { Card } from '../src/components/Card/Card';
+import { Headline } from '../src/components/Headline/Headline';
+import { Text } from '../src/components/Text/Text';
+
+<Meta title="Get Started" />
+
+<Box className="sb-unstyled" display="flex" mb="40px">
+    <img src={WaveLogo} width="170px" alt="wave-logo" />
+    <img src={ByFreenow} width="170px" alt="by-freenow-logo" />
+</Box>
+
+Welcome to the Design System of FREE NOW. Thanks for stopping by! This is the place where you find the latest components and essentials, that enable you to rapidly build your product.
+
+## Installation
+
+To bring the design system into your project, install it as a package:
+
+```bash
+npm i @freenow/wave
+```
+
+## Usage
+
+All of our components are exported by name from `@freenow/wave`, so you can import them with:
+
+```jsx
+import { Card, Headline, Text } from '@freenow/wave';
+
+export default () => (
+    <Card level={200}>
+        <Headline>Welcome</Headline>
+        <Text>FREE NOW Design System</Text>
+    </Card>
+);
+```
+
+You'll see this:
+
+<Card level={200}>
+    <Headline>Welcome</Headline>
+    <Text>FREE NOW Design System</Text>
+</Card>
