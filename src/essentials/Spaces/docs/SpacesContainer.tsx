@@ -24,7 +24,7 @@ const SpacesWrapper = styled.div`
 const SpaceSquare = styled.div<SpaceSquareProps>`
     width: ${props => props.space};
     height: ${props => props.space};
-    background-color: ${Colors.BUMPY_MAGENTA_350};
+    background-color: #ca0928;
 `;
 
 const SpacesContainer: React.FC = () => (

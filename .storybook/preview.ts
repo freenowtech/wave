@@ -1,4 +1,5 @@
 import { Preview } from '@storybook/react';
+import { themes } from '@storybook/theming';
 
 export const preview: Preview = {
     parameters: {
@@ -10,6 +11,9 @@ export const preview: Preview = {
                 color: /(background|color)$/i,
                 date: /Date$/
             }
+        },
+        docs: {
+            theme: themes.light
         },
         backgrounds: {
             default: 'light',
@@ -64,8 +68,7 @@ export const preview: Preview = {
         },
         options: {
             storySort: {
-                method: 'alphabetical',
-                order: ['Get Started', 'Essentials', 'Components', 'Form Elements']
+                order: ['Welcome', 'Essentials', 'Components', 'Form Elements']
             }
         }
     }
