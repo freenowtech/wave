@@ -14,23 +14,13 @@ import FigmaLogo from './assets/figma-logo-with-text.svg';
 import GithubLogo from './assets/github-logo.svg';
 import WarningIcon from './assets/warning-icon.svg';
 
-import {
-    ParcelIcon,
-    SheetOutlineIcon,
-    DiamondIcon,
-    SpeedometerIcon,
-    ArrowRightIcon,
-    MagnifyingGlassIcon,
-    AlertIcon,
-    PenIcon
-} from '../src/icons/';
+import { ArrowRightIcon, AlertIcon, PenIcon } from '../src/icons/';
 import { Box } from '../src/components/Box/Box';
 import { Button } from '../src/components/Button/Button';
 import { Card } from '../src/components/Card/Card';
 import { Headline } from '../src/components/Headline/Headline';
 import { Text } from '../src/components/Text/Text';
-import { Logo } from '../src/components/Logo/Logo';
-import { Link } from '../src/components/Link/Link';
+import { H3, CardLink } from './components/MainPage';
 
 <Meta title="Welcome" />
 
@@ -38,6 +28,7 @@ import { Link } from '../src/components/Link/Link';
     {`
     .sbdocs-wrapper {
       position: relative;
+      overflow: hidden;
     }
 
     .wave-bg {
@@ -140,147 +131,122 @@ import { Link } from '../src/components/Link/Link';
 
     </Card>
 
-<Headline as="h3" mt="80px" mb="30px">
-    Foundations
-</Headline>
+    <H3>Foundations</H3>
 
     <Box display='flex' justifyContent='space-between'>
-      <Card level={200} className='card'>
+      <CardLink href='/?path=/docs/essentials-colors--docs'>
+        <Card level={200} className='card'>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
               <img src={ColorIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px'>Colors</Headline>
           </Box>
-
           <Text fontSize='14px' secondary>Convey meaning or structure, highlight various information or elements, display different states through our color palette.</Text>
-
-          <a href='/?path=/docs/essentials-colors--docs'>
-            <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
-          </a>
-      </Card>
+          <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
+        </Card>
+      </CardLink>
 
       {/* TODO: Create Typography docs page - Example: https://orbit.kiwi/foundation/typography */}
-      <Card level={200} className='card'>
+      <CardLink href='/?path=/docs/components-text--docs'>
+        <Card level={200} className='card'>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
               <img src={TypographyIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px'>Typography</Headline>
           </Box>
-
           <Text fontSize='14px' secondary>Demonstrate the continuity of hierarchy, and importance of content on a page with our typography guidelines and styles.</Text>
+          <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
+        </Card>
+      </CardLink>
 
-          <a href='/?path=/docs/components-text--docs'>
-            <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
-          </a>
-      </Card>
-
-      <Card level={200} className='card'>
+      <CardLink href='/?path=/docs/essentials-spaces--docs'>
+        <Card level={200} className='card'>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
               <img src={SpacingIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px'>Spacing</Headline>
           </Box>
-
           <Text fontSize='14px' secondary>Indicate hierarchical relation of elements and consistency in layout with the distance of elements using our spacing system.</Text>
-
-          <a href='/?path=/docs/essentials-spaces--docs'>
-            <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
-          </a>
-      </Card>
-
+          <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
+        </Card>
+      </CardLink>
     </Box>
 
-<Headline as="h3" mt="80px" mb="30px">
-    Building blocks
-</Headline>
+    <H3>Building blocks</H3>
 
     <Box display='flex' justifyContent='space-between'>
-      <Card level={200} className='card-half-width'>
+      <CardLink href='/?path=/docs/components-button-button--docs'>
+        <Card level={200} className='card-half-width'>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
               <img src={ComponentsIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px'>Components</Headline>
           </Box>
-
           <Text fontSize='14px' secondary>A comprehensive collection of our reusable interface components that are ready for use in production out of the box. Utilize these components to swiftly build new experiences and benefit from prebuilt features integrated in these building blocks.</Text>
-
           <Box>
             {/* For now link to Button, in future this could link to page with grid-like preview of components like e.g. https://www.uiguideline.com/components */}
-            <a href='/?path=/docs/components-button-button--docs'>
-              <Button mt='24px' size='small' variant='secondary'>Browse components &nbsp; <ArrowRightIcon /></Button>
-            </a>
+            <Button mt='24px' size='small' variant='secondary'>Browse components &nbsp; <ArrowRightIcon /></Button>
           </Box>
-      </Card>
+        </Card>
+      </CardLink>
 
-      <Card level={200} className='card-half-width'>
+      <CardLink href='/?path=/docs/essentials-icons-icons--docs'>
+        <Card level={200} className='card-half-width'>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper'>
               <img src={MenuIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px'>Icons</Headline>
           </Box>
-
           <Text fontSize='14px' secondary>Icons are a crucial part of any design system, as they help indicate semantic meaning, draw an attention to specific actions or can be utilised in conjunction with text content to emphasise the meaning of the content, like in a button component along with label.</Text>
-
           <Box>
-            <a href='/?path=/docs/essentials-icons-icons--docs'>
-              <Button mt='24px' size='small' variant='secondary'>Browse icons &nbsp; <ArrowRightIcon /></Button>
-            </a>
+            <Button mt='24px' size='small' variant='secondary'>Browse icons &nbsp; <ArrowRightIcon /></Button>
           </Box>
-      </Card>
-
+        </Card>
+      </CardLink>
     </Box>
 
-<Headline as="h3" mt="80px" mb="30px">
-    Support
-</Headline>
+    <H3>Support</H3>
 
     <Box display='flex' justifyContent='space-between'>
-      <Card level={300} className='card-half-width' style={{ background: '#001E3E' }}>
+      <CardLink href='https://www.figma.com/files/934505907400252834/project/25370412/WAVE-DS' target='_blank'>
+        <Card level={300} className='card-half-width' style={{ background: '#001E3E' }}>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper icon-wrapper-white'>
               <img src={FigmaIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px' style={{ color: '#FFFFFF'}}>Figma Library</Headline>
           </Box>
-
           <Text fontSize='14px' style={{ color: '#F1F2F4'}} secondary>Explore the core resources of our Figma components library including the color palette, design tokens mapping, icons and flags, guidelines for contribution of new components and more.</Text>
-
           <Box mt='24px' display='flex' justifyContent='space-between'>
             {/* This link has limited access only for FREENOW employees at the moment, but could link in the future to a publicly accessible Figma UI Kit (as library itself is open-source as well, it would make sense imo) */}
-            <a href='https://www.figma.com/files/934505907400252834/project/25370412/WAVE-DS' target='_blank'>
-              <Button size='small' variant='secondary' inverted><PenIcon size={18} /> &nbsp; Go to Figma library</Button>
-            </a>
-
+            <Button size='small' variant='secondary' inverted><PenIcon size={18} /> &nbsp; Go to Figma library</Button>
             <img height='32px' src={FigmaLogo} alt='figma-logo-with-text' />
           </Box>
-      </Card>
+        </Card>
+      </CardLink>
 
-      <Card level={300} className='card-half-width' style={{ background: '#444444' }}>
+      <CardLink href='https://github.com/freenowtech/wave/issues/new/choose' target='_blank'>
+        <Card level={300} className='card-half-width' style={{ background: '#444444' }}>
           <Box display='flex' alignItems='center' mb='24px'>
             <Box display='flex' justifyContent='center' alignItems='center' className='icon-wrapper icon-wrapper-white'>
               <img src={WarningIcon} alt='color-icon' />
             </Box>
             <Headline as='h3' m='0' ml='12px' style={{ color: '#FFFFFF'}}>Bug Report</Headline>
           </Box>
-
           <Text fontSize='14px' style={{ color: '#F1F2F4'}} secondary>Did you find a bug in any of our components? No worries! Create an issue for the bug on our Github and we’ll make sure to fix it as soon as possible.</Text>
-
           <Box mt='24px' display='flex' justifyContent='space-between'>
-            <a href='https://github.com/freenowtech/wave/issues/new/choose' target='_blank'>
-              <Button size='small' variant='secondary' inverted><AlertIcon size={18} /> &nbsp; Report a bug</Button>
-            </a>
-
+            <Button size='small' variant='secondary' inverted><AlertIcon size={18} /> &nbsp; Report a bug</Button>
             <a href='https://github.com/freenowtech/wave' target='_blank'>
               <img height='32px' src={GithubLogo} alt='github-logo-with-text' />
             </a>
           </Box>
-      </Card>
-
+        </Card>
+      </CardLink>
     </Box>
 
     <Box display='flex' alignItems='center' justifyContent='center' mt='120px'>

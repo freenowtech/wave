@@ -68,7 +68,7 @@ export const preview: Preview = {
         },
         options: {
             storySort: {
-                order: ['Welcome', 'Essentials', 'Components', 'Form Elements']
+                order: ['Welcome', 'Get Started', 'Essentials', 'Components', 'Form Elements']
             }
         }
     }
