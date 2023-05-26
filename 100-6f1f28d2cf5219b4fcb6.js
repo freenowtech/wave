@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[100],{Tv5l:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=n(a("fvJP")),d=n(a("HtGV")),f=n(a("Vji7")),u=n(a("IF2K")),l=n(a("wkj/"));function n(e){return e&&e.__esModule?e:{default:e}}var i={code:"de",formatDistance:o.default,formatLong:d.default,formatRelative:f.default,localize:u.default,match:l.default,options:{weekStartsOn:1,firstWeekContainsDate:4}};t.default=i,e.exports=t.default}}]);
-//# sourceMappingURL=100-6f1f28d2cf5219b4fcb6.js.map

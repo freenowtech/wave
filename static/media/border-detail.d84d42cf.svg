@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="131" height="100">
+    <g fill="none" fill-rule="evenodd">
+        <text fill="#001E3E" font-family="OpenSans-Regular, Open Sans" font-size="12">
+            <tspan x="110" y="91">2px</tspan>
+        </text>
+        <text fill="#001E3E" font-family="OpenSans-Regular, Open Sans" font-size="12">
+            <tspan x="89" y="54">2</tspan>
+        </text>
+        <path fill="#FFF1FF" d="M0 0h100v100H0z"/>
+        <path fill="#001E3E" fill-rule="nonzero" d="M25 79V44l25-22 25 22v44h8V40L50 11 17 40v48h50v-9z"/>
+        <path stroke="#FF00F7" stroke-dasharray="2" stroke-width="2" d="M50 89h51M50 79h51"/>
+    </g>
+</svg>
