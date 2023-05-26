@@ -1,0 +1,119 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { Colors } from '../Colors';
+import { SemanticColorsTable } from './SemanticColorsTable';
+
+<Meta title="Essentials/Colors" component={Colors} />
+
+# Colors
+
+## Brand
+
+Elements that must reflect the FREENOW brand should use the primary brand colors. Each color has darker and lighter shades.
+
+<ColorPalette>
+    <ColorItem
+        title="Action Blue"
+        subtitle=""
+        colors={{
+            ACTION_BLUE_1000: Colors.ACTION_BLUE_1000,
+            ACTION_BLUE_900: Colors.ACTION_BLUE_900,
+            ACTION_BLUE_350: Colors.ACTION_BLUE_350,
+            ACTION_BLUE_50: Colors.ACTION_BLUE_50
+        }}
+    />
+    <ColorItem
+        title="Freedom Red"
+        subtitle=""
+        colors={{
+            FREEDOM_RED_1000: Colors.FREEDOM_RED_1000,
+            FREEDOM_RED_900: Colors.FREEDOM_RED_900
+        }}
+    />
+</ColorPalette>
+
+## Neutral Colors
+
+Text, backgrounds, lines and borders should use neutral colors. There are additional darker and lighter shades of
+Authentic Blue, especially for certain backgrounds.
+
+<ColorPalette>
+    <ColorItem
+        title="Authentic Blue"
+        subtitle="dark shades"
+        colors={{
+            AUTHENTIC_BLUE_1100: Colors.AUTHENTIC_BLUE_1100,
+            AUTHENTIC_BLUE_900: Colors.AUTHENTIC_BLUE_900,
+            AUTHENTIC_BLUE_550: Colors.AUTHENTIC_BLUE_550
+        }}
+    />
+    <ColorItem
+        title="Authentic Blue"
+        subtitle="light shades"
+        colors={{
+            AUTHENTIC_BLUE_350: Colors.AUTHENTIC_BLUE_350,
+            AUTHENTIC_BLUE_200: Colors.AUTHENTIC_BLUE_200,
+            AUTHENTIC_BLUE_50: Colors.AUTHENTIC_BLUE_50,
+            WHITE: Colors.WHITE
+        }}
+    />
+</ColorPalette>
+
+## UI Colors
+
+Action buttons, alert messages, and form elements should use the main UI Colors. Input fields, for example, can
+get positive and negative feedback, whereas alert messages can have warning feedback.
+
+<ColorPalette>
+    <ColorItem
+        title="Positive Green"
+        subtitle=""
+        colors={{
+            POSITIVE_GREEN_1000: Colors.POSITIVE_GREEN_1000,
+            POSITIVE_GREEN_900: Colors.POSITIVE_GREEN_900,
+            POSITIVE_GREEN_350: Colors.POSITIVE_GREEN_350,
+            POSITIVE_GREEN_50: Colors.POSITIVE_GREEN_50
+        }}
+    />
+    <ColorItem
+        title="Attention Yellow"
+        subtitle=""
+        colors={{
+            ATTENTION_YELLOW_900: Colors.ATTENTION_YELLOW_900,
+            ATTENTION_YELLOW_350: Colors.ATTENTION_YELLOW_350,
+            ATTENTION_YELLOW_50: Colors.ATTENTION_YELLOW_50
+        }}
+    />
+    <ColorItem
+        title="Negative Orange"
+        subtitle=""
+        colors={{
+            NEGATIVE_ORANGE_1000: Colors.NEGATIVE_ORANGE_1000,
+            NEGATIVE_ORANGE_900: Colors.NEGATIVE_ORANGE_900,
+            NEGATIVE_ORANGE_350: Colors.NEGATIVE_ORANGE_350,
+            NEGATIVE_ORANGE_50: Colors.NEGATIVE_ORANGE_50
+        }}
+    />
+    <ColorItem
+        title="Bumpy Magenta"
+        subtitle=""
+        colors={{
+            BUMPY_MAGENTA_1000: Colors.BUMPY_MAGENTA_1000,
+            BUMPY_MAGENTA_900: Colors.BUMPY_MAGENTA_900,
+            BUMPY_MAGENTA_350: Colors.BUMPY_MAGENTA_350,
+            BUMPY_MAGENTA_50: Colors.BUMPY_MAGENTA_50
+        }}
+    />
+</ColorPalette>
+
+## Functional Reference
+
+In the table below you can find all functional colors with their name, and their color values. They can be accessed with
+the `themeGet` function which is exported directly from the library.
+
+```jsx
+import { themeGet } from '@freenow/wave';
+
+const myTextColor = themeGet('semanticColors.text.secondary');
+```
+
+<SemanticColorsTable />

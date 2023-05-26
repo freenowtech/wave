@@ -25,6 +25,7 @@ type CardProps = BorderRadiusProps &
     PaddingProps & {
         /**
          * Set the visual depth of the card by adding a shadow (available values: 0, 100, 200, 300)
+         * @default 0
          */
         level?: ResponsiveValue<0 | 100 | 200 | 300>;
     };

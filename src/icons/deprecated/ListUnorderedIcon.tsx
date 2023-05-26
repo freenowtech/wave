@@ -2,7 +2,7 @@ import React from 'react';
 import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
-import { ListIcon } from '../';
+import ListIcon from '../options/ListIcon';
 type Props = IconProps;
 
 const ListUnorderedIcon: React.FC<Props> = withDeprecatedMessage('ListUnorderedIcon', ListIcon);

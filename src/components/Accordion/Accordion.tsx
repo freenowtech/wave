@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 import { SemanticColors } from '../../essentials';
@@ -24,7 +24,7 @@ const RenderedSection = styled(Box)`
     }
 `;
 
-const Accordion = ({
+const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
     heading,
     description,
     info,
@@ -34,7 +34,7 @@ const Accordion = ({
     children,
     onExpand = () => undefined,
     onCollapse = () => undefined
-}: AccordionProps): ReactElement => (
+}) => (
     <RenderedSection role="group">
         <HorizontalDividerTop />
         {variant === 'compact' ? (

@@ -1,0 +1,77 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as OffcanvasStories from './Offcanvas.stories';
+
+<Meta of={OffcanvasStories} />
+
+# Offcanvas
+
+The Offcanvas should only contain content or flows which are related to the current page and not replace pages, therefore
+its complexity level has to be simple. Consider the fullscreen state if you want to focus the users attention to the Offcanvas
+content.
+
+Offcanvas is responsive per default but the width can be adjusted (the default is 600px or 37.5rem). Content on the Offcanvas
+is scrollable and has a space5 bounding box.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={OffcanvasStories} />
+
+<StyledSystemLinks component="Offcanvas" supportedProps={['width']} />
+
+## Usage
+
+### Basic use
+
+```jsx
+const [showOffcanvas, setShowOffcanvas] = useState(true);
+
+<Offcanvas onClose={() => setShowOffcanvas(false)} fullscreen={true}>
+    {dismiss => (
+        <>
+            <Headline as="h2">Add Note</Headline>
+            <Text as="p" my={3}>
+                Ensure that all participants are aware of the change.
+            </Text>
+            <Button onClick={dismiss}>Add Note</Button>
+            <TextButton onClick={dismiss}>Cancel</TextButton>
+        </>
+    )}
+</Offcanvas>;
+```
+
+### Dismissing the Offcanvas
+
+Offcanvas provides a function to dismiss the component with an animation. The
+dismiss function is available either through render props or a hook. After the
+animation has finished the `onClose` callback will be called.
+
+#### Via Render Props
+
+Pass render function as a child to `Offcanvas`. Call the function passed as an argument to close the Offcanvas:
+
+```jsx
+<Offcanvas>{dismiss => <Button onClick={dismiss}>Close</Button>}</Offcanvas>
+```
+
+#### Via Hook
+
+Use the `useOffcanvasDismiss` hook to get the dismiss function. It is only available inside the `Offcanvas` component because
+it uses React context to get the dismiss function.
+
+```jsx
+const InsideOffcanvas = () => {
+    const dismiss = useOffcanvasDismiss();
+    return <button onClick={dismiss}>Close</button>;
+};
+
+const OffcanvasWrapper = () => (
+    <Offcanvas>
+        <InsideOffcanvas />
+    </Offcanvas>
+);
+```
+
+<Stories includePrimary={false} />

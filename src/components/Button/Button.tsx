@@ -142,7 +142,7 @@ const invertedVariantStyles = variant({
     }
 });
 
-const Button: React.FC<ButtonProps> = styled(BaseButton).attrs({ theme })<ButtonProps>`
+const Button = styled(BaseButton).attrs({ theme })<ButtonProps>`
     transition: background ease 200ms, border-color ease 200ms, color ease 200ms, fill ease 200ms;
 
     ${p => (p.inverted ? invertedVariantStyles : variantStyles)};

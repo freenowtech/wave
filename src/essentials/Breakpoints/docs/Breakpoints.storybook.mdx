@@ -1,0 +1,66 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import { Breakpoints } from '../Breakpoints';
+import { Text } from '../../../components';
+import { BreakpointsTable } from './BreakpointsTable';
+
+<Meta title="Essentials/Breakpoints" component={Breakpoints} />
+
+# Breakpoints
+
+We use the following breakpoints ranges. Breakpoints values represent the lowest point of the range
+and should be used only with `min-width` property.
+
+<BreakpointsTable />
+
+For example, using a `margin=[1, 2, 3]` creates styles with multiple mobile-first min-width media queries.
+
+```jsx
+<Text m={[1, 2, 3]}>Sample text</Text>
+```
+
+```css
+.Text-hash {
+    margin: 0.5rem;
+}
+
+@media screen and (min-width: 30rem) {
+    .Text-hash {
+        margin: 1rem;
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .Text-hash {
+        margin: 1.5rem;
+    }
+}
+```
+
+## Media Queries
+
+For convenience and for use with other styling approaches, you can import the media queries derived from the breakpoints scale.
+
+```js
+const MediaQueries = {
+    small: `@media screen and (min-width: ${Breakpoints[0]})`,
+    medium: `@media screen and (min-width: ${Breakpoints[1]})`,
+    large: `@media screen and (min-width: ${Breakpoints[2]})`,
+    xlarge: `@media screen and (min-width: ${Breakpoints[3]})`
+};
+```
+
+```jsx
+import { MediaQueries } from '@freenow/wave';
+
+const Container = styled.div`
+    ${MediaQueries.small} {
+        width: 2rem;
+    }
+`;
+```
+
+## Examples
+
+<Canvas withToolbar={true}>
+    <Text fontSize={[1, 2, 3, 4, 5]}>Sample text</Text>
+</Canvas>

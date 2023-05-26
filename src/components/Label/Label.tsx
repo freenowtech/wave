@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
 import { Text } from '../Text/Text';
@@ -14,6 +13,7 @@ interface LabelProps extends MarginProps {
 
     /**
      * Use the alternative version of the label for critical status and extra emphasis
+     * @default false
      */
     filled?: boolean;
 }
@@ -78,7 +78,7 @@ const filledVariantStyles = variant({
     }
 });
 
-const Label: FC<LabelProps> = styled(Text).attrs({ theme })<LabelProps>`
+const Label = styled(Text).attrs({ theme })<LabelProps>`
     display: inline-block;
     box-sizing: border-box;
     font-size: 0.625rem;

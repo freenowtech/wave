@@ -25,6 +25,7 @@ interface TextProps
         TextAlignProps {
     /**
      * The font-weight property specifies the weight (or boldness) of the font.
+     * @default normal
      */
     fontWeight?: ResponsiveValue<'normal' | 'semibold' | 'bold'>;
     /**

@@ -1,0 +1,54 @@
+import { Meta, ArgTypes, Primary, Story, Stories } from '@storybook/blocks';
+import * as BannerStories from './Banner.stories';
+import { Advice } from '../../../docs/Advice';
+
+<Meta of={BannerStories} />
+
+# Banner
+
+Banner is a strong visual pattern that is used to display important information or state which remains until the
+cause is resolved or the banner is dismissed by the user.
+
+-   Banner can include any kind of content, i.e. icons, links, copy
+-   Banner should be dismissible
+-   Banner **info** and **success** appear at the bottom of the screen (sticky)
+-   Banner **error** appears at the top of the screen (sticky)
+-   Banner appears and disappears via slide in/out animation combined with soft fade and smooth easing
+
+To properly hide the banner with the correct animation, it is recommended to call the dismiss function that can be used
+when providing a function as the child. This will also unmount the component once the animation is completed.
+
+If you need the banner to be placed top or bottom without depending on the variant make sure to align with the design team
+and bear in mind that you can use the **position** prop for it.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={BannerStories.Default} />
+
+<Advice>
+    The `Banner` uses `position:sticky` for positioning. It means it will always be rendered on top/bottom of the
+    viewport ([MDN](http://developer.mozilla.org/en-US/docs/Web/CSS/position)).
+</Advice>
+
+## Visibility management (dismiss function)
+
+Banner provides a function to dismiss the component with an animation.
+The dismiss function is available either through render props or a hook.
+After the animation has finished the onClose callback will be called.
+
+<Story of={BannerStories.WithDismissedFn} />
+
+```tsx
+<Banner>
+    {dismiss => (
+        <>
+            <Text inverted>If you are tired of this banner, hit the button 👉 </Text>
+            <Button onClick={dismiss}>Close</Button>
+        </>
+    )}
+</Banner>
+```
+
+<Stories includePrimary={false} />

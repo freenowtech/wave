@@ -1,0 +1,112 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+
+import * as SelectListStories from './SelectList.stories';
+
+<Meta of={SelectListStories} />
+
+# SelectList
+
+The `SelectList` component mainly appears in forms, but it can also be in other places, like dialog boxes.
+The main advance using the SelectList is the `isMulti` prop, that allows the user to pick multiple options.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={SelectListStories} />
+
+<StyledSystemLinks component="SelectList" supportedProps={['margin', 'width']} />
+
+### Props from react-select
+
+Additionally, most of the properties for the react-select component are passed to the component (read more on
+[react-select.com/props](https://react-select.com/props#select-props))
+
+### Disabled props
+
+The following properties have been disabled since they aren't supported by this library.
+
+-   `'react-select/async'` (Feature currently not supported at FN)
+-   `theme` (Wave's theme)
+-   `makeAnimated`(Feature currently not supported at FN)
+-   `classNamePrefix` (directly defined into Wave SelectList)
+-   `isLoading` (Async not implemented yet)
+-   `loadingMessage`
+-   `isRtl`
+
+## Pitfalls
+
+### The dropdown list is cut off
+
+By default, the dropdown list is rendered inside the container of the `SelectList`. If this container is not long enough, the dropdown list will be cut off.
+To avoid this issue, use `menuPortalTarget` property, set to `document.body` to render the dropdown list outside the container:
+
+```jsx
+<SelectList
+    label="City"
+    menuPortalTarget={document.body}
+    options={[
+        {
+            label: 'Barcelona',
+            value: 'bcn'
+        },
+        {
+            label: 'Hamburg',
+            value: 'ham'
+        },
+        {
+            label: 'Paris',
+            value: 'par'
+        }
+    ]}
+/>
+```
+
+## Testing
+
+Testing this natively using `selectOptions` from `@testing-library/user-event` is difficult as this is built on top of [react-select](https://react-select.com), and so doesn't contain a native select element.
+You can test it easily using the [react-select-event](https://github.com/romgain/react-select-event) library like it's shown below
+(check [here](https://testing-library.com/docs/ecosystem-react-select-event/) for more info)
+
+```jsx
+import { render, within } from '@testing-library/react';
+import selectEvent from 'react-select-event';
+
+test('should select option', async () => {
+    const { queryByLabelText } = render(
+        <Box aria-label="SearchList Container">
+            <SelectList
+                id="select-list-playground"
+                label="City"
+                onChange={change => console.log(change)}
+                options={[
+                    {
+                        label: 'Barcelona',
+                        value: 'bcn'
+                    },
+                    {
+                        label: 'Hamburg',
+                        value: 'ham'
+                    },
+                    {
+                        label: 'Paris',
+                        value: 'par'
+                    }
+                ]}
+            />
+        </Box>
+    );
+    const container = queryByLabelText('SearchList Container');
+
+    const inputbox = within(container).queryByRole('textbox');
+
+    // this will open the menu
+    user.type(inputbox, 'Bar');
+
+    // use react-select-event to select the option you want
+    await selectEvent.select(container, ['Barcelona']);
+});
+```
+
+<Stories includePrimary={false} />

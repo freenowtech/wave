@@ -1,0 +1,36 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as PhoneInputStories from './PhoneInput.stories';
+
+<Meta of={PhoneInputStories} />
+
+# PhoneInput
+
+The `PhoneInput` is a form component for inputting a phone number in international format with usage of country selector.
+
+The component consists of two controls: a select to pick a prefix and an input to type in the phone number. The select shows all the country codes available world-wide.
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={PhoneInputStories} />
+
+<StyledSystemLinks component="PhoneInput" supportedProps={['margin', 'width']} />
+
+The list of the phone codes used in the phone input can be imported to you app
+via `import { PHONE_AREA_CODE_COUNTRIES } from '@freenow/wave'`.
+
+## Troubleshooting
+
+### The list of prefixes is not fully visible
+
+If the list of prefixes is not fully visible when opened, like in [this Sandbox example](https://codesandbox.io/s/inspiring-austin-2006xl?file=/src/index.js), use `listPortalTarget` prop to attach the popup to the document's body:
+
+```jsx
+<PhoneInput listPortalTarget={document.body} />
+```
+
+The reason of the issue is that the prefix selection popup is rendered inside the same container as the component by default. If the container does not allow content to overflow (e.g. via `overflow: hidden;`), everything that overflows the container borders will be hidden.
+
+<Stories includePrimary={false} />

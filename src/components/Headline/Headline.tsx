@@ -21,7 +21,7 @@ interface HeadlineProps extends ComponentPropsWithoutRef<'h1'>, MarginProps, Tex
     size?: ResponsiveValue<'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'>;
 }
 
-const DEFAULT_HEADLINE_SIZE = {
+export const DEFAULT_HEADLINE_SIZE = {
     h1: 'xxl',
     h2: 'xl',
     h3: 'l',

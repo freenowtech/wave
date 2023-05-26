@@ -1,4 +1,4 @@
-import React, { useState, ReactElement } from 'react';
+import React, { useState, ReactElement, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 import { SemanticColors } from '../../../essentials';
@@ -10,9 +10,8 @@ import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
 import { AccordionProps } from '../types';
 
-type Props = Pick<
-    AccordionProps,
-    'heading' | 'description' | 'defaultExpanded' | 'children' | 'onExpand' | 'onCollapse'
+type Props = PropsWithChildren<
+    Pick<AccordionProps, 'heading' | 'description' | 'defaultExpanded' | 'onExpand' | 'onCollapse'>
 >;
 
 const StyleHeadline = styled(Headline)``;

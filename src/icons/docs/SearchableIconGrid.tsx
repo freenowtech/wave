@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Input, Headline } from '../../components';
+import { Subheading } from '@storybook/blocks';
+import { Box, Input } from '../../components';
 import * as ActionsIcons from '../actions';
 import * as ArrowsIcons from '../arrows';
 import * as BasicIcons from '../basic';
@@ -36,6 +37,8 @@ export const SearchableIconGrid = () => {
     return (
         <>
             <Input
+                mt={2}
+                mb={4}
                 width="100%"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
@@ -45,16 +48,15 @@ export const SearchableIconGrid = () => {
                 {!searchQuery ? (
                     Object.entries(visibleIcons).map(([title, icons]) => (
                         <>
-                            <Headline as="h4" mt={2}>
-                                {title}
-                            </Headline>
+                            <Subheading>{title}</Subheading>
+                            <br />
                             <IconGrid entries={icons} />
                         </>
                     ))
                 ) : (
                     <IconGrid
                         entries={Object.entries(visibleIcons)
-                            .flatMap(([title, icons]) => icons)
+                            .flatMap(([, icons]) => icons)
                             .filter(it => {
                                 if (searchQuery) {
                                     return !!it[0].toLowerCase().includes(searchQuery.toLowerCase());

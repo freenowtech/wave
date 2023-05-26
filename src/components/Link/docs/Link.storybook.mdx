@@ -1,0 +1,22 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as LinkStories from './Link.stories';
+
+<Meta of={LinkStories} />
+
+# Link
+
+The Link component styles anchor tags with default blue styling and hover text decoration. Link is used for destinations, or moving from one page to another.
+
+-   Use links to navigate on and between pages and flows
+-   For interactions consider Buttons
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={LinkStories} />
+
+<StyledSystemLinks component="Link" supportedProps={['margin', 'fontSize', 'textAlign']} />
+
+<Stories includePrimary={false} />

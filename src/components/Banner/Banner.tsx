@@ -75,11 +75,12 @@ type DismissFunc = () => void;
 
 interface BannerProps {
     /**
-     * Overrides the banner position.
+     * Set banner position
      */
     position?: 'top' | 'bottom';
     /**
      * Set the appropriate background color, screen position, and animation.
+     * @default info
      */
     variant?: 'info' | 'success' | 'danger';
     /**

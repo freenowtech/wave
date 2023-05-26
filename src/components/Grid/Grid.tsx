@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Spaces } from '../../essentials/Spaces/Spaces';
 import { Box, BoxProps } from '../Box/Box';
@@ -25,7 +25,7 @@ interface ColumnProps extends BoxProps {
     offset?: ColumnOffset;
 }
 
-const Column: FC<ColumnProps> = ({ span = 1, offset = 0, ...restProps }: ColumnProps) => {
+const Column: FC<PropsWithChildren<ColumnProps>> = ({ span = 1, offset = 0, ...restProps }) => {
     const marginLeft = offset * COLUMN_WIDTH;
     const width = span * COLUMN_WIDTH;
 
