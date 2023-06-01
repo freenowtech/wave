@@ -98,7 +98,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
 
 // TODO use ref passed to the input once https://github.com/freenowtech/wave/issues/169 is solved
                                 // set input focus
-                                const inputElement = document.querySelector(`input[id=${inputId}]`);
+                                const inputElement: HTMLElement = document.querySelector(`input[id=${inputId}]`);
                                 if (inputElement) {
                                     inputElement.focus();
                                 }
