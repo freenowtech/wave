@@ -96,6 +96,7 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
 
+// TODO use ref passed to the input once https://github.com/freenowtech/wave/issues/169 is solved
                                 // set input focus
                                 const inputElement = document.querySelector(`input[id=${inputId}]`);
                                 if (inputElement) {
