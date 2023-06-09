@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
+import { ComponentPropsWithoutRef } from 'react';
 import { Text } from '../Text/Text';
 import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
-interface LabelProps extends MarginProps {
+interface LabelProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
     /**
      * Set the appropriate colors for the component with 'default' as a default
      */
