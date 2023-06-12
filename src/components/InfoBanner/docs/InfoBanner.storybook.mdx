@@ -2,6 +2,7 @@ import { Meta, ArgTypes, Primary, Stories, Unstyled } from '@storybook/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import { InfoBannerCard } from '../blocks/InfoBannerCard';
 import * as InfoBannerStories from './InfoBanner.stories';
+import { Link } from '../../Link/Link';
 
 <Meta of={InfoBannerStories} />
 
@@ -40,9 +41,9 @@ The wrapper component (**InfoBannerCard**) accepts the same props as the **InfoB
         <InfoBannerCard.Description>
             Your uploaded documents don't match the records. Please check the following sources:
         </InfoBannerCard.Description>
-        <InfoBannerCard.Link linkText="Driver documents" linkUrl="https://wave.free-now.com" />
-        <InfoBannerCard.Link linkText="Vehicle documents" linkUrl="https://wave.free-now.com" />
-        <InfoBannerCard.Link linkText="Driver Profile" linkUrl="https://wave.free-now.com" />
+        <InfoBannerCard.Link href="https://wave.free-now.com/">Driver Documents</InfoBannerCard.Link>
+        <InfoBannerCard.Link href="https://wave.free-now.com/">Vehicle Documents</InfoBannerCard.Link>
+        <InfoBannerCard.Link href="https://wave.free-now.com/">Driver profile</InfoBannerCard.Link>
     </InfoBannerCard>
 </Unstyled>
 
@@ -52,8 +53,8 @@ The wrapper component (**InfoBannerCard**) accepts the same props as the **InfoB
     <InfoBannerCard.Description>
         Your uploaded documents don't match the records. Please check the following sources:
     </InfoBannerCard.Description>
-    <InfoBannerCard.Link linkText="Driver documents" linkUrl="https://wave.free-now.com" />
-    <InfoBannerCard.Link linkText="Vehicle documents" linkUrl="https://wave.free-now.com" />
-    <InfoBannerCard.Link linkText="Driver Profile" linkUrl="https://wave.free-now.com" />
+    <InfoBannerCard.Link href="https://wave.free-now.com/">Driver Documents</InfoBannerCard.Link>
+    <InfoBannerCard.Link href="https://wave.free-now.com/">Vehicle Documents</InfoBannerCard.Link>
+    <InfoBannerCard.Link href="https://wave.free-now.com/">Driver profile</InfoBannerCard.Link>
 </InfoBannerCard>
 ```

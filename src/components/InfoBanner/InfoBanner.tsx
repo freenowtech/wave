@@ -134,7 +134,7 @@ export const RoundedBox = styled(Box).attrs({ theme })<BoxWithVariant>`
     justify-content: flex-start;
     border-radius: ${get('radii.3')};
     border: 0.0625rem solid;
-    padding: ${`${Spaces[1]} ${Spaces[2]} ${Spaces[1]} ${Spaces[1]}`};
+    padding: ${Spaces[2]};
     ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
 
     --info-banner-text-color: ${({ emphasized, variant }) =>

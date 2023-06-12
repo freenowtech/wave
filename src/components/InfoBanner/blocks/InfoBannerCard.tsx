@@ -38,11 +38,6 @@ const Title = ({ children }: { children: string }) => <StyledTitle>{children}</S
 
 const Description = ({ children }: { children: string }) => <StyledDescription>{children}</StyledDescription>;
 
-const Link = ({ linkUrl, linkText }: { linkUrl: string; linkText: string }) => (
-    <StyledLink href={linkUrl}>{linkText}</StyledLink>
-);
-
-// TODO: Document this compound component properly when Storybook migration is complete
 const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): JSX.Element => {
     const BannerIcon = ICON_VARIANTS[variant];
 
@@ -60,6 +55,6 @@ const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: Ca
 
 InfoBannerCard.Title = Title;
 InfoBannerCard.Description = Description;
-InfoBannerCard.Link = Link;
+InfoBannerCard.Link = StyledLink;
 
 export { InfoBannerCard };
