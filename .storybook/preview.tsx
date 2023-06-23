@@ -1,7 +1,17 @@
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
+import React from 'react';
+import { RedesignedColors } from '../src/essentials/Colors/globalStyles';
 
 export const preview: Preview = {
+    decorators: [
+        Story => (
+            <>
+                <RedesignedColors />
+                <Story />
+            </>
+        )
+    ],
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
         viewMode: 'docs',
