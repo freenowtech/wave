@@ -57,59 +57,59 @@ export const SemanticColors = {
     text: {
         primary: Colors.blue.primary[900],
         primaryInverted: Colors.white,
-        secondary: Colors.AUTHENTIC_BLUE_550,
-        secondaryInverted: Colors.AUTHENTIC_BLUE_200,
-        tertiary: Colors.AUTHENTIC_BLUE_350,
-        tertiaryInverted: Colors.AUTHENTIC_BLUE_350,
-        disabled: Colors.AUTHENTIC_BLUE_200,
-        disabledInverted: Colors.AUTHENTIC_BLUE_550,
-        link: Colors.ACTION_BLUE_900,
-        linkInverted: Colors.WHITE,
-        linkHover: Colors.ACTION_BLUE_1000,
-        linkHoverInverted: Colors.ACTION_BLUE_50,
-        danger: Colors.NEGATIVE_ORANGE_1000,
-        dangerInverted: Colors.NEGATIVE_ORANGE_900,
-        success: Colors.POSITIVE_GREEN_900,
-        warning: Colors.ATTENTION_YELLOW_900
+        secondary: Colors.blue.primary[550],
+        secondaryInverted: Colors.blue.primary[200],
+        tertiary: Colors.blue.primary[350],
+        tertiaryInverted: Colors.blue.primary[350],
+        disabled: Colors.blue.primary[200],
+        disabledInverted: Colors.blue.primary[550],
+        link: Colors.blue.secondary[900],
+        linkInverted: Colors.white,
+        linkHover: Colors.blue.secondary[1000],
+        linkHoverInverted: Colors.blue.secondary[50],
+        danger: Colors.orange[1000],
+        dangerInverted: Colors.orange[900],
+        success: Colors.green[900],
+        warning: Colors.yellow[900]
     },
     background: {
-        primary: Colors.WHITE,
-        secondary: Colors.AUTHENTIC_BLUE_50,
-        info: Colors.ACTION_BLUE_50,
-        danger: Colors.NEGATIVE_ORANGE_50,
-        success: Colors.POSITIVE_GREEN_50,
-        warning: Colors.ATTENTION_YELLOW_50,
-        primaryEmphasized: Colors.AUTHENTIC_BLUE_900,
-        secondaryEmphasized: Colors.AUTHENTIC_BLUE_550,
-        infoEmphasized: Colors.ACTION_BLUE_900,
-        dangerEmphasized: Colors.NEGATIVE_ORANGE_900,
-        successEmphasized: Colors.POSITIVE_GREEN_900,
-        warningEmphasized: Colors.ATTENTION_YELLOW_900
+        primary: Colors.white,
+        secondary: Colors.blue.primary[50],
+        info: Colors.blue.secondary[50],
+        danger: Colors.orange[50],
+        success: Colors.green[50],
+        warning: Colors.yellow[50],
+        primaryEmphasized: Colors.blue.primary[900],
+        secondaryEmphasized: Colors.blue.primary[550],
+        infoEmphasized: Colors.blue.secondary[900],
+        dangerEmphasized: Colors.orange[900],
+        successEmphasized: Colors.green[900],
+        warningEmphasized: Colors.yellow[900]
     },
     icon: {
-        primary: Colors.AUTHENTIC_BLUE_900,
-        primaryInverted: Colors.WHITE,
-        secondary: Colors.AUTHENTIC_BLUE_550,
-        secondaryInverted: Colors.AUTHENTIC_BLUE_200,
-        tertiary: Colors.AUTHENTIC_BLUE_350,
-        tertiaryInverted: Colors.AUTHENTIC_BLUE_350,
-        disabled: Colors.AUTHENTIC_BLUE_200,
-        disabledInverted: Colors.AUTHENTIC_BLUE_550,
-        action: Colors.ACTION_BLUE_900,
-        danger: Colors.NEGATIVE_ORANGE_900,
-        success: Colors.POSITIVE_GREEN_900,
-        warning: Colors.ATTENTION_YELLOW_900
+        primary: Colors.blue.primary[900],
+        primaryInverted: Colors.white,
+        secondary: Colors.blue.primary[550],
+        secondaryInverted: Colors.blue.primary[200],
+        tertiary: Colors.blue.primary[350],
+        tertiaryInverted: Colors.blue.primary[350],
+        disabled: Colors.blue.primary[200],
+        disabledInverted: Colors.blue.primary[550],
+        action: Colors.blue.secondary[900],
+        danger: Colors.orange[900],
+        success: Colors.green[900],
+        warning: Colors.yellow[900]
     },
     border: {
-        primary: Colors.AUTHENTIC_BLUE_200,
-        info: Colors.ACTION_BLUE_350,
-        danger: Colors.NEGATIVE_ORANGE_350,
-        success: Colors.POSITIVE_GREEN_350,
-        warning: Colors.ATTENTION_YELLOW_350,
-        infoEmphasized: Colors.ACTION_BLUE_900,
-        dangerEmphasized: Colors.NEGATIVE_ORANGE_900,
-        successEmphasized: Colors.POSITIVE_GREEN_900,
-        warningEmphasized: Colors.ATTENTION_YELLOW_900
+        primary: Colors.blue.primary[200],
+        info: Colors.blue.secondary[350],
+        danger: Colors.orange[350],
+        success: Colors.green[350],
+        warning: Colors.yellow[350],
+        infoEmphasized: Colors.blue.secondary[900],
+        dangerEmphasized: Colors.orange[900],
+        successEmphasized: Colors.green[900],
+        warningEmphasized: Colors.yellow[900]
     },
 // } satisfies ColorSchema;
 }
@@ -119,233 +119,287 @@ export const ComponentColors = {
         button: {
             primary: {
                 // --wave-c-color-text-button-primary-default
-                default: '',
+                default: Colors.white,
                 // --wave-c-color-text-button-primary-hover
-                hover: '',
+                hover: Colors.white,
                 // --wave-c-color-text-button-primary-disabled
-                disabled: '',
+                disabled: Colors.white,
                 // --wave-c-color-text-button-primary-inverted
-                inverted: '',
+                inverted: Colors.blue.primary[900],
                 // --wave-c-color-text-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: '',
+                hoverInverted: Colors.white,
                 // --wave-c-color-text-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: '',
+                disabledInverted: Colors.blue.primary[350],
             },
             secondary: {
                 // --wave-c-color-text-button-secondary-default
-                default: '',
+                default: Colors.blue.primary[900],
                 // --wave-c-color-text-button-secondary-hover
-                hover: '',
+                hover: Colors.blue.primary[900],
                 // --wave-c-color-text-button-secondary-disabled
-                disabled: '',
+                disabled: Colors.blue.primary[200],
                 // --wave-c-color-text-button-secondary-inverted
-                inverted: '',
+                inverted: Colors.white,
                 // --wave-c-color-text-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: '',
+                hoverInverted: Colors.blue.primary[900],
                 // --wave-c-color-text-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: '',
+                disabledInverted: Colors.blue.primary[550],
             },
             danger: {
                 // --wave-c-color-text-button-danger-default
-                default: '',
+                default: Colors.white,
                 // --wave-c-color-text-button-danger-hover
-                hover: '',
+                hover: Colors.white,
                 // --wave-c-color-text-button-danger-disabled
-                disabled: '',
+                disabled: Colors.white,
                 // --wave-c-color-text-button-danger-inverted
-                inverted: '',
+                inverted: Colors.white,
                 // --wave-c-color-text-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: '',
+                hoverInverted: Colors.white,
                 // --wave-c-color-text-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: '',
+                disabledInverted: Colors.white,
             }
+        },
+        textButton: {
+            primary: {
+                default: Colors.blue.secondary[900],
+                hover: Colors.blue.secondary[1000],
+                disabled: Colors.blue.primary[200],
+                inverted: Colors.white,
+                hoverInverted: Colors.blue.primary[350],
+                disabledInverted: Colors.blue.primary[550],   
+            },
+            danger: {
+                default: Colors.orange[900],
+                hover: Colors.orange[1000],
+                disabled: Colors.blue.primary[200],
+                inverted: Colors.orange[900],
+                hoverInverted: Colors.orange[100],
+                disabledInverted: Colors.blue.primary[550],   
+            },
         }
-    }
-    //     primary: {
-    //         text: Colors.WHITE,
-    //         icon: Colors.WHITE,
-    //         background: Colors.AUTHENTIC_BLUE_900,
-    //         border: Colors.AUTHENTIC_BLUE_900,
-    
-    //         textHover: Colors.WHITE,
-    //         iconHover: Colors.WHITE,
-    //         backgroundHover: Colors.AUTHENTIC_BLUE_1100,
-    //         borderHover: Colors.AUTHENTIC_BLUE_1100,
-    
-    //         textDisabled: Colors.WHITE,
-    //         iconDisabled: Colors.WHITE,
-    //         backgroundDisabled: Colors.AUTHENTIC_BLUE_200,
-    //         borderDisabled: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textInverted: Colors.ACTION_BLUE_900,
-    //         iconInverted: Colors.ACTION_BLUE_900,
-    //         backgroundInverted: Colors.WHITE,
-    //         borderInverted: Colors.WHITE,
-    
-    //         textHoverInverted: Colors.WHITE,
-    //         iconHoverInverted: Colors.WHITE,
-    //         backgroundHoverInverted: Colors.ACTION_BLUE_900,
-    //         borderHoverInverted: Colors.ACTION_BLUE_900,
-    
-    //         textDisabledInverted: Colors.AUTHENTIC_BLUE_350,
-    //         iconDisabledInverted: Colors.AUTHENTIC_BLUE_350,
-    //         backgroundDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-    //         borderDisabledInverted: Colors.AUTHENTIC_BLUE_550
-    //     },
-    //     // --wave-c-color-border-button-primary-hover
-    //     // --wave-c-color-border-button-primary-hover-inverted
-    //     secondary: {
-    //         text: Colors.AUTHENTIC_BLUE_900,
-    //         icon: Colors.AUTHENTIC_BLUE_900,
-    //         background: Colors.WHITE,
-    //         border: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textHover: Colors.AUTHENTIC_BLUE_900,
-    //         iconHover: Colors.AUTHENTIC_BLUE_900,
-    //         backgroundHover: Colors.AUTHENTIC_BLUE_50,
-    //         borderHover: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textDisabled: Colors.AUTHENTIC_BLUE_200,
-    //         iconDisabled: Colors.AUTHENTIC_BLUE_200,
-    //         backgroundDisabled: Colors.WHITE,
-    //         borderDisabled: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textInverted: Colors.WHITE,
-    //         iconInverted: Colors.WHITE,
-    //         backgroundInverted: 'transparent',
-    //         borderInverted: Colors.WHITE,
-    
-    //         textHoverInverted: Colors.AUTHENTIC_BLUE_900,
-    //         iconHoverInverted: Colors.AUTHENTIC_BLUE_900,
-    //         backgroundHoverInverted: Colors.WHITE,
-    //         borderHoverInverted: Colors.WHITE,
-    
-    //         textDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-    //         iconDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-    //         backgroundDisabledInverted: 'transparent',
-    //         borderDisabledInverted: Colors.AUTHENTIC_BLUE_550
-    //     },
-    //     danger: {
-    //         text: Colors.WHITE,
-    //         icon: Colors.WHITE,
-    //         background: Colors.NEGATIVE_ORANGE_900,
-    //         border: Colors.NEGATIVE_ORANGE_900,
-    
-    //         textHover: Colors.WHITE,
-    //         iconHover: Colors.WHITE,
-    //         backgroundHover: Colors.NEGATIVE_ORANGE_1000,
-    //         borderHover: Colors.NEGATIVE_ORANGE_1000,
-    
-    //         textDisabled: Colors.WHITE,
-    //         iconDisabled: Colors.WHITE,
-    //         backgroundDisabled: Colors.AUTHENTIC_BLUE_200,
-    //         borderDisabled: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textInverted: Colors.WHITE,
-    //         iconInverted: Colors.WHITE,
-    //         backgroundInverted: Colors.NEGATIVE_ORANGE_900,
-    //         borderInverted: Colors.NEGATIVE_ORANGE_900,
-    
-    //         textHoverInverted: Colors.WHITE,
-    //         iconHoverInverted: Colors.WHITE,
-    //         backgroundHoverInverted: Colors.NEGATIVE_ORANGE_1000,
-    //         borderHoverInverted: Colors.NEGATIVE_ORANGE_1000,
-    
-    //         textDisabledInverted: Colors.WHITE,
-    //         iconDisabledInverted: Colors.WHITE,
-    //         backgroundDisabledInverted: Colors.AUTHENTIC_BLUE_200,
-    //         borderDisabledInverted: Colors.AUTHENTIC_BLUE_200
-    //     }
-    // },
-    // textButton: {
-    //     primary: {
-    //         text: Colors.ACTION_BLUE_900,
-    //         icon: Colors.ACTION_BLUE_900,
-    //         textHover: Colors.ACTION_BLUE_1000,
-    //         iconHover: Colors.ACTION_BLUE_1000,
-    //         textDisabled: Colors.AUTHENTIC_BLUE_200,
-    //         iconDisabled: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textInverted: Colors.WHITE,
-    //         iconInverted: Colors.WHITE,
-    //         textHoverInverted: Colors.AUTHENTIC_BLUE_350,
-    //         iconHoverInverted: Colors.AUTHENTIC_BLUE_350,
-    //         textDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-    //         iconDisabledInverted: Colors.AUTHENTIC_BLUE_550
-    //     },
-    //     danger: {
-    //         text: Colors.NEGATIVE_ORANGE_900,
-    //         icon: Colors.NEGATIVE_ORANGE_900,
-    //         textHover: Colors.NEGATIVE_ORANGE_1000,
-    //         iconHover: Colors.NEGATIVE_ORANGE_1000,
-    //         textDisabled: Colors.AUTHENTIC_BLUE_200,
-    //         iconDisabled: Colors.AUTHENTIC_BLUE_200,
-    
-    //         textInverted: Colors.NEGATIVE_ORANGE_900,
-    //         iconInverted: Colors.NEGATIVE_ORANGE_900,
-    //         textHoverInverted: Colors.NEGATIVE_ORANGE_1000,
-    //         iconHoverInverted: Colors.NEGATIVE_ORANGE_1000,
-    //         textDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-    //         iconDisabledInverted: Colors.AUTHENTIC_BLUE_550
-    //     }
-    // },
-    // forms: {
-    //     toggle: {
-    //         default: {
-    //             slideOff: Colors.WHITE,
-    //             slideOn: Colors.WHITE,
-    //             frameOff: Colors.AUTHENTIC_BLUE_200,
-    //             frameOn: Colors.ACTION_BLUE_900
-    //         },
-    //         error: {
-    //             slideOff: Colors.WHITE,
-    //             slideOn: Colors.WHITE,
-    //             frameOff: Colors.AUTHENTIC_BLUE_200,
-    //             frameOn: Colors.NEGATIVE_ORANGE_900
-    //         },
-    //         disabled: {
-    //             slideOff: Colors.AUTHENTIC_BLUE_50,
-    //             slideOn: Colors.AUTHENTIC_BLUE_50,
-    //             frameOff: Colors.AUTHENTIC_BLUE_50,
-    //             frameOn: Colors.AUTHENTIC_BLUE_50
-    //         }
-    //     },
-    //     datePicker: {
-    //         calendar: {
-    //             border: Colors.AUTHENTIC_BLUE_200,
-    //             borderHover: Colors.AUTHENTIC_BLUE_200,
-    //             borderRange: Colors.ACTION_BLUE_350,
-    //             borderSelected: Colors.ACTION_BLUE_1000,
-    //             borderRangeHover: Colors.ACTION_BLUE_350,
-    //             background: Colors.WHITE,
-    //             backgroundHover: Colors.AUTHENTIC_BLUE_50,
-    //             backgroundRange: Colors.ACTION_BLUE_50,
-    //             backgroundSelected: Colors.ACTION_BLUE_900,
-    //             backgroundRangeHover: Colors.ACTION_BLUE_350
-    //         }
-    //     }
-    // },
-    // table: {
-    //     skeleton: Colors.AUTHENTIC_BLUE_50,
-    //     zebraStyles: {
-    //         backgroundSecondary: 'rgba(241, 242, 244, 0.4)',
-    //         backgroundHover: Colors.ACTION_BLUE_100,
-    //         backgroundActive: Colors.ACTION_BLUE_150
-    //     },
-    //     linesStyles: {
-    //         backgroundHover: Colors.ACTION_BLUE_50,
-    //         backgroundActive: Colors.ACTION_BLUE_100,
-    //         border: Colors.AUTHENTIC_BLUE_200
-    //     },
-    //     blank: {
-    //         backgroundHover: Colors.ACTION_BLUE_50,
-    //         backgroundActive: Colors.ACTION_BLUE_100
-    //     },
-    //     header: {
-    //         border: Colors.AUTHENTIC_BLUE_550
-    //     }
-    // },
-    // dialog: {
-    //     dimming: 'rgba(0, 15, 31, 0.6)'
-    // }
+    },
+    icon:  {
+        button: {
+            primary: {
+                // --wave-c-color-icon-button-primary-default
+                default: Colors.white,
+                // --wave-c-color-icon-button-primary-hover
+                hover: Colors.white,
+                // --wave-c-color-icon-button-primary-disabled
+                disabled: Colors.white,
+                // --wave-c-color-icon-button-primary-inverted
+                inverted: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.white,
+                // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[350],
+            },
+            secondary: {
+                // --wave-c-color-icon-button-secondary-default
+                default: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-secondary-hover
+                hover: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-secondary-disabled
+                disabled: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-secondary-inverted
+                inverted: Colors.white,
+                // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[550],
+            },
+            danger: {
+                // --wave-c-color-icon-button-danger-default
+                default: Colors.white,
+                // --wave-c-color-icon-button-danger-hover
+                hover: Colors.white,
+                // --wave-c-color-icon-button-danger-disabled
+                disabled: Colors.white,
+                // --wave-c-color-icon-button-danger-inverted
+                inverted: Colors.white,
+                // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.white,
+                // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.white,
+            }
+        },
+        textButton: {
+            primary: {
+                default: Colors.blue.secondary[900],
+                hover: Colors.blue.secondary[1000],
+                disabled: Colors.blue.primary[200],
+                inverted: Colors.white,
+                hoverInverted: Colors.blue.primary[350],
+                disabledInverted: Colors.blue.primary[550],
+            },
+            danger: {
+                default: Colors.orange[900],
+                hover: Colors.orange[1000],
+                disabled: Colors.blue.primary[200],
+                inverted: Colors.orange[900],
+                hoverInverted: Colors.orange[100],
+                disabledInverted: Colors.blue.primary[550],   
+            },
+        }
+    },
+    background:  {
+        button: {
+            primary: {
+                // --wave-c-color-icon-button-primary-default
+                default: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-primary-hover
+                hover: Colors.blue.primary[1100],
+                // --wave-c-color-icon-button-primary-disabled
+                disabled: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-primary-inverted
+                inverted: Colors.white,
+                // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[550],
+            },
+            secondary: {
+                // --wave-c-color-icon-button-secondary-default
+                default: Colors.white,
+                // --wave-c-color-icon-button-secondary-hover
+                hover: Colors.blue.primary[50],
+                // --wave-c-color-icon-button-secondary-disabled
+                disabled: Colors.white,
+                // --wave-c-color-icon-button-secondary-inverted
+                inverted: 'transparent', // do we need to add a transparent color?
+                // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.white,
+                // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: 'transparent', // do we need to add a transparent color?
+            },
+            danger: {
+                // --wave-c-color-icon-button-danger-default
+                default: Colors.orange[900],
+                // --wave-c-color-icon-button-danger-hover
+                hover: Colors.orange[1000],
+                // --wave-c-color-icon-button-danger-disabled
+                disabled: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-danger-inverted
+                inverted: Colors.orange[900],
+                // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.orange[1000],
+                // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[200],
+            }
+        },
+        calendar: {
+            default: Colors.white,
+            hover: Colors.blue.primary[50],
+            range: Colors.blue.secondary[50],
+            selected: Colors.blue.secondary[900],
+            rangeHover: Colors.blue.secondary[350],
+        },
+        table: {
+            skeleton: Colors.blue.primary[50],
+            rows: {
+                zebra: {
+                    active: Colors.blue.secondary[150],
+                    hover: Colors.blue.secondary[100],  
+                    secondary: 'rgba(241, 242, 244, 0.4)',
+                },
+                lines: {
+                    active: Colors.blue.secondary[100],
+                    hover: Colors.blue.secondary[50],
+                },
+                blank: {
+                    active: Colors.blue.secondary[100],
+                    hover: Colors.blue.secondary[50],
+                },
+            }
+        },
+        toggle: { 
+            handle: {
+                default: {
+                    off: Colors.white,
+                    on: Colors.white,
+                    disabled: Colors.blue.primary[50],
+                },
+                error: {
+                    off: Colors.white,
+                    on: Colors.white,
+                    disabled: Colors.blue.primary[50],
+                }
+            },
+            frame: {
+                default: {
+                    off: Colors.blue.primary[200],
+                    on: Colors.blue.secondary[900],
+                    disabled: Colors.blue.primary[50],
+                },
+                error: {
+                    off: Colors.blue.primary[200],
+                    on: Colors.orange[900],
+                    disabled: Colors.blue.primary[50],
+                }
+            }
+        },
+        dialog: {
+            dimming: 'rgba(0, 15, 31, 0.6)',
+        },
+    },
+    border:  {
+        button: {
+            primary: {
+                // --wave-c-color-icon-button-primary-default
+                default: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-primary-hover
+                hover: Colors.blue.primary[1100],
+                // --wave-c-color-icon-button-primary-disabled
+                disabled: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-primary-inverted
+                inverted: Colors.white,
+                // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.blue.primary[900],
+                // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[550],
+            },
+            secondary: {
+                // --wave-c-color-icon-button-secondary-default
+                default: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-secondary-hover
+                hover: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-secondary-disabled
+                disabled: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-secondary-inverted
+                inverted: Colors.white,
+                // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.white,
+                // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[550],
+            },
+            danger: {
+                // --wave-c-color-icon-button-danger-default
+                default: Colors.orange[900],
+                // --wave-c-color-icon-button-danger-hover
+                hover: Colors.orange[1000],
+                // --wave-c-color-icon-button-danger-disabled
+                disabled: Colors.blue.primary[200],
+                // --wave-c-color-icon-button-danger-inverted
+                inverted: Colors.orange[900],
+                // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: Colors.orange[1000],
+                // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: Colors.blue.primary[200],
+            }
+        },
+        calendar: {
+            default: Colors.blue.primary[200],
+            hover: Colors.blue.primary[200],
+            range: Colors.blue.secondary[350],
+            selected: Colors.blue.secondary[1000],
+            rangeHover: Colors.blue.secondary[350],
+        },
+        table: {
+            rows: {
+                lines: Colors.blue.primary[200],
+            },
+            header: Colors.blue.primary[550],
+        }
+    },
 }
