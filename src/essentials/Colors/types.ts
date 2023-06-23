@@ -5,67 +5,119 @@ type RGB = `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, 
 
 export type Color = HSL | RGB;
 
-export interface ColorSchema {
+export interface SemanticColorsSchema {
     text: {
-        primary: Color;
-        primaryInverted: Color;
-        secondary: Color;
-        secondaryInverted: Color;
-        tertiary: Color;
-        tertiaryInverted: Color;
-        disabled: Color;
-        disabledInverted: Color;
-        link: Color;
-        linkInverted: Color;
-        linkHover: Color;
-        linkHoverInverted: Color;
-        danger: Color;
-        dangerInverted: Color;
-        success: Color;
-        warning: Color;
-    };
+        primary: Color,
+        primaryInverted: Color,
+        secondary: Color,
+        secondaryInverted: Color,
+        tertiary: Color,
+        tertiaryInverted: Color,
+        disabled: Color,
+        disabledInverted: Color,
+        link: Color,
+        linkInverted: Color,
+        linkHover: Color,
+        linkHoverInverted: Color,
+        danger: Color,
+        dangerInverted: Color,
+        success: Color,
+        warning: Color,
+    },
     background: {
-        primary: Color;
-        secondary: Color;
-        info: Color;
-        danger: Color;
-        success: Color;
-        warning: Color;
-        primaryEmphasized: Color;
-        secondaryEmphasized: Color;
-        infoEmphasized: Color;
-        dangerEmphasized: Color;
-        successEmphasized: Color;
-        warningEmphasized: Color;
-    };
+        primary: {
+            default: Color,
+            emphasized: Color,
+            hover: Color,
+            disabled: Color,
+        },   
+        secondary: {
+            default: Color,
+            emphasized: Color,
+        },
+        danger: {
+            default: Color,
+            emphasized: Color,
+            hover: Color,
+        },
+        info: {
+            default: Color,
+            emphasized: Color,
+            hover: Color,
+        },
+        success: {
+            default: Color,
+            emphasized: Color,
+        },
+        warning: {
+            default: Color,
+            emphasized: Color,
+        },
+        transparent: 'transparent',
+    },
     icon: {
-        primary: Color;
-        primaryInverted: Color;
-        secondary: Color;
-        secondaryInverted: Color;
-        tertiary: Color;
-        tertiaryInverted: Color;
-        disabled: Color;
-        disabledInverted: Color;
-        action: Color;
-        danger: Color;
-        success: Color;
-        warning: Color;
-    };
+        primary: {
+            default: Color,
+            inverted: Color,
+        },
+        secondary: {
+            default: Color,
+            inverted: Color,
+        },
+        tertiary: {
+            default: Color,
+            inverted: Color,
+        },
+        disabled: {
+            default: Color,
+            inverted: Color,
+        },
+        action: {
+            default: Color,
+            emphasized: Color,
+        },
+        danger: {
+            default: Color,
+            emphasized: Color,
+        },
+        success: Color,
+        warning: Color,
+    },
     border: {
-        primary: Color;
-        info: Color;
-        danger: Color;
-        success: Color;
-        warning: Color;
-        infoEmphasized: Color;
-        dangerEmphasized: Color;
-        successEmphasized: Color;
-        warningEmphasized: Color;
-    };
+        primary: {
+            default: Color,
+            emphasized: Color,
+            inverted: Color,
+        },
+        secondary: {
+            default: Color,
+            inverted: Color,
+        },
+        disabled: {
+            default: Color,
+            inverted: Color,
+        },
+        info: {
+            default: Color,
+            emphasized: Color,
+        },
+        success: {
+            default: Color,
+            emphasized: Color,
+        },
+        warning: {
+            default: Color,
+            emphasized: Color,
+        },
+        danger: {
+            default: Color,
+            emphasized: Color,
+            disabled: Color,
+        },
+    },
 }
 
-export type SemanticCssVariable = `--${S.Join<L.Required<O.Paths<ColorSchema>>, '-'>}`;
+export type SemanticCssVariable = `--${S.Join<L.Required<O.Paths<SemanticColorsSchema>>, '-'>}`;
 
 export type ReadCssVariable = `var(${SemanticCssVariable})` | `var(${SemanticCssVariable}, ${string})`;
 

@@ -1,5 +1,6 @@
-import { ColorSchema } from './types';
+import { SemanticColorsSchema } from './types';
 
+// Global Colors Tier (--wave-g-color-...)
 export const Colors = {
     white: 'hsl(0, 0%, 100%)',
     black: 'hsl(0, 0%, 0%)',
@@ -47,12 +48,13 @@ export const Colors = {
         900: 'hsl(21, 100%, 51%)',
         350: 'hsl(21, 100%, 81%)',
         50: 'hsl(21, 100%, 97%)'
-    }
+    },
+    transparent: 'transparent',
 } as const;
 
 // AUTHENTIC = primary now
 // ACTION = secondary now
-
+// Semantic Colors Tier (--wave-s-color-...)
 export const SemanticColors = {
     text: {
         primary: Colors.blue.primary[900],
@@ -73,173 +75,161 @@ export const SemanticColors = {
         warning: Colors.yellow[900]
     },
     background: {
-        primary: Colors.white,
-        secondary: Colors.blue.primary[50],
-        info: Colors.blue.secondary[50],
-        danger: Colors.orange[50],
-        success: Colors.green[50],
-        warning: Colors.yellow[50],
-        primaryEmphasized: Colors.blue.primary[900],
-        secondaryEmphasized: Colors.blue.primary[550],
-        infoEmphasized: Colors.blue.secondary[900],
-        dangerEmphasized: Colors.orange[900],
-        successEmphasized: Colors.green[900],
-        warningEmphasized: Colors.yellow[900]
+        primary: {
+            default: Colors.white,
+            emphasized: Colors.blue.primary[900],
+            hover: Colors.blue.primary[1100],
+            disabled: Colors.blue.primary[200],
+        },   
+        secondary: {
+            default: Colors.blue.primary[50],
+            emphasized: Colors.blue.primary[550],
+        },
+        danger: {
+            default: Colors.orange[50],
+            emphasized: Colors.orange[900],
+            hover: Colors.orange[1000]
+        },
+        info: {
+            default: Colors.blue.secondary[50],
+            emphasized: Colors.blue.secondary[900],
+            hover: Colors.blue.secondary[350],
+        },
+        success: {
+            default: Colors.green[50],
+            emphasized: Colors.green[900], 
+        },
+        warning: {
+            default: Colors.yellow[50],
+            emphasized: Colors.yellow[900],
+        },
+        transparent: Colors.transparent,
     },
     icon: {
-        primary: Colors.blue.primary[900],
-        primaryInverted: Colors.white,
-        secondary: Colors.blue.primary[550],
-        secondaryInverted: Colors.blue.primary[200],
-        tertiary: Colors.blue.primary[350],
-        tertiaryInverted: Colors.blue.primary[350],
-        disabled: Colors.blue.primary[200],
-        disabledInverted: Colors.blue.primary[550],
-        action: Colors.blue.secondary[900],
-        danger: Colors.orange[900],
+        primary: {
+            default: Colors.blue.primary[900],
+            inverted:  Colors.white,
+        },
+        secondary: {
+            default: Colors.blue.primary[550],
+            inverted: Colors.blue.primary[200],
+        },
+        tertiary: {
+            default: Colors.blue.primary[350],
+            inverted: Colors.blue.primary[350],
+        },
+        disabled: {
+            default: Colors.blue.primary[200],
+            inverted: Colors.blue.primary[550],
+        },
+        action: {
+            default: Colors.blue.secondary[900],
+            emphasized: Colors.blue.secondary[1000],
+        },
+        danger: {
+            default: Colors.orange[900],
+            emphasized: Colors.orange[1000],
+        },
         success: Colors.green[900],
         warning: Colors.yellow[900]
     },
     border: {
-        primary: Colors.blue.primary[200],
-        info: Colors.blue.secondary[350],
-        danger: Colors.orange[350],
-        success: Colors.green[350],
-        warning: Colors.yellow[350],
-        infoEmphasized: Colors.blue.secondary[900],
-        dangerEmphasized: Colors.orange[900],
-        successEmphasized: Colors.green[900],
-        warningEmphasized: Colors.yellow[900]
+        primary: {
+            default: Colors.blue.primary[900],
+            emphasized: Colors.blue.primary[1100],
+            inverted: Colors.white,
+        },
+        secondary: {
+            default: Colors.blue.primary[200],
+            inverted: Colors.white,
+        },
+        disabled: {
+            default: Colors.blue.primary[200],
+            inverted: Colors.blue.primary[550],
+        },
+        info: {
+            default: Colors.blue.secondary[350],
+            emphasized: Colors.blue.secondary[900],
+        },
+        success: {
+            default: Colors.green[350],
+            emphasized: Colors.green[900],
+        },
+        warning: {
+            default: Colors.yellow[350],
+            emphasized: Colors.yellow[900]
+        },
+        danger: {
+            default: Colors.orange[900],
+            emphasized: Colors.orange[1000],
+            disabled: Colors.orange[350],
+        },
     },
-// } satisfies ColorSchema;
-}
+} satisfies SemanticColorsSchema
 
+// Component Colors Tier (--wave-c-color-...)
 export const ComponentColors = {
     text:  {
         button: {
             primary: {
                 // --wave-c-color-text-button-primary-default
-                default: Colors.white,
+                default: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-primary-hover
-                hover: Colors.white,
+                hover: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-primary-disabled
-                disabled: Colors.white,
+                disabled: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-primary-inverted
-                inverted: Colors.blue.primary[900],
+                inverted: SemanticColors.text.primary,
                 // --wave-c-color-text-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.white,
+                hoverInverted: SemanticColors.text.tertiaryInverted,
                 // --wave-c-color-text-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[350],
+                disabledInverted: SemanticColors.text.tertiaryInverted,
             },
             secondary: {
                 // --wave-c-color-text-button-secondary-default
-                default: Colors.blue.primary[900],
+                default: SemanticColors.text.primary,
                 // --wave-c-color-text-button-secondary-hover
-                hover: Colors.blue.primary[900],
+                hover: SemanticColors.text.primary,
                 // --wave-c-color-text-button-secondary-disabled
-                disabled: Colors.blue.primary[200],
+                disabled: SemanticColors.text.disabled,
                 // --wave-c-color-text-button-secondary-inverted
-                inverted: Colors.white,
+                inverted: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.blue.primary[900],
+                hoverInverted: SemanticColors.text.primary,
                 // --wave-c-color-text-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[550],
+                disabledInverted: SemanticColors.text.disabledInverted,
             },
             danger: {
                 // --wave-c-color-text-button-danger-default
-                default: Colors.white,
+                default: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-danger-hover
-                hover: Colors.white,
+                hover: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-danger-disabled
-                disabled: Colors.white,
+                disabled: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-danger-inverted
-                inverted: Colors.white,
+                inverted: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.white,
+                hoverInverted: SemanticColors.text.primaryInverted,
                 // --wave-c-color-text-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.white,
+                disabledInverted: SemanticColors.text.primaryInverted,
             }
         },
         textButton: {
             primary: {
-                default: Colors.blue.secondary[900],
-                hover: Colors.blue.secondary[1000],
-                disabled: Colors.blue.primary[200],
-                inverted: Colors.white,
-                hoverInverted: Colors.blue.primary[350],
-                disabledInverted: Colors.blue.primary[550],   
+                default: SemanticColors.text.link,
+                hover: SemanticColors.text.linkHover,
+                disabled: SemanticColors.text.disabled,
+                inverted: SemanticColors.text.linkInverted,
+                hoverInverted: SemanticColors.text.tertiary,
+                disabledInverted: SemanticColors.text.disabledInverted,
             },
             danger: {
-                default: Colors.orange[900],
-                hover: Colors.orange[1000],
-                disabled: Colors.blue.primary[200],
-                inverted: Colors.orange[900],
-                hoverInverted: Colors.orange[100],
-                disabledInverted: Colors.blue.primary[550],   
-            },
-        }
-    },
-    icon:  {
-        button: {
-            primary: {
-                // --wave-c-color-icon-button-primary-default
-                default: Colors.white,
-                // --wave-c-color-icon-button-primary-hover
-                hover: Colors.white,
-                // --wave-c-color-icon-button-primary-disabled
-                disabled: Colors.white,
-                // --wave-c-color-icon-button-primary-inverted
-                inverted: Colors.blue.primary[900],
-                // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.white,
-                // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[350],
-            },
-            secondary: {
-                // --wave-c-color-icon-button-secondary-default
-                default: Colors.blue.primary[900],
-                // --wave-c-color-icon-button-secondary-hover
-                hover: Colors.blue.primary[900],
-                // --wave-c-color-icon-button-secondary-disabled
-                disabled: Colors.blue.primary[200],
-                // --wave-c-color-icon-button-secondary-inverted
-                inverted: Colors.white,
-                // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.blue.primary[900],
-                // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[550],
-            },
-            danger: {
-                // --wave-c-color-icon-button-danger-default
-                default: Colors.white,
-                // --wave-c-color-icon-button-danger-hover
-                hover: Colors.white,
-                // --wave-c-color-icon-button-danger-disabled
-                disabled: Colors.white,
-                // --wave-c-color-icon-button-danger-inverted
-                inverted: Colors.white,
-                // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.white,
-                // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.white,
-            }
-        },
-        textButton: {
-            primary: {
-                default: Colors.blue.secondary[900],
-                hover: Colors.blue.secondary[1000],
-                disabled: Colors.blue.primary[200],
-                inverted: Colors.white,
-                hoverInverted: Colors.blue.primary[350],
-                disabledInverted: Colors.blue.primary[550],
-            },
-            danger: {
-                default: Colors.orange[900],
-                hover: Colors.orange[1000],
-                disabled: Colors.blue.primary[200],
-                inverted: Colors.orange[900],
-                hoverInverted: Colors.orange[100],
-                disabledInverted: Colors.blue.primary[550],   
+                default: SemanticColors.text.dangerInverted,
+                hover: SemanticColors.text.danger,
+                disabled: SemanticColors.text.disabled,
+                inverted: SemanticColors.text.dangerInverted,
+                hoverInverted: SemanticColors.text.danger,
+                disabledInverted: SemanticColors.text.disabledInverted,
             },
         }
     },
@@ -247,58 +237,60 @@ export const ComponentColors = {
         button: {
             primary: {
                 // --wave-c-color-icon-button-primary-default
-                default: Colors.blue.primary[900],
+                default: SemanticColors.background.primary.emphasized,
                 // --wave-c-color-icon-button-primary-hover
-                hover: Colors.blue.primary[1100],
+                hover: SemanticColors.background.primary.hover,
                 // --wave-c-color-icon-button-primary-disabled
-                disabled: Colors.blue.primary[200],
+                disabled: SemanticColors.background.primary.disabled,
                 // --wave-c-color-icon-button-primary-inverted
-                inverted: Colors.white,
+                inverted: SemanticColors.background.primary.default,
                 // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.blue.primary[900],
+                hoverInverted: SemanticColors.background.primary.emphasized,
                 // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[550],
+                disabledInverted: SemanticColors.background.secondary.emphasized,
             },
             secondary: {
                 // --wave-c-color-icon-button-secondary-default
-                default: Colors.white,
+                default: SemanticColors.background.primary.default,
                 // --wave-c-color-icon-button-secondary-hover
-                hover: Colors.blue.primary[50],
+                hover: SemanticColors.background.secondary.default,
                 // --wave-c-color-icon-button-secondary-disabled
-                disabled: Colors.white,
+                disabled: SemanticColors.background.primary.default,
                 // --wave-c-color-icon-button-secondary-inverted
-                inverted: 'transparent', // do we need to add a transparent color?
+                inverted: SemanticColors.background.transparent,
                 // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.white,
+                hoverInverted: SemanticColors.background.primary.default,
                 // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: 'transparent', // do we need to add a transparent color?
+                disabledInverted: SemanticColors.background.transparent,
             },
             danger: {
                 // --wave-c-color-icon-button-danger-default
-                default: Colors.orange[900],
+                default: SemanticColors.background.danger.emphasized,
                 // --wave-c-color-icon-button-danger-hover
-                hover: Colors.orange[1000],
+                hover: SemanticColors.background.danger.hover,
                 // --wave-c-color-icon-button-danger-disabled
-                disabled: Colors.blue.primary[200],
+                disabled: SemanticColors.background.primary.disabled,
                 // --wave-c-color-icon-button-danger-inverted
-                inverted: Colors.orange[900],
+                inverted: SemanticColors.background.danger.emphasized,
                 // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.orange[1000],
+                hoverInverted: SemanticColors.background.danger.hover,
                 // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[200],
+                disabledInverted: SemanticColors.background.primary.disabled,
             }
         },
         calendar: {
-            default: Colors.white,
-            hover: Colors.blue.primary[50],
-            range: Colors.blue.secondary[50],
-            selected: Colors.blue.secondary[900],
-            rangeHover: Colors.blue.secondary[350],
+            default: SemanticColors.background.primary.default,
+            hover: SemanticColors.background.secondary.default,
+            range: SemanticColors.background.info.default,
+            selected: SemanticColors.background.info.emphasized,
+            rangeHover: SemanticColors.background.info.hover,
         },
         table: {
-            skeleton: Colors.blue.primary[50],
+            skeleton: SemanticColors.background.secondary.default,
             rows: {
                 zebra: {
+                    // Does it make sense to define SemanticColors for these cases? (Check when revisiting this for refactor)
+                    // What would be suitable semantic names?
                     active: Colors.blue.secondary[150],
                     hover: Colors.blue.secondary[100],  
                     secondary: 'rgba(241, 242, 244, 0.4)',
@@ -316,30 +308,31 @@ export const ComponentColors = {
         toggle: { 
             handle: {
                 default: {
-                    off: Colors.white,
-                    on: Colors.white,
-                    disabled: Colors.blue.primary[50],
+                    off: SemanticColors.background.primary.default,
+                    on: SemanticColors.background.primary.default,
+                    disabled: SemanticColors.background.secondary.default,
                 },
                 error: {
-                    off: Colors.white,
-                    on: Colors.white,
-                    disabled: Colors.blue.primary[50],
+                    off: SemanticColors.background.primary.default,
+                    on: SemanticColors.background.primary.default,
+                    disabled: SemanticColors.background.secondary.default,
                 }
             },
             frame: {
                 default: {
-                    off: Colors.blue.primary[200],
-                    on: Colors.blue.secondary[900],
-                    disabled: Colors.blue.primary[50],
+                    off: SemanticColors.background.primary.disabled,
+                    on: SemanticColors.background.info.emphasized,
+                    disabled: SemanticColors.background.secondary.default,
                 },
                 error: {
-                    off: Colors.blue.primary[200],
-                    on: Colors.orange[900],
-                    disabled: Colors.blue.primary[50],
+                    off: SemanticColors.background.primary.disabled,
+                    on: SemanticColors.background.danger.emphasized,
+                    disabled: SemanticColors.background.secondary.default,
                 }
             }
         },
         dialog: {
+            // Define new color?
             dimming: 'rgba(0, 15, 31, 0.6)',
         },
     },
@@ -347,59 +340,123 @@ export const ComponentColors = {
         button: {
             primary: {
                 // --wave-c-color-icon-button-primary-default
-                default: Colors.blue.primary[900],
+                default: SemanticColors.border.primary.default,
                 // --wave-c-color-icon-button-primary-hover
-                hover: Colors.blue.primary[1100],
+                hover: SemanticColors.border.primary.emphasized,
                 // --wave-c-color-icon-button-primary-disabled
-                disabled: Colors.blue.primary[200],
+                disabled: SemanticColors.border.disabled.default,
                 // --wave-c-color-icon-button-primary-inverted
-                inverted: Colors.white,
+                inverted: SemanticColors.border.primary.inverted,
                 // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.blue.primary[900],
+                hoverInverted: SemanticColors.border.primary.default,
                 // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[550],
+                disabledInverted: SemanticColors.border.disabled.inverted,
             },
             secondary: {
                 // --wave-c-color-icon-button-secondary-default
-                default: Colors.blue.primary[200],
+                default: SemanticColors.border.secondary.default,
                 // --wave-c-color-icon-button-secondary-hover
-                hover: Colors.blue.primary[200],
+                hover: SemanticColors.border.secondary.default,
                 // --wave-c-color-icon-button-secondary-disabled
-                disabled: Colors.blue.primary[200],
+                disabled: SemanticColors.border.disabled.default,
                 // --wave-c-color-icon-button-secondary-inverted
-                inverted: Colors.white,
+                inverted: SemanticColors.border.secondary.inverted,
                 // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
                 hoverInverted: Colors.white,
                 // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[550],
+                disabledInverted: SemanticColors.border.disabled.inverted,
             },
             danger: {
                 // --wave-c-color-icon-button-danger-default
-                default: Colors.orange[900],
+                default: SemanticColors.border.danger.default,
                 // --wave-c-color-icon-button-danger-hover
-                hover: Colors.orange[1000],
+                hover: SemanticColors.border.danger.emphasized,
                 // --wave-c-color-icon-button-danger-disabled
-                disabled: Colors.blue.primary[200],
+                disabled: SemanticColors.border.disabled.default,
                 // --wave-c-color-icon-button-danger-inverted
-                inverted: Colors.orange[900],
+                inverted: SemanticColors.border.danger.default,
                 // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                hoverInverted: Colors.orange[1000],
+                hoverInverted: SemanticColors.border.danger.emphasized,
                 // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
-                disabledInverted: Colors.blue.primary[200],
+                disabledInverted: SemanticColors.border.disabled.default,
             }
         },
         calendar: {
-            default: Colors.blue.primary[200],
-            hover: Colors.blue.primary[200],
-            range: Colors.blue.secondary[350],
-            selected: Colors.blue.secondary[1000],
-            rangeHover: Colors.blue.secondary[350],
+            default: SemanticColors.border.secondary.default,
+            hover: SemanticColors.border.secondary.default,
+            range: SemanticColors.border.info.default,
+            selected: SemanticColors.border.info.emphasized,
+            rangeHover: SemanticColors.border.secondary.default,
         },
         table: {
             rows: {
-                lines: Colors.blue.primary[200],
+                lines: SemanticColors.border.secondary.default,
             },
-            header: Colors.blue.primary[550],
+            header: SemanticColors.border.disabled.inverted,
+        }
+    },
+    icon:  {
+        button: {
+            primary: {
+                // --wave-c-color-icon-button-primary-default
+                default: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-primary-hover
+                hover: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-primary-disabled
+                disabled: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-primary-inverted
+                inverted: SemanticColors.icon.primary.default,
+                // --wave-c-color-icon-button-primary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-primary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: SemanticColors.icon.tertiary.default,
+            },
+            secondary: {
+                // --wave-c-color-icon-button-secondary-default
+                default: SemanticColors.icon.primary.default,
+                // --wave-c-color-icon-button-secondary-hover
+                hover: SemanticColors.icon.primary.default,
+                // --wave-c-color-icon-button-secondary-disabled
+                disabled: SemanticColors.icon.disabled.default,
+                // --wave-c-color-icon-button-secondary-inverted
+                inverted: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-secondary-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: SemanticColors.icon.primary.default,
+                // --wave-c-color-icon-button-secondary-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: SemanticColors.icon.disabled.inverted,
+            },
+            danger: {
+                // --wave-c-color-icon-button-danger-default
+                default: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-danger-hover
+                hover: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-danger-disabled
+                disabled: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-danger-inverted
+                inverted: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-danger-hoverInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                hoverInverted: SemanticColors.icon.primary.inverted,
+                // --wave-c-color-icon-button-danger-disabledInverted // This needs rething, as inverted is state, same as hover - Should be in Dark Mode Schema
+                disabledInverted: SemanticColors.icon.primary.inverted,
+            }
+        },
+        textButton: {
+            primary: {
+                default: SemanticColors.icon.action.default,
+                hover: SemanticColors.icon.action.emphasized,
+                disabled: SemanticColors.icon.disabled.default,
+                inverted: SemanticColors.icon.primary.inverted,
+                hoverInverted: SemanticColors.icon.tertiary.inverted,
+                disabledInverted: SemanticColors.icon.disabled.inverted,
+            },
+            danger: {
+                default: SemanticColors.icon.danger.default,
+                hover: SemanticColors.icon.danger.emphasized,
+                disabled: SemanticColors.icon.disabled.default,
+                inverted: SemanticColors.icon.danger.default,
+                hoverInverted: SemanticColors.icon.danger.emphasized,
+                disabledInverted: SemanticColors.icon.disabled.inverted,
+            },
         }
     },
 }
