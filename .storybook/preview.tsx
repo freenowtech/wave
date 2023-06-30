@@ -1,17 +1,25 @@
+import React from 'react';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
-import React from 'react';
-import { RedesignedColors } from '../src/essentials/Colors/globalStyles';
+import { ClassicColors, ModernColors } from '../src/essentials/Colors/globalStyles';
+
+const THEMES = {
+    classic: ClassicColors,
+    modern: ModernColors
+} as const;
+
+export const withTheme = (Story, context) => {
+    const Theme = THEMES[context.globals.theme];
+    return (
+        <>
+            <Theme />
+            <Story {...context} />
+        </>
+    );
+};
 
 export const preview: Preview = {
-    decorators: [
-        Story => (
-            <>
-                <RedesignedColors />
-                <Story />
-            </>
-        )
-    ],
+    decorators: [withTheme],
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
         viewMode: 'docs',
@@ -20,6 +28,11 @@ export const preview: Preview = {
             matchers: {
                 color: /(background|color)$/i,
                 date: /Date$/
+            }
+        },
+        options: {
+            storySort: {
+                order: ['Welcome', 'Get Started', 'Essentials', 'Components', 'Form Elements']
             }
         },
         docs: {
@@ -75,10 +88,17 @@ export const preview: Preview = {
                     type: 'desktop'
                 }
             }
-        },
-        options: {
-            storySort: {
-                order: ['Welcome', 'Get Started', 'Essentials', 'Components', 'Form Elements']
+        }
+    },
+    globalTypes: {
+        theme: {
+            description: 'Global theme for components',
+            defaultValue: 'modern',
+            toolbar: {
+                title: 'Theme',
+                icon: 'paintbrush',
+                items: ['modern', 'classic'],
+                dynamicTitle: true
             }
         }
     }
