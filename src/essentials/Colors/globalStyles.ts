@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { Colors as ClassicBrandColors, SemanticColors as ClassicSemanticColors } from './Colors';
 import { Colors as RedesignedBrandColors, SemanticColors as RedesignedSemanticColors } from './RedesignedColors';
-import { generateGlobalTierCssVariables, generateSemanticTierCssVariables } from '../../utils/generateCssVariables';
+import { generateGlobalTierCssVariables, generateSemanticTierCssVariables } from '../../utils/cssVariables';
 
 export const ClassicColors = createGlobalStyle`
   :root {

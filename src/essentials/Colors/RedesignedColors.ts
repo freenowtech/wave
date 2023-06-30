@@ -16,7 +16,7 @@ export const Colors = {
         secondary: {
             1000: 'hsla(346, 51%, 33%, 1)',
             900: 'hsla(347, 42%, 43%, 1)',
-            350: 'hsla(347, 42%, 43%, 1)',
+            350: 'hsla(349, 89%, 76%, 1)',
             150: 'hsla(351, 100%, 85%, 1)',
             100: 'hsla(352, 100%, 93%, 1)',
             50: 'hsla(9, 100%, 96%, 1)',
@@ -52,12 +52,10 @@ export const Colors = {
     transparent: 'transparent',
 } as const;
 
-// AUTHENTIC = primary now
-// ACTION = secondary now
 // Semantic Colors Tier (--wave-s-color-...)
 export const SemanticColors = {
     text: {
-        primary: Colors.blue.primary[900], // --wave-s-color-text-primary
+        primary: Colors.blue.primary[900],
         primaryInverted: Colors.white,
         secondary: Colors.blue.primary[550],
         secondaryInverted: Colors.blue.primary[200],
@@ -72,7 +70,8 @@ export const SemanticColors = {
         danger: Colors.orange[1000],
         dangerInverted: Colors.orange[900],
         success: Colors.green[900],
-        warning: Colors.yellow[900]
+        warning: Colors.yellow[900],
+        info: Colors.blue.primary[550],
     },
     background: {
         primary: {
@@ -80,7 +79,7 @@ export const SemanticColors = {
             emphasized: Colors.blue.primary[900],
             hover: Colors.blue.primary[1100],
             disabled: Colors.blue.primary[200],
-        },   
+        },
         secondary: {
             default: Colors.blue.primary[50],
             emphasized: Colors.blue.primary[550],
@@ -91,13 +90,13 @@ export const SemanticColors = {
             hover: Colors.orange[1000]
         },
         info: {
-            default: Colors.blue.secondary[50],
-            emphasized: Colors.blue.secondary[900],
+            default: Colors.blue.primary[50],
+            emphasized: Colors.blue.primary[550],
             hover: Colors.blue.secondary[350],
         },
         success: {
             default: Colors.green[50],
-            emphasized: Colors.green[900], 
+            emphasized: Colors.green[900],
         },
         warning: {
             default: Colors.yellow[50],
@@ -111,8 +110,8 @@ export const SemanticColors = {
             inverted:  Colors.white,
         },
         secondary: {
-            default: Colors.blue.primary[550],
-            inverted: Colors.blue.primary[200],
+            default: Colors.blue.primary[350],
+            inverted: Colors.blue.primary[50],
         },
         tertiary: {
             default: Colors.blue.primary[350],
@@ -131,16 +130,17 @@ export const SemanticColors = {
             emphasized: Colors.orange[1000],
         },
         success: Colors.green[900],
-        warning: Colors.yellow[900]
+        warning: Colors.yellow[900],
+        info: Colors.blue.primary[350],
     },
     border: {
         primary: {
-            default: Colors.blue.primary[900],
+            default: Colors.blue.primary[200],
             emphasized: Colors.blue.primary[1100],
-            inverted: Colors.white,
+            inverted: Colors.blue.primary[550],
         },
         secondary: {
-            default: Colors.blue.primary[200],
+            default: Colors.blue.primary[50],
             inverted: Colors.white,
         },
         disabled: {
@@ -148,8 +148,8 @@ export const SemanticColors = {
             inverted: Colors.blue.primary[550],
         },
         info: {
-            default: Colors.blue.secondary[350],
-            emphasized: Colors.blue.secondary[900],
+            default: Colors.blue.primary[200],
+            emphasized: Colors.blue.primary[550],
         },
         success: {
             default: Colors.green[350],
@@ -160,8 +160,8 @@ export const SemanticColors = {
             emphasized: Colors.yellow[900]
         },
         danger: {
-            default: Colors.orange[900],
-            emphasized: Colors.orange[1000],
+            default: Colors.orange[350],
+            emphasized: Colors.orange[900],
             disabled: Colors.orange[350],
         },
     },

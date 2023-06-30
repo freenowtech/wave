@@ -19,6 +19,7 @@ export interface SemanticColorsSchema {
         linkInverted: Color,
         linkHover: Color,
         linkHoverInverted: Color,
+        info: Color,
         danger: Color,
         dangerInverted: Color,
         success: Color,
@@ -82,6 +83,7 @@ export interface SemanticColorsSchema {
         },
         success: Color,
         warning: Color,
+        info: Color,
     },
     border: {
         primary: {
@@ -117,7 +119,8 @@ export interface SemanticColorsSchema {
     },
 }
 
-export type SemanticCssVariable = `--wave-s-color-${String.Join<List.Required<Object.Paths<SemanticColorsSchema>>, '-'>}`;
+export type SemanticCssToken = String.Join<List.Required<Object.Paths<SemanticColorsSchema>>, '-'>
+export type SemanticCssVariable = `--wave-s-color-${SemanticCssToken}`;
 
 export type ReadCssVariable = `var(${SemanticCssVariable})` | `var(${SemanticCssVariable}, ${string})`;
 

@@ -72,7 +72,8 @@ export const SemanticColors = {
         danger: Colors.orange[1000],
         dangerInverted: Colors.orange[900],
         success: Colors.green[900],
-        warning: Colors.yellow[900]
+        warning: Colors.yellow[900],
+        info: Colors.blue.secondary[900]
     },
     background: {
         primary: {
@@ -131,7 +132,8 @@ export const SemanticColors = {
             emphasized: Colors.orange[1000],
         },
         success: Colors.green[900],
-        warning: Colors.yellow[900]
+        warning: Colors.yellow[900],
+        info: Colors.blue.secondary[900]
     },
     border: {
         primary: {
