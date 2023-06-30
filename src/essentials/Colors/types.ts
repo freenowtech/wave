@@ -1,4 +1,4 @@
-import { O, S, L } from 'ts-toolbelt';
+import { Object, String, List } from 'ts-toolbelt';
 
 type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 type RGB = `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, ${number}, ${number})`;
@@ -117,7 +117,7 @@ export interface SemanticColorsSchema {
     },
 }
 
-export type SemanticCssVariable = `--${S.Join<L.Required<O.Paths<SemanticColorsSchema>>, '-'>}`;
+export type SemanticCssVariable = `--wave-s-color-${String.Join<List.Required<Object.Paths<SemanticColorsSchema>>, '-'>}`;
 
 export type ReadCssVariable = `var(${SemanticCssVariable})` | `var(${SemanticCssVariable}, ${string})`;
 

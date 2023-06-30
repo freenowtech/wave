@@ -7,12 +7,8 @@ const parseLevel = (tokenObject: TokenObject, path: string[] = [], tier?: string
         if (typeof value === 'object') {
             return parseLevel(value, [...path, key], tier);
         }
-        // eslint-disable-next-line no-console
-        console.log(`--wave-${tier}-${[...path, key].join('-')}: ${value};`)
         return `--wave-${tier}-${[...path, key].join('-')}: ${value};`;
     });
 
-// export const generateCssVariables = (tokens: TokenObject) => parseLevel(tokens, [], 'global');
-export const generateGlobalTierCssVariables = (tokens: TokenObject) => parseLevel(tokens, ['color'], 'g');
-export const generateSemanticTierCssVariables = (tokens: TokenObject) => parseLevel(tokens, ['color'], 's');
-export const generateComponentTierCssVariables = (tokens: TokenObject) => parseLevel(tokens, ['color'], 'c');
+export const generateGlobalTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> => parseLevel(tokens, ['color'], 'g');
+export const generateSemanticTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> => parseLevel(tokens, ['color'], 's');
