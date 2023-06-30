@@ -1,11 +1,11 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import { ButtonStyleProps, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 
 import { BaseButton, BaseButtonProps } from './BaseButton';
-import { Colors } from '../../essentials';
-import { ComponentSemanticTokens, ReadCssVariable } from '../../essentials/Colors/types';
+import { ComponentSemanticTokens } from '../../essentials/Colors/types';
+
+type Variant = 'primary' | 'secondary' | 'danger';
 
 interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
     /**
@@ -15,228 +15,131 @@ interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
     /**
      * Define style of the button component, defaults to primary
      */
-    variant?: ResponsiveValue<'primary' | 'secondary' | 'danger'>;
+    variant?: ResponsiveValue<Variant>;
 }
 
-const ButtonSemanticTokens: ComponentSemanticTokens = {
-    primary: {
-        text: 'var(--text-primaryInverted)',
-        icon: 'var(--icon-primaryInverted)',
-        background: 'var(--background-primaryEmphasized)',
-        border: 'var(--background-primaryEmphasized)', // no matching border token!
-
-        textHover: 'var(--text-primaryInverted)',
-        iconHover: 'var(--icon-primaryInverted)',
-        backgroundHover: Colors.AUTHENTIC_BLUE_1100, // ??
-        borderHover: Colors.AUTHENTIC_BLUE_1100,
-
-        textDisabled: 'var(--text-primaryInverted)',
-        iconDisabled: 'var(--icon-primaryInverted)',
-        backgroundDisabled: Colors.AUTHENTIC_BLUE_200,
-        borderDisabled: Colors.AUTHENTIC_BLUE_200,
-
-        textInverted: Colors.ACTION_BLUE_900,
-        iconInverted: Colors.ACTION_BLUE_900,
-        backgroundInverted: Colors.WHITE,
-        borderInverted: Colors.WHITE,
-
-        textHoverInverted: 'var(--text-primaryInverted)',
-        iconHoverInverted: 'var(--icon-primaryInverted)',
-        backgroundHoverInverted: Colors.ACTION_BLUE_900,
-        borderHoverInverted: Colors.ACTION_BLUE_900,
-
-        textDisabledInverted: Colors.AUTHENTIC_BLUE_350,
-        iconDisabledInverted: Colors.AUTHENTIC_BLUE_350,
-        backgroundDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-        borderDisabledInverted: Colors.AUTHENTIC_BLUE_550
-    },
-    secondary: {
-        text: Colors.AUTHENTIC_BLUE_900,
-        icon: Colors.AUTHENTIC_BLUE_900,
-        background: Colors.WHITE,
-        border: Colors.AUTHENTIC_BLUE_200,
-
-        textHover: Colors.AUTHENTIC_BLUE_900,
-        iconHover: Colors.AUTHENTIC_BLUE_900,
-        backgroundHover: Colors.AUTHENTIC_BLUE_50,
-        borderHover: Colors.AUTHENTIC_BLUE_200,
-
-        textDisabled: Colors.AUTHENTIC_BLUE_200,
-        iconDisabled: Colors.AUTHENTIC_BLUE_200,
-        backgroundDisabled: Colors.WHITE,
-        borderDisabled: Colors.AUTHENTIC_BLUE_200,
-
-        textInverted: Colors.WHITE,
-        iconInverted: Colors.WHITE,
-        backgroundInverted: 'transparent',
-        borderInverted: Colors.WHITE,
-
-        textHoverInverted: Colors.AUTHENTIC_BLUE_900,
-        iconHoverInverted: Colors.AUTHENTIC_BLUE_900,
-        backgroundHoverInverted: Colors.WHITE,
-        borderHoverInverted: Colors.WHITE,
-
-        textDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-        iconDisabledInverted: Colors.AUTHENTIC_BLUE_550,
-        backgroundDisabledInverted: 'transparent',
-        borderDisabledInverted: Colors.AUTHENTIC_BLUE_550
-    },
-    danger: {
-        text: Colors.WHITE,
-        icon: Colors.WHITE,
-        background: Colors.NEGATIVE_ORANGE_900,
-        border: Colors.NEGATIVE_ORANGE_900,
-
-        textHover: Colors.WHITE,
-        iconHover: Colors.WHITE,
-        backgroundHover: Colors.NEGATIVE_ORANGE_1000,
-        borderHover: Colors.NEGATIVE_ORANGE_1000,
-
-        textDisabled: Colors.WHITE,
-        iconDisabled: Colors.WHITE,
-        backgroundDisabled: Colors.AUTHENTIC_BLUE_200,
-        borderDisabled: Colors.AUTHENTIC_BLUE_200,
-
-        textInverted: Colors.WHITE,
-        iconInverted: Colors.WHITE,
-        backgroundInverted: Colors.NEGATIVE_ORANGE_900,
-        borderInverted: Colors.NEGATIVE_ORANGE_900,
-
-        textHoverInverted: Colors.WHITE,
-        iconHoverInverted: Colors.WHITE,
-        backgroundHoverInverted: Colors.NEGATIVE_ORANGE_1000,
-        borderHoverInverted: Colors.NEGATIVE_ORANGE_1000,
-
-        textDisabledInverted: Colors.WHITE,
-        iconDisabledInverted: Colors.WHITE,
-        backgroundDisabledInverted: Colors.AUTHENTIC_BLUE_200,
-        borderDisabledInverted: Colors.AUTHENTIC_BLUE_200
-    }
-};
-
-const variantStyles = variant({
+const variantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: 'var(--button-primary-text)',
-            fill: 'var(--button-primary-icon)',
-            background: 'var(--button-primary-background)',
-            borderColor: 'var(--button-primary-border)',
+            color: 'var(--wave-s-color-text-primaryInverted)',
+            fill: 'var(--wave-s-color-icon-primary-inverted)',
+            background: 'var(--wave-s-color-background-primary-emphasized)',
+            borderColor: 'var(--wave-s-color-border-primary-default)',
 
             '&:hover': {
-                color: 'var(--button-primary-textHover)',
-                fill: 'var(--button-primary-iconHover)',
-                background: 'var(--button-primary-backgroundHover)',
-                borderColor: 'var(--button-primary-borderHover)'
+                color: 'var(--wave-s-color-text-primaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-primary-hover)',
+                borderColor: 'var(--wave-s-color-border-primary-emphasized)'
             },
 
             '&:disabled': {
-                color: 'var(--button-primary-textDisabled)',
-                fill: 'var(--button-primary-iconDisabled)',
-                background: 'var(--button-primary-backgroundDisabled)',
-                borderColor: 'var(--button-primary-borderDisabled)'
+                color: 'var(--wave-s-color-text-primaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-primary-disabled)',
+                borderColor: 'var(--wave-s-color-border-disabled-default)'
             }
         },
         secondary: {
-            color: 'var(--button-secondary-text)',
-            fill: 'var(--button-secondary-icon)',
-
-            background: 'var(--button-secondary-background)',
-            borderColor: 'var(--button-secondary-border)',
+            color: 'var(--wave-s-color-text-primary)',
+            fill: 'var(--wave-s-color-icon-primary-default)',
+            background: 'var(--wave-s-color-background-primary-default)',
+            borderColor: 'var(--wave-s-color-border-secondary-default)',
 
             '&:hover': {
-                color: 'var(--button-secondary-textHover)',
-                fill: 'var(--button-secondary-iconHover)',
-                background: 'var(--button-secondary-backgroundHover)',
-                borderColor: 'var(--button-secondary-borderHover)'
+                color: 'var(--wave-s-color-text-primary)',
+                fill: 'var(--wave-s-color-icon-primary-default)',
+                background: 'var(--wave-s-color-background-secondary-default)',
+                borderColor: 'var(--wave-s-color-border-secondary-default)'
             },
 
             '&:disabled': {
-                color: 'var(--button-secondary-textDisabled)',
-                fill: 'var(--button-secondary-iconDisabled)',
-                background: 'var(--button-secondary-backgroundDisabled)',
-                borderColor: 'var(--button-secondary-borderDisabled)'
+                color: 'var(--wave-s-color-text-disabled)',
+                fill: 'var(--wave-s-color-icon-disabled-default)',
+                background: 'var(--wave-s-color-background-primary-default)',
+                borderColor: 'var(--wave-s-color-border-disabled-default)'
             }
         },
         danger: {
-            color: 'var(--button-danger-text)',
-            fill: 'var(--button-danger-icon)',
-            background: 'var(--button-danger-background)',
-            borderColor: 'var(--button-danger-border)',
+            color: 'var(--wave-s-color-text-primaryInverted)',
+            fill: 'var(--wave-s-color-icon-primary-inverted)',
+            background: 'var(--wave-s-color-background-danger-emphasized)',
+            borderColor: 'var(--wave-s-color-border-danger-default)',
 
             '&:hover': {
-                color: 'var(--button-danger-textHover)',
-                fill: 'var(--button-danger-iconHover)',
-                background: 'var(--button-danger-backgroundHover)',
-                borderColor: 'var(--button-danger-borderHover)'
+                color: 'var(--wave-s-color-text-primaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-danger-hover)',
+                borderColor: 'var(--wave-s-color-border-danger-emphasized)'
             },
 
             '&:disabled': {
-                color: 'var(--button-danger-textDisabled)',
-                fill: 'var(--button-danger-iconDisabled)',
-                background: 'var(--button-danger-backgroundDisabled)',
-                borderColor: 'var(--button-danger-borderDisabled)'
+                color: 'var(--wave-s-color-text-primaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-primary-disabled)',
+                borderColor: 'var(--wave-s-color-border-disabled-default)'
             }
         }
     }
 });
 
-const invertedVariantStyles = variant({
+const invertedVariantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: 'var(--button-primary-textInverted)',
-            fill: 'var(--button-primary-iconInverted)',
-            background: 'var(--button-primary-backgroundInverted)',
-            borderColor: 'var(--button-primary-borderInverted)',
+            color: 'var(--wave-s-color-text-primary)',
+            fill: 'var(--wave-s-color-icon-primary-default)',
+            background: 'var(--wave-s-color-background-primary-default)',
+            borderColor: 'var(--wave-s-color-border-primary-inverted)',
 
             '&:hover': {
-                color: 'var(--button-primary-textHoverInverted)',
-                fill: 'var(--button-primary-iconHoverInverted)',
-                background: 'var(--button-primary-backgroundHoverInverted)',
-                borderColor: 'var(--button-primary-borderHoverInverted)'
+                color: 'var(--wave-s-color-text-tertiaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-primary-emphasized)',
+                borderColor: 'var(--wave-s-color-border-primary-default)'
             },
             '&:disabled': {
-                color: 'var(--button-primary-textDisabledInverted)',
-                fill: 'var(--button-primary-iconDisabledInverted)',
-                background: 'var(--button-primary-backgroundDisabledInverted)',
-                borderColor: 'var(--button-primary-borderDisabledInverted)'
+                color: 'var(--wave-s-color-text-tertiaryInverted)',
+                fill: 'var(--wave-s-color-icon-tertiary-default)',
+                background: 'var(--wave-s-color-background-secondary-emphasized)',
+                borderColor: 'var(--wave-s-color-border-disabled-inverted)'
             }
         },
         secondary: {
-            color: 'var(--button-secondary-textInverted)',
-            fill: 'var(--button-secondary-iconInverted)',
-            background: 'var(--button-secondary-backgroundInverted)',
-            borderColor: 'var(--button-secondary-borderInverted)',
+            color: 'var(--wave-s-color-text-primaryInverted)',
+            fill: 'var(--wave-s-color-icon-primary-inverted)',
+            background: 'var(--wave-s-color-background-transparent)',
+            borderColor: 'var(--wave-s-color-border-secondary-inverted)',
 
             '&:hover': {
-                color: 'var(--button-secondary-textHoverInverted)',
-                fill: 'var(--button-secondary-iconHoverInverted)',
-                background: 'var(--button-secondary-backgroundHoverInverted)',
-                borderColor: 'var(--button-secondary-borderHoverInverted)'
+                color: 'var(--wave-s-color-text-primary)',
+                fill: 'var(--wave-s-color-icon-primary-default)',
+                background: 'var(--wave-s-color-background-primary-default)',
+                borderColor: 'var(--wave-s-color-border-secondary-inverted)'
             },
             '&:disabled': {
-                color: 'var(--button-secondary-textDisabledInverted)',
-                fill: 'var(--button-secondary-iconDisabledInverted)',
-                background: 'var(--button-secondary-backgroundDisabledInverted)',
-                borderColor: 'var(--button-secondary-borderDisabledInverted)'
+                color: 'var(--wave-s-color-text-disabledInverted)',
+                fill: 'var(--wave-s-color-icon-disabled-inverted)',
+                background: 'var(--wave-s-color-background-transparent)',
+                borderColor: 'var(--wave-s-color-border-disabled-inverted)'
             }
         },
         danger: {
-            color: 'var(--button-danger-textInverted)',
-            fill: 'var(--button-danger-iconInverted)',
-            background: 'var(--button-danger-backgroundInverted)',
-            borderColor: 'var(--button-danger-borderInverted)',
+            color: 'var(--wave-s-color-text-primaryInverted)',
+            fill: 'var(--wave-s-color-icon-primary-inverted)',
+            background: 'var(--wave-s-color-background-danger-emphasized)',
+            borderColor: 'var(--wave-s-color-border-danger-default)',
 
             '&:hover': {
-                color: 'var(--button-danger-textHoverInverted)',
-                fill: 'var(--button-danger-iconHoverInverted)',
-                background: 'var(--button-danger-backgroundHoverInverted)',
-                borderColor: 'var(--button-danger-borderHoverInverted)'
+                color: 'var(--wave-s-color-text-primaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-danger-hover)',
+                borderColor: 'var(--wave-s-color-border-danger-emphasized)'
             },
             '&:disabled': {
-                color: 'var(--button-danger-textDisabledInverted)',
-                fill: 'var(--button-danger-iconDisabledInverted)',
-                background: 'var(--button-danger-backgroundDisabledInverted)',
-                borderColor: 'var(--button-danger-borderDisabledInverted)'
+                color: 'var(--wave-s-color-text-primaryInverted)',
+                fill: 'var(--wave-s-color-icon-primary-inverted)',
+                background: 'var(--wave-s-color-background-primary-disabled)',
+                borderColor: 'var(--wave-s-color-border-disabled-default)'
             }
         }
     }

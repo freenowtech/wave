@@ -1,9 +1,10 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import { ResponsiveValue, variant } from 'styled-system';
-import { get } from '../../utils/themeGet';
 
 import { BaseButton, BaseButtonProps } from './BaseButton';
+import { ComponentSemanticTokens } from '../../essentials/Colors/types';
+
+type Variant = 'default' | 'danger';
 
 interface TextButtonProps extends BaseButtonProps {
     /**
@@ -13,70 +14,70 @@ interface TextButtonProps extends BaseButtonProps {
     /**
      * Define base colors
      */
-    variant?: ResponsiveValue<'default' | 'danger'>;
+    variant?: ResponsiveValue<Variant>;
 }
 
-const variantStyles = variant({
+const variantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         default: {
-            color: get('semanticColors.textButton.primary.text'),
-            fill: get('semanticColors.textButton.primary.icon'),
+            color: 'var(--wave-s-color-text-link)',
+            fill: 'var(--wave-s-color-icon-action-default)',
 
             '&:hover': {
-                color: get('semanticColors.textButton.primary.textHover'),
-                fill: get('semanticColors.textButton.primary.iconHover')
+                color: 'var(--wave-s-color-text-linkHover)',
+                fill: 'var(--wave-s-color-icon-action-emphasized)'
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.primary.textDisabled'),
-                fill: get('semanticColors.textButton.primary.iconDisabled')
+                color: 'var(--wave-s-color-text-disabled)',
+                fill: 'var(--wave-s-color-icon-disabled-default)'
             }
         },
         danger: {
-            color: get('semanticColors.textButton.danger.text'),
-            fill: get('semanticColors.textButton.danger.icon'),
+            color: 'var(--wave-s-color-text-dangerInverted)',
+            fill: 'var(--wave-s-color-icon-danger-default)',
 
             '&:hover': {
-                color: get('semanticColors.textButton.danger.textHover'),
-                fill: get('semanticColors.textButton.danger.iconHover')
+                color: 'var(--wave-s-color-text-danger)',
+                fill: 'var(--wave-s-color-icon-danger-emphasized)'
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.danger.textDisabled'),
-                fill: get('semanticColors.textButton.danger.iconDisabled')
+                color: 'var(--wave-s-color-text-disabled)',
+                fill: 'var(--wave-s-color-icon-disabled-default)'
             }
         }
     }
 });
 
-const invertedVariantStyles = variant({
+const invertedVariantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         default: {
-            color: get('semanticColors.textButton.primary.textInverted'),
-            fill: get('semanticColors.textButton.primary.iconInverted'),
+            color: 'var(--wave-s-color-text-linkInverted)',
+            fill: 'var(--wave-s-color-icon-primary-inverted)',
 
             '&:hover': {
-                color: get('semanticColors.textButton.primary.textHoverInverted'),
-                fill: get('semanticColors.textButton.primary.iconHoverInverted')
+                color: 'var(--wave-s-color-text-tertiary)',
+                fill: 'var(--wave-s-color-icon-tertiary-inverted)'
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.primary.textDisabledInverted'),
-                fill: get('semanticColors.textButton.primary.iconDisabledInverted')
+                color: 'var(--wave-s-color-text-disabledInverted)',
+                fill: 'var(--wave-s-color-icon-disabled-inverted)'
             }
         },
         danger: {
-            color: get('semanticColors.textButton.danger.textInverted'),
-            fill: get('semanticColors.textButton.danger.iconInverted'),
+            color: 'var(--wave-s-color-text-dangerInverted)',
+            fill: 'var(--wave-s-color-icon-danger-default)',
 
             '&:hover': {
-                color: get('semanticColors.textButton.danger.textHoverInverted'),
-                fill: get('semanticColors.textButton.danger.iconHoverInverted')
+                color: 'var(--wave-s-color-text-danger)',
+                fill: 'var(--wave-s-color-icon-danger-emphasized)'
             },
 
             '&:disabled': {
-                color: get('semanticColors.textButton.danger.textDisabledInverted'),
-                fill: get('semanticColors.textButton.danger.iconDisabledInverted')
+                color: 'var(--wave-s-color-text-disabledInverted)',
+                fill: 'var(--wave-s-color-icon-disabled-inverted)'
             }
         }
     }
