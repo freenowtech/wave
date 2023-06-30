@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-
-import { Colors } from '../../essentials/Colors/Colors';
 import { Spaces } from '../../essentials/Spaces/Spaces';
 import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons';
 import { Box } from '../Box/Box';
 import { SelectList } from '../SelectList/SelectList';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const Container = styled.div`
     text-align: center;
@@ -19,8 +18,8 @@ const ButtonsContainer = styled(Box)`
 
 const IconButton = styled.button`
     align-items: center;
-    background-color: ${Colors.WHITE};
-    border: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_200};
+    background-color: ${getSemanticValue('background-primary-default')};
+    border: 0.0625rem solid ${getSemanticValue('border-secondary-default')};
     border-radius: 0.25rem;
     display: inline-flex;
     height: 2.5rem;
@@ -33,7 +32,7 @@ const IconButton = styled.button`
     }
 
     &:hover:not(:disabled) {
-        background-color: ${Colors.AUTHENTIC_BLUE_50};
+        background-color: ${getSemanticValue('background-secondary-default')};
         cursor: pointer;
     }
 `;
@@ -147,7 +146,11 @@ const Pagination: React.FC<PaginationProps> = ({
                     <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
                         <BackwardLastIcon
                             size="small"
-                            color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
+                            color={
+                                isFirstPage
+                                    ? getSemanticValue('icon-disabled-default')
+                                    : getSemanticValue('icon-primary-default')
+                            }
                         />
                     </IconButton>
                 )}
@@ -155,14 +158,22 @@ const Pagination: React.FC<PaginationProps> = ({
                 <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
                     <BackwardIcon
                         size="small"
-                        color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
+                        color={
+                            isFirstPage
+                                ? getSemanticValue('icon-disabled-default')
+                                : getSemanticValue('icon-primary-default')
+                        }
                     />
                 </IconButton>
 
                 <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
                     <ForwardIcon
                         size="small"
-                        color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
+                        color={
+                            isLastPage
+                                ? getSemanticValue('icon-disabled-default')
+                                : getSemanticValue('icon-primary-default')
+                        }
                     />
                 </IconButton>
 
@@ -170,7 +181,11 @@ const Pagination: React.FC<PaginationProps> = ({
                     <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
                         <ForwardLastIcon
                             size="small"
-                            color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
+                            color={
+                                isLastPage
+                                    ? getSemanticValue('icon-disabled-default')
+                                    : getSemanticValue('icon-primary-default')
+                            }
                         />
                     </IconButton>
                 )}
