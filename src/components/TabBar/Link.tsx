@@ -37,6 +37,7 @@ const InnerLink = styled.a.attrs({ theme })<LinkProps>`
     cursor: pointer;
     font-size: ${get('fontSizes.1')};
     font-weight: ${get('fontWeights.semibold')};
+    font-family: ${get('fonts.normal')};
     margin-right: ${Spaces[3]};
     text-decoration: none;
 
