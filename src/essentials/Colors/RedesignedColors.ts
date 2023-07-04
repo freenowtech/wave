@@ -85,6 +85,10 @@ export const SemanticColors = {
             default: Colors.blue.primary[50],
             emphasized: Colors.blue.primary[550],
         },
+        tertiary: {
+            default:Colors.blue.primary[200],
+            disabled: Colors.blue.primary[50],
+        },
         danger: {
             default: Colors.orange[50],
             emphasized: Colors.orange[900],
@@ -103,6 +107,7 @@ export const SemanticColors = {
             default: Colors.yellow[50],
             emphasized: Colors.yellow[900],
         },
+        highlight: Colors.red[900],
         transparent: Colors.transparent,
     },
     icon: {
@@ -167,7 +172,7 @@ export const SemanticColors = {
         },
         danger: {
             default: Colors.orange[350],
-            emphasized: Colors.orange[900],
+            emphasized: Colors.red[900],
             disabled: Colors.orange[350],
         },
         transparent: Colors.transparent,

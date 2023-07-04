@@ -39,3 +39,9 @@ export const WithLabel: Story = {
         label: 'Turn on the light'
     }
 };
+
+export const Disabled: Story = {
+    args: {
+        disabled: true
+    }
+}

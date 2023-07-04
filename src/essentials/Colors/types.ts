@@ -37,6 +37,10 @@ export interface SemanticColorsSchema {
             default: Color,
             emphasized: Color,
         },
+        tertiary: {
+            default:Color,
+            disabled: Color,
+        },
         danger: {
             default: Color,
             emphasized: Color,
@@ -55,6 +59,7 @@ export interface SemanticColorsSchema {
             default: Color,
             emphasized: Color,
         },
+        highlight: Color,
         transparent: 'transparent',
     },
     icon: {
