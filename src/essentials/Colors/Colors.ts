@@ -115,6 +115,8 @@ export const SemanticColors = {
         secondary: {
             default: Colors.blue.primary[550],
             inverted: Colors.blue.primary[200],
+            hover: Colors.blue.primary[900],
+            hoverInverted: Colors.blue.primary[50],
         },
         tertiary: {
             default: Colors.blue.primary[350],

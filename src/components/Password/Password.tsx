@@ -1,14 +1,14 @@
 import React, { forwardRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { compose, MarginProps, margin, width, WidthProps } from 'styled-system';
-import { EyeOpenIcon, EyeClosedIcon } from '../../icons';
+import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import { EyeClosedIcon, EyeOpenIcon } from '../../icons';
 import { InnerInput as Input } from '../Input/InnerInput';
 import { InputProps } from '../Input/InputProps';
 import { InputWrapperProps } from '../Input/InputWrapper';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
-import { Colors } from '../../essentials/Colors/Colors';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { ToggleButton } from './ToggleButton';
 import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 import { extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
@@ -51,9 +51,23 @@ const defaultAriaStrings = {
 };
 
 const iconColors = {
-    regular: { color: Colors.AUTHENTIC_BLUE_550, hover: Colors.AUTHENTIC_BLUE_900 },
-    inverted: { color: Colors.AUTHENTIC_BLUE_200, hover: Colors.AUTHENTIC_BLUE_50 }
+    regular: {
+        color: getSemanticValue('icon-secondary-default'),
+        hover: getSemanticValue('icon-secondary-hover')
+    },
+    inverted: {
+        color: getSemanticValue('icon-secondary-inverted'),
+        hover: getSemanticValue('icon-secondary-hoverInverted')
+    }
 };
+
+// allow component level CSS variables to be passed via `style` prop
+declare module 'csstype' {
+    interface Properties {
+        '--wave-c-password-color'?: string;
+        '--wave-c-password-color-hover'?: string;
+    }
+}
 
 const Password = forwardRef<HTMLDivElement, PasswordProps>(
     (
@@ -105,9 +119,8 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
                             style={{
-                                // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
-                                ['--color' as never]: color,
-                                ['--hover-color' as never]: hover
+                                '--wave-c-password-color': color,
+                                '--wave-c-password-color-hover': hover
                             }}
                         >
                             {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}

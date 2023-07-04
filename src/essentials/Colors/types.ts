@@ -65,6 +65,8 @@ export interface SemanticColorsSchema {
         secondary: {
             default: Color,
             inverted: Color,
+            hover: Color,
+            hoverInverted: Color,
         },
         tertiary: {
             default: Color,
