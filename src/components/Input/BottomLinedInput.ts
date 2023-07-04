@@ -1,20 +1,21 @@
 import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { Colors } from '../../essentials';
 import { BaseInput, InternalInputComponentProps } from './BaseInput';
 import { activeBottomLinedPosition, BottomLinedInputLabel } from './BottomLinedInputLabel';
+import { getSemanticValue } from '../../utils/cssVariables';
+import { InputProps } from './InputProps';
 
 const errorStyles = css`
-    box-shadow: inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900};
-    border-color: ${Colors.NEGATIVE_ORANGE_900};
+    box-shadow: inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-emphasized')};
+    border-color: ${getSemanticValue('border-danger-emphasized')};
 
     & ~ ${BottomLinedInputLabel} {
-        color: ${Colors.NEGATIVE_ORANGE_900};
+        color: ${getSemanticValue('text-dangerInverted')};
     }
 `;
 
-const sizeVariant = variant({
+const sizeVariant = variant<Record<string, unknown>, InputProps['size']>({
     prop: 'size',
     variants: {
         small: {
@@ -30,28 +31,28 @@ const sizeVariant = variant({
 
 const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     if (inverted) {
-        return Colors.AUTHENTIC_BLUE_200;
+        return getSemanticValue('text-secondaryInverted');
     }
 
     if (hasValue) {
-        return Colors.AUTHENTIC_BLUE_550;
+        return getSemanticValue('text-secondary');
     }
 
-    return Colors.AUTHENTIC_BLUE_350;
+    return getSemanticValue('text-tertiary');
 };
 
 const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
     & ~ ${BottomLinedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>) : '')};
+        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
         color: ${getLabelColor};
-        background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+        background: ${p => getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
     &:disabled {
         & ~ ${BottomLinedInputLabel} {
-            color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+            color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
         }
     }
 
@@ -60,15 +61,16 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
+            ${p => activeBottomLinedPosition(p.size)};
         }
     }
 
     &:focus:not(:disabled) {
         & ~ ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size as Pick<InternalInputComponentProps, 'size'>)};
-            color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
-            background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+            ${p => activeBottomLinedPosition(p.size)};
+            color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-info')};
+            background: ${p =>
+                getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
         }
     }
 `;

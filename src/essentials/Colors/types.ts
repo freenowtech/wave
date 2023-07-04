@@ -28,6 +28,7 @@ export interface SemanticColorsSchema {
     background: {
         primary: {
             default: Color,
+            inverted: Color,
             emphasized: Color,
             hover: Color,
             disabled: Color,

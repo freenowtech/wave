@@ -78,6 +78,7 @@ export const SemanticColors = {
     background: {
         primary: {
             default: Colors.white,
+            inverted: Colors.blue.primary[900],
             emphasized: Colors.blue.primary[900],
             hover: Colors.blue.primary[1100],
             disabled: Colors.blue.primary[200],
@@ -137,12 +138,12 @@ export const SemanticColors = {
     },
     border: {
         primary: {
-            default: Colors.blue.primary[900],
+            default: Colors.blue.primary[200],
             emphasized: Colors.blue.primary[1100],
-            inverted: Colors.white,
+            inverted: Colors.blue.primary[550],
         },
         secondary: {
-            default: Colors.blue.primary[200],
+            default: Colors.blue.primary[50],
             inverted: Colors.white,
         },
         disabled: {
@@ -162,8 +163,8 @@ export const SemanticColors = {
             emphasized: Colors.yellow[900]
         },
         danger: {
-            default: Colors.orange[900],
-            emphasized: Colors.orange[1000],
+            default: Colors.orange[350],
+            emphasized: Colors.orange[900],
             disabled: Colors.orange[350],
         },
     },

@@ -76,6 +76,7 @@ export const SemanticColors = {
     background: {
         primary: {
             default: Colors.white,
+            inverted: Colors.blue.primary[900],
             emphasized: Colors.blue.primary[900],
             hover: Colors.blue.primary[1100],
             disabled: Colors.blue.primary[200],
