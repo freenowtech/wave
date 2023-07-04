@@ -146,6 +146,9 @@ export const SemanticColors = {
             default: Colors.blue.primary[50],
             inverted: Colors.white,
         },
+        focus: {
+            default: Colors.blue.primary[550]
+        },
         disabled: {
             default: Colors.blue.primary[200],
             inverted: Colors.blue.primary[550],
@@ -167,5 +170,6 @@ export const SemanticColors = {
             emphasized: Colors.orange[900],
             disabled: Colors.orange[350],
         },
+        transparent: Colors.transparent,
     },
 } satisfies SemanticColorsSchema

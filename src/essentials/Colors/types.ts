@@ -98,6 +98,9 @@ export interface SemanticColorsSchema {
             default: Color,
             inverted: Color,
         },
+        focus: {
+            default: Color,
+        },
         disabled: {
             default: Color,
             inverted: Color,
@@ -119,6 +122,7 @@ export interface SemanticColorsSchema {
             emphasized: Color,
             disabled: Color,
         },
+        transparent: 'transparent'
     },
 }
 

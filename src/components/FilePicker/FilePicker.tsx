@@ -1,9 +1,10 @@
 import React, { ComponentPropsWithoutRef, FC, MouseEventHandler, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MarginProps } from 'styled-system';
-import { Colors, MediaQueries } from '../../essentials';
+import { MediaQueries } from '../../essentials';
 import { CheckCircleOutlineIcon, ShareIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { Box, BoxProps } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { Text } from '../Text/Text';
@@ -59,7 +60,7 @@ const InputButton = styled(Button)`
     white-space: nowrap;
 `;
 
-const ICON_FILE_FEEDBACK_COLOR = Colors.POSITIVE_GREEN_900;
+const ICON_FILE_FEEDBACK_COLOR = getSemanticValue('icon-success');
 
 interface OutlinerProps extends BoxProps {
     disabled: boolean;
@@ -69,7 +70,7 @@ interface OutlinerProps extends BoxProps {
 
 // NOTE: we want to affect the color of only one icon SVG and not the ICON_FILE_FEEDBACK_COLOR
 const Outliner = styled(Box)<OutlinerProps>`
-    border: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_200};
+    border: 0.0625rem solid ${getSemanticValue('border-primary-default')};
     box-sizing: border-box;
     cursor: pointer;
     position: relative;
@@ -93,8 +94,8 @@ const Outliner = styled(Box)<OutlinerProps>`
     ${({ error }) =>
         error &&
         css`
-            box-shadow: inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900};
-            border-color: ${Colors.NEGATIVE_ORANGE_900};
+            box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-emphasized')};
+            border-color: ${getSemanticValue('border-transparent')};
         `}
 
     ${({ hasValidFile }) =>
@@ -102,11 +103,11 @@ const Outliner = styled(Box)<OutlinerProps>`
         css`
             ${MediaQueries.medium} {
                 &:hover {
-                    background-color: ${Colors.ACTION_BLUE_50};
-                    border-color: ${Colors.ACTION_BLUE_50};
+                    background-color: ${getSemanticValue('background-info-default')};
+                    border-color: ${getSemanticValue('background-transparent')};
 
-                    svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
-                        fill: ${Colors.ACTION_BLUE_900};
+                    svg:not([color='${ICON_FILE_FEEDBACK_COLOR}']) path {
+                        fill: ${getSemanticValue('icon-action-default')};
                     }
                 }
             }
@@ -123,8 +124,8 @@ const Input = styled.input`
     outline: none;
 
     &:focus + ${Outliner} {
-        border-color: ${Colors.ACTION_BLUE_900};
-        box-shadow: inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900};
+        border-color: ${getSemanticValue('border-focus-default')};
+        box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')};
     }
 `;
 
