@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
 import { Text } from '../Text/Text';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface LabelProps extends MarginProps {
     /**
@@ -21,29 +21,29 @@ interface LabelProps extends MarginProps {
 const normalVariantStyles = variant({
     variants: {
         default: {
-            color: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.AUTHENTIC_BLUE_200,
-            backgroundColor: Colors.AUTHENTIC_BLUE_50
+            color: getSemanticValue('text-primary'),
+            borderColor: getSemanticValue('border-primary-default'),
+            backgroundColor: getSemanticValue('background-secondary-default')
         },
         info: {
-            color: Colors.ACTION_BLUE_900,
-            borderColor: Colors.ACTION_BLUE_350,
-            backgroundColor: Colors.ACTION_BLUE_50
+            color: getSemanticValue('overrides-label-text-link'),
+            borderColor: getSemanticValue('border-info-default'),
+            backgroundColor: getSemanticValue('background-info-default')
         },
         success: {
-            color: Colors.POSITIVE_GREEN_1000,
-            borderColor: Colors.POSITIVE_GREEN_350,
-            backgroundColor: Colors.POSITIVE_GREEN_50
+            color: getSemanticValue('text-success'),
+            borderColor: getSemanticValue('border-success-default'),
+            backgroundColor: getSemanticValue('background-success-default')
         },
         warning: {
-            color: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.ATTENTION_YELLOW_350,
-            backgroundColor: Colors.ATTENTION_YELLOW_50
+            color: getSemanticValue('text-primary'),
+            borderColor: getSemanticValue('border-warning-emphasized'),
+            backgroundColor: getSemanticValue('background-warning-default')
         },
         danger: {
-            color: Colors.NEGATIVE_ORANGE_1000,
-            borderColor: Colors.NEGATIVE_ORANGE_350,
-            backgroundColor: Colors.NEGATIVE_ORANGE_50
+            color: getSemanticValue('text-danger'),
+            borderColor: getSemanticValue('border-danger-default'),
+            backgroundColor: getSemanticValue('background-danger-default')
         }
     }
 });
@@ -51,29 +51,29 @@ const normalVariantStyles = variant({
 const filledVariantStyles = variant({
     variants: {
         default: {
-            color: Colors.WHITE,
-            borderColor: Colors.AUTHENTIC_BLUE_350,
-            backgroundColor: Colors.AUTHENTIC_BLUE_350
+            color: getSemanticValue('text-primaryInverted'),
+            borderColor: getSemanticValue('border-transparent'),
+            backgroundColor: getSemanticValue('overrides-label-background-secondary-emphasized')
         },
         info: {
-            color: Colors.WHITE,
-            borderColor: Colors.ACTION_BLUE_900,
-            backgroundColor: Colors.ACTION_BLUE_900
+            color: getSemanticValue('text-primaryInverted'),
+            borderColor: getSemanticValue('border-transparent'),
+            backgroundColor: getSemanticValue('overrides-label-background-info-emphasized')
         },
         success: {
-            color: Colors.WHITE,
-            borderColor: Colors.POSITIVE_GREEN_900,
-            backgroundColor: Colors.POSITIVE_GREEN_900
+            color: getSemanticValue('text-primaryInverted'),
+            borderColor: getSemanticValue('border-transparent'),
+            backgroundColor: getSemanticValue('background-success-emphasized')
         },
         warning: {
-            color: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.ATTENTION_YELLOW_900,
-            backgroundColor: Colors.ATTENTION_YELLOW_900
+            color: getSemanticValue('text-primary'),
+            borderColor: getSemanticValue('border-transparent'),
+            backgroundColor: getSemanticValue('background-warning-emphasized')
         },
         danger: {
-            color: Colors.WHITE,
-            borderColor: Colors.NEGATIVE_ORANGE_900,
-            backgroundColor: Colors.NEGATIVE_ORANGE_900
+            color: getSemanticValue('text-primaryInverted'),
+            borderColor: getSemanticValue('border-transparent'),
+            backgroundColor: getSemanticValue('background-danger-emphasized')
         }
     }
 });

@@ -25,6 +25,9 @@ export interface SemanticColorsSchema {
         success: Color,
         warning: Color,
     },
+    overrides: {
+        label: Object.Partial<SemanticColorsSchema, 'deep'>,
+    },
     background: {
         primary: {
             default: Color,
@@ -32,7 +35,7 @@ export interface SemanticColorsSchema {
             emphasized: Color,
             hover: Color,
             disabled: Color,
-        },   
+        },
         secondary: {
             default: Color,
             emphasized: Color,
