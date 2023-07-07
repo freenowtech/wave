@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { Dimming } from '../../Dimming/Dimming';
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TRANSITION_KEY = 'dimming-fade-animation';
 const ANIMATION_DURATION = 200;
@@ -28,7 +28,7 @@ const fadeInAnimation = (maxOpacity = 0.6) => css`
 `;
 
 const fullscreenDimming = css`
-    background-color: ${Colors.WHITE};
+    background-color: ${getSemanticValue('background-primary-default')};
     opacity: 1;
 `;
 
