@@ -14,9 +14,9 @@ import {
     width,
     WidthProps
 } from 'styled-system';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 type CardProps = BorderRadiusProps &
     HeightProps &
@@ -51,7 +51,7 @@ const levelVariant = variant({
 const Card: StyledComponent<'div', typeof theme, CardProps, 'theme'> = styled.div.attrs({ theme })`
     overflow: auto;
     box-sizing: border-box;
-    background-color: ${Colors.WHITE};
+    background-color: ${getSemanticValue('background-primary-default')};
     border-radius: ${get('radii.1')};
     padding: ${get('space.5')};
 
