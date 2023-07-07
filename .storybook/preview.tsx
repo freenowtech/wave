@@ -2,6 +2,7 @@ import React from 'react';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import { ClassicColors, ModernColors } from '../src/essentials/Colors/globalStyles';
+import { getSemanticValue } from '../src/utils/cssVariables';
 
 const THEMES = {
     classic: ClassicColors,
@@ -41,8 +42,8 @@ export const preview: Preview = {
         backgrounds: {
             default: 'light',
             values: [
-                { name: 'light', value: '#FFFFFF' },
-                { name: 'dark', value: '#001E3E' }
+                { name: 'light', value: getSemanticValue('background-primary-default') },
+                { name: 'dark', value: getSemanticValue('background-primary-inverted') }
             ]
         },
         viewport: {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { compose, margin, MarginProps, padding, PaddingProps } from 'styled-system';
-import { Colors, Spaces } from '../../src/essentials';
+import { Spaces } from '../../src/essentials';
+import { getSemanticValue } from '../../src/utils/cssVariables';
 
 type ItemWrapperProps = PaddingProps &
     MarginProps & {
@@ -17,7 +18,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
     grid-template-columns: ${p => (p.gridTemplate ? p.gridTemplate : '1fr')};
     grid-row-gap: ${Spaces[3]};
     grid-column-gap: ${Spaces[2]};
-    background-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+    background-color: ${p => getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
 
     ${compose(padding, margin)}
 `;
