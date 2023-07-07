@@ -190,6 +190,13 @@ export const SemanticColors = {
                     emphasized: Colors.blue.primary[900]
                 }
             }
+        },
+        accordion: {
+            icon: {
+                primary: {
+                    default: Colors.blue.secondary[900]
+                }
+            }
         }
     }
 } satisfies SemanticColorsSchema;

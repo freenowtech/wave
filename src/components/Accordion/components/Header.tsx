@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-
-import { SemanticColors } from '../../../essentials';
 import { Box } from '../../Box/Box';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
-export const Header = styled(Box).attrs({ p: '2', color: SemanticColors.text.primary })`
+export const Header = styled(Box).attrs({ p: '2', color: getSemanticValue('text-primary') })`
     display: flex;
     flex-direction: row;
     justify-content: space-between;

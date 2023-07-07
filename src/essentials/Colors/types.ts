@@ -27,6 +27,7 @@ export interface SemanticColorsSchema {
     },
     overrides: {
         label: Object.Partial<SemanticColorsSchema, 'deep'>,
+        accordion: Object.Partial<SemanticColorsSchema, 'deep'>,
     },
     background: {
         primary: {

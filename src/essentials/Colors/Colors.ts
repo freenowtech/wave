@@ -189,7 +189,14 @@ export const SemanticColors = {
                     emphasized: Colors.blue.primary[550]
                 },
                 info: {
-                    emphasized: Colors.blue.secondary[900],
+                    emphasized: Colors.blue.secondary[900]
+                }
+            }
+        },
+        accordion: {
+            icon: {
+                primary: {
+                    default: Colors.blue.secondary[900]
                 }
             }
         }

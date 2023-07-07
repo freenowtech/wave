@@ -1,7 +1,5 @@
-import React, { useState, ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
-
-import { SemanticColors } from '../../../essentials';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
 import { Header } from './Header';
@@ -9,6 +7,7 @@ import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
 import { AccordionProps } from '../types';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 type Props = Pick<
     AccordionProps,
@@ -19,15 +18,15 @@ const StyleHeadline = styled(Headline)``;
 
 const PanelHeader = styled(Header)`
     &:hover ${StyleHeadline} {
-        color: ${SemanticColors.text.linkHover};
+        color: ${getSemanticValue('text-linkHover')};
     }
 
     &:hover ${ChevronDown} {
-        color: ${SemanticColors.text.linkHover};
+        color: ${getSemanticValue('text-linkHover')};
     }
 
     &:hover ${ChevronUp} {
-        color: ${SemanticColors.text.linkHover};
+        color: ${getSemanticValue('text-linkHover')};
     }
 `;
 
