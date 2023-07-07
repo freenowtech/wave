@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { compose, space, SpaceProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 type DividerOffset = number | string;
 
@@ -24,7 +24,7 @@ const HorizontalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'
     margin-left: auto;
     margin-right: auto;
     border: 0;
-    border-top: 1px solid ${get('semanticColors.border.primary')};
+    border-top: 1px solid ${getSemanticValue('border-primary-default')};
 
     ${compose(space)}
 `;
@@ -37,7 +37,7 @@ const VerticalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'> 
     margin-top: 0;
     margin-bottom: 0;
     border: 0;
-    border-left: 1px solid ${get('semanticColors.border.primary')};
+    border-left: 1px solid ${getSemanticValue('border-primary-default')};
 
     ${compose(space)}
 `;
