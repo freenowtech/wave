@@ -9,9 +9,10 @@ import {
 } from 'react-select';
 import WindowedSelect from 'react-windowed-select';
 
-import { Colors, Elevation } from '../../essentials';
+import { Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
 import { Label } from './components/Label';
@@ -47,8 +48,8 @@ const customStyles: StylesConfig = {
             alignItems: 'center',
             justifyContent: 'space-between',
             margin: 0,
-            background: state.selectProps.inverted ? 'transparent' : Colors.WHITE,
-            color: state.selectProps.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900,
+            background: getSemanticValue(state.selectProps.inverted ? 'background-transparent' : 'background-primary-default'),
+            color: getSemanticValue(state.selectProps.inverted ? 'text-primaryInverted' : 'text-primary'),
             ...variant,
             ...error,
             ...disabled
@@ -60,7 +61,7 @@ const customStyles: StylesConfig = {
     }),
     menu: provided => ({
         ...provided,
-        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200}`
+        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('border-primary-default')}`
     }),
     valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
         let margin;
@@ -109,7 +110,7 @@ const customStyles: StylesConfig = {
             padding: '0',
             marginRight: '0.5rem',
             cursor: 'pointer',
-            color: state.selectProps.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue(state.selectProps.inverted ? 'icon-secondary-inverted' : 'icon-secondary-default'),
             ...disabled
         };
     },
@@ -118,7 +119,7 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            color: state.selectProps.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue(state.selectProps.inverted ? 'icon-secondary-inverted' : 'icon-secondary-default'),
             cursor: 'pointer',
             padding: 0,
             ...disabled
@@ -129,27 +130,27 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            color: Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue('text-secondary'),
             ...disabled
         };
     },
     option: (provided, state: WithSelectProps<Props>) => {
         const colorsByState = {
             isDisabled: {
-                color: Colors.AUTHENTIC_BLUE_350
+                color: getSemanticValue('text-disabled')
             },
             isFocused: {
-                backgroundColor: Colors.ACTION_BLUE_50
+                backgroundColor: getSemanticValue('background-info-default')
             },
             isSelected: {
-                backgroundColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE
+                backgroundColor: getSemanticValue('background-info-emphasized'),
+                color: getSemanticValue('text-primaryInverted')
             }
         };
 
         const defaultColors = {
-            color: Colors.AUTHENTIC_BLUE_900,
-            backgroundColor: Colors.WHITE
+            color: getSemanticValue('text-primary'),
+            backgroundColor: getSemanticValue('background-primary-default'),
         };
 
         const colors = Object.keys(colorsByState)
@@ -172,10 +173,10 @@ const customStyles: StylesConfig = {
     multiValue: (provided, { selectProps }: { selectProps: Props }) => {
         const styles = {
             ...provided,
-            color: Colors.ACTION_BLUE_900,
-            border: `0.0625rem solid ${Colors.ACTION_BLUE_900}`,
+            color: getSemanticValue('text-info'),
+            border: `0.0625rem solid ${getSemanticValue('border-info-emphasized')}`,
             borderRadius: '1rem',
-            backgroundColor: Colors.ACTION_BLUE_50,
+            backgroundColor: getSemanticValue('background-info-default'),
             marginRight: '0.375rem',
             marginTop: '0.125rem',
             marginLeft: 0,
@@ -183,17 +184,17 @@ const customStyles: StylesConfig = {
             maxWidth: 'calc(100% - 0.5rem)',
             transition: 'color 125ms ease, background-color 125ms ease',
             '&:hover': {
-                backgroundColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE
+                backgroundColor: getSemanticValue('background-info-emphasized'),
+                color: getSemanticValue('text-primaryInverted')
             }
         };
 
         if (selectProps.isDisabled) {
             return {
                 ...styles,
-                color: Colors.AUTHENTIC_BLUE_200,
+                color: getSemanticValue('text-disabled'),
                 backgroundColor: 'transparent',
-                borderColor: Colors.AUTHENTIC_BLUE_200
+                borderColor: getSemanticValue('border-disabled-default')
             };
         }
 

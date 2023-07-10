@@ -172,7 +172,7 @@ export const SemanticColors = {
         },
         danger: {
             default: Colors.orange[350],
-            emphasized: Colors.red[900],
+            emphasized: Colors.orange[900],
             disabled: Colors.orange[350]
         },
         transparent: Colors.transparent

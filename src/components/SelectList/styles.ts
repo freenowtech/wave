@@ -1,36 +1,36 @@
 import { CSSObject } from 'styled-components';
 import { CSSObjectWithLabel } from 'react-select';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { SelectListProps } from './types';
 
 export const disabledStyles = {
     control: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
-        borderColor: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
+        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled'),
+        borderColor: getSemanticValue(inverted ? 'border-disabled-inverted' : 'border-disabled-default'),
         boxShadow: 'none'
     }),
     placeholder: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
+        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled')
     }),
     label: ({ inverted }: Pick<SelectListProps, 'inverted'>): CSSObject => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
+        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled')
     }),
     icons: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
+        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled')
     })
 };
 
 export const errorStyles = {
     control: ({ variant }: SelectListProps): CSSObjectWithLabel => ({
-        borderColor: Colors.NEGATIVE_ORANGE_900,
+        borderColor: getSemanticValue('border-danger-emphasized'),
         boxShadow:
             variant === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
-                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`
+                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-emphasized')}`
+                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-emphasized')}`
     }),
     label: (): CSSObject => ({
-        color: Colors.NEGATIVE_ORANGE_900
+        color: getSemanticValue('text-danger')
     })
 };
 
@@ -50,13 +50,13 @@ export const variantStyles = {
                 };
 
                 const isBFocused = props.isFocused && {
-                    borderColor: Colors.ACTION_BLUE_900,
-                    boxShadow: `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}`
+                    borderColor: getSemanticValue('border-focus-default'),
+                    boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')}`
                 };
 
                 return {
                     borderRadius: get('radii.2')(props),
-                    border: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
+                    border: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
                     ...isBFocused,
                     ...bSize[props.size]
                 };
@@ -73,15 +73,15 @@ export const variantStyles = {
                     }
                 };
                 const isBLFocused = props.isFocused && {
-                    borderColor: Colors.ACTION_BLUE_900,
-                    boxShadow: `inset 0 -0.0625rem 0 0 ${Colors.ACTION_BLUE_900}`
+                    borderColor: getSemanticValue('border-focus-default'),
+                    boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus-default')}`
                 };
 
                 return {
                     border: 'none',
                     borderTopLeftRadius: get('radii.1')(props),
                     borderTopRightRadius: get('radii.1')(props),
-                    borderBottom: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
+                    borderBottom: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
                     ...isBLFocused,
                     ...btSize[props.size]
                 };
