@@ -6,7 +6,7 @@ import { usePopper } from 'react-popper';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { Colors, Spaces } from '../../essentials';
+import { Spaces } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
 import { useClickOutside } from '../../utils/hooks/useClickOutside';
 
@@ -216,7 +216,7 @@ const Popover: React.FC<PopoverProps> = ({
                 {typeof children === 'string' ? (
                     <DefaultPopoverWrapper
                         ref={popoverTriggerRef}
-                        style={{ background: render ? Colors.AUTHENTIC_BLUE_50 : 'none' }}
+                        style={{ background: render ? getSemanticValue('background-secondary-default') : 'none' }}
                     >
                         <Text fontWeight="semibold">{children}</Text>
                         {!render ? (
