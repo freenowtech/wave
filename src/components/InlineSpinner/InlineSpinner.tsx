@@ -1,8 +1,8 @@
-import { FC } from 'react';
 import * as React from 'react';
+
 import styled, { keyframes } from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface InlineSpinnerProps extends MarginProps {
     /**
@@ -51,15 +51,14 @@ const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.span<InlineSpinne
     ${compose(margin, sizeVariant)}
 `;
 
-const InlineSpinner: FC<InlineSpinnerProps> = (props: InlineSpinnerProps) => (
+const InlineSpinner: React.FC<InlineSpinnerProps> = ({
+    color = getSemanticValue('text-primary'),
+    size = 'medium',
+    ...rest
+}: InlineSpinnerProps) => (
     <span role="progressbar">
-        <InlineSpinnerIcon {...props} />
+        <InlineSpinnerIcon color={color} size={size} {...rest} />
     </span>
 );
-
-InlineSpinner.defaultProps = {
-    color: Colors.AUTHENTIC_BLUE_900,
-    size: 'medium'
-};
 
 export { InlineSpinner, InlineSpinnerProps };
