@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { compose, fontSize, FontSizeProps, margin, MarginProps, textAlign, TextAlignProps } from 'styled-system';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
@@ -14,7 +14,7 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'>, MarginProps, FontSize
 
 const Link = styled.a.attrs({ theme })<LinkProps>`
     display: inline-block;
-    color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
+    color: ${p => getSemanticValue(p.inverted ? 'text-linkInverted' : 'text-link')};
     cursor: pointer;
     line-height: 1.4;
     font-family: ${get('fonts.normal')};
@@ -24,12 +24,12 @@ const Link = styled.a.attrs({ theme })<LinkProps>`
 
     &:link,
     &:visited {
-        color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
+        color: ${p => getSemanticValue(p.inverted ? 'text-linkInverted' : 'text-link')};
     }
 
     &:hover,
     &:active {
-        color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.ACTION_BLUE_1000)};
+        color: ${p => getSemanticValue(p.inverted ? 'text-linkHoverInverted' : 'text-linkHover')};
         text-decoration: underline;
     }
 

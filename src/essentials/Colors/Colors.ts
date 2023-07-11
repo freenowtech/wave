@@ -68,7 +68,7 @@ export const SemanticColors = {
         link: Colors.blue.secondary[900],
         linkInverted: Colors.white,
         linkHover: Colors.blue.secondary[1000],
-        linkHoverInverted: Colors.blue.secondary[50],
+        linkHoverInverted: Colors.blue.secondary[150],
         danger: Colors.orange[1000],
         dangerInverted: Colors.orange[900],
         success: Colors.green[1000],
