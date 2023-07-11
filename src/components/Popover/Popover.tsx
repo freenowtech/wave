@@ -5,6 +5,7 @@ import { usePopper } from 'react-popper';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { Colors, Spaces } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
 import { useClickOutside } from '../../utils/hooks/useClickOutside';
@@ -29,13 +30,13 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${get('semanticColors.button.secondary.borderHover')};
+    border: 1px solid ${getSemanticValue('border-primary-default')};
     padding: 0.8125rem ${Spaces[2]};
     border-radius: ${get('radii.2')};
 
     &:hover {
         cursor: pointer;
-        background-color: ${get('semanticColors.background.secondary')} !important;
+        background-color: ${getSemanticValue('background-secondary-default')} !important;
     }
 `;
 
