@@ -16,6 +16,7 @@ import {
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { deprecatedProperty } from '../../utils/deprecatedProperty';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface TextProps
     extends ComponentPropsWithoutRef<'span'>,
@@ -54,18 +55,18 @@ function determineTextColor(props: TextProps) {
     }
 
     if (disabled) {
-        return get(inverted ? 'semanticColors.text.disabledInverted' : 'semanticColors.text.disabled')(props);
+        return getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled');
     }
 
     if (secondary || weak) {
-        return get(inverted ? 'semanticColors.text.secondaryInverted' : 'semanticColors.text.secondary')(props);
+        return getSemanticValue(inverted ? 'text-secondaryInverted' : 'text-secondary');
     }
 
     if (inverted) {
-        return get('semanticColors.text.primaryInverted')(props);
+        return getSemanticValue('text-primaryInverted');
     }
 
-    return get('semanticColors.text.primary')(props);
+    return getSemanticValue('text-primary');
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`
