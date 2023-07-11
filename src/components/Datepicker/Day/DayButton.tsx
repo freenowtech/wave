@@ -1,49 +1,49 @@
 import styled, { css } from 'styled-components';
 
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
 
 const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabledDate }: DayButtonProps) => {
     if (isSelectedStartOrEnd) {
         return css`
-            color: ${Colors.WHITE};
-            background: ${Colors.ACTION_BLUE_900};
-            box-shadow: 0 0 0 0.0625rem ${Colors.ACTION_BLUE_1000};
+            color: ${getSemanticValue('text-primaryInverted')};
+            background: ${getSemanticValue('overrides-datepicker-background-info-emphasized')};
+            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-focus-emphasized')};
             z-index: 2;
         `;
     }
 
     if (isSelected || isWithinHoverRange) {
         return css`
-            color: ${Colors.ACTION_BLUE_900};
-            background: ${Colors.ACTION_BLUE_50};
-            box-shadow: 0 0 0 0.0625rem ${Colors.ACTION_BLUE_350};
+            color: ${getSemanticValue('text-link')};
+            background: ${getSemanticValue('overrides-datepicker-background-info-default')};
+            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-info-default')};
             z-index: 1;
 
             &:hover {
                 cursor: pointer;
-                box-shadow: 0 0 0 0.0625rem ${Colors.ACTION_BLUE_350};
-                background: ${Colors.ACTION_BLUE_350};
-                color: ${Colors.ACTION_BLUE_1000};
+                box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-info-default')};
+                background: ${getSemanticValue('background-info-hover')};
+                color: ${getSemanticValue('text-infoHover')};
             }
         `;
     }
 
     if (disabledDate) {
         return css`
-            color: ${Colors.AUTHENTIC_BLUE_200};
-            box-shadow: 0 0 0 0.0625rem ${Colors.AUTHENTIC_BLUE_50};
-            background: ${Colors.WHITE};
+            color: ${getSemanticValue('text-disabled')};
+            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-secondary-default')};
+            background: ${getSemanticValue('background-primary-default')};
         `;
     }
 
     return css`
-        color: ${Colors.AUTHENTIC_BLUE_900};
-        background: ${Colors.WHITE};
+        color: ${getSemanticValue('text-primary')};
+        background: ${getSemanticValue('background-primary-default')};
 
         &:hover {
             cursor: pointer;
-            background: ${Colors.AUTHENTIC_BLUE_50};
+            background: ${getSemanticValue('background-secondary-default')};
         }
     `;
 };
@@ -64,7 +64,7 @@ const DayButton = styled.button.attrs({ type: 'button' })<DayButtonProps>`
     font-size: ${get('fontSizes.0')};
     border: 0;
 
-    box-shadow: 0 0 0 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
+    box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-primary-default')};
     outline: none;
 
     transition-property: background, box-shadow, color;

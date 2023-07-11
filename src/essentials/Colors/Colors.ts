@@ -73,7 +73,8 @@ export const SemanticColors = {
         dangerInverted: Colors.orange[900],
         success: Colors.green[1000],
         warning: Colors.yellow[900],
-        info: Colors.blue.secondary[900]
+        info: Colors.blue.secondary[900],
+        infoHover: Colors.blue.secondary[1000]
     },
     background: {
         primary: {
@@ -154,6 +155,7 @@ export const SemanticColors = {
             inverted: Colors.white
         },
         focus: {
+            emphasized: Colors.blue.secondary[1000],
             default: Colors.blue.secondary[900]
         },
         disabled: {
@@ -180,7 +182,7 @@ export const SemanticColors = {
         transparent: Colors.transparent
     },
     shadow: {
-        default: Colors.blue.primary[200],
+        default: Colors.blue.primary[200]
     },
     overrides: {
         label: {
@@ -200,6 +202,46 @@ export const SemanticColors = {
             icon: {
                 primary: {
                     default: Colors.blue.secondary[900]
+                }
+            }
+        },
+        datepicker: {
+            background: {
+                info: {
+                    default: Colors.blue.secondary[50],
+                    emphasized: Colors.blue.secondary[900]
+                }
+            }
+        },
+        infobanner: {
+            background: {
+                info: {
+                    default: Colors.blue.secondary[50]
+                },
+                success: {
+                    default: Colors.green[50]
+                },
+                warning: {
+                    default: Colors.yellow[50]
+                },
+                danger: {
+                    default: Colors.orange[50]
+                }
+            },
+            icon: {
+                action: {
+                    default: Colors.blue.secondary[900]
+                }
+            },
+            border: {
+                success: {
+                    default: Colors.green[350]
+                },
+                warning: {
+                    default: Colors.yellow[350]
+                },
+                danger: {
+                    default: Colors.orange[350]
                 }
             }
         }

@@ -5,6 +5,8 @@ type RGB = `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, 
 
 export type Color = HSL | RGB;
 
+type PartialSchema = Object.Partial<SemanticColorsSchema, 'deep'>
+
 export interface SemanticColorsSchema {
     text: {
         primary: Color,
@@ -20,14 +22,17 @@ export interface SemanticColorsSchema {
         linkHover: Color,
         linkHoverInverted: Color,
         info: Color,
+        infoHover: Color,
         danger: Color,
         dangerInverted: Color,
         success: Color,
         warning: Color,
     },
     overrides: {
-        label: Object.Partial<SemanticColorsSchema, 'deep'>,
-        accordion: Object.Partial<SemanticColorsSchema, 'deep'>,
+        label: PartialSchema,
+        accordion: PartialSchema,
+        datepicker: PartialSchema,
+        infobanner: PartialSchema
     },
     background: {
         primary: {
@@ -108,6 +113,7 @@ export interface SemanticColorsSchema {
             inverted: Color,
         },
         focus: {
+            emphasized: Color,
             default: Color,
         },
         disabled: {

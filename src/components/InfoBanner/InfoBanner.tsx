@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 import {
     CheckCircleSolidIcon,
     CloseCircleSolidIcon,
@@ -53,20 +54,20 @@ interface BoxWithVariant extends BoxProps {
 const bannerVariants = styledVariant({
     variants: {
         info: {
-            background: get('semanticColors.background.info'),
-            borderColor: get('semanticColors.border.info')
+            background: getSemanticValue('overrides-infobanner-background-info-default'),
+            borderColor: getSemanticValue('border-info-default')
         },
         success: {
-            background: get('semanticColors.background.success'),
-            borderColor: get('semanticColors.border.success')
+            background: getSemanticValue('overrides-infobanner-background-success-default'),
+            borderColor: getSemanticValue('overrides-infobanner-border-success-default')
         },
         warning: {
-            background: get('semanticColors.background.warning'),
-            borderColor: get('semanticColors.border.warning')
+            background: getSemanticValue('overrides-infobanner-background-warning-default'),
+            borderColor: getSemanticValue('overrides-infobanner-border-warning-default')
         },
         error: {
-            background: get('semanticColors.background.danger'),
-            borderColor: get('semanticColors.border.danger')
+            background: getSemanticValue('overrides-infobanner-background-danger-default'),
+            borderColor: getSemanticValue('overrides-infobanner-border-danger-default')
         }
     }
 });
@@ -74,20 +75,20 @@ const bannerVariants = styledVariant({
 const emphasizedBannerVariants = styledVariant({
     variants: {
         info: {
-            background: get('semanticColors.background.infoEmphasized'),
-            borderColor: get('semanticColors.border.infoEmphasized')
+            background: getSemanticValue('background-info-emphasized'),
+            borderColor: getSemanticValue('border-info-emphasized')
         },
         success: {
-            background: get('semanticColors.background.successEmphasized'),
-            borderColor: get('semanticColors.border.successEmphasized')
+            background: getSemanticValue('background-success-emphasized'),
+            borderColor: getSemanticValue('border-success-emphasized')
         },
         warning: {
-            background: get('semanticColors.background.warningEmphasized'),
-            borderColor: get('semanticColors.border.warningEmphasized')
+            background: getSemanticValue('background-warning-emphasized'),
+            borderColor: getSemanticValue('border-warning-emphasized')
         },
         error: {
-            background: get('semanticColors.background.dangerEmphasized'),
-            borderColor: get('semanticColors.border.dangerEmphasized')
+            background: getSemanticValue('background-danger-emphasized'),
+            borderColor: getSemanticValue('border-danger-emphasized')
         }
     }
 });
@@ -95,16 +96,16 @@ const emphasizedBannerVariants = styledVariant({
 const iconColorVariants = styledVariant({
     variants: {
         info: {
-            color: get('semanticColors.icon.action')
+            color: getSemanticValue('overrides-infobanner-icon-action-default')
         },
         success: {
-            color: get('semanticColors.icon.success')
+            color: getSemanticValue('icon-success')
         },
         warning: {
-            color: get('semanticColors.icon.primary')
+            color: getSemanticValue('icon-warning')
         },
         error: {
-            color: get('semanticColors.icon.danger')
+            color: getSemanticValue('icon-danger-default')
         }
     }
 });
@@ -112,16 +113,16 @@ const iconColorVariants = styledVariant({
 const emphasizedIconColorVariants = styledVariant({
     variants: {
         info: {
-            color: get('semanticColors.icon.primaryInverted')
+            color: getSemanticValue('icon-primary-inverted')
         },
         success: {
-            color: get('semanticColors.icon.primaryInverted')
+            color: getSemanticValue('icon-primary-inverted')
         },
         warning: {
-            color: get('semanticColors.icon.primary')
+            color: getSemanticValue('icon-primary-default')
         },
         error: {
-            color: get('semanticColors.icon.primaryInverted')
+            color: getSemanticValue('icon-primary-inverted')
         }
     }
 });

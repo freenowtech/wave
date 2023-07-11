@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { compose, margin, ResponsiveValue, variant } from 'styled-system';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { Text, TextProps } from '../Text/Text';
@@ -22,10 +22,10 @@ const getVariants = (inverted?: boolean) =>
     variant({
         variants: {
             info: {
-                color: inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_550
+                color: getSemanticValue(inverted ? 'text-secondaryInverted' : 'text-secondary')
             },
             danger: {
-                color: inverted ? Colors.NEGATIVE_ORANGE_900 : Colors.NEGATIVE_ORANGE_1000
+                color: getSemanticValue(inverted ? 'text-dangerInverted' : 'text-danger')
             }
         }
     });
