@@ -2,7 +2,8 @@ import { FC } from 'react';
 import * as React from 'react';
 
 import styled from 'styled-components';
-import { Colors, Elevation } from '../../essentials';
+import { Elevation } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { CloseIcon, MagnifyingGlassIcon } from '../../icons/index';
 import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box, BoxProps } from '../Box/Box';
@@ -10,8 +11,8 @@ import { Box, BoxProps } from '../Box/Box';
 import { Input } from '../Input/Input';
 
 const ActiveStyle = `
-    background-color: ${Colors.ACTION_BLUE_50};
-    color: ${Colors.ACTION_BLUE_900};
+    background-color: ${getSemanticValue('background-info-default')};
+    color: ${getSemanticValue('text-info')};
 `;
 
 interface SearchResultsContainerProps extends BoxProps, Pick<SearchProps, 'inverted'> {}
@@ -22,8 +23,8 @@ const SearchResultsContainer = styled(Box)<SearchResultsContainerProps>`
     margin-top: 0.0625rem;
     padding: 0.25rem 0;
     width: inherit;
-    background-color: ${props => (props.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
-    box-shadow: 0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
+    background-color: ${props => getSemanticValue(props.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+    box-shadow: 0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')};
     border-radius: 0.25rem;
     cursor: pointer;
 `;
@@ -42,9 +43,8 @@ const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     box-sizing: border-box;
     background: white;
     border-radius: 0.25rem;
-    border: ${p =>
-        p.isInFocus ? `0.0625rem solid ${Colors.ACTION_BLUE_900}` : `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`};
-    box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}` : 'none')};
+    border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus-default' : 'border-primary-default') }`};
+    box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')}` : 'none')};
     height: ${p => (p.size === 'small' ? '2.2rem' : '3.2rem')};
     transition: box-shadow 100ms ease, border 100ms ease;
 `;
@@ -53,10 +53,15 @@ const StyledInput = styled(Input)`
     width: 100%;
 
     input {
-        caret-color: ${Colors.ACTION_BLUE_900};
+        caret-color: ${getSemanticValue('text-info')};
         background: transparent;
         border: 0;
 
+        &::placeholder {
+            color: ${p => getSemanticValue(p.disabled ? 'text-disabled' : 'text-secondary')};
+          opacity: 1;
+        }
+      
         &:focus,
         &:active {
             outline: 0;
@@ -68,11 +73,6 @@ const StyledInput = styled(Input)`
 
         ::-webkit-search-cancel-button {
             display: none;
-        }
-
-        &::placeholder {
-            color: ${p => (!p.disabled ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
-            opacity: 1;
         }
     }
 `;
@@ -262,7 +262,7 @@ export const Search: FC<SearchProps> = ({
                     <MagnifyingGlassIcon
                         size={size === 'small' ? 20 : 24}
                         aria-hidden="true"
-                        color={!disabled ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_200}
+                        color={getSemanticValue(disabled ? 'icon-disabled-default' : 'icon-secondary-default')}
                     />
                 </Box>
 
@@ -290,7 +290,7 @@ export const Search: FC<SearchProps> = ({
                         }}
                         role="button"
                     >
-                        <CloseIcon aria-hidden="true" color={Colors.AUTHENTIC_BLUE_550} />
+                        <CloseIcon aria-hidden="true" color={getSemanticValue('icon-secondary-default')} />
                     </Box>
                 )}
             </SearchInputContainer>

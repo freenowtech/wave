@@ -179,6 +179,9 @@ export const SemanticColors = {
         },
         transparent: Colors.transparent
     },
+    shadow: {
+        default: Colors.blue.primary[200],
+    },
     overrides: {
         label: {
             text: {

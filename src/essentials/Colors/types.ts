@@ -133,6 +133,9 @@ export interface SemanticColorsSchema {
         },
         transparent: 'transparent'
     },
+    shadow: {
+        default: Color,
+    }
 }
 
 export type SemanticCssToken = String.Join<List.Required<Object.Paths<SemanticColorsSchema>>, '-'>
