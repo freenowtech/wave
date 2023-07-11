@@ -1,10 +1,11 @@
-import React, { ReactNode, useState, useContext } from 'react';
+import React, { ReactNode, useContext, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { Elevation, SemanticColors } from '../../essentials';
+import { Elevation } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 export const ANIMATION_DURATION = 140;
 const TRANSITION_KEY = 'banner-animation';
@@ -60,13 +61,13 @@ const riseUp = css`
 const bannerVariants = variant({
     variants: {
         info: {
-            backgroundColor: SemanticColors.background.secondaryEmphasized
+            backgroundColor: getSemanticValue('background-secondary-emphasized')
         },
         success: {
-            backgroundColor: SemanticColors.background.successEmphasized
+            backgroundColor: getSemanticValue('background-success-emphasized')
         },
         danger: {
-            backgroundColor: SemanticColors.background.dangerEmphasized
+            backgroundColor: getSemanticValue('background-danger-emphasized')
         }
     }
 });
@@ -115,7 +116,7 @@ const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
     overflow: auto;
     box-sizing: border-box;
     padding: ${get('space.3')};
-    background-color: ${SemanticColors.background.secondaryEmphasized};
+    background-color: getSemanticValue('background-secondary-emphasized');
 
     position: fixed;
     left: 0;
