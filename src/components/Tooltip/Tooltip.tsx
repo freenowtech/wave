@@ -4,7 +4,8 @@ import styled, { keyframes } from 'styled-components';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
-import { MediaQueries, SemanticColors } from '../../essentials';
+import { MediaQueries } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
@@ -88,7 +89,7 @@ interface TooltipBodyProps {
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     background-color: ${p =>
-        p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
+        getSemanticValue(p.inverted ? 'background-secondary-default' : 'background-primary-emphasized')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -112,7 +113,7 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         pointer-events: none;
         border: 0.25rem solid rgba(0, 0, 0, 0);
         border-bottom-color: ${p =>
-            p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
+            getSemanticValue(p.inverted ? 'background-secondary-default' : 'background-primary-emphasized')};
         margin-left: -0.25rem;
 
         ${arrowPlacementStyles}

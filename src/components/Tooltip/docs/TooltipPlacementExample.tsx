@@ -3,12 +3,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Placement } from '@popperjs/core/lib/enums';
 import { RadioButton, Tooltip } from '../..';
-import { Colors, MediaQueries } from '../../../essentials';
+import { MediaQueries } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TargetSquare = styled.div`
-    background: ${Colors.BUMPY_MAGENTA_50};
-    color: ${Colors.BUMPY_MAGENTA_1000};
-    border: 0.0625rem solid ${Colors.BUMPY_MAGENTA_350};
+    background: ${getSemanticValue('background-highlight')};
+    color: ${getSemanticValue('text-primaryInverted')};
     font-size: 0.75rem;
     cursor: default;
     width: 7rem;
