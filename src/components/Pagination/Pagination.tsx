@@ -19,7 +19,7 @@ const ButtonsContainer = styled(Box)`
 const IconButton = styled.button`
     align-items: center;
     background-color: ${getSemanticValue('background-primary-default')};
-    border: 0.0625rem solid ${getSemanticValue('border-secondary-default')};
+    border: 0.0625rem solid ${getSemanticValue('border-neutral-faded')};
     border-radius: 0.25rem;
     display: inline-flex;
     height: 2.5rem;

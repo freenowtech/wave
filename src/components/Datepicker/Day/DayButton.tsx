@@ -8,7 +8,7 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
         return css`
             color: ${getSemanticValue('text-primaryInverted')};
             background: ${getSemanticValue('overrides-datepicker-background-info-emphasized')};
-            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-focus-emphasized')};
+            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-accent-default')};
             z-index: 2;
         `;
     }
@@ -17,12 +17,11 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
         return css`
             color: ${getSemanticValue('text-link')};
             background: ${getSemanticValue('overrides-datepicker-background-info-default')};
-            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-info-default')};
+            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-accent-faded')};
             z-index: 1;
 
             &:hover {
                 cursor: pointer;
-                box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-info-default')};
                 background: ${getSemanticValue('background-info-hover')};
                 color: ${getSemanticValue('text-infoHover')};
             }
@@ -32,7 +31,7 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
     if (disabledDate) {
         return css`
             color: ${getSemanticValue('text-disabled')};
-            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-secondary-default')};
+            box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-disabled')};
             background: ${getSemanticValue('background-primary-default')};
         `;
     }
@@ -64,7 +63,7 @@ const DayButton = styled.button.attrs({ type: 'button' })<DayButtonProps>`
     font-size: ${get('fontSizes.0')};
     border: 0;
 
-    box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-primary-default')};
+    box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-neutral-default')};
     outline: none;
 
     transition-property: background, box-shadow, color;

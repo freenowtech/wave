@@ -8,7 +8,7 @@ interface InlineSpinnerProps extends MarginProps {
     /**
      * Override the color of the spinner
      */
-    color?: Colors | string;
+    color?: string; // TODO allow semantic value
     /**
      * Set the size of the component
      */
@@ -37,7 +37,7 @@ const rotation = keyframes`
     }
 `;
 
-const InlineSpinnerIcon: React.FC<InlineSpinnerProps> = styled.span<InlineSpinnerProps>`
+const InlineSpinnerIcon = styled.span<InlineSpinnerProps>`
     display: inline-block;
     box-sizing: border-box;
     width: 1.25rem;

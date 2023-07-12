@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ButtonStyleProps, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 
+import { getSemanticValue } from '../../utils/cssVariables';
 import { BaseButton, BaseButtonProps } from './BaseButton';
 import { ComponentSemanticTokens } from '../../essentials/Colors/types';
 
@@ -21,63 +22,57 @@ interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
 const variantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: 'var(--wave-s-color-text-primaryInverted)',
-            fill: 'var(--wave-s-color-icon-primary-inverted)',
-            background: 'var(--wave-s-color-background-primary-emphasized)',
-            borderColor: 'var(--wave-s-color-border-primary-default)',
+            color: getSemanticValue('text-primaryInverted'),
+            fill: getSemanticValue('icon-primary-inverted'),
+            background: getSemanticValue('background-primary-emphasized'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-primaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-primary-hover)',
-                borderColor: 'var(--wave-s-color-border-primary-emphasized)'
+                color: getSemanticValue('text-primaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-primary-hover')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-primaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-primary-disabled)',
-                borderColor: 'var(--wave-s-color-border-disabled-default)'
+                color: getSemanticValue('text-primaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-primary-disabled')
             }
         },
         secondary: {
-            color: 'var(--wave-s-color-text-primary)',
-            fill: 'var(--wave-s-color-icon-primary-default)',
-            background: 'var(--wave-s-color-background-primary-default)',
-            borderColor: 'var(--wave-s-color-border-secondary-default)',
+            color: getSemanticValue('text-primary'),
+            fill: getSemanticValue('icon-primary-default'),
+            background: getSemanticValue('background-primary-default'),
+            borderColor: getSemanticValue('border-neutral-default'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-primary)',
-                fill: 'var(--wave-s-color-icon-primary-default)',
-                background: 'var(--wave-s-color-background-secondary-default)',
-                borderColor: 'var(--wave-s-color-border-secondary-default)'
+                color: getSemanticValue('text-primary'),
+                fill: getSemanticValue('icon-primary-default'),
+                background: getSemanticValue('background-secondary-default')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-disabled)',
-                fill: 'var(--wave-s-color-icon-disabled-default)',
-                background: 'var(--wave-s-color-background-primary-default)',
-                borderColor: 'var(--wave-s-color-border-disabled-default)'
+                color: getSemanticValue('text-disabled'),
+                fill: getSemanticValue('icon-disabled-default'),
+                background: getSemanticValue('background-primary-default'),
+                borderColor: getSemanticValue('border-disabled')
             }
         },
         danger: {
-            color: 'var(--wave-s-color-text-primaryInverted)',
-            fill: 'var(--wave-s-color-icon-primary-inverted)',
-            background: 'var(--wave-s-color-background-danger-emphasized)',
-            borderColor: 'var(--wave-s-color-border-danger-default)',
+            color: getSemanticValue('text-primaryInverted'),
+            fill: getSemanticValue('icon-primary-inverted'),
+            background: getSemanticValue('background-danger-emphasized'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-primaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-danger-hover)',
-                borderColor: 'var(--wave-s-color-border-danger-emphasized)'
+                color: getSemanticValue('text-primaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-danger-hover')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-primaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-primary-disabled)',
-                borderColor: 'var(--wave-s-color-border-disabled-default)'
+                color: getSemanticValue('text-primaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-primary-disabled'),
+                borderColor: getSemanticValue('border-disabled')
             }
         }
     }
@@ -86,60 +81,56 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
 const invertedVariantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: 'var(--wave-s-color-text-primary)',
-            fill: 'var(--wave-s-color-icon-primary-default)',
-            background: 'var(--wave-s-color-background-primary-default)',
-            borderColor: 'var(--wave-s-color-border-primary-inverted)',
+            color: getSemanticValue('text-primary'),
+            fill: getSemanticValue('icon-primary-default'),
+            background: getSemanticValue('background-primary-default'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-tertiaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-primary-emphasized)',
-                borderColor: 'var(--wave-s-color-border-primary-default)'
+                color: getSemanticValue('text-tertiaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-primary-emphasized'),
+                borderColor: getSemanticValue('border-neutral-default')
             },
             '&:disabled': {
-                color: 'var(--wave-s-color-text-tertiaryInverted)',
-                fill: 'var(--wave-s-color-icon-tertiary-default)',
-                background: 'var(--wave-s-color-background-secondary-emphasized)',
-                borderColor: 'var(--wave-s-color-border-disabled-inverted)'
+                color: getSemanticValue('text-tertiaryInverted'),
+                fill: getSemanticValue('icon-tertiary-default'),
+                background: getSemanticValue('background-secondary-emphasized'),
+                borderColor: getSemanticValue('border-disabled')
             }
         },
         secondary: {
-            color: 'var(--wave-s-color-text-primaryInverted)',
-            fill: 'var(--wave-s-color-icon-primary-inverted)',
-            background: 'var(--wave-s-color-background-transparent)',
-            borderColor: 'var(--wave-s-color-border-secondary-inverted)',
+            color: getSemanticValue('text-primaryInverted'),
+            fill: getSemanticValue('icon-primary-inverted'),
+            background: getSemanticValue('background-transparent'),
+            borderColor: getSemanticValue('border-neutral-faded'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-primary)',
-                fill: 'var(--wave-s-color-icon-primary-default)',
-                background: 'var(--wave-s-color-background-primary-default)',
-                borderColor: 'var(--wave-s-color-border-secondary-inverted)'
+                color: getSemanticValue('text-primary'),
+                fill: getSemanticValue('icon-primary-default'),
+                background: getSemanticValue('background-primary-default')
             },
             '&:disabled': {
-                color: 'var(--wave-s-color-text-disabledInverted)',
-                fill: 'var(--wave-s-color-icon-disabled-inverted)',
-                background: 'var(--wave-s-color-background-transparent)',
-                borderColor: 'var(--wave-s-color-border-disabled-inverted)'
+                color: getSemanticValue('text-disabledInverted'),
+                fill: getSemanticValue('icon-disabled-inverted'),
+                background: getSemanticValue('background-transparent'),
+                borderColor: getSemanticValue('border-disabled')
             }
         },
         danger: {
-            color: 'var(--wave-s-color-text-primaryInverted)',
-            fill: 'var(--wave-s-color-icon-primary-inverted)',
-            background: 'var(--wave-s-color-background-danger-emphasized)',
-            borderColor: 'var(--wave-s-color-border-danger-default)',
+            color: getSemanticValue('text-primaryInverted'),
+            fill: getSemanticValue('icon-primary-inverted'),
+            background: getSemanticValue('background-danger-emphasized'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-primaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-danger-hover)',
-                borderColor: 'var(--wave-s-color-border-danger-emphasized)'
+                color: getSemanticValue('text-primaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-danger-hover')
             },
             '&:disabled': {
-                color: 'var(--wave-s-color-text-primaryInverted)',
-                fill: 'var(--wave-s-color-icon-primary-inverted)',
-                background: 'var(--wave-s-color-background-primary-disabled)',
-                borderColor: 'var(--wave-s-color-border-disabled-default)'
+                color: getSemanticValue('text-primaryInverted'),
+                fill: getSemanticValue('icon-primary-inverted'),
+                background: getSemanticValue('background-primary-disabled'),
+                borderColor: getSemanticValue('border-disabled')
             }
         }
     }

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Label, Link, Text } from '../..';
-import { Colors } from '../../../essentials';
 import { DigitalPaymentIcon } from '../../../icons/payment';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 export const ComplexDataTable: FC = () => (
     <Table rowStyle="lines" rowSize="large">
@@ -60,7 +60,7 @@ export const ComplexDataTable: FC = () => (
                     </Box>
                 </TableCell>
             </TableRow>
-            <TableRow style={{ borderLeft: `4px solid ${Colors.NEGATIVE_ORANGE_900}` }}>
+            <TableRow style={{ borderLeft: `4px solid ${getSemanticValue('border-danger-default')}` }}>
                 <TableCell>
                     <Label>Advanced</Label>
                 </TableCell>

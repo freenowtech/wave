@@ -7,8 +7,8 @@ import { getSemanticValue } from '../../utils/cssVariables';
 import { InputProps } from './InputProps';
 
 const errorStyles = css`
-    box-shadow: inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-emphasized')};
-    border-color: ${getSemanticValue('border-danger-emphasized')};
+    box-shadow: inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')};
+    border-color: ${getSemanticValue('border-danger-default')};
 
     & ~ ${BottomLinedInputLabel} {
         color: ${getSemanticValue('text-dangerInverted')};

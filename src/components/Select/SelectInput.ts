@@ -32,21 +32,21 @@ const inputVariants = variant({
     variants: {
         boxed: {
             borderRadius: get('radii.2'),
-            border: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
+            border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
             '&:active:not(:disabled), &:focus:not(:disabled)': {
-                borderColor: getSemanticValue('border-focus-default'),
-                boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')}`
+                borderColor: getSemanticValue('border-focus'),
+                boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}`
             }
         },
         'bottom-lined': {
             border: 'none',
             borderTopLeftRadius: get('radii.1'),
             borderTopRightRadius: get('radii.1'),
-            borderBottom: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
+            borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
 
             '&:active:not(:disabled), &:focus:not(:disabled)': {
-                borderColor: getSemanticValue('border-focus-default'),
-                boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus-default')}`
+                borderColor: getSemanticValue('border-focus'),
+                boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus')}`
             }
         }
     }
@@ -55,10 +55,10 @@ const inputVariants = variant({
 const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
     if (error) {
         return css`
-            border-color: ${getSemanticValue('border-danger-default')};
+            border-color: ${getSemanticValue('border-danger-faded')};
             box-shadow: ${variantProp === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
-                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`};
+                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-faded')}`
+                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-faded')}`};
 
             & ~ ${SelectLabel} {
                 color: ${getSemanticValue('text-danger')};
@@ -72,7 +72,7 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
 const disabledStyles = css<BaseSelectProps>`
     color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
     cursor: not-allowed;
-    border-color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+    border-color: ${getSemanticValue('border-disabled')};
 
     & ~ ${SelectLabel} {
         color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};

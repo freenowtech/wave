@@ -26,21 +26,21 @@ const inputVariants = variant<Record<string, unknown>, InputProps['variant']>({
     variants: {
         boxed: {
             borderRadius: get('radii.2'),
-            border: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
+            border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
             '&:active, &:focus': {
-                borderColor: getSemanticValue('border-info-emphasized'),
-                boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-info-emphasized')}`
+                borderColor: getSemanticValue('border-focus'),
+                boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}`
             }
         },
         'bottom-lined': {
             border: 'none',
             borderTopLeftRadius: get('radii.1'),
             borderTopRightRadius: get('radii.1'),
-            borderBottom: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
+            borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
 
             '&:active, &:focus': {
-                borderColor: getSemanticValue('border-info-emphasized'),
-                boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-info-emphasized')}`
+                borderColor: getSemanticValue('border-focus'),
+                boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus')}`
             }
         }
     }
@@ -67,7 +67,7 @@ const BaseInput = styled.input<InternalInputComponentProps>`
 
     &:disabled {
         color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
-        border-color: ${p => getSemanticValue(p.inverted ? 'border-disabled-inverted' : 'border-disabled-default')};
+        border-color: ${getSemanticValue('border-disabled')};
         box-shadow: none;
         cursor: not-allowed;
 

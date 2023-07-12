@@ -113,6 +113,7 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         pointer-events: none;
         border: 0.25rem solid rgba(0, 0, 0, 0);
         border-bottom-color: ${p =>
+            // background colors are used because this border is used to create the arrow
             getSemanticValue(p.inverted ? 'background-secondary-default' : 'background-primary-emphasized')};
         margin-left: -0.25rem;
 

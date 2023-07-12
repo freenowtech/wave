@@ -69,6 +69,12 @@ export const Small: Story = {
     }
 };
 
+export const Disabled: Story = {
+    args: {
+        disabled: true
+    }
+};
+
 export const Inverted: Story = {
     args: {
         inverted: true

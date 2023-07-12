@@ -7,7 +7,7 @@ import { SelectListProps } from './types';
 export const disabledStyles = {
     control: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
         color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled'),
-        borderColor: getSemanticValue(inverted ? 'border-disabled-inverted' : 'border-disabled-default'),
+        borderColor: getSemanticValue('border-disabled'),
         boxShadow: 'none'
     }),
     placeholder: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
@@ -23,11 +23,11 @@ export const disabledStyles = {
 
 export const errorStyles = {
     control: ({ variant }: SelectListProps): CSSObjectWithLabel => ({
-        borderColor: getSemanticValue('border-danger-emphasized'),
+        borderColor: getSemanticValue('border-danger-default'),
         boxShadow:
             variant === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-emphasized')}`
-                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-emphasized')}`
+                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
+                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
     }),
     label: (): CSSObject => ({
         color: getSemanticValue('text-danger')
@@ -50,13 +50,13 @@ export const variantStyles = {
                 };
 
                 const isBFocused = props.isFocused && {
-                    borderColor: getSemanticValue('border-focus-default'),
-                    boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')}`
+                    borderColor: getSemanticValue('border-focus'),
+                    boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}`
                 };
 
                 return {
                     borderRadius: get('radii.2')(props),
-                    border: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
+                    border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBFocused,
                     ...bSize[props.size]
                 };
@@ -73,15 +73,15 @@ export const variantStyles = {
                     }
                 };
                 const isBLFocused = props.isFocused && {
-                    borderColor: getSemanticValue('border-focus-default'),
-                    boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus-default')}`
+                    borderColor: getSemanticValue('border-focus'),
+                    boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus')}`
                 };
 
                 return {
                     border: 'none',
                     borderTopLeftRadius: get('radii.1')(props),
                     borderTopRightRadius: get('radii.1')(props),
-                    borderBottom: `0.0625rem solid ${getSemanticValue('border-primary-default')}`,
+                    borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBLFocused,
                     ...btSize[props.size]
                 };

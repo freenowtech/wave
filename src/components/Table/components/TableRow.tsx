@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { Colors } from '../../../essentials';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
     /**
@@ -32,12 +33,12 @@ const zebraStyles = (active, hover) => css`
 const linesStyles = (active, hover) => css`
     td,
     th {
-        border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_200};
+        border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
     }
 
     &:first-of-type {
         th {
-            border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_550};
+            border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-emphasized')};
         }
     }
 

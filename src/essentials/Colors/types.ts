@@ -103,40 +103,34 @@ export interface SemanticColorsSchema {
         info: Color,
     },
     border: {
-        primary: {
+        neutral: {
+            faded: Color,
             default: Color,
             emphasized: Color,
-            inverted: Color,
-        },
-        secondary: {
+        }
+        accent: {
+            faded: Color,
             default: Color,
-            inverted: Color,
-        },
-        focus: {
             emphasized: Color,
-            default: Color,
-        },
-        disabled: {
-            default: Color,
-            inverted: Color,
         },
         info: {
+            faded: Color,
             default: Color,
-            emphasized: Color,
         },
         success: {
+            faded: Color,
             default: Color,
-            emphasized: Color,
         },
         warning: {
+            faded: Color,
             default: Color,
-            emphasized: Color,
         },
         danger: {
+            faded: Color,
             default: Color,
-            emphasized: Color,
-            disabled: Color,
         },
+        focus:Color,
+        disabled: Color,
         transparent: 'transparent'
     },
     shadow: {

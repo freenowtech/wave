@@ -55,19 +55,19 @@ const bannerVariants = styledVariant({
     variants: {
         info: {
             background: getSemanticValue('overrides-infobanner-background-info-default'),
-            borderColor: getSemanticValue('border-info-default')
+            borderColor: getSemanticValue('border-info-faded')
         },
         success: {
             background: getSemanticValue('overrides-infobanner-background-success-default'),
-            borderColor: getSemanticValue('overrides-infobanner-border-success-default')
+            borderColor: getSemanticValue('border-success-faded')
         },
         warning: {
             background: getSemanticValue('overrides-infobanner-background-warning-default'),
-            borderColor: getSemanticValue('overrides-infobanner-border-warning-default')
+            borderColor: getSemanticValue('border-warning-faded')
         },
         error: {
             background: getSemanticValue('overrides-infobanner-background-danger-default'),
-            borderColor: getSemanticValue('overrides-infobanner-border-danger-default')
+            borderColor: getSemanticValue('border-danger-faded')
         }
     }
 });
@@ -76,19 +76,19 @@ const emphasizedBannerVariants = styledVariant({
     variants: {
         info: {
             background: getSemanticValue('background-info-emphasized'),
-            borderColor: getSemanticValue('border-info-emphasized')
+            borderColor: getSemanticValue('border-info-default')
         },
         success: {
             background: getSemanticValue('background-success-emphasized'),
-            borderColor: getSemanticValue('border-success-emphasized')
+            borderColor: getSemanticValue('border-success-default')
         },
         warning: {
             background: getSemanticValue('background-warning-emphasized'),
-            borderColor: getSemanticValue('border-warning-emphasized')
+            borderColor: getSemanticValue('border-warning-default')
         },
         error: {
             background: getSemanticValue('background-danger-emphasized'),
-            borderColor: getSemanticValue('border-danger-emphasized')
+            borderColor: getSemanticValue('border-danger-default')
         }
     }
 });

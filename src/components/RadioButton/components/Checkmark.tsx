@@ -18,7 +18,7 @@ const Checkmark = styled.input<CheckmarkProps>`
     margin: 0 0.5rem 0 0;
 
     background-color: ${getSemanticValue('background-primary-default')};
-    box-shadow: inset 0 0 0 0.125rem ${props => getSemanticValue(props.error ? 'border-danger-emphasized' : 'border-primary-default')};
+    box-shadow: inset 0 0 0 0.125rem ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-neutral-default')};
     border-radius: 50%;
     transition: background-color 100ms, box-shadow 100ms;
     cursor: pointer;
@@ -41,7 +41,7 @@ const Checkmark = styled.input<CheckmarkProps>`
 
     &:checked {
         box-shadow: inset 0 0 0 0.3125rem
-            ${props => getSemanticValue(props.error ? 'border-danger-emphasized' : 'border-info-emphasized')};
+            ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-info-default')};
 
         &::after {
             opacity: 1;

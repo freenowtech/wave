@@ -30,7 +30,7 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${getSemanticValue('border-primary-default')};
+    border: 1px solid ${getSemanticValue('border-neutral-default')};
     padding: 0.8125rem ${Spaces[2]};
     border-radius: ${get('radii.2')};
 

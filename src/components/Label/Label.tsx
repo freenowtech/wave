@@ -22,27 +22,27 @@ const normalVariantStyles = variant({
     variants: {
         default: {
             color: getSemanticValue('text-primary'),
-            borderColor: getSemanticValue('border-primary-default'),
+            borderColor: getSemanticValue('border-neutral-default'),
             backgroundColor: getSemanticValue('background-secondary-default')
         },
         info: {
             color: getSemanticValue('overrides-label-text-link'),
-            borderColor: getSemanticValue('border-info-default'),
+            borderColor: getSemanticValue('border-info-faded'),
             backgroundColor: getSemanticValue('background-info-default')
         },
         success: {
             color: getSemanticValue('text-success'),
-            borderColor: getSemanticValue('border-success-default'),
+            borderColor: getSemanticValue('border-success-faded'),
             backgroundColor: getSemanticValue('background-success-default')
         },
         warning: {
             color: getSemanticValue('text-primary'),
-            borderColor: getSemanticValue('border-warning-emphasized'),
+            borderColor: getSemanticValue('border-warning-default'),
             backgroundColor: getSemanticValue('background-warning-default')
         },
         danger: {
             color: getSemanticValue('text-danger'),
-            borderColor: getSemanticValue('border-danger-default'),
+            borderColor: getSemanticValue('border-danger-faded'),
             backgroundColor: getSemanticValue('background-danger-default')
         }
     }

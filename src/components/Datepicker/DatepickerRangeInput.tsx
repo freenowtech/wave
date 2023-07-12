@@ -31,7 +31,7 @@ const DateRangeWrapper = styled.div.attrs({ theme })<DateRangerProps>`
         &:focus,
         &:active {
             box-shadow: none;
-            border-color: ${getSemanticValue('border-primary-default')};
+            border-color: ${getSemanticValue('border-neutral-default')};
         }
     }
 

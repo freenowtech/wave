@@ -43,7 +43,7 @@ const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
         }
 
         & ${/* sc-selector */ Checkmark}:not(:checked) {
-            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue(error ? 'border-danger-emphasized' : 'border-info-emphasized')};
+            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue(error ? 'border-danger-default' : 'border-info-default')};
             background-color: ${getSemanticValue('background-primary-default')};
         }
     `;

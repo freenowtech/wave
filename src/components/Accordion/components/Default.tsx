@@ -46,7 +46,7 @@ const CardHeader = styled(Header).attrs({ p: '3' })`
 `;
 
 const PanelBody = styled(Box).attrs({ my: '3' })`
-    border: solid 0.0625rem ${getSemanticValue('border-primary-default')};
+    border: solid 0.0625rem ${getSemanticValue('border-neutral-default')};
     border-radius: 0.3125rem;
 `;
 

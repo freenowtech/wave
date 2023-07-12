@@ -43,8 +43,8 @@ const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     box-sizing: border-box;
     background: white;
     border-radius: 0.25rem;
-    border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus-default' : 'border-primary-default') }`};
-    box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')}` : 'none')};
+    border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus' : 'border-neutral-default') }`};
+    box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}` : 'none')};
     height: ${p => (p.size === 'small' ? '2.2rem' : '3.2rem')};
     transition: box-shadow 100ms ease, border 100ms ease;
 `;

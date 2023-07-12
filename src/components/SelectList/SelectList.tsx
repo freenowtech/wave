@@ -61,7 +61,7 @@ const customStyles: StylesConfig = {
     }),
     menu: provided => ({
         ...provided,
-        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('border-primary-default')}`
+        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('border-neutral-default')}`
     }),
     valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
         let margin;
@@ -174,7 +174,7 @@ const customStyles: StylesConfig = {
         const styles = {
             ...provided,
             color: getSemanticValue('text-info'),
-            border: `0.0625rem solid ${getSemanticValue('border-info-emphasized')}`,
+            border: `0.0625rem solid ${getSemanticValue('border-info-default')}`,
             borderRadius: '1rem',
             backgroundColor: getSemanticValue('background-info-default'),
             marginRight: '0.375rem',
@@ -194,7 +194,7 @@ const customStyles: StylesConfig = {
                 ...styles,
                 color: getSemanticValue('text-disabled'),
                 backgroundColor: 'transparent',
-                borderColor: getSemanticValue('border-disabled-default')
+                borderColor: getSemanticValue('border-disabled')
             };
         }
 

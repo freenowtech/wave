@@ -145,39 +145,33 @@ export const SemanticColors = {
         info: Colors.blue.secondary[900]
     },
     border: {
-        primary: {
+        neutral: {
+            faded: Colors.white,
             default: Colors.blue.primary[200],
-            emphasized: Colors.blue.primary[1100],
-            inverted: Colors.blue.primary[550]
+            emphasized: Colors.blue.primary[550],
         },
-        secondary: {
-            default: Colors.blue.primary[50],
-            inverted: Colors.white
+        accent: {
+            faded: Colors.blue.secondary[350],
+            default: Colors.blue.secondary[900],
+            emphasized: Colors.blue.secondary[1000]
         },
-        focus: {
-            emphasized: Colors.blue.secondary[1000],
+        focus:Colors.blue.secondary[900],
+        disabled: Colors.blue.primary[200],
+        info: {
+            faded: Colors.blue.secondary[350],
             default: Colors.blue.secondary[900]
         },
-        disabled: {
-            default: Colors.blue.primary[200],
-            inverted: Colors.blue.primary[550]
-        },
-        info: {
-            default: Colors.blue.secondary[350],
-            emphasized: Colors.blue.secondary[900]
-        },
         success: {
-            default: Colors.green[350],
-            emphasized: Colors.green[900]
+            faded: Colors.green[350],
+            default: Colors.green[900]
         },
         warning: {
-            default: Colors.yellow[350],
-            emphasized: Colors.yellow[900]
+            faded: Colors.yellow[350],
+            default: Colors.yellow[900]
         },
         danger: {
-            default: Colors.orange[350],
-            emphasized: Colors.orange[900],
-            disabled: Colors.orange[350]
+            faded: Colors.orange[350],
+            default: Colors.orange[900],
         },
         transparent: Colors.transparent
     },
@@ -233,17 +227,6 @@ export const SemanticColors = {
                     default: Colors.blue.secondary[900]
                 }
             },
-            border: {
-                success: {
-                    default: Colors.green[350]
-                },
-                warning: {
-                    default: Colors.yellow[350]
-                },
-                danger: {
-                    default: Colors.orange[350]
-                }
-            }
         }
     }
 } satisfies SemanticColorsSchema;

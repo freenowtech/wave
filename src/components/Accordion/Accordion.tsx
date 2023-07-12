@@ -8,7 +8,7 @@ import { getSemanticValue } from '../../utils/cssVariables';
 
 const HorizontalDivider = styled(Box)`
     border: 0;
-    border-top: solid 0.0625rem ${getSemanticValue('border-primary-default')};
+    border-top: solid 0.0625rem ${getSemanticValue('border-neutral-default')};
 `;
 
 const HorizontalDividerTop = HorizontalDivider;

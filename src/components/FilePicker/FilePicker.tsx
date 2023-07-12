@@ -70,7 +70,7 @@ interface OutlinerProps extends BoxProps {
 
 // NOTE: we want to affect the color of only one icon SVG and not the ICON_FILE_FEEDBACK_COLOR
 const Outliner = styled(Box)<OutlinerProps>`
-    border: 0.0625rem solid ${getSemanticValue('border-primary-default')};
+    border: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
     box-sizing: border-box;
     cursor: pointer;
     position: relative;
@@ -94,7 +94,7 @@ const Outliner = styled(Box)<OutlinerProps>`
     ${({ error }) =>
         error &&
         css`
-            box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-emphasized')};
+            box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')};
             border-color: ${getSemanticValue('border-transparent')};
         `}
 
@@ -124,8 +124,8 @@ const Input = styled.input`
     outline: none;
 
     &:focus + ${Outliner} {
-        border-color: ${getSemanticValue('border-focus-default')};
-        box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-focus-default')};
+        border-color: ${getSemanticValue('border-focus')};
+        box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')};
     }
 `;
 
