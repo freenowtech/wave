@@ -1,11 +1,11 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { Colors } from '../essentials';
+import { SemanticCssVariable } from '../essentials/Colors/types';
 
 export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
     /**
      * Overrides the default color of the icon.
      */
-    color?: Colors | 'inherit';
+    color?: SemanticCssVariable | 'inherit' | string;
     /**
      * Adjusts the size of the icon with defaults or the size in pixels.
      */

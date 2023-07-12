@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const DJ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const DJ: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const DJ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="DJ__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -74,7 +74,13 @@ const DJ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#DJ__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#82c5f5" d="M0 0h28v10H13z" />
+            <path
+                mask="url(#DJ__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#82c5f5"
+                d="M0 0h28v10H13z"
+            />
             <defs>
                 <filter
                     id="DJ__Adobe_OpacityMaskFilter_2_"
@@ -107,6 +113,4 @@ const DJ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-DJ.defaultProps = {};
 export default DJ;

@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const AN: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const AN: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const AN: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="AN__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -225,6 +225,4 @@ const AN: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-AN.defaultProps = {};
 export default AN;

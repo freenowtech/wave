@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const AE: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const AE: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const AE: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="AE__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -99,10 +99,14 @@ const AE: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#AE__mask-2_3_)" fillRule="evenodd" clipRule="evenodd" fill="#ff323e" d="M0 0h8v20H0z" />
+            <path
+                mask="url(#AE__mask-2_3_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#ff323e"
+                d="M0 0h8v20H0z"
+            />
         </svg>
     );
 };
-
-AE.defaultProps = {};
 export default AE;

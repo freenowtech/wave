@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const DO: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="DO__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -25,7 +25,14 @@ const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                 fill="#fff"
             />
             <defs>
-                <filter id="DO__Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x={0} y={0} width={12} height={8}>
+                <filter
+                    id="DO__Adobe_OpacityMaskFilter"
+                    filterUnits="userSpaceOnUse"
+                    x={0}
+                    y={0}
+                    width={12}
+                    height={8}
+                >
                     <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
                 </filter>
             </defs>
@@ -67,7 +74,13 @@ const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#DO__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#083d7a" d="M16 12h12v8H16z" />
+            <path
+                mask="url(#DO__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#083d7a"
+                d="M16 12h12v8H16z"
+            />
             <defs>
                 <filter
                     id="DO__Adobe_OpacityMaskFilter_2_"
@@ -89,7 +102,13 @@ const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#DO__mask-2_3_)" fillRule="evenodd" clipRule="evenodd" fill="#df1e35" d="M0 12h12v8H0z" />
+            <path
+                mask="url(#DO__mask-2_3_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#df1e35"
+                d="M0 12h12v8H0z"
+            />
             <defs>
                 <filter
                     id="DO__Adobe_OpacityMaskFilter_3_"
@@ -111,7 +130,13 @@ const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#DO__mask-2_4_)" fillRule="evenodd" clipRule="evenodd" fill="#df1e35" d="M16 0h12v8H16z" />
+            <path
+                mask="url(#DO__mask-2_4_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#df1e35"
+                d="M16 0h12v8H16z"
+            />
             <defs>
                 <filter
                     id="DO__Adobe_OpacityMaskFilter_4_"
@@ -174,6 +199,4 @@ const DO: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-DO.defaultProps = {};
 export default DO;

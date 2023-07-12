@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const DM: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const DM: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="DM__c">
                     <stop stopColor="#E02C42" offset="0%" />
@@ -29,7 +35,11 @@ const DM: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     fill="#262626"
                     mask="url(#DM__b)"
                 />
-                <path d="M12 9.333H0V8h12V0h1.333v8H28v1.333H13.333V20H12V9.333z" fill="#FCD449" mask="url(#DM__b)" />
+                <path
+                    d="M12 9.333H0V8h12V0h1.333v8H28v1.333H13.333V20H12V9.333z"
+                    fill="#FCD449"
+                    mask="url(#DM__b)"
+                />
                 <circle fill="url(#DM__c)" mask="url(#DM__b)" cx={14} cy={10} r={4.667} />
                 <path
                     d="M14 13.333a3.333 3.333 0 100-6.666 3.333 3.333 0 000 6.666z"
@@ -48,6 +58,4 @@ const DM: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-DM.defaultProps = {};
 export default DM;

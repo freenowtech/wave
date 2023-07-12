@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const AZ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const AZ: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <filter x="-12.5%" y="-12.5%" width="125%" height="150%" filterUnits="objectBoundingBox" id="AZ__c">
                     <feOffset dy={1} in="SourceAlpha" result="shadowOffsetOuter1" />
@@ -37,6 +43,4 @@ const AZ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-AZ.defaultProps = {};
 export default AZ;

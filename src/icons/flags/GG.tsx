@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const GG: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const GG: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,12 +13,15 @@ const GG: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="GG__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
             xmlSpace="preserve"
         >
-            <style>{'.GG__st2,.GG__st8{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.GG__st8{fill:#f9dd16}'}</style>
+            <style>
+                {'.GG__st2,.GG__st8{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.GG__st8{fill:#f9dd16}'}
+            </style>
             <path
                 d="M2 0h24c1.1 0 2 .9 2 2.1V18c0 1.1-.9 2.1-2 2.1H2c-1.1 0-2-.9-2-2.1V2.1C0 .9.9 0 2 0z"
                 fill="#fff"
@@ -113,6 +115,4 @@ const GG: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-GG.defaultProps = {};
 export default GG;

@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const LV: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const LV: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const LV: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="LV__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -22,7 +22,14 @@ const LV: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             <style>{'.LV__st2{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}'}</style>
             <path d="M2 0h24c1.1 0 2 .9 2 2v15.5c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0z" fill="#fff" />
             <defs>
-                <filter id="LV__Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x={0} y={0} width={28} height={8}>
+                <filter
+                    id="LV__Adobe_OpacityMaskFilter"
+                    filterUnits="userSpaceOnUse"
+                    x={0}
+                    y={0}
+                    width={28}
+                    height={8}
+                >
                     <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
                 </filter>
             </defs>
@@ -64,10 +71,14 @@ const LV: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#LV__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#b9414b" d="M0 12h28v8H0z" />
+            <path
+                mask="url(#LV__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#b9414b"
+                d="M0 12h28v8H0z"
+            />
         </svg>
     );
 };
-
-LV.defaultProps = {};
 export default LV;

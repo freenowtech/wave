@@ -3,13 +3,12 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const AmericanExpressIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const AmericanExpressIcon: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fillRule="evenodd">
                 <path fill="#016FD0" d="M20 4v16H4V4.007z" />
                 <path
@@ -21,6 +20,4 @@ const AmericanExpressIcon: React.FC<Props> = ({ size = 'medium', ...props }: Ico
         </svg>
     );
 };
-
-AmericanExpressIcon.defaultProps = {};
 export default AmericanExpressIcon;

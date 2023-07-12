@@ -3,13 +3,12 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const YE: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const YE: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg {...props} width={sizePx} height={sizePx} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20">
             <style>{'.YE__st2{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}'}</style>
             <g id="YE__Ebene_1">
                 <defs>
@@ -74,6 +73,4 @@ const YE: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-YE.defaultProps = {};
 export default YE;

@@ -3,13 +3,12 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const VisaIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const VisaIcon: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="VisaIcon__a">
                     <stop stopColor="#1A1E5A" offset="0%" />
@@ -24,6 +23,4 @@ const VisaIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => 
         </svg>
     );
 };
-
-VisaIcon.defaultProps = {};
 export default VisaIcon;

@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const CR: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="CR__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -25,7 +25,14 @@ const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                 fill="#fff"
             />
             <defs>
-                <filter id="CR__Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x={0} y={0} width={28} height={4}>
+                <filter
+                    id="CR__Adobe_OpacityMaskFilter"
+                    filterUnits="userSpaceOnUse"
+                    x={0}
+                    y={0}
+                    width={28}
+                    height={4}
+                >
                     <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
                 </filter>
             </defs>
@@ -67,7 +74,13 @@ const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#CR__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#06358f" d="M0 16h28v4H0z" />
+            <path
+                mask="url(#CR__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#06358f"
+                d="M0 16h28v4H0z"
+            />
             <defs>
                 <filter
                     id="CR__Adobe_OpacityMaskFilter_2_"
@@ -100,6 +113,4 @@ const CR: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-CR.defaultProps = {};
 export default CR;

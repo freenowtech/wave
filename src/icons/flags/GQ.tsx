@@ -3,8 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const GQ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const GQ: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
@@ -14,6 +13,7 @@ const GQ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
             width={sizePx}
             height={sizePx}
             id="GQ__Ebene_1"
+            xmlns="http://www.w3.org/2000/svg"
             x={0}
             y={0}
             viewBox="0 0 28 20"
@@ -74,7 +74,13 @@ const GQ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#GQ__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#51b422" d="M0 0h28v6.7H0z" />
+            <path
+                mask="url(#GQ__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#51b422"
+                d="M0 0h28v6.7H0z"
+            />
             <defs>
                 <filter
                     id="GQ__Adobe_OpacityMaskFilter_2_"
@@ -136,6 +142,4 @@ const GQ: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-GQ.defaultProps = {};
 export default GQ;
