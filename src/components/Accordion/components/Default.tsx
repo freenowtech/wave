@@ -11,7 +11,7 @@ import { AccordionProps } from '../types';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`
-    color: ${getSemanticValue('text-link')};
+    color: ${getSemanticValue('foreground-accent-default')};
 `;
 
 const PanelHeader = styled(Header)`
@@ -19,12 +19,9 @@ const PanelHeader = styled(Header)`
         background-color: ${getSemanticValue('background-info-default')};
     }
 
-    &:hover ${ButtonLabel} {
-        color: ${getSemanticValue('text-linkHover')};
-    }
-
+    &:hover ${ButtonLabel},
     &:hover ${ChevronDown} {
-        color: ${getSemanticValue('text-linkHover')};
+        color: ${getSemanticValue('foreground-accent-emphasized')};
     }
 `;
 
@@ -36,12 +33,9 @@ const CardHeader = styled(Header).attrs({ p: '3' })`
         background-color: ${getSemanticValue('background-info-default')};
     }
 
-    &:hover ${ButtonLabel} {
-        color: ${getSemanticValue('text-linkHover')};
-    }
-
+    &:hover ${ButtonLabel},
     &:hover ${ChevronUp} {
-        color: ${getSemanticValue('text-linkHover')};
+        color: ${getSemanticValue('foreground-accent-emphasized')};
     }
 `;
 
@@ -52,9 +46,9 @@ const PanelBody = styled(Box).attrs({ my: '3' })`
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) =>
     isOpen ? (
-        <ChevronUp color={getSemanticValue('icon-action-default')} />
+        <ChevronUp color={getSemanticValue('foreground-accent-default')} />
     ) : (
-        <ChevronDown color={getSemanticValue('icon-action-default')} />
+        <ChevronDown color={getSemanticValue('foreground-accent-default')} />
     );
 
 export const DefaultPanel = ({

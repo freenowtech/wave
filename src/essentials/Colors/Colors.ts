@@ -56,25 +56,43 @@ export const Colors = {
 // ACTION = secondary now
 // Semantic Colors Tier (--wave-s-color-...)
 export const SemanticColors = {
-    text: {
+    black: Colors.black,
+    white: Colors.white,
+    foreground: {
         primary: Colors.blue.primary[900],
-        primaryInverted: Colors.white,
-        secondary: Colors.blue.primary[550],
-        secondaryInverted: Colors.blue.primary[200],
-        tertiary: Colors.blue.primary[350],
-        tertiaryInverted: Colors.blue.primary[350],
+        'on-background': {
+            primary: Colors.white,
+            accent: Colors.white,
+            info: Colors.white,
+            success: Colors.white,
+            warning: Colors.blue.primary[900],
+            danger: Colors.white
+        },
         disabled: Colors.blue.primary[200],
-        disabledInverted: Colors.blue.primary[550],
-        link: Colors.blue.secondary[900],
-        linkInverted: Colors.white,
-        linkHover: Colors.blue.secondary[1000],
-        linkHoverInverted: Colors.blue.secondary[150],
-        danger: Colors.orange[1000],
-        dangerInverted: Colors.orange[900],
-        success: Colors.green[1000],
-        warning: Colors.yellow[900],
-        info: Colors.blue.secondary[900],
-        infoHover: Colors.blue.secondary[1000]
+        focus: Colors.blue.secondary[900],
+        neutral: {
+            faded: Colors.blue.primary[200],
+            default: Colors.blue.primary[350],
+            emphasized: Colors.blue.primary[550]
+        },
+        accent: {
+            default: Colors.blue.secondary[900],
+            emphasized: Colors.blue.secondary[1000]
+        },
+        info: {
+            faded: Colors.blue.secondary[900],
+            default: Colors.blue.secondary[900]
+        },
+        success: {
+            default: Colors.green[900]
+        },
+        warning: {
+            default: Colors.blue.primary[900]
+        },
+        danger: {
+            default: Colors.orange[900],
+            emphasized: Colors.orange[1000]
+        }
     },
     background: {
         primary: {
@@ -113,49 +131,18 @@ export const SemanticColors = {
         highlight: Colors.blue.secondary[900],
         transparent: Colors.transparent
     },
-    icon: {
-        primary: {
-            default: Colors.blue.primary[900],
-            inverted: Colors.white
-        },
-        secondary: {
-            default: Colors.blue.primary[550],
-            inverted: Colors.blue.primary[200],
-            hover: Colors.blue.primary[900],
-            hoverInverted: Colors.blue.primary[50]
-        },
-        tertiary: {
-            default: Colors.blue.primary[350],
-            inverted: Colors.blue.primary[350]
-        },
-        disabled: {
-            default: Colors.blue.primary[200],
-            inverted: Colors.blue.primary[550]
-        },
-        action: {
-            default: Colors.blue.secondary[900],
-            emphasized: Colors.blue.secondary[1000]
-        },
-        danger: {
-            default: Colors.orange[900],
-            emphasized: Colors.orange[1000]
-        },
-        success: Colors.green[900],
-        warning: Colors.yellow[900],
-        info: Colors.blue.secondary[900]
-    },
     border: {
         neutral: {
             faded: Colors.white,
             default: Colors.blue.primary[200],
-            emphasized: Colors.blue.primary[550],
+            emphasized: Colors.blue.primary[550]
         },
         accent: {
             faded: Colors.blue.secondary[350],
             default: Colors.blue.secondary[900],
             emphasized: Colors.blue.secondary[1000]
         },
-        focus:Colors.blue.secondary[900],
+        focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[200],
         info: {
             faded: Colors.blue.secondary[350],
@@ -171,7 +158,7 @@ export const SemanticColors = {
         },
         danger: {
             faded: Colors.orange[350],
-            default: Colors.orange[900],
+            default: Colors.orange[900]
         },
         transparent: Colors.transparent
     },
@@ -180,22 +167,12 @@ export const SemanticColors = {
     },
     overrides: {
         label: {
-            text: {
-                link: Colors.blue.secondary[900]
-            },
             background: {
                 secondary: {
                     emphasized: Colors.blue.primary[550]
                 },
                 info: {
                     emphasized: Colors.blue.secondary[900]
-                }
-            }
-        },
-        accordion: {
-            icon: {
-                primary: {
-                    default: Colors.blue.secondary[900]
                 }
             }
         },
@@ -221,12 +198,7 @@ export const SemanticColors = {
                 danger: {
                     default: Colors.orange[50]
                 }
-            },
-            icon: {
-                action: {
-                    default: Colors.blue.secondary[900]
-                }
-            },
+            }
         }
     }
 } satisfies SemanticColorsSchema;

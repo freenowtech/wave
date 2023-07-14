@@ -50,7 +50,7 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
             </Text>
             <Weekdays>
                 {weekdayLabels.map(dayLabel => (
-                    <Text as="p" key={dayLabel} fontSize={0} textAlign="center" color={getSemanticValue('text-secondary')}>
+                    <Text as="p" key={dayLabel} fontSize={0} textAlign="center" color={getSemanticValue('foreground-neutral-emphasized')}>
                         {dayLabel}
                     </Text>
                 ))}

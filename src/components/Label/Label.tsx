@@ -21,27 +21,27 @@ interface LabelProps extends MarginProps {
 const normalVariantStyles = variant({
     variants: {
         default: {
-            color: getSemanticValue('text-primary'),
+            color: getSemanticValue('foreground-primary'),
             borderColor: getSemanticValue('border-neutral-default'),
             backgroundColor: getSemanticValue('background-secondary-default')
         },
         info: {
-            color: getSemanticValue('overrides-label-text-link'),
+            color: getSemanticValue('foreground-info-default'),
             borderColor: getSemanticValue('border-info-faded'),
             backgroundColor: getSemanticValue('background-info-default')
         },
         success: {
-            color: getSemanticValue('text-success'),
+            color: getSemanticValue('foreground-success-default'),
             borderColor: getSemanticValue('border-success-faded'),
             backgroundColor: getSemanticValue('background-success-default')
         },
         warning: {
-            color: getSemanticValue('text-primary'),
+            color: getSemanticValue('foreground-primary'),
             borderColor: getSemanticValue('border-warning-default'),
             backgroundColor: getSemanticValue('background-warning-default')
         },
         danger: {
-            color: getSemanticValue('text-danger'),
+            color: getSemanticValue('foreground-danger-emphasized'),
             borderColor: getSemanticValue('border-danger-faded'),
             backgroundColor: getSemanticValue('background-danger-default')
         }
@@ -51,27 +51,27 @@ const normalVariantStyles = variant({
 const filledVariantStyles = variant({
     variants: {
         default: {
-            color: getSemanticValue('text-primaryInverted'),
+            color: getSemanticValue('foreground-on-background-primary'),
             borderColor: getSemanticValue('border-transparent'),
             backgroundColor: getSemanticValue('overrides-label-background-secondary-emphasized')
         },
         info: {
-            color: getSemanticValue('text-primaryInverted'),
+            color: getSemanticValue('foreground-on-background-info'),
             borderColor: getSemanticValue('border-transparent'),
             backgroundColor: getSemanticValue('overrides-label-background-info-emphasized')
         },
         success: {
-            color: getSemanticValue('text-primaryInverted'),
+            color: getSemanticValue('foreground-on-background-success'),
             borderColor: getSemanticValue('border-transparent'),
             backgroundColor: getSemanticValue('background-success-emphasized')
         },
         warning: {
-            color: getSemanticValue('text-primary'),
+            color: getSemanticValue('foreground-on-background-warning'),
             borderColor: getSemanticValue('border-transparent'),
             backgroundColor: getSemanticValue('background-warning-emphasized')
         },
         danger: {
-            color: getSemanticValue('text-primaryInverted'),
+            color: getSemanticValue('foreground-on-background-danger'),
             borderColor: getSemanticValue('border-transparent'),
             backgroundColor: getSemanticValue('background-danger-emphasized')
         }

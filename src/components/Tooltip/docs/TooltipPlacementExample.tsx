@@ -8,7 +8,7 @@ import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TargetSquare = styled.div`
     background: ${getSemanticValue('background-highlight')};
-    color: ${getSemanticValue('text-primaryInverted')};
+    color: ${getSemanticValue('foreground-on-background-primary')};
     font-size: 0.75rem;
     cursor: default;
     width: 7rem;

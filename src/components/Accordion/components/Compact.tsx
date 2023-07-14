@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
@@ -10,24 +10,19 @@ import { AccordionProps } from '../types';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 type Props = Pick<
-    AccordionProps,
+    PropsWithChildren<AccordionProps>,
     'heading' | 'description' | 'defaultExpanded' | 'children' | 'onExpand' | 'onCollapse'
 >;
 
 const StyleHeadline = styled(Headline)``;
 
 const PanelHeader = styled(Header)`
-    &:hover ${StyleHeadline} {
-        color: ${getSemanticValue('text-linkHover')};
-    }
-
-    &:hover ${ChevronDown} {
-        color: ${getSemanticValue('text-linkHover')};
-    }
-
+    &:hover ${StyleHeadline},
+    &:hover ${ChevronDown},
     &:hover ${ChevronUp} {
-        color: ${getSemanticValue('text-linkHover')};
+        color: ${getSemanticValue('foreground-accent-emphasized')};
     }
+
 `;
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) => (isOpen ? <ChevronUp /> : <ChevronDown />);

@@ -11,7 +11,7 @@ const errorStyles = css`
     border-color: ${getSemanticValue('border-danger-default')};
 
     & ~ ${BottomLinedInputLabel} {
-        color: ${getSemanticValue('text-dangerInverted')};
+        color: ${getSemanticValue('foreground-danger-emphasized')};
     }
 `;
 
@@ -31,14 +31,14 @@ const sizeVariant = variant<Record<string, unknown>, InputProps['size']>({
 
 const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     if (inverted) {
-        return getSemanticValue('text-secondaryInverted');
+        return getSemanticValue('foreground-neutral-faded');
     }
 
     if (hasValue) {
-        return getSemanticValue('text-secondary');
+        return getSemanticValue('foreground-neutral-emphasized');
     }
 
-    return getSemanticValue('text-tertiary');
+    return getSemanticValue('foreground-neutral-default');
 };
 
 const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
@@ -52,7 +52,7 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
     ${p => (p.error ? errorStyles : undefined)}
     &:disabled {
         & ~ ${BottomLinedInputLabel} {
-            color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+            color: ${getSemanticValue('foreground-disabled')};
         }
     }
 
@@ -68,7 +68,7 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
     &:focus:not(:disabled) {
         & ~ ${BottomLinedInputLabel} {
             ${p => activeBottomLinedPosition(p.size)};
-            color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-info')};
+            color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-focus')};
             background: ${p =>
                 getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
         }

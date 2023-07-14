@@ -55,7 +55,7 @@ const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
     position: relative;
     user-select: none;
 
-    color: ${props => getSemanticValue(props.disabled ? 'text-disabled' : 'text-primary')};
+    color: ${props => getSemanticValue(props.disabled ? 'frontend-disabled' : 'frontend-primary-default')};
 
     font-family: ${get('fonts.normal')};
     line-height: 1;

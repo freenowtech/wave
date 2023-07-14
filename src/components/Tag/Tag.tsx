@@ -20,7 +20,7 @@ interface TagProps extends MarginProps {
 }
 
 const TagText = styled(Text).attrs({ theme })<Pick<TagProps, 'dismissible'>>`
-    color: ${getSemanticValue('text-info')};
+    color: ${getSemanticValue('foreground-info-faded')};
     margin-left: 0.75rem;
     margin-right: ${props => (props.dismissible ? '0.25rem' : '0.75rem')};
     font-size: ${get('fontSizes.1')};
@@ -57,11 +57,11 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
         background-color: ${getSemanticValue('background-info-emphasized')};
 
         > ${TagText} {
-            color: ${getSemanticValue('text-primaryInverted')};
+            color: ${getSemanticValue('foreground-on-background-info')};
         }
 
         > ${DismissIcon} {
-            color: ${getSemanticValue('icon-primary-inverted')};
+            color: ${getSemanticValue('foreground-on-background-info')};
         }
     }
 `;
@@ -69,7 +69,7 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
 const Tag: FC<PropsWithChildren<TagProps>> = ({ children, onDismiss, dismissible = true, ...rest }) => (
     <TagWrapper {...rest}>
         <TagText dismissible={dismissible}>{children}</TagText>
-        {dismissible && <DismissIcon data-testid="dismiss-icon" color={getSemanticValue('icon-info')} onClick={onDismiss} />}
+        {dismissible && <DismissIcon data-testid="dismiss-icon" color={getSemanticValue('foreground-info-faded')} onClick={onDismiss} />}
     </TagWrapper>
 );
 

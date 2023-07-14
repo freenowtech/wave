@@ -60,7 +60,7 @@ const InputButton = styled(Button)`
     white-space: nowrap;
 `;
 
-const ICON_FILE_FEEDBACK_COLOR = getSemanticValue('icon-success');
+const ICON_FILE_FEEDBACK_COLOR = getSemanticValue('foreground-success-default');
 
 interface OutlinerProps extends BoxProps {
     disabled: boolean;
@@ -107,7 +107,7 @@ const Outliner = styled(Box)<OutlinerProps>`
                     border-color: ${getSemanticValue('background-transparent')};
 
                     svg:not([color='${ICON_FILE_FEEDBACK_COLOR}']) path {
-                        fill: ${getSemanticValue('icon-action-default')};
+                        fill: ${getSemanticValue('foreground-accent-default')};
                     }
                 }
             }

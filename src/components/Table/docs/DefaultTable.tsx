@@ -1,7 +1,7 @@
-import React, { FC, useState } from 'react';
-import { Table, TableCell, TableHeaderCell, TableProps, TableRow, TableRowProps } from '..';
-import { Box, Button, Label, Select } from '../..';
-import { Colors } from '../../../essentials';
+import React, { FC } from 'react';
+import { Table, TableCell, TableHeaderCell, TableProps, TableRow } from '..';
+import { Box, Button, Label } from '../..';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { EnvelopeIcon, PhoneIcon } from '../../../icons';
 import { Text } from '../../Text/Text';
 
@@ -33,13 +33,13 @@ export const DefaultTable: FC = (args: TableProps) => (
                 </TableCell>
                 <TableCell>
                     <Box display="flex" alignItems="center">
-                        <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
+                        <PhoneIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                         &nbsp;+4915127182377
                     </Box>
                 </TableCell>
                 <TableCell>
                     <Box display="flex" alignItems="center">
-                        <EnvelopeIcon size={18} color={Colors.ACTION_BLUE_900} />
+                        <EnvelopeIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                         &nbsp;leander.klein@free-now.com
                     </Box>
                 </TableCell>
@@ -63,13 +63,13 @@ export const DefaultTable: FC = (args: TableProps) => (
                 </TableCell>
                 <TableCell>
                     <Box display="flex" alignItems="center">
-                        <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
+                        <PhoneIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                         &nbsp;+4915139912828
                     </Box>
                 </TableCell>
                 <TableCell>
                     <Box display="flex" alignItems="center">
-                        <EnvelopeIcon size={18} color={Colors.ACTION_BLUE_900} />
+                        <EnvelopeIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                         &nbsp;e.diepenhorst@free-now.com
                     </Box>
                 </TableCell>
@@ -93,13 +93,13 @@ export const DefaultTable: FC = (args: TableProps) => (
                 </TableCell>
                 <TableCell>
                     <Box display="flex" alignItems="center">
-                        <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
+                        <PhoneIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                         &nbsp;+491672182732
                     </Box>
                 </TableCell>
                 <TableCell>
                     <Box display="flex" alignItems="center">
-                        <EnvelopeIcon size={18} color={Colors.ACTION_BLUE_900} />
+                        <EnvelopeIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                         &nbsp;j.doe@free-now.com
                     </Box>
                 </TableCell>

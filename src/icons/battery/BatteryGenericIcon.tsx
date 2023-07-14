@@ -6,7 +6,7 @@ import { IconProps } from '../IconProps';
 type Props = IconProps;
 const BatteryGenericIcon: React.FC<Props> = ({
     size = 'medium',
-    color = getSemanticValue('icon-primary-default'),
+    color = getSemanticValue('foreground-primary'),
     ...rest
 }) => {
     const props = { ...rest, color };

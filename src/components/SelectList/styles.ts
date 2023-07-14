@@ -5,20 +5,20 @@ import { get } from '../../utils/themeGet';
 import { SelectListProps } from './types';
 
 export const disabledStyles = {
-    control: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled'),
+    control: {
+        color: getSemanticValue('foreground-disabled'),
         borderColor: getSemanticValue('border-disabled'),
         boxShadow: 'none'
-    }),
-    placeholder: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled')
-    }),
-    label: ({ inverted }: Pick<SelectListProps, 'inverted'>): CSSObject => ({
-        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled')
-    }),
-    icons: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled')
-    })
+    },
+    placeholder: {
+        color: getSemanticValue('foreground-disabled')
+    },
+    label: {
+        color: getSemanticValue('foreground-disabled')
+    },
+    icons: {
+        color: getSemanticValue('foreground-disabled')
+    }
 };
 
 export const errorStyles = {
@@ -30,7 +30,7 @@ export const errorStyles = {
                 : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
     }),
     label: (): CSSObject => ({
-        color: getSemanticValue('text-danger')
+        color: getSemanticValue('foreground-danger-emphasized')
     })
 };
 

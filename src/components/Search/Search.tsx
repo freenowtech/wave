@@ -12,7 +12,7 @@ import { Input } from '../Input/Input';
 
 const ActiveStyle = `
     background-color: ${getSemanticValue('background-info-default')};
-    color: ${getSemanticValue('text-info')};
+    color: ${getSemanticValue('foreground-info-faded')};
 `;
 
 interface SearchResultsContainerProps extends BoxProps, Pick<SearchProps, 'inverted'> {}
@@ -53,12 +53,12 @@ const StyledInput = styled(Input)`
     width: 100%;
 
     input {
-        caret-color: ${getSemanticValue('text-info')};
+        caret-color: ${getSemanticValue('foreground-info-faded')};
         background: transparent;
         border: 0;
 
         &::placeholder {
-            color: ${p => getSemanticValue(p.disabled ? 'text-disabled' : 'text-secondary')};
+            color: ${p => getSemanticValue(p.disabled ? 'foreground-disabled' : 'foreground-neutral-default')};
           opacity: 1;
         }
       
@@ -262,7 +262,7 @@ export const Search: FC<SearchProps> = ({
                     <MagnifyingGlassIcon
                         size={size === 'small' ? 20 : 24}
                         aria-hidden="true"
-                        color={getSemanticValue(disabled ? 'icon-disabled-default' : 'icon-secondary-default')}
+                        color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-default')}
                     />
                 </Box>
 
@@ -290,7 +290,7 @@ export const Search: FC<SearchProps> = ({
                         }}
                         role="button"
                     >
-                        <CloseIcon aria-hidden="true" color={getSemanticValue('icon-secondary-default')} />
+                        <CloseIcon aria-hidden="true" color={getSemanticValue('foreground-neutral-default')} />
                     </Box>
                 )}
             </SearchInputContainer>

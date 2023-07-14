@@ -3,6 +3,7 @@ import { ResponsiveValue, variant } from 'styled-system';
 
 import { BaseButton, BaseButtonProps } from './BaseButton';
 import { ComponentSemanticTokens } from '../../essentials/Colors/types';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 type Variant = 'default' | 'danger';
 
@@ -20,31 +21,31 @@ interface TextButtonProps extends BaseButtonProps {
 const variantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         default: {
-            color: 'var(--wave-s-color-text-link)',
-            fill: 'var(--wave-s-color-icon-action-default)',
+            color: getSemanticValue('foreground-accent-default'),
+            fill: getSemanticValue('foreground-accent-default'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-linkHover)',
-                fill: 'var(--wave-s-color-icon-action-emphasized)'
+                color: getSemanticValue('foreground-accent-emphasized'),
+                fill: getSemanticValue('foreground-accent-emphasized')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-disabled)',
-                fill: 'var(--wave-s-color-icon-disabled-default)'
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled')
             }
         },
         danger: {
-            color: 'var(--wave-s-color-text-dangerInverted)',
-            fill: 'var(--wave-s-color-icon-danger-default)',
+            color: getSemanticValue('foreground-danger-default'),
+            fill: getSemanticValue('foreground-danger-default'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-danger)',
-                fill: 'var(--wave-s-color-icon-danger-emphasized)'
+                color: getSemanticValue('foreground-danger-emphasized'),
+                fill: getSemanticValue('foreground-danger-emphasized')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-disabled)',
-                fill: 'var(--wave-s-color-icon-disabled-default)'
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled')
             }
         }
     }
@@ -53,31 +54,31 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
 const invertedVariantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         default: {
-            color: 'var(--wave-s-color-text-linkInverted)',
-            fill: 'var(--wave-s-color-icon-primary-inverted)',
+            color: getSemanticValue('foreground-on-background-primary'),
+            fill: getSemanticValue('foreground-on-background-primary'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-tertiary)',
-                fill: 'var(--wave-s-color-icon-tertiary-inverted)'
+                color: getSemanticValue('foreground-neutral-default'),
+                fill: getSemanticValue('foreground-neutral-default')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-disabledInverted)',
-                fill: 'var(--wave-s-color-icon-disabled-inverted)'
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled')
             }
         },
         danger: {
-            color: 'var(--wave-s-color-text-dangerInverted)',
-            fill: 'var(--wave-s-color-icon-danger-default)',
+            color: getSemanticValue('foreground-danger-default'),
+            fill: getSemanticValue('foreground-danger-default'),
 
             '&:hover': {
-                color: 'var(--wave-s-color-text-danger)',
-                fill: 'var(--wave-s-color-icon-danger-emphasized)'
+                color: getSemanticValue('foreground-danger-emphasized'),
+                fill: getSemanticValue('foreground-danger-emphasized')
             },
 
             '&:disabled': {
-                color: 'var(--wave-s-color-text-disabledInverted)',
-                fill: 'var(--wave-s-color-icon-disabled-inverted)'
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled')
             }
         }
     }

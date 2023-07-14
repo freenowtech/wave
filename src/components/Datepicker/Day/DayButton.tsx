@@ -6,7 +6,7 @@ import { get } from '../../../utils/themeGet';
 const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabledDate }: DayButtonProps) => {
     if (isSelectedStartOrEnd) {
         return css`
-            color: ${getSemanticValue('text-primaryInverted')};
+            color: ${getSemanticValue('foreground-on-background-accent')};
             background: ${getSemanticValue('overrides-datepicker-background-info-emphasized')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-accent-default')};
             z-index: 2;
@@ -15,7 +15,7 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
 
     if (isSelected || isWithinHoverRange) {
         return css`
-            color: ${getSemanticValue('text-link')};
+            color: ${getSemanticValue('foreground-accent-default')};
             background: ${getSemanticValue('overrides-datepicker-background-info-default')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-accent-faded')};
             z-index: 1;
@@ -23,21 +23,21 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
             &:hover {
                 cursor: pointer;
                 background: ${getSemanticValue('background-info-hover')};
-                color: ${getSemanticValue('text-infoHover')};
+                color: ${getSemanticValue('foreground-accent-emphasized')};
             }
         `;
     }
 
     if (disabledDate) {
         return css`
-            color: ${getSemanticValue('text-disabled')};
+            color: ${getSemanticValue('foreground-disabled')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-disabled')};
             background: ${getSemanticValue('background-primary-default')};
         `;
     }
 
     return css`
-        color: ${getSemanticValue('text-primary')};
+        color: ${getSemanticValue('foreground-primary')};
         background: ${getSemanticValue('background-primary-default')};
 
         &:hover {

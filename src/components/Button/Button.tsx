@@ -22,55 +22,45 @@ interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
 const variantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: getSemanticValue('text-primaryInverted'),
-            fill: getSemanticValue('icon-primary-inverted'),
+            color: getSemanticValue('foreground-on-background-primary'),
+            fill: getSemanticValue('foreground-on-background-primary'),
             background: getSemanticValue('background-primary-emphasized'),
 
             '&:hover': {
-                color: getSemanticValue('text-primaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
                 background: getSemanticValue('background-primary-hover')
             },
 
             '&:disabled': {
-                color: getSemanticValue('text-primaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
                 background: getSemanticValue('background-primary-disabled')
             }
         },
         secondary: {
-            color: getSemanticValue('text-primary'),
-            fill: getSemanticValue('icon-primary-default'),
+            color: getSemanticValue('foreground-primary'),
+            fill: getSemanticValue('foreground-primary'),
             background: getSemanticValue('background-primary-default'),
             borderColor: getSemanticValue('border-neutral-default'),
 
             '&:hover': {
-                color: getSemanticValue('text-primary'),
-                fill: getSemanticValue('icon-primary-default'),
                 background: getSemanticValue('background-secondary-default')
             },
 
             '&:disabled': {
-                color: getSemanticValue('text-disabled'),
-                fill: getSemanticValue('icon-disabled-default'),
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
                 background: getSemanticValue('background-primary-default'),
                 borderColor: getSemanticValue('border-disabled')
             }
         },
         danger: {
-            color: getSemanticValue('text-primaryInverted'),
-            fill: getSemanticValue('icon-primary-inverted'),
+            color: getSemanticValue('foreground-on-background-danger'),
+            fill: getSemanticValue('foreground-on-background-danger'),
             background: getSemanticValue('background-danger-emphasized'),
 
             '&:hover': {
-                color: getSemanticValue('text-primaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
                 background: getSemanticValue('background-danger-hover')
             },
 
             '&:disabled': {
-                color: getSemanticValue('text-primaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
                 background: getSemanticValue('background-primary-disabled'),
                 borderColor: getSemanticValue('border-disabled')
             }
@@ -81,54 +71,52 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
 const invertedVariantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: getSemanticValue('text-primary'),
-            fill: getSemanticValue('icon-primary-default'),
+            color: getSemanticValue('foreground-accent-default'),
+            fill: getSemanticValue('foreground-accent-default'),
             background: getSemanticValue('background-primary-default'),
 
             '&:hover': {
-                color: getSemanticValue('text-tertiaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
+                color: getSemanticValue('foreground-on-background-accent'),
+                fill: getSemanticValue('foreground-on-background-accent'),
                 background: getSemanticValue('background-primary-emphasized'),
                 borderColor: getSemanticValue('border-neutral-default')
             },
             '&:disabled': {
-                color: getSemanticValue('text-tertiaryInverted'),
-                fill: getSemanticValue('icon-tertiary-default'),
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
                 background: getSemanticValue('background-secondary-emphasized'),
                 borderColor: getSemanticValue('border-disabled')
             }
         },
         secondary: {
-            color: getSemanticValue('text-primaryInverted'),
-            fill: getSemanticValue('icon-primary-inverted'),
+            color: getSemanticValue('foreground-on-background-primary'),
+            fill: getSemanticValue('foreground-on-background-primary'),
             background: getSemanticValue('background-transparent'),
             borderColor: getSemanticValue('border-neutral-faded'),
 
             '&:hover': {
-                color: getSemanticValue('text-primary'),
-                fill: getSemanticValue('icon-primary-default'),
+                color: getSemanticValue('foreground-primary'),
+                fill: getSemanticValue('foreground-primary'),
                 background: getSemanticValue('background-primary-default')
             },
             '&:disabled': {
-                color: getSemanticValue('text-disabledInverted'),
-                fill: getSemanticValue('icon-disabled-inverted'),
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
                 background: getSemanticValue('background-transparent'),
                 borderColor: getSemanticValue('border-disabled')
             }
         },
         danger: {
-            color: getSemanticValue('text-primaryInverted'),
-            fill: getSemanticValue('icon-primary-inverted'),
+            color: getSemanticValue('foreground-on-background-danger'),
+            fill: getSemanticValue('foreground-on-background-danger'),
             background: getSemanticValue('background-danger-emphasized'),
 
             '&:hover': {
-                color: getSemanticValue('text-primaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
                 background: getSemanticValue('background-danger-hover')
             },
             '&:disabled': {
-                color: getSemanticValue('text-primaryInverted'),
-                fill: getSemanticValue('icon-primary-inverted'),
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
                 background: getSemanticValue('background-primary-disabled'),
                 borderColor: getSemanticValue('border-disabled')
             }

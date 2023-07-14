@@ -3,5 +3,5 @@ import { ChevronDownIcon } from '../../../icons';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 export const ChevronDown = styled(ChevronDownIcon)`
-    color: ${props => (props.color ? props.color : getSemanticValue('overrides-accordion-icon-primary-default'))};
+    color: ${props => (props.color ? props.color : getSemanticValue('foreground-primary'))};
 `;

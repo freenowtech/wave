@@ -58,7 +58,7 @@ function template(babel, opts, { imports, componentName, props, jsx, exports }) 
     const name = generate(componentName).code;
     const nameDecl = `${name}: React.FC<Props>`;
 
-    const iconProps = opts.colorProp ? "({ size = 'medium', color = getSemanticValue('icon-primary-default'), ...rest})" :
+    const iconProps = opts.colorProp ? "({ size = 'medium', color = getSemanticValue('foreground-primary'), ...rest})" :
         "({ size = 'medium', ...props})";
 
     return babel.template.smart({ plugins: ['typescript'] }).ast`

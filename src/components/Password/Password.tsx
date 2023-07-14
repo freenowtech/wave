@@ -52,12 +52,12 @@ const defaultAriaStrings = {
 
 const iconColors = {
     regular: {
-        color: getSemanticValue('icon-secondary-default'),
-        hover: getSemanticValue('icon-secondary-hover')
+        color: getSemanticValue('foreground-neutral-emphasized'),
+        hover: getSemanticValue('foreground-primary')
     },
     inverted: {
-        color: getSemanticValue('icon-secondary-inverted'),
-        hover: getSemanticValue('icon-secondary-hoverInverted')
+        color: getSemanticValue('foreground-neutral-faded'),
+        hover: getSemanticValue('foreground-on-background-primary')
     }
 };
 

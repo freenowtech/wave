@@ -11,7 +11,7 @@ const errorStyles = css`
     border-color: ${getSemanticValue('border-danger-default')};
 
     & ~ ${BoxedInputLabel} {
-        color: ${getSemanticValue('text-dangerInverted')};
+        color: ${getSemanticValue('foreground-danger-default')};
     }
 `;
 
@@ -31,14 +31,14 @@ const sizeVariant = variant<Record<string, unknown>, InputProps['size']>({
 
 const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     if (inverted) {
-        return getSemanticValue('text-secondaryInverted');
+        return getSemanticValue('foreground-neutral-faded');
     }
 
     if (hasValue) {
-        return getSemanticValue('text-secondary');
+        return getSemanticValue('foreground-neutral-emphasized');
     }
 
-    return getSemanticValue('text-tertiary');
+    return getSemanticValue('foreground-neutral-default');
 };
 
 const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
@@ -56,7 +56,7 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     ${p => (p.error ? errorStyles : undefined)}
     &:disabled {
         & + ${BoxedInputLabel} {
-            color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+            color: ${getSemanticValue('foreground-disabled')};
         }
     }
 
@@ -72,7 +72,7 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     &:focus:not(:disabled) {
         & + ${BoxedInputLabel} {
             ${p => activeBoxedPosition(p.size)};
-            color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-info')};
+            color: ${p => getSemanticValue((p.inverted ? 'foreground-on-background-primary' : 'foreground-focus'))};
             background: ${p =>
                 getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
             background: ${p =>

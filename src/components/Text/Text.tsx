@@ -55,18 +55,18 @@ function determineTextColor(props: TextProps) {
     }
 
     if (disabled) {
-        return getSemanticValue(inverted ? 'text-disabledInverted' : 'text-disabled');
+        return getSemanticValue('foreground-disabled');
     }
 
     if (secondary || weak) {
-        return getSemanticValue(inverted ? 'text-secondaryInverted' : 'text-secondary');
+        return getSemanticValue(inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized');
     }
 
     if (inverted) {
-        return getSemanticValue('text-primaryInverted');
+        return getSemanticValue('foreground-on-background-primary');
     }
 
-    return getSemanticValue('text-primary');
+    return getSemanticValue('foreground-primary');
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`

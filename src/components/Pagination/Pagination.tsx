@@ -148,8 +148,8 @@ const Pagination: React.FC<PaginationProps> = ({
                             size="small"
                             color={
                                 isFirstPage
-                                    ? getSemanticValue('icon-disabled-default')
-                                    : getSemanticValue('icon-primary-default')
+                                    ? getSemanticValue('foreground-disabled')
+                                    : getSemanticValue('foreground-primary')
                             }
                         />
                     </IconButton>
@@ -160,8 +160,8 @@ const Pagination: React.FC<PaginationProps> = ({
                         size="small"
                         color={
                             isFirstPage
-                                ? getSemanticValue('icon-disabled-default')
-                                : getSemanticValue('icon-primary-default')
+                                ? getSemanticValue('foreground-disabled')
+                                : getSemanticValue('foreground-primary')
                         }
                     />
                 </IconButton>
@@ -171,8 +171,8 @@ const Pagination: React.FC<PaginationProps> = ({
                         size="small"
                         color={
                             isLastPage
-                                ? getSemanticValue('icon-disabled-default')
-                                : getSemanticValue('icon-primary-default')
+                                ? getSemanticValue('foreground-disabled')
+                                : getSemanticValue('foreground-primary')
                         }
                     />
                 </IconButton>
@@ -183,8 +183,8 @@ const Pagination: React.FC<PaginationProps> = ({
                             size="small"
                             color={
                                 isLastPage
-                                    ? getSemanticValue('icon-disabled-default')
-                                    : getSemanticValue('icon-primary-default')
+                                    ? getSemanticValue('foreground-disabled')
+                                    : getSemanticValue('foreground-primary')
                             }
                         />
                     </IconButton>

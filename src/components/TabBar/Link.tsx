@@ -34,7 +34,7 @@ const UnderLine = styled.div`
 `;
 
 const InnerLink = styled.a.attrs({ theme })<LinkProps>`
-    color: ${getSemanticValue('text-tertiary')};
+    color: ${getSemanticValue('foreground-neutral-emphasized')};
     cursor: pointer;
     font-size: ${get('fontSizes.1')};
     font-weight: ${get('fontWeights.semibold')};
@@ -47,10 +47,10 @@ const InnerLink = styled.a.attrs({ theme })<LinkProps>`
     }
 
     &.${props => (props.activeClassName ? props.activeClassName : DEFAULT_ACTIVE_CLASS_NAME)} {
-        color: ${getSemanticValue('text-link')};
+        color: ${getSemanticValue('foreground-accent-default')};
 
         ${UnderLine} {
-            background-color: ${getSemanticValue('icon-action-default')};
+            background-color: ${getSemanticValue('foreground-accent-default')};
         }
     }
 `;

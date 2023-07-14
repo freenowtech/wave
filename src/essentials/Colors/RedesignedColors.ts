@@ -49,25 +49,43 @@ export const Colors = {
 
 // Semantic Colors Tier (--wave-s-color-...)
 export const SemanticColors = {
-    text: {
-        primary: Colors.neutral[900],
-        primaryInverted: Colors.white,
-        secondary: Colors.neutral[550],
-        secondaryInverted: Colors.neutral[200],
-        tertiary: Colors.neutral[350],
-        tertiaryInverted: Colors.neutral[350],
+    black: Colors.black,
+    white: Colors.white,
+    foreground: {
         disabled: Colors.neutral[200],
-        disabledInverted: Colors.neutral[550],
-        link: Colors.primary[900],
-        linkInverted: Colors.white,
-        linkHover: Colors.primary[1000],
-        linkHoverInverted: Colors.primary[50],
-        danger: Colors.red[1000],
-        dangerInverted: Colors.red[900],
-        success: Colors.green[900],
-        warning: Colors.yellow[900],
-        info: Colors.neutral[550],
-        infoHover: Colors.primary[1000]
+        focus: Colors.neutral[550],
+        primary: Colors.neutral[900],
+        'on-background': {
+            primary: Colors.white,
+            accent: Colors.white,
+            info: Colors.white,
+            success: Colors.white,
+            warning: Colors.neutral[900],
+            danger: Colors.white
+        },
+        neutral: {
+            faded: Colors.neutral[200],
+            default: Colors.neutral[350],
+            emphasized: Colors.neutral[550]
+        },
+        accent: {
+            default: Colors.primary[900],
+            emphasized: Colors.primary[1000]
+        },
+        info: {
+            faded: Colors.neutral[550],
+            default: Colors.neutral[900]
+        },
+        success: {
+            default: Colors.green[900]
+        },
+        warning: {
+            default: Colors.yellow[900]
+        },
+        danger: {
+            default: Colors.red[900],
+            emphasized: Colors.red[1000]
+        }
     },
     background: {
         primary: {
@@ -106,37 +124,6 @@ export const SemanticColors = {
         highlight: Colors.brand.rushhour,
         transparent: Colors.transparent
     },
-    icon: {
-        primary: {
-            default: Colors.neutral[900],
-            inverted: Colors.white
-        },
-        secondary: {
-            default: Colors.neutral[350],
-            inverted: Colors.neutral[50],
-            hover: Colors.neutral[900],
-            hoverInverted: Colors.white
-        },
-        tertiary: {
-            default: Colors.neutral[350],
-            inverted: Colors.neutral[350]
-        },
-        disabled: {
-            default: Colors.neutral[200],
-            inverted: Colors.neutral[550]
-        },
-        action: {
-            default: Colors.primary[900],
-            emphasized: Colors.primary[1000]
-        },
-        danger: {
-            default: Colors.red[900],
-            emphasized: Colors.red[1000]
-        },
-        success: Colors.green[900],
-        warning: Colors.yellow[900],
-        info: Colors.neutral[350]
-    },
     border: {
         neutral: {
             faded: Colors.neutral[50],
@@ -173,22 +160,12 @@ export const SemanticColors = {
     },
     overrides: {
         label: {
-            text: {
-                link: Colors.neutral[900]
-            },
             background: {
                 secondary: {
                     emphasized: Colors.neutral[900]
                 },
                 info: {
                     emphasized: Colors.neutral[900]
-                }
-            }
-        },
-        accordion: {
-            icon: {
-                primary: {
-                    default: Colors.primary[900]
                 }
             }
         },
@@ -213,11 +190,6 @@ export const SemanticColors = {
                 },
                 danger: {
                     default: Colors.white
-                }
-            },
-            icon: {
-                action: {
-                    default: Colors.neutral[900]
                 }
             }
         }

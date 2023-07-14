@@ -96,16 +96,16 @@ const emphasizedBannerVariants = styledVariant({
 const iconColorVariants = styledVariant({
     variants: {
         info: {
-            color: getSemanticValue('overrides-infobanner-icon-action-default')
+            color: getSemanticValue('foreground-info-default')
         },
         success: {
-            color: getSemanticValue('icon-success')
+            color: getSemanticValue('foreground-success-default')
         },
         warning: {
-            color: getSemanticValue('icon-warning')
+            color: getSemanticValue('foreground-warning-default')
         },
         error: {
-            color: getSemanticValue('icon-danger-default')
+            color: getSemanticValue('foreground-danger-default')
         }
     }
 });
@@ -113,16 +113,16 @@ const iconColorVariants = styledVariant({
 const emphasizedIconColorVariants = styledVariant({
     variants: {
         info: {
-            color: getSemanticValue('icon-primary-inverted')
+            color: getSemanticValue('foreground-on-background-info')
         },
         success: {
-            color: getSemanticValue('icon-primary-inverted')
+            color: getSemanticValue('foreground-on-background-success')
         },
         warning: {
-            color: getSemanticValue('icon-primary-default')
+            color: getSemanticValue('foreground-on-background-warning')
         },
         error: {
-            color: getSemanticValue('icon-primary-inverted')
+            color: getSemanticValue('foreground-on-background-danger')
         }
     }
 });

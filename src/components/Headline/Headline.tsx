@@ -59,7 +59,7 @@ const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'x
     size || DEFAULT_HEADLINE_SIZE[as];
 
 const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
-    color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-primary')};
+    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.bold')};
     margin: 0;

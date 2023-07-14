@@ -52,7 +52,7 @@ const InlineSpinnerIcon = styled.span<InlineSpinnerProps>`
 `;
 
 const InlineSpinner: React.FC<InlineSpinnerProps> = ({
-    color = getSemanticValue('text-primary'),
+    color = getSemanticValue('foreground-primary'),
     size = 'medium',
     ...rest
 }: InlineSpinnerProps) => (

@@ -51,7 +51,7 @@ const BaseInput = styled.input<InternalInputComponentProps>`
     box-sizing: border-box;
     background: ${p => getSemanticValue(p.inverted ? 'background-transparent' : 'background-primary-default')};
     border-radius: 0;
-    color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-primary')};
+    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
     transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
@@ -60,19 +60,19 @@ const BaseInput = styled.input<InternalInputComponentProps>`
     width: 100%;
 
     &::placeholder {
-        color: ${p => getSemanticValue(p.inverted ? 'text-secondaryInverted' : 'text-tertiary')};
+        color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default')};
     }
 
     ${compose(width, sizeVariant, inputVariants)};
 
     &:disabled {
-        color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+        color: ${getSemanticValue('foreground-disabled')};
         border-color: ${getSemanticValue('border-disabled')};
         box-shadow: none;
         cursor: not-allowed;
 
         &::placeholder {
-            color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+            color: ${getSemanticValue('foreground-disabled')};
         }
     }
 
@@ -80,7 +80,7 @@ const BaseInput = styled.input<InternalInputComponentProps>`
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-        -webkit-text-fill-color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-primary')};
+        -webkit-text-fill-color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
         transition: background-color 99999999ms ease 99999999ms;
     }
 `;

@@ -21,10 +21,10 @@ export const Label = styled.label<LabelProps>`
     line-height: 1;
     font-weight: ${get('fontWeights.semibold')};
     background: ${p => getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
-    color: ${p => getSemanticValue(p.inverted ? 'text-secondaryInverted' : 'text-secondary')};
+    color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
     transition: color 125ms ease;
 
     ${p => p.error && errorStyles.label()}
-    ${({ isDisabled, inverted }) => isDisabled && disabledStyles.label({ inverted })}
+    ${({ isDisabled }) => isDisabled && disabledStyles.label}
     ${({ variant, size }) => variantStyles.label({ variant, size })}
 `;

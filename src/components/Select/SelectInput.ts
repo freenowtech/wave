@@ -55,13 +55,13 @@ const inputVariants = variant({
 const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
     if (error) {
         return css`
-            border-color: ${getSemanticValue('border-danger-faded')};
+            border-color: ${getSemanticValue('border-danger-default')};
             box-shadow: ${variantProp === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-faded')}`
-                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-faded')}`};
+                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
+                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`};
 
             & ~ ${SelectLabel} {
-                color: ${getSemanticValue('text-danger')};
+                color: ${getSemanticValue('foreground-danger-emphasized')};
             }
         `;
     }
@@ -70,16 +70,16 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
 };
 
 const disabledStyles = css<BaseSelectProps>`
-    color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+    color: ${getSemanticValue('foreground-disabled')};
     cursor: not-allowed;
     border-color: ${getSemanticValue('border-disabled')};
 
     & ~ ${SelectLabel} {
-        color: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+        color: ${getSemanticValue('foreground-disabled')};
     }
 
     & ~ .svg-icon svg > * {
-        fill: ${p => getSemanticValue(p.inverted ? 'text-disabledInverted' : 'text-disabled')};
+        fill: ${getSemanticValue('foreground-disabled')};
     }
 `;
 
@@ -88,7 +88,7 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     box-sizing: border-box;
     background: ${p => getSemanticValue(p.inverted ? 'background-transparent' : 'background-primary-default')};
     border-radius: 0;
-    color: ${p => getSemanticValue(p.inverted ? 'text-primaryInverted' : 'text-primary')};
+    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
     transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
@@ -101,7 +101,7 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     text-overflow: ellipsis;
 
     & ~ .svg-icon svg > * {
-        fill: ${p => getSemanticValue(p.inverted ? 'text-secondaryInverted' : 'text-secondary')};
+        fill: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
     }
 
     ${p => {
@@ -118,24 +118,24 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     ${p => (p.disabled ? disabledStyles : undefined)}
     &:-moz-focusring {
         outline: none;
-        text-shadow: 0 0 0 ${getSemanticValue('text-secondary')};
+        text-shadow: 0 0 0 ${getSemanticValue('foreground-neutral-emphasized')};
     }
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-        -webkit-text-fill-color: ${p => getSemanticValue(p.inverted ? 'text-secondaryInverted' : 'text-secondary')};
+        -webkit-text-fill-color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
         transition: background-color 99999999ms ease 99999999ms;
     }
 
     &:active:not(:disabled), &:focus:not(:disabled) {
         & ~ ${SelectLabel} {
-            color: ${p => getSemanticValue(p.inverted ? 'text-secondaryInverted' : 'text-secondary')};
+            color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
         }
 
         & ~ .svg-icon svg > * {
-            fill: ${p => getSemanticValue(p.inverted ? 'text-secondaryInverted' : 'text-secondary')};
+            fill: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
         }
     }
 `;

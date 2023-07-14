@@ -22,10 +22,10 @@ const getVariants = (inverted?: boolean) =>
     variant({
         variants: {
             info: {
-                color: getSemanticValue(inverted ? 'text-secondaryInverted' : 'text-secondary')
+                color: getSemanticValue(inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')
             },
             danger: {
-                color: getSemanticValue(inverted ? 'text-dangerInverted' : 'text-danger')
+                color: getSemanticValue(inverted ? 'foreground-danger-default' : 'foreground-danger-emphasized')
             }
         }
     });

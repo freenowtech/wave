@@ -361,7 +361,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                             disabled={disabled}
                         />
                         {focusedInput === START_DATE && <StartDateFocusedBlock />}
-                        <DateArrow color={getSemanticValue(disabled ? 'text-disabled' : 'text-secondary')} />
+                        <DateArrow color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-emphasized')} />
                         <Input
                             id={endId}
                             ref={endDateRef}

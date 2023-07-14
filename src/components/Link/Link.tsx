@@ -14,7 +14,7 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'>, MarginProps, FontSize
 
 const Link = styled.a.attrs({ theme })<LinkProps>`
     display: inline-block;
-    color: ${p => getSemanticValue(p.inverted ? 'text-linkInverted' : 'text-link')};
+    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-accent' : 'foreground-accent-default')};
     cursor: pointer;
     line-height: 1.4;
     font-family: ${get('fonts.normal')};
@@ -24,12 +24,12 @@ const Link = styled.a.attrs({ theme })<LinkProps>`
 
     &:link,
     &:visited {
-        color: ${p => getSemanticValue(p.inverted ? 'text-linkInverted' : 'text-link')};
+        color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-accent' : 'foreground-accent-default')};
     }
 
     &:hover,
     &:active {
-        color: ${p => getSemanticValue(p.inverted ? 'text-linkHoverInverted' : 'text-linkHover')};
+        color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-accent-emphasized')};
         text-decoration: underline;
     }
 

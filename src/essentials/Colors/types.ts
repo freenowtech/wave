@@ -8,29 +8,8 @@ export type Color = HSL | RGB;
 type PartialSchema = Object.Partial<SemanticColorsSchema, 'deep'>
 
 export interface SemanticColorsSchema {
-    text: {
-        primary: Color,
-        primaryInverted: Color,
-        secondary: Color,
-        secondaryInverted: Color,
-        tertiary: Color,
-        tertiaryInverted: Color,
-        disabled: Color,
-        disabledInverted: Color,
-        link: Color,
-        linkInverted: Color,
-        linkHover: Color,
-        linkHoverInverted: Color,
-        info: Color,
-        infoHover: Color,
-        danger: Color,
-        dangerInverted: Color,
-        success: Color,
-        warning: Color,
-    },
     overrides: {
         label: PartialSchema,
-        accordion: PartialSchema,
         datepicker: PartialSchema,
         infobanner: PartialSchema
     },
@@ -71,37 +50,6 @@ export interface SemanticColorsSchema {
         highlight: Color,
         transparent: 'transparent',
     },
-    icon: {
-        primary: {
-            default: Color,
-            inverted: Color,
-        },
-        secondary: {
-            default: Color,
-            inverted: Color,
-            hover: Color,
-            hoverInverted: Color,
-        },
-        tertiary: {
-            default: Color,
-            inverted: Color,
-        },
-        disabled: {
-            default: Color,
-            inverted: Color,
-        },
-        action: {
-            default: Color,
-            emphasized: Color,
-        },
-        danger: {
-            default: Color,
-            emphasized: Color,
-        },
-        success: Color,
-        warning: Color,
-        info: Color,
-    },
     border: {
         neutral: {
             faded: Color,
@@ -133,9 +81,47 @@ export interface SemanticColorsSchema {
         disabled: Color,
         transparent: 'transparent'
     },
+    foreground: {
+        disabled: Color,
+        focus: Color,
+        primary: Color,
+        'on-background': {
+            primary: Color,
+            accent: Color,
+            info: Color,
+            success: Color,
+            warning: Color,
+            danger: Color,
+        },
+        neutral: {
+            faded: Color,
+            default: Color,
+            emphasized: Color,
+        },
+        accent: {
+            default: Color,
+            emphasized: Color,
+        },
+        info: {
+            faded: Color,
+            default: Color,
+        },
+        success: {
+            default: Color,
+        },
+        warning: {
+            default: Color,
+        },
+        danger: {
+            default: Color,
+            emphasized: Color,
+        },
+    },
     shadow: {
         default: Color,
-    }
+    },
+    white: Color,
+    black: Color,
 }
 
 export type SemanticCssToken = String.Join<List.Required<Object.Paths<SemanticColorsSchema>>, '-'>

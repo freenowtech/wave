@@ -39,7 +39,7 @@ const customStyles: StylesConfig = {
         };
     },
     control: (_, state: WithSelectProps<ControlProps>) => {
-        const disabled = state.isDisabled && disabledStyles.control(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.control;
         const error = state.selectProps.error && errorStyles.control(state.selectProps);
         const variant = variantStyles.control({ isFocused: state.isFocused, ...state.selectProps });
 
@@ -49,7 +49,7 @@ const customStyles: StylesConfig = {
             justifyContent: 'space-between',
             margin: 0,
             background: getSemanticValue(state.selectProps.inverted ? 'background-transparent' : 'background-primary-default'),
-            color: getSemanticValue(state.selectProps.inverted ? 'text-primaryInverted' : 'text-primary'),
+            color: getSemanticValue(state.selectProps.inverted ? 'foreground-on-background-primary' : 'foreground-primary'),
             ...variant,
             ...error,
             ...disabled
@@ -103,53 +103,53 @@ const customStyles: StylesConfig = {
         color: 'inherit'
     }),
     dropdownIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
             ...provided,
             padding: '0',
             marginRight: '0.5rem',
             cursor: 'pointer',
-            color: getSemanticValue(state.selectProps.inverted ? 'icon-secondary-inverted' : 'icon-secondary-default'),
+            color: getSemanticValue(state.selectProps.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default'),
             ...disabled
         };
     },
     clearIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
             ...provided,
-            color: getSemanticValue(state.selectProps.inverted ? 'icon-secondary-inverted' : 'icon-secondary-default'),
+            color: getSemanticValue(state.selectProps.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default'),
             cursor: 'pointer',
             padding: 0,
             ...disabled
         };
     },
     placeholder: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.placeholder(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.placeholder;
 
         return {
             ...provided,
-            color: getSemanticValue('text-secondary'),
+            color: getSemanticValue('foreground-neutral-emphasized'),
             ...disabled
         };
     },
     option: (provided, state: WithSelectProps<Props>) => {
         const colorsByState = {
             isDisabled: {
-                color: getSemanticValue('text-disabled')
+                color: getSemanticValue('foreground-disabled')
             },
             isFocused: {
                 backgroundColor: getSemanticValue('background-info-default')
             },
             isSelected: {
                 backgroundColor: getSemanticValue('background-info-emphasized'),
-                color: getSemanticValue('text-primaryInverted')
+                color: getSemanticValue('foreground-on-background-primary')
             }
         };
 
         const defaultColors = {
-            color: getSemanticValue('text-primary'),
+            color: getSemanticValue('foreground-primary'),
             backgroundColor: getSemanticValue('background-primary-default'),
         };
 
@@ -173,7 +173,7 @@ const customStyles: StylesConfig = {
     multiValue: (provided, { selectProps }: { selectProps: Props }) => {
         const styles = {
             ...provided,
-            color: getSemanticValue('text-info'),
+            color: getSemanticValue('foreground-info-faded'),
             border: `0.0625rem solid ${getSemanticValue('border-info-default')}`,
             borderRadius: '1rem',
             backgroundColor: getSemanticValue('background-info-default'),
@@ -185,14 +185,14 @@ const customStyles: StylesConfig = {
             transition: 'color 125ms ease, background-color 125ms ease',
             '&:hover': {
                 backgroundColor: getSemanticValue('background-info-emphasized'),
-                color: getSemanticValue('text-primaryInverted')
+                color: getSemanticValue('foreground-on-background-primary')
             }
         };
 
         if (selectProps.isDisabled) {
             return {
                 ...styles,
-                color: getSemanticValue('text-disabled'),
+                color: getSemanticValue('foreground-disabled'),
                 backgroundColor: 'transparent',
                 borderColor: getSemanticValue('border-disabled')
             };
