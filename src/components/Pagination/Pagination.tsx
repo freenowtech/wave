@@ -18,7 +18,7 @@ const ButtonsContainer = styled(Box)`
 
 const IconButton = styled.button`
     align-items: center;
-    background-color: ${getSemanticValue('background-primary-default')};
+    background-color: ${getSemanticValue('background-element-neutral-default')};
     border: 0.0625rem solid ${getSemanticValue('border-neutral-faded')};
     border-radius: 0.25rem;
     display: inline-flex;
@@ -32,7 +32,7 @@ const IconButton = styled.button`
     }
 
     &:hover:not(:disabled) {
-        background-color: ${getSemanticValue('background-secondary-default')};
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')};
         cursor: pointer;
     }
 `;

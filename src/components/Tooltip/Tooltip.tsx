@@ -89,7 +89,7 @@ interface TooltipBodyProps {
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     background-color: ${p =>
-        getSemanticValue(p.inverted ? 'background-secondary-default' : 'background-primary-emphasized')};
+        getSemanticValue(p.inverted ? 'background-surface-neutral-faded' : 'background-backdrop')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -114,7 +114,7 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         border: 0.25rem solid rgba(0, 0, 0, 0);
         border-bottom-color: ${p =>
             // background colors are used because this border is used to create the arrow
-            getSemanticValue(p.inverted ? 'background-secondary-default' : 'background-primary-emphasized')};
+            getSemanticValue(p.inverted ? 'background-surface-neutral-faded' : 'background-backdrop')};
         margin-left: -0.25rem;
 
         ${arrowPlacementStyles}

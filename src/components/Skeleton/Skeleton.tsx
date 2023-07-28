@@ -46,7 +46,7 @@ export const Skeleton = styled.span<SkeletonProps>`
     position: relative;
     overflow: hidden;
     border-radius: ${get('radii.2')};
-    background-color: ${getSemanticValue('background-secondary-default')};
+    background-color: ${getSemanticValue('background-surface-neutral-faded')};
 
     ${compose(layout, margin, borderRadius)};
 

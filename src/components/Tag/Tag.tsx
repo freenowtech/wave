@@ -40,7 +40,7 @@ const DismissIcon = styled(CloseIcon).attrs({ size: 18 })`
 
 const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     box-sizing: border-box;
-    background-color: ${getSemanticValue('background-info-default')};
+    background-color: ${getSemanticValue('background-element-info-default')};
     border: solid 0.0625rem ${getSemanticValue('border-info-default')};
     display: inline-flex;
     align-items: center;
@@ -54,7 +54,7 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     ${margin}
 
     &:hover {
-        background-color: ${getSemanticValue('background-info-emphasized')};
+        background-color: ${getSemanticValue('background-element-info-emphasized')};
 
         > ${TagText} {
             color: ${getSemanticValue('foreground-on-background-info')};

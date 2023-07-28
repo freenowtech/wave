@@ -36,7 +36,7 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
 
     &:hover {
         cursor: pointer;
-        background-color: ${getSemanticValue('background-secondary-default')} !important;
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')} !important;
     }
 `;
 
@@ -216,7 +216,7 @@ const Popover: React.FC<PopoverProps> = ({
                 {typeof children === 'string' ? (
                     <DefaultPopoverWrapper
                         ref={popoverTriggerRef}
-                        style={{ background: render ? getSemanticValue('background-secondary-default') : 'none' }}
+                        style={{ background: render ? getSemanticValue('background-element-neutral-emphasized') : 'none' }}
                     >
                         <Text fontWeight="semibold">{children}</Text>
                         {!render ? (

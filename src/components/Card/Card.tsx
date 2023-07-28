@@ -51,7 +51,7 @@ const levelVariant = variant({
 const Card: StyledComponent<'div', typeof theme, CardProps, 'theme'> = styled.div.attrs({ theme })`
     overflow: auto;
     box-sizing: border-box;
-    background-color: ${getSemanticValue('background-primary-default')};
+    background-color: ${getSemanticValue('background-surface-neutral-default')};
     border-radius: ${get('radii.1')};
     padding: ${get('space.5')};
 

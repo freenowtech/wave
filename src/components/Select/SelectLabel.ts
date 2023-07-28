@@ -14,7 +14,7 @@ const SelectLabel = styled.label<SelectLabelProps>`
     line-height: 1;
     font-weight: ${get('fontWeights.semibold')};
     color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
-    background: ${p => getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+    background: ${p => getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
     transition: color ${ANIMATION_DURATION}ms ease-out, background ${ANIMATION_DURATION}ms ease-out;
 `;
 

@@ -58,6 +58,7 @@ export const Colors = {
 export const SemanticColors = {
     black: Colors.black,
     white: Colors.white,
+    transparent: Colors.transparent,
     foreground: {
         primary: Colors.blue.primary[900],
         'on-background': {
@@ -95,41 +96,74 @@ export const SemanticColors = {
         }
     },
     background: {
-        primary: {
-            default: Colors.white,
-            inverted: Colors.blue.primary[900],
-            emphasized: Colors.blue.primary[900],
-            hover: Colors.blue.primary[1100],
-            disabled: Colors.blue.primary[200]
+        page: Colors.white,
+        element: {
+            disabled: {
+                faded: Colors.blue.primary[50],
+                default: Colors.blue.primary[200],
+                emphasized: Colors.blue.primary[550]
+            },
+            primary: {
+                default: Colors.blue.primary[900],
+                emphasized: Colors.blue.primary[1100]
+            },
+            neutral: {
+                default: Colors.white,
+                emphasized: Colors.blue.primary[50],
+            },
+            accent: {
+                faded: Colors.blue.secondary[50],
+                default: Colors.blue.secondary[350],
+                emphasized: Colors.blue.secondary[900]
+            },
+            info: {
+                default: Colors.blue.secondary[50],
+                emphasized: Colors.blue.secondary[900]
+            },
+            success: {
+                default: Colors.green[50],
+                emphasized: Colors.green[900]
+            },
+            warning: {
+                default: Colors.yellow[50],
+                emphasized: Colors.yellow[900]
+            },
+            danger: {
+                faded: Colors.orange[50],
+                default: Colors.orange[900],
+                emphasized: Colors.orange[1000]
+            }
         },
-        secondary: {
-            default: Colors.blue.primary[50],
-            emphasized: Colors.blue.primary[550]
+        surface: {
+            primary: {
+                default: Colors.blue.primary[900],
+                emphasized: Colors.blue.primary[550]
+            },
+            neutral: {
+                faded: Colors.blue.primary[50],
+                default: Colors.white,
+                emphasized: Colors.blue.primary[550]
+            },
+            info: {
+                faded: Colors.blue.secondary[100],
+                active: Colors.blue.secondary[150],
+                default: Colors.blue.secondary[50],
+                emphasized: Colors.blue.secondary[900]
+            },
+            success: {
+                default: Colors.green[50],
+                emphasized: Colors.green[900]
+            },
+            warning: {
+                default: Colors.yellow[50],
+                emphasized: Colors.yellow[900]
+            },
+            danger: {
+                default: Colors.orange[50],
+                emphasized: Colors.orange[900]
+            }
         },
-        tertiary: {
-            default: Colors.blue.primary[200],
-            disabled: Colors.blue.primary[50]
-        },
-        danger: {
-            default: Colors.orange[50],
-            emphasized: Colors.orange[900],
-            hover: Colors.orange[1000]
-        },
-        info: {
-            default: Colors.blue.secondary[50],
-            emphasized: Colors.blue.secondary[900],
-            hover: Colors.blue.secondary[350]
-        },
-        success: {
-            default: Colors.green[50],
-            emphasized: Colors.green[900]
-        },
-        warning: {
-            default: Colors.yellow[50],
-            emphasized: Colors.yellow[900]
-        },
-        highlight: Colors.blue.secondary[900],
-        transparent: Colors.transparent
+        backdrop: Colors.blue.primary[900]
     },
     border: {
         neutral: {
@@ -160,45 +194,8 @@ export const SemanticColors = {
             faded: Colors.orange[350],
             default: Colors.orange[900]
         },
-        transparent: Colors.transparent
     },
     shadow: {
         default: Colors.blue.primary[200]
-    },
-    overrides: {
-        label: {
-            background: {
-                secondary: {
-                    emphasized: Colors.blue.primary[550]
-                },
-                info: {
-                    emphasized: Colors.blue.secondary[900]
-                }
-            }
-        },
-        datepicker: {
-            background: {
-                info: {
-                    default: Colors.blue.secondary[50],
-                    emphasized: Colors.blue.secondary[900]
-                }
-            }
-        },
-        infobanner: {
-            background: {
-                info: {
-                    default: Colors.blue.secondary[50]
-                },
-                success: {
-                    default: Colors.green[50]
-                },
-                warning: {
-                    default: Colors.yellow[50]
-                },
-                danger: {
-                    default: Colors.orange[50]
-                }
-            }
-        }
     }
 } satisfies SemanticColorsSchema;

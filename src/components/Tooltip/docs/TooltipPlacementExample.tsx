@@ -7,7 +7,7 @@ import { MediaQueries } from '../../../essentials';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TargetSquare = styled.div`
-    background: ${getSemanticValue('background-highlight')};
+    background: ${getSemanticValue('background-surface-info-emphasized')};
     color: ${getSemanticValue('foreground-on-background-primary')};
     font-size: 0.75rem;
     cursor: default;

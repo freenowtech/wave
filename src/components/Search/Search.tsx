@@ -11,7 +11,7 @@ import { Box, BoxProps } from '../Box/Box';
 import { Input } from '../Input/Input';
 
 const ActiveStyle = `
-    background-color: ${getSemanticValue('background-info-default')};
+    background-color: ${getSemanticValue('background-element-info-default')};
     color: ${getSemanticValue('foreground-info-faded')};
 `;
 
@@ -23,7 +23,7 @@ const SearchResultsContainer = styled(Box)<SearchResultsContainerProps>`
     margin-top: 0.0625rem;
     padding: 0.25rem 0;
     width: inherit;
-    background-color: ${props => getSemanticValue(props.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+    background-color: ${props => getSemanticValue(props.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
     box-shadow: 0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')};
     border-radius: 0.25rem;
     cursor: pointer;

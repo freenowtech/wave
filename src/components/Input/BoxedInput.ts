@@ -46,10 +46,10 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     & + ${BoxedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
-        background: ${p => getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+        background: ${p => getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
         background: ${p =>
             `linear-gradient(0deg, ${getSemanticValue(
-                p.inverted ? 'background-primary-inverted' : 'background-primary-default'
+                p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
             )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
     }
 
@@ -74,10 +74,11 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
             ${p => activeBoxedPosition(p.size)};
             color: ${p => getSemanticValue((p.inverted ? 'foreground-on-background-primary' : 'foreground-focus'))};
             background: ${p =>
-                getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+                getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
             background: ${p =>
                 `linear-gradient(0deg, ${getSemanticValue(
-                    p.inverted ? 'background-primary-inverted' : 'background-primary-default'
+                    // inverted doesn't work well for the modern layout
+                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
                 )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
         }
     }

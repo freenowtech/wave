@@ -16,7 +16,7 @@ const ButtonLabel = styled(Text).attrs({ as: 'p' })`
 
 const PanelHeader = styled(Header)`
     &:hover {
-        background-color: ${getSemanticValue('background-info-default')};
+        background-color: ${getSemanticValue('background-surface-info-default')};
     }
 
     &:hover ${ButtonLabel},
@@ -26,11 +26,11 @@ const PanelHeader = styled(Header)`
 `;
 
 const CardHeader = styled(Header).attrs({ p: '3' })`
-    background-color: ${getSemanticValue('background-secondary-default')};
+    background-color: ${getSemanticValue('background-surface-neutral-faded')};
     border-radius: 0.3125rem 0.3125rem 0 0;
 
     &:hover {
-        background-color: ${getSemanticValue('background-info-default')};
+        background-color: ${getSemanticValue('background-surface-info-default')};
     }
 
     &:hover ${ButtonLabel},

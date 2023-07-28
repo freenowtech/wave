@@ -86,7 +86,7 @@ const disabledStyles = css<BaseSelectProps>`
 const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSelectProps>`
     margin: 0;
     box-sizing: border-box;
-    background: ${p => getSemanticValue(p.inverted ? 'background-transparent' : 'background-primary-default')};
+    background: ${p => getSemanticValue(p.inverted ? 'transparent' : 'background-element-neutral-default')};
     border-radius: 0;
     color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
     font-size: ${get('fontSizes.2')};

@@ -54,19 +54,19 @@ interface BoxWithVariant extends BoxProps {
 const bannerVariants = styledVariant({
     variants: {
         info: {
-            background: getSemanticValue('overrides-infobanner-background-info-default'),
+            background: getSemanticValue('background-surface-info-default'),
             borderColor: getSemanticValue('border-info-faded')
         },
         success: {
-            background: getSemanticValue('overrides-infobanner-background-success-default'),
+            background: getSemanticValue('background-surface-success-default'),
             borderColor: getSemanticValue('border-success-faded')
         },
         warning: {
-            background: getSemanticValue('overrides-infobanner-background-warning-default'),
+            background: getSemanticValue('background-surface-warning-default'),
             borderColor: getSemanticValue('border-warning-faded')
         },
         error: {
-            background: getSemanticValue('overrides-infobanner-background-danger-default'),
+            background: getSemanticValue('background-surface-danger-default'),
             borderColor: getSemanticValue('border-danger-faded')
         }
     }
@@ -75,19 +75,19 @@ const bannerVariants = styledVariant({
 const emphasizedBannerVariants = styledVariant({
     variants: {
         info: {
-            background: getSemanticValue('background-info-emphasized'),
+            background: getSemanticValue('background-surface-info-emphasized'),
             borderColor: getSemanticValue('border-info-default')
         },
         success: {
-            background: getSemanticValue('background-success-emphasized'),
+            background: getSemanticValue('background-surface-success-emphasized'),
             borderColor: getSemanticValue('border-success-default')
         },
         warning: {
-            background: getSemanticValue('background-warning-emphasized'),
+            background: getSemanticValue('background-surface-warning-emphasized'),
             borderColor: getSemanticValue('border-warning-default')
         },
         error: {
-            background: getSemanticValue('background-danger-emphasized'),
+            background: getSemanticValue('background-surface-danger-emphasized'),
             borderColor: getSemanticValue('border-danger-default')
         }
     }

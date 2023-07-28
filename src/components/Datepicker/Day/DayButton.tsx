@@ -7,7 +7,7 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
     if (isSelectedStartOrEnd) {
         return css`
             color: ${getSemanticValue('foreground-on-background-accent')};
-            background: ${getSemanticValue('overrides-datepicker-background-info-emphasized')};
+            background: ${getSemanticValue('background-element-accent-emphasized')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-accent-default')};
             z-index: 2;
         `;
@@ -16,13 +16,13 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
     if (isSelected || isWithinHoverRange) {
         return css`
             color: ${getSemanticValue('foreground-accent-default')};
-            background: ${getSemanticValue('overrides-datepicker-background-info-default')};
+            background: ${getSemanticValue('background-element-accent-faded')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-accent-faded')};
             z-index: 1;
 
             &:hover {
                 cursor: pointer;
-                background: ${getSemanticValue('background-info-hover')};
+                background: ${getSemanticValue('background-element-accent-default')};
                 color: ${getSemanticValue('foreground-accent-emphasized')};
             }
         `;
@@ -32,17 +32,17 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
         return css`
             color: ${getSemanticValue('foreground-disabled')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-disabled')};
-            background: ${getSemanticValue('background-primary-default')};
+            background: ${getSemanticValue('background-element-neutral-default')};
         `;
     }
 
     return css`
         color: ${getSemanticValue('foreground-primary')};
-        background: ${getSemanticValue('background-primary-default')};
+        background: ${getSemanticValue('background-element-neutral-default')};
 
         &:hover {
             cursor: pointer;
-            background: ${getSemanticValue('background-secondary-default')};
+            background: ${getSemanticValue('background-element-neutral-emphasized')};
         }
     `;
 };

@@ -48,7 +48,7 @@ const customStyles: StylesConfig = {
             alignItems: 'center',
             justifyContent: 'space-between',
             margin: 0,
-            background: getSemanticValue(state.selectProps.inverted ? 'background-transparent' : 'background-primary-default'),
+            background: getSemanticValue(state.selectProps.inverted ? 'transparent' : 'background-element-neutral-default'),
             color: getSemanticValue(state.selectProps.inverted ? 'foreground-on-background-primary' : 'foreground-primary'),
             ...variant,
             ...error,
@@ -140,17 +140,17 @@ const customStyles: StylesConfig = {
                 color: getSemanticValue('foreground-disabled')
             },
             isFocused: {
-                backgroundColor: getSemanticValue('background-info-default')
+                backgroundColor: getSemanticValue('background-element-info-default')
             },
             isSelected: {
-                backgroundColor: getSemanticValue('background-info-emphasized'),
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
                 color: getSemanticValue('foreground-on-background-primary')
             }
         };
 
         const defaultColors = {
             color: getSemanticValue('foreground-primary'),
-            backgroundColor: getSemanticValue('background-primary-default'),
+            backgroundColor: getSemanticValue('background-element-neutral-default'),
         };
 
         const colors = Object.keys(colorsByState)
@@ -176,7 +176,7 @@ const customStyles: StylesConfig = {
             color: getSemanticValue('foreground-info-faded'),
             border: `0.0625rem solid ${getSemanticValue('border-info-default')}`,
             borderRadius: '1rem',
-            backgroundColor: getSemanticValue('background-info-default'),
+            backgroundColor: getSemanticValue('background-element-info-default'),
             marginRight: '0.375rem',
             marginTop: '0.125rem',
             marginLeft: 0,
@@ -184,7 +184,7 @@ const customStyles: StylesConfig = {
             maxWidth: 'calc(100% - 0.5rem)',
             transition: 'color 125ms ease, background-color 125ms ease',
             '&:hover': {
-                backgroundColor: getSemanticValue('background-info-emphasized'),
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
                 color: getSemanticValue('foreground-on-background-primary')
             }
         };

@@ -68,7 +68,7 @@ const DateArrow = styled(ChevronRightIcon)`
 `;
 
 const StartDateFocusedBlock = styled.div`
-    background: ${getSemanticValue('background-info-emphasized')};
+    background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
 
@@ -78,7 +78,7 @@ const StartDateFocusedBlock = styled.div`
 `;
 
 const EndDateFocusedBlock = styled.div`
-    background: ${getSemanticValue('background-info-emphasized')};
+    background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
 

@@ -39,12 +39,12 @@ const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
         cursor: pointer;
 
         & ${/* sc-selector */ TapArea}:not(:active) {
-            background-color: ${getSemanticValue(error ? 'background-danger-default' : 'background-info-default')};
+            background-color: ${getSemanticValue(error ? 'background-element-danger-faded' : 'background-element-info-default')};
         }
 
         & ${/* sc-selector */ Checkmark}:not(:checked) {
             box-shadow: inset 0 0 0 0.125rem ${getSemanticValue(error ? 'border-danger-default' : 'border-info-default')};
-            background-color: ${getSemanticValue('background-primary-default')};
+            background-color: ${getSemanticValue('background-element-neutral-default')};
         }
     `;
 };
@@ -55,7 +55,7 @@ const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
     position: relative;
     user-select: none;
 
-    color: ${props => getSemanticValue(props.disabled ? 'frontend-disabled' : 'frontend-primary-default')};
+    color: ${props => getSemanticValue(props.disabled ? 'foreground-disabled' : 'foreground-primary')};
 
     font-family: ${get('fonts.normal')};
     line-height: 1;

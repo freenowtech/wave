@@ -95,7 +95,7 @@ const Outliner = styled(Box)<OutlinerProps>`
         error &&
         css`
             box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')};
-            border-color: ${getSemanticValue('border-transparent')};
+            border-color: ${getSemanticValue('transparent')};
         `}
 
     ${({ hasValidFile }) =>
@@ -103,8 +103,8 @@ const Outliner = styled(Box)<OutlinerProps>`
         css`
             ${MediaQueries.medium} {
                 &:hover {
-                    background-color: ${getSemanticValue('background-info-default')};
-                    border-color: ${getSemanticValue('background-transparent')};
+                    background-color: ${getSemanticValue('background-element-info-default')};
+                    border-color: ${getSemanticValue('transparent')};
 
                     svg:not([color='${ICON_FILE_FEEDBACK_COLOR}']) path {
                         fill: ${getSemanticValue('foreground-accent-default')};

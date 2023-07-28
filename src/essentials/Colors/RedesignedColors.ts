@@ -2,47 +2,47 @@ import { SemanticColorsSchema } from './types';
 
 // Global Tier (--wave-g-color-...)
 export const Colors = {
-    white: 'hsla(0, 0%, 99%, 1)',
-    black: 'hsla(0, 0%, 0%, 1)',
+    white: 'hsl(0, 0%, 99%)',
+    black: 'hsl(0, 0%, 0%)',
     neutral: {
-        900: 'hsla(350, 10%, 11%, 1)',
-        550: 'hsla(0, 2%, 38%, 1)',
-        350: 'hsla(0, 1%, 55%, 1)',
-        200: 'hsla(0, 1%, 73%, 1)',
-        50: 'hsla(0, 2%, 91%, 1)'
+        900: 'hsl(350, 10%, 11%)',
+        550: 'hsl(0, 2%, 38%)',
+        350: 'hsl(0, 1%, 55%)',
+        200: 'hsl(0, 1%, 73%)',
+        50: 'hsl(0, 2%, 91%)'
     },
     primary: {
-        1000: 'hsla(346, 51%, 33%, 1)',
-        900: 'hsla(347, 42%, 43%, 1)',
-        350: 'hsla(349, 89%, 76%, 1)',
-        150: 'hsla(351, 100%, 85%, 1)',
-        100: 'hsla(352, 100%, 93%, 1)',
-        50: 'hsla(9, 100%, 96%, 1)'
+        1000: 'hsl(346, 51%, 33%)',
+        900: 'hsl(347, 42%, 43%)',
+        350: 'hsl(349, 89%, 76%)',
+        150: 'hsl(351, 100%, 85%)',
+        100: 'hsl(352, 100%, 93%)',
+        50: 'hsl(9, 100%, 96%)'
     },
     brand: {
-        rushhour: 'hsla(350, 91%, 41%, 1)'
+        rushhour: 'hsl(350, 91%, 41%)'
     },
     magenta: {
-        1000: 'hsla(302, 100%, 18%, 1)',
-        900: 'hsla(302, 100%, 33%, 1)',
-        350: 'hsla(311, 100%, 84%, 1)',
-        50: 'hsla(324, 100%, 96%, 1)'
+        1000: 'hsl(302, 100%, 18%)',
+        900: 'hsl(302, 100%, 33%)',
+        350: 'hsl(311, 100%, 84%)',
+        50: 'hsl(324, 100%, 96%)'
     },
     green: {
-        1000: 'hsla(146, 100%, 11%, 1)',
-        900: 'hsla(149, 98%, 22%, 1)',
-        350: 'hsla(134, 55%, 68%, 1)',
-        50: 'hsla(128, 94%, 94%, 1)'
+        1000: 'hsl(146, 100%, 11%)',
+        900: 'hsl(149, 98%, 22%)',
+        350: 'hsl(134, 55%, 68%)',
+        50: 'hsl(128, 94%, 94%)'
     },
     yellow: {
-        900: 'hsla(48, 100%, 47%, 1)',
-        350: 'hsla(42, 100%, 79%, 1)',
-        50: 'hsla(30, 100%, 97%, 1)'
+        900: 'hsl(48, 100%, 47%)',
+        350: 'hsl(42, 100%, 79%)',
+        50: 'hsl(30, 100%, 97%)'
     },
     red: {
-        1000: 'hsla(356, 100%, 29%, 1)',
-        900: 'hsla(0, 75%, 42%, 1)',
-        350: 'hsla(6, 100%, 84%, 1)'
+        1000: 'hsl(356, 100%, 29%)',
+        900: 'hsl(0, 75%, 42%)',
+        350: 'hsl(6, 100%, 84%)'
     },
     transparent: 'transparent'
 } as const;
@@ -51,6 +51,7 @@ export const Colors = {
 export const SemanticColors = {
     black: Colors.black,
     white: Colors.white,
+    transparent: Colors.transparent,
     foreground: {
         disabled: Colors.neutral[200],
         focus: Colors.neutral[550],
@@ -88,41 +89,74 @@ export const SemanticColors = {
         }
     },
     background: {
-        primary: {
-            default: Colors.white,
-            inverted: Colors.neutral[900],
-            emphasized: Colors.neutral[900],
-            hover: Colors.black,
-            disabled: Colors.neutral[200]
+        page: Colors.white,
+        element: {
+            disabled: {
+                faded: Colors.neutral[50],
+                default: Colors.neutral[200],
+                emphasized: Colors.neutral[550]
+            },
+            primary: {
+                default: Colors.primary[900],
+                emphasized: Colors.primary[1000]
+            },
+            neutral: {
+                default: Colors.white,
+                emphasized: Colors.neutral[50],
+            },
+            accent: {
+                faded: Colors.primary[50],
+                default: Colors.primary[350],
+                emphasized: Colors.primary[900]
+            },
+            info: {
+                default: Colors.neutral[50],
+                emphasized: Colors.neutral[550]
+            },
+            success: {
+                default: Colors.white,
+                emphasized: Colors.green[900]
+            },
+            warning: {
+                default: Colors.white,
+                emphasized: Colors.yellow[900]
+            },
+            danger: {
+                faded: Colors.primary[50],
+                default: Colors.red[900],
+                emphasized: Colors.red[1000]
+            }
         },
-        secondary: {
-            default: Colors.neutral[50],
-            emphasized: Colors.neutral[550]
+        surface: {
+            primary: {
+                default: Colors.neutral[550],
+                emphasized: Colors.neutral[900]
+            },
+            neutral: {
+                faded: Colors.neutral[50],
+                default: Colors.white,
+                emphasized: Colors.neutral[550]
+            },
+            info: {
+                faded: Colors.primary[100],
+                active: Colors.primary[150],
+                default: Colors.neutral[50],
+                emphasized: Colors.neutral[550]
+            },
+            success: {
+                default: Colors.white,
+                emphasized: Colors.green[900]
+            },
+            warning: {
+                default: Colors.white,
+                emphasized: Colors.yellow[900]
+            },
+            danger: {
+                default: Colors.white,
+                emphasized: Colors.red[900]
+            }
         },
-        tertiary: {
-            default: Colors.neutral[200],
-            disabled: Colors.neutral[50]
-        },
-        danger: {
-            default: Colors.red[50],
-            emphasized: Colors.red[900],
-            hover: Colors.red[1000]
-        },
-        info: {
-            default: Colors.neutral[50],
-            emphasized: Colors.neutral[550],
-            hover: Colors.primary[350]
-        },
-        success: {
-            default: Colors.green[50],
-            emphasized: Colors.green[900]
-        },
-        warning: {
-            default: Colors.yellow[50],
-            emphasized: Colors.yellow[900]
-        },
-        highlight: Colors.brand.rushhour,
-        transparent: Colors.transparent
+        backdrop: Colors.neutral[900]
     },
     border: {
         neutral: {
@@ -153,45 +187,8 @@ export const SemanticColors = {
             faded: Colors.red[350],
             default: Colors.red[900]
         },
-        transparent: Colors.transparent
     },
     shadow: {
         default: Colors.neutral[200]
-    },
-    overrides: {
-        label: {
-            background: {
-                secondary: {
-                    emphasized: Colors.neutral[900]
-                },
-                info: {
-                    emphasized: Colors.neutral[900]
-                }
-            }
-        },
-        datepicker: {
-            background: {
-                info: {
-                    default: Colors.primary[50],
-                    emphasized: Colors.primary[900]
-                }
-            }
-        },
-        infobanner: {
-            background: {
-                info: {
-                    default: Colors.white
-                },
-                success: {
-                    default: Colors.white
-                },
-                warning: {
-                    default: Colors.white
-                },
-                danger: {
-                    default: Colors.white
-                }
-            }
-        }
     }
 } satisfies SemanticColorsSchema;

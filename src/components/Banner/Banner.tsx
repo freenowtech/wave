@@ -61,13 +61,13 @@ const riseUp = css`
 const bannerVariants = variant({
     variants: {
         info: {
-            backgroundColor: getSemanticValue('background-secondary-emphasized')
+            backgroundColor: getSemanticValue('background-surface-neutral-emphasized')
         },
         success: {
-            backgroundColor: getSemanticValue('background-success-emphasized')
+            backgroundColor: getSemanticValue('background-surface-success-emphasized')
         },
         danger: {
-            backgroundColor: getSemanticValue('background-danger-emphasized')
+            backgroundColor: getSemanticValue('background-surface-danger-emphasized')
         }
     }
 });
@@ -116,7 +116,7 @@ const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
     overflow: auto;
     box-sizing: border-box;
     padding: ${get('space.3')};
-    background-color: getSemanticValue('background-secondary-emphasized');
+    background-color: ${getSemanticValue('background-surface-neutral-emphasized')};
 
     position: fixed;
     left: 0;

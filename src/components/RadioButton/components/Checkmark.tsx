@@ -17,7 +17,7 @@ const Checkmark = styled.input<CheckmarkProps>`
     padding: 0;
     margin: 0 0.5rem 0 0;
 
-    background-color: ${getSemanticValue('background-primary-default')};
+    background-color: ${getSemanticValue('background-element-neutral-default')};
     box-shadow: inset 0 0 0 0.125rem ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-neutral-default')};
     border-radius: 50%;
     transition: background-color 100ms, box-shadow 100ms;
@@ -52,20 +52,20 @@ const Checkmark = styled.input<CheckmarkProps>`
 
     &:disabled {
         cursor: not-allowed;
-        background-color: ${getSemanticValue('background-tertiary-disabled')};
-        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('background-tertiary-disabled')};
+        background-color: ${getSemanticValue('background-element-disabled-faded')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('background-element-disabled-faded')};
 
         &:hover {
-            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('background-tertiary-disabled')};
+            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('background-element-disabled-faded')};
         }
 
         &:active {
-            background-color: ${getSemanticValue('background-tertiary-disabled')};
+            background-color: ${getSemanticValue('background-element-disabled-faded')};
         }
 
         &:checked {
-            box-shadow: inset 0 0 0 0.3125rem ${getSemanticValue('background-tertiary-disabled')};
-            background-color: ${getSemanticValue('background-primary-default')};
+            box-shadow: inset 0 0 0 0.3125rem ${getSemanticValue('background-element-disabled-faded')};
+            background-color: ${getSemanticValue('background-element-neutral-default')};
         }
     }
 `;

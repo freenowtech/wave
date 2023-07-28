@@ -12,7 +12,7 @@ const TapArea = styled.div`
     transition: background-color 125ms;
 
     &:active {
-        background-color: ${getSemanticValue('background-secondary-default')};
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')};
     }
 `;
 

@@ -42,8 +42,8 @@ export const preview: Preview = {
         backgrounds: {
             default: 'light',
             values: [
-                { name: 'light', value: getSemanticValue('background-primary-default') },
-                { name: 'dark', value: getSemanticValue('background-primary-inverted') }
+                { name: 'light', value: getSemanticValue('background-surface-neutral-default') },
+                { name: 'dark', value: getSemanticValue('background-surface-primary-default') }
             ]
         },
         viewport: {

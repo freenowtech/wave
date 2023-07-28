@@ -46,7 +46,7 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
     & ~ ${BottomLinedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
         color: ${getLabelColor};
-        background: ${p => getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+        background: ${p => getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -70,7 +70,7 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
             ${p => activeBottomLinedPosition(p.size)};
             color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-focus')};
             background: ${p =>
-                getSemanticValue(p.inverted ? 'background-primary-inverted' : 'background-primary-default')};
+                getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
         }
     }
 `;

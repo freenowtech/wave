@@ -41,7 +41,7 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
             cursor: pointer;
 
             & ${/* sc-selector */ TapArea}:not(:active) {
-                background-color: ${getSemanticValue(error ? 'background-danger-default' : 'background-secondary-default')};
+                background-color: ${getSemanticValue(error ? 'background-element-danger-faded' : 'background-element-info-default')};
             }
 
             & ${/* sc-selector */ Checkmark}:not(:checked) {
@@ -53,12 +53,12 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
         cursor: pointer;
 
         & ${/* sc-selector */ TapArea}:not(:active) {
-            background-color: ${getSemanticValue(error ? 'background-danger-default' : 'background-info-default')};
+            background-color: ${getSemanticValue(error ? 'background-element-danger-faded' : 'background-element-info-default')};
         }
 
         & ${/* sc-selector */ Checkmark}:not(:checked) {
             box-shadow: inset 0 0 0 0.125rem ${getSemanticValue(error ? 'border-danger-default' : 'border-info-default')};
-            background-color: ${getSemanticValue('background-primary-default')};
+            background-color: ${getSemanticValue('background-element-neutral-default')};
         }
     `;
 };
