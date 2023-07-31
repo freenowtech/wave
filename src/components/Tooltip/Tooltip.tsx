@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
@@ -138,6 +139,10 @@ interface TooltipProps {
      * Force the tooltip to always be visible, regardless of user interaction
      */
     alwaysVisible?: boolean;
+    /**
+     * Render the tooltip into a certain DOM node. One use case is when the tooltip should "hover" over the entire page and shouldn't trigger any scrollbars to appear
+     */
+    container?: Element | DocumentFragment;
 }
 
 const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
@@ -145,7 +150,8 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
     children,
     placement = 'top',
     alwaysVisible = false,
-    inverted = false
+    inverted = false,
+    container
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
@@ -190,6 +196,25 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
         }
     };
 
+    const renderTooltipBody = () => {
+        const tooltipBody = (
+            <TooltipBody
+                ref={setContentReference}
+                inverted={inverted}
+                style={{ ...styles.popper }}
+                variant={attributes.popper?.['data-popper-placement']}
+                {...attributes.popper}
+            >
+                {dynamicContent}
+            </TooltipBody>
+        );
+
+        if (container) {
+            return createPortal(tooltipBody, container);
+        }
+        return tooltipBody;
+    };
+
     return (
         <>
             {React.cloneElement(children as React.ReactElement, {
@@ -197,17 +222,7 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
                 onMouseOut: () => handleVisibilityChange(false),
                 ref: setTriggerReference
             })}
-            {content && isVisible && (
-                <TooltipBody
-                    ref={setContentReference}
-                    inverted={inverted}
-                    style={{ ...styles.popper }}
-                    variant={attributes.popper?.['data-popper-placement']}
-                    {...attributes.popper}
-                >
-                    {dynamicContent}
-                </TooltipBody>
-            )}
+            {content && isVisible && renderTooltipBody()}
         </>
     );
 };
