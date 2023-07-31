@@ -37,7 +37,10 @@ export const preview: Preview = {
             }
         },
         docs: {
-            theme: themes.light
+            theme: themes.light,
+            toc: {
+                headingSelector: 'h2, h3'
+            }
         },
         backgrounds: {
             default: 'light',
