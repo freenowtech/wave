@@ -19,10 +19,12 @@ const PanelHeader = styled(Header)`
         background-color: ${getSemanticValue('background-surface-info-default')};
     }
 
+    /* stylelint-disable */
     &:hover ${ButtonLabel},
     &:hover ${ChevronDown} {
         color: ${getSemanticValue('foreground-accent-emphasized')};
     }
+    /* stylelint-enable */
 `;
 
 const CardHeader = styled(Header).attrs({ p: '3' })`
@@ -33,10 +35,12 @@ const CardHeader = styled(Header).attrs({ p: '3' })`
         background-color: ${getSemanticValue('background-surface-info-default')};
     }
 
+    /* stylelint-disable */
     &:hover ${ButtonLabel},
     &:hover ${ChevronUp} {
         color: ${getSemanticValue('foreground-accent-emphasized')};
     }
+    /* stylelint-enable */
 `;
 
 const PanelBody = styled(Box).attrs({ my: '3' })`

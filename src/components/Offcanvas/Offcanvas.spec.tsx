@@ -25,7 +25,6 @@ describe('Offcanvas', () => {
         });
 
         it('when pressing the escape key', async () => {
-            const user = userEvent.setup()
             const mockCloseHandler = jest.fn();
             render(<Offcanvas onClose={mockCloseHandler}>Content</Offcanvas>);
 

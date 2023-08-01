@@ -17,6 +17,7 @@ type Props = Pick<
 const StyleHeadline = styled(Headline)``;
 
 const PanelHeader = styled(Header)`
+  /* stylelint-disable */
     &:hover ${StyleHeadline},
     &:hover ${ChevronDown},
     &:hover ${ChevronUp} {
