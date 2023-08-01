@@ -1,12 +1,13 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
 
 import type { PropsWithChildren } from 'react';
 
-import { MediaQueries, SemanticColors } from '../../essentials';
+import { Elevation, MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
@@ -89,6 +90,7 @@ interface TooltipBodyProps {
 
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
+    z-index: ${Elevation.TOOLTIP};
     background-color: ${p =>
         p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
     padding: 0.25rem 0.5rem;
@@ -197,17 +199,20 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
                 onMouseOut: () => handleVisibilityChange(false),
                 ref: setTriggerReference
             })}
-            {content && isVisible && (
-                <TooltipBody
-                    ref={setContentReference}
-                    inverted={inverted}
-                    style={{ ...styles.popper }}
-                    variant={attributes.popper?.['data-popper-placement']}
-                    {...attributes.popper}
-                >
-                    {dynamicContent}
-                </TooltipBody>
-            )}
+            {content &&
+                isVisible &&
+                createPortal(
+                    <TooltipBody
+                        ref={setContentReference}
+                        inverted={inverted}
+                        style={{ ...styles.popper }}
+                        variant={attributes.popper?.['data-popper-placement']}
+                        {...attributes.popper}
+                    >
+                        {dynamicContent}
+                    </TooltipBody>,
+                    document.body
+                )}
         </>
     );
 };
