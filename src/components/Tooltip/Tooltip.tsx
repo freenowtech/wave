@@ -7,7 +7,7 @@ import { variant } from 'styled-system';
 
 import type { PropsWithChildren } from 'react';
 
-import { MediaQueries, SemanticColors } from '../../essentials';
+import { Elevation, MediaQueries, SemanticColors } from '../../essentials';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
@@ -90,6 +90,7 @@ interface TooltipBodyProps {
 
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
+    z-index: ${Elevation.TOOLTIP};
     background-color: ${p =>
         p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
     padding: 0.25rem 0.5rem;
@@ -139,10 +140,6 @@ interface TooltipProps {
      * Force the tooltip to always be visible, regardless of user interaction
      */
     alwaysVisible?: boolean;
-    /**
-     * Render the tooltip into a certain DOM node. One use case is when the tooltip should "hover" over the entire page and shouldn't trigger any scrollbars to appear
-     */
-    container?: Element | DocumentFragment;
 }
 
 const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
@@ -150,8 +147,7 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
     children,
     placement = 'top',
     alwaysVisible = false,
-    inverted = false,
-    container
+    inverted = false
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
@@ -196,25 +192,6 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
         }
     };
 
-    const renderTooltipBody = () => {
-        const tooltipBody = (
-            <TooltipBody
-                ref={setContentReference}
-                inverted={inverted}
-                style={{ ...styles.popper }}
-                variant={attributes.popper?.['data-popper-placement']}
-                {...attributes.popper}
-            >
-                {dynamicContent}
-            </TooltipBody>
-        );
-
-        if (container) {
-            return createPortal(tooltipBody, container);
-        }
-        return tooltipBody;
-    };
-
     return (
         <>
             {React.cloneElement(children as React.ReactElement, {
@@ -222,7 +199,20 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
                 onMouseOut: () => handleVisibilityChange(false),
                 ref: setTriggerReference
             })}
-            {content && isVisible && renderTooltipBody()}
+            {content &&
+                isVisible &&
+                createPortal(
+                    <TooltipBody
+                        ref={setContentReference}
+                        inverted={inverted}
+                        style={{ ...styles.popper }}
+                        variant={attributes.popper?.['data-popper-placement']}
+                        {...attributes.popper}
+                    >
+                        {dynamicContent}
+                    </TooltipBody>,
+                    document.body
+                )}
         </>
     );
 };
