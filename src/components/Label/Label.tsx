@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
 import { ComponentPropsWithoutRef } from 'react';
 import { Text } from '../Text/Text';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface LabelProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
     /**
@@ -22,29 +22,29 @@ interface LabelProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
 const normalVariantStyles = variant({
     variants: {
         default: {
-            color: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.AUTHENTIC_BLUE_200,
-            backgroundColor: Colors.AUTHENTIC_BLUE_50
+            color: getSemanticValue('foreground-primary'),
+            borderColor: getSemanticValue('border-neutral-default'),
+            backgroundColor: getSemanticValue('background-element-neutral-emphasized')
         },
         info: {
-            color: Colors.ACTION_BLUE_900,
-            borderColor: Colors.ACTION_BLUE_350,
-            backgroundColor: Colors.ACTION_BLUE_50
+            color: getSemanticValue('foreground-info-default'),
+            borderColor: getSemanticValue('border-info-faded'),
+            backgroundColor: getSemanticValue('background-element-info-default')
         },
         success: {
-            color: Colors.POSITIVE_GREEN_1000,
-            borderColor: Colors.POSITIVE_GREEN_350,
-            backgroundColor: Colors.POSITIVE_GREEN_50
+            color: getSemanticValue('foreground-success-default'),
+            borderColor: getSemanticValue('border-success-faded'),
+            backgroundColor: getSemanticValue('background-element-success-default')
         },
         warning: {
-            color: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.ATTENTION_YELLOW_350,
-            backgroundColor: Colors.ATTENTION_YELLOW_50
+            color: getSemanticValue('foreground-primary'),
+            borderColor: getSemanticValue('border-warning-default'),
+            backgroundColor: getSemanticValue('background-element-warning-default')
         },
         danger: {
-            color: Colors.NEGATIVE_ORANGE_1000,
-            borderColor: Colors.NEGATIVE_ORANGE_350,
-            backgroundColor: Colors.NEGATIVE_ORANGE_50
+            color: getSemanticValue('foreground-danger-emphasized'),
+            borderColor: getSemanticValue('border-danger-faded'),
+            backgroundColor: getSemanticValue('background-element-danger-faded')
         }
     }
 });
@@ -52,29 +52,29 @@ const normalVariantStyles = variant({
 const filledVariantStyles = variant({
     variants: {
         default: {
-            color: Colors.WHITE,
-            borderColor: Colors.AUTHENTIC_BLUE_350,
-            backgroundColor: Colors.AUTHENTIC_BLUE_350
+            color: getSemanticValue('foreground-on-background-primary'),
+            borderColor: getSemanticValue('transparent'),
+            backgroundColor: getSemanticValue('background-surface-primary-emphasized')
         },
         info: {
-            color: Colors.WHITE,
-            borderColor: Colors.ACTION_BLUE_900,
-            backgroundColor: Colors.ACTION_BLUE_900
+            color: getSemanticValue('foreground-on-background-info'),
+            borderColor: getSemanticValue('transparent'),
+            backgroundColor: getSemanticValue('background-surface-info-emphasized')
         },
         success: {
-            color: Colors.WHITE,
-            borderColor: Colors.POSITIVE_GREEN_900,
-            backgroundColor: Colors.POSITIVE_GREEN_900
+            color: getSemanticValue('foreground-on-background-success'),
+            borderColor: getSemanticValue('transparent'),
+            backgroundColor: getSemanticValue('background-surface-success-emphasized')
         },
         warning: {
-            color: Colors.AUTHENTIC_BLUE_900,
-            borderColor: Colors.ATTENTION_YELLOW_900,
-            backgroundColor: Colors.ATTENTION_YELLOW_900
+            color: getSemanticValue('foreground-on-background-warning'),
+            borderColor: getSemanticValue('transparent'),
+            backgroundColor: getSemanticValue('background-surface-warning-emphasized')
         },
         danger: {
-            color: Colors.WHITE,
-            borderColor: Colors.NEGATIVE_ORANGE_900,
-            backgroundColor: Colors.NEGATIVE_ORANGE_900
+            color: getSemanticValue('foreground-on-background-danger'),
+            borderColor: getSemanticValue('transparent'),
+            backgroundColor: getSemanticValue('background-surface-danger-emphasized')
         }
     }
 });

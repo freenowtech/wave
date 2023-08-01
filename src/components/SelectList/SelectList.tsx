@@ -9,9 +9,10 @@ import {
 } from 'react-select';
 import WindowedSelect from 'react-windowed-select';
 
-import { Colors, Elevation } from '../../essentials';
+import { Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
 import { Label } from './components/Label';
@@ -38,7 +39,7 @@ const customStyles: StylesConfig = {
         };
     },
     control: (_, state: WithSelectProps<ControlProps>) => {
-        const disabled = state.isDisabled && disabledStyles.control(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.control;
         const error = state.selectProps.error && errorStyles.control(state.selectProps);
         const variant = variantStyles.control({ isFocused: state.isFocused, ...state.selectProps });
 
@@ -47,8 +48,12 @@ const customStyles: StylesConfig = {
             alignItems: 'center',
             justifyContent: 'space-between',
             margin: 0,
-            background: state.selectProps.inverted ? 'transparent' : Colors.WHITE,
-            color: state.selectProps.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900,
+            background: getSemanticValue(
+                state.selectProps.inverted ? 'transparent' : 'background-element-neutral-default'
+            ),
+            color: getSemanticValue(
+                state.selectProps.inverted ? 'foreground-on-background-primary' : 'foreground-primary'
+            ),
             ...variant,
             ...error,
             ...disabled
@@ -60,7 +65,7 @@ const customStyles: StylesConfig = {
     }),
     menu: provided => ({
         ...provided,
-        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200}`
+        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('border-neutral-default')}`
     }),
     valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
         let margin;
@@ -102,54 +107,58 @@ const customStyles: StylesConfig = {
         color: 'inherit'
     }),
     dropdownIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
             ...provided,
             padding: '0',
             marginRight: '0.5rem',
             cursor: 'pointer',
-            color: state.selectProps.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue(
+                state.selectProps.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default'
+            ),
             ...disabled
         };
     },
     clearIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
             ...provided,
-            color: state.selectProps.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue(
+                state.selectProps.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default'
+            ),
             cursor: 'pointer',
             padding: 0,
             ...disabled
         };
     },
     placeholder: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.placeholder(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.placeholder;
 
         return {
             ...provided,
-            color: Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue('foreground-neutral-emphasized'),
             ...disabled
         };
     },
     option: (provided, state: WithSelectProps<Props>) => {
         const colorsByState = {
             isDisabled: {
-                color: Colors.AUTHENTIC_BLUE_350
+                color: getSemanticValue('foreground-disabled')
             },
             isFocused: {
-                backgroundColor: Colors.ACTION_BLUE_50
+                backgroundColor: getSemanticValue('background-element-info-default')
             },
             isSelected: {
-                backgroundColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                color: getSemanticValue('foreground-on-background-primary')
             }
         };
 
         const defaultColors = {
-            color: Colors.AUTHENTIC_BLUE_900,
-            backgroundColor: Colors.WHITE
+            color: getSemanticValue('foreground-primary'),
+            backgroundColor: getSemanticValue('background-element-neutral-default')
         };
 
         const colors = Object.keys(colorsByState)
@@ -172,10 +181,10 @@ const customStyles: StylesConfig = {
     multiValue: (provided, { selectProps }: { selectProps: Props }) => {
         const styles = {
             ...provided,
-            color: Colors.ACTION_BLUE_900,
-            border: `0.0625rem solid ${Colors.ACTION_BLUE_900}`,
+            color: getSemanticValue('foreground-info-faded'),
+            border: `0.0625rem solid ${getSemanticValue('border-info-default')}`,
             borderRadius: '1rem',
-            backgroundColor: Colors.ACTION_BLUE_50,
+            backgroundColor: getSemanticValue('background-element-info-default'),
             marginRight: '0.375rem',
             marginTop: '0.125rem',
             marginLeft: 0,
@@ -183,17 +192,17 @@ const customStyles: StylesConfig = {
             maxWidth: 'calc(100% - 0.5rem)',
             transition: 'color 125ms ease, background-color 125ms ease',
             '&:hover': {
-                backgroundColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                color: getSemanticValue('foreground-on-background-primary')
             }
         };
 
         if (selectProps.isDisabled) {
             return {
                 ...styles,
-                color: Colors.AUTHENTIC_BLUE_200,
+                color: getSemanticValue('foreground-disabled'),
                 backgroundColor: 'transparent',
-                borderColor: Colors.AUTHENTIC_BLUE_200
+                borderColor: getSemanticValue('border-disabled')
             };
         }
 

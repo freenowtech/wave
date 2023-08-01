@@ -26,17 +26,18 @@ describe('Accordion', () => {
         expect(screen.queryByText('Place holder')).not.toBeInTheDocument();
     });
 
-    it('render default variant open', () => {
+    it('render default variant open', async () => {
+        const user = userEvent.setup();
         render(
             <Accordion heading="Some heading" info="some info" description="some description" buttonLabel="button">
                 <p>Place holder</p>
             </Accordion>
         );
-        userEvent.click(screen.getByText('Some heading'));
+        await user.click(screen.getByText('Some heading'));
         expect(screen.getByText('Place holder')).toBeInTheDocument();
         expect(screen.getByText('some description')).toBeInTheDocument();
         expect(screen.getByText('button')).toBeInTheDocument();
-        userEvent.click(screen.getByText('button'));
+        await user.click(screen.getByText('button'));
         expect(screen.queryByText('Place holder')).toBeFalsy();
     });
 
@@ -58,16 +59,17 @@ describe('Accordion', () => {
         expect(screen.queryByText('paragraph')).toBeFalsy();
     });
 
-    it('render compact variant open', () => {
+    it('render compact variant open', async () => {
+        const user = userEvent.setup();
         render(
             <Accordion heading="Some heading" description="some description" variant="compact">
                 <p>Place holder</p>
             </Accordion>
         );
-        userEvent.click(screen.getByText('Some heading'));
+        await user.click(screen.getByText('Some heading'));
         expect(screen.getByText('Place holder')).toBeInTheDocument();
         expect(screen.getByText('some description')).toBeInTheDocument();
-        userEvent.click(screen.getByText('Some heading'));
+        await user.click(screen.getByText('Some heading'));
         expect(screen.queryByText('Place holder')).toBeFalsy();
     });
 });

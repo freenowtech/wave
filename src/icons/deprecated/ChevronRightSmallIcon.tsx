@@ -1,5 +1,4 @@
 import React from 'react';
-import { Colors } from '../../essentials';
 import { IconProps } from '../IconProps';
 import { withDeprecatedMessage } from '../../utils/withDeprecatedMessage';
 import ChevronRightIcon from '../arrows/ChevronRightIcon';
@@ -9,7 +8,4 @@ const ChevronRightSmallIcon: React.FC<Props> = withDeprecatedMessage('ChevronRig
     size: 20
 });
 
-ChevronRightSmallIcon.defaultProps = {
-    color: Colors.AUTHENTIC_BLUE_900
-};
 export default ChevronRightSmallIcon;

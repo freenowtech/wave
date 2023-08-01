@@ -2,10 +2,10 @@ import React, { FC, MouseEvent, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { margin, MarginProps } from 'styled-system';
 
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { CloseIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
 
 interface TagProps extends MarginProps {
@@ -20,7 +20,7 @@ interface TagProps extends MarginProps {
 }
 
 const TagText = styled(Text).attrs({ theme })<Pick<TagProps, 'dismissible'>>`
-    color: ${Colors.ACTION_BLUE_900};
+    color: ${getSemanticValue('foreground-info-faded')};
     margin-left: 0.75rem;
     margin-right: ${props => (props.dismissible ? '0.25rem' : '0.75rem')};
     font-size: ${get('fontSizes.1')};
@@ -40,8 +40,8 @@ const DismissIcon = styled(CloseIcon).attrs({ size: 18 })`
 
 const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     box-sizing: border-box;
-    background-color: ${Colors.ACTION_BLUE_50};
-    border: solid 0.0625rem ${Colors.ACTION_BLUE_900};
+    background-color: ${getSemanticValue('background-element-info-default')};
+    border: solid 0.0625rem ${getSemanticValue('border-info-default')};
     display: inline-flex;
     align-items: center;
     border-radius: 2rem;
@@ -54,14 +54,14 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     ${margin}
 
     &:hover {
-        background-color: ${Colors.ACTION_BLUE_900};
+        background-color: ${getSemanticValue('background-element-info-emphasized')};
 
         > ${TagText} {
-            color: ${Colors.WHITE};
+            color: ${getSemanticValue('foreground-on-background-info')};
         }
 
         > ${DismissIcon} {
-            color: ${Colors.WHITE};
+            color: ${getSemanticValue('foreground-on-background-info')};
         }
     }
 `;
@@ -69,7 +69,13 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
 const Tag: FC<PropsWithChildren<TagProps>> = ({ children, onDismiss, dismissible = true, ...rest }) => (
     <TagWrapper {...rest}>
         <TagText dismissible={dismissible}>{children}</TagText>
-        {dismissible && <DismissIcon data-testid="dismiss-icon" color={Colors.ACTION_BLUE_900} onClick={onDismiss} />}
+        {dismissible && (
+            <DismissIcon
+                data-testid="dismiss-icon"
+                color={getSemanticValue('foreground-info-faded')}
+                onClick={onDismiss}
+            />
+        )}
     </TagWrapper>
 );
 

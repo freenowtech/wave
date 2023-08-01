@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled from 'styled-components';
 import { compose, LayoutProps, textAlign, TextAlignProps, layout } from 'styled-system';
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
 import { TableContext } from '../context/TableContext';
@@ -13,7 +13,7 @@ type TableHeaderCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     LayoutProps;
 
 const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
-    border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_550} !important;
+    border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-emphasized')} !important;
     font-weight: ${get('fontWeights.bold')};
     height: ${p => p.rowSize};
     padding: 0 calc(${p => p.columnSpace} / 2);

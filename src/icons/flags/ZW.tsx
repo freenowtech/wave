@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const ZW: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const ZW: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <rect id="ZW__a" x={0} y={0} width={28} height={20} rx={2} />
                 <rect id="ZW__d" x={2} y={-1} width={29} height={22} rx={2} />
@@ -56,6 +62,4 @@ const ZW: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-ZW.defaultProps = {};
 export default ZW;

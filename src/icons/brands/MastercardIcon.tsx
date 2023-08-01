@@ -3,13 +3,12 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const MastercardIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const MastercardIcon: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fillRule="evenodd">
                 <circle fill="#EB001B" cx={8.5} cy={12} r={6} />
                 <circle fill="#F79E1B" cx={15.5} cy={12} r={6} />
@@ -21,6 +20,4 @@ const MastercardIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProp
         </svg>
     );
 };
-
-MastercardIcon.defaultProps = {};
 export default MastercardIcon;

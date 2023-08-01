@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const SH: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const SH: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <path
                     d="M0 4.667V1.332A1.33 1.33 0 011.333 0h4c.737 0 1.334.588 1.334 1.332v3.335c0 3.333-3.334 4.666-3.334 4.666S0 8 0 4.667z"
@@ -72,6 +78,4 @@ const SH: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-SH.defaultProps = {};
 export default SH;

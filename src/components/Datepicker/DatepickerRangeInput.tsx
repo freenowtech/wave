@@ -4,8 +4,9 @@ import React, { ChangeEventHandler, FC, MutableRefObject, useEffect, useRef, use
 import TetherComponent from 'react-tether';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
-import { Colors, Elevation, MediaQueries } from '../../essentials';
+import { Elevation, MediaQueries } from '../../essentials';
 import { theme } from '../../essentials/theme';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ChevronRightIcon } from '../../icons';
 import { Input } from '../Input/Input';
@@ -30,7 +31,7 @@ const DateRangeWrapper = styled.div.attrs({ theme })<DateRangerProps>`
         &:focus,
         &:active {
             box-shadow: none;
-            border-color: ${Colors.AUTHENTIC_BLUE_200};
+            border-color: ${getSemanticValue('border-neutral-default')};
         }
     }
 
@@ -67,7 +68,7 @@ const DateArrow = styled(ChevronRightIcon)`
 `;
 
 const StartDateFocusedBlock = styled.div`
-    background: ${Colors.ACTION_BLUE_900};
+    background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
 
@@ -77,7 +78,7 @@ const StartDateFocusedBlock = styled.div`
 `;
 
 const EndDateFocusedBlock = styled.div`
-    background: ${Colors.ACTION_BLUE_900};
+    background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
 
@@ -360,7 +361,9 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                             disabled={disabled}
                         />
                         {focusedInput === START_DATE && <StartDateFocusedBlock />}
-                        <DateArrow color={disabled ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550} />
+                        <DateArrow
+                            color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-emphasized')}
+                        />
                         <Input
                             id={endId}
                             ref={endDateRef}

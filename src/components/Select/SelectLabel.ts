@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Colors } from '../../essentials';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface SelectLabelProps {
     inverted?: boolean;
@@ -13,8 +13,9 @@ const SelectLabel = styled.label<SelectLabelProps>`
     pointer-events: none;
     line-height: 1;
     font-weight: ${get('fontWeights.semibold')};
-    color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550)};
-    background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+    color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
+    background: ${p =>
+        getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
     transition: color ${ANIMATION_DURATION}ms ease-out, background ${ANIMATION_DURATION}ms ease-out;
 `;
 

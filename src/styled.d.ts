@@ -1,12 +1,9 @@
 import 'styled-components';
 import { BreakpointsArray, MediaQueries } from './essentials/Breakpoints/Breakpoints';
-import { Colors, SemanticColors } from './essentials/Colors/Colors';
 import { Spaces } from './essentials';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
-        colors: typeof Colors;
-        semanticColors: typeof SemanticColors;
         breakpoints: BreakpointsArray;
         fontSizes: string[];
         fontWeights: {

@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const LY: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const LY: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <filter x="-5.4%" y="-22.5%" width="110.7%" height="145%" filterUnits="objectBoundingBox" id="LY__c">
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
@@ -48,6 +54,4 @@ const LY: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-LY.defaultProps = {};
 export default LY;

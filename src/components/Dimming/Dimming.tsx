@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-import { Elevation, SemanticColors } from '../../essentials';
+import { Elevation } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const Dimming = styled.div`
-    background-color: ${SemanticColors.dialog.dimming};
+    background-color: ${getSemanticValue('background-backdrop')};
     height: 100%;
     left: 0;
     opacity: 0.6;

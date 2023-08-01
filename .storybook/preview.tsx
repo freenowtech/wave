@@ -1,7 +1,26 @@
+import React from 'react';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
+import { ClassicColors, ModernColors } from '../src/essentials/Colors/globalStyles';
+import { getSemanticValue } from '../src/utils/cssVariables';
+
+const THEMES = {
+    classic: ClassicColors,
+    modern: ModernColors
+} as const;
+
+export const withTheme = (Story, context) => {
+    const Theme = THEMES[context.globals.theme];
+    return (
+        <>
+            <Theme />
+            <Story {...context} />
+        </>
+    );
+};
 
 export const preview: Preview = {
+    decorators: [withTheme],
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
         viewMode: 'docs',
@@ -12,14 +31,22 @@ export const preview: Preview = {
                 date: /Date$/
             }
         },
+        options: {
+            storySort: {
+                order: ['Welcome', 'Get Started', 'Essentials', 'Components', 'Form Elements']
+            }
+        },
         docs: {
-            theme: themes.light
+            theme: themes.light,
+            toc: {
+                headingSelector: 'h2, h3'
+            }
         },
         backgrounds: {
             default: 'light',
             values: [
-                { name: 'light', value: '#FFFFFF' },
-                { name: 'dark', value: '#001E3E' }
+                { name: 'light', value: getSemanticValue('background-surface-neutral-default') },
+                { name: 'dark', value: getSemanticValue('background-surface-primary-default') }
             ]
         },
         viewport: {
@@ -65,10 +92,17 @@ export const preview: Preview = {
                     type: 'desktop'
                 }
             }
-        },
-        options: {
-            storySort: {
-                order: ['Welcome', 'Get Started', 'Essentials', 'Components', 'Form Elements']
+        }
+    },
+    globalTypes: {
+        theme: {
+            description: 'Global theme for components',
+            defaultValue: 'modern',
+            toolbar: {
+                title: 'Theme',
+                icon: 'paintbrush',
+                items: ['modern', 'classic'],
+                dynamicTitle: true
             }
         }
     }

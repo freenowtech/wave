@@ -1,10 +1,12 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import { ButtonStyleProps, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { get } from '../../utils/themeGet';
 
+import { getSemanticValue } from '../../utils/cssVariables';
 import { BaseButton, BaseButtonProps } from './BaseButton';
+import { ComponentSemanticTokens } from '../../essentials/Colors/types';
+
+type Variant = 'primary' | 'secondary' | 'danger';
 
 interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
     /**
@@ -14,129 +16,109 @@ interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
     /**
      * Define style of the button component, defaults to primary
      */
-    variant?: ResponsiveValue<'primary' | 'secondary' | 'danger'>;
+    variant?: ResponsiveValue<Variant>;
 }
 
-const variantStyles = variant({
+const variantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: get('semanticColors.button.primary.text'),
-            fill: get('semanticColors.button.primary.icon'),
-            background: get('semanticColors.button.primary.background'),
-            borderColor: get('semanticColors.button.primary.border'),
+            color: getSemanticValue('foreground-on-background-primary'),
+            fill: getSemanticValue('foreground-on-background-primary'),
+            background: getSemanticValue('background-element-primary-default'),
 
             '&:hover': {
-                color: get('semanticColors.button.primary.textHover'),
-                fill: get('semanticColors.button.primary.iconHover'),
-                background: get('semanticColors.button.primary.backgroundHover'),
-                borderColor: get('semanticColors.button.primary.borderHover')
+                background: getSemanticValue('background-element-primary-emphasized')
             },
 
             '&:disabled': {
-                color: get('semanticColors.button.primary.textDisabled'),
-                fill: get('semanticColors.button.primary.iconDisabled'),
-                background: get('semanticColors.button.primary.backgroundDisabled'),
-                borderColor: get('semanticColors.button.primary.borderDisabled')
+                background: getSemanticValue('background-element-disabled-default')
             }
         },
         secondary: {
-            color: get('semanticColors.button.secondary.text'),
-            fill: get('semanticColors.button.secondary.icon'),
-            background: get('semanticColors.button.secondary.background'),
-            borderColor: get('semanticColors.button.secondary.border'),
+            color: getSemanticValue('foreground-primary'),
+            fill: getSemanticValue('foreground-primary'),
+            background: getSemanticValue('background-element-neutral-default'),
+            borderColor: getSemanticValue('border-neutral-default'),
+
             '&:hover': {
-                color: get('semanticColors.button.secondary.textHover'),
-                fill: get('semanticColors.button.secondary.iconHover'),
-                background: get('semanticColors.button.secondary.backgroundHover'),
-                borderColor: get('semanticColors.button.secondary.borderHover')
+                background: getSemanticValue('background-element-neutral-emphasized')
             },
+
             '&:disabled': {
-                color: get('semanticColors.button.secondary.textDisabled'),
-                fill: get('semanticColors.button.secondary.iconDisabled'),
-                background: get('semanticColors.button.secondary.backgroundDisabled'),
-                borderColor: get('semanticColors.button.secondary.borderDisabled')
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
+                background: getSemanticValue('background-element-disabled-faded'),
+                borderColor: getSemanticValue('border-disabled')
             }
         },
         danger: {
-            color: get('semanticColors.button.danger.text'),
-            fill: get('semanticColors.button.danger.icon'),
-            background: get('semanticColors.button.danger.background'),
-            borderColor: get('semanticColors.button.danger.border'),
+            color: getSemanticValue('foreground-on-background-danger'),
+            fill: getSemanticValue('foreground-on-background-danger'),
+            background: getSemanticValue('background-element-danger-default'),
 
             '&:hover': {
-                color: get('semanticColors.button.danger.textHover'),
-                fill: get('semanticColors.button.danger.iconHover'),
-                background: get('semanticColors.button.danger.backgroundHover'),
-                borderColor: get('semanticColors.button.danger.borderHover')
+                background: getSemanticValue('background-element-danger-emphasized')
             },
 
             '&:disabled': {
-                color: get('semanticColors.button.danger.textDisabled'),
-                fill: get('semanticColors.button.danger.iconDisabled'),
-                background: get('semanticColors.button.danger.backgroundDisabled'),
-                borderColor: get('semanticColors.button.danger.borderDisabled')
+                background: getSemanticValue('background-element-disabled-default'),
+                borderColor: getSemanticValue('border-disabled')
             }
         }
     }
 });
 
-const invertedVariantStyles = variant({
+const invertedVariantStyles = variant<ComponentSemanticTokens, Variant>({
     variants: {
         primary: {
-            color: get('semanticColors.button.primary.textInverted'),
-            fill: get('semanticColors.button.primary.iconInverted'),
-            background: get('semanticColors.button.primary.backgroundInverted'),
-            borderColor: get('semanticColors.button.primary.borderInverted'),
+            color: getSemanticValue('foreground-accent-default'),
+            fill: getSemanticValue('foreground-accent-default'),
+            background: getSemanticValue('background-element-neutral-default'),
 
             '&:hover': {
-                color: get('semanticColors.button.primary.textHoverInverted'),
-                fill: get('semanticColors.button.primary.iconHoverInverted'),
-                background: get('semanticColors.button.primary.backgroundHoverInverted'),
-                borderColor: get('semanticColors.button.primary.borderHoverInverted')
+                color: getSemanticValue('foreground-on-background-accent'),
+                fill: getSemanticValue('foreground-on-background-accent'),
+                background: getSemanticValue('background-element-accent-emphasized'),
+                borderColor: getSemanticValue('border-neutral-default')
             },
             '&:disabled': {
-                color: get('semanticColors.button.primary.textDisabledInverted'),
-                fill: get('semanticColors.button.primary.iconDisabledInverted'),
-                background: get('semanticColors.button.primary.backgroundDisabledInverted'),
-                borderColor: get('semanticColors.button.primary.borderDisabledInverted')
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
+                background: getSemanticValue('background-element-disabled-emphasized'),
+                borderColor: getSemanticValue('border-disabled')
             }
         },
         secondary: {
-            color: get('semanticColors.button.secondary.textInverted'),
-            fill: get('semanticColors.button.secondary.iconInverted'),
-            background: get('semanticColors.button.secondary.backgroundInverted'),
-            borderColor: get('semanticColors.button.secondary.borderInverted'),
+            color: getSemanticValue('foreground-on-background-primary'),
+            fill: getSemanticValue('foreground-on-background-primary'),
+            background: getSemanticValue('transparent'),
+            borderColor: getSemanticValue('border-neutral-faded'),
 
             '&:hover': {
-                color: get('semanticColors.button.secondary.textHoverInverted'),
-                fill: get('semanticColors.button.secondary.iconHoverInverted'),
-                background: get('semanticColors.button.secondary.backgroundHoverInverted'),
-                borderColor: get('semanticColors.button.secondary.borderHoverInverted')
+                color: getSemanticValue('foreground-primary'),
+                fill: getSemanticValue('foreground-primary'),
+                background: getSemanticValue('background-element-neutral-default')
             },
             '&:disabled': {
-                color: get('semanticColors.button.secondary.textDisabledInverted'),
-                fill: get('semanticColors.button.secondary.iconDisabledInverted'),
-                background: get('semanticColors.button.secondary.backgroundDisabledInverted'),
-                borderColor: get('semanticColors.button.secondary.borderDisabledInverted')
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
+                background: getSemanticValue('transparent'),
+                borderColor: getSemanticValue('border-disabled')
             }
         },
         danger: {
-            color: get('semanticColors.button.danger.textInverted'),
-            fill: get('semanticColors.button.danger.iconInverted'),
-            background: get('semanticColors.button.danger.backgroundInverted'),
-            borderColor: get('semanticColors.button.danger.borderInverted'),
+            color: getSemanticValue('foreground-on-background-danger'),
+            fill: getSemanticValue('foreground-on-background-danger'),
+            background: getSemanticValue('background-element-danger-default'),
 
             '&:hover': {
-                color: get('semanticColors.button.danger.textHoverInverted'),
-                fill: get('semanticColors.button.danger.iconHoverInverted'),
-                background: get('semanticColors.button.danger.backgroundHoverInverted'),
-                borderColor: get('semanticColors.button.danger.borderHoverInverted')
+                background: getSemanticValue('background-element-danger-emphasized')
             },
             '&:disabled': {
-                color: get('semanticColors.button.danger.textDisabledInverted'),
-                fill: get('semanticColors.button.danger.iconDisabledInverted'),
-                background: get('semanticColors.button.danger.backgroundDisabledInverted'),
-                borderColor: get('semanticColors.button.danger.borderDisabledInverted')
+                color: getSemanticValue('foreground-disabled'),
+                fill: getSemanticValue('foreground-disabled'),
+                background: getSemanticValue('background-element-disabled-default'),
+                borderColor: getSemanticValue('border-disabled')
             }
         }
     }

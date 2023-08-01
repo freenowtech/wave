@@ -73,7 +73,11 @@ interface CenteredCardProps extends CardProps {
     fullscreen?: boolean;
 }
 
-const CenteredCard: React.FC<CenteredCardProps> = ({ visible, width = '37.5rem', ...rest }: CenteredCardProps) => (
+const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
+    visible,
+    width = '37.5rem',
+    ...rest
+}) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
         <StyledCard {...rest} width={width} level={rest.fullscreen ? 0 : 300} />
     </CSSTransition>

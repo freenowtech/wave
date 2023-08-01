@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const AG: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const AG: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <path id="AG__c" d="M0 0h28L14 20z" />
                 <path
@@ -54,6 +60,4 @@ const AG: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-AG.defaultProps = {};
 export default AG;

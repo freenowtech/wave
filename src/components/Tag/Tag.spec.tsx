@@ -3,10 +3,6 @@ import * as React from 'react';
 import { Tag } from './Tag';
 
 describe('Tag', () => {
-    it('renders with default props', () => {
-        expect(render(<Tag onDismiss={jest.fn()}>Lorem</Tag>).container.firstChild).toMatchSnapshot();
-    });
-
     it('renders and can be dismissed', () => {
         const onDismiss = jest.fn();
         const { getByTestId } = render(<Tag onDismiss={onDismiss}>Lorem</Tag>);

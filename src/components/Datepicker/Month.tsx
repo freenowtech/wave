@@ -3,7 +3,7 @@ import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
 import { Day } from './Day';
 
@@ -50,7 +50,13 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
             </Text>
             <Weekdays>
                 {weekdayLabels.map(dayLabel => (
-                    <Text as="p" key={dayLabel} fontSize={0} textAlign="center" color={Colors.AUTHENTIC_BLUE_550}>
+                    <Text
+                        as="p"
+                        key={dayLabel}
+                        fontSize={0}
+                        textAlign="center"
+                        color={getSemanticValue('foreground-neutral-emphasized')}
+                    >
                         {dayLabel}
                     </Text>
                 ))}

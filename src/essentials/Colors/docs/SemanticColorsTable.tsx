@@ -1,45 +1,55 @@
-import React, { FC, useState } from 'react';
+import { DocsContext } from '@storybook/blocks';
+
+import React, { FC, useContext, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Input, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
-import { Colors, SemanticColors } from '../Colors';
-
-function flattenObj(
-    obj: Record<string, unknown>,
-    parent?: string,
-    result: Map<string, string> = new Map()
-): Map<string, string> {
-    Object.keys(obj).forEach(key => {
-        const propName = parent ? `${parent}.${key}` : key;
-
-        if (typeof obj[key] === 'object') {
-            flattenObj(obj[key] as Record<string, unknown>, propName, result);
-        } else {
-            result.set(propName, obj[key] as string);
-        }
-    });
-
-    return result;
-}
+import { generateCssVariableEntries, generateCssVariables, getSemanticValue } from '../../../utils/cssVariables';
+import { Colors as ClassicColors, SemanticColors as ClassicSemanticTokens } from '../Colors';
+import { Colors as ModernColors, SemanticColors as ModernSemanticTokens } from '../RedesignedColors';
 
 const ColorBlock = styled.div<{ color: string }>`
     background-color: ${p => p.color};
-    border: 0.0625rem solid ${p => (p.color === Colors.WHITE ? Colors.AUTHENTIC_BLUE_200 : p.color)};
+    border: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
     height: 1.5rem;
     width: 4rem;
 `;
 
-const flatSemanticColors = flattenObj(SemanticColors);
-const flatSemanticColorsKeys = [...flatSemanticColors.keys()] as string[];
+const InjectedVariables = styled.div<{ variables: ReadonlyArray<string> }>`
+    ${p => p.variables}
+`;
 
-export const SemanticColorsTable: FC = () => {
+const Tokens = {
+    s: {
+        classic: ClassicSemanticTokens,
+        modern: ModernSemanticTokens
+    },
+    b: {
+        classic: ClassicColors,
+        modern: ModernColors
+    }
+} as const;
+
+export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     const [nameSearchInput, setNameSearchInput] = useState('');
+    const {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        store: { globals }
+    } = useContext(DocsContext);
 
-    const filteredColorKeys = !nameSearchInput
-        ? flatSemanticColorsKeys
-        : flatSemanticColorsKeys.filter(it => it.toLowerCase().includes(nameSearchInput.toLowerCase().trim()));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    const { theme } = globals.get();
+    const tokens = Tokens[tier][theme];
+
+    const entries = useMemo(() => generateCssVariableEntries(tokens), [tokens]);
+    const variables = useMemo(() => generateCssVariables(tokens, tier), [tokens, tier]);
+
+    const filteredTokens = !nameSearchInput
+        ? entries
+        : entries.filter(({ variable }) => variable.includes(nameSearchInput.toLowerCase().trim()));
 
     return (
-        <>
+        <InjectedVariables variables={variables}>
             <Table rowStyle="lines" width="100%" rowSize="small">
                 <thead>
                     <TableRow>
@@ -59,21 +69,21 @@ export const SemanticColorsTable: FC = () => {
                     </TableRow>
                 </thead>
                 <tbody>
-                    {filteredColorKeys.map(key => (
-                        <TableRow key={key}>
+                    {filteredTokens.map(({ variable, value }) => (
+                        <TableRow key={variable}>
                             <TableCell>
-                                <ColorBlock color={flatSemanticColors.get(key)} />
+                                <ColorBlock color={value} />
                             </TableCell>
                             <TableCell>
-                                <code>{key}</code>
+                                <code>{variable}</code>
                             </TableCell>
                             <TableCell>
-                                <code>{flatSemanticColors.get(key)}</code>
+                                <code>{value}</code>
                             </TableCell>
                         </TableRow>
                     ))}
                 </tbody>
             </Table>
-        </>
+        </InjectedVariables>
     );
 };

@@ -69,7 +69,7 @@ const position = {
 
 const StyledCard = styled(Card)<{ side?: string }>`
     position: fixed;
-    
+
     left: ${p => (p.side === 'right' ? 'unset' : 0)};
     right: ${p => (p.side === 'right' ? 0 : 'unset')};
     transform: translate(0%, 0%);
@@ -91,7 +91,11 @@ interface SideCardProps extends CardProps {
     side: string;
 }
 
-const SideCard: React.FC<SideCardProps> = ({ visible, width = '28.375rem', ...rest }: SideCardProps) => (
+const SideCard: React.FC<React.PropsWithChildren<SideCardProps>> = ({
+    visible,
+    width = '28.375rem',
+    ...rest
+}: SideCardProps) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
         <StyledCard {...rest} width={width} level={300} />
     </CSSTransition>

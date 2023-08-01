@@ -3,13 +3,12 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const PayPalIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const PayPalIcon: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24">
+        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fillRule="evenodd">
                 <path
                     d="M16.88 5.278C16.119 4.383 14.74 4 12.978 4H7.859c-.36 0-.666.27-.723.636L5.006 18.55a.448.448 0 00.433.523H8.6l-.218 1.423a.392.392 0 00.38.458h2.662a.647.647 0 00.633-.557l.026-.14.501-3.275.033-.18a.646.646 0 01.632-.557h.399c2.58 0 4.6-1.08 5.19-4.2.246-1.304.119-2.393-.533-3.158a2.55 2.55 0 00-.73-.579c.202-1.319 0-2.216-.693-3.029z"
@@ -27,6 +26,4 @@ const PayPalIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         </svg>
     );
 };
-
-PayPalIcon.defaultProps = {};
 export default PayPalIcon;

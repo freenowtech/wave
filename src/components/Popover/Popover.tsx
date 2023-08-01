@@ -5,7 +5,8 @@ import { usePopper } from 'react-popper';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { Colors, Spaces } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
+import { Spaces } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
 import { useClickOutside } from '../../utils/hooks/useClickOutside';
 
@@ -29,13 +30,13 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${get('semanticColors.button.secondary.borderHover')};
+    border: 1px solid ${getSemanticValue('border-neutral-default')};
     padding: 0.8125rem ${Spaces[2]};
     border-radius: ${get('radii.2')};
 
     &:hover {
         cursor: pointer;
-        background-color: ${get('semanticColors.background.secondary')} !important;
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')} !important;
     }
 `;
 
@@ -215,7 +216,9 @@ const Popover: React.FC<PopoverProps> = ({
                 {typeof children === 'string' ? (
                     <DefaultPopoverWrapper
                         ref={popoverTriggerRef}
-                        style={{ background: render ? Colors.AUTHENTIC_BLUE_50 : 'none' }}
+                        style={{
+                            background: render ? getSemanticValue('background-element-neutral-emphasized') : 'none'
+                        }}
                     >
                         <Text fontWeight="semibold">{children}</Text>
                         {!render ? (

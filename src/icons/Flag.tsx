@@ -2,12 +2,12 @@ import React, { Suspense } from 'react';
 import styled from 'styled-components';
 
 import { isSSR } from '../utils/isSSR';
-import { Colors } from '../essentials';
 import { FlagErrorBoundary } from './FlagErrorBoundary';
 import { FlagProps } from './FlagProps';
+import { getSemanticValue } from '../utils/cssVariables';
 
 const Loading = styled.div`
-    background-color: ${Colors.AUTHENTIC_BLUE_50};
+    background-color: ${getSemanticValue('background-surface-neutral-faded')};
     border-radius: 0.125rem;
     display: inline-block;
     height: 1.25rem;

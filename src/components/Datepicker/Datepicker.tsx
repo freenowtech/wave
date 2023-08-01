@@ -2,7 +2,8 @@ import React, { FC, RefObject } from 'react';
 import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 
-import { Colors, MediaQueries } from '../../essentials';
+import { MediaQueries } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
 import { Month } from './Month';
 import { DatepickerContext } from './DatepickerContext';
@@ -25,7 +26,7 @@ const DatepickerContainer = styled.div`
     box-shadow: 0 0 0.5rem 0.1875rem rgba(0, 0, 0, 0.08);
 
     position: relative;
-    background: ${Colors.WHITE};
+    background: ${getSemanticValue('background-surface-neutral-default')};
 
     &::before {
         content: '';
@@ -33,7 +34,7 @@ const DatepickerContainer = styled.div`
         transform: rotate(45deg);
         width: 1.25rem;
         height: 1.25rem;
-        background: ${Colors.WHITE};
+        background: ${getSemanticValue('background-surface-neutral-default')};
         box-shadow: -0.25rem -0.25rem 0.5rem -0.125rem rgba(0, 0, 0, 0.08);
     }
 

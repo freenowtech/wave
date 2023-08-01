@@ -8,7 +8,7 @@ exports[`Skeleton should render animated version 1`] = `
   position: relative;
   overflow: hidden;
   border-radius: 0.25rem;
-  background-color: #F1F2F4;
+  background-color: var(--wave-s-color-background-surface-neutral-faded);
 }
 
 .c0::after {
@@ -42,7 +42,7 @@ exports[`Skeleton should render default 1`] = `
   position: relative;
   overflow: hidden;
   border-radius: 0.25rem;
-  background-color: #F1F2F4;
+  background-color: var(--wave-s-color-background-surface-neutral-faded);
 }
 
 <span

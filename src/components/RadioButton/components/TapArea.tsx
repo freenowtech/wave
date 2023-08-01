@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TapArea = styled.div`
     position: absolute;
@@ -12,7 +12,7 @@ const TapArea = styled.div`
     transition: background-color 125ms;
 
     &:active {
-        background-color: ${Colors.AUTHENTIC_BLUE_50};
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')};
     }
 `;
 

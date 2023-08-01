@@ -4,10 +4,8 @@ import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core/lib/enums';
 import { variant } from 'styled-system';
-
-import type { PropsWithChildren } from 'react';
-
-import { Elevation, MediaQueries, SemanticColors } from '../../essentials';
+import { Elevation, MediaQueries } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
@@ -91,8 +89,7 @@ interface TooltipBodyProps {
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
-    background-color: ${p =>
-        p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
+    background-color: ${p => getSemanticValue(p.inverted ? 'background-surface-neutral-faded' : 'background-backdrop')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -116,7 +113,8 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         pointer-events: none;
         border: 0.25rem solid rgba(0, 0, 0, 0);
         border-bottom-color: ${p =>
-            p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
+            // background colors are used because this border is used to create the arrow
+            getSemanticValue(p.inverted ? 'background-surface-neutral-faded' : 'background-backdrop')};
         margin-left: -0.25rem;
 
         ${arrowPlacementStyles}
@@ -142,7 +140,7 @@ interface TooltipProps {
     alwaysVisible?: boolean;
 }
 
-const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
+const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     content,
     children,
     placement = 'top',

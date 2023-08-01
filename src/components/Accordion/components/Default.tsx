@@ -1,7 +1,5 @@
-import React, { useState, PropsWithChildren, ReactElement } from 'react';
+import React, { PropsWithChildren, ReactElement, useState } from 'react';
 import styled from 'styled-components';
-
-import { SemanticColors } from '../../../essentials';
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
@@ -10,49 +8,50 @@ import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
 import { AccordionProps } from '../types';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`
-    color: ${SemanticColors.text.link};
+    color: ${getSemanticValue('foreground-accent-default')};
 `;
 
 const PanelHeader = styled(Header)`
     &:hover {
-        background-color: ${SemanticColors.background.info};
+        background-color: ${getSemanticValue('background-surface-info-default')};
     }
 
-    &:hover ${ButtonLabel} {
-        color: ${SemanticColors.text.linkHover};
+    /* stylelint-disable */
+    &:hover ${ButtonLabel}, &:hover ${ChevronDown} {
+        color: ${getSemanticValue('foreground-accent-emphasized')};
     }
-
-    &:hover ${ChevronDown} {
-        color: ${SemanticColors.text.linkHover};
-    }
+    /* stylelint-enable */
 `;
 
 const CardHeader = styled(Header).attrs({ p: '3' })`
-    background-color: ${SemanticColors.background.secondary};
+    background-color: ${getSemanticValue('background-surface-neutral-faded')};
     border-radius: 0.3125rem 0.3125rem 0 0;
 
     &:hover {
-        background-color: ${SemanticColors.background.info};
+        background-color: ${getSemanticValue('background-surface-info-default')};
     }
 
-    &:hover ${ButtonLabel} {
-        color: ${SemanticColors.text.linkHover};
+    /* stylelint-disable */
+    &:hover ${ButtonLabel}, &:hover ${ChevronUp} {
+        color: ${getSemanticValue('foreground-accent-emphasized')};
     }
-
-    &:hover ${ChevronUp} {
-        color: ${SemanticColors.text.linkHover};
-    }
+    /* stylelint-enable */
 `;
 
 const PanelBody = styled(Box).attrs({ my: '3' })`
-    border: solid 0.0625rem ${SemanticColors.border.primary};
+    border: solid 0.0625rem ${getSemanticValue('border-neutral-default')};
     border-radius: 0.3125rem;
 `;
 
 const PanelIcon = ({ isOpen }: { isOpen: boolean }) =>
-    isOpen ? <ChevronUp color={SemanticColors.icon.action} /> : <ChevronDown color={SemanticColors.icon.action} />;
+    isOpen ? (
+        <ChevronUp color={getSemanticValue('foreground-accent-default')} />
+    ) : (
+        <ChevronDown color={getSemanticValue('foreground-accent-default')} />
+    );
 
 export const DefaultPanel = ({
     heading,

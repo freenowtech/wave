@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { Colors } from '../../essentials';
 import { BaseInput, InternalInputComponentProps } from './BaseInput';
 import { activeBoxedPosition, BoxedInputLabel } from './BoxedInputLabel';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const errorStyles = css`
-    box-shadow: inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900};
-    border-color: ${Colors.NEGATIVE_ORANGE_900};
+    box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')};
+    border-color: ${getSemanticValue('border-danger-default')};
 
     & ~ ${BoxedInputLabel} {
-        color: ${Colors.NEGATIVE_ORANGE_900};
+        color: ${getSemanticValue('foreground-danger-default')};
     }
 `;
 
@@ -30,14 +30,14 @@ const sizeVariant = variant({
 
 const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     if (inverted) {
-        return Colors.AUTHENTIC_BLUE_200;
+        return getSemanticValue('foreground-neutral-faded');
     }
 
     if (hasValue) {
-        return Colors.AUTHENTIC_BLUE_550;
+        return getSemanticValue('foreground-neutral-emphasized');
     }
 
-    return Colors.AUTHENTIC_BLUE_350;
+    return getSemanticValue('foreground-neutral-default');
 };
 
 const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
@@ -45,17 +45,18 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     & + ${BoxedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
-        background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
         background: ${p =>
-            `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small' ? '0.0825rem' : '0.0625rem'
-            }), transparent 50%)`};
+            getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
+        background: ${p =>
+            `linear-gradient(0deg, ${getSemanticValue(
+                p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
+            )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
     &:disabled {
         & + ${BoxedInputLabel} {
-            color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+            color: ${getSemanticValue('foreground-disabled')};
         }
     }
 
@@ -71,14 +72,16 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     &:focus:not(:disabled) {
         & + ${BoxedInputLabel} {
             ${p => activeBoxedPosition(p.size)};
-            color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
-            background: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
+            color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-focus')};
             background: ${p =>
-                `linear-gradient(0deg, ${p.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE} calc(50% + ${
-                    (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small'
-                        ? '0.0825rem'
-                        : '0.0625rem'
-                }), transparent 50%)`};
+                getSemanticValue(
+                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
+                )};
+            background: ${p =>
+                `linear-gradient(0deg, ${getSemanticValue(
+                    // inverted doesn't work well for the modern layout
+                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
+                )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
         }
     }
 `;

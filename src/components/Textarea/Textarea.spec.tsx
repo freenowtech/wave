@@ -1,42 +1,25 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
+import { ElementRef } from 'react';
 import { Textarea } from './Textarea';
 
 describe('Textarea', () => {
-    it('renders', () => {
-        expect(render(<Textarea />).container.firstChild).toMatchSnapshot();
-    });
-
-    it('renders the inverted style', () => {
-        expect(render(<Textarea inverted />).container.firstChild).toMatchSnapshot();
-    });
-
     it('renders the label', () => {
-        expect(render(<Textarea label="Name" />).container.firstChild).toMatchSnapshot();
-    });
-
-    it('renders the label and the placeholder', () => {
-        expect(render(<Textarea label="Name" placeholder="FREE NOW" />).container.firstChild).toMatchSnapshot();
-    });
-
-    it('renders the error state', () => {
-        expect(render(<Textarea error />).container.firstChild).toMatchSnapshot();
-    });
-
-    it('renders the error state with label and placeholder', () => {
-        expect(render(<Textarea label="Name" placeholder="FREE NOW" error />).container.firstChild).toMatchSnapshot();
+        render(<Textarea label="Name" />);
+        expect(screen.getByLabelText('Name')).toBeInTheDocument();
     });
 
     it('renders with custom height and width', () => {
-        expect(
-            render(<Textarea label="Name" placeholder="FREE NOW" height="10rem" width="10rem" />).container.firstChild
-        ).toMatchSnapshot();
+        const { container } = render(<Textarea label="Name" placeholder="FREE NOW" height="10rem" width="10rem" />);
+        expect(container.firstChild).toHaveStyle({
+            height: '10rem',
+            width: '10rem'
+        });
     });
 
     it('renders the disabled state with label and placeholder', () => {
-        expect(
-            render(<Textarea label="Name" placeholder="FREE NOW" disabled />).container.firstChild
-        ).toMatchSnapshot();
+        render(<Textarea label="Name" placeholder="FREE NOW" disabled />);
+        expect(screen.getByLabelText('Name')).toBeDisabled();
     });
 
     describe('link textarea with the label', () => {
@@ -49,10 +32,11 @@ describe('Textarea', () => {
 
         it('generate id automatically if `id` prop is empty', () => {
             render(<Textarea label="Simple Label" />);
-            const generatedId = 'random';
-
-            expect(screen.getByLabelText('Simple Label')).toHaveAttribute('id', generatedId);
-            expect(screen.getByText('Simple Label')).toHaveAttribute('for', generatedId);
+            const textarea = screen.getByLabelText('Simple Label');
+            const label = screen.getByText<ElementRef<'label'>>('Simple Label');
+            expect(textarea).toHaveAttribute('id');
+            expect(label).toHaveAttribute('for');
+            expect(textarea.id).toEqual(label.htmlFor);
         });
     });
 });

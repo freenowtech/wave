@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
 
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
 import { TapArea } from './TapArea';
 import { Checkmark } from './Checkmark';
@@ -41,11 +41,14 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
             cursor: pointer;
 
             & ${/* sc-selector */ TapArea}:not(:active) {
-                background-color: ${error ? Colors.NEGATIVE_ORANGE_50 : Colors.ACTION_BLUE_50};
+                background-color: ${getSemanticValue(
+                    error ? 'background-element-danger-faded' : 'background-element-info-default'
+                )};
             }
 
             & ${/* sc-selector */ Checkmark}:not(:checked) {
-                box-shadow: inset 0 0 0 0.125rem ${error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900};
+                box-shadow: inset 0 0 0 0.125rem
+                    ${getSemanticValue(error ? 'border-danger-default' : 'border-info-default')};
             }
         `;
     }
@@ -53,12 +56,15 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
         cursor: pointer;
 
         & ${/* sc-selector */ TapArea}:not(:active) {
-            background-color: ${error ? Colors.NEGATIVE_ORANGE_50 : Colors.ACTION_BLUE_50};
+            background-color: ${getSemanticValue(
+                error ? 'background-element-danger-faded' : 'background-element-info-default'
+            )};
         }
 
         & ${/* sc-selector */ Checkmark}:not(:checked) {
-            box-shadow: inset 0 0 0 0.125rem ${error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900};
-            background-color: ${Colors.WHITE};
+            box-shadow: inset 0 0 0 0.125rem
+                ${getSemanticValue(error ? 'border-danger-default' : 'border-info-default')};
+            background-color: ${getSemanticValue('background-element-neutral-default')};
         }
     `;
 };
@@ -68,7 +74,7 @@ const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
     position: relative;
     user-select: none;
 
-    color: ${props => (props.disabled ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_900)};
+    color: ${props => getSemanticValue(props.disabled ? 'foreground-disabled' : 'foreground-primary')};
 
     font-family: ${get('fonts.normal')};
     line-height: 1;

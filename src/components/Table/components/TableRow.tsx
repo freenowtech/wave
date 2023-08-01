@@ -1,8 +1,8 @@
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import styled, { css } from 'styled-components';
-import { Colors } from '../../../essentials';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
     /**
@@ -19,33 +19,33 @@ type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
 
 const zebraStyles = (active, hover) => css`
     &:nth-child(even) {
-        background-color: rgb(249, 250, 251);
+        background-color: hsla(${getSemanticValue('background-surface-neutral-faded-hsl')}, 0.3);
     }
 
     &:hover {
-        ${hover ? `background-color: ${Colors.ACTION_BLUE_100}` : ''};
+        ${hover ? `background-color: ${getSemanticValue('background-surface-info-faded')}` : ''};
     }
 
-    ${active ? `background-color: ${Colors.ACTION_BLUE_150} !important` : ''};
+    ${active ? `background-color: ${getSemanticValue('background-surface-info-active')} !important` : ''};
 `;
 
 const linesStyles = (active, hover) => css`
     td,
     th {
-        border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_200};
+        border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
     }
 
     &:first-of-type {
         th {
-            border-bottom: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_550};
+            border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-emphasized')};
         }
     }
 
     &:hover {
-        ${hover ? `background-color: ${Colors.ACTION_BLUE_50};` : ''}
+        ${hover ? `background-color: ${getSemanticValue('background-surface-neutral-faded')};` : ''}
     }
 
-    ${active ? `background-color: ${Colors.ACTION_BLUE_100} !important` : ''};
+    ${active ? `background-color: ${getSemanticValue('background-surface-info-faded')} !important` : ''};
 `;
 
 const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
@@ -59,10 +59,12 @@ const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
             default:
                 return css`
                     &:hover {
-                        ${hover ? `background-color: ${Colors.ACTION_BLUE_50}` : ''};
+                        ${hover ? `background-color: ${getSemanticValue('background-surface-neutral-faded')}` : ''};
                     }
 
-                    ${active ? `background-color: ${Colors.ACTION_BLUE_100} !important` : ''};
+                    ${active
+                        ? `background-color: ${getSemanticValue('background-surface-info-faded')} !important`
+                        : ''};
                 `;
         }
     }

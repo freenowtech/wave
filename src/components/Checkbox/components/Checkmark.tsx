@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
 
 interface CheckmarkProps {
@@ -18,9 +18,10 @@ const Checkmark = styled.input<CheckmarkProps>`
     padding: 0;
     margin: 0;
 
-    background-color: ${Colors.WHITE};
+    background-color: ${getSemanticValue('background-element-neutral-default')};
 
-    box-shadow: inset 0 0 0 0.125rem ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.AUTHENTIC_BLUE_200)};
+    box-shadow: inset 0 0 0 0.125rem
+        ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-neutral-default')};
     border-radius: ${get('radii.2')};
     transition: background-color 100ms, box-shadow 100ms;
     cursor: pointer;
@@ -47,8 +48,9 @@ const Checkmark = styled.input<CheckmarkProps>`
     }
 
     &:checked {
-        background-color: ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
-        box-shadow: inset 0 0 0 0.125rem ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
+        background-color: ${props =>
+            getSemanticValue(props.error ? 'background-element-danger-default' : 'background-element-info-emphasized')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('transparent')};
 
         &::after {
             opacity: 1;
@@ -59,21 +61,24 @@ const Checkmark = styled.input<CheckmarkProps>`
 
     &:indeterminate {
         background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='3' y='7' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
-        background-color: ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
-        box-shadow: inset 0 0 0 0.125rem ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
+        background-color: ${props =>
+            getSemanticValue(
+                props.error ? 'background-element-danger-emphasized' : 'background-element-info-emphasized'
+            )};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('transparent')};
     }
 
     &:disabled {
         cursor: not-allowed;
-        background-color: ${Colors.AUTHENTIC_BLUE_50};
-        box-shadow: inset 0 0 0 0.125rem ${Colors.AUTHENTIC_BLUE_50};
+        background-color: ${getSemanticValue('background-element-disabled-faded')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('transparent')};
 
         &:hover {
-            box-shadow: inset 0 0 0 0.125rem ${Colors.AUTHENTIC_BLUE_50};
+            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('transparent')};
         }
 
         &:active {
-            background-color: ${Colors.AUTHENTIC_BLUE_50};
+            background-color: ${getSemanticValue('background-element-disabled-faded')};
         }
     }
 `;

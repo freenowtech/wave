@@ -69,7 +69,7 @@ const position = {
 
 const StyledCard = styled(Card)<{ side?: string }>`
     position: fixed;
-    
+
     left: ${p => (p.side === 'right' ? 'unset' : 0)};
     right: ${p => (p.side === 'right' ? 0 : 'unset')};
     transform: translate(0%, 0%);
@@ -91,7 +91,11 @@ interface CenteredCardProps extends CardProps {
     side: string;
 }
 
-const CenteredCard: React.FC<CenteredCardProps> = ({ visible, height = '28.375rem', ...rest }: CenteredCardProps) => (
+const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
+    visible,
+    height = '28.375rem',
+    ...rest
+}: CenteredCardProps) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
         <StyledCard {...rest} height={height} level={300} />
     </CSSTransition>
