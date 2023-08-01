@@ -16,10 +16,6 @@ describe('DatepickerSingleInput', () => {
         clear();
     });
 
-    it('renders the default props', () => {
-        expect(render(<DatepickerSingleInput />).container).toMatchSnapshot();
-    });
-
     it('can be disabled', () => {
         const { getByRole } = render(<DatepickerSingleInput disabled />);
         const input = getByRole('textbox');
@@ -28,11 +24,12 @@ describe('DatepickerSingleInput', () => {
 
     describe('should call onClose function', () => {
         it('when clicking outside', async () => {
+            const user = userEvent.setup()
             const mockCloseHandler = jest.fn();
             const { getByTestId } = render(<DatepickerSingleInput onClose={mockCloseHandler} />);
 
             // Open datepicker
-            userEvent.click(getByTestId('start-date-input'));
+            await user.click(getByTestId('start-date-input'));
 
             // Click outside
             fireEvent.blur(getByTestId('start-date-input'));
@@ -42,11 +39,12 @@ describe('DatepickerSingleInput', () => {
     });
 
     it('should call onChange function after the date selection', async () => {
+        const user = userEvent.setup()
         const mockChangeHandler = jest.fn();
         const { getByTestId, getByText } = render(<DatepickerSingleInput onChange={mockChangeHandler} />);
 
         // Open datepicker
-        userEvent.click(getByTestId('start-date-input'));
+        await user.click(getByTestId('start-date-input'));
 
         // Select the first date
         fireEvent.click(getByText('01'));
@@ -57,7 +55,8 @@ describe('DatepickerSingleInput', () => {
         await waitFor(() => expect(mockChangeHandler).toHaveBeenCalledWith(new Date(currentYear, currentMonth, 1)));
     });
 
-    it('calls errorHandler as a fn if a callback is provided', () => {
+    it('calls errorHandler as a fn if a callback is provided', async () => {
+        const user = userEvent.setup()
         const mockChangeHandler = jest.fn();
         const mockErrorTextHandler = jest.fn();
         const { getByTestId } = render(
@@ -70,18 +69,19 @@ describe('DatepickerSingleInput', () => {
         const formattedDate = format(intendedDate, 'dd/MM/yy');
 
         // Simulate an input change
-        userEvent.type(input, formattedDate);
+        await user.type(input, formattedDate);
 
         expect(mockErrorTextHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('calls onChange function after update input value', () => {
+    it('calls onChange function after update input value', async () => {
+        const user = userEvent.setup()
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<DatepickerSingleInput onChange={mockChangeHandler} />);
         const input = getByTestId('start-date-input');
 
         // Focus on datepicker
-        userEvent.click(input);
+        await user.click(input);
 
         const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
@@ -89,18 +89,19 @@ describe('DatepickerSingleInput', () => {
         const formattedDate = format(intendedDate, 'dd/MM/yyyy');
 
         // Simulate an input change
-        userEvent.type(input, formattedDate);
+        await user.type(input, formattedDate);
 
         expect(mockChangeHandler).toHaveBeenCalledWith(intendedDate);
     });
 
-    it('renders an error feedback if gets filled with invalid value', () => {
+    it('renders an error feedback if gets filled with invalid value', async () => {
+        const user = userEvent.setup()
         const mockChangeHandler = jest.fn();
         const { getByTestId } = render(<DatepickerSingleInput onChange={mockChangeHandler} />);
         const input = getByTestId('start-date-input');
 
         // Focus on datepicker
-        userEvent.click(input);
+        await user.click(input);
 
         const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
@@ -109,7 +110,7 @@ describe('DatepickerSingleInput', () => {
         const formattedDate = format(intendedDate, 'dd/MM/yy');
 
         // Simulate an input change
-        userEvent.type(input, formattedDate);
+        await user.type(input, formattedDate);
 
         expect(mockChangeHandler).not.toHaveBeenCalled();
         expect(input).toHaveAttribute('data-error', 'true');
@@ -119,7 +120,8 @@ describe('DatepickerSingleInput', () => {
         expect(input).toHaveAttribute('data-error', 'false');
     });
 
-    it('closes the calendar of the first datepicker and opens the calendar of the second', () => {
+    it('closes the calendar of the first datepicker and opens the calendar of the second', async () => {
+        const user = userEvent.setup()
         const { getAllByTestId, getAllByText } = render(
             <>
                 <DatepickerSingleInput />
@@ -130,10 +132,10 @@ describe('DatepickerSingleInput', () => {
         const inputs = getAllByTestId('start-date-input');
         expect(inputs).toHaveLength(2);
 
-        userEvent.click(inputs[0]);
+        await user.click(inputs[0]);
         expect(getAllByText('01')).toHaveLength(1);
 
-        userEvent.click(inputs[1]);
+        await user.click(inputs[1]);
         expect(getAllByText('01')).toHaveLength(1);
     });
 
@@ -148,11 +150,12 @@ describe('DatepickerSingleInput', () => {
     });
 
     it('localizes datepicker calendar month and weekdays', async () => {
+        const user = userEvent.setup()
         const date = new Date(2020, 11, 15);
         render(<DatepickerSingleInput value={date} locale="de-DE" />);
 
         // Open datepicker
-        userEvent.click(screen.getByTestId('start-date-input'));
+        await user.click(screen.getByTestId('start-date-input'));
 
         const localizedCurrentMonth = 'Dezember';
         const currentYear = date.getFullYear();

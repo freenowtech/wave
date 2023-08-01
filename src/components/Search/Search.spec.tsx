@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import user from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
 import { Search } from './Search';
@@ -20,20 +20,22 @@ describe('Search', () => {
             render(<Search />);
             expect(screen.queryByLabelText('clear-search')).not.toBeInTheDocument();
         });
-        it('is rendered when user types on search box', () => {
+        it('is rendered when user types on search box', async () => {
+            const user = userEvent.setup()
             render(<Search />);
-            user.type(screen.getByRole('searchbox'), 'A');
+            await user.type(screen.getByRole('searchbox'), 'A');
             expect(screen.queryByLabelText('clear-search')).toBeInTheDocument();
         });
     });
 
     describe('controlled/state value in input', () => {
-        it('display the updated value when type', () => {
+        it('display the updated value when type', async () => {
+            const user = userEvent.setup()
             const value = 'value';
 
             render(<Search />);
             expect(screen.queryByDisplayValue('')).toBeInTheDocument();
-            user.type(screen.getByRole('searchbox'), value);
+            await user.type(screen.getByRole('searchbox'), value);
             expect(screen.queryByDisplayValue(value)).toBeInTheDocument();
         });
 
@@ -60,23 +62,26 @@ describe('Search', () => {
     });
 
     describe('emits', () => {
-        it('onInputChange on typing inside', () => {
+        it('onInputChange on typing inside', async () => {
+            const user = userEvent.setup()
             const mockOnChange = jest.fn();
             render(<Search onInputChange={mockOnChange} />);
             expect(mockOnChange).not.toHaveBeenCalled();
-            user.type(screen.getByRole('searchbox'), 'A');
+            await user.type(screen.getByRole('searchbox'), 'A');
             expect(mockOnChange).toHaveBeenCalled();
         });
 
-        it('onClear on clicking the clear button', () => {
+        it('onClear on clicking the clear button', async () => {
+            const user = userEvent.setup()
             const mockOnClear = jest.fn();
             render(<Search onClear={mockOnClear} value="default" />);
             expect(mockOnClear).not.toHaveBeenCalled();
-            user.click(screen.getByLabelText('clear-search'));
+            await user.click(screen.getByLabelText('clear-search'));
             expect(mockOnClear).toHaveBeenCalled();
         });
 
-        it('onChangeSelection on arrow down', () => {
+        it('onChangeSelection on arrow down', async () => {
+            const user = userEvent.setup()
             const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
             const mockOnChangeSelection = jest.fn();
 
@@ -84,14 +89,15 @@ describe('Search', () => {
 
             expect(mockOnChangeSelection).not.toHaveBeenCalled();
             const searchBox = screen.getByRole('searchbox');
-            user.type(searchBox, '{arrowdown}');
+            await user.type(searchBox, '{arrowdown}');
             expect(mockOnChangeSelection).toHaveBeenLastCalledWith(1);
 
-            user.type(searchBox, '{arrowdown}');
+            await user.type(searchBox, '{arrowdown}');
             expect(mockOnChangeSelection).toHaveBeenLastCalledWith(2);
         });
 
-        it('onChangeSelection on arrow up', () => {
+        it('onChangeSelection on arrow up', async () => {
+            const user = userEvent.setup()
             const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
             const mockOnChangeSelection = jest.fn();
 
@@ -99,14 +105,15 @@ describe('Search', () => {
 
             expect(mockOnChangeSelection).not.toHaveBeenCalled();
             const searchBox = screen.getByRole('searchbox');
-            user.type(searchBox, '{arrowup}');
+            await user.type(searchBox, '{arrowup}');
             expect(mockOnChangeSelection).toHaveBeenLastCalledWith(namesArray.length - 1);
 
-            user.type(searchBox, '{arrowup}');
+            await user.type(searchBox, '{arrowup}');
             expect(mockOnChangeSelection).toHaveBeenLastCalledWith(namesArray.length - 2);
         });
 
-        it('onEnter on enter after selecting item', () => {
+        it('onEnter on enter after selecting item', async () => {
+            const user = userEvent.setup()
             const mockOnClick = jest.fn();
             const mockOnEnter = jest.fn();
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
@@ -117,8 +124,8 @@ describe('Search', () => {
             expect(mockOnClick).not.toHaveBeenCalled();
             expect(mockOnEnter).not.toHaveBeenCalled();
             const searchBox = screen.getByRole('searchbox');
-            user.type(searchBox, '{arrowdown}');
-            user.type(searchBox, '{enter}');
+            await user.type(searchBox, '{arrowdown}');
+            await user.type(searchBox, '{enter}');
 
             expect(mockOnClick).toHaveBeenCalled();
             expect(mockOnEnter).toHaveBeenCalled();
@@ -126,13 +133,14 @@ describe('Search', () => {
     });
 
     describe('User interaction', () => {
-        it('on arrow up/down should show the selected item', () => {
+        it('on arrow up/down should show the selected item', async () => {
+            const user = userEvent.setup()
             const namesArray = ['Adam', 'Barry', 'Charles', 'David'];
             render(<Search results={namesArray} />);
 
             //  Type in searchbox to show the list of results
             const searchBox = screen.getByRole('searchbox');
-            user.type(searchBox, 'A');
+            await user.type(searchBox, 'A');
 
             const firstItem = screen.getByText(namesArray[0]);
             const secondItem = screen.getByText(namesArray[1]);
@@ -142,12 +150,12 @@ describe('Search', () => {
             expect(secondItem).toHaveAttribute('aria-selected', 'false');
 
             // After key ArrowDown second item is the selected one
-            user.type(searchBox, '{arrowdown}');
+            await user.type(searchBox, '{arrowdown}');
             expect(firstItem).toHaveAttribute('aria-selected', 'false');
             expect(secondItem).toHaveAttribute('aria-selected', 'true');
 
             // After key ArrowUp first item is the selected one
-            user.type(searchBox, '{arrowup}');
+            await user.type(searchBox, '{arrowup}');
             expect(firstItem).toHaveAttribute('aria-selected', 'true');
             expect(secondItem).toHaveAttribute('aria-selected', 'false');
         });

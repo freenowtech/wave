@@ -1,6 +1,7 @@
 import { Primary, Meta, ArgTypes } from '@storybook/blocks';
 
-import { Colors, Headline } from '../..';
+import { Headline } from '../..';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { SearchableIconGrid } from './SearchableIconGrid';
 import { GuidelineBlock, GuidelineImage, GuidelineList, GuidelineContent } from './GuidelineBlock';
 import SpecsSvg from './images/specs-detail.svg';
@@ -123,8 +124,8 @@ Often it is a combination of 2px and 0px border radius to create a round and fri
             Colors for fuel/battery icons to indicate remaining percent
             <Icons.PayPalIcon />
             External icons such e.g. the Paypal icon uses their own brand colors
-            <Icons.ScooterSolidIcon color={Colors.ACTION_BLUE_900} />
-            Active/selected tab bar icons are colored in Action Blue 900
+            <Icons.ScooterSolidIcon color={getSemanticValue('foreground-primary')} />
+            Active/selected tab bar icons are colored in primary color
         </GuidelineList>
     </GuidelineContent>
 </GuidelineBlock>

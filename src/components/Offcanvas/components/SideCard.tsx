@@ -91,7 +91,7 @@ interface SideCardProps extends CardProps {
     side: string;
 }
 
-const SideCard: React.FC<SideCardProps> = ({ visible, width = '28.375rem', ...rest }: SideCardProps) => (
+const SideCard: React.FC<React.PropsWithChildren<SideCardProps>> = ({ visible, width = '28.375rem', ...rest }: SideCardProps) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
         <StyledCard {...rest} width={width} level={300} />
     </CSSTransition>

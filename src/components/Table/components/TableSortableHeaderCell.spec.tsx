@@ -55,10 +55,11 @@ describe('TableSortableHeaderCell', () => {
         expect(screen.getByText('Address', { exact: false }).parentElement).toHaveAttribute('aria-sort', 'descending');
     });
 
-    it('should call the callback with the right arguments', () => {
+    it('should call the callback with the right arguments', async () => {
+        const user = userEvent.setup()
         renderComponent(true, 'ASC');
 
-        userEvent.click(screen.getByText('Address', { exact: false }));
+        await user.click(screen.getByText('Address', { exact: false }));
 
         expect(handleSortChange).toHaveBeenCalledWith('address', 'ASC');
     });

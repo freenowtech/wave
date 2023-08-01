@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 import { Password } from './Password';
 
@@ -33,23 +33,25 @@ describe('Password', () => {
         });
     });
 
-    it('focus moves from the input to the button', () => {
+    it('focus moves from the input to the button', async () => {
+        const user = userEvent.setup()
         render(<Password label="password" id="id" />);
 
         expect(document.body).toHaveFocus();
 
-        user.tab();
+        await user.tab();
         expect(screen.getByLabelText('password')).toHaveFocus();
 
-        user.tab();
+        await user.tab();
         expect(screen.getByRole('button')).toHaveFocus();
 
-        user.tab();
+        await user.tab();
         expect(document.body).toHaveFocus();
     });
 
     describe('when toggle button is clicked', () => {
-        it('changes the mode to show if the current mode is hide', () => {
+        it('changes the mode to show if the current mode is hide', async () => {
+            const user = userEvent.setup()
             render(<ControlledPassword label="password" id="id" />);
             const input = screen.getByLabelText('password');
             const toggleButton = screen.getByRole('button');
@@ -58,15 +60,16 @@ describe('Password', () => {
             expect(toggleButton).toHaveAttribute('aria-label', 'Show password');
 
             const passwordText = 'my-very-secure-password';
-            user.type(input, passwordText);
-            user.click(toggleButton);
+            await user.type(input, passwordText);
+            await user.click(toggleButton);
 
             expect(input).toHaveAttribute('type', 'text');
             expect(input).toHaveAttribute('value', passwordText);
             expect(toggleButton).toHaveAttribute('aria-label', 'Hide password');
         });
 
-        it('changes the mode to hide if the current mode is show', () => {
+        it('changes the mode to hide if the current mode is show', async () => {
+            const user = userEvent.setup()
             render(<ControlledPassword label="password" id="id" />);
             const input = screen.getByLabelText('password');
             const toggleButton = screen.getByRole('button');
@@ -74,11 +77,11 @@ describe('Password', () => {
             expect(input).toHaveAttribute('type', 'password');
 
             // show password as plain text
-            user.click(toggleButton);
+            await user.click(toggleButton);
             expect(input).toHaveAttribute('type', 'text');
 
             // hide password again
-            user.click(toggleButton);
+            await user.click(toggleButton);
             expect(input).toHaveAttribute('type', 'password');
             expect(toggleButton).toHaveAttribute('aria-label', 'Show password');
         });

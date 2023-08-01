@@ -6,7 +6,7 @@ interface State {
     hasError: boolean;
 }
 
-export class FlagErrorBoundary extends React.Component<FlagProps, State> {
+export class FlagErrorBoundary extends React.Component<React.PropsWithChildren<FlagProps>, State> {
     public static getDerivedStateFromError(error) {
         return { hasError: true };
     }

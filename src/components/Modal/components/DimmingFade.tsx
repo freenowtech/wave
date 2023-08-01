@@ -45,7 +45,7 @@ interface DimmingFadeProps {
     onClick: (event: React.MouseEvent) => void;
 }
 
-const DimmingFade: React.FC<DimmingFadeProps> = ({ visible, ...rest }: DimmingFadeProps) => (
+const DimmingFade: React.FC<React.PropsWithChildren<DimmingFadeProps>> = ({ visible, ...rest }: DimmingFadeProps) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
         <DimmingFadeStyled {...rest} />
     </CSSTransition>

@@ -25,7 +25,8 @@ describe('SelectList', () => {
         expect(screen.getByText('Label')).toBeInTheDocument();
     });
 
-    it('toggles the icon when the select is active/inactive', () => {
+    it('toggles the icon when the select is active/inactive', async () => {
+        const user = userEvent.setup()
         render(
             <SelectList
                 options={[
@@ -39,7 +40,7 @@ describe('SelectList', () => {
 
         expect(screen.getByTestId('open-icon')).toBeInTheDocument();
 
-        userEvent.click(selectInput);
+        await user.click(selectInput);
 
         expect(screen.queryByTestId('open-icon')).not.toBeInTheDocument();
         expect(screen.queryByTestId('close-icon')).toBeInTheDocument();

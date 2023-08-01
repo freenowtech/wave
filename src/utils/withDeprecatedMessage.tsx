@@ -31,7 +31,7 @@ if (process.env.NODE_ENV !== 'production') {
         deprecatedComponentName: string,
         PassedComponent: React.ComponentType,
         externalProps = {}
-    ) => (props: PropsWithChildren<Record<string, unknown>>): JSX.Element => {
+    ) => (props: Record<string, unknown>): JSX.Element => {
         const stringifiedProps = Object.entries(externalProps)
             .map(([k, v]) => `${k}={${v.toString()}}`)
             .join(' ');

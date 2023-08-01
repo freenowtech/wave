@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
-import { Colors } from '../../essentials';
 import { Link } from './Link';
 
 describe('Link', () => {
@@ -10,12 +9,6 @@ describe('Link', () => {
 
     it('renders the children', () => {
         expect(render(<Link href="#test">Content</Link>).getByText('Content')).toBeInTheDocument();
-    });
-
-    it('should render the correct inverted color', () => {
-        expect(render(<Link inverted href="#test" />).container.firstChild).toHaveStyle(`
-            color: ${Colors.WHITE};
-        `);
     });
 
     it('passes href to underlying element', () => {

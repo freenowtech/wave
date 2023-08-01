@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../..';
 import { Text } from '../../../components';
 
 import { Spaces } from '../Spaces';

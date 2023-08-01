@@ -1,13 +1,9 @@
 import { DefaultTheme } from 'styled-components';
-import { Colors, SemanticColors } from './Colors/Colors';
 import { Spaces } from './Spaces/Spaces';
 import { Breakpoints, MediaQueries } from './Breakpoints/Breakpoints';
 
 const theme: DefaultTheme = {
     breakpoints: Breakpoints,
-    colors: Colors,
-    // todo: rename semanticColors to colors in the next major release
-    semanticColors: SemanticColors,
     fontSizes: ['0.75rem', '0.875rem', '1rem', '1.25rem', '1.5rem', '2rem', '2.5rem', '3rem'],
     fontWeights: {
         normal: 400,

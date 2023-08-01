@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { Headline } from './Headline';
 
@@ -28,12 +27,6 @@ describe('Headline', () => {
 
     it('renders the children', () => {
         expect(render(<Headline>Content</Headline>).getByText('Content')).toBeInTheDocument();
-    });
-
-    it('has a white color when inverted property is set', () => {
-        expect(render(<Headline inverted />).container.firstChild).toHaveStyle(`
-            color: ${Colors.WHITE};
-        `);
     });
 
     describe('renders different default headline sizes', () => {

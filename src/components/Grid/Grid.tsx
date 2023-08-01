@@ -16,7 +16,7 @@ const BorderBoxWrapper = styled(Box)`
 
 type RowProps = BoxProps;
 
-const Row: FC<RowProps> = (props: RowProps) => (
+const Row: FC<PropsWithChildren<RowProps>> = (props: RowProps) => (
     <Box display="flex" flexWrap="wrap" marginRight={`-${GAP}`} {...props} />
 );
 

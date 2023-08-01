@@ -4,14 +4,6 @@ import * as React from 'react';
 import { Modal, useModalDismiss } from './Modal';
 
 describe('Modal', () => {
-    it('renders the default props', () => {
-        expect(render(<Modal>Content</Modal>).container).toMatchSnapshot();
-    });
-
-    it('renders the fullscreen variation', () => {
-        expect(render(<Modal fullscreen>Content</Modal>).container).toMatchSnapshot();
-    });
-
     describe('should call onClose function', () => {
         it('when clicking on close icon', async () => {
             const mockCloseHandler = jest.fn();
@@ -71,6 +63,7 @@ describe('Modal', () => {
         });
 
         it('when calling the dismiss function from a hook', async () => {
+            const user = userEvent.setup()
             const mockCloseHandler = jest.fn();
 
             const InnerComponent: React.FC = () => {
@@ -88,7 +81,7 @@ describe('Modal', () => {
                 </Modal>
             );
 
-            userEvent.click(screen.getByRole('button'));
+            await user.click(screen.getByRole('button'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });

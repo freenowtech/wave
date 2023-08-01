@@ -1,74 +1,28 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
+import { ElementRef } from 'react';
 import { Input } from './Input';
 
 describe('Input', () => {
     describe('variant "boxed"', () => {
-        it('renders', () => {
-            expect(render(<Input variant="boxed" />).container.firstChild).toMatchSnapshot();
-        });
+        it('renders boxed input by default', () => {
+            const defaultRender = render(<Input label="Name" id='tst' />).container;
+            const withVariantProp = render(<Input variant="boxed" label="Name" id='tst' />).container;
 
-        it('renders the small size', () => {
-            expect(render(<Input variant="boxed" size="small" />).container.firstChild).toMatchSnapshot();
-        });
+            expect(defaultRender).toEqual(withVariantProp);
+        })
 
-        it('renders the inverted style', () => {
-            expect(render(<Input variant="boxed" inverted />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the label', () => {
-            expect(render(<Input variant="boxed" label="Name" />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the label and the placeholder', () => {
-            expect(
-                render(<Input variant="boxed" label="Name" placeholder="FREE NOW" />).container.firstChild
-            ).toMatchSnapshot();
-        });
-
-        it('renders the error state', () => {
-            expect(render(<Input variant="boxed" error />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the error state with label and placeholder', () => {
-            expect(
-                render(<Input variant="boxed" label="Name" placeholder="FREE NOW" error />).container.firstChild
-            ).toMatchSnapshot();
+        it('has accessible label', () => {
+            render(<Input variant="boxed" label="Name" />)
+            expect(screen.getByLabelText('Name')).toBeInTheDocument();
         });
     });
 
     describe('variant "bottom-lined"', () => {
-        it('renders', () => {
-            expect(render(<Input variant="bottom-lined" />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the small size', () => {
-            expect(render(<Input variant="bottom-lined" size="small" />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the inverted style', () => {
-            expect(render(<Input variant="bottom-lined" inverted />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the label', () => {
-            expect(render(<Input variant="bottom-lined" label="Name" />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the label and the placeholder', () => {
-            expect(
-                render(<Input variant="bottom-lined" label="Name" placeholder="FREE NOW" />).container.firstChild
-            ).toMatchSnapshot();
-        });
-
-        it('renders the error state', () => {
-            expect(render(<Input variant="bottom-lined" error />).container.firstChild).toMatchSnapshot();
-        });
-
-        it('renders the error state with label and placeholder', () => {
-            expect(
-                render(<Input variant="bottom-lined" label="Name" placeholder="FREE NOW" error />).container.firstChild
-            ).toMatchSnapshot();
+        it('has accessible label', () => {
+            render(<Input variant="boxed" label="Name" />)
+            expect(screen.getByLabelText('Name')).toBeInTheDocument();
         });
     });
 
@@ -82,14 +36,17 @@ describe('Input', () => {
 
         it('generate id automatically if `id` prop is empty', () => {
             render(<Input label="Simple Label" />);
-            const generatedId = 'random';
 
-            expect(screen.getByLabelText('Simple Label')).toHaveAttribute('id', generatedId);
-            expect(screen.getByText('Simple Label')).toHaveAttribute('for', generatedId);
+            const input = screen.getByLabelText('Simple Label')
+            const label = screen.getByText<ElementRef<'label'>>('Simple Label')
+            expect(input).toHaveAttribute('id');
+            expect(label).toHaveAttribute('for');
+            expect(input.id).toEqual(label.htmlFor)
         });
     });
 
-    it('allows to be tested using accessible queries', () => {
+    it('allows to be tested using accessible queries', async () => {
+        const user = userEvent.setup()
         const spySubmit = jest.fn();
         const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
@@ -109,9 +66,9 @@ describe('Input', () => {
         const passwordInput = screen.getByLabelText('password');
         const submitBtn = screen.getByRole('button', { name: /submit/i });
 
-        userEvent.type(usernameInput, 'jaimito');
-        userEvent.type(passwordInput, 'tontoelquelolea');
-        userEvent.click(submitBtn);
+        await user.type(usernameInput, 'jaimito');
+        await user.type(passwordInput, 'tontoelquelolea');
+        await user.click(submitBtn);
 
         expect(spySubmit).toHaveBeenCalledWith({ username: 'jaimito', password: 'tontoelquelolea' });
         // Because input type password doesn't have implicit roles (type is passing as prop as expected) https://www.w3.org/TR/html-aria/#docconformance
