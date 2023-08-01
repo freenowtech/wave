@@ -101,6 +101,13 @@ const Password = forwardRef<HTMLDivElement, PasswordProps>(
                             type="button"
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
+
+// TODO use ref passed to the input once https://github.com/freenowtech/wave/issues/169 is solved
+                                // set input focus
+                                const inputElement: HTMLElement = document.querySelector(`input[id=${inputId}]`);
+                                if (inputElement) {
+                                    inputElement.focus();
+                                }
                             }}
                             aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}

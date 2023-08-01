@@ -5,7 +5,9 @@ import { get } from '../../utils/themeGet';
 import { InternalInputComponentProps } from './BaseInput';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
 
-const activeBoxedPosition = (size: Pick<InternalInputComponentProps, 'size'>): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
+const activeBoxedPosition = (
+    size: Pick<InternalInputComponentProps, 'size'>['size']
+): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
     ${activePositionBaseStyles};
 
     top: ${size === 'small' ? '-0.375rem' : '-0.5rem'};

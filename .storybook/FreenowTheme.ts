@@ -1,17 +1,16 @@
 // .storybook/FreenowTheme.ts
 import { create } from '@storybook/theming/create';
-import logo from '../public/assets/freenow-logo.svg';
 
 export default create({
     base: 'light',
 
     // Typography
-    fontBase: '"Open Sans", sans-serif',   
+    fontBase: '"Open Sans", sans-serif',
     fontCode: 'monospace',
 
     brandTitle: 'FREENOW',
     brandUrl: 'https://wave.free-now.com/',
-    brandImage: logo,
+    brandImage: 'https://wave.free-now.com/freenow-logo.svg',
     brandTarget: '_self',
 
     //
