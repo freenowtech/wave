@@ -1,6 +1,6 @@
 import { SemanticColorsSchema } from './types';
 
-// Global Colors Tier (--wave-g-color-...)
+// Bare Colors Tier (--wave-b-color-...)
 export const Colors = {
     white: 'hsl(0, 0%, 100%)',
     black: 'hsl(0, 0%, 0%)',
@@ -109,7 +109,7 @@ export const SemanticColors = {
             },
             neutral: {
                 default: Colors.white,
-                emphasized: Colors.blue.primary[50],
+                emphasized: Colors.blue.primary[50]
             },
             accent: {
                 faded: Colors.blue.secondary[50],
@@ -193,7 +193,7 @@ export const SemanticColors = {
         danger: {
             faded: Colors.orange[350],
             default: Colors.orange[900]
-        },
+        }
     },
     shadow: {
         default: Colors.blue.primary[200]
