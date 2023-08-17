@@ -81,6 +81,7 @@ export const SemanticColors = {
     },
     border: {
         primary: Colors.AUTHENTIC_BLUE_200,
+        secondary: Colors.AUTHENTIC_BLUE_50,
         info: Colors.ACTION_BLUE_350,
         danger: Colors.NEGATIVE_ORANGE_350,
         success: Colors.POSITIVE_GREEN_350,
