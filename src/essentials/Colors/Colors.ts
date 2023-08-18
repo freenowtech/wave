@@ -213,9 +213,9 @@ export const SemanticColorsDarkSchema = {
             disabled: Colors.blue.primary[350],
             accent: Colors.white,
             neutral: Colors.blue.primary[900],
-            danger: Colors.white,
+            danger: Colors.white
         },
-        disabled: Colors.blue.primary[350],
+        disabled: Colors.blue.primary[350]
     },
     background: {
         page: Colors.blue.primary[900],
@@ -226,7 +226,7 @@ export const SemanticColorsDarkSchema = {
             },
             disabled: {
                 faded: Colors.transparent, // page color
-                default: Colors.blue.primary[550],
+                default: Colors.blue.primary[550]
             },
             neutral: {
                 default: Colors.transparent, // or as Page
@@ -240,8 +240,8 @@ export const SemanticColorsDarkSchema = {
     },
     border: {
         neutral: {
-            default: Colors.white,
+            default: Colors.white
         },
-        disabled: Colors.blue.primary[550],
+        disabled: Colors.blue.primary[550]
     }
-} //satisfies SemanticColorsSchema;
+}; // satisfies SemanticColorsSchema;
