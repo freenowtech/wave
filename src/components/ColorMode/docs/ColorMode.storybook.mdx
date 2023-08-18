@@ -1,11 +1,34 @@
-import { Meta, Primary, ArgTypes, Story, Stories, Source } from '@storybook/blocks';
-import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Meta, Primary, ArgTypes, Story, Stories, Source, Unstyled } from '@storybook/blocks';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { Headline } from '../../Headline/Headline';
 import * as ColorModeStories from './ColorMode.stories';
 
 <Meta of={ColorModeStories} />
+
+# ColorMode
+
+This renders a `div` tag with a specific classname based on what boolean value is provided as the dark prop value.
+
+The purpose is to be able to force a specific color theme to components that are children of this component.
+As an example you could force the previous `<Button inverted />` behaviour with light button colors,
+by wrapping your button inside `<ColorMode dark><Button /></ColorMode>` if you are sure it is always displayed on a darker background,
+even if the users preferred color scheme specified in the operating system is light mode.
 
 ## Properties
 
 <ArgTypes of={ColorModeStories} />
 
-<Stories />
+<Unstyled>
+    <ItemWrapper>
+        <Headline as="h3" inverted>
+            Light Mode with Button
+        </Headline>
+        <Story of={ColorModeStories.LightModeWithButton} />
+        <Source of={ColorModeStories.LightModeWithButton} />
+    </ItemWrapper>
+    <ItemWrapper inverted>
+        <Headline as="h3">Dark Mode with Button</Headline>
+        <Story of={ColorModeStories.DarkModeWithButton} />
+        <Source of={ColorModeStories.DarkModeWithButton} />
+    </ItemWrapper>
+</Unstyled>

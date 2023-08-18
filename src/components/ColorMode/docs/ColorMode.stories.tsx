@@ -24,7 +24,14 @@ export default meta;
 
 type Story = StoryObj<typeof ColorMode>;
 
-export const WithButton: Story = {
+export const DarkModeWithButton: Story = {
+    args: {
+        children: <Button>Test</Button>,
+        dark: true
+    }
+};
+
+export const LightModeWithButton: Story = {
     args: {
         children: <Button>Test</Button>,
         dark: false
