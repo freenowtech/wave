@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getSemanticValue } from '../../utils/cssVariables';
 
 export const InvertedColorMode = ({ children }: { children: React.ReactNode }) => {
     const [preferredColorScheme, setPreferredColorScheme] = useState(
@@ -17,9 +16,5 @@ export const InvertedColorMode = ({ children }: { children: React.ReactNode }) =
         });
     }, []);
 
-    return (
-        <div className={preferredColorScheme}>
-            <div style={{ backgroundColor: getSemanticValue('background-page') }}>{children}</div>
-        </div>
-    );
+    return <div className={preferredColorScheme}>{children}</div>;
 };

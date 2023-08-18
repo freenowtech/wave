@@ -1,11 +1,32 @@
-import { Meta, Primary, ArgTypes, Story, Stories, Source } from '@storybook/blocks';
-import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import { Meta, ArgTypes, Story, Source, Unstyled } from '@storybook/blocks';
+import { ItemWrapper } from '../../../../docs/components/ItemWrapper';
+import { Headline } from '../../Headline/Headline';
 import * as InvertedColorModeStories from './InvertedColorMode.stories';
 
 <Meta of={InvertedColorModeStories} />
+
+# InvertedColorMode
+
+This renders a `div` tag with a specific classname based on the operating systems preferred color scheme.
+
+The purpose is to be able to use the inverted variant compared to what the user has specified in their OS.
+Change between light and dark on your `prefers-color-scheme` to see the effect on the button.
 
 ## Properties
 
 <ArgTypes of={InvertedColorModeStories} />
 
-<Stories />
+<Unstyled>
+    <ItemWrapper>
+        <Headline as="h3" inverted>
+            Light Background with Button
+        </Headline>
+        <Story of={InvertedColorModeStories.WithButton} />
+        <Source of={InvertedColorModeStories.WithButton} />
+    </ItemWrapper>
+    <ItemWrapper inverted>
+        <Headline as="h3">Dark background with Button</Headline>
+        <Story of={InvertedColorModeStories.WithButton} />
+        <Source of={InvertedColorModeStories.WithButton} />
+    </ItemWrapper>
+</Unstyled>
