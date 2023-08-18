@@ -2,7 +2,7 @@ import { Join, Leaves } from '../../utils/types';
 
 export type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 
-export type Color = HSL;
+export type Color = HSL | 'transparent';
 
 export interface SemanticColorsSchema {
     transparent: 'transparent';
@@ -121,6 +121,8 @@ export interface SemanticColorsSchema {
             success: Color;
             warning: Color;
             danger: Color;
+            disabled: Color;
+            neutral: Color;
         };
         neutral: {
             faded: Color;

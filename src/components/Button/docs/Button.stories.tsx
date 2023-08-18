@@ -79,15 +79,6 @@ export const Small: Story = {
     }
 };
 
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
-    }
-};
-
 export const WithIcon: Story = {
     args: {
         children: (

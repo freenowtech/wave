@@ -43,8 +43,9 @@ export const preview: Preview = {
             }
         },
         backgrounds: {
-            default: 'light',
+            default: 'auto',
             values: [
+                { name: 'auto', value: getSemanticValue('background-page') },
                 { name: 'light', value: getSemanticValue('background-surface-neutral-default') },
                 { name: 'dark', value: getSemanticValue('background-surface-primary-default') }
             ]

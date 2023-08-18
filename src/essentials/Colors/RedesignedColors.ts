@@ -62,7 +62,9 @@ export const SemanticColors = {
             info: Colors.white,
             success: Colors.white,
             warning: Colors.neutral[900],
-            danger: Colors.white
+            danger: Colors.white,
+            disabled: Colors.white,
+            neutral: Colors.neutral[900]
         },
         neutral: {
             faded: Colors.neutral[200],
