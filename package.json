@@ -17,6 +17,7 @@
         "test": "jest",
         "test:fixture": "./scripts/run_fixtures.sh",
         "test:watch": "jest --watch",
+        "test:codemods": "jest codemods",
         "lint": "npx concurrently \"npm run lint:eslint\" \"npm run lint:stylelint\"",
         "lint:stylelint": "stylelint --config .stylelintrc 'src/**/*.ts?(x)'",
         "lint:eslint": "eslint --format pretty --ext .js,.jsx,.ts,.tsx src/",
