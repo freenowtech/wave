@@ -194,3 +194,56 @@ export const SemanticColors = {
         default: Colors.neutral[200]
     }
 } satisfies SemanticColorsSchema;
+
+export const SemanticColorsDarkSchema = {
+    black: Colors.black,
+    white: Colors.white,
+    transparent: Colors.transparent,
+    foreground: {
+        primary: Colors.white,
+        accent: {
+            default: Colors.white,
+            emphasized: Colors.neutral[350]
+        },
+        'on-background': {
+            primary: Colors.primary[900],
+            disabled: Colors.neutral[350],
+            accent: Colors.primary[900],
+            neutral: Colors.neutral[900],
+            danger: Colors.white
+        },
+        disabled: Colors.neutral[550],
+        danger: {
+            default: Colors.red[350],
+            emphasized: Colors.primary[50]
+        }
+    },
+    background: {
+        page: Colors.neutral[900],
+        element: {
+            primary: {
+                default: Colors.neutral[50],
+                emphasized: Colors.white
+            },
+            disabled: {
+                faded: Colors.transparent, // page color
+                default: Colors.neutral[550]
+            },
+            neutral: {
+                default: Colors.transparent, // or as Page
+                emphasized: Colors.white
+            },
+            danger: {
+                faded: Colors.primary[50],
+                default: Colors.red[900],
+                emphasized: Colors.red[1000]
+            }
+        }
+    },
+    border: {
+        neutral: {
+            default: Colors.white
+        },
+        disabled: Colors.neutral[550]
+    }
+} // satisfies SemanticColorsSchema;

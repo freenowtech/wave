@@ -2,28 +2,33 @@ import { createGlobalStyle } from 'styled-components';
 import {
     Colors as ClassicBrandColors,
     SemanticColors as ClassicSemanticColors,
-    SemanticColorsDarkSchema as ClassicDarkSemanticColors
+    SemanticColorsDarkSchema as ClassicSemanticColorsDark
 } from './Colors';
-import { Colors as ModernBrandColors, SemanticColors as ModernSemanticColors } from './RedesignedColors';
+import {
+    Colors as ModernBrandColors,
+    SemanticColors as ModernSemanticColors,
+    SemanticColorsDarkSchema as ModernSemanticColorsDark
+} from './RedesignedColors';
 import { generateBareTierCssVariables, generateSemanticTierCssVariables } from '../../utils/cssVariables';
 
 export const ClassicColors = createGlobalStyle`
   :root {
-    color-scheme: dark light;
+    color-scheme: light dark;
     ${generateBareTierCssVariables(ClassicBrandColors)}
     ${generateSemanticTierCssVariables(ClassicSemanticColors)}
-    
-    :root .dark-theme {
-      ${generateSemanticTierCssVariables(ClassicDarkSemanticColors)}
-    }
+
+  }
+
+  .dark-theme {
+    ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      ${generateSemanticTierCssVariables(ClassicDarkSemanticColors)}
+      ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
     }
 
-    :root .light-theme {
+    .light-theme {
       ${generateBareTierCssVariables(ClassicBrandColors)}
       ${generateSemanticTierCssVariables(ClassicSemanticColors)}
     }
@@ -32,7 +37,23 @@ export const ClassicColors = createGlobalStyle`
 
 export const ModernColors = createGlobalStyle`
   :root {
+    color-scheme: light dark;
     ${generateBareTierCssVariables(ModernBrandColors)}
     ${generateSemanticTierCssVariables(ModernSemanticColors)}
+  }
+
+  .dark-theme {
+    ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
+    }
+
+    .light-theme {
+      ${generateBareTierCssVariables(ModernBrandColors)}
+      ${generateSemanticTierCssVariables(ModernSemanticColors)}
+    }
   }
 `;

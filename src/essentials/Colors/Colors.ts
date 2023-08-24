@@ -208,6 +208,10 @@ export const SemanticColorsDarkSchema = {
     transparent: Colors.transparent,
     foreground: {
         primary: Colors.white,
+        accent: {
+            default: Colors.white,
+            emphasized: Colors.blue.primary[200]
+        },
         'on-background': {
             primary: Colors.blue.secondary[900],
             disabled: Colors.blue.primary[350],
@@ -215,7 +219,11 @@ export const SemanticColorsDarkSchema = {
             neutral: Colors.blue.primary[900],
             danger: Colors.white
         },
-        disabled: Colors.blue.primary[350]
+        disabled: Colors.blue.primary[350],
+        danger: {
+            default: Colors.orange[900],
+            emphasized: Colors.orange[1000]
+        }
     },
     background: {
         page: Colors.blue.primary[900],
