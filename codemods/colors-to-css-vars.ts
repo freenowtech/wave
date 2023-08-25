@@ -38,8 +38,7 @@ const ColorsToCssVariablesMap = {
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,
     localColorNames: string[],
-    templateLiteral: TemplateLiteral,
-    n?: number
+    templateLiteral: TemplateLiteral
 ) => {
     const quasis = templateLiteral.quasis;
     const expressions = templateLiteral.expressions;
@@ -51,16 +50,13 @@ const replaceColorsForCssVarsInTemplateLiterals = (
     // e.g. in the template string `color: ${Colors.x};` there are 2 quasis, `color: ` and `;`, the `Colors.x` is an expression
     quasis.forEach((el, index) => {
         const expressionAfterQuasis = expressions[index];
-        const isSecondToLastQuasis = index === quasis.length - 2;
 
         // Check if there are arrow functions inside the template string, since they can also have nested template string
         if (expressionAfterQuasis && expressionAfterQuasis.type === 'ArrowFunctionExpression') {
             const templateExpressions = j(expressionAfterQuasis).find(j.TemplateLiteral);
 
             // For every template string in the arrow function recursively replace colors for css vars
-            templateExpressions.forEach(ex =>
-                replaceColorsForCssVarsInTemplateLiterals(j, localColorNames, ex.node, 2)
-            );
+            templateExpressions.forEach(ex => replaceColorsForCssVarsInTemplateLiterals(j, localColorNames, ex.node));
         }
 
         // Check if the expression is a MemberExpression (regular object property access)
@@ -77,19 +73,16 @@ const replaceColorsForCssVarsInTemplateLiterals = (
 
                 if (!cssVar) return;
 
-                // Add the mapped css var at the end of the quasis (where the color expression is)
-                el.value.raw = el.value.raw + cssVar;
+                const nextQuasisValue = quasis[index + 1].value.raw;
+                // Append the mapped css var and the value of the next quasis to the end of the current quasis (where the color expression is)
+                el.value.raw = el.value.raw + cssVar + nextQuasisValue;
 
-                // Flag the color expression so that it is removed afterwards
+                // Since the color is mapped to the css var we don't need the expression anymore, so we flag it for removal later
                 expressionsToRemoveIndexes.push(index);
 
-                if (isSecondToLastQuasis) {
-                    const lastQuasisValue = quasis[index + 1].value.raw;
-
-                    // In case the next quasis is the last one, append it's value to the current value and mark the last quasis to be removed
-                    el.value.raw = el.value.raw + lastQuasisValue;
-                    quasisToRemoveIndexes.push(index + 1);
-                }
+                // The number of quasis always has to match the number of expressions + 1, since we've flagged the expression for removal we need to
+                // flag the next quasis for removal as well, we've already appended it's value to the current one so we don't lose information
+                quasisToRemoveIndexes.push(index + 1);
             }
         }
     });

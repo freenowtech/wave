@@ -4,7 +4,8 @@ const { defineTest } = require('jscodeshift/dist/testUtils');
 const tests = [
     'color-in-JSX-multi-import',
     'color-in-JSX-single-import',
-    'template-multi-quasis',
+    'template-multi-quasis-even',
+    'template-multi-quasis-odd',
     'template-single-quasis'
 ];
 
