@@ -1,4 +1,4 @@
-import { API, FileInfo, Identifier, JSCodeshift, MemberExpression, TemplateLiteral } from 'jscodeshift';
+import { API, FileInfo, Identifier, JSCodeshift, TemplateLiteral } from 'jscodeshift';
 import { Options } from 'recast';
 
 const ColorsToCssVariablesMap = {
@@ -40,8 +40,8 @@ const replaceColorsForCssVarsInTemplateLiterals = (
     localColorNames: string[],
     templateLiteral: TemplateLiteral
 ) => {
-    const quasis = templateLiteral.quasis;
-    const expressions = templateLiteral.expressions;
+    const { quasis } = templateLiteral;
+    const { expressions } = templateLiteral;
 
     const expressionsToRemoveIndexes: number[] = [];
     const quasisToRemoveIndexes: number[] = [];
@@ -61,15 +61,15 @@ const replaceColorsForCssVarsInTemplateLiterals = (
 
         // Check if the expression is a MemberExpression (regular object property access)
         if (expressionAfterQuasis && expressionAfterQuasis.type === 'MemberExpression') {
-            const expressionObject = (expressionAfterQuasis as MemberExpression).object as Identifier;
+            const expressionObject = expressionAfterQuasis.object as Identifier;
 
             // Identify if it's a usage of Colors
             const isColorsExpression = localColorNames.includes(expressionObject.name);
 
             if (isColorsExpression) {
                 // Find the color being used
-                const color = ((expressionAfterQuasis as MemberExpression).property as Identifier).name;
-                const cssVar = ColorsToCssVariablesMap[color];
+                const color = (expressionAfterQuasis.property as Identifier).name;
+                const cssVar: string = ColorsToCssVariablesMap[color];
 
                 if (!cssVar) return;
 

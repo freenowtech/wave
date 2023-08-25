@@ -1,5 +1,5 @@
 module.exports = {
-    roots: ['<rootDir>/src', '<rootDir>/codemods'],
+    roots: ['<rootDir>/src'],
     transform: {
         '^.+\\.tsx?$': 'ts-jest',
         '^.+\\.svg$': '<rootDir>/svgTransform.js'
