@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Textarea } from '../Textarea';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Form Elements/Textarea',
@@ -50,14 +49,5 @@ export const WithError: Story = {
 export const Disabled: Story = {
     args: {
         disabled: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

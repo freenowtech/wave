@@ -56,10 +56,6 @@ interface TextAreaProps
      */
     size?: ResponsiveValue<'small' | 'medium'>;
     /**
-     * Inverts the colors of the input
-     */
-    inverted?: boolean;
-    /**
      * Sets the input label
      */
     label?: string;
