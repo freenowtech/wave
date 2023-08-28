@@ -13,10 +13,6 @@ interface BaseSelectProps extends Omit<ComponentPropsWithoutRef<'select'>, 'size
      */
     variant?: ResponsiveValue<'boxed' | 'bottom-lined'>;
     /**
-     * Adjust colors for display on a dark background
-     */
-    inverted?: boolean;
-    /**
      * Indicate that the input contains an error
      */
     error?: boolean;
@@ -86,9 +82,9 @@ const disabledStyles = css<BaseSelectProps>`
 const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSelectProps>`
     margin: 0;
     box-sizing: border-box;
-    background: ${p => getSemanticValue(p.inverted ? 'transparent' : 'background-element-neutral-default')};
+    background: ${getSemanticValue('background-element-neutral-default')};
     border-radius: 0;
-    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
+    color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
     transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
@@ -101,7 +97,7 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     text-overflow: ellipsis;
 
     & ~ .svg-icon svg > * {
-        fill: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
+        fill: ${getSemanticValue('foreground-neutral-emphasized')};
     }
 
     ${p => {
@@ -125,19 +121,18 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-        -webkit-text-fill-color: ${p =>
-            getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
+        -webkit-text-fill-color: ${getSemanticValue('foreground-neutral-emphasized')};
         transition: background-color 99999999ms ease 99999999ms;
     }
 
     &:active:not(:disabled),
     &:focus:not(:disabled) {
         & ~ ${SelectLabel} {
-            color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
+            color: ${getSemanticValue('foreground-neutral-emphasized')};
         }
 
         & ~ .svg-icon svg > * {
-            fill: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')};
+            fill: ${getSemanticValue('foreground-neutral-emphasized')};
         }
     }
 `;
