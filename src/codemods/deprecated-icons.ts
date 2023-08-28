@@ -23,27 +23,7 @@ const DeprecatedToValidIconsMap = {
     XIcon: 'CloseIcon'
 };
 
-const DeprecatedIconsNames = [
-    'BackwardSmallIcon',
-    'ChevronDownSmallIcon',
-    'ChevronLeftSmallIcon',
-    'ChevronRightSmallIcon',
-    'ChevronUpSmallIcon',
-    'DownloadSmallIcon',
-    'ForwardSmallIcon',
-    'SearchSmallIcon',
-    'XSmallIcon',
-    'AirportIcon',
-    'EcoIcon',
-    'GearIcon',
-    'HeartIcon',
-    'HomeIcon',
-    'InfoCircleIcon',
-    'ListUnorderedIcon',
-    'PrebookingIcon',
-    'SearchIcon',
-    'XIcon'
-];
+const DeprecatedIconsNames = Array.from(Object.keys(DeprecatedToValidIconsMap));
 
 export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
