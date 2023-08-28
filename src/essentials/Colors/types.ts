@@ -9,7 +9,12 @@ export interface SemanticColorsSchema {
     white: Color;
     black: Color;
     background: {
-        page: Color;
+        page: {
+            default: Color;
+            'elevation-1': Color;
+            'elevation-2': Color;
+            'elevation-3': Color;
+        };
         backdrop: Color;
         // for big areas
         surface: {

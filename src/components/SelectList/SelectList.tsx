@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import {
-    components as ReactSelectComponents,
-    DropdownIndicatorProps,
     ClearIndicatorProps,
+    components as ReactSelectComponents,
     ControlProps,
+    DropdownIndicatorProps,
     Props,
     StylesConfig
 } from 'react-select';
@@ -48,12 +48,8 @@ const customStyles: StylesConfig = {
             alignItems: 'center',
             justifyContent: 'space-between',
             margin: 0,
-            background: getSemanticValue(
-                state.selectProps.inverted ? 'transparent' : 'background-element-neutral-default'
-            ),
-            color: getSemanticValue(
-                state.selectProps.inverted ? 'foreground-on-background-primary' : 'foreground-primary'
-            ),
+            background: getSemanticValue('background-element-neutral-default'),
+            color: getSemanticValue('foreground-primary'),
             ...variant,
             ...error,
             ...disabled
@@ -65,7 +61,8 @@ const customStyles: StylesConfig = {
     }),
     menu: provided => ({
         ...provided,
-        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('border-neutral-default')}`
+        backgroundColor: getSemanticValue('background-page-elevation-1'),
+        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')}`
     }),
     valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
         let margin;
@@ -114,9 +111,7 @@ const customStyles: StylesConfig = {
             padding: '0',
             marginRight: '0.5rem',
             cursor: 'pointer',
-            color: getSemanticValue(
-                state.selectProps.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default'
-            ),
+            color: getSemanticValue('foreground-neutral-default'),
             ...disabled
         };
     },
@@ -125,9 +120,7 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            color: getSemanticValue(
-                state.selectProps.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default'
-            ),
+            color: getSemanticValue('foreground-neutral-default'),
             cursor: 'pointer',
             padding: 0,
             ...disabled
@@ -152,13 +145,13 @@ const customStyles: StylesConfig = {
             },
             isSelected: {
                 backgroundColor: getSemanticValue('background-element-info-emphasized'),
-                color: getSemanticValue('foreground-on-background-primary')
+                color: getSemanticValue('foreground-on-background-info')
             }
         };
 
         const defaultColors = {
             color: getSemanticValue('foreground-primary'),
-            backgroundColor: getSemanticValue('background-element-neutral-default')
+            backgroundColor: getSemanticValue('background-page-elevation-1')
         };
 
         const colors = Object.keys(colorsByState)
@@ -193,7 +186,7 @@ const customStyles: StylesConfig = {
             transition: 'color 125ms ease, background-color 125ms ease',
             '&:hover': {
                 backgroundColor: getSemanticValue('background-element-info-emphasized'),
-                color: getSemanticValue('foreground-on-background-primary')
+                color: getSemanticValue('foreground-on-background-info')
             }
         };
 
@@ -262,7 +255,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
-    const { components, isDisabled, variant, inverted, size, error, label, inputId } = restProps;
+    const { components, isDisabled, variant, size, error, label, inputId } = restProps;
 
     const id = useGeneratedId(inputId);
 
@@ -282,14 +275,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
                 {...restProps}
             />
             {label && (
-                <Label
-                    htmlFor={id}
-                    isDisabled={isDisabled}
-                    variant={variant}
-                    inverted={inverted}
-                    size={size}
-                    error={error}
-                >
+                <Label htmlFor={id} isDisabled={isDisabled} variant={variant} size={size} error={error}>
                     {label}
                 </Label>
             )}

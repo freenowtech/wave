@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { SelectList } from '../SelectList';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Form Elements/SelectList',
@@ -72,14 +71,5 @@ export const BottomLined: Story = {
 export const WithError: Story = {
     args: {
         error: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

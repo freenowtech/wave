@@ -6,6 +6,8 @@ export const Colors = {
     black: 'hsl(0, 0%, 0%)',
     neutral: {
         900: 'hsl(350, 10%, 11%)',
+        750: 'hsl(0, 5%, 20%)',
+        650: 'hsl(353, 5%, 29%)',
         550: 'hsl(0, 2%, 38%)',
         350: 'hsl(0, 1%, 55%)',
         200: 'hsl(0, 1%, 73%)',
@@ -91,7 +93,12 @@ export const SemanticColors = {
         }
     },
     background: {
-        page: Colors.white,
+        page: {
+            default: Colors.white,
+            'elevation-1': Colors.white,
+            'elevation-2': Colors.white,
+            'elevation-3': Colors.white
+        },
         element: {
             disabled: {
                 faded: Colors.neutral[50],
@@ -214,17 +221,26 @@ export const SemanticColorsDarkSchema = {
             disabled: Colors.neutral[350],
             accent: Colors.primary[900],
             neutral: Colors.neutral[900],
+            info: Colors.white,
             danger: Colors.white
         },
         disabled: Colors.neutral[550],
         focus: Colors.white,
+        info: {
+            faded: Colors.white
+        },
         danger: {
             default: Colors.red[350],
             emphasized: Colors.primary[50]
         }
     },
     background: {
-        page: Colors.neutral[900],
+        page: {
+            default: Colors.neutral[900],
+            'elevation-1': Colors.neutral[750],
+            'elevation-2': Colors.neutral[650],
+            'elevation-3': Colors.neutral[550]
+        },
         element: {
             primary: {
                 default: Colors.neutral[50],
@@ -237,6 +253,10 @@ export const SemanticColorsDarkSchema = {
             neutral: {
                 default: Colors.neutral[900],
                 emphasized: Colors.white
+            },
+            info: {
+                default: Colors.neutral[350],
+                emphasized: Colors.neutral[550]
             },
             danger: {
                 faded: Colors.primary[50],
@@ -253,6 +273,12 @@ export const SemanticColorsDarkSchema = {
             default: Colors.red[900]
         },
         focus: Colors.neutral[550],
-        disabled: Colors.neutral[550]
+        disabled: Colors.neutral[550],
+        info: {
+            default: Colors.neutral[550]
+        }
+    },
+    shadow: {
+        default: Colors.neutral[550]
     }
 }; // satisfies SemanticColorsSchema;

@@ -98,7 +98,12 @@ export const SemanticColors = {
         }
     },
     background: {
-        page: Colors.white,
+        page: {
+            default: Colors.white,
+            'elevation-1': Colors.white,
+            'elevation-2': Colors.white,
+            'elevation-3': Colors.white
+        },
         element: {
             disabled: {
                 faded: Colors.blue.primary[50],
@@ -221,17 +226,26 @@ export const SemanticColorsDarkSchema = {
             disabled: Colors.blue.primary[350],
             accent: Colors.white,
             neutral: Colors.blue.primary[900],
+            info: Colors.white,
             danger: Colors.white
         },
         disabled: Colors.blue.primary[350],
         focus: Colors.white,
+        info: {
+            faded: Colors.white
+        },
         danger: {
             default: Colors.orange[900],
             emphasized: Colors.orange[1000]
         }
     },
     background: {
-        page: Colors.blue.primary[900],
+        page: {
+            default: Colors.blue.primary[900],
+            'elevation-1': Colors.blue.primary[550],
+            'elevation-2': Colors.blue.primary[350],
+            'elevation-3': Colors.blue.primary[200]
+        },
         element: {
             primary: {
                 default: Colors.white,
@@ -240,6 +254,10 @@ export const SemanticColorsDarkSchema = {
             disabled: {
                 faded: Colors.transparent, // page color
                 default: Colors.blue.primary[550]
+            },
+            info: {
+                default: Colors.blue.secondary[900],
+                emphasized: Colors.blue.secondary[1000]
             },
             neutral: {
                 default: Colors.blue.primary[900],
@@ -255,10 +273,16 @@ export const SemanticColorsDarkSchema = {
         neutral: {
             default: Colors.white
         },
+        info: {
+            default: Colors.blue.secondary[900]
+        },
         danger: {
             default: Colors.orange[900]
         },
         focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[550]
+    },
+    shadow: {
+        default: Colors.blue.primary[550]
     }
 }; // satisfies SemanticColorsSchema;
