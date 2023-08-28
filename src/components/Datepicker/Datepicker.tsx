@@ -26,7 +26,7 @@ const DatepickerContainer = styled.div`
     box-shadow: 0 0 0.5rem 0.1875rem rgba(0, 0, 0, 0.08);
 
     position: relative;
-    background: ${getSemanticValue('background-surface-neutral-default')};
+    background: ${getSemanticValue('background-page-elevation-1')};
 
     &::before {
         content: '';
@@ -34,7 +34,7 @@ const DatepickerContainer = styled.div`
         transform: rotate(45deg);
         width: 1.25rem;
         height: 1.25rem;
-        background: ${getSemanticValue('background-surface-neutral-default')};
+        background: ${getSemanticValue('background-page-elevation-1')};
         box-shadow: -0.25rem -0.25rem 0.5rem -0.125rem rgba(0, 0, 0, 0.08);
     }
 

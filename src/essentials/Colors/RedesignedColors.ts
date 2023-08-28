@@ -254,6 +254,11 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.neutral[900],
                 emphasized: Colors.white
             },
+            accent: {
+                faded: Colors.primary[1000],
+                default: Colors.primary[900],
+                emphasized: Colors.primary[350]
+            },
             info: {
                 default: Colors.neutral[350],
                 emphasized: Colors.neutral[550]
@@ -269,13 +274,17 @@ export const SemanticColorsDarkSchema = {
         neutral: {
             default: Colors.neutral[200]
         },
-        danger: {
-            default: Colors.red[900]
-        },
         focus: Colors.neutral[550],
         disabled: Colors.neutral[550],
+        accent: {
+            faded: Colors.primary[350],
+            default: Colors.primary[350]
+        },
         info: {
             default: Colors.neutral[550]
+        },
+        danger: {
+            default: Colors.red[900]
         }
     },
     shadow: {

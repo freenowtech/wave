@@ -8,6 +8,7 @@ export const Colors = {
         primary: {
             1100: 'hsl(211, 100%, 6%)',
             900: 'hsl(211, 100%, 12%)',
+            750: 'hsl(210, 30%, 25%)',
             550: 'hsl(210, 16%, 46%)',
             350: 'hsl(213, 14%, 66%)',
             200: 'hsl(210, 14%, 80%)',
@@ -242,9 +243,9 @@ export const SemanticColorsDarkSchema = {
     background: {
         page: {
             default: Colors.blue.primary[900],
-            'elevation-1': Colors.blue.primary[550],
-            'elevation-2': Colors.blue.primary[350],
-            'elevation-3': Colors.blue.primary[200]
+            'elevation-1': Colors.blue.primary[750],
+            'elevation-2': Colors.blue.primary[550],
+            'elevation-3': Colors.blue.primary[350]
         },
         element: {
             primary: {
@@ -254,6 +255,11 @@ export const SemanticColorsDarkSchema = {
             disabled: {
                 faded: Colors.transparent, // page color
                 default: Colors.blue.primary[550]
+            },
+            accent: {
+                faded: Colors.blue.secondary[1000],
+                default: Colors.blue.secondary[900],
+                emphasized: Colors.blue.secondary[900]
             },
             info: {
                 default: Colors.blue.secondary[900],
@@ -272,6 +278,10 @@ export const SemanticColorsDarkSchema = {
     border: {
         neutral: {
             default: Colors.white
+        },
+        accent: {
+            faded: Colors.blue.secondary[350],
+            default: Colors.blue.secondary[350]
         },
         info: {
             default: Colors.blue.secondary[900]

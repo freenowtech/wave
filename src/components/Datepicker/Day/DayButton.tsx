@@ -33,6 +33,10 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
             color: ${getSemanticValue('foreground-disabled')};
             box-shadow: 0 0 0 0.0625rem ${getSemanticValue('border-disabled')};
             background: ${getSemanticValue('background-element-neutral-default')};
+
+            &:hover {
+                cursor: not-allowed;
+            }
         `;
     }
 
@@ -42,6 +46,7 @@ const getColor = ({ isSelected, isSelectedStartOrEnd, isWithinHoverRange, disabl
 
         &:hover {
             cursor: pointer;
+            color: ${getSemanticValue('foreground-on-background-neutral')};
             background: ${getSemanticValue('background-element-neutral-emphasized')};
         }
     `;
