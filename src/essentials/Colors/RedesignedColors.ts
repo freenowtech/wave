@@ -206,8 +206,8 @@ export const SemanticColorsDarkSchema = {
             emphasized: Colors.neutral[350]
         },
         neutral: {
-            default: Colors.neutral[200],
-            emphasized: Colors.white // or neutral[200] ?
+            default: Colors.neutral[350],
+            emphasized: Colors.neutral[200]
         },
         'on-background': {
             primary: Colors.primary[900],
