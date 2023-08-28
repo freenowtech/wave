@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
 import { BaseInput, InternalInputComponentProps } from './BaseInput';
@@ -28,11 +27,7 @@ const sizeVariant = variant({
     }
 });
 
-const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
-    if (inverted) {
-        return getSemanticValue('foreground-neutral-faded');
-    }
-
+const getLabelColor = ({ hasValue }: InternalInputComponentProps) => {
     if (hasValue) {
         return getSemanticValue('foreground-neutral-emphasized');
     }
@@ -40,17 +35,16 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return getSemanticValue('foreground-neutral-default');
 };
 
-const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
+const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
     ${sizeVariant}
     & + ${BoxedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
+        background: ${getSemanticValue('background-element-neutral-default')};
         background: ${p =>
-            getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
-        background: ${p =>
-            `linear-gradient(0deg, ${getSemanticValue(
-                p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-            )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
+            `linear-gradient(0deg, 
+            ${getSemanticValue('background-element-neutral-default')} 
+            calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -72,16 +66,12 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     &:focus:not(:disabled) {
         & + ${BoxedInputLabel} {
             ${p => activeBoxedPosition(p.size)};
-            color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-focus')};
+            color: ${getSemanticValue('foreground-focus')};
+            background: ${getSemanticValue('background-element-neutral-default')};
             background: ${p =>
-                getSemanticValue(
-                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-                )};
-            background: ${p =>
-                `linear-gradient(0deg, ${getSemanticValue(
-                    // inverted doesn't work well for the modern layout
-                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-                )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
+                `linear-gradient(0deg, 
+                ${getSemanticValue('background-element-neutral-default')} 
+                calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
         }
     }
 `;

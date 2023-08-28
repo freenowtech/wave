@@ -212,6 +212,10 @@ export const SemanticColorsDarkSchema = {
             default: Colors.white,
             emphasized: Colors.blue.primary[200]
         },
+        neutral: {
+            default: Colors.blue.primary[200],
+            emphasized: Colors.white
+        },
         'on-background': {
             primary: Colors.blue.secondary[900],
             disabled: Colors.blue.primary[350],
@@ -220,6 +224,7 @@ export const SemanticColorsDarkSchema = {
             danger: Colors.white
         },
         disabled: Colors.blue.primary[350],
+        focus: Colors.white,
         danger: {
             default: Colors.orange[900],
             emphasized: Colors.orange[1000]
@@ -237,7 +242,7 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.blue.primary[550]
             },
             neutral: {
-                default: Colors.transparent, // or as Page
+                default: Colors.blue.primary[900],
                 emphasized: Colors.white
             },
             danger: {
@@ -250,6 +255,10 @@ export const SemanticColorsDarkSchema = {
         neutral: {
             default: Colors.white
         },
+        danger: {
+            default: Colors.orange[900]
+        },
+        focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[550]
     }
 }; // satisfies SemanticColorsSchema;

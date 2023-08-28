@@ -69,7 +69,7 @@ declare module 'csstype' {
     }
 }
 
-const Password = forwardRef<HTMLDivElement, PasswordProps>(
+const Password = forwardRef<HTMLInputElement, PasswordProps>(
     (
         {
             purpose = 'login',

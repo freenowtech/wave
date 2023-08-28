@@ -49,9 +49,9 @@ const inputVariants = variant({
 const BaseInput = styled.input<InternalInputComponentProps>`
     margin: 0;
     box-sizing: border-box;
-    background: ${p => getSemanticValue(p.inverted ? 'transparent' : 'background-element-neutral-default')};
+    background: ${getSemanticValue('background-element-neutral-default')};
     border-radius: 0;
-    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
+    color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
     transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
@@ -60,7 +60,7 @@ const BaseInput = styled.input<InternalInputComponentProps>`
     width: 100%;
 
     &::placeholder {
-        color: ${p => getSemanticValue(p.inverted ? 'foreground-neutral-faded' : 'foreground-neutral-default')};
+        color: ${getSemanticValue('foreground-neutral-default')};
     }
 
     ${compose(width, sizeVariant, inputVariants)};
@@ -80,8 +80,7 @@ const BaseInput = styled.input<InternalInputComponentProps>`
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-        -webkit-text-fill-color: ${p =>
-            getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
+        -webkit-text-fill-color: ${getSemanticValue('foreground-primary')};
         transition: background-color 99999999ms ease 99999999ms;
     }
 `;

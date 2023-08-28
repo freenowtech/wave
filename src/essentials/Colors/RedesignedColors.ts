@@ -205,6 +205,10 @@ export const SemanticColorsDarkSchema = {
             default: Colors.white,
             emphasized: Colors.neutral[350]
         },
+        neutral: {
+            default: Colors.neutral[200],
+            emphasized: Colors.white // or neutral[200] ?
+        },
         'on-background': {
             primary: Colors.primary[900],
             disabled: Colors.neutral[350],
@@ -213,6 +217,7 @@ export const SemanticColorsDarkSchema = {
             danger: Colors.white
         },
         disabled: Colors.neutral[550],
+        focus: Colors.white,
         danger: {
             default: Colors.red[350],
             emphasized: Colors.primary[50]
@@ -230,7 +235,7 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.neutral[550]
             },
             neutral: {
-                default: Colors.transparent, // or as Page
+                default: Colors.neutral[900],
                 emphasized: Colors.white
             },
             danger: {
@@ -242,8 +247,12 @@ export const SemanticColorsDarkSchema = {
     },
     border: {
         neutral: {
-            default: Colors.white
+            default: Colors.neutral[200]
         },
+        danger: {
+            default: Colors.red[900]
+        },
+        focus: Colors.neutral[550],
         disabled: Colors.neutral[550]
     }
-} // satisfies SemanticColorsSchema;
+}; // satisfies SemanticColorsSchema;

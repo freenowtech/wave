@@ -13,10 +13,6 @@ interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'widt
      */
     size?: ResponsiveValue<'small' | 'medium'>;
     /**
-     * Inverts the colors of the input
-     */
-    inverted?: boolean;
-    /**
      * Disable the input
      */
     disabled?: boolean;
