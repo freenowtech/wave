@@ -268,7 +268,8 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.red[900],
                 emphasized: Colors.red[1000]
             }
-        }
+        },
+        backdrop: Colors.neutral[50]
     },
     border: {
         neutral: {

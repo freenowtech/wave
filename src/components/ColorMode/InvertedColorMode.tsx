@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
 
-export const InvertedColorMode = ({ children }: { children: React.ReactNode }) => {
-    const [preferredColorScheme, setPreferredColorScheme] = useState(
-        window.matchMedia('(prefers-color-scheme: dark)') ? 'light-theme' : 'dark-theme'
+export const InvertedColorMode: FC<{ children: ReactNode }> = ({ children }) => {
+    const [preferredColorSchema, setPreferredColorSchema] = useState(
+        window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light-theme' : 'dark-theme'
     );
 
     useEffect(() => {
         const mql = window.matchMedia('(prefers-color-scheme: dark)');
-        mql.addEventListener('change', e => {
-            if (e.matches) {
-                setPreferredColorScheme('light-theme');
-            } else {
-                setPreferredColorScheme('dark-theme');
-            }
-        });
+        const onMediaQueryChange = (e: MediaQueryListEvent) => {
+            setPreferredColorSchema(e.matches ? 'light-theme' : 'dark-theme');
+        };
+
+        mql.addEventListener('change', onMediaQueryChange);
+        return () => {
+            mql.removeEventListener('change', onMediaQueryChange);
+        };
     }, []);
 
-    return <div className={preferredColorScheme}>{children}</div>;
+    return <div className={preferredColorSchema}>{children}</div>;
 };

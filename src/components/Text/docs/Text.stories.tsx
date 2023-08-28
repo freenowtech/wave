@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../Text';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Components/Text',
@@ -72,15 +71,6 @@ export const Default: Story = {};
 export const Secondary: Story = {
     args: {
         secondary: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };
 

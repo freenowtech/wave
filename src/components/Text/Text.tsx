@@ -62,10 +62,6 @@ function determineTextColor(props: TextProps) {
         return getSemanticValue(inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized');
     }
 
-    if (inverted) {
-        return getSemanticValue('foreground-on-background-primary');
-    }
-
     return getSemanticValue('foreground-primary');
 }
 

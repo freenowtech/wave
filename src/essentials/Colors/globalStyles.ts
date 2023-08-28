@@ -13,22 +13,25 @@ import { generateBareTierCssVariables, generateSemanticTierCssVariables } from '
 
 export const ClassicColors = createGlobalStyle`
   :root {
-    color-scheme: light dark;
+    color-scheme: light;
     ${generateBareTierCssVariables(ClassicBrandColors)}
     ${generateSemanticTierCssVariables(ClassicSemanticColors)}
 
   }
 
   .dark-theme {
+    color-scheme: dark;
     ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
+      color-scheme: dark;
       ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
     }
 
     .light-theme {
+      color-scheme: light;
       ${generateBareTierCssVariables(ClassicBrandColors)}
       ${generateSemanticTierCssVariables(ClassicSemanticColors)}
     }
@@ -37,21 +40,24 @@ export const ClassicColors = createGlobalStyle`
 
 export const ModernColors = createGlobalStyle`
   :root {
-    color-scheme: light dark;
+    color-scheme: light;
     ${generateBareTierCssVariables(ModernBrandColors)}
     ${generateSemanticTierCssVariables(ModernSemanticColors)}
   }
 
   .dark-theme {
+    color-scheme: dark;
     ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
+      color-scheme: dark;
       ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
     }
 
     .light-theme {
+      color-scheme: light;
       ${generateBareTierCssVariables(ModernBrandColors)}
       ${generateSemanticTierCssVariables(ModernSemanticColors)}
     }
