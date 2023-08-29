@@ -1,5 +1,3 @@
-// import { defineTest } from 'jscodeshift/dist/testUtils'
-
 jest.autoMockOff();
 const { defineTest } = require('jscodeshift/dist/testUtils');
 
