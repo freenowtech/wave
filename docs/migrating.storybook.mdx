@@ -50,3 +50,15 @@ This won't change how your icons look in any way since we already exported the d
 ```bash
 npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
 ```
+
+### Inverted property deprecation
+
+With the introduction of our new dark theme in Wave we've removed the `inverted` property that several components had. In case you want a specific component to have
+the styling of the opposite theme you need to wrap it with the `FlipTheme` component.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-flip-theme.js path/to/src
+```
+
+Disclaimer: This codemod wraps every Wave component that is using the `inverted` property with `FlipTheme`, this could lead to a decline in performance in case the
+DOM gets too deep. Ideally when you have Wave components using the `inverted` prop with a common parent you wrap the parent instead of each individual component.
