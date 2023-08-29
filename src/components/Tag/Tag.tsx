@@ -56,11 +56,7 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     &:hover {
         background-color: ${getSemanticValue('background-element-info-emphasized')};
 
-        > ${TagText} {
-            color: ${getSemanticValue('foreground-on-background-info')};
-        }
-
-        > ${DismissIcon} {
+        > ${TagText}, > ${DismissIcon} {
             color: ${getSemanticValue('foreground-on-background-info')};
         }
     }
