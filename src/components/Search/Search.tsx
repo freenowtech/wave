@@ -39,7 +39,7 @@ interface SearchInputContainerProps extends BoxProps {
 
 const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     box-sizing: border-box;
-    background: ${getSemanticValue('background-element-neutral-default')};
+    background: ${getSemanticValue('background-page-default')};
     border-radius: 0.25rem;
     border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus' : 'border-neutral-default')}`};
     box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}` : 'none')};

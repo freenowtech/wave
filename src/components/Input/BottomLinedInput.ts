@@ -40,7 +40,7 @@ const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
     & ~ ${BottomLinedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
         color: ${getLabelColor};
-        background: ${getSemanticValue('background-element-neutral-default')};
+        background: ${getSemanticValue('background-page-default')};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -63,7 +63,7 @@ const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
         & ~ ${BottomLinedInputLabel} {
             ${p => activeBottomLinedPosition(p.size)};
             color: ${getSemanticValue('foreground-focus')};
-            background: ${getSemanticValue('background-element-neutral-default')};
+            background: ${getSemanticValue('background-page-default')};
         }
     }
 `;

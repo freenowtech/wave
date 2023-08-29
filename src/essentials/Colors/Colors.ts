@@ -266,7 +266,7 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.blue.secondary[1000]
             },
             neutral: {
-                default: Colors.blue.primary[900],
+                default: Colors.blue.primary[350],
                 emphasized: Colors.white
             },
             danger: {

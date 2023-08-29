@@ -40,10 +40,10 @@ const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
     & + ${BoxedInputLabel} {
         ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
         color: ${getLabelColor};
-        background: ${getSemanticValue('background-element-neutral-default')};
+        background: ${getSemanticValue('background-page-default')};
         background: ${p =>
             `linear-gradient(0deg, 
-            ${getSemanticValue('background-element-neutral-default')} 
+            ${getSemanticValue('background-page-default')} 
             calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
     }
 
@@ -67,10 +67,10 @@ const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
         & + ${BoxedInputLabel} {
             ${p => activeBoxedPosition(p.size)};
             color: ${getSemanticValue('foreground-focus')};
-            background: ${getSemanticValue('background-element-neutral-default')};
+            background: ${getSemanticValue('background-page-default')};
             background: ${p =>
                 `linear-gradient(0deg, 
-                ${getSemanticValue('background-element-neutral-default')} 
+                ${getSemanticValue('background-page-default')} 
                 calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
         }
     }

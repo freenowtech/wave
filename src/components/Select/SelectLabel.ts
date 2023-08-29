@@ -10,7 +10,7 @@ const SelectLabel = styled.label`
     line-height: 1;
     font-weight: ${get('fontWeights.semibold')};
     color: ${getSemanticValue('foreground-neutral-emphasized')};
-    background: ${getSemanticValue('background-element-neutral-default')};
+    background: ${getSemanticValue('background-page-default')};
     transition: color ${ANIMATION_DURATION}ms ease-out, background ${ANIMATION_DURATION}ms ease-out;
 `;
 

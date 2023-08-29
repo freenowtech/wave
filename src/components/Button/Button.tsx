@@ -35,7 +35,7 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
         secondary: {
             color: getSemanticValue('foreground-primary'),
             fill: getSemanticValue('foreground-primary'),
-            background: getSemanticValue('background-element-neutral-default'),
+            background: getSemanticValue('background-page-default'),
             borderColor: getSemanticValue('border-neutral-default'),
 
             '&:hover': {

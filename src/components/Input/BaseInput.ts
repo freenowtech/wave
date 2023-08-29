@@ -49,7 +49,7 @@ const inputVariants = variant({
 const BaseInput = styled.input<InternalInputComponentProps>`
     margin: 0;
     box-sizing: border-box;
-    background: ${getSemanticValue('background-element-neutral-default')};
+    background: ${getSemanticValue('background-page-default')};
     border-radius: 0;
     color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};

@@ -48,7 +48,7 @@ const customStyles: StylesConfig = {
             alignItems: 'center',
             justifyContent: 'space-between',
             margin: 0,
-            background: getSemanticValue('background-element-neutral-default'),
+            background: getSemanticValue('background-page-default'),
             color: getSemanticValue('foreground-primary'),
             ...variant,
             ...error,

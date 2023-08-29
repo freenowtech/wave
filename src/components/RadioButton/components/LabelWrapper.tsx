@@ -47,7 +47,7 @@ const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
         & ${/* sc-selector */ Checkmark}:not(:checked) {
             box-shadow: inset 0 0 0 0.125rem
                 ${getSemanticValue(error ? 'border-danger-default' : 'border-info-default')};
-            background-color: ${getSemanticValue('background-element-neutral-default')};
+            background-color: ${getSemanticValue('background-page-default')};
         }
     `;
 };

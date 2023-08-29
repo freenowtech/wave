@@ -17,7 +17,7 @@ const Checkmark = styled.input<CheckmarkProps>`
     padding: 0;
     margin: 0 0.5rem 0 0;
 
-    background-color: ${getSemanticValue('background-element-neutral-default')};
+    background-color: ${getSemanticValue('background-page-default')};
     box-shadow: inset 0 0 0 0.125rem
         ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-neutral-default')};
     border-radius: 50%;
@@ -66,7 +66,7 @@ const Checkmark = styled.input<CheckmarkProps>`
 
         &:checked {
             box-shadow: inset 0 0 0 0.3125rem ${getSemanticValue('background-element-disabled-faded')};
-            background-color: ${getSemanticValue('background-element-neutral-default')};
+            background-color: ${getSemanticValue('background-page-default')};
         }
     }
 `;

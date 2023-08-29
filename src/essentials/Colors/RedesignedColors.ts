@@ -251,7 +251,7 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.neutral[550]
             },
             neutral: {
-                default: Colors.neutral[900],
+                default: Colors.neutral[350],
                 emphasized: Colors.white
             },
             accent: {

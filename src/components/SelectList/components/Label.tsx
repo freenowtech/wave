@@ -19,7 +19,7 @@ export const Label = styled.label<LabelProps>`
     pointer-events: none;
     line-height: 1;
     font-weight: ${get('fontWeights.semibold')};
-    background: ${getSemanticValue('background-element-neutral-default')};
+    background: ${getSemanticValue('background-page-default')};
     color: ${getSemanticValue('foreground-neutral-emphasized')};
     transition: color 125ms ease;
 
