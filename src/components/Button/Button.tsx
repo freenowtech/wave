@@ -46,7 +46,7 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
             '&:disabled': {
                 color: getSemanticValue('foreground-disabled'),
                 fill: getSemanticValue('foreground-disabled'),
-                background: getSemanticValue('background-element-disabled-faded'),
+                background: getSemanticValue('transparent'),
                 borderColor: getSemanticValue('border-disabled')
             }
         },

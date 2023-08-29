@@ -253,7 +253,7 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.blue.secondary[900]
             },
             disabled: {
-                faded: Colors.transparent, // page color
+                faded: Colors.blue.primary[750],
                 default: Colors.blue.primary[550]
             },
             accent: {

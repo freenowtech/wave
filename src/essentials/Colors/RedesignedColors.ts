@@ -247,7 +247,7 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.white
             },
             disabled: {
-                faded: Colors.transparent, // page color
+                faded: Colors.neutral[650],
                 default: Colors.neutral[550]
             },
             neutral: {
