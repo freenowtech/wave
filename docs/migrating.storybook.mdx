@@ -56,7 +56,7 @@ npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.
 With the introduction of our new dark theme in Wave we've removed the `inverted` property that several components had. In case you want a specific component to have
 the styling of the opposite theme you need to wrap it with the `FlipTheme` component.
 
-The components that supported the `inverted` prop are: `Input`, `Password`, `Textarea`, `Button`, `Select`, `SelectList`, `PhoneInput`, `Datepicker`, and `Tooltip`
+The components that supported the `inverted` prop are: `Input`, `Password`, `Textarea`, `Button`, `Select`, `SelectList`, `PhoneInput`, `Datepicker`, `Tooltip` and `Text`.
 
 ```bash
 npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-flip-theme.js path/to/src
