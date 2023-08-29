@@ -18,7 +18,7 @@ allow jscodeshift to parse your typescript/jsx files.
 
 ## From v1 to v2
 
-Two codemods exist to upgrade your components for version 2. In order to apply the transformations in your project you simply need to run the
+The following codemods exist to upgrade your components for version 2. In order to apply the transformations in your project you simply need to run the
 command for your desired codemod pointing to your project's source path.
 
 ### Button and TextButton block property
@@ -41,3 +41,12 @@ npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-var
 
 Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
 we recommend using semantic tokens instead as a best practice and offer a `getSemanticValue` API for just that.
+
+### Deprecated icons
+
+We had some deprecated icons that have been deleted in this major, in case you used any of them you need to use their valid (non-deprecated) counterpart from now on.
+This won't change how your icons look in any way since we already exported the deprecated icons as wrappers of valid ones.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
+```
