@@ -38,3 +38,6 @@ that our theme brings.
 ```bash
 npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
 ```
+
+Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
+we recommend using semantic tokens instead as a best practice and offer a `getSemanticValue` API for just that.
