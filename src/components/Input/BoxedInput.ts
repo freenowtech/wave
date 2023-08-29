@@ -50,7 +50,9 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
         background: ${p =>
             `linear-gradient(0deg, ${getSemanticValue(
                 p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-            )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
+            )} calc(50% + ${
+                (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small' ? '0.0825rem' : '0.0625rem'
+            }), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -81,7 +83,11 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
                 `linear-gradient(0deg, ${getSemanticValue(
                     // inverted doesn't work well for the modern layout
                     p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-                )} calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
+                )} calc(50% + ${
+                    (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small'
+                        ? '0.0825rem'
+                        : '0.0625rem'
+                }), transparent 50%)`};
         }
     }
 `;
