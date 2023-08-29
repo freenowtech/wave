@@ -235,6 +235,9 @@ export const SemanticColorsDarkSchema = {
         info: {
             faded: Colors.white
         },
+        success: {
+            default: Colors.green[350]
+        },
         danger: {
             default: Colors.orange[900],
             emphasized: Colors.orange[1000]
