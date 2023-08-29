@@ -289,6 +289,6 @@ export const SemanticColorsDarkSchema = {
         }
     },
     shadow: {
-        default: Colors.neutral[550]
+        default: Colors.neutral[650]
     }
 }; // satisfies SemanticColorsSchema;
