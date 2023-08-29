@@ -270,6 +270,7 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.white
             },
             danger: {
+                faded: Colors.orange[1000],
                 default: Colors.orange[900],
                 emphasized: Colors.orange[1000]
             }
