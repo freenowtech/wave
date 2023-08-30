@@ -21,6 +21,19 @@ import { SelectListProps } from './types';
 
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
+const getOptionError = (option: unknown): boolean =>
+    typeof option === 'object' && 'error' in option && Boolean(option.error);
+
+const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'disabled' | 'error' => {
+    if (selectProps.isDisabled) {
+        return 'disabled';
+    }
+
+    return !getOptionError(option) ? 'default' : 'error';
+};
+
+const getColor = (key: string, props: Props) => String(get(key)(props));
+
 const customStyles: StylesConfig = {
     container: (provided, { selectProps }: WithSelectProps<Props>) => {
         const bSize = {
@@ -169,35 +182,79 @@ const customStyles: StylesConfig = {
             cursor: state.isDisabled ? 'not-allowed' : 'default'
         };
     },
-    multiValue: (provided, { selectProps }: { selectProps: Props }) => {
+    multiValue: (provided, { selectProps, data }) => {
+        const optionVariant = getOptionVariant(selectProps, data);
+
         const styles = {
             ...provided,
-            color: Colors.ACTION_BLUE_900,
-            border: `0.0625rem solid ${Colors.ACTION_BLUE_900}`,
+            border: `0.0625rem solid`,
             borderRadius: '1rem',
-            backgroundColor: Colors.ACTION_BLUE_50,
             marginRight: '0.375rem',
             marginTop: '0.125rem',
             marginLeft: 0,
             marginBottom: '0.125rem',
             maxWidth: 'calc(100% - 0.5rem)',
-            transition: 'color 125ms ease, background-color 125ms ease',
-            '&:hover': {
-                backgroundColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE
-            }
+            transition: 'color 125ms ease, background-color 125ms ease'
         };
 
-        if (selectProps.isDisabled) {
-            return {
-                ...styles,
-                color: Colors.AUTHENTIC_BLUE_200,
-                backgroundColor: 'transparent',
-                borderColor: Colors.AUTHENTIC_BLUE_200
-            };
-        }
+        switch (optionVariant) {
+            case 'disabled':
+                return {
+                    ...styles,
 
-        return styles;
+                    color: getColor('semanticColors.text.disabled', selectProps),
+                    backgroundColor: 'transparent',
+                    borderColor: getColor('semanticColors.border.primary', selectProps),
+
+                    '> [role="button"]': {
+                        color: getColor('semanticColors.icon.disabled', selectProps)
+                    }
+                };
+            case 'error':
+                return {
+                    ...styles,
+                    color: getColor('semanticColors.text.dangerInverted', selectProps),
+                    backgroundColor: 'transparent',
+                    borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+
+                    '> [role="button"]': {
+                        color: getColor('semanticColors.icon.danger', selectProps)
+                    },
+
+                    '&:hover': {
+                        color: getColor('semanticColors.text.primaryInverted', selectProps),
+                        backgroundColor: getColor('semanticColors.background.dangerEmphasized', selectProps),
+                        borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+
+                        '> [role="button"]': {
+                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                        }
+                    }
+                };
+            case 'default':
+            default:
+                return {
+                    ...styles,
+
+                    color: getColor('semanticColors.text.link', selectProps),
+                    backgroundColor: getColor('semanticColors.background.info', selectProps),
+                    borderColor: getColor('semanticColors.border.infoEmphasized', selectProps),
+
+                    '> [role="button"]': {
+                        color: getColor('semanticColors.icon.action', selectProps)
+                    },
+
+                    '&:hover': {
+                        color: getColor('semanticColors.text.primaryInverted', selectProps),
+                        backgroundColor: getColor('semanticColors.background.infoEmphasized', selectProps),
+                        borderColor: getColor('semanticColors.border.infoEmphasized', selectProps),
+
+                        '> [role="button"]': {
+                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                        }
+                    }
+                };
+        }
     },
     multiValueLabel: (provided, { selectProps }) => ({
         ...provided,
@@ -214,6 +271,7 @@ const customStyles: StylesConfig = {
         paddingLeft: '0',
         paddingRight: '0.25rem',
         paddingTop: '0',
+        transition: 'color 125ms ease',
         '&:hover': {
             color: 'inherit',
             background: 'transparent'
