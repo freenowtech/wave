@@ -124,16 +124,17 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     ${tagVariant}
 `;
 
-const Tag: FC<PropsWithChildren<TagProps>> = ({ children, onDismiss, dismissible, ...rest }) => (
-    <TagWrapper {...rest}>
+const Tag: FC<PropsWithChildren<TagProps>> = ({
+    children,
+    onDismiss,
+    dismissible = true,
+    variant: variantValue = 'default',
+    ...rest
+}) => (
+    <TagWrapper variant={variantValue} {...rest}>
         <TagText dismissible={dismissible}>{children}</TagText>
         {dismissible && <DismissIcon data-testid="dismiss-icon" color={Colors.ACTION_BLUE_900} onClick={onDismiss} />}
     </TagWrapper>
 );
-
-Tag.defaultProps = {
-    dismissible: true,
-    variant: 'default'
-};
 
 export { Tag, TagProps };

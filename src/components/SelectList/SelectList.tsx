@@ -29,7 +29,11 @@ const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'dis
         return 'disabled';
     }
 
-    return !getOptionError(option) ? 'default' : 'error';
+    if (getOptionError(option)) {
+        return 'error';
+    }
+
+    return 'default';
 };
 
 const getColor = (key: string, props: Props) => String(get(key)(props));
@@ -187,7 +191,7 @@ const customStyles: StylesConfig = {
 
         const styles = {
             ...provided,
-            border: `0.0625rem solid`,
+            border: '0.0625rem solid',
             borderRadius: '1rem',
             marginRight: '0.375rem',
             marginTop: '0.125rem',
