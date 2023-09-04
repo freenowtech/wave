@@ -278,6 +278,14 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.orange[1000]
             }
         },
+        surface: {
+            neutral: {
+                faded: Colors.blue.secondary[100],
+            },
+            info: {
+                default: Colors.blue.secondary[1000],
+            }
+        },
         backdrop: Colors.blue.primary[50]
     },
     border: {
