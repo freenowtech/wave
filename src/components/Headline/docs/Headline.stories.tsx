@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { DEFAULT_HEADLINE_SIZE, Headline } from '../Headline';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Components/Headline',
@@ -39,15 +38,6 @@ export const WithAnotherLevel: Story = {
 export const WithAnotherSize: Story = {
     args: {
         size: 's'
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };
 

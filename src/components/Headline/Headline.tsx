@@ -8,10 +8,6 @@ import { getSemanticValue } from '../../utils/cssVariables';
 
 interface HeadlineProps extends ComponentPropsWithoutRef<'h1'>, MarginProps, TextAlignProps {
     /**
-     * Adjust color for display on a dark background
-     */
-    inverted?: boolean;
-    /**
      * Set the html tag for the headline including the appropriate styles
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -59,7 +55,7 @@ const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'x
     size || DEFAULT_HEADLINE_SIZE[as];
 
 const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
-    color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-primary')};
+    color: ${getSemanticValue('foreground-primary')};
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.bold')};
     margin: 0;
