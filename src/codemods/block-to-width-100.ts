@@ -1,8 +1,10 @@
 import { API, FileInfo } from 'jscodeshift';
+import { Options } from 'recast';
 
-module.exports = (file: FileInfo, api: API) => {
+module.exports = (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
     const ast = j(file.source);
+    const printOptions = options ?? { quote: 'single' };
 
     const localButtonNames = [];
 
@@ -53,5 +55,5 @@ module.exports = (file: FileInfo, api: API) => {
             });
     });
 
-    return ast.toSource({ quote: 'single' });
+    return ast.toSource(printOptions);
 };
