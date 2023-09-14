@@ -20,10 +20,8 @@ const Action = styled(Button)`
 
 export const ActionItem = ({ label, onClick, disabled = false }: Props): JSX.Element => (
     <FlipTheme>
-        (
-        <Action size="small" onClick={onClick} disabled={disabled}>
+        (<Action size="small" onClick={onClick} disabled={disabled}>
             {label}
-        </Action>
-        )
+        </Action>)
     </FlipTheme>
 );

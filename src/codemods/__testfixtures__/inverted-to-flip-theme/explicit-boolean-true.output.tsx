@@ -8,10 +8,8 @@ interface Props {
 
 export const ActionItem = ({ label, onClick, disabled = false }: Props): JSX.Element => (
     <FlipTheme>
-        (
-        <Button size="small" onClick={onClick} disabled={disabled}>
+        (<Button size="small" onClick={onClick} disabled={disabled}>
             {label}
-        </Button>
-        )
+        </Button>)
     </FlipTheme>
 );
