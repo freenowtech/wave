@@ -61,7 +61,7 @@ export const WithButtonTrigger: Story = {
         ),
         children: (
             <Button size="small" variant="primary">
-                <SettingsIcon size={20} /> Manage Booking
+                <SettingsIcon color='inherit' size={20} /> Manage Booking
             </Button>
         )
     }
