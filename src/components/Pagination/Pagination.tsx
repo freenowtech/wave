@@ -26,12 +26,19 @@ const IconButton = styled.button`
     justify-content: center;
     padding: 0;
     width: 2.5rem;
+    color: ${getSemanticValue('foreground-primary')};
+    fill: currentColor;
 
     &:not(:last-child) {
         margin-right: ${Spaces[1]};
     }
 
+    &:disabled {
+        color: ${getSemanticValue('foreground-disabled')};
+    }
+
     &:hover:not(:disabled) {
+        color: ${getSemanticValue('foreground-on-background-neutral')};
         background-color: ${getSemanticValue('background-element-neutral-emphasized')};
         cursor: pointer;
     }
@@ -144,49 +151,21 @@ const Pagination: React.FC<PaginationProps> = ({
                 )}
                 {size !== 'small' && (
                     <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
-                        <BackwardLastIcon
-                            size="small"
-                            color={
-                                isFirstPage
-                                    ? getSemanticValue('foreground-disabled')
-                                    : getSemanticValue('foreground-primary')
-                            }
-                        />
+                        <BackwardLastIcon size="small" color="inherit" />
                     </IconButton>
                 )}
 
                 <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
-                    <BackwardIcon
-                        size="small"
-                        color={
-                            isFirstPage
-                                ? getSemanticValue('foreground-disabled')
-                                : getSemanticValue('foreground-primary')
-                        }
-                    />
+                    <BackwardIcon size="small" color="inherit" />
                 </IconButton>
 
                 <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
-                    <ForwardIcon
-                        size="small"
-                        color={
-                            isLastPage
-                                ? getSemanticValue('foreground-disabled')
-                                : getSemanticValue('foreground-primary')
-                        }
-                    />
+                    <ForwardIcon size="small" color="inherit" />
                 </IconButton>
 
                 {size !== 'small' && (
                     <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
-                        <ForwardLastIcon
-                            size="small"
-                            color={
-                                isLastPage
-                                    ? getSemanticValue('foreground-disabled')
-                                    : getSemanticValue('foreground-primary')
-                            }
-                        />
+                        <ForwardLastIcon size="small" color="inherit" />
                     </IconButton>
                 )}
             </ButtonsContainer>
