@@ -51,7 +51,7 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
             `linear-gradient(0deg, ${getSemanticValue(
                 p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
             )} calc(50% + ${
-                (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small' ? '0.0825rem' : '0.0625rem'
+                (p.size as InternalInputComponentProps['size']) === 'small' ? '0.0825rem' : '0.0625rem'
             }), transparent 50%)`};
     }
 
@@ -84,9 +84,7 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
                     // inverted doesn't work well for the modern layout
                     p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
                 )} calc(50% + ${
-                    (p.size as Pick<InternalInputComponentProps, 'size'>['size']) === 'small'
-                        ? '0.0825rem'
-                        : '0.0625rem'
+                    (p.size as InternalInputComponentProps['size']) === 'small' ? '0.0825rem' : '0.0625rem'
                 }), transparent 50%)`};
         }
     }
