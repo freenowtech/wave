@@ -12,33 +12,27 @@ interface HelperTextProps extends TextProps {
      * @default info
      */
     variant?: ResponsiveValue<'info' | 'danger'>;
-    /**
-     * Adjust component for display on a dark background
-     */
-    inverted?: boolean;
 }
 
-const getVariants = (inverted?: boolean) =>
-    variant({
-        variants: {
-            info: {
-                color: getSemanticValue(inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized')
-            },
-            danger: {
-                color: getSemanticValue(inverted ? 'foreground-danger-default' : 'foreground-danger-emphasized')
-            }
+const variants = variant({
+    variants: {
+        info: {
+            color: getSemanticValue('foreground-neutral-emphasized')
+        },
+        danger: {
+            color: getSemanticValue('foreground-danger-default')
         }
-    });
+    }
+});
 
 const HelperText: React.FC<HelperTextProps> = styled(Text).attrs({ theme })`
     display: block;
     font-size: ${get('fontSizes.0')};
     text-align: left;
-    ${props => compose(getVariants(props.inverted), margin)};
+    ${compose(variants, margin)};
 `;
 
 HelperText.defaultProps = {
-    inverted: false,
     variant: 'info'
 };
 

@@ -1,6 +1,9 @@
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
+import { Input } from '../../Input/Input';
 import { HelperText } from '../HelperText';
-import { onDarkBackground } from '../../../docs/parameters';
+import { Box } from '../../Box/Box';
 
 const meta: Meta = {
     title: 'Components/HelperText',
@@ -28,11 +31,22 @@ export const Danger: Story = {
     }
 };
 
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
-    }
+export const AsInputClarification: Story = {
+    render: () => (
+        <Box p={2}>
+            <Input placeholder="Enter something" />
+            <HelperText mt="1">127 Characters left</HelperText>
+        </Box>
+    )
+};
+
+export const AsErrorDescription: Story = {
+    render: () => (
+        <Box p={2}>
+            <Input label="Email" placeholder="who@free-now.com" error />
+            <HelperText mt="1" variant="danger">
+                Email is required
+            </HelperText>
+        </Box>
+    )
 };

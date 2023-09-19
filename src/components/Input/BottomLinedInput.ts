@@ -9,7 +9,7 @@ const errorStyles = css`
     border-color: ${getSemanticValue('border-danger-default')};
 
     & ~ ${BottomLinedInputLabel} {
-        color: ${getSemanticValue('foreground-danger-emphasized')};
+        color: ${getSemanticValue('foreground-danger-default')};
     }
 `;
 

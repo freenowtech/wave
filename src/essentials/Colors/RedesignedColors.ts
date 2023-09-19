@@ -237,7 +237,7 @@ export const SemanticColorsDarkSchema = {
             default: Colors.green[900]
         },
         danger: {
-            default: Colors.red[350],
+            default: Colors.red[900],
             emphasized: Colors.primary[50]
         }
     },
