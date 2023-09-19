@@ -87,12 +87,3 @@ export const WithManualFontSize: Story = {
         fontSize: 1
     }
 };
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
-    }
-};
