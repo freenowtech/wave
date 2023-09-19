@@ -40,7 +40,7 @@ export const ClassicColors = createGlobalStyle`
     }
   }
   
-  body {
+  body, .wave {
     color: ${getSemanticValue('foreground-primary')};
     background-color: ${getSemanticValue('background-page-default')}
   }
@@ -65,6 +65,10 @@ export const ModernColors = createGlobalStyle`
   body, .wave {
     color: ${getSemanticValue('foreground-primary')};
     background-color: ${getSemanticValue('background-page-default')}
+  }
+  
+  svg {
+      fill: currentColor;
   }
 
   @media (prefers-color-scheme: dark) {

@@ -280,7 +280,7 @@ export const SemanticColorsDarkSchema = {
         },
         surface: {
             neutral: {
-                faded: Colors.blue.secondary[100],
+                faded: Colors.blue.secondary[350],
             },
             info: {
                 faded: Colors.blue.secondary[900],
