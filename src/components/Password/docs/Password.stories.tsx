@@ -65,15 +65,6 @@ export const Disabled: Story = {
     }
 };
 
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
-    }
-};
-
 export const WithNewPasswordPurpose: Story = {
     args: {
         purpose: 'new-password'

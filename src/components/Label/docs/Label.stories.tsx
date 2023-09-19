@@ -48,11 +48,6 @@ const meta: Meta = {
                 disable: true
             }
         },
-        inverted: {
-            table: {
-                disable: true
-            }
-        },
         fontWeight: {
             table: {
                 disable: true
