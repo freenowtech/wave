@@ -1,4 +1,4 @@
-import { API, FileInfo } from 'jscodeshift';
+import { API, ASTPath, FileInfo, JSXIdentifier } from 'jscodeshift';
 import { Options } from 'recast';
 
 module.exports = (file: FileInfo, api: API, options: Options) => {
@@ -38,22 +38,28 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
             .forEach(attr => {
                 const mutableAttr = j(attr);
 
-                // In case it's implicitly true (<Text weak>)
-                if (!attr.node.value) {
-                    // Replace with secondary prop
-                    mutableAttr.replaceWith(secondaryProp);
-                }
+                // Find the identifier (where the prop name is kept)
+                const identifier: ASTPath<JSXIdentifier> = mutableAttr
+                    .find(j.JSXIdentifier, {
+                        name: 'weak'
+                    })
+                    .get(0).node;
 
-                // In case it has a value (weak={false} or weak={true})
+                // In case it has a boolean value (weak={false} or weak={true})
                 if (
                     attr.node.value?.type === 'JSXExpressionContainer' &&
                     attr.node.value.expression.type === 'BooleanLiteral'
                 ) {
                     // If weak={true} replace with secondary prop
                     if (attr.node.value.expression.value) mutableAttr.replaceWith(secondaryProp);
-                    // Else (weak={false}) remove altogether
+                    // Otherwise (weak={false}) remove altogether
                     else mutableAttr.remove();
+                    return;
                 }
+
+                // For other cases, e.g. implicit value (weak), dynamic value (weak={Date.now() % 2 === 0})
+                // Replace the name of the prop
+                identifier.name = 'secondary';
             });
     });
 
