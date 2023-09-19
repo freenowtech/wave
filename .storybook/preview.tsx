@@ -14,7 +14,9 @@ export const withTheme = (Story, context) => {
     return (
         <>
             <Theme />
-            <Story {...context} />
+            <div className="wave">
+                <Story {...context} />
+            </div>
         </>
     );
 };

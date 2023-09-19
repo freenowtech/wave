@@ -274,9 +274,11 @@ export const SemanticColorsDarkSchema = {
         },
         surface: {
             neutral: {
-                faded: Colors.neutral[50],
+                faded: Colors.neutral[350],
             },
             info: {
+                faded: Colors.primary[900],
+                active: Colors.primary[900],
                 default: Colors.primary[1000],
             }
         },
@@ -284,7 +286,8 @@ export const SemanticColorsDarkSchema = {
     },
     border: {
         neutral: {
-            default: Colors.neutral[200]
+            default: Colors.neutral[200],
+            emphasized: Colors.neutral[50]
         },
         focus: Colors.neutral[550],
         disabled: Colors.neutral[550],

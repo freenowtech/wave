@@ -283,6 +283,8 @@ export const SemanticColorsDarkSchema = {
                 faded: Colors.blue.secondary[100],
             },
             info: {
+                faded: Colors.blue.secondary[900],
+                active: Colors.blue.secondary[900],
                 default: Colors.blue.secondary[1000],
             }
         },
@@ -290,7 +292,8 @@ export const SemanticColorsDarkSchema = {
     },
     border: {
         neutral: {
-            default: Colors.white
+            default: Colors.white,
+            emphasized: Colors.blue.primary[550]
         },
         accent: {
             faded: Colors.blue.secondary[350],

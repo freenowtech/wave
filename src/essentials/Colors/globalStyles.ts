@@ -9,14 +9,17 @@ import {
     SemanticColors as ModernSemanticColors,
     SemanticColorsDarkSchema as ModernSemanticColorsDark
 } from './RedesignedColors';
-import { generateBareTierCssVariables, generateSemanticTierCssVariables } from '../../utils/cssVariables';
+import {
+    generateBareTierCssVariables,
+    generateSemanticTierCssVariables,
+    getSemanticValue
+} from '../../utils/cssVariables';
 
 export const ClassicColors = createGlobalStyle`
   :root {
     color-scheme: light;
     ${generateBareTierCssVariables(ClassicBrandColors)}
     ${generateSemanticTierCssVariables(ClassicSemanticColors)}
-
   }
 
   .dark-theme {
@@ -36,6 +39,15 @@ export const ClassicColors = createGlobalStyle`
       ${generateSemanticTierCssVariables(ClassicSemanticColors)}
     }
   }
+  
+  body {
+    color: ${getSemanticValue('foreground-primary')};
+    background-color: ${getSemanticValue('background-page-default')}
+  }
+  
+  svg {
+      fill: currentColor;
+  }
 `;
 
 export const ModernColors = createGlobalStyle`
@@ -48,6 +60,11 @@ export const ModernColors = createGlobalStyle`
   .dark-theme {
     color-scheme: dark;
     ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
+  }
+  
+  body, .wave {
+    color: ${getSemanticValue('foreground-primary')};
+    background-color: ${getSemanticValue('background-page-default')}
   }
 
   @media (prefers-color-scheme: dark) {
