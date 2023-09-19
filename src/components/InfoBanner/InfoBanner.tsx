@@ -15,6 +15,7 @@ import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 import { Headline } from '../Headline/Headline';
 import { Spaces } from '../../essentials';
+import { theme } from '../../essentials/theme';
 
 interface InfoBannerProps extends BoxProps {
     /**
