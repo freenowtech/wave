@@ -42,6 +42,7 @@ export interface SemanticColorsSchema {
                 emphasized: Color;
             };
             danger: {
+                faded: Color;
                 default: Color;
                 emphasized: Color;
             };

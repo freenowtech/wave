@@ -167,6 +167,7 @@ export const SemanticColors = {
                 emphasized: Colors.yellow[900]
             },
             danger: {
+                faded: Colors.orange[50],
                 default: Colors.orange[50],
                 emphasized: Colors.orange[900]
             }
@@ -225,18 +226,21 @@ export const SemanticColorsDarkSchema = {
         'on-background': {
             primary: Colors.blue.secondary[900],
             disabled: Colors.blue.primary[350],
+            success: Colors.white,
             accent: Colors.white,
             neutral: Colors.blue.primary[900],
+            warning: Colors.blue.primary[900],
             info: Colors.white,
             danger: Colors.white
         },
         disabled: Colors.blue.primary[350],
         focus: Colors.white,
         info: {
-            faded: Colors.white
+            faded: Colors.white,
+            default: Colors.white
         },
         success: {
-            default: Colors.green[350]
+            default: Colors.green[900]
         },
         danger: {
             default: Colors.orange[900],
@@ -272,6 +276,12 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.blue.primary[350],
                 emphasized: Colors.white
             },
+            success: {
+                default: Colors.green[50]
+            },
+            warning: {
+                default: Colors.yellow[50]
+            },
             danger: {
                 faded: Colors.orange[1000],
                 default: Colors.orange[900],
@@ -279,13 +289,27 @@ export const SemanticColorsDarkSchema = {
             }
         },
         surface: {
+            primary: {
+                emphasized: Colors.blue.primary[200]
+            },
             neutral: {
-                faded: Colors.blue.secondary[350],
+                faded: Colors.blue.secondary[350]
             },
             info: {
                 faded: Colors.blue.secondary[900],
                 active: Colors.blue.secondary[900],
                 default: Colors.blue.secondary[1000],
+                emphasized: Colors.blue.secondary[1000]
+            },
+            success: {
+                emphasized: Colors.green[900]
+            },
+            warning: {
+                emphasized: Colors.yellow[900]
+            },
+            danger: {
+                faded: Colors.orange[350],
+                emphasized: Colors.red[1000]
             }
         },
         backdrop: Colors.blue.primary[50]
@@ -300,9 +324,17 @@ export const SemanticColorsDarkSchema = {
             default: Colors.blue.secondary[350]
         },
         info: {
-            default: Colors.blue.secondary[900]
+            default: Colors.blue.secondary[900],
+            faded: Colors.blue.secondary[900]
+        },
+        success: {
+            faded: Colors.green[900]
+        },
+        warning: {
+            default: Colors.yellow[900]
         },
         danger: {
+            faded: Colors.orange[900],
             default: Colors.orange[900]
         },
         focus: Colors.blue.secondary[900],
