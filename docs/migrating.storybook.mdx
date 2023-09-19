@@ -50,3 +50,12 @@ This won't change how your icons look in any way since we already exported the d
 ```bash
 npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
 ```
+
+### Text weak property
+
+The `weak` property was the initial way to indicate secondary information in a `Text` component, it has been deprecated for a while in favour of
+the more semantic `secondary` prop.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/weak-to-secondary.js path/to/src
+```
