@@ -30,10 +30,6 @@ interface TextProps
      */
     fontWeight?: ResponsiveValue<'normal' | 'semibold' | 'bold'>;
     /**
-     * Adjust color for display on a dark background
-     */
-    inverted?: boolean;
-    /**
      * Adjust color to indicate secondary information
      * @deprecated use `secondary` instead
      */
@@ -49,7 +45,7 @@ interface TextProps
 }
 
 function determineTextColor(props: TextProps) {
-    const { weak, secondary, inverted, disabled } = props;
+    const { weak, secondary, disabled } = props;
     if (weak !== undefined) {
         deprecatedProperty('Text', weak, 'weak', 'secondary', 'Rename `weak` to `secondary` to remove the warning.');
     }
@@ -59,7 +55,7 @@ function determineTextColor(props: TextProps) {
     }
 
     if (secondary || weak) {
-        return getSemanticValue(inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized');
+        return getSemanticValue('foreground-neutral-emphasized');
     }
 
     return getSemanticValue('foreground-primary');
