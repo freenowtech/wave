@@ -100,17 +100,17 @@ const Outliner = styled(Box)<OutlinerProps>`
     ${({ hasValidFile }) =>
         hasValidFile &&
         css`
-                ${MediaQueries.medium} {
-                    &:hover {
-                        background-color: ${Colors.ACTION_BLUE_50};
-                        border-color: ${Colors.ACTION_BLUE_50};
+            ${MediaQueries.medium} {
+                &:hover {
+                    background-color: ${Colors.ACTION_BLUE_50};
+                    border-color: ${Colors.ACTION_BLUE_50};
 
-                        svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
-                            fill: ${Colors.ACTION_BLUE_900};
-                        }
+                    svg:not([color='${Colors.POSITIVE_GREEN_900}']) path {
+                        fill: ${Colors.ACTION_BLUE_900};
                     }
                 }
-            `}
+            }
+        `}
 `;
 
 const Input = styled.input`
@@ -190,7 +190,7 @@ const FilePicker: FC<FilePickerProps> = ({
                     <Text as="label" htmlFor={name} fontSize={1}>
                         {label}
                     </Text>
-                    <Text weak fontSize={1}>
+                    <Text secondary fontSize={1}>
                         {file && shrinkFileName(file)}
                     </Text>
                 </Box>
@@ -204,9 +204,13 @@ const FilePicker: FC<FilePickerProps> = ({
                     )}
                 </Box>
                 <Box display={{ _: 'flex', medium: 'none' }} alignItems="top">
-                    {!alwaysShowActionButton && validFileSelected ? <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} /> : <ShareIcon />}
+                    {!alwaysShowActionButton && validFileSelected ? (
+                        <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} />
+                    ) : (
+                        <ShareIcon />
+                    )}
                 </Box>
-            </Outliner> 
+            </Outliner>
         </Box>
     );
 };
