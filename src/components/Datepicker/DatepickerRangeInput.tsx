@@ -239,9 +239,9 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     disabled,
     ...rest
 }: DatepickerRangeInputProps) => {
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
-    const [contentReference, setContentReference] = React.useState(undefined);
-    const [arrowReference, setArrowReference] = React.useState(undefined);
+    const [triggerReference, setTriggerReference] = useState(undefined);
+    const [contentReference, setContentReference] = useState(undefined);
+    const [arrowReference, setArrowReference] = useState(undefined);
 
     const localeObject = useLocaleObject(locale);
     const startDateRef = useRef<HTMLInputElement>();

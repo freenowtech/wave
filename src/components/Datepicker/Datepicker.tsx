@@ -53,12 +53,7 @@ interface BaseDatepickerProps extends UseDatepickerProps {
     locale: Locale;
 }
 
-const BaseDatepicker: FC<BaseDatepickerProps> = ({
-    forwardedRef,
-    focusedInput,
-    locale,
-    ...datepickerProps
-}: BaseDatepickerProps) => {
+const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, locale, ...datepickerProps }) => {
     const {
         firstDayOfWeek,
         activeMonths,
