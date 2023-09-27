@@ -30,6 +30,11 @@ interface TextProps
      */
     fontWeight?: ResponsiveValue<'normal' | 'semibold' | 'bold'>;
     /**
+     * Enforce primary color
+     */
+
+    primary?: boolean;
+    /**
      * Adjust color to indicate secondary information
      * @deprecated use `secondary` instead
      */
@@ -45,7 +50,7 @@ interface TextProps
 }
 
 function determineTextColor(props: TextProps) {
-    const { weak, secondary, disabled } = props;
+    const { primary, weak, secondary, disabled } = props;
     if (weak !== undefined) {
         deprecatedProperty('Text', weak, 'weak', 'secondary', 'Rename `weak` to `secondary` to remove the warning.');
     }
@@ -58,7 +63,11 @@ function determineTextColor(props: TextProps) {
         return getSemanticValue('foreground-neutral-emphasized');
     }
 
-    return getSemanticValue('foreground-primary');
+    if (primary) {
+        return getSemanticValue('foreground-primary');
+    }
+
+    return 'inherit';
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`

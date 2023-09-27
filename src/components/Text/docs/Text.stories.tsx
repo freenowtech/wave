@@ -68,6 +68,12 @@ type Story = StoryObj<typeof Text>;
 
 export const Default: Story = {};
 
+export const Primary: Story = {
+    args: {
+        primary: true
+    }
+};
+
 export const Secondary: Story = {
     args: {
         secondary: true
