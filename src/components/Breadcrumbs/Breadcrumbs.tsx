@@ -89,4 +89,4 @@ const Item = styled(Text).attrs(({ inverted }: ItemProps) => ({
 Breadcrumbs.Item = Item;
 Breadcrumbs.Link = Link;
 
-export { Breadcrumbs };
+export { Breadcrumbs, BreadcrumbsProps };
