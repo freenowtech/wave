@@ -193,6 +193,7 @@ exports[`Input variant "bottom-lined" renders the error state 1`] = `
   class="c0"
 >
   <input
+    aria-invalid="true"
     class="c1 c2"
     id="random"
     type="text"
@@ -347,6 +348,7 @@ exports[`Input variant "bottom-lined" renders the error state with label and pla
   class="c0"
 >
   <input
+    aria-invalid="true"
     class="c1 c2"
     id="random"
     placeholder="FREE NOW"
@@ -1054,6 +1056,7 @@ exports[`Input variant "boxed" renders the error state 1`] = `
   class="c0"
 >
   <input
+    aria-invalid="true"
     class="c1 c2"
     id="random"
     type="text"
@@ -1208,6 +1211,7 @@ exports[`Input variant "boxed" renders the error state with label and placeholde
   class="c0"
 >
   <input
+    aria-invalid="true"
     class="c1 c2"
     id="random"
     placeholder="FREE NOW"

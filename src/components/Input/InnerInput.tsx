@@ -44,6 +44,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
                         size={size}
                         hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
+                        aria-invalid={rest.error}
                     />
                     {label && (
                         <BoxedInputLabel htmlFor={id} size={size}>
@@ -64,6 +65,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
                         size={size}
                         hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
+                        aria-invalid={rest.error}
                     />
                     {label && (
                         <BottomLinedInputLabel htmlFor={id} size={size}>
