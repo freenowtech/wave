@@ -1,0 +1,39 @@
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as Breadcrumbs from './Breadcrumbs.stories';
+
+<Meta of={Breadcrumbs} />
+
+# Breadcrumbs
+
+<Primary />
+
+## Properties
+
+<ArgTypes of={Breadcrumbs} />
+
+## Compound components approach
+
+You can create your Breadcrumbs with active links and text using the following components"
+
+-   **Breadcrumbs** (Wrapper)
+-   **Breadcrumbs.Link**
+-   **Breadcrumbs.Text**
+
+The wrapper component (**Breadcrumbs**) expects a list of children and will render them with the separator. If Inverted variant is passed it will afftect the children.
+
+We can pass to the Link our favourite router passing the RouterLink in the `as` prop, avoiding the reload of the `a` tags.
+
+```tsx
+<Breadcrumbs>
+    <Breadcrumbs.Link href="/path">Path</Breadcrumbs.Link>
+    <Breadcrumbs.Link as={RouterLink} to="/path/to">
+        to
+    </Breadcrumbs.Link>
+    <Breadcrumbs.Item>Glory</Breadcrumbs.Item>
+</Breadcrumbs>
+```
+
+{/* <StyledSystemLinks component="Link" supportedProps={['margin', 'fontSize', 'textAlign']} /> */}
+
+<Stories includePrimary={false} />

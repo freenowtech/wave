@@ -1,5 +1,7 @@
 import { Meta } from '@storybook/blocks';
 
+import { PlacementMappingsTable } from './components/PlacementMappingsTable';
+
 <Meta title="Migrating" />
 
 # Migrating
@@ -59,3 +61,18 @@ the more semantic `secondary` prop.
 ```bash
 npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/weak-to-secondary.js path/to/src
 ```
+
+### Tooltip placement property
+
+In a previous minor release we swapped our positioning engine from `react-tether` to `react-popper`, this came with changes in the placement options
+of the engine, but to not introduce breaking changes we kept supporting the previous `react-tether` options as well. From now on you need to use the new
+`react-popper` options. This change only affects the `Tooltip` component `placement` prop.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/tooltip-placement.js path/to/src
+```
+
+You can find the mappings in the following table:
+
+<PlacementMappingsTable />
+

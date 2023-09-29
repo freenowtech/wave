@@ -32,14 +32,14 @@ export const ComplexDataTable: FC = () => (
                 <TableCell>
                     Große Elbstraße 273
                     <br />
-                    <Text fontSize={1} weak>
+                    <Text fontSize={1} secondary>
                         22767 Hamburg
                     </Text>
                 </TableCell>
                 <TableCell>
                     Holsteiner Chaussee 191
                     <br />
-                    <Text fontSize={1} weak>
+                    <Text fontSize={1} secondary>
                         22457 Hamburg
                     </Text>
                 </TableCell>
@@ -73,7 +73,7 @@ export const ComplexDataTable: FC = () => (
                 <TableCell>
                     Große Elbstraße 273
                     <br />
-                    <Text fontSize={1} weak>
+                    <Text fontSize={1} secondary>
                         22767 Hamburg
                     </Text>
                 </TableCell>
@@ -95,14 +95,14 @@ export const ComplexDataTable: FC = () => (
                 <TableCell>
                     Große Elbstraße 273
                     <br />
-                    <Text fontSize={1} weak>
+                    <Text fontSize={1} secondary>
                         22767 Hamburg
                     </Text>
                 </TableCell>
                 <TableCell>
                     Große Elbstraße 273
                     <br />
-                    <Text fontSize={1} weak>
+                    <Text fontSize={1} secondary>
                         22767 Hamburg
                     </Text>
                 </TableCell>
