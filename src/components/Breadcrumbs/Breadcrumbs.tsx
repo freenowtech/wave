@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { ChevronRightIcon } from '../../icons';
 import { Text } from '../Text/Text';
 
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { Box } from '../Box/Box';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface InvertedStyle {
     /**
@@ -53,7 +53,7 @@ const Breadcrumbs = ({ children, inverted }: BreadcrumbsProps): JSX.Element => {
                     </nav>
                     {index < arrayChildren.length - 1 ? (
                         <Box height={16} mt="0.125rem">
-                            <ChevronRightIcon size={16} color={Colors.AUTHENTIC_BLUE_350} />
+                            <ChevronRightIcon size={16} color={getSemanticValue('foreground-neutral-default')} />
                         </Box>
                     ) : // eslint-disable-next-line unicorn/no-null
                     null}
@@ -65,7 +65,10 @@ const Breadcrumbs = ({ children, inverted }: BreadcrumbsProps): JSX.Element => {
 
 const Link = styled.a.attrs({ theme })<LinkProps>`
     display: inline-block;
-    color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
+    color: ${p =>
+        p.inverted
+            ? getSemanticValue('foreground-on-background-primary')
+            : getSemanticValue('foreground-accent-default')};
     cursor: pointer;
     line-height: 1.4;
     font-family: ${get('fonts.normal')};
@@ -75,7 +78,10 @@ const Link = styled.a.attrs({ theme })<LinkProps>`
 
     &:hover,
     &:active {
-        color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.ACTION_BLUE_1000)};
+        color: ${p =>
+            p.inverted
+                ? getSemanticValue('foreground-neutral-default')
+                : getSemanticValue('foreground-accent-emphasized')};
         text-decoration: underline;
     }
 `;
