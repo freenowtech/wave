@@ -37,8 +37,6 @@ const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'dis
     return 'default';
 };
 
-const getColor = (key: string, props: Props) => String(get(key)(props));
-
 const customStyles: StylesConfig = {
     container: (provided, { selectProps }: WithSelectProps<Props>) => {
         const bSize = {
@@ -219,27 +217,27 @@ const customStyles: StylesConfig = {
                     borderColor: getSemanticValue('border-disabled'),
 
                     '> [role="button"]': {
-                        color: getColor('semanticColors.icon.disabled', selectProps)
+                        color: getSemanticValue('foreground-disabled')
                     }
                 };
             case 'error':
                 return {
                     ...styles,
-                    color: getColor('semanticColors.text.dangerInverted', selectProps),
+                    color: getSemanticValue('foreground-danger-default'),
                     backgroundColor: 'transparent',
-                    borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+                    borderColor: getSemanticValue('border-danger-default'),
 
                     '> [role="button"]': {
-                        color: getColor('semanticColors.icon.danger', selectProps)
+                        color: getSemanticValue('foreground-danger-default')
                     },
 
                     '&:hover': {
-                        color: getColor('semanticColors.text.primaryInverted', selectProps),
-                        backgroundColor: getColor('semanticColors.background.dangerEmphasized', selectProps),
-                        borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+                        color: getSemanticValue('foreground-on-background-danger'),
+                        backgroundColor: getSemanticValue('background-surface-danger-emphasized'),
+                        borderColor: getSemanticValue('border-danger-default'),
 
                         '> [role="button"]': {
-                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                            color: getSemanticValue('foreground-on-background-danger')
                         }
                     }
                 };
@@ -252,16 +250,16 @@ const customStyles: StylesConfig = {
                     borderColor: getSemanticValue('border-info-default'),
 
                     '> [role="button"]': {
-                        color: getColor('semanticColors.icon.action', selectProps)
+                        color: getSemanticValue('foreground-info-default')
                     },
 
                     '&:hover': {
                         color: getSemanticValue('foreground-on-background-primary'),
                         backgroundColor: getSemanticValue('background-element-info-emphasized'),
-                        borderColor: getColor('semanticColors.border.infoEmphasized', selectProps),
+                        borderColor: getSemanticValue('border-info-default'),
 
                         '> [role="button"]': {
-                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                            color: getSemanticValue('foreground-on-background-info')
                         }
                     }
                 };
