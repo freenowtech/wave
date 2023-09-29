@@ -98,18 +98,22 @@ export interface SemanticColorsSchema {
             emphasized: Color;
         };
         info: {
+            banner: Color;
             faded: Color;
             default: Color;
         };
         success: {
+            banner: Color;
             faded: Color;
             default: Color;
         };
         warning: {
+            banner: Color;
             faded: Color;
             default: Color;
         };
         danger: {
+            banner: Color;
             faded: Color;
             default: Color;
         };

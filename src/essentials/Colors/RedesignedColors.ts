@@ -182,18 +182,22 @@ export const SemanticColors = {
         focus: Colors.neutral[550],
         disabled: Colors.neutral[200],
         info: {
+            banner: Colors.neutral[200],
             faded: Colors.neutral[200],
             default: Colors.neutral[550]
         },
         success: {
+            banner: Colors.neutral[200],
             faded: Colors.green[350],
             default: Colors.green[900]
         },
         warning: {
+            banner: Colors.neutral[200],
             faded: Colors.yellow[350],
             default: Colors.yellow[900]
         },
         danger: {
+            banner: Colors.neutral[200],
             faded: Colors.red[350],
             default: Colors.red[900]
         }
@@ -287,7 +291,8 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.neutral[200]
             },
             neutral: {
-                faded: Colors.neutral[350]
+                faded: Colors.neutral[350],
+                emphasized: Colors.neutral[550]
             },
             info: {
                 faded: Colors.primary[900],
@@ -296,13 +301,16 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.neutral[550]
             },
             success: {
+                default: Colors.neutral[750],
                 emphasized: Colors.green[900]
             },
             warning: {
+                default: Colors.neutral[750],
                 emphasized: Colors.yellow[900]
             },
             danger: {
                 faded: Colors.red[1000],
+                default: Colors.neutral[750],
                 emphasized: Colors.red[900]
             }
         },
@@ -320,16 +328,21 @@ export const SemanticColorsDarkSchema = {
             default: Colors.primary[350]
         },
         info: {
-            default: Colors.neutral[550],
-            faded: Colors.neutral[550]
+            banner: Colors.neutral[200],
+            faded: Colors.neutral[550],
+            default: Colors.neutral[550]
         },
         success: {
+            banner: Colors.green[900],
             faded: Colors.green[900]
         },
         warning: {
+            banner: Colors.yellow[900],
+            faded: Colors.yellow[900],
             default: Colors.yellow[900]
         },
         danger: {
+            banner: Colors.red[900],
             faded: Colors.red[900],
             default: Colors.red[900]
         }

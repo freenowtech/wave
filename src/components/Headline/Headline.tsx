@@ -55,7 +55,7 @@ const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'x
     size || DEFAULT_HEADLINE_SIZE[as];
 
 const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
-    color: ${getSemanticValue('foreground-primary')};
+    color: inherit;
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.bold')};
     margin: 0;
