@@ -50,16 +50,16 @@ const tagVariant = variant({
             borderColor: getSemanticValue('border-info-default'),
 
             [`> ${TagText}`]: {
-                color: get('semanticColors.text.link')
+                color: getSemanticValue('foreground-info-default')
             },
 
             [`> ${DismissIcon}`]: {
-                color: get('semanticColors.icon.action')
+                color: getSemanticValue('foreground-info-default')
             },
 
             '&:hover': {
                 backgroundColor: getSemanticValue('background-element-info-emphasized'),
-                borderColor: get('semanticColors.border.infoEmphasized'),
+                borderColor: getSemanticValue('border-info-default'),
 
                 [`> ${TagText}`]: {
                     color: getSemanticValue('foreground-on-background-info')
@@ -71,38 +71,38 @@ const tagVariant = variant({
             }
         },
         disabled: {
-            borderColor: get('semanticColors.border.primary'),
+            borderColor: getSemanticValue('border-disabled'),
 
             [`> ${TagText}`]: {
-                color: get('semanticColors.text.disabled')
+                color: getSemanticValue('foreground-disabled')
             },
 
             [`> ${DismissIcon}`]: {
-                color: get('semanticColors.icon.disabled')
+                color: getSemanticValue('foreground-disabled')
             }
         },
         error: {
-            backgroundColor: get('semanticColors.background.danger'),
-            borderColor: get('semanticColors.border.dangerEmphasized'),
+            backgroundColor: getSemanticValue('background-surface-danger-default'),
+            borderColor: getSemanticValue('border-danger-default'),
 
             [`> ${TagText}`]: {
-                color: get('semanticColors.text.dangerInverted')
+                color: getSemanticValue('foreground-danger-default')
             },
 
             [`> ${DismissIcon}`]: {
-                color: get('semanticColors.icon.danger')
+                color: getSemanticValue('foreground-danger-default')
             },
 
             '&:hover': {
-                backgroundColor: get('semanticColors.background.dangerEmphasized'),
-                borderColor: get('semanticColors.border.dangerEmphasized'),
+                backgroundColor: getSemanticValue('background-surface-danger-emphasized'),
+                borderColor: getSemanticValue('border-danger-default'),
 
                 [`> ${TagText}`]: {
-                    color: get('semanticColors.text.primaryInverted')
+                    color: getSemanticValue('foreground-on-background-danger')
                 },
 
                 [`> ${DismissIcon}`]: {
-                    color: get('semanticColors.icon.primaryInverted')
+                    color: getSemanticValue('foreground-on-background-danger')
                 }
             }
         }
