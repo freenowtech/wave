@@ -5,7 +5,7 @@ import { Modal } from '../Modal';
 export const modalContent = (dismiss: () => void): React.ReactElement => (
     <>
         <Headline as="h2">Add Note</Headline>
-        <Text as="p" weak my={3}>
+        <Text as="p" secondary my={3}>
             Please keep in mind that comments are also read by other agents. Make sure to write comprehensible text.
         </Text>
         <Button onClick={dismiss}>Add Note</Button>

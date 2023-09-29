@@ -37,7 +37,7 @@ const SpacesContainer: React.FC = () => (
                     <Text mt={1} fontSize={1} style={{ color: 'inherit' }}>
                         {space}
                     </Text>
-                    <Text mb={2} fontSize={1} weak>
+                    <Text mb={2} fontSize={1} secondary>
                         {Number(space.replace('rem', '')) * 16}px
                     </Text>
                     <SpaceSquare space={Spaces[index]} />

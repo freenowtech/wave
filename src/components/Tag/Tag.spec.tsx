@@ -1,6 +1,7 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import * as React from 'react';
 import { Tag } from './Tag';
+import { SemanticColors } from '../../essentials';
 
 describe('Tag', () => {
     it('renders and can be dismissed', () => {
@@ -21,5 +22,34 @@ describe('Tag', () => {
         );
 
         expect(queryByTestId('dismiss-icon')).toBeNull();
+    });
+
+    it('renders disabled variant', () => {
+        const { container } = render(<Tag variant="disabled">Lorem</Tag>);
+
+        expect(container.firstChild).toHaveStyle(`
+            border-color: ${SemanticColors.border.primary};
+        `);
+        expect(screen.getByText('Lorem')).toHaveStyle(`
+            color: ${SemanticColors.text.disabled};
+        `);
+        expect(screen.getByTestId('dismiss-icon')).toHaveStyle(`
+            color: ${SemanticColors.icon.disabled};
+        `);
+    });
+
+    it('renders error variant', () => {
+        const { container } = render(<Tag variant="error">Lorem</Tag>);
+
+        expect(container.firstChild).toHaveStyle(`
+            background-color: ${SemanticColors.background.danger};
+            border-color: ${SemanticColors.border.dangerEmphasized};
+        `);
+        expect(screen.getByText('Lorem')).toHaveStyle(`
+            color: ${SemanticColors.text.dangerInverted};
+        `);
+        expect(screen.getByTestId('dismiss-icon')).toHaveStyle(`
+            color: ${SemanticColors.icon.danger};
+        `);
     });
 });
