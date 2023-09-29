@@ -52,11 +52,6 @@ const meta: Meta = {
                 disable: true
             }
         },
-        weak: {
-            table: {
-                disable: true
-            }
-        }
     },
     args: {
         children: 'Sign up to FREENOW'
