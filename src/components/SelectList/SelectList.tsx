@@ -22,6 +22,23 @@ import { SelectListProps } from './types';
 
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
+const getOptionError = (option: unknown): boolean =>
+    typeof option === 'object' && 'error' in option && Boolean(option.error);
+
+const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'disabled' | 'error' => {
+    if (selectProps.isDisabled) {
+        return 'disabled';
+    }
+
+    if (getOptionError(option)) {
+        return 'error';
+    }
+
+    return 'default';
+};
+
+const getColor = (key: string, props: Props) => String(get(key)(props));
+
 const customStyles: StylesConfig = {
     container: (provided, { selectProps }: WithSelectProps<Props>) => {
         const bSize = {
@@ -178,35 +195,77 @@ const customStyles: StylesConfig = {
             cursor: state.isDisabled ? 'not-allowed' : 'default'
         };
     },
-    multiValue: (provided, { selectProps }: { selectProps: Props }) => {
+    multiValue: (provided, { selectProps, data }) => {
+        const optionVariant = getOptionVariant(selectProps, data);
+
         const styles = {
             ...provided,
-            color: getSemanticValue('foreground-info-faded'),
-            border: `0.0625rem solid ${getSemanticValue('border-info-default')}`,
+            border: '0.0625rem solid',
             borderRadius: '1rem',
-            backgroundColor: getSemanticValue('background-element-info-default'),
             marginRight: '0.375rem',
             marginTop: '0.125rem',
             marginLeft: 0,
             marginBottom: '0.125rem',
             maxWidth: 'calc(100% - 0.5rem)',
-            transition: 'color 125ms ease, background-color 125ms ease',
-            '&:hover': {
-                backgroundColor: getSemanticValue('background-element-info-emphasized'),
-                color: getSemanticValue('foreground-on-background-primary')
-            }
+            transition: 'color 125ms ease, background-color 125ms ease'
         };
 
-        if (selectProps.isDisabled) {
-            return {
-                ...styles,
-                color: getSemanticValue('foreground-disabled'),
-                backgroundColor: 'transparent',
-                borderColor: getSemanticValue('border-disabled')
-            };
-        }
+        switch (optionVariant) {
+            case 'disabled':
+                return {
+                    ...styles,
+                    color: getSemanticValue('foreground-disabled'),
+                    backgroundColor: 'transparent',
+                    borderColor: getSemanticValue('border-disabled'),
 
-        return styles;
+                    '> [role="button"]': {
+                        color: getColor('semanticColors.icon.disabled', selectProps)
+                    }
+                };
+            case 'error':
+                return {
+                    ...styles,
+                    color: getColor('semanticColors.text.dangerInverted', selectProps),
+                    backgroundColor: 'transparent',
+                    borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+
+                    '> [role="button"]': {
+                        color: getColor('semanticColors.icon.danger', selectProps)
+                    },
+
+                    '&:hover': {
+                        color: getColor('semanticColors.text.primaryInverted', selectProps),
+                        backgroundColor: getColor('semanticColors.background.dangerEmphasized', selectProps),
+                        borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+
+                        '> [role="button"]': {
+                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                        }
+                    }
+                };
+            case 'default':
+            default:
+                return {
+                    ...styles,
+                    color: getSemanticValue('foreground-info-faded'),
+                    backgroundColor: getSemanticValue('background-element-info-default'),
+                    borderColor: getSemanticValue('border-info-default'),
+
+                    '> [role="button"]': {
+                        color: getColor('semanticColors.icon.action', selectProps)
+                    },
+
+                    '&:hover': {
+                        color: getSemanticValue('foreground-on-background-primary'),
+                        backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                        borderColor: getColor('semanticColors.border.infoEmphasized', selectProps),
+
+                        '> [role="button"]': {
+                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                        }
+                    }
+                };
+        }
     },
     multiValueLabel: (provided, { selectProps }) => ({
         ...provided,
@@ -223,6 +282,7 @@ const customStyles: StylesConfig = {
         paddingLeft: '0',
         paddingRight: '0.25rem',
         paddingTop: '0',
+        transition: 'color 125ms ease',
         '&:hover': {
             color: 'inherit',
             background: 'transparent'

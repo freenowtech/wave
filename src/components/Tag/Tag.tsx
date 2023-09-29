@@ -1,6 +1,6 @@
 import React, { FC, MouseEvent, PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { margin, MarginProps } from 'styled-system';
+import { margin, MarginProps, variant } from 'styled-system';
 
 import { theme } from '../../essentials/theme';
 import { CloseIcon } from '../../icons';
@@ -17,6 +17,11 @@ interface TagProps extends MarginProps {
      * The prop to determine whether the dismiss functionality is enabled
      */
     dismissible?: boolean;
+    /**
+     * Set the appropriate semantic tag color.
+     * @default default
+     */
+    variant?: 'default' | 'disabled' | 'error';
 }
 
 const TagText = styled(Text).attrs({ theme })<Pick<TagProps, 'dismissible'>>`
@@ -38,10 +43,75 @@ const DismissIcon = styled(CloseIcon).attrs({ size: 18 })`
     }
 `;
 
+const tagVariant = variant({
+    variants: {
+        default: {
+            backgroundColor: getSemanticValue('background-element-info-default'),
+            borderColor: getSemanticValue('border-info-default'),
+
+            [`> ${TagText}`]: {
+                color: get('semanticColors.text.link')
+            },
+
+            [`> ${DismissIcon}`]: {
+                color: get('semanticColors.icon.action')
+            },
+
+            '&:hover': {
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                borderColor: get('semanticColors.border.infoEmphasized'),
+
+                [`> ${TagText}`]: {
+                    color: getSemanticValue('foreground-on-background-info')
+                },
+
+                [`> ${DismissIcon}`]: {
+                    color: getSemanticValue('foreground-on-background-info')
+                }
+            }
+        },
+        disabled: {
+            borderColor: get('semanticColors.border.primary'),
+
+            [`> ${TagText}`]: {
+                color: get('semanticColors.text.disabled')
+            },
+
+            [`> ${DismissIcon}`]: {
+                color: get('semanticColors.icon.disabled')
+            }
+        },
+        error: {
+            backgroundColor: get('semanticColors.background.danger'),
+            borderColor: get('semanticColors.border.dangerEmphasized'),
+
+            [`> ${TagText}`]: {
+                color: get('semanticColors.text.dangerInverted')
+            },
+
+            [`> ${DismissIcon}`]: {
+                color: get('semanticColors.icon.danger')
+            },
+
+            '&:hover': {
+                backgroundColor: get('semanticColors.background.dangerEmphasized'),
+                borderColor: get('semanticColors.border.dangerEmphasized'),
+
+                [`> ${TagText}`]: {
+                    color: get('semanticColors.text.primaryInverted')
+                },
+
+                [`> ${DismissIcon}`]: {
+                    color: get('semanticColors.icon.primaryInverted')
+                }
+            }
+        }
+    }
+});
+
 const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     box-sizing: border-box;
-    background-color: ${getSemanticValue('background-element-info-default')};
-    border: solid 0.0625rem ${getSemanticValue('border-info-default')};
+    border: solid 0.0625rem;
     display: inline-flex;
     align-items: center;
     border-radius: 2rem;
@@ -52,22 +122,17 @@ const TagWrapper = styled.div.attrs({ theme })<TagProps>`
     transition: background-color 125ms ease;
 
     ${margin}
-
-    &:hover {
-        background-color: ${getSemanticValue('background-element-info-emphasized')};
-
-        > ${TagText} {
-            color: ${getSemanticValue('foreground-on-background-info')};
-        }
-
-        > ${DismissIcon} {
-            color: ${getSemanticValue('foreground-on-background-info')};
-        }
-    }
+    ${tagVariant}
 `;
 
-const Tag: FC<PropsWithChildren<TagProps>> = ({ children, onDismiss, dismissible = true, ...rest }) => (
-    <TagWrapper {...rest}>
+const Tag: FC<PropsWithChildren<TagProps>> = ({
+    children,
+    onDismiss,
+    dismissible = true,
+    variant: variantValue = 'default',
+    ...rest
+}) => (
+    <TagWrapper variant={variantValue} {...rest}>
         <TagText dismissible={dismissible}>{children}</TagText>
         {dismissible && (
             <DismissIcon
