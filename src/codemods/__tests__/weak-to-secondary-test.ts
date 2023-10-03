@@ -1,5 +1,5 @@
 jest.autoMockOff();
-const { defineTest } = require('jscodeshift/dist/testUtils');
+import { defineTest } from 'jscodeshift/dist/testUtils';
 
 const tests = ['basic-usage', 'local-rename', 'boolean-true', 'boolean-false', 'dynamic-value'];
 
