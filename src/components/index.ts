@@ -56,3 +56,4 @@ export { Row, RowProps, Column, ColumnProps } from './Grid/Grid';
 export { Popover, PopoverProps } from './Popover/Popover';
 export { InfoBanner, InfoBannerProps, InfoBannerVariants } from './InfoBanner/InfoBanner';
 export { InfoBannerCard } from './InfoBanner/blocks/InfoBannerCard';
+export { ColorMode } from './ColorMode/ColorMode';

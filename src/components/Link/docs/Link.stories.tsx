@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
 
-import { onDarkBackground } from '../../../docs/parameters';
 import { Link } from '../Link';
 
 const meta: Meta = {

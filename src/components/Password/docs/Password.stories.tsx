@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Password } from '../Password';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Form Elements/Password',
