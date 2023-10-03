@@ -50,11 +50,6 @@ const meta: Meta = {
             table: {
                 disable: true
             }
-        },
-        weak: {
-            table: {
-                disable: true
-            }
         }
     },
     args: {

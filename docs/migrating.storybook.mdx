@@ -1,23 +1,12 @@
 import { Meta } from '@storybook/blocks';
 
+import { PlacementMappingsTable } from './components/PlacementMappingsTable';
+
 <Meta title="Migrating" />
 
 # Migrating
 
-Migrating from one major version to the next with ease.
-
-## From v1 to v2
-
-A codemod exists to upgrade your components for this version.
-
-```bash
-npx jscodeshift -t node_modules/@freenow/wave/codemods/v2.ts path/to/src
-```
-
-### Button and TextButton
-
-The `block` property used to act as a shortcut to give the button components a width of 100%. In the future, use the `width` property
-directly. It uses the styled-system variable, which is a lot more flexible than just the boolean flag.
+Migrate to the next Wave major version with ease.
 
 ## Codemods
 
@@ -28,3 +17,61 @@ previous major versions first. Beware that codemods are not 100% fool-proof and 
 
 If you're working in a typescript environment, you need to add `--parser=tsx` to the command in each codemod command to
 allow jscodeshift to parse your typescript/jsx files.
+
+## From v1 to v2
+
+The following codemods exist to upgrade your components for version 2. In order to apply the transformations in your project you simply need to run the
+command for your desired codemod pointing to your project's source path.
+
+### Button and TextButton block property
+
+The `block` property used to act as a shortcut to give the button components a width of 100%. In the future, use the `width` property
+directly. It uses the styled-system variable, which is a lot more flexible than just the boolean flag.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/block-to-width-100.js path/to/src
+```
+
+### Colors to CSS variables
+
+Our theme colors structure has changed significantly in this major. In order to use Wave colors in your project you should now use the CSS variables
+that our theme brings.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
+```
+
+Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
+we recommend using semantic tokens instead as a best practice and offer a `getSemanticValue` API for just that.
+
+### Deprecated icons
+
+We had some deprecated icons that have been deleted in this major, in case you used any of them you need to use their valid (non-deprecated) counterpart from now on.
+This won't change how your icons look in any way since we already exported the deprecated icons as wrappers of valid ones.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
+```
+
+### Text weak property
+
+The `weak` property was the initial way to indicate secondary information in a `Text` component, it has been deprecated for a while in favour of
+the more semantic `secondary` prop.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/weak-to-secondary.js path/to/src
+```
+
+### Tooltip placement property
+
+In a previous minor release we swapped our positioning engine from `react-tether` to `react-popper`, this came with changes in the placement options
+of the engine, but to not introduce breaking changes we kept supporting the previous `react-tether` options as well. From now on you need to use the new
+`react-popper` options. This change only affects the `Tooltip` component `placement` prop.
+
+```bash
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/tooltip-placement.js path/to/src
+```
+
+You can find the mappings in the following table:
+
+<PlacementMappingsTable />

@@ -2,13 +2,12 @@ import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
-import { Placement } from '@popperjs/core/lib/enums';
+import { Placement } from '@popperjs/core';
 import { variant } from 'styled-system';
 import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
 import { InvertedColorMode } from '../ColorMode/InvertedColorMode';
 
 const fadeAnimation = keyframes`
@@ -130,7 +129,7 @@ interface TooltipProps {
     /**
      * Set the position of where the tooltip is attached to the target, defaults to "top"
      */
-    placement?: TooltipPlacement | Placement;
+    placement?: Placement;
     /**
      * Force the tooltip to always be visible, regardless of user interaction
      */
@@ -150,15 +149,8 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     const [triggerReference, setTriggerReference] = React.useState(undefined);
     const [contentReference, setContentReference] = React.useState(undefined);
 
-    /**
-     * Map the older placement values to Popper placement  as we need to get the correct placement for the tooltip from the Popper library
-     * without introduce any breaking changes to the Tooltip component.
-     * TODO: Remove in the next major release.
-     */
-    const mappedPlacement = mapPlacementWithDeprecationWarning(placement);
-
     const { styles, attributes } = usePopper(triggerReference, contentReference, {
-        placement: mappedPlacement,
+        placement,
         modifiers: [
             {
                 name: 'offset',

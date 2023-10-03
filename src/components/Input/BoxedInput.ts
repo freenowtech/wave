@@ -44,7 +44,9 @@ const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
         background: ${p =>
             `linear-gradient(0deg, 
             ${getSemanticValue('background-page-default')} 
-            calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
+            calc(50% + ${
+                (p.size as InternalInputComponentProps['size']) === 'small' ? '0.0825rem' : '0.0625rem'
+            }), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -71,7 +73,9 @@ const BoxedInput = styled(BaseInput)<InternalInputComponentProps>`
             background: ${p =>
                 `linear-gradient(0deg, 
                 ${getSemanticValue('background-page-default')} 
-                calc(50% + ${p.size === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
+                calc(50% + ${
+                    (p.size as InternalInputComponentProps['size']) === 'small' ? '0.0825rem' : '0.0625rem'
+                }), transparent 50%)`};
         }
     }
 `;

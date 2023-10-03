@@ -73,3 +73,36 @@ export const WithError: Story = {
         error: true
     }
 };
+
+const errorOptions = [
+    {
+        label: 'Sales',
+        value: 'sales'
+    },
+    {
+        label: 'Marketing',
+        value: 'marketing',
+        error: true
+    }
+];
+
+export const MultiSelectError: Story = {
+    args: {
+        label: 'Multi select with error',
+        error: true,
+        isMulti: true,
+        options: errorOptions,
+        value: errorOptions
+    }
+};
+
+export const MultiSelectDisabled: Story = {
+    args: {
+        label: 'Disabled multi select',
+        error: true,
+        isMulti: true,
+        isDisabled: true,
+        options: errorOptions,
+        value: errorOptions
+    }
+};

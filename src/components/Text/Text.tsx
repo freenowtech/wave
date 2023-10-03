@@ -15,7 +15,6 @@ import {
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { deprecatedProperty } from '../../utils/deprecatedProperty';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 interface TextProps
@@ -36,11 +35,6 @@ interface TextProps
     primary?: boolean;
     /**
      * Adjust color to indicate secondary information
-     * @deprecated use `secondary` instead
-     */
-    weak?: boolean;
-    /**
-     * Adjust color to indicate secondary information
      */
     secondary?: boolean;
     /**
@@ -50,16 +44,13 @@ interface TextProps
 }
 
 function determineTextColor(props: TextProps) {
-    const { primary, weak, secondary, disabled } = props;
-    if (weak !== undefined) {
-        deprecatedProperty('Text', weak, 'weak', 'secondary', 'Rename `weak` to `secondary` to remove the warning.');
-    }
+    const { primary, secondary, disabled } = props;
 
     if (disabled) {
         return getSemanticValue('foreground-disabled');
     }
 
-    if (secondary || weak) {
+    if (secondary) {
         return getSemanticValue('foreground-neutral-emphasized');
     }
 

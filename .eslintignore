@@ -12,3 +12,5 @@ assets/
 fixtures/
 
 src/icons/
+
+src/codemods/

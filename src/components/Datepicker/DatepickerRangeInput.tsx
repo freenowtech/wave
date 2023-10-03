@@ -1,10 +1,11 @@
 import { END_DATE, FirstDayOfWeek, FocusedInput, START_DATE } from '@datepicker-react/hooks';
 import { compareDesc, Locale, parse, startOfDay, endOfDay } from 'date-fns';
-import React, { ChangeEventHandler, FC, MutableRefObject, useEffect, useRef, useState } from 'react';
-import TetherComponent from 'react-tether';
+import React, { ChangeEventHandler, FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
-import { Elevation, MediaQueries } from '../../essentials';
+import { usePopper } from 'react-popper';
+import { createPortal } from 'react-dom';
+import { MediaQueries } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
@@ -17,6 +18,7 @@ import { HelperText } from '../HelperText/HelperText';
 import { dateToDisplayText } from './utils/dateToDisplayText';
 import { useLocaleObject } from './utils/useLocaleObject';
 import { useOnChange } from './utils/useOnChange';
+import { Arrow, DatepickerContentContainer } from './DatepickerContentElements';
 
 type DateRangerProps = MarginProps & WidthProps;
 
@@ -204,6 +206,19 @@ const isValidRange = (startDate, endDate) => {
     return true;
 };
 
+type DatepickerPopperPlacement = 'bottom-end' | 'bottom-start' | 'bottom';
+
+const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
+    [key in DatepickerRangeInputProps['placement']]: DatepickerPopperPlacement;
+} = {
+    center: 'bottom',
+    left: 'bottom-start',
+    right: 'bottom-end'
+};
+
+const mapPlacementToPopperPlacement = (placement: DatepickerRangeInputProps['placement']) =>
+    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement];
+
 const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     minDate,
     maxDate,
@@ -225,6 +240,10 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     disabled,
     ...rest
 }: DatepickerRangeInputProps) => {
+    const [triggerReference, setTriggerReference] = useState(undefined);
+    const [contentReference, setContentReference] = useState(undefined);
+    const [arrowReference, setArrowReference] = useState(undefined);
+
     const localeObject = useLocaleObject(locale);
     const startDateRef = useRef<HTMLInputElement>();
     const endDateRef = useRef<HTMLInputElement>();
@@ -235,6 +254,29 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     );
     const [error, setError] = useState({ startDate: false, endDate: false });
     const displayErrorMessage = typeof errorHandler === 'string';
+
+    const mappedPlacement = mapPlacementToPopperPlacement(placement);
+
+    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+        placement: mappedPlacement,
+        modifiers: [
+            {
+                name: 'flip',
+                enabled: true
+            },
+            {
+                name: 'offset',
+                enabled: true,
+                options: {
+                    offset: [0, 15]
+                }
+            },
+            {
+                name: 'arrow',
+                options: { element: arrowReference }
+            }
+        ]
+    });
 
     const startId = useGeneratedId(startInputId);
     const endId = useGeneratedId(endInputId);
@@ -331,87 +373,76 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     };
 
     return (
-        <TetherComponent
-            attachment={`top ${placement}`}
-            targetAttachment={`bottom ${placement}`}
-            constraints={[
-                {
-                    to: 'window',
-                    attachment: 'together'
-                }
-            ]}
-            renderTarget={(ref: MutableRefObject<HTMLDivElement>) => (
-                <>
-                    <DateRangeWrapper ref={ref} {...rest}>
-                        <Input
-                            id={startId}
-                            ref={startDateRef}
-                            autoComplete="off"
-                            className="startDate"
-                            data-testid="start-date-input"
-                            label={label}
-                            placeholder={startPlaceholder}
-                            onFocus={() => setFocusedInput(START_DATE)}
-                            // eslint-disable-next-line unicorn/no-null
-                            onBlur={() => setFocusedInput(null)}
-                            value={inputText.startText}
-                            width="100%"
-                            onChange={handleStartDateInputChange}
-                            data-error={error.startDate}
-                            disabled={disabled}
-                        />
-                        {focusedInput === START_DATE && <StartDateFocusedBlock />}
-                        <DateArrow
-                            color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-emphasized')}
-                        />
-                        <Input
-                            id={endId}
-                            ref={endDateRef}
-                            tabIndex={!inputText.startText ? -1 : 0}
-                            autoComplete="off"
-                            className="endDate"
-                            data-testid="end-date-input"
-                            placeholder={endPlaceholder}
-                            onFocus={() => setFocusedInput(!value.startDate ? START_DATE : END_DATE)}
-                            // eslint-disable-next-line unicorn/no-null
-                            onBlur={() => setFocusedInput(null)}
-                            value={inputText.endText}
-                            onChange={handleEndDateInputChange}
-                            width="100%"
-                            data-error={error.endDate}
-                            disabled={disabled}
-                        />
-                        {focusedInput === END_DATE && <EndDateFocusedBlock />}
-                    </DateRangeWrapper>
-                    {displayErrorMessage && (error.startDate || error.endDate) && !focusedInput && (
-                        <HelperText mt="1">{errorHandler || `error (${displayFormat})`}</HelperText>
-                    )}
-                </>
+        <>
+            <DateRangeWrapper ref={setTriggerReference} {...rest}>
+                <Input
+                    id={startId}
+                    ref={startDateRef}
+                    autoComplete="off"
+                    className="startDate"
+                    data-testid="start-date-input"
+                    label={label}
+                    placeholder={startPlaceholder}
+                    onFocus={() => setFocusedInput(START_DATE)}
+                    // eslint-disable-next-line unicorn/no-null
+                    onBlur={() => setFocusedInput(null)}
+                    value={inputText.startText}
+                    width="100%"
+                    onChange={handleStartDateInputChange}
+                    data-error={error.startDate}
+                    disabled={disabled}
+                />
+                {focusedInput === START_DATE && <StartDateFocusedBlock />}
+                <DateArrow
+                    color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-emphasized')}
+                />
+                <Input
+                    id={endId}
+                    ref={endDateRef}
+                    tabIndex={!inputText.startText ? -1 : 0}
+                    autoComplete="off"
+                    className="endDate"
+                    data-testid="end-date-input"
+                    placeholder={endPlaceholder}
+                    onFocus={() => setFocusedInput(!value.startDate ? START_DATE : END_DATE)}
+                    // eslint-disable-next-line unicorn/no-null
+                    onBlur={() => setFocusedInput(null)}
+                    value={inputText.endText}
+                    onChange={handleEndDateInputChange}
+                    width="100%"
+                    data-error={error.endDate}
+                    disabled={disabled}
+                />
+                {focusedInput === END_DATE && <EndDateFocusedBlock />}
+            </DateRangeWrapper>
+            {displayErrorMessage && (error.startDate || error.endDate) && !focusedInput && (
+                <HelperText mt="1">{errorHandler || `error (${displayFormat})`}</HelperText>
             )}
-            renderElement={(ref: MutableRefObject<HTMLDivElement>) =>
-                focusedInput && (
-                    <Datepicker
-                        ref={ref}
-                        // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
-                        numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
-                        minBookingDays={1}
-                        startDate={value.startDate}
-                        endDate={value.endDate}
-                        minBookingDate={minDate}
-                        maxBookingDate={maxDate}
-                        firstDayOfWeek={firstDayOfWeek}
-                        focusedInput={focusedInput}
-                        onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
-                            setFocusedInput(focusedValue);
-                            handleDateChange(startDate || undefined, endDate || undefined);
-                        }}
-                        isDateBlocked={isDateBlocked}
-                        locale={localeObject}
-                    />
-                )
-            }
-            style={{ zIndex: Elevation.DATEPICKER }}
-        />
+            {focusedInput &&
+                createPortal(
+                    <DatepickerContentContainer ref={setContentReference} style={styles.popper} {...attributes.popper}>
+                        <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                        <Datepicker
+                            // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
+                            numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
+                            minBookingDays={1}
+                            startDate={value.startDate}
+                            endDate={value.endDate}
+                            minBookingDate={minDate}
+                            maxBookingDate={maxDate}
+                            firstDayOfWeek={firstDayOfWeek}
+                            focusedInput={focusedInput}
+                            onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
+                                setFocusedInput(focusedValue);
+                                handleDateChange(startDate || undefined, endDate || undefined);
+                            }}
+                            isDateBlocked={isDateBlocked}
+                            locale={localeObject}
+                        />
+                    </DatepickerContentContainer>,
+                    document.body
+                )}
+        </>
     );
 };
 

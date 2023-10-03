@@ -87,9 +87,9 @@ const NormalPagination: React.FC = () => (
                 pageSize={pageSize}
                 totalItems={totalItems}
                 label={
-                    <Text weak>
+                    <Text secondary>
                         Page{' '}
-                        <Text as="b" fontWeight="semibold" weak>
+                        <Text as="b" fontWeight="semibold" secondary>
                             {currentPage} of {Math.ceil(totalItems / pageSize)}
                         </Text>
                     </Text>
@@ -122,9 +122,9 @@ const PaginationWithPageSize: React.FC = () => (
                 pageSizes={pageSizes}
                 totalItems={totalItems}
                 label={
-                    <Text weak>
+                    <Text secondary>
                         Page{' '}
-                        <Text as="b" fontWeight="semibold" weak>
+                        <Text as="b" fontWeight="semibold" secondary>
                             {currentPage} of {Math.ceil(totalItems / pageSize)}
                         </Text>
                     </Text>

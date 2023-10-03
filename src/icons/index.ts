@@ -4,7 +4,6 @@ export * from './basic';
 export * from './battery';
 export * from './brands';
 export * from './cities';
-export * from './deprecated';
 export * from './mobility';
 export * from './navigation';
 export * from './options';
