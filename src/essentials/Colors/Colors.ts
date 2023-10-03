@@ -224,6 +224,7 @@ export const SemanticColorsDarkSchema = {
             emphasized: Colors.blue.primary[200]
         },
         neutral: {
+            faded: Colors.blue.primary[200],
             default: Colors.blue.primary[350],
             emphasized: Colors.blue.primary[200]
         },
