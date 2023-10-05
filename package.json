@@ -48,7 +48,10 @@
     "license": "Apache-2.0",
     "overrides": {
         "react-refresh": "0.11.0",
-        "react-is": "17.0.2"
+        "react-is": "17.0.2",
+        "react-windowed-select": {
+            "@types/react": "17.0.67"
+        }
     },
     "peerDependencies": {
         "react": ">16.8",
@@ -78,6 +81,7 @@
         "@svgr/plugin-svgo": "^5.3.0",
         "@testing-library/jest-dom": "^5.11.9",
         "@testing-library/react": "^11.2.5",
+        "@testing-library/react-hooks": "^8.0.1",
         "@testing-library/user-event": "^12.8.3",
         "@types/babel__traverse": "7.17.1",
         "@types/jest": "^25.1.4",
@@ -135,7 +139,6 @@
         "@datepicker-react/hooks": "^2.3.1",
         "@popperjs/core": "^2.11.5",
         "@styled-system/theme-get": "^5.1.2",
-        "@testing-library/react-hooks": "^8.0.0",
         "@types/react-select": "^4.0.18",
         "@types/styled-system": "^5.1.9",
         "date-fns": "^2.11.1",
