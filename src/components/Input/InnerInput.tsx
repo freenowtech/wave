@@ -36,7 +36,7 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
 
         if (variant === 'boxed') {
             return (
-                <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
+                <InputWrapper {...classNameProps} {...marginProps} {...widthProps}>
                     <BoxedInput
                         {...rest}
                         ref={innerRef}
