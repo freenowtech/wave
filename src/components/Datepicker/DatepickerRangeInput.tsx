@@ -239,7 +239,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     variant = 'normal',
     disabled,
     ...rest
-}: DatepickerRangeInputProps) => {
+}) => {
     const [triggerReference, setTriggerReference] = useState(undefined);
     const [contentReference, setContentReference] = useState(undefined);
     const [arrowReference, setArrowReference] = useState(undefined);
