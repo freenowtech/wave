@@ -1,5 +1,14 @@
-import React, { Children, ComponentPropsWithoutRef, ReactElement, ReactNode, cloneElement } from 'react';
+import React, {
+    Children,
+    ComponentPropsWithoutRef,
+    ReactElement,
+    ReactNode,
+    cloneElement,
+    useEffect,
+    useRef
+} from 'react';
 import styled from 'styled-components';
+import { MarginProps } from 'styled-system';
 
 import { ChevronRightIcon } from '../../icons';
 import { Text } from '../Text/Text';
@@ -17,7 +26,7 @@ interface InvertedStyle {
     inverted?: boolean;
 }
 
-interface BreadcrumbsProps extends InvertedStyle {
+interface BreadcrumbsProps extends InvertedStyle, MarginProps {
     /**
      * Content of the Breadcrumbs
      * @required
@@ -33,17 +42,31 @@ const BreadcrumbsList = styled.ul`
     padding: 0;
     list-style: none;
     display: flex;
+    overflow: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        width: 0rem;
+    }
 `;
 
 const BreadcrumbsListItem = styled.li`
     display: flex;
+    text-wrap: nowrap;
 `;
 
 const Breadcrumbs = ({ children, inverted }: BreadcrumbsProps): JSX.Element => {
     const arrayChildren = Children.toArray(children);
+    const breadcrumbsListRef = useRef<HTMLUListElement | null>(null);
+
+    useEffect(() => {
+        if (breadcrumbsListRef.current) {
+            breadcrumbsListRef.current.scrollLeft = breadcrumbsListRef.current.scrollWidth;
+        }
+    }, []);
 
     return (
-        <BreadcrumbsList>
+        <BreadcrumbsList ref={breadcrumbsListRef}>
             {Children.map(arrayChildren, (child, index) => (
                 <BreadcrumbsListItem>
                     <nav aria-label="breadcrumbs">
