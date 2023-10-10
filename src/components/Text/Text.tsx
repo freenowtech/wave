@@ -31,7 +31,6 @@ interface TextProps
     /**
      * Enforce primary color
      */
-
     primary?: boolean;
     /**
      * Adjust color to indicate secondary information

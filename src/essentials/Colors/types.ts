@@ -158,6 +158,11 @@ export interface SemanticColorsSchema {
             emphasized: Color;
         };
     };
+    logo: {
+        free: Color;
+        now: Color;
+        subtitle: Color;
+    }
     shadow: {
         default: Color;
     };

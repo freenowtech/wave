@@ -202,6 +202,11 @@ export const SemanticColors = {
             default: Colors.red[900]
         }
     },
+    logo: {
+        free: Colors.brand.rushhour,
+        now: Colors.brand.rushhour,
+        subtitle: Colors.black
+    },
     shadow: {
         default: Colors.neutral[200]
     }
@@ -347,6 +352,11 @@ export const SemanticColorsDarkSchema = {
             faded: Colors.red[900],
             default: Colors.red[900]
         }
+    },
+    logo: {
+        free: Colors.brand.rushhour,
+        now: Colors.white,
+        subtitle: Colors.white
     },
     shadow: {
         default: Colors.neutral[650]

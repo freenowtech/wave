@@ -208,6 +208,11 @@ export const SemanticColors = {
             default: Colors.orange[900]
         }
     },
+    logo: {
+        free: 'hsl(350, 91%, 41%)',
+        now: 'hsl(350, 91%, 41%)',
+        subtitle: Colors.black
+    },
     shadow: {
         default: Colors.blue.primary[200]
     }
@@ -355,6 +360,11 @@ export const SemanticColorsDarkSchema = {
         },
         focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[550]
+    },
+    logo: {
+        free: 'hsl(350, 91%, 41%)',
+        now: Colors.white,
+        subtitle: Colors.white
     },
     shadow: {
         default: Colors.blue.primary[550]
