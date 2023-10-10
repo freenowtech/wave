@@ -46,7 +46,7 @@ const BreadcrumbsList = styled.ul`
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
-        width: 0rem;
+        width: 0;
     }
 `;
 
