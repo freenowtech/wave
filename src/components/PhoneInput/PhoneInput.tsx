@@ -79,7 +79,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 }: PhoneInputProps) => {
     const { marginProps } = extractWrapperMarginProps(props);
 
-    const nationalNumberInputRef = React.createRef<HTMLDivElement>();
+    const nationalNumberInputRef = React.createRef<HTMLInputElement>();
     const containerRef = React.createRef<HTMLDivElement>();
     const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
 
@@ -88,7 +88,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
             props.onCountryChange(value);
         }
 
-        (nationalNumberInputRef.current.children[0] as HTMLInputElement).focus();
+        nationalNumberInputRef.current.focus();
     };
 
     return (
