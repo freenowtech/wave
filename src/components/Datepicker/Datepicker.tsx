@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 
@@ -53,63 +53,60 @@ interface DatepickerProps extends UseDatepickerProps {
     locale: Locale;
 }
 
-export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>(
-    ({ focusedInput, locale, ...datepickerProps }, ref) => {
-        const {
-            firstDayOfWeek,
-            activeMonths,
-            isDateSelected,
-            isDateHovered,
-            isFirstOrLastSelectedDate,
-            isDateBlocked,
-            isDateFocused,
-            focusedDate,
-            onDateHover,
-            onDateSelect,
-            onDateFocus,
-            goToPreviousMonths,
-            goToNextMonths
-        } = useDatepicker({
-            focusedInput,
-            ...datepickerProps
-        });
+export const Datepicker: FC<DatepickerProps> = ({ focusedInput, locale, ...datepickerProps }) => {
+    const {
+        firstDayOfWeek,
+        activeMonths,
+        isDateSelected,
+        isDateHovered,
+        isFirstOrLastSelectedDate,
+        isDateBlocked,
+        isDateFocused,
+        focusedDate,
+        onDateHover,
+        onDateSelect,
+        onDateFocus,
+        goToPreviousMonths,
+        goToNextMonths
+    } = useDatepicker({
+        focusedInput,
+        ...datepickerProps
+    });
 
-        return (
-            <DatepickerContext.Provider
-                value={{
-                    focusedDate,
-                    isDateFocused,
-                    isDateSelected,
-                    isDateHovered,
-                    isDateBlocked,
-                    isFirstOrLastSelectedDate,
-                    onDateSelect,
-                    onDateFocus,
-                    onDateHover
+    return (
+        <DatepickerContext.Provider
+            value={{
+                focusedDate,
+                isDateFocused,
+                isDateSelected,
+                isDateHovered,
+                isDateBlocked,
+                isFirstOrLastSelectedDate,
+                onDateSelect,
+                onDateFocus,
+                onDateHover
+            }}
+        >
+            <DatepickerContainer
+                onMouseDown={e => {
+                    // Prevent mousedown event on Datepicker, so everything else dont lose focus
+                    e.preventDefault();
                 }}
             >
-                <DatepickerContainer
-                    ref={ref}
-                    onMouseDown={e => {
-                        // Prevent mousedown event on Datepicker, so everything else dont lose focus
-                        e.preventDefault();
-                    }}
-                >
-                    <Back onClick={goToPreviousMonths} />
-                    <Forward onClick={goToNextMonths} />
-                    <DatepickerWrapper activeMonths={activeMonths}>
-                        {activeMonths.map(monthInformation => (
-                            <Month
-                                key={`${monthInformation.year}-${monthInformation.month}`}
-                                year={monthInformation.year}
-                                month={monthInformation.month}
-                                firstDayOfWeek={firstDayOfWeek}
-                                locale={locale}
-                            />
-                        ))}
-                    </DatepickerWrapper>
-                </DatepickerContainer>
-            </DatepickerContext.Provider>
-        );
-    }
-);
+                <Back onClick={goToPreviousMonths} />
+                <Forward onClick={goToNextMonths} />
+                <DatepickerWrapper activeMonths={activeMonths}>
+                    {activeMonths.map(monthInformation => (
+                        <Month
+                            key={`${monthInformation.year}-${monthInformation.month}`}
+                            year={monthInformation.year}
+                            month={monthInformation.month}
+                            firstDayOfWeek={firstDayOfWeek}
+                            locale={locale}
+                        />
+                    ))}
+                </DatepickerWrapper>
+            </DatepickerContainer>
+        </DatepickerContext.Provider>
+    );
+};
