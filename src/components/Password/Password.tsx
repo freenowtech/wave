@@ -106,7 +106,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                     variant={variant}
                     inverted={inverted}
                     disabled={disabled}
-                    ref={ref}
+                    ref={inputRef}
                     type={isHidden ? 'password' : 'text'}
                     autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
                 />
@@ -118,7 +118,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                             type="button"
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
-                                inputRef?.current.focus();
+                                if (inputRef?.current) inputRef.current.focus();
                             }}
                             aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
