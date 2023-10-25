@@ -296,20 +296,12 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
         switch (focusedInput) {
             case START_DATE: {
-                const startInputTarget = startDateRef.current && (startDateRef.current.children[0] as HTMLInputElement);
-
-                if (startInputTarget) {
-                    startInputTarget.focus();
-                }
+                if (startDateRef?.current) startDateRef.current.focus();
 
                 break;
             }
             case END_DATE: {
-                const endInputTarget = endDateRef.current && (endDateRef.current.children[0] as HTMLInputElement);
-
-                if (endInputTarget) {
-                    endInputTarget.focus();
-                }
+                if (endDateRef?.current) endDateRef.current.focus();
 
                 break;
             }
