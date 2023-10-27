@@ -22,21 +22,20 @@ export const ClassicColors = createGlobalStyle`
     ${generateSemanticTierCssVariables(ClassicSemanticColors)}
   }
 
-  .dark-theme {
+  .dark-scheme {
     color-scheme: dark;
     ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
+  }
+  
+  .light-scheme {
+    color-scheme: light;
+    ${generateSemanticTierCssVariables(ClassicSemanticColors)}
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       color-scheme: dark;
       ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
-    }
-
-    .light-theme {
-      color-scheme: light;
-      ${generateBareTierCssVariables(ClassicBrandColors)}
-      ${generateSemanticTierCssVariables(ClassicSemanticColors)}
     }
   }
   
@@ -57,9 +56,14 @@ export const ModernColors = createGlobalStyle`
     ${generateSemanticTierCssVariables(ModernSemanticColors)}
   }
 
-  .dark-theme {
+  .dark-scheme {
     color-scheme: dark;
     ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
+  }
+  
+  .light-scheme {
+    color-scheme: light;
+    ${generateSemanticTierCssVariables(ModernSemanticColors)}
   }
   
   body, .wave {
@@ -75,12 +79,6 @@ export const ModernColors = createGlobalStyle`
     :root {
       color-scheme: dark;
       ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
-    }
-
-    .light-theme {
-      color-scheme: light;
-      ${generateBareTierCssVariables(ModernBrandColors)}
-      ${generateSemanticTierCssVariables(ModernSemanticColors)}
     }
   }
 `;

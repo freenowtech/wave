@@ -8,7 +8,7 @@ import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { InvertedColorMode } from '../ColorMode/InvertedColorMode';
+import { InvertedColorScheme } from '../ColorScheme/InvertedColorScheme';
 
 const fadeAnimation = keyframes`
     from {
@@ -166,11 +166,11 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-            <InvertedColorMode>
+            <InvertedColorScheme>
                 <Text as="p" fontSize={0}>
                     {content}
                 </Text>
-            </InvertedColorMode>
+            </InvertedColorScheme>
         );
     }
 

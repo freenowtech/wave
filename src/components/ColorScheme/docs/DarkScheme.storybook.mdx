@@ -1,0 +1,64 @@
+import { Meta, Story, Source } from '@storybook/blocks';
+import * as DarkSchemeStories from './DarkScheme.stories';
+import { BoxWithSchemeToggle } from '../../../../docs/components/BoxWithSchemeToggle';
+import { Text } from '../../Text/Text';
+import { Box } from '../../Box/Box';
+
+<Meta of={DarkSchemeStories} />
+
+# Color Scheme Management
+
+All components in Wave automatically adapts to the users preferred color scheme.
+
+There are situations where you want to force a specific color scheme to a component, or a group of components.
+Wave provides a few components to help you with this.
+
+## Invert Color Scheme
+
+`InvertedColorScheme` component inverts the color scheme of all children components:
+
+-   _dark_ scheme for users with light scheme
+-   _light_ scheme for users with light scheme
+
+Demo:
+
+<Box className='wave'>
+    <Text>Your current scheme derived from the OS</Text>
+
+    <Story of={DarkSchemeStories.InvertedColorSchemeWithButton} />
+</Box>
+
+<Source of={DarkSchemeStories.InvertedColorSchemeWithButton} />
+
+## Light Scheme
+
+`LightScheme` component forces the _light_ color scheme to children components, no matter what the user's preferred color scheme is.
+
+<BoxWithSchemeToggle>
+    <Text>Before the LightScheme</Text>
+
+    <Story of={DarkSchemeStories.LightSchemeWithButton} />
+
+    <Text>After the LightScheme</Text>
+</BoxWithSchemeToggle>
+
+<Source of={DarkSchemeStories.LightSchemeWithButton} />
+
+
+## Dark Scheme
+
+`DarkScheme` component forces the _dark_ color scheme to children components, no matter what the user's preferred color scheme is.
+
+<BoxWithSchemeToggle>
+    <Text>Before the DarkScheme</Text>
+
+    <Story of={DarkSchemeStories.DarkSchemeWithButton} />
+
+    <Text>After the DarkScheme</Text>
+</BoxWithSchemeToggle>
+
+<Source of={DarkSchemeStories.DarkSchemeWithButton} />
+
+## Props
+
+All components accept [`Box` props](/docs/components-box--docs).

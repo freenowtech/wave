@@ -6,7 +6,7 @@ import { getSemanticValue } from '../../src/utils/cssVariables';
 type ItemWrapperProps = PaddingProps &
     MarginProps & {
         inverted?: boolean;
-        gridTemplate: string;
+        gridTemplate?: string;
     };
 
 const ItemWrapper = styled.div<ItemWrapperProps>`
