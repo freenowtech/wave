@@ -62,7 +62,11 @@ const BM: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     fill="#FFF"
                     mask="url(#BM__b)"
                 />
-                <path fill="url(#BM__f)" mask="url(#BM__b)" d="M0 4h5.333V0h1.334v4H12v1.333H6.667v4H5.333v-4H0z" />
+                <path
+                    fill="url(#BM__f)"
+                    mask="url(#BM__b)"
+                    d="M0 4h5.333V0h1.334v4H12v1.333H6.667v4H5.333v-4H0z"
+                />
             </g>
         </svg>
     );

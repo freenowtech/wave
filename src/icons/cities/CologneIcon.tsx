@@ -4,7 +4,7 @@ import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
-const CologneIcon: React.FC<Props> = ({ size = 'medium', color = getSemanticValue('foreground-primary'), ...rest }) => {
+const CologneIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
     const props = { ...rest, color };
     const sizePx = Number.isFinite(size as number)
         ? size
