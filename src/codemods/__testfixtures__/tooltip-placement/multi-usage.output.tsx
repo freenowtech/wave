@@ -3,12 +3,12 @@ import React from 'react';
 
 export const TooltipTest = (): JSX.Element => (
     <>
-        <Tooltip content="helper text" placement="bottom">
+        <Tooltip content="helper text" placement='bottom'>
             <Box>
                 <Toggle />
             </Box>
         </Tooltip>
-        <Tooltip content="another helper text" placement="right">
+        <Tooltip content="another helper text" placement='right'>
             <Box width="150px">
                 <RadioButton label="Disabled radio button" disabled />
             </Box>
