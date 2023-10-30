@@ -1,4 +1,4 @@
-import React, { FC, RefObject } from 'react';
+import React, { FC } from 'react';
 import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 
@@ -49,12 +49,11 @@ const Forward = styled(ChevronRightIcon)`
     }
 `;
 
-interface BaseDatepickerProps extends UseDatepickerProps {
-    forwardedRef: RefObject<HTMLDivElement>;
+interface DatepickerProps extends UseDatepickerProps {
     locale: Locale;
 }
 
-const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, locale, ...datepickerProps }) => {
+export const Datepicker: FC<DatepickerProps> = ({ focusedInput, locale, ...datepickerProps }) => {
     const {
         firstDayOfWeek,
         activeMonths,
@@ -89,7 +88,6 @@ const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, l
             }}
         >
             <DatepickerContainer
-                ref={forwardedRef}
                 onMouseDown={e => {
                     // Prevent mousedown event on Datepicker, so everything else dont lose focus
                     e.preventDefault();
@@ -112,9 +110,3 @@ const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, l
         </DatepickerContext.Provider>
     );
 };
-
-export const Datepicker = React.forwardRef(
-    (props: Omit<BaseDatepickerProps, 'forwardedRef'>, ref: RefObject<HTMLDivElement>) => (
-        <BaseDatepicker {...props} forwardedRef={ref} />
-    )
-);

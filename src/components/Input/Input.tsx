@@ -5,7 +5,7 @@ import { InputProps } from './InputProps';
 import { InputWrapperProps } from './InputWrapper';
 import { InnerInput } from './InnerInput';
 
-const Input = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
+const Input = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     (props: InputWrapperProps & InputProps, ref) => {
         if (props.type === 'password') {
             return <Password {...props} ref={ref} />;
