@@ -1,17 +1,18 @@
 import { FirstDayOfWeek, START_DATE } from '@datepicker-react/hooks';
 import parse from 'date-fns/parse';
-import React, { ChangeEventHandler, FC, MutableRefObject, useEffect, useRef, useState } from 'react';
-import TetherComponent from 'react-tether';
+import React, { ChangeEventHandler, FC, useEffect, useState } from 'react';
 import { MarginProps, WidthProps } from 'styled-system';
+import { usePopper } from 'react-popper';
+import { createPortal } from 'react-dom';
 import { Input } from '../Input/Input';
 
 import { Datepicker } from './Datepicker';
 import { isValidDateText } from './utils/isValidDateText';
-import { Elevation } from '../../essentials';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { HelperText } from '../HelperText/HelperText';
 import { dateToDisplayText } from './utils/dateToDisplayText';
 import { useLocaleObject } from './utils/useLocaleObject';
+import { Arrow, DatepickerContentContainer } from './DatepickerContentElements';
 
 interface DatepickerSingleInputProps extends MarginProps, WidthProps {
     /**
@@ -93,13 +94,37 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     inputId,
     disabled,
     ...rest
-}: DatepickerSingleInputProps) => {
+}) => {
+    const [triggerReference, setTriggerReference] = useState(undefined);
+    const [contentReference, setContentReference] = useState(undefined);
+    const [arrowReference, setArrowReference] = useState(undefined);
+
     const localeObject = useLocaleObject(locale);
-    const inputRef = useRef<HTMLDivElement>();
     const [isFocused, setIsFocused] = useState(false);
     const [inputText, setInputText] = useState(dateToDisplayText(localeObject, displayFormat, value));
     const [error, setError] = useState(false);
     const displayErrorMessage = typeof errorHandler === 'string';
+
+    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+        placement: 'bottom-start',
+        modifiers: [
+            {
+                name: 'flip',
+                enabled: true
+            },
+            {
+                name: 'offset',
+                enabled: true,
+                options: {
+                    offset: [0, 15]
+                }
+            },
+            {
+                name: 'arrow',
+                options: { element: arrowReference }
+            }
+        ]
+    });
 
     const id = useGeneratedId(inputId);
 
@@ -112,15 +137,6 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     useEffect(() => {
         setInputText(dateToDisplayText(localeObject, displayFormat, value));
     }, [value, localeObject, displayFormat]);
-
-    useEffect(() => {
-        // after opening the datepicker, bring back focus to the input
-        const target = inputRef.current && (inputRef.current.children[0] as HTMLInputElement);
-
-        if (target && isFocused) {
-            target.focus();
-        }
-    }, [isFocused]);
 
     const handleDatepickerClose = () => {
         setIsFocused(false);
@@ -151,66 +167,53 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     };
 
     return (
-        <TetherComponent
-            attachment="top left"
-            targetAttachment="bottom left"
-            constraints={[
-                {
-                    to: 'window',
-                    attachment: 'together'
-                }
-            ]}
-            renderTarget={(ref: MutableRefObject<HTMLDivElement>) => (
-                <>
-                    <Input
-                        ref={element => {
-                            inputRef.current = element;
-                            // eslint-disable-next-line no-param-reassign
-                            ref.current = element;
-                        }}
-                        id={id}
-                        autoComplete="off"
-                        className="startDate"
-                        data-testid="start-date-input"
-                        label={label}
-                        placeholder={placeholder}
-                        value={inputText}
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={handleDatepickerClose}
-                        onChange={handleDateTextChange}
-                        data-error={error}
-                        disabled={disabled}
-                        {...rest}
-                    />
-                    {displayErrorMessage && error && !isFocused && (
-                        <HelperText mt="1">{errorHandler || `error (${displayFormat})`}</HelperText>
-                    )}
-                </>
+        <>
+            <Input
+                ref={element => {
+                    setTriggerReference(element);
+                }}
+                id={id}
+                autoComplete="off"
+                className="startDate"
+                data-testid="start-date-input"
+                label={label}
+                placeholder={placeholder}
+                value={inputText}
+                onFocus={() => setIsFocused(true)}
+                onBlur={handleDatepickerClose}
+                onChange={handleDateTextChange}
+                data-error={error}
+                disabled={disabled}
+                {...rest}
+            />
+            {displayErrorMessage && error && !isFocused && (
+                <HelperText mt="1">{errorHandler || `error (${displayFormat})`}</HelperText>
             )}
-            renderElement={(ref: MutableRefObject<HTMLDivElement>) =>
-                isFocused && (
-                    <Datepicker
-                        ref={ref}
-                        numberOfMonths={1}
-                        exactMinBookingDays
-                        minBookingDays={1}
-                        startDate={value}
-                        endDate={value}
-                        minBookingDate={minDate}
-                        maxBookingDate={maxDate}
-                        firstDayOfWeek={firstDayOfWeek}
-                        focusedInput={isFocused ? START_DATE : undefined}
-                        onDatesChange={({ focusedInput, startDate }) => {
-                            setIsFocused(focusedInput !== null);
-                            handleDateChange(startDate || undefined);
-                        }}
-                        isDateBlocked={isDateBlocked}
-                        locale={localeObject}
-                    />
-                )
-            }
-            style={{ zIndex: Elevation.DATEPICKER }}
-        />
+            {isFocused &&
+                createPortal(
+                    <DatepickerContentContainer ref={setContentReference} style={styles.popper} {...attributes.popper}>
+                        <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                        <Datepicker
+                            numberOfMonths={1}
+                            exactMinBookingDays
+                            minBookingDays={1}
+                            startDate={value}
+                            endDate={value}
+                            minBookingDate={minDate}
+                            maxBookingDate={maxDate}
+                            firstDayOfWeek={firstDayOfWeek}
+                            focusedInput={isFocused ? START_DATE : undefined}
+                            onDatesChange={({ focusedInput, startDate }) => {
+                                setIsFocused(focusedInput !== null);
+                                handleDateChange(startDate || undefined);
+                            }}
+                            isDateBlocked={isDateBlocked}
+                            locale={localeObject}
+                        />
+                    </DatepickerContentContainer>,
+                    document.body
+                )}
+        </>
     );
 };
 

@@ -66,7 +66,7 @@ export const SkeletonTable: FC = () => {
                                 <TableCell>
                                     {entry.date}
                                     <br />
-                                    <Text fontSize={0} weak>
+                                    <Text fontSize={0} secondary>
                                         {entry.activity}
                                     </Text>
                                 </TableCell>

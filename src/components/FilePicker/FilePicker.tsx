@@ -191,7 +191,7 @@ const FilePicker: FC<FilePickerProps> = ({
                     <Text as="label" htmlFor={name} fontSize={1}>
                         {label}
                     </Text>
-                    <Text weak fontSize={1}>
+                    <Text secondary fontSize={1}>
                         {file && shrinkFileName(file)}
                     </Text>
                 </Box>

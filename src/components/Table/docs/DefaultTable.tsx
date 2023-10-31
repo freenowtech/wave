@@ -23,7 +23,7 @@ export const DefaultTable: FC = (args: TableProps) => (
                 <TableCell>
                     5 July 2019 - 11:14
                     <br />
-                    <Text fontSize={0} weak>
+                    <Text fontSize={0} secondary>
                         No activity yet
                     </Text>
                 </TableCell>
@@ -53,7 +53,7 @@ export const DefaultTable: FC = (args: TableProps) => (
                 <TableCell>
                     27 February 2020 - 16:02
                     <br />
-                    <Text fontSize={0} weak>
+                    <Text fontSize={0} secondary>
                         17 Tours
                     </Text>
                 </TableCell>
@@ -83,7 +83,7 @@ export const DefaultTable: FC = (args: TableProps) => (
                 <TableCell>
                     30 March 2020 - 18:19
                     <br />
-                    <Text fontSize={0} weak>
+                    <Text fontSize={0} secondary>
                         17 Tours
                     </Text>
                 </TableCell>

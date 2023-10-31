@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BottomLinedInput } from './BottomLinedInput';
@@ -8,19 +8,20 @@ import { BoxedInputLabel } from './BoxedInputLabel';
 import { InputProps } from './InputProps';
 import { InputWrapper, InputWrapperProps } from './InputWrapper';
 
-const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
+const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     (props: InputWrapperProps & InputProps, ref) => {
         const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
-        // TODO replace with ref when implementing https://github.com/freenowtech/wave/issues/169
-        const inputRef = useRef<HTMLInputElement>();
 
         const { label, onChange, size, id: providedId, variant, ...rest } = restProps;
         const id = useGeneratedId(providedId);
 
+        const innerRef = useRef<HTMLInputElement>();
+        useImperativeHandle(ref, () => innerRef.current, []);
+
         const [hasValue, setHasValue] = useState(rest?.value?.toString().length > 0);
-        const hasUncontrolledValue = inputRef?.current?.value?.length > 0;
+        const hasUncontrolledValue = innerRef?.current?.value?.length > 0;
 
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             setHasValue(event.target.value.length > 0);
@@ -35,15 +36,16 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
 
         if (variant === 'boxed') {
             return (
-                <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
+                <InputWrapper {...classNameProps} {...marginProps} {...widthProps}>
                     <BoxedInput
                         {...rest}
-                        ref={inputRef}
+                        ref={innerRef}
                         variant={variant}
                         id={id}
                         size={size}
                         hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
+                        aria-invalid={rest.error}
                     />
                     {label && (
                         <BoxedInputLabel htmlFor={id} size={size}>
@@ -64,6 +66,7 @@ const InnerInput = forwardRef<HTMLDivElement, InputWrapperProps & InputProps>(
                         size={size}
                         hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
+                        aria-invalid={rest.error}
                     />
                     {label && (
                         <BottomLinedInputLabel htmlFor={id} size={size}>

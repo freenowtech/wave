@@ -1,13 +1,12 @@
-import React, { FC, RefObject } from 'react';
+import React, { FC } from 'react';
 import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 
-import { MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
+import { Elevation, MediaQueries } from '../../essentials';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
 import { Month } from './Month';
 import { DatepickerContext } from './DatepickerContext';
-import { GlobalDatepickerStyle } from './GlobalDatepickerStyle';
 
 const DatepickerWrapper = styled.div<{
     activeMonths: MonthType[];
@@ -21,22 +20,10 @@ const DatepickerWrapper = styled.div<{
 const DatepickerContainer = styled.div`
     display: flex;
     padding: 0.5rem;
-    margin: 0.9375rem 0;
-    margin-left: -0.5rem;
-    box-shadow: 0 0 0.5rem 0.1875rem rgba(0, 0, 0, 0.08);
 
+    z-index: ${Elevation.DATEPICKER};
     position: relative;
     background: ${getSemanticValue('background-surface-neutral-default')};
-
-    &::before {
-        content: '';
-        position: absolute;
-        transform: rotate(45deg);
-        width: 1.25rem;
-        height: 1.25rem;
-        background: ${getSemanticValue('background-surface-neutral-default')};
-        box-shadow: -0.25rem -0.25rem 0.5rem -0.125rem rgba(0, 0, 0, 0.08);
-    }
 
     ${MediaQueries.small} {
         padding: 1.5rem;
@@ -62,17 +49,11 @@ const Forward = styled(ChevronRightIcon)`
     }
 `;
 
-interface BaseDatepickerProps extends UseDatepickerProps {
-    forwardedRef: RefObject<HTMLDivElement>;
+interface DatepickerProps extends UseDatepickerProps {
     locale: Locale;
 }
 
-export const BaseDatepicker: FC<BaseDatepickerProps> = ({
-    forwardedRef,
-    focusedInput,
-    locale,
-    ...datepickerProps
-}: BaseDatepickerProps) => {
+export const Datepicker: FC<DatepickerProps> = ({ focusedInput, locale, ...datepickerProps }) => {
     const {
         firstDayOfWeek,
         activeMonths,
@@ -106,9 +87,7 @@ export const BaseDatepicker: FC<BaseDatepickerProps> = ({
                 onDateHover
             }}
         >
-            <GlobalDatepickerStyle />
             <DatepickerContainer
-                ref={forwardedRef}
                 onMouseDown={e => {
                     // Prevent mousedown event on Datepicker, so everything else dont lose focus
                     e.preventDefault();
@@ -131,9 +110,3 @@ export const BaseDatepicker: FC<BaseDatepickerProps> = ({
         </DatepickerContext.Provider>
     );
 };
-
-export const Datepicker = React.forwardRef(
-    (props: Omit<BaseDatepickerProps, 'forwardedRef'>, ref: RefObject<HTMLDivElement>) => (
-        <BaseDatepicker {...props} forwardedRef={ref} />
-    )
-);
