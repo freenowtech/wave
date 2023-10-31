@@ -15,7 +15,7 @@ const ComponentNamesWithInvertedProp = [
     'Breadcrumbs'
 ];
 
-const WRAPPER_COMPONENT_NAME = 'FlipTheme';
+const WRAPPER_COMPONENT_NAME = 'InvertedColorScheme';
 
 export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
@@ -31,7 +31,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         }
     });
 
-    // Find components named imports in @freenow/wave imports that potentially have an inverted prop
+    // Find component named imports in @freenow/wave imports that potentially have an inverted prop
     const componentImports = waveImports
         .find(j.ImportSpecifier)
         .filter(path => ComponentNamesWithInvertedProp.includes(path.node.imported.name));

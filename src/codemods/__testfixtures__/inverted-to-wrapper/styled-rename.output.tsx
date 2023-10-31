@@ -1,4 +1,4 @@
-import { Button, Colors, Spaces, FlipTheme } from '@freenow/wave';
+import { Button, Colors, Spaces, InvertedColorScheme } from '@freenow/wave';
 import styled from 'styled-components';
 
 interface Props {
@@ -19,9 +19,9 @@ const Action = styled(Button)`
 `;
 
 export const ActionItem = ({ label, onClick, disabled = false }: Props): JSX.Element => (
-    <FlipTheme>
+    <InvertedColorScheme>
         (<Action size="small" onClick={onClick} disabled={disabled}>
             {label}
         </Action>)
-    </FlipTheme>
+    </InvertedColorScheme>
 );
