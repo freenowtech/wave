@@ -11,7 +11,8 @@ const ComponentNamesWithInvertedProp = [
     'PhoneInput',
     'Datepicker',
     'Tooltip',
-    'Text'
+    'Text',
+    'Breadcrumbs'
 ];
 
 const WRAPPER_COMPONENT_NAME = 'FlipTheme';
