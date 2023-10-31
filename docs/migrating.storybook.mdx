@@ -56,15 +56,15 @@ npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.
 ### Inverted property deprecation
 
 With the introduction of our new dark theme in Wave we've removed the `inverted` property that several components had. In case you want a specific component to have
-the styling of the opposite theme you need to wrap it with the `FlipTheme` component.
+the styling of the opposite theme you need to wrap it with the `InvertedColorScheme` component.
 
-The components that supported the `inverted` prop are: `Input`, `Password`, `Textarea`, `Button`, `Select`, `SelectList`, `PhoneInput`, `Datepicker`, `Tooltip` and `Text`.
+The components that supported the `inverted` prop are: `Input`, `Password`, `Textarea`, `Button`, `Select`, `SelectList`, `PhoneInput`, `Datepicker`, `Tooltip`, `Text` and `Breadcrumbs`.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-flip-theme.js path/to/src
+npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-wrapper.js path/to/src
 ```
 
-Disclaimer: This codemod wraps every Wave component that is using the `inverted` property with `FlipTheme`, this could lead to a decline in performance in case the
+Disclaimer: This codemod wraps every Wave component that is using the `inverted` property with `InvertedColorScheme`, this could lead to a decline in performance in case the
 DOM gets too deep. Ideally when you have Wave components using the `inverted` prop with a common parent you wrap the parent instead of each individual component.
 
 ### Text weak property
