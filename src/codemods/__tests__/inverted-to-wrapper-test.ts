@@ -1,7 +1,13 @@
 jest.autoMockOff();
 const { defineTest } = require('jscodeshift/dist/testUtils');
 
-const tests = ['local-rename', 'explicit-boolean-false', 'explicit-boolean-true', 'styled-rename'];
+const tests = [
+    'local-rename',
+    'explicit-boolean-false',
+    'explicit-boolean-true',
+    'styled-rename',
+    'individual-wrap-siblings'
+];
 
 describe('inverted-to-wrapper', () => {
     tests.forEach(test =>
