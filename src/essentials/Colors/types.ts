@@ -60,7 +60,6 @@ export interface SemanticColorsSchema {
             disabled: {
                 faded: Color;
                 default: Color;
-                emphasized: Color;
             };
             accent: {
                 default: Color;
@@ -73,11 +72,9 @@ export interface SemanticColorsSchema {
             };
             success: {
                 default: Color;
-                emphasized: Color;
             };
             warning: {
                 default: Color;
-                emphasized: Color;
             };
             danger: {
                 default: Color;
@@ -95,7 +92,6 @@ export interface SemanticColorsSchema {
         accent: {
             faded: Color;
             default: Color;
-            emphasized: Color;
         };
         info: {
             banner: Color;
@@ -109,7 +105,6 @@ export interface SemanticColorsSchema {
         };
         warning: {
             banner: Color;
-            faded: Color;
             default: Color;
         };
         danger: {
