@@ -12,7 +12,8 @@ const ComponentNamesWithInvertedProp = [
     'Datepicker',
     'Tooltip',
     'Text',
-    'Breadcrumbs'
+    'Breadcrumbs',
+    'Logo'
 ];
 
 const WRAPPER_COMPONENT_NAME = 'InvertedColorScheme';
