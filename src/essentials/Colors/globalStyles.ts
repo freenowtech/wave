@@ -12,30 +12,36 @@ import {
 import {
     generateBareTierCssVariables,
     generateSemanticTierCssVariables,
-    getSemanticValue
+    getSemanticValue,
+    TokenObject
 } from '../../utils/cssVariables';
+import { SemanticColorsSchema } from './types';
 
-export const ClassicColors = createGlobalStyle`
+const createThemeGlobalStyle = (
+    bareVariables: TokenObject,
+    lightScheme: SemanticColorsSchema,
+    darkScheme: SemanticColorsSchema
+) => createGlobalStyle`
   :root {
     color-scheme: light;
-    ${generateBareTierCssVariables(ClassicBrandColors)}
-    ${generateSemanticTierCssVariables(ClassicSemanticColors)}
+    ${generateBareTierCssVariables(bareVariables)}
+    ${generateSemanticTierCssVariables(lightScheme)}
   }
 
   .dark-scheme {
     color-scheme: dark;
-    ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
+    ${generateSemanticTierCssVariables(darkScheme)}
   }
   
   .light-scheme {
     color-scheme: light;
-    ${generateSemanticTierCssVariables(ClassicSemanticColors)}
+    ${generateSemanticTierCssVariables(darkScheme)}
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       color-scheme: dark;
-      ${generateSemanticTierCssVariables(ClassicSemanticColorsDark)}
+      ${generateSemanticTierCssVariables(darkScheme)}
     }
   }
   
@@ -49,36 +55,10 @@ export const ClassicColors = createGlobalStyle`
   }
 `;
 
-export const ModernColors = createGlobalStyle`
-  :root {
-    color-scheme: light;
-    ${generateBareTierCssVariables(ModernBrandColors)}
-    ${generateSemanticTierCssVariables(ModernSemanticColors)}
-  }
+export const ClassicColors = createThemeGlobalStyle(
+    ClassicBrandColors,
+    ClassicSemanticColors,
+    ClassicSemanticColorsDark
+);
 
-  .dark-scheme {
-    color-scheme: dark;
-    ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
-  }
-  
-  .light-scheme {
-    color-scheme: light;
-    ${generateSemanticTierCssVariables(ModernSemanticColors)}
-  }
-  
-  body, .wave {
-    color: ${getSemanticValue('foreground-primary')};
-    background-color: ${getSemanticValue('background-page-default')}
-  }
-  
-  svg {
-      fill: currentColor;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      color-scheme: dark;
-      ${generateSemanticTierCssVariables(ModernSemanticColorsDark)}
-    }
-  }
-`;
+export const ModernColors = createThemeGlobalStyle(ModernBrandColors, ModernSemanticColors, ModernSemanticColorsDark);

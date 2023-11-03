@@ -4,7 +4,7 @@ export type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${
 
 export type Color = HSL | 'transparent';
 
-export interface SemanticColorsSchema {
+export type SemanticColorsSchema = {
     transparent: 'transparent';
     white: Color;
     black: Color;
@@ -157,11 +157,11 @@ export interface SemanticColorsSchema {
         free: Color;
         now: Color;
         subtitle: Color;
-    }
+    };
     shadow: {
         default: Color;
     };
-}
+};
 
 type SemanticColorToken = Join<Leaves<SemanticColorsSchema>, '-'>;
 type SemanticColorTokenCssVariable = `--wave-s-color-${SemanticColorToken}`;
