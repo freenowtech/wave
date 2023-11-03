@@ -14,15 +14,21 @@ interface CardProps extends BoxProps {
     emphasized?: boolean;
 }
 
-const StyledTitle = styled(Headline).attrs({ as: 'h4', textAlign: 'left' })`
+const StyledTitle = styled(Headline).attrs(props => ({ as: 'h4', textAlign: 'left', ...props }))`
     color: var(--info-banner-text-color);
 `;
 
-const StyledDescription = styled(Text).attrs({ fontSize: 'small', textAlign: 'left' })`
+const StyledDescription = styled(Text).attrs(props => ({ fontSize: 'small', textAlign: 'left', ...props }))`
     color: var(--info-banner-text-color);
 `;
 
-const StyledLink = styled(WaveLink).attrs({ fontSize: 0, textAlign: 'left', target: '_blank', marginTop: '0.25rem' })`
+const StyledLink = styled(WaveLink).attrs(props => ({
+    fontSize: 0,
+    textAlign: 'left',
+    target: '_blank',
+    marginTop: '0.25rem',
+    ...props
+}))`
     &:link,
     &:visited {
         color: var(--info-banner-link-color);
