@@ -1,22 +1,21 @@
-import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { BaseInput, InternalInputComponentProps } from './BaseInput';
+import { BaseInput } from './BaseInput';
 import { activeBottomLinedPosition, BottomLinedInputLabel } from './BottomLinedInputLabel';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { InputProps } from './InputProps';
+import { InternalInputProps } from './InputProps';
 
 const errorStyles = css`
     box-shadow: inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')};
     border-color: ${getSemanticValue('border-danger-default')};
 
     & ~ ${BottomLinedInputLabel} {
-        color: ${getSemanticValue('foreground-danger-emphasized')};
+        color: ${getSemanticValue('foreground-danger-default')};
     }
 `;
 
 const sizeVariant = variant({
-    prop: 'size',
+    prop: 'waveSize',
     variants: {
         small: {
             height: '2.5rem',
@@ -29,11 +28,7 @@ const sizeVariant = variant({
     }
 });
 
-const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
-    if (inverted) {
-        return getSemanticValue('foreground-neutral-faded');
-    }
-
+const getLabelColor = ({ hasValue }: InternalInputProps) => {
     if (hasValue) {
         return getSemanticValue('foreground-neutral-emphasized');
     }
@@ -41,13 +36,12 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return getSemanticValue('foreground-neutral-default');
 };
 
-const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
+const BottomLinedInput = styled(BaseInput)<InternalInputProps>`
     ${sizeVariant}
     & ~ ${BottomLinedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
+        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.waveSize) : '')};
         color: ${getLabelColor};
-        background: ${p =>
-            getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
+        background: ${getSemanticValue('background-page-default')};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -62,18 +56,15 @@ const BottomLinedInput: FC<InternalInputComponentProps> = styled(BaseInput)<Inte
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size)};
+            ${p => activeBottomLinedPosition(p.waveSize)};
         }
     }
 
     &:focus:not(:disabled) {
         & ~ ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size)};
-            color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-focus')};
-            background: ${p =>
-                getSemanticValue(
-                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-                )};
+            ${p => activeBottomLinedPosition(p.waveSize)};
+            color: ${getSemanticValue('foreground-focus')};
+            background: ${getSemanticValue('background-page-default')};
         }
     }
 `;

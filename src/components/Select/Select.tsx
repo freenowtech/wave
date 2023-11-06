@@ -57,11 +57,7 @@ const Select: React.FC<SelectProps> = ({ variant = 'boxed', size = 'medium', ...
             <IconNode className="svg-icon">
                 <ChevronDownIcon />
             </IconNode>
-            {label && (
-                <SelectLabel inverted={props.inverted} htmlFor={id}>
-                    {label}
-                </SelectLabel>
-            )}
+            {label && <SelectLabel htmlFor={id}>{label}</SelectLabel>}
         </SelectWrapper>
     );
 };

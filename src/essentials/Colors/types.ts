@@ -2,14 +2,19 @@ import { Join, Leaves } from '../../utils/types';
 
 export type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 
-export type Color = HSL;
+export type Color = HSL | 'transparent';
 
-export interface SemanticColorsSchema {
+export type SemanticColorsSchema = {
     transparent: 'transparent';
     white: Color;
     black: Color;
     background: {
-        page: Color;
+        page: {
+            default: Color;
+            'elevation-1': Color;
+            'elevation-2': Color;
+            'elevation-3': Color;
+        };
         backdrop: Color;
         // for big areas
         surface: {
@@ -37,6 +42,7 @@ export interface SemanticColorsSchema {
                 emphasized: Color;
             };
             danger: {
+                faded: Color;
                 default: Color;
                 emphasized: Color;
             };
@@ -54,7 +60,6 @@ export interface SemanticColorsSchema {
             disabled: {
                 faded: Color;
                 default: Color;
-                emphasized: Color;
             };
             accent: {
                 default: Color;
@@ -67,11 +72,9 @@ export interface SemanticColorsSchema {
             };
             success: {
                 default: Color;
-                emphasized: Color;
             };
             warning: {
                 default: Color;
-                emphasized: Color;
             };
             danger: {
                 default: Color;
@@ -89,21 +92,23 @@ export interface SemanticColorsSchema {
         accent: {
             faded: Color;
             default: Color;
-            emphasized: Color;
         };
         info: {
+            banner: Color;
             faded: Color;
             default: Color;
         };
         success: {
+            banner: Color;
             faded: Color;
             default: Color;
         };
         warning: {
-            faded: Color;
+            banner: Color;
             default: Color;
         };
         danger: {
+            banner: Color;
             faded: Color;
             default: Color;
         };
@@ -121,6 +126,8 @@ export interface SemanticColorsSchema {
             success: Color;
             warning: Color;
             danger: Color;
+            disabled: Color;
+            neutral: Color;
         };
         neutral: {
             faded: Color;
@@ -146,10 +153,15 @@ export interface SemanticColorsSchema {
             emphasized: Color;
         };
     };
+    logo: {
+        free: Color;
+        now: Color;
+        subtitle: Color;
+    };
     shadow: {
         default: Color;
     };
-}
+};
 
 type SemanticColorToken = Join<Leaves<SemanticColorsSchema>, '-'>;
 type SemanticColorTokenCssVariable = `--wave-s-color-${SemanticColorToken}`;

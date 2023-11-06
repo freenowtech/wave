@@ -1,6 +1,4 @@
-import { Primary, Meta, ArgTypes, Stories, Unstyled } from '@storybook/blocks';
-import { Input } from '../../Input/Input';
-import { HelperText } from '../HelperText';
+import { Primary, Meta, ArgTypes, Canvas } from '@storybook/blocks';
 import * as HelperTextStories from './HelperText.stories';
 
 <Meta of={HelperTextStories} />
@@ -27,30 +25,9 @@ for users action or to provide further information in advance.
 
 ### Provide additional information about form inputs
 
-<Unstyled>
-    <Input placeholder="Enter something" />
-    <HelperText mt="1">127 Characters left</HelperText>
-</Unstyled>
-
-```jsx
-<Input placeholder="Enter something" />
-<HelperText mt="1">127 Characters left</HelperText>
-```
+<Canvas of={HelperTextStories.AsInputClarification} />
 
 ### Validation messages
 
-<Unstyled>
-    <Input label="Email" placeholder="who@free-now.com" />
-    <HelperText mt="1" variant="danger">
-        Email is required
-    </HelperText>
-</Unstyled>
+<Canvas of={HelperTextStories.AsErrorDescription} />
 
-```jsx
-<Input label='Email' placeholder="who@free-now.com" />
-<HelperText mt="1" variant="danger">
-    Email field is required
-</HelperText>
-```
-
-<Stories includePrimary={false} />

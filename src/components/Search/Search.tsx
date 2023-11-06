@@ -15,16 +15,13 @@ const ActiveStyle = `
     color: ${getSemanticValue('foreground-info-faded')};
 `;
 
-interface SearchResultsContainerProps extends BoxProps, Pick<SearchProps, 'inverted'> {}
-
-const SearchResultsContainer = styled(Box)<SearchResultsContainerProps>`
+const SearchResultsContainer = styled(Box)`
     position: absolute;
     z-index: ${Elevation.SUGGESTIONS_LIST};
     margin-top: 0.0625rem;
     padding: 0.25rem 0;
     width: inherit;
-    background-color: ${props =>
-        getSemanticValue(props.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
+    background-color: ${getSemanticValue('background-page-elevation-1')};
     box-shadow: 0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')};
     border-radius: 0.25rem;
     cursor: pointer;
@@ -42,7 +39,7 @@ interface SearchInputContainerProps extends BoxProps {
 
 const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     box-sizing: border-box;
-    background: white;
+    background: ${getSemanticValue('background-page-default')};
     border-radius: 0.25rem;
     border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus' : 'border-neutral-default')}`};
     box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}` : 'none')};
@@ -109,10 +106,6 @@ export interface SearchProps {
      */
     disabled?: boolean;
     /**
-     * Determines whether the search box has an inverted color scheme
-     */
-    inverted?: boolean;
-    /**
      * Determines the size of the search box
      */
     size?: 'small' | 'medium';
@@ -145,7 +138,6 @@ export const Search: FC<SearchProps> = ({
     width,
     placeholder = 'Search...',
     disabled,
-    inverted,
     size,
     onInputChange,
     onClear,
@@ -270,7 +262,6 @@ export const Search: FC<SearchProps> = ({
                 <StyledInput
                     size={size}
                     type="search"
-                    inverted={inverted}
                     disabled={disabled}
                     aria-label={placeholder}
                     autoComplete="off"
@@ -297,7 +288,7 @@ export const Search: FC<SearchProps> = ({
             </SearchInputContainer>
 
             {showResults && results.length > 0 && (
-                <SearchResultsContainer inverted={inverted} role="listbox">
+                <SearchResultsContainer role="listbox">
                     {results.map((result, index) => (
                         <ActiveBox
                             role="option"

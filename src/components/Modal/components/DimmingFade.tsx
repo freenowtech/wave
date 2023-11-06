@@ -28,7 +28,7 @@ const fadeInAnimation = (maxOpacity = 0.6) => css`
 `;
 
 const fullscreenDimming = css`
-    background-color: ${getSemanticValue('background-surface-neutral-default')};
+    background-color: ${getSemanticValue('background-page-default')};
     opacity: 1;
 `;
 

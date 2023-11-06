@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Password } from '../Password';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Form Elements/Password',
@@ -62,15 +61,6 @@ export const WithError: Story = {
 export const Disabled: Story = {
     args: {
         disabled: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };
 

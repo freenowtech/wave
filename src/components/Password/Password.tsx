@@ -50,17 +50,6 @@ const defaultAriaStrings = {
     messagePasswordIsShown: 'Your password is shown'
 };
 
-const iconColors = {
-    regular: {
-        color: getSemanticValue('foreground-neutral-emphasized'),
-        hover: getSemanticValue('foreground-primary')
-    },
-    inverted: {
-        color: getSemanticValue('foreground-neutral-faded'),
-        hover: getSemanticValue('foreground-on-background-primary')
-    }
-};
-
 // allow component level CSS variables to be passed via `style` prop
 declare module 'csstype' {
     interface Properties {
@@ -77,7 +66,6 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             disabled,
             size = 'medium',
             variant = 'boxed',
-            inverted,
             ariaStrings = {},
             ...rest
         }: PasswordProps,
@@ -88,7 +76,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             ...defaultAriaStrings,
             ...ariaStrings
         };
-        const { color, hover } = iconColors[inverted ? 'inverted' : 'regular'];
+
         const inputId = useGeneratedId(id);
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(rest);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
@@ -104,7 +92,6 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                     id={inputId}
                     size={size}
                     variant={variant}
-                    inverted={inverted}
                     disabled={disabled}
                     ref={inputRef}
                     type={isHidden ? 'password' : 'text'}
@@ -123,8 +110,8 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                             aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}
                             style={{
-                                '--wave-c-password-color': color,
-                                '--wave-c-password-color-hover': hover
+                                '--wave-c-password-color': getSemanticValue('foreground-neutral-emphasized'),
+                                '--wave-c-password-color-hover': getSemanticValue('foreground-primary')
                             }}
                         >
                             {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}

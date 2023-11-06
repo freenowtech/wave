@@ -26,7 +26,7 @@ const meta: Meta = {
     },
     args: {
         children: (
-            <Text inverted>
+            <Text>
                 In order to continuously improve our websites, and show offers and advertisements that are suited to
                 you, we use cookies, tracking and (re-) targeting technologies. Please see our Cookie policy for more
                 information. Tracking and (re-) targeting technologies will only be used if you click on Agree.
@@ -60,7 +60,7 @@ type Story = StoryObj<typeof Banner>;
 
 export const Default: Story = {
     args: {
-        children: <Text inverted>Hello</Text>
+        children: <Text style={{color: 'inherit'}}>Hello</Text>
     }
 };
 
@@ -73,7 +73,7 @@ export const Success: Story = {
 export const Danger: Story = {
     args: {
         variant: 'danger',
-        children: <Text inverted>Oops! Something went wrong</Text>
+        children: <Text>Oops! Something went wrong</Text>
     }
 };
 
@@ -87,7 +87,7 @@ export const WithDismissedFn: Story = {
     args: {
         children: dismiss => (
             <>
-                <Text inverted>If you are tired of this banner, hit the button 👉 </Text>
+                <Text>If you are tired of this banner, hit the button 👉 </Text>
                 <Button onClick={dismiss}>Close</Button>
             </>
         )

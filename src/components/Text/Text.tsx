@@ -29,9 +29,9 @@ interface TextProps
      */
     fontWeight?: ResponsiveValue<'normal' | 'semibold' | 'bold'>;
     /**
-     * Adjust color for display on a dark background
+     * Enforce primary color
      */
-    inverted?: boolean;
+    primary?: boolean;
     /**
      * Adjust color to indicate secondary information
      */
@@ -43,20 +43,21 @@ interface TextProps
 }
 
 function determineTextColor(props: TextProps) {
-    const { secondary, inverted, disabled } = props;
+    const { primary, secondary, disabled } = props;
+
     if (disabled) {
         return getSemanticValue('foreground-disabled');
     }
 
     if (secondary) {
-        return getSemanticValue(inverted ? 'foreground-neutral-faded' : 'foreground-neutral-emphasized');
+        return getSemanticValue('foreground-neutral-emphasized');
     }
 
-    if (inverted) {
-        return getSemanticValue('foreground-on-background-primary');
+    if (primary) {
+        return getSemanticValue('foreground-primary');
     }
 
-    return getSemanticValue('foreground-primary');
+    return 'inherit';
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`

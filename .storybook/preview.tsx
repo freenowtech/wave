@@ -14,7 +14,9 @@ export const withTheme = (Story, context) => {
     return (
         <>
             <Theme />
-            <Story {...context} />
+            <div className="wave">
+                <Story {...context} />
+            </div>
         </>
     );
 };
@@ -43,8 +45,9 @@ export const preview: Preview = {
             }
         },
         backgrounds: {
-            default: 'light',
+            default: 'auto',
             values: [
+                { name: 'auto', value: getSemanticValue('background-page-default') },
                 { name: 'light', value: getSemanticValue('background-surface-neutral-default') },
                 { name: 'dark', value: getSemanticValue('background-surface-primary-default') }
             ]

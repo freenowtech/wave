@@ -22,7 +22,7 @@ interface LabelProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
 const normalVariantStyles = variant({
     variants: {
         default: {
-            color: getSemanticValue('foreground-primary'),
+            color: getSemanticValue('foreground-on-background-neutral'),
             borderColor: getSemanticValue('border-neutral-default'),
             backgroundColor: getSemanticValue('background-element-neutral-emphasized')
         },
@@ -37,14 +37,14 @@ const normalVariantStyles = variant({
             backgroundColor: getSemanticValue('background-element-success-default')
         },
         warning: {
-            color: getSemanticValue('foreground-primary'),
+            color: getSemanticValue('foreground-on-background-warning'),
             borderColor: getSemanticValue('border-warning-default'),
             backgroundColor: getSemanticValue('background-element-warning-default')
         },
         danger: {
             color: getSemanticValue('foreground-danger-emphasized'),
             borderColor: getSemanticValue('border-danger-faded'),
-            backgroundColor: getSemanticValue('background-element-danger-faded')
+            backgroundColor: getSemanticValue('background-surface-danger-faded')
         }
     }
 });

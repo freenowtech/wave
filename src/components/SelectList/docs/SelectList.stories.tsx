@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { SelectList } from '../SelectList';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Form Elements/SelectList',
@@ -105,14 +104,5 @@ export const MultiSelectDisabled: Story = {
         isDisabled: true,
         options: errorOptions,
         value: errorOptions
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

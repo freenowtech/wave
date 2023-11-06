@@ -33,10 +33,12 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
     border: 1px solid ${getSemanticValue('border-neutral-default')};
     padding: 0.8125rem ${Spaces[2]};
     border-radius: ${get('radii.2')};
+    fill: currentColor;
 
     &:hover {
         cursor: pointer;
-        background-color: ${getSemanticValue('background-element-neutral-emphasized')} !important;
+        color: ${getSemanticValue('foreground-on-background-neutral')};
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')};
     }
 `;
 
@@ -217,14 +219,25 @@ const Popover: React.FC<PopoverProps> = ({
                     <DefaultPopoverWrapper
                         ref={popoverTriggerRef}
                         style={{
-                            background: render ? getSemanticValue('background-element-neutral-emphasized') : 'none'
+                            color: render ? getSemanticValue('foreground-on-background-neutral') : undefined,
+                            background: render ? getSemanticValue('background-element-neutral-emphasized') : undefined
                         }}
                     >
-                        <Text fontWeight="semibold">{children}</Text>
+                        <Text fontWeight="semibold" style={{ color: 'inherit' }}>
+                            {children}
+                        </Text>
                         {!render ? (
-                            <ChevronDownIcon size={20} style={{ marginLeft: Spaces[1] }} />
+                            <ChevronDownIcon
+                                size={20}
+                                color="inherit"
+                                style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
+                            />
                         ) : (
-                            <ChevronUpIcon size={20} style={{ marginLeft: Spaces[1] }} />
+                            <ChevronUpIcon
+                                size={20}
+                                color="inherit"
+                                style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
+                            />
                         )}
                     </DefaultPopoverWrapper>
                 ) : (
