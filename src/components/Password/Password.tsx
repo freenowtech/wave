@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
@@ -81,6 +81,9 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(rest);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
+        const inputRef = useRef<HTMLInputElement>();
+        useImperativeHandle(ref, () => inputRef.current, []);
+
         return (
             <PasswordWrapper {...widthProps} {...marginProps}>
                 <Input
@@ -90,7 +93,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                     size={size}
                     variant={variant}
                     disabled={disabled}
-                    ref={ref}
+                    ref={inputRef}
                     type={isHidden ? 'password' : 'text'}
                     autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
                 />
@@ -102,13 +105,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                             type="button"
                             onClick={() => {
                                 setIsHidden(prevValue => !prevValue);
-
-                                // TODO use ref passed to the input once https://github.com/freenowtech/wave/issues/169 is solved
-                                // set input focus
-                                const inputElement: HTMLElement = document.querySelector(`input[id=${inputId}]`);
-                                if (inputElement) {
-                                    inputElement.focus();
-                                }
+                                if (inputRef?.current) inputRef.current.focus();
                             }}
                             aria-controls={inputId}
                             aria-label={isHidden ? aria.showPasswordButton : aria.hidePasswordButton}

@@ -1,6 +1,6 @@
 import { FirstDayOfWeek, START_DATE } from '@datepicker-react/hooks';
 import parse from 'date-fns/parse';
-import React, { ChangeEventHandler, FC, useEffect, useRef, useState } from 'react';
+import React, { ChangeEventHandler, FC, useEffect, useState } from 'react';
 import { MarginProps, WidthProps } from 'styled-system';
 import { usePopper } from 'react-popper';
 import { createPortal } from 'react-dom';
@@ -94,13 +94,12 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     inputId,
     disabled,
     ...rest
-}: DatepickerSingleInputProps) => {
+}) => {
     const [triggerReference, setTriggerReference] = useState(undefined);
     const [contentReference, setContentReference] = useState(undefined);
     const [arrowReference, setArrowReference] = useState(undefined);
 
     const localeObject = useLocaleObject(locale);
-    const inputRef = useRef<HTMLDivElement>();
     const [isFocused, setIsFocused] = useState(false);
     const [inputText, setInputText] = useState(dateToDisplayText(localeObject, displayFormat, value));
     const [error, setError] = useState(false);
@@ -172,7 +171,6 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
             <Input
                 ref={element => {
                     setTriggerReference(element);
-                    inputRef.current = element;
                 }}
                 id={id}
                 autoComplete="off"
