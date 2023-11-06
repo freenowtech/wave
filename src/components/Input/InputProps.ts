@@ -13,10 +13,6 @@ interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'widt
      */
     size?: ResponsiveValue<'small' | 'medium'>;
     /**
-     * Inverts the colors of the input
-     */
-    inverted?: boolean;
-    /**
      * Disable the input
      */
     disabled?: boolean;
@@ -34,4 +30,12 @@ interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'widt
     placeholder?: string;
 }
 
-export { InputProps };
+interface InternalInputProps {
+    hasValue: boolean;
+    // we don't want to create a conflict with the `size` attribute of the input HTML element
+    // the public interface keeps using the `size` prop which is internally mapped to `waveSize` to avoid TS conflicts
+    waveSize: InputProps['size'];
+    variant: InputProps['variant'];
+}
+
+export { InputProps, InternalInputProps };

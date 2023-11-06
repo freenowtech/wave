@@ -8,6 +8,7 @@ import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
+import { InvertedColorScheme } from '../ColorScheme/InvertedColorScheme';
 
 const fadeAnimation = keyframes`
     from {
@@ -81,14 +82,13 @@ const arrowPlacementStyles = variant({
 });
 
 interface TooltipBodyProps {
-    inverted?: boolean;
     variant: string;
 }
 
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
-    background-color: ${p => getSemanticValue(p.inverted ? 'background-surface-neutral-faded' : 'background-backdrop')};
+    background-color: ${getSemanticValue('background-backdrop')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -111,9 +111,10 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         position: absolute;
         pointer-events: none;
         border: 0.25rem solid rgba(0, 0, 0, 0);
-        border-bottom-color: ${p =>
+        border-bottom-color: ${
             // background colors are used because this border is used to create the arrow
-            getSemanticValue(p.inverted ? 'background-surface-neutral-faded' : 'background-backdrop')};
+            getSemanticValue('background-backdrop')
+        };
         margin-left: -0.25rem;
 
         ${arrowPlacementStyles}
@@ -122,17 +123,13 @@ const TooltipBody = styled.div<TooltipBodyProps>`
 
 interface TooltipProps {
     /**
-     * The content that will be shown inside of the tooltip body
+     * The content that will be shown inside the tooltip body
      */
     content: React.ReactNode;
     /**
      * Set the position of where the tooltip is attached to the target, defaults to "top"
      */
     placement?: Placement;
-    /**
-     * Adjust the component for display on dark backgrounds
-     */
-    inverted?: boolean;
     /**
      * Force the tooltip to always be visible, regardless of user interaction
      */
@@ -143,8 +140,7 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     content,
     children,
     placement = 'top',
-    alwaysVisible = false,
-    inverted = false
+    alwaysVisible = false
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
@@ -170,9 +166,11 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-            <Text as="p" fontSize={0} inverted={!inverted}>
-                {content}
-            </Text>
+            <InvertedColorScheme>
+                <Text as="p" fontSize={0}>
+                    {content}
+                </Text>
+            </InvertedColorScheme>
         );
     }
 
@@ -194,7 +192,6 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
                 createPortal(
                     <TooltipBody
                         ref={setContentReference}
-                        inverted={inverted}
                         style={{ ...styles.popper }}
                         variant={attributes.popper?.['data-popper-placement']}
                         {...attributes.popper}

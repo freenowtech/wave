@@ -45,7 +45,11 @@ const AU: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     fill="url(#AU__c)"
                     mask="url(#AU__b)"
                 />
-                <path fill="url(#AU__d)" mask="url(#AU__b)" d="M0 4h5.333V0h1.334v4H12v1.333H6.667v4H5.333v-4H0z" />
+                <path
+                    fill="url(#AU__d)"
+                    mask="url(#AU__b)"
+                    d="M0 4h5.333V0h1.334v4H12v1.333H6.667v4H5.333v-4H0z"
+                />
                 <path
                     fill="#FFF"
                     mask="url(#AU__b)"

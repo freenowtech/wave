@@ -34,15 +34,19 @@ const levelVariant = variant({
     prop: 'level',
     variants: {
         0: {
+            backgroundColor: getSemanticValue('background-page-default'),
             boxShadow: 'none'
         },
         100: {
+            backgroundColor: getSemanticValue('background-page-elevation-1'),
             boxShadow: theme.shadows.small
         },
         200: {
+            backgroundColor: getSemanticValue('background-page-elevation-2'),
             boxShadow: theme.shadows.medium
         },
         300: {
+            backgroundColor: getSemanticValue('background-page-elevation-3'),
             boxShadow: theme.shadows.large
         }
     }
@@ -51,7 +55,6 @@ const levelVariant = variant({
 const Card: StyledComponent<'div', typeof theme, CardProps, 'theme'> = styled.div.attrs({ theme })`
     overflow: auto;
     box-sizing: border-box;
-    background-color: ${getSemanticValue('background-surface-neutral-default')};
     border-radius: ${get('radii.1')};
     padding: ${get('space.5')};
 

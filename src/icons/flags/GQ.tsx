@@ -74,7 +74,13 @@ const GQ: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#GQ__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#51b422" d="M0 0h28v6.7H0z" />
+            <path
+                mask="url(#GQ__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#51b422"
+                d="M0 0h28v6.7H0z"
+            />
             <defs>
                 <filter
                     id="GQ__Adobe_OpacityMaskFilter_2_"

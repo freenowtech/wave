@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
 
-import { onDarkBackground } from '../../../docs/parameters';
 import { Link } from '../Link';
 
 const meta: Meta = {
@@ -85,14 +84,5 @@ export const Default: Story = {};
 export const WithManualFontSize: Story = {
     args: {
         fontSize: 1
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

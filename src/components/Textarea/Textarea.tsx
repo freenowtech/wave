@@ -10,9 +10,9 @@ import {
     extractWrapperMarginProps
 } from '../../utils/extractProps';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
-import { InternalInputComponentProps } from '../Input/BaseInput';
 import { BoxedInput } from '../Input/BoxedInput';
 import { BoxedInputLabel } from '../Input/BoxedInputLabel';
+import { InternalInputProps } from '../Input/InputProps';
 
 type WrapperProps = MarginProps &
     WidthProps &
@@ -30,7 +30,7 @@ const TextAreaWrapper: FC<WrapperProps> = styled.div.attrs({ theme })`
     ${compose(margin, height, width)}
 `;
 
-const TextareaField: FC<TextAreaProps & Pick<InternalInputComponentProps, 'hasValue'>> = styled(BoxedInput).attrs({
+const TextareaField: FC<TextAreaProps & Pick<InternalInputProps, 'hasValue'>> = styled(BoxedInput).attrs({
     as: 'textarea'
 })<TextAreaProps>`
     height: 100%;
@@ -55,10 +55,6 @@ interface TextAreaProps
      * @default 'medium'
      */
     size?: ResponsiveValue<'small' | 'medium'>;
-    /**
-     * Inverts the colors of the input
-     */
-    inverted?: boolean;
     /**
      * Sets the input label
      */
@@ -106,7 +102,7 @@ const Textarea: FC<WrapperProps & TextAreaProps> = ({ resize = 'both', ...props 
                 onChange={handleChange}
             />
             {label && (
-                <BoxedInputLabel htmlFor={id} size="medium">
+                <BoxedInputLabel htmlFor={id} waveSize="medium">
                     {label}
                 </BoxedInputLabel>
             )}

@@ -8,7 +8,7 @@ import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TargetSquare = styled.div`
     background: ${getSemanticValue('background-surface-info-emphasized')};
-    color: ${getSemanticValue('foreground-on-background-primary')};
+    color: ${getSemanticValue('foreground-on-background-info')};
     font-size: 0.75rem;
     cursor: default;
     width: 7rem;
@@ -28,6 +28,8 @@ const ExampleContainer = styled.div`
     display: grid;
     grid-template-columns: auto;
     grid-row-gap: 1rem;
+    background-color: ${getSemanticValue('background-page-default')};
+    padding: 1rem;
 
     ${MediaQueries.small} {
         grid-template-columns: 20rem auto;

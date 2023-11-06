@@ -1,9 +1,9 @@
-import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { BaseInput, InternalInputComponentProps } from './BaseInput';
+import { BaseInput } from './BaseInput';
 import { activeBoxedPosition, BoxedInputLabel } from './BoxedInputLabel';
 import { getSemanticValue } from '../../utils/cssVariables';
+import { InternalInputProps } from './InputProps';
 
 const errorStyles = css`
     box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')};
@@ -15,7 +15,7 @@ const errorStyles = css`
 `;
 
 const sizeVariant = variant({
-    prop: 'size',
+    prop: 'waveSize',
     variants: {
         small: {
             height: '2rem',
@@ -28,11 +28,7 @@ const sizeVariant = variant({
     }
 });
 
-const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
-    if (inverted) {
-        return getSemanticValue('foreground-neutral-faded');
-    }
-
+const getLabelColor = ({ hasValue }: InternalInputProps) => {
     if (hasValue) {
         return getSemanticValue('foreground-neutral-emphasized');
     }
@@ -40,19 +36,16 @@ const getLabelColor = ({ hasValue, inverted }: InternalInputComponentProps) => {
     return getSemanticValue('foreground-neutral-default');
 };
 
-const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalInputComponentProps>`
+const BoxedInput = styled(BaseInput)<InternalInputProps>`
     ${sizeVariant}
     & + ${BoxedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.size) : undefined)};
+        ${p => (p.hasValue || p.placeholder ? activeBoxedPosition(p.waveSize) : undefined)};
         color: ${getLabelColor};
+        background: ${getSemanticValue('background-page-default')};
         background: ${p =>
-            getSemanticValue(p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default')};
-        background: ${p =>
-            `linear-gradient(0deg, ${getSemanticValue(
-                p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-            )} calc(50% + ${
-                (p.size as InternalInputComponentProps['size']) === 'small' ? '0.0825rem' : '0.0625rem'
-            }), transparent 50%)`};
+            `linear-gradient(0deg, 
+            ${getSemanticValue('background-page-default')} 
+            calc(50% + ${p.waveSize === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
     }
 
     ${p => (p.error ? errorStyles : undefined)}
@@ -67,25 +60,19 @@ const BoxedInput: FC<InternalInputComponentProps> = styled(BaseInput)<InternalIn
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BoxedInputLabel} {
-            ${p => activeBoxedPosition(p.size)};
+            ${p => activeBoxedPosition(p.waveSize)};
         }
     }
 
     &:focus:not(:disabled) {
         & + ${BoxedInputLabel} {
-            ${p => activeBoxedPosition(p.size)};
-            color: ${p => getSemanticValue(p.inverted ? 'foreground-on-background-primary' : 'foreground-focus')};
+            ${p => activeBoxedPosition(p.waveSize)};
+            color: ${getSemanticValue('foreground-focus')};
+            background: ${getSemanticValue('background-page-default')};
             background: ${p =>
-                getSemanticValue(
-                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-                )};
-            background: ${p =>
-                `linear-gradient(0deg, ${getSemanticValue(
-                    // inverted doesn't work well for the modern layout
-                    p.inverted ? 'background-element-primary-default' : 'background-element-neutral-default'
-                )} calc(50% + ${
-                    (p.size as InternalInputComponentProps['size']) === 'small' ? '0.0825rem' : '0.0625rem'
-                }), transparent 50%)`};
+                `linear-gradient(0deg, 
+                ${getSemanticValue('background-page-default')} 
+                calc(50% + ${p.waveSize === 'small' ? '0.0825rem' : '0.0625rem'}), transparent 50%)`};
         }
     }
 `;

@@ -74,7 +74,13 @@ const DJ: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#DJ__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#82c5f5" d="M0 0h28v10H13z" />
+            <path
+                mask="url(#DJ__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#82c5f5"
+                d="M0 0h28v10H13z"
+            />
             <defs>
                 <filter
                     id="DJ__Adobe_OpacityMaskFilter_2_"

@@ -6,7 +6,7 @@ import { getSemanticValue } from '../../src/utils/cssVariables';
 type ItemWrapperProps = PaddingProps &
     MarginProps & {
         inverted?: boolean;
-        gridTemplate: string;
+        gridTemplate?: string;
     };
 
 const ItemWrapper = styled.div<ItemWrapperProps>`
@@ -18,8 +18,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
     grid-template-columns: ${p => (p.gridTemplate ? p.gridTemplate : '1fr')};
     grid-row-gap: ${Spaces[3]};
     grid-column-gap: ${Spaces[2]};
-    background-color: ${p =>
-        getSemanticValue(p.inverted ? 'background-surface-primary-default' : 'background-surface-neutral-default')};
+    background-color: ${getSemanticValue('background-page-default')};
 
     ${compose(padding, margin)}
 `;

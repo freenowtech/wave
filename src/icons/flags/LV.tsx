@@ -22,7 +22,14 @@ const LV: React.FC<Props> = ({ size = 'medium', ...props }) => {
             <style>{'.LV__st2{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}'}</style>
             <path d="M2 0h24c1.1 0 2 .9 2 2v15.5c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0z" fill="#fff" />
             <defs>
-                <filter id="LV__Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x={0} y={0} width={28} height={8}>
+                <filter
+                    id="LV__Adobe_OpacityMaskFilter"
+                    filterUnits="userSpaceOnUse"
+                    x={0}
+                    y={0}
+                    width={28}
+                    height={8}
+                >
                     <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
                 </filter>
             </defs>
@@ -64,7 +71,13 @@ const LV: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#LV__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#b9414b" d="M0 12h28v8H0z" />
+            <path
+                mask="url(#LV__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#b9414b"
+                d="M0 12h28v8H0z"
+            />
         </svg>
     );
 };

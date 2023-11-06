@@ -2,7 +2,6 @@ import React from 'react';
 import { StoryObj, Meta } from '@storybook/react';
 
 import { Select } from '../Select';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta = {
     title: 'Form Elements/Select',
@@ -72,14 +71,5 @@ export const Small: Story = {
 export const Disabled: Story = {
     args: {
         disabled: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

@@ -8,6 +8,7 @@ export const Colors = {
         primary: {
             1100: 'hsl(211, 100%, 6%)',
             900: 'hsl(211, 100%, 12%)',
+            750: 'hsl(210, 30%, 25%)',
             550: 'hsl(210, 16%, 46%)',
             350: 'hsl(213, 14%, 66%)',
             200: 'hsl(210, 14%, 80%)',
@@ -67,7 +68,9 @@ export const SemanticColors = {
             info: Colors.white,
             success: Colors.white,
             warning: Colors.blue.primary[900],
-            danger: Colors.white
+            danger: Colors.white,
+            disabled: Colors.white,
+            neutral: Colors.blue.primary[900]
         },
         disabled: Colors.blue.primary[200],
         focus: Colors.blue.secondary[900],
@@ -96,12 +99,16 @@ export const SemanticColors = {
         }
     },
     background: {
-        page: Colors.white,
+        page: {
+            default: Colors.white,
+            'elevation-1': Colors.white,
+            'elevation-2': Colors.white,
+            'elevation-3': Colors.white
+        },
         element: {
             disabled: {
                 faded: Colors.blue.primary[50],
                 default: Colors.blue.primary[200],
-                emphasized: Colors.blue.primary[550]
             },
             primary: {
                 default: Colors.blue.primary[900],
@@ -121,12 +128,10 @@ export const SemanticColors = {
                 emphasized: Colors.blue.secondary[900]
             },
             success: {
-                default: Colors.green[50],
-                emphasized: Colors.green[900]
+                default: Colors.green[50]
             },
             warning: {
                 default: Colors.yellow[50],
-                emphasized: Colors.yellow[900]
             },
             danger: {
                 faded: Colors.orange[50],
@@ -159,6 +164,7 @@ export const SemanticColors = {
                 emphasized: Colors.yellow[900]
             },
             danger: {
+                faded: Colors.orange[50],
                 default: Colors.orange[50],
                 emphasized: Colors.orange[900]
             }
@@ -174,28 +180,192 @@ export const SemanticColors = {
         accent: {
             faded: Colors.blue.secondary[350],
             default: Colors.blue.secondary[900],
-            emphasized: Colors.blue.secondary[1000]
         },
         focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[200],
         info: {
+            banner: Colors.blue.secondary[350],
             faded: Colors.blue.secondary[350],
             default: Colors.blue.secondary[900]
         },
         success: {
+            banner: Colors.green[350],
             faded: Colors.green[350],
             default: Colors.green[900]
         },
         warning: {
-            faded: Colors.yellow[350],
+            banner: Colors.yellow[350],
             default: Colors.yellow[900]
         },
         danger: {
+            banner: Colors.orange[350],
             faded: Colors.orange[350],
             default: Colors.orange[900]
         }
     },
+    logo: {
+        free: 'hsl(350, 91%, 41%)',
+        now: 'hsl(350, 91%, 41%)',
+        subtitle: Colors.black
+    },
     shadow: {
         default: Colors.blue.primary[200]
+    }
+} satisfies SemanticColorsSchema;
+
+export const SemanticColorsDarkSchema = {
+    black: Colors.black,
+    white: Colors.white,
+    transparent: Colors.transparent,
+    foreground: {
+        primary: Colors.white,
+        accent: {
+            default: Colors.white,
+            emphasized: Colors.blue.primary[200]
+        },
+        neutral: {
+            faded: Colors.blue.primary[200],
+            default: Colors.blue.primary[350],
+            emphasized: Colors.blue.primary[200]
+        },
+        'on-background': {
+            primary: Colors.blue.secondary[900],
+            disabled: Colors.blue.primary[350],
+            success: Colors.white,
+            accent: Colors.white,
+            neutral: Colors.blue.primary[900],
+            warning: Colors.blue.primary[900],
+            info: Colors.white,
+            danger: Colors.white
+        },
+        disabled: Colors.blue.primary[350],
+        focus: Colors.white,
+        info: {
+            faded: Colors.white,
+            default: Colors.white
+        },
+        success: {
+            default: Colors.green[900]
+        },
+        warning: {
+            default: Colors.yellow[900]
+        },
+        danger: {
+            default: Colors.orange[900],
+            emphasized: Colors.orange[1000]
+        }
+    },
+    background: {
+        page: {
+            default: Colors.blue.primary[900],
+            'elevation-1': Colors.blue.primary[750],
+            'elevation-2': Colors.blue.primary[550],
+            'elevation-3': Colors.blue.primary[350]
+        },
+        element: {
+            primary: {
+                default: Colors.white,
+                emphasized: Colors.blue.secondary[900]
+            },
+            disabled: {
+                faded: Colors.blue.primary[750],
+                default: Colors.blue.primary[550]
+            },
+            accent: {
+                faded: Colors.blue.secondary[1000],
+                default: Colors.blue.secondary[900],
+                emphasized: Colors.blue.secondary[900]
+            },
+            info: {
+                default: Colors.blue.secondary[900],
+                emphasized: Colors.blue.secondary[1000]
+            },
+            neutral: {
+                default: Colors.blue.primary[350],
+                emphasized: Colors.white
+            },
+            success: {
+                default: Colors.green[50],
+            },
+            warning: {
+                default: Colors.yellow[50]
+            },
+            danger: {
+                faded: Colors.orange[1000],
+                default: Colors.orange[900],
+                emphasized: Colors.orange[1000]
+            }
+        },
+        surface: {
+            primary: {
+                default: Colors.blue.primary[900],
+                emphasized: Colors.blue.primary[200]
+            },
+            neutral: {
+                faded: Colors.blue.secondary[350],
+                default: Colors.blue.primary[550],
+                emphasized: Colors.blue.primary[550]
+            },
+            info: {
+                faded: Colors.blue.secondary[900],
+                active: Colors.blue.secondary[900],
+                default: Colors.blue.secondary[1000],
+                emphasized: Colors.blue.secondary[1000]
+            },
+            success: {
+                default: Colors.blue.primary[750],
+                emphasized: Colors.green[900]
+            },
+            warning: {
+                default: Colors.blue.primary[750],
+                emphasized: Colors.yellow[900]
+            },
+            danger: {
+                faded: Colors.orange[350],
+                default: Colors.blue.primary[750],
+                emphasized: Colors.red[1000]
+            }
+        },
+        backdrop: Colors.blue.primary[50]
+    },
+    border: {
+        neutral: {
+            faded: Colors.white,
+            default: Colors.white,
+            emphasized: Colors.blue.primary[550]
+        },
+        accent: {
+            faded: Colors.blue.secondary[350],
+            default: Colors.blue.secondary[350]
+        },
+        info: {
+            banner: Colors.blue.secondary[350],
+            default: Colors.blue.secondary[900],
+            faded: Colors.blue.secondary[900]
+        },
+        success: {
+            banner: Colors.green[350],
+            faded: Colors.green[900],
+            default: Colors.green[900]
+        },
+        warning: {
+            banner: Colors.yellow[350],
+            default: Colors.yellow[900]
+        },
+        danger: {
+            banner: Colors.orange[350],
+            faded: Colors.orange[900],
+            default: Colors.orange[900]
+        },
+        focus: Colors.blue.secondary[900],
+        disabled: Colors.blue.primary[550]
+    },
+    logo: {
+        free: 'hsl(350, 91%, 41%)',
+        now: Colors.white,
+        subtitle: Colors.white
+    },
+    shadow: {
+        default: Colors.blue.primary[550]
     }
 } satisfies SemanticColorsSchema;
