@@ -6,11 +6,7 @@ import { getSemanticValue } from '../../utils/cssVariables';
 
 const ANIMATION_DURATION = 100;
 
-interface InternalInputComponentProps extends Omit<InputProps, 'label'> {
-    hasValue?: boolean;
-}
-
-const sizeVariant = variant({
+const sizeVariant = variant<Record<string, unknown>, 'small' | 'medium'>({
     prop: 'size',
     variants: {
         small: {
@@ -46,7 +42,7 @@ const inputVariants = variant({
     }
 });
 
-const BaseInput = styled.input<InternalInputComponentProps>`
+const BaseInput = styled.input<InputProps>`
     margin: 0;
     box-sizing: border-box;
     background: ${getSemanticValue('background-page-default')};
@@ -85,4 +81,4 @@ const BaseInput = styled.input<InternalInputComponentProps>`
     }
 `;
 
-export { BaseInput, InternalInputComponentProps };
+export { BaseInput };

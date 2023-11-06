@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { BaseInput, InternalInputComponentProps } from './BaseInput';
+import { BaseInput } from './BaseInput';
 import { activeBottomLinedPosition, BottomLinedInputLabel } from './BottomLinedInputLabel';
 import { getSemanticValue } from '../../utils/cssVariables';
+import { InternalInputProps } from './InputProps';
 
 const errorStyles = css`
     box-shadow: inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')};
@@ -14,7 +15,7 @@ const errorStyles = css`
 `;
 
 const sizeVariant = variant({
-    prop: 'size',
+    prop: 'waveSize',
     variants: {
         small: {
             height: '2.5rem',
@@ -27,7 +28,7 @@ const sizeVariant = variant({
     }
 });
 
-const getLabelColor = ({ hasValue }: InternalInputComponentProps) => {
+const getLabelColor = ({ hasValue }: InternalInputProps) => {
     if (hasValue) {
         return getSemanticValue('foreground-neutral-emphasized');
     }
@@ -35,10 +36,10 @@ const getLabelColor = ({ hasValue }: InternalInputComponentProps) => {
     return getSemanticValue('foreground-neutral-default');
 };
 
-const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
+const BottomLinedInput = styled(BaseInput)<InternalInputProps>`
     ${sizeVariant}
     & ~ ${BottomLinedInputLabel} {
-        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.size) : '')};
+        ${p => (p.hasValue || p.placeholder ? activeBottomLinedPosition(p.waveSize) : '')};
         color: ${getLabelColor};
         background: ${getSemanticValue('background-page-default')};
     }
@@ -55,13 +56,13 @@ const BottomLinedInput = styled(BaseInput)<InternalInputComponentProps>`
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         & + ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size)};
+            ${p => activeBottomLinedPosition(p.waveSize)};
         }
     }
 
     &:focus:not(:disabled) {
         & ~ ${BottomLinedInputLabel} {
-            ${p => activeBottomLinedPosition(p.size)};
+            ${p => activeBottomLinedPosition(p.waveSize)};
             color: ${getSemanticValue('foreground-focus')};
             background: ${getSemanticValue('background-page-default')};
         }

@@ -42,13 +42,13 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
                         ref={innerRef}
                         variant={variant}
                         id={id}
-                        size={size}
+                        waveSize={size}
                         hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
                         aria-invalid={rest.error}
                     />
                     {label && (
-                        <BoxedInputLabel htmlFor={id} size={size}>
+                        <BoxedInputLabel htmlFor={id} waveSize={size}>
                             {label}
                         </BoxedInputLabel>
                     )}
@@ -63,13 +63,13 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
                         {...rest}
                         variant={variant}
                         id={id}
-                        size={size}
+                        waveSize={size}
                         hasValue={hasValue || hasUncontrolledValue}
                         onChange={handleChange}
                         aria-invalid={rest.error}
                     />
                     {label && (
-                        <BottomLinedInputLabel htmlFor={id} size={size}>
+                        <BottomLinedInputLabel htmlFor={id} waveSize={size}>
                             {label}
                         </BottomLinedInputLabel>
                     )}

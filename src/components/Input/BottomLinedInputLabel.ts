@@ -3,16 +3,18 @@ import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
-import { InputProps } from './InputProps';
+import { InternalInputProps } from './InputProps';
 
-const activeBottomLinedPosition = (size?: InputProps['size']): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
+const activeBottomLinedPosition = (
+    size?: InternalInputProps['waveSize']
+): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
     ${activePositionBaseStyles};
     top: ${size === 'small' ? '0' : '0.25rem'};
     font-size: ${size === 'small' ? '0.625rem' : get('fontSizes.0')};
 `;
 
 const sizeVariant = variant({
-    prop: 'size',
+    prop: 'waveSize',
     variants: {
         small: {
             top: '0.875rem',
@@ -27,7 +29,7 @@ const sizeVariant = variant({
     }
 });
 
-const BottomLinedInputLabel = styled(BaseInputLabel).attrs({ theme })`
+const BottomLinedInputLabel = styled(BaseInputLabel).attrs({ theme })<Pick<InternalInputProps, 'waveSize'>>`
     left: 0;
     ${sizeVariant}
 `;

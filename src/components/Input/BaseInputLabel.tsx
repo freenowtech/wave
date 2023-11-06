@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { InternalInputComponentProps } from './BaseInput';
 
 const ANIMATION_DURATION = 100;
 
@@ -9,7 +8,7 @@ const activePositionBaseStyles = css`
     font-weight: ${get('fontWeights.semibold')};
 `;
 
-const BaseInputLabel = styled.label.attrs({ theme })<Pick<InternalInputComponentProps, 'size'>>`
+const BaseInputLabel = styled.label.attrs({ theme })`
     position: absolute;
     pointer-events: none;
     background-color: transparent;
