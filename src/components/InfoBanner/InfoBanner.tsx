@@ -16,6 +16,7 @@ import { Text } from '../Text/Text';
 import { Headline } from '../Headline/Headline';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
+import { InfoBannerVariants, BoxWithVariant } from './types';
 
 interface InfoBannerProps extends BoxProps {
     /**
@@ -44,13 +45,6 @@ interface InfoBannerProps extends BoxProps {
      * Sets the url where the user will be redirected when clicking on the link
      */
     linkUrl?: string;
-}
-
-type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
-
-interface BoxWithVariant extends BoxProps {
-    variant: InfoBannerVariants;
-    emphasized: boolean;
 }
 
 const bannerVariants = styledVariant({
@@ -151,9 +145,7 @@ export const RoundedBox = styled(Box).attrs({ theme })<BoxWithVariant>`
             ? getSemanticValue('foreground-on-background-primary')
             : getSemanticValue('foreground-accent-default')};
     --info-banner-link-hover-color: ${({ emphasized }) =>
-        emphasized
-            ? getSemanticValue('foreground-neutral-default')
-            : getSemanticValue('foreground-accent-emphasized')};
+        emphasized ? getSemanticValue('foreground-neutral-default') : getSemanticValue('foreground-accent-emphasized')};
 `;
 
 export const IconBox = styled(Box)<BoxWithVariant>`
@@ -202,13 +194,7 @@ const InfoBanner: React.FC<InfoBannerProps> = ({
                     {description}
                 </Text>
                 {linkText && linkUrl && (
-                    <Link
-                        fontSize="0"
-                        textAlign="left"
-                        href={linkUrl}
-                        target="_blank"
-                        mt="0.25rem"
-                    >
+                    <Link fontSize="0" textAlign="left" href={linkUrl} target="_blank" mt="0.25rem">
                         {linkText}
                     </Link>
                 )}

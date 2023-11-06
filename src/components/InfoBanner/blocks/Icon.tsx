@@ -4,7 +4,6 @@ import { variant as styledVariant } from 'styled-system';
 
 import { Box } from '../../Box/Box';
 import { getSemanticValue } from '../../../utils/cssVariables';
-import type { BoxWithVariant, InfoBannerVariants } from './InfoBannerCard';
 import {
     CheckCircleSolidIcon,
     CloseCircleSolidIcon,
@@ -12,6 +11,7 @@ import {
     InfoCircleSolidIcon,
     WarningSolidIcon
 } from '../../../icons';
+import { BoxWithVariant, InfoBannerVariants } from '../types';
 
 const iconColorVariants = styledVariant({
     variants: {
