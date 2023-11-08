@@ -1,4 +1,4 @@
-import { API, FileInfo, Identifier, JSCodeshift, TemplateLiteral } from 'jscodeshift';
+import { API, FileInfo, Identifier, ImportDeclaration, JSCodeshift, TemplateLiteral } from 'jscodeshift';
 import { Options } from 'recast';
 
 const ColorsToCssVariablesMap = {
@@ -34,6 +34,8 @@ const ColorsToCssVariablesMap = {
     NEGATIVE_ORANGE_350: 'var(--wave-b-color-orange-350)',
     NEGATIVE_ORANGE_50: 'var(--wave-b-color-orange-50)'
 };
+
+const CSS_COLORS_TYPE_NAME = 'ReadCssColorVariable';
 
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,
@@ -129,7 +131,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         replaceColorsForCssVarsInTemplateLiterals(j, localColorNames, templateLiteral);
     });
 
-    // Find all remaining Colors usage
+    // Find all remaining Colors member usage (e.g. Colors.x)
     ast.find(j.MemberExpression, {
         object: {
             name: (colorName: string) => localColorNames.includes(colorName)
@@ -146,13 +148,31 @@ export default (file: FileInfo, api: API, options: Options) => {
         ex.replace(cssVarStringNode);
     });
 
-    // If it is the only named import from wave, remove the whole Wave import
-    if (waveImports.size() === 1 && waveNamedImports.size() === 1 && colorsImports.size() === 1) {
-        waveImports.remove();
+    // Find usages of Colors as a type
+    const usagesAsTypes = ast.find(j.TSTypeReference, {
+        typeName: {
+            name: (colorName: string) => localColorNames.includes(colorName)
+        }
+    });
 
-        // If there are other named imports from wave, remove only the Colors named import
-    } else if (waveNamedImports.size() > 1) {
-        colorsImports.remove();
+    usagesAsTypes.forEach(type => {
+        // Replace the usage of Colors as a type for the corresponding type name
+        const cssColorTypeReference = j.tsTypeReference(j.identifier(CSS_COLORS_TYPE_NAME));
+        type.replace(cssColorTypeReference);
+    });
+
+    // Remove the Colors import
+    colorsImports.remove();
+
+    // If Colors is the only named import from wave, remove the whole Wave import
+    if (usagesAsTypes.size() === 0 && waveImports.size() === 1 && waveNamedImports.size() === 1) {
+        waveImports.remove();
+    }
+
+    // If Colors is used as a type add the import for the new css colors type
+    if (usagesAsTypes.size() > 0) {
+        const importDeclaration: ImportDeclaration = waveImports.get(0).node;
+        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(CSS_COLORS_TYPE_NAME)));
     }
 
     return ast.toSource(printOptions);
