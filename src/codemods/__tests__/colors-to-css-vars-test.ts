@@ -7,7 +7,8 @@ const tests = [
     'template-multi-quasis-even',
     'template-multi-quasis-odd',
     'template-single-quasis',
-    'color-as-type'
+    'color-as-type',
+    'no-colors-usage'
 ];
 
 describe('colors-to-css-vars', () => {
