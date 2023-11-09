@@ -21,7 +21,7 @@
 // 3. Apply the design system prefix to the variable names.
 // 4. Concatenate entries to a valid CSS variables declaration.
 
-import { ReadCssVariable, SemanticToken } from '../essentials/Colors/types';
+import { ReadSemanticCssVariable, SemanticToken } from '../essentials/Colors/types';
 
 export const DS_PREFIX = 'wave';
 
@@ -78,8 +78,11 @@ const generateHslComponentsCssVariableEntries = (
         })
         .filter(entry => entry !== undefined);
 
-export const applyPrefix = <T extends string>(variableName: T, tier: 'b' | 's' | 'l', namespace: 'color' = 'color'): string =>
-    `--${DS_PREFIX}-${tier}-${namespace}-${variableName}`;
+export const applyPrefix = <T extends string>(
+    variableName: T,
+    tier: 'b' | 's' | 'l',
+    namespace: 'color' = 'color'
+): string => `--${DS_PREFIX}-${tier}-${namespace}-${variableName}`;
 
 export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): ReadonlyArray<string> => {
     const entries = generateCssVariableEntries(tokens);
@@ -96,4 +99,5 @@ export const generateBareTierCssVariables = (tokens: TokenObject): ReadonlyArray
 export const generateSemanticTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
     generateCssVariables(tokens, 's');
 
-export const getSemanticValue = (token: SemanticToken): ReadCssVariable => `var(--${DS_PREFIX}-s-color-${token})`;
+export const getSemanticValue = (token: SemanticToken): ReadSemanticCssVariable =>
+    `var(--${DS_PREFIX}-s-color-${token})`;

@@ -35,7 +35,7 @@ const ColorsToCssVariablesMap = {
     NEGATIVE_ORANGE_50: 'var(--wave-b-color-orange-50)'
 };
 
-const CSS_COLORS_TYPE_NAME = 'ReadCssColorVariable';
+const CSS_COLORS_TYPE_NAME = 'ReadBareCssColorVariable';
 
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,

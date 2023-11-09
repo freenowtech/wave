@@ -1,4 +1,4 @@
-import { SemanticColorsSchema } from './types';
+import { BareColorsSchema, SemanticColorsSchema } from './types';
 
 // Bare Colors Tier (--wave-b-color-...)
 export const Colors = {
@@ -51,7 +51,7 @@ export const Colors = {
         50: 'hsl(21, 100%, 97%)'
     },
     transparent: 'transparent'
-} as const;
+} satisfies BareColorsSchema;
 
 // AUTHENTIC = primary now
 // ACTION = secondary now
@@ -108,7 +108,7 @@ export const SemanticColors = {
         element: {
             disabled: {
                 faded: Colors.blue.primary[50],
-                default: Colors.blue.primary[200],
+                default: Colors.blue.primary[200]
             },
             primary: {
                 default: Colors.blue.primary[900],
@@ -131,7 +131,7 @@ export const SemanticColors = {
                 default: Colors.green[50]
             },
             warning: {
-                default: Colors.yellow[50],
+                default: Colors.yellow[50]
             },
             danger: {
                 faded: Colors.orange[50],
@@ -179,7 +179,7 @@ export const SemanticColors = {
         },
         accent: {
             faded: Colors.blue.secondary[350],
-            default: Colors.blue.secondary[900],
+            default: Colors.blue.secondary[900]
         },
         focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[200],
@@ -285,7 +285,7 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.white
             },
             success: {
-                default: Colors.green[50],
+                default: Colors.green[50]
             },
             warning: {
                 default: Colors.yellow[50]
