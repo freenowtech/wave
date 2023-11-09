@@ -227,7 +227,6 @@ export type BareColorCssVariable = BareColorTokenCssVariable | BareHslComponents
 export type ReadBareCssColorVariable =
     | `var(${BareColorTokenCssVariable})`
     | `var(${BareColorTokenCssVariable}, ${string})`;
-
 export type ReadBareCssVariable = `var(${BareColorCssVariable})` | `var(${BareColorCssVariable}, ${string})`;
 
 // Semantic Colors
