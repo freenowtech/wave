@@ -35,7 +35,8 @@ const ColorsToCssVariablesMap = {
     NEGATIVE_ORANGE_50: 'var(--wave-b-color-orange-50)'
 };
 
-const CSS_COLORS_TYPE_NAME = 'ReadBareCssColorVariable';
+const CSS_VARS_COLORS_TYPE_NAME = 'ReadCssColorVariable';
+const CSS_VARS_COLORS_REPLACEMENT_TYPE = `${CSS_VARS_COLORS_TYPE_NAME} | (string & {})`;
 
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,
@@ -160,7 +161,7 @@ export default (file: FileInfo, api: API, options: Options) => {
 
     usagesAsTypes.forEach(type => {
         // Replace the usage of Colors as a type for the corresponding type name
-        const cssColorTypeReference = j.tsTypeReference(j.identifier(CSS_COLORS_TYPE_NAME));
+        const cssColorTypeReference = j.tsTypeReference(j.identifier(CSS_VARS_COLORS_REPLACEMENT_TYPE));
         type.replace(cssColorTypeReference);
     });
 
@@ -175,7 +176,7 @@ export default (file: FileInfo, api: API, options: Options) => {
     // If Colors is used as a type add the import for the new css colors type
     if (usagesAsTypes.size() > 0) {
         const importDeclaration: ImportDeclaration = waveImports.get(0).node;
-        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(CSS_COLORS_TYPE_NAME)));
+        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(CSS_VARS_COLORS_TYPE_NAME)));
     }
 
     return ast.toSource(printOptions);

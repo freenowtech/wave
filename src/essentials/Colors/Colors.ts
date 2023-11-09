@@ -1,4 +1,4 @@
-import { BareColorsSchema, SemanticColorsSchema } from './types';
+import { SemanticColorsSchema } from './types';
 
 // Bare Colors Tier (--wave-b-color-...)
 export const Colors = {
@@ -51,7 +51,7 @@ export const Colors = {
         50: 'hsl(21, 100%, 97%)'
     },
     transparent: 'transparent'
-} satisfies BareColorsSchema;
+} as const;
 
 // AUTHENTIC = primary now
 // ACTION = secondary now

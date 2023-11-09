@@ -4,58 +4,6 @@ export type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${
 
 export type Color = HSL | 'transparent';
 
-export type BareColorsSchema = {
-    white: HSL;
-    black: HSL;
-    blue: {
-        primary: {
-            '1100': HSL;
-            '900': HSL;
-            '750': HSL;
-            '550': HSL;
-            '350': HSL;
-            '200': HSL;
-            '50': HSL;
-        };
-        secondary: {
-            '1000': HSL;
-            '900': HSL;
-            '350': HSL;
-            '150': HSL;
-            '100': HSL;
-            '50': HSL;
-        };
-    };
-    red: {
-        '1000': HSL;
-        '900': HSL;
-    };
-    magenta: {
-        '1000': HSL;
-        '900': HSL;
-        '350': HSL;
-        '50': HSL;
-    };
-    green: {
-        '1000': HSL;
-        '900': HSL;
-        '350': HSL;
-        '50': HSL;
-    };
-    yellow: {
-        '900': HSL;
-        '350': HSL;
-        '50': HSL;
-    };
-    orange: {
-        '1000': HSL;
-        '900': HSL;
-        '350': HSL;
-        '50': HSL;
-    };
-    transparent: 'transparent';
-};
-
 export type SemanticColorsSchema = {
     transparent: 'transparent';
     white: Color;
@@ -215,37 +163,20 @@ export type SemanticColorsSchema = {
     };
 };
 
-// Bare Colors
-type BareColorToken = Join<Leaves<BareColorsSchema>, '-'>;
-type BareColorTokenCssVariable = `--wave-b-color-${BareColorToken}`;
-
-type BareHslComponentsToken = `${BareColorToken}-hsl`;
-type BareHslComponentsTokenCssVariable = `--wave-b-color-${BareHslComponentsToken}`;
-
-export type BareColorCssVariable = BareColorTokenCssVariable | BareHslComponentsTokenCssVariable;
-
-export type ReadBareCssColorVariable =
-    | `var(${BareColorTokenCssVariable})`
-    | `var(${BareColorTokenCssVariable}, ${string})`;
-export type ReadBareCssVariable = `var(${BareColorCssVariable})` | `var(${BareColorCssVariable}, ${string})`;
-
-// Semantic Colors
 type SemanticColorToken = Join<Leaves<SemanticColorsSchema>, '-'>;
 type SemanticColorTokenCssVariable = `--wave-s-color-${SemanticColorToken}`;
 
 type SemanticHslComponentsToken = `${SemanticColorToken}-hsl`;
-type SemanticHslComponentsTokenCssVariable = `--wave-s-color-${SemanticHslComponentsToken}`;
+type HslComponentsTokenCssVariable = `--wave-s-color-${SemanticHslComponentsToken}`;
 
 export type SemanticToken = SemanticColorToken | SemanticHslComponentsToken;
-export type SemanticColorCssVariable = SemanticColorTokenCssVariable | SemanticHslComponentsTokenCssVariable;
+export type SemanticColorCssVariable = SemanticColorTokenCssVariable | HslComponentsTokenCssVariable;
 
-export type ReadSemanticCssColorVariable =
+export type ReadCssColorVariable =
     | `var(${SemanticColorTokenCssVariable})`
     | `var(${SemanticColorTokenCssVariable}, ${string})`;
-export type ReadSemanticCssVariable =
-    | `var(${SemanticColorCssVariable})`
-    | `var(${SemanticColorCssVariable}, ${string})`;
+export type ReadCssVariable = `var(${SemanticColorCssVariable})` | `var(${SemanticColorCssVariable}, ${string})`;
 
 export type ComponentSemanticTokens = {
-    [key: string]: ReadSemanticCssVariable | ComponentSemanticTokens;
+    [key: string]: ReadCssVariable | ComponentSemanticTokens;
 };

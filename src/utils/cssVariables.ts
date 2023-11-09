@@ -21,7 +21,7 @@
 // 3. Apply the design system prefix to the variable names.
 // 4. Concatenate entries to a valid CSS variables declaration.
 
-import { ReadSemanticCssVariable, SemanticToken } from '../essentials/Colors/types';
+import { ReadCssVariable, SemanticToken } from '../essentials/Colors/types';
 
 export const DS_PREFIX = 'wave';
 
@@ -99,5 +99,4 @@ export const generateBareTierCssVariables = (tokens: TokenObject): ReadonlyArray
 export const generateSemanticTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
     generateCssVariables(tokens, 's');
 
-export const getSemanticValue = (token: SemanticToken): ReadSemanticCssVariable =>
-    `var(--${DS_PREFIX}-s-color-${token})`;
+export const getSemanticValue = (token: SemanticToken): ReadCssVariable => `var(--${DS_PREFIX}-s-color-${token})`;

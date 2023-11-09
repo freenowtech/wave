@@ -1,7 +1,7 @@
-import { ReadBareCssColorVariable } from '@freenow/wave';
+import { ReadCssColorVariable } from '@freenow/wave';
 
 export interface LabelVariant {
-    color?: ReadBareCssColorVariable
-    backgroundColor?: ReadBareCssColorVariable
-    borderColor?: ReadBareCssColorVariable
+    color?: ReadCssColorVariable | (string & {})
+    backgroundColor?: ReadCssColorVariable | (string & {})
+    borderColor?: ReadCssColorVariable | (string & {})
 }
