@@ -1,7 +1,7 @@
 jest.autoMockOff();
 import { defineTest } from 'jscodeshift/dist/testUtils';
 
-const tests = ['basic-usage', 'no-placement', 'multi-usage', 'local-rename'];
+const tests = ['basic-usage', 'no-placement', 'multi-usage', 'local-rename', 'no-deprecated-usage'];
 
 describe('tooltip-placement', () => {
     tests.forEach(test =>

@@ -1,4 +1,4 @@
-import { API, FileInfo } from 'jscodeshift';
+import { API, ASTPath, FileInfo, StringLiteral } from 'jscodeshift';
 import { Options } from 'recast';
 
 const DeprecatedToValidPlacementsMap = {
@@ -30,6 +30,8 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
             });
     });
 
+    const deprecatedPlacementLiterals: ASTPath<StringLiteral>[] = [];
+
     // Search for usages of Tooltip
     ast.find(j.JSXElement, {
         openingElement: {
@@ -47,16 +49,21 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
                 const mutableAttr = j(attr);
 
                 // Find the value of the placement prop
-                mutableAttr.find(j.Literal).forEach(literal => {
+                mutableAttr.find(j.StringLiteral).forEach(literal => {
                     // Check if it's using a deprecated value
-                    if (typeof literal.value.value === 'string' && DeprecatedPlacements.includes(literal.value.value)) {
-                        const validPlacementValue: string = DeprecatedToValidPlacementsMap[literal.value.value];
-
-                        // Replace for a valid placement value
-                        literal.value.value = validPlacementValue;
-                    }
+                    if (DeprecatedPlacements.includes(literal.value.value)) deprecatedPlacementLiterals.push(literal);
                 });
             });
+    });
+
+    // Early return when no deprecated values are used
+    if (deprecatedPlacementLiterals.length === 0) return file.source;
+
+    deprecatedPlacementLiterals.forEach(literal => {
+        const validPlacementValue: string = DeprecatedToValidPlacementsMap[literal.value.value];
+
+        // Replace for a valid placement value
+        literal.value.value = validPlacementValue;
     });
 
     return ast.toSource(printOptions);
