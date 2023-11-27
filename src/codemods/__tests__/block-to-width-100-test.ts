@@ -1,7 +1,7 @@
 jest.autoMockOff();
 import { defineTest } from 'jscodeshift/dist/testUtils';
 
-const tests = ['basic-usage'];
+const tests = ['basic-usage', 'no-usage'];
 
 describe('block-to-width-100', () => {
     tests.forEach(test =>
