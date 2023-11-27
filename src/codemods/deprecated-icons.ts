@@ -44,6 +44,9 @@ export default (file: FileInfo, api: API, options: Options) => {
         .find(j.ImportSpecifier)
         .filter(path => DeprecatedIconsNames.includes(path.node.imported.name));
 
+    // Early return if no deprecated icons are imported
+    if (deprecatedIconsImports.length === 0) return file.source;
+
     // Get the local icons import names
     deprecatedIconsImports.forEach(spec => {
         if (spec.node.local?.name) localIconsNames.push(spec.node.local.name);
