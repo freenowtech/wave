@@ -5,7 +5,9 @@ export const AlignedChevron = () => {
     useEffect(
         () =>
             function cleanUp() {
-                // do some cleanUp
+                // when parsing back from AST to source, function declarations after an arrow function
+                // are wrapped in parenthesis, by expecting the output to not have the parenthesis we
+                // can test that instead of parsing back we are simply returning the original source
             },
         [],
     )
