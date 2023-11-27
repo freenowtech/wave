@@ -5,6 +5,7 @@
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
+    "sideEffects": false,
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
