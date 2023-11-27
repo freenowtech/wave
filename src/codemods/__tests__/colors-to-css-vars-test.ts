@@ -6,7 +6,8 @@ const tests = [
     'color-in-JSX-single-import',
     'template-multi-quasis-even',
     'template-multi-quasis-odd',
-    'template-single-quasis'
+    'template-single-quasis',
+    'no-colors-usage'
 ];
 
 describe('colors-to-css-vars', () => {
