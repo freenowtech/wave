@@ -1,10 +1,20 @@
 import { Tooltip, Box, Toggle } from '@freenow/wave';
-import React from 'react';
+import React, { useEffect } from 'react';
 
-export const TooltipTest = (): JSX.Element => (
-    <Tooltip content="helper text" placement="top">
-        <Box>
-            <Toggle />
-        </Box>
-    </Tooltip>
-);
+export const TooltipTest = (): JSX.Element => {
+    useEffect(
+        () =>
+            function cleanUp() {
+                // do some cleanUp
+            },
+        [],
+    )
+
+    return (
+        <Tooltip content="helper text" placement="top">
+            <Box>
+                <Toggle />
+            </Box>
+        </Tooltip>
+    );
+}
