@@ -58,14 +58,17 @@ export default (file: FileInfo, api: API, options: Options) => {
         }
     });
 
-    // Find usages of the components
+    // Find usages of the components that use the inverted prop
     const jsxComponents = ast.find(j.JSXElement, {
         openingElement: {
-            name: {
-                name: name => localComponentNames.includes(name)
-            }
+            // Find the inverted prop
+            attributes: attributes =>
+                attributes.some(attr => attr.type === 'JSXAttribute' && attr.name.name === 'inverted')
         }
     });
+
+    // Early return when the inverted prop is not used
+    if (jsxComponents.length === 0) return file.source;
 
     let shouldAddWrapperImport = false;
 
@@ -74,12 +77,9 @@ export default (file: FileInfo, api: API, options: Options) => {
         // Find inverted props
         const invertedProps = j(el).find(j.JSXAttribute, { name: name => name.name === 'inverted' });
 
-        if (invertedProps.size() !== 1) return;
-
         let shouldWrap = false;
         const invertedProp: JSXAttribute = invertedProps.get(0).node;
 
-        // console.log(invertedProp)
         // In case the prop has a value (`inverted={true}` or `inverted={false}`) set shouldWrap based on the value
         if (
             invertedProp.value &&

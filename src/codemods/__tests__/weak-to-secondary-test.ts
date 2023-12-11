@@ -1,7 +1,7 @@
 jest.autoMockOff();
 import { defineTest } from 'jscodeshift/dist/testUtils';
 
-const tests = ['basic-usage', 'local-rename', 'boolean-true', 'boolean-false', 'dynamic-value'];
+const tests = ['basic-usage', 'local-rename', 'boolean-true', 'boolean-false', 'dynamic-value', 'no-weak-usage'];
 
 describe('weak-to-secondary', () => {
     tests.forEach(test =>
