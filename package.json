@@ -140,7 +140,7 @@
         "date-fns": "^2.11.1",
         "react-popper": "^2.3.0",
         "react-transition-group": "^4.3.0",
-        "react-windowed-select": "^5.1.0",
+        "react-windowed-select": "^5.1.1",
         "styled-system": "^5.1.5",
         "warning": "^4.0.3"
     }
