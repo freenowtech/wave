@@ -5,6 +5,9 @@
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
+    "bin": {
+        "run_v2_migration": "./scripts/run_v2_migration.sh"
+    },
     "sideEffects": false,
     "scripts": {
         "clean": "rm -rf lib",

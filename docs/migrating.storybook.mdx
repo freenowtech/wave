@@ -20,8 +20,20 @@ allow jscodeshift to parse your typescript/jsx files.
 
 ## From v1 to v2
 
-The following codemods exist to upgrade your components for version 2. In order to apply the transformations in your project you simply need to run the
-command for your desired codemod pointing to your project's source path.
+Run all migrations at once:
+
+```bash
+# npm
+npx @freenow/wave run_v2_migration src/**/*
+
+# yarn
+yarn exec node_modules/.bin/run_v2_migration src/**/*
+
+```
+
+Below, you'll see individual codemods to upgrade components to version 2.
+In order to apply an individual transformation to your project
+you need to run the command for your desired codemod pointing to your project's source path.
 
 ### Button and TextButton block property
 
@@ -29,7 +41,7 @@ The `block` property used to act as a shortcut to give the button components a w
 directly. It uses the styled-system variable, which is a lot more flexible than just the boolean flag.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/block-to-width-100.js path/to/src
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/block-to-width-100.js path/to/src
 ```
 
 ### Colors to CSS variables
@@ -38,7 +50,7 @@ Our theme colors structure has changed significantly in this major. In order to 
 that our theme brings.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
 ```
 
 Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
@@ -50,7 +62,7 @@ We had some deprecated icons that have been deleted in this major, in case you u
 This won't change how your icons look in any way since we already exported the deprecated icons as wrappers of valid ones.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
 ```
 
 ### Inverted property deprecation
@@ -61,7 +73,7 @@ the styling of the opposite theme you need to wrap it with the `InvertedColorSch
 The components that supported the `inverted` prop are: `Input`, `Password`, `Textarea`, `Button`, `Select`, `SelectList`, `PhoneInput`, `Datepicker`, `Tooltip`, `Text`, `Logo` and `Breadcrumbs`.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-wrapper.js path/to/src
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-wrapper.js path/to/src
 ```
 
 Disclaimer: This codemod wraps every Wave component that is using the `inverted` property with `InvertedColorScheme`, this could lead to a decline in performance in case the
@@ -73,7 +85,7 @@ The `weak` property was the initial way to indicate secondary information in a `
 the more semantic `secondary` prop.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/weak-to-secondary.js path/to/src
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/weak-to-secondary.js path/to/src
 ```
 
 ### Tooltip placement property
@@ -83,7 +95,7 @@ of the engine, but to not introduce breaking changes we kept supporting the prev
 `react-popper` options. This change only affects the `Tooltip` component `placement` prop.
 
 ```bash
-npx jscodeshift -t node_modules/@freenow/wave/lib/cjs/codemods/tooltip-placement.js path/to/src
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/tooltip-placement.js path/to/src
 ```
 
 You can find the mappings in the following table:
