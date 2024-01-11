@@ -6,7 +6,7 @@ if [ ! -d "$CODEMODS_FOLDER" ]; then
   exit 1
 fi
 
-# remove the first argument (the `run_v2_migration.sh)
+# remove the first argument (the `run_v2_migration`)
 shift
 
 total_files=$(find "$CODEMODS_FOLDER" -type f | wc -l | tr -d '[:space:]')
