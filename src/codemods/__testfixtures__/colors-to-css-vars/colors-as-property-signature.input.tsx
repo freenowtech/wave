@@ -5,3 +5,5 @@ export interface LabelVariant {
     backgroundColor?: Colors
     borderColor?: Colors
 }
+
+export interface AnotherInterface { color?: Colors }
