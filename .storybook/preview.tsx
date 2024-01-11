@@ -1,7 +1,8 @@
 import React from 'react';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
-import { ClassicColors, ModernColors } from '../src/essentials/Colors/globalStyles';
+import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
+import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
 import { getSemanticValue } from '../src/utils/cssVariables';
 
 const THEMES = {

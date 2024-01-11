@@ -36,12 +36,12 @@ Every color token follows the naming convention:
 -   color name `primary`, `neutral`, `info`, `accent`, `success`, `warning`, `danger`, `disabled`;
 -   optional modifier `default`, `faded` or `highlighted`.
 
-Use `getSemanticColor` function to reduce boilerplate when using semantic colors in your components:
+Use `getSemanticValue` function to reduce boilerplate when using semantic colors in your components:
 
 ```ts
 const BeautifulParagraph = styled.p`
-    background-color: ${getSemanticColor('background-surface-primary-default')};
-    color: ${getSemanticColor('foreground-on-background-primary')};
+    background-color: ${getSemanticValue('background-surface-primary-default')};
+    color: ${getSemanticValue('foreground-on-background-primary')};
 `;
 ```
 
@@ -54,7 +54,7 @@ Bare color tokens are static and not themeable. They are used to define semantic
 We provide CSS variables for bare colors as an **escape hatch** for cases when you need to use a color that is not covered by semantic colors.
 Please, report such cases to us, so we can add the missing semantic color.
 
-Bare color tokens aren't accessible via `getSemanticColor` function. Read the CSS variable directly, they have `--wave-b-` prefix, followed by the color name:
+Bare color tokens aren't accessible via `getSemanticValue` function. Read the CSS variable directly, they have `--wave-b-` prefix, followed by the color name:
 
 ```ts
 const BeautifulParagraph = styled.p`
@@ -75,6 +75,6 @@ Use them, when you need an alpha channel:
 
 ```ts
 const BeautifulParagraph = styled.p`
-    background-color: hsla(${getSemanticColor('background-surface-primary-default-hsl')}, 0.5);
+    background-color: hsla(${getSemanticValue('background-surface-primary-default-hsl')}, 0.5);
 `;
 ```
