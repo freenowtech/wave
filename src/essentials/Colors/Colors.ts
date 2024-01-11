@@ -1,4 +1,5 @@
 import { SemanticColorsSchema } from './types';
+import { createThemeGlobalStyle } from './globalStyles';
 
 // Bare Colors Tier (--wave-b-color-...)
 export const Colors = {
@@ -369,3 +370,5 @@ export const SemanticColorsDarkSchema = {
         default: Colors.blue.primary[550]
     }
 } satisfies SemanticColorsSchema;
+
+export const GlobalStyle = createThemeGlobalStyle(Colors, SemanticColors, SemanticColorsDarkSchema);

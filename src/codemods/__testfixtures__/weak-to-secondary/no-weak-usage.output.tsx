@@ -1,7 +1,9 @@
-import { Box, ChevronUp } from '@freenow/wave';
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
-export const AlignedChevron = () => {
+import { Text } from '@freenow/wave'
+
+
+export const NotificationBanner = () => {
     useEffect(
         () =>
             function cleanUp() {
@@ -13,8 +15,8 @@ export const AlignedChevron = () => {
     )
 
     return (
-        <Box display="flex" alignItems="center">
-            <ChevronUp color="red" />
-        </Box>
-    );
+        <Text as='p' fontSize='1' textAlign='center'>
+            Some text
+        </Text>
+    )
 }

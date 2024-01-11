@@ -120,8 +120,8 @@ export default (file: FileInfo, api: API, options: Options) => {
     // Find Colors named imports in @freenow/wave imports
     const colorsImports = waveNamedImports.filter(path => path.node.imported.name === 'Colors');
 
-    // Early return in case colors is not used
-    if (colorsImports.size() === 0) return ast.toSource(printOptions);
+    // Early return in case no Colors are imported
+    if (colorsImports.length === 0) return file.source;
 
     // Get the local Colors import names
     colorsImports.forEach(spec => {

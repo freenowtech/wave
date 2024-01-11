@@ -1,7 +1,7 @@
-import { Box, ChevronUp } from '@freenow/wave';
-import { useEffect } from 'react';
+import { Tooltip, Box, Toggle } from '@freenow/wave';
+import React, { useEffect } from 'react';
 
-export const AlignedChevron = () => {
+export const TooltipTest = (): JSX.Element => {
     useEffect(
         () =>
             function cleanUp() {
@@ -13,8 +13,10 @@ export const AlignedChevron = () => {
     )
 
     return (
-        <Box display="flex" alignItems="center">
-            <ChevronUp color="red" />
-        </Box>
+        <Tooltip content="helper text" placement="top">
+            <Box>
+                <Toggle />
+            </Box>
+        </Tooltip>
     );
 }

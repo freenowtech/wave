@@ -1,14 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import {
-    Colors as ClassicBrandColors,
-    SemanticColors as ClassicSemanticColors,
-    SemanticColorsDarkSchema as ClassicSemanticColorsDark
-} from './Colors';
-import {
-    Colors as ModernBrandColors,
-    SemanticColors as ModernSemanticColors,
-    SemanticColorsDarkSchema as ModernSemanticColorsDark
-} from './RedesignedColors';
+
 import {
     generateBareTierCssVariables,
     generateSemanticTierCssVariables,
@@ -17,7 +8,7 @@ import {
 } from '../../utils/cssVariables';
 import { SemanticColorsSchema } from './types';
 
-const createThemeGlobalStyle = (
+export const createThemeGlobalStyle = (
     bareVariables: TokenObject,
     lightScheme: SemanticColorsSchema,
     darkScheme: SemanticColorsSchema
@@ -54,11 +45,3 @@ const createThemeGlobalStyle = (
       fill: currentColor;
   }
 `;
-
-export const ClassicColors = createThemeGlobalStyle(
-    ClassicBrandColors,
-    ClassicSemanticColors,
-    ClassicSemanticColorsDark
-);
-
-export const ModernColors = createThemeGlobalStyle(ModernBrandColors, ModernSemanticColors, ModernSemanticColorsDark);

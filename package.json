@@ -1,10 +1,14 @@
 {
     "name": "@freenow/wave",
-    "version": "3.0.0-next.1",
+    "version": "2.0.0-alpha.2",
     "description": "React components of the Wave design system for your Front-End project",
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
+    "bin": {
+        "run_v2_migration": "./scripts/run_v2_migration.sh"
+    },
+    "sideEffects": false,
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
@@ -139,7 +143,7 @@
         "date-fns": "^2.11.1",
         "react-popper": "^2.3.0",
         "react-transition-group": "^4.3.0",
-        "react-windowed-select": "^5.1.0",
+        "react-windowed-select": "^5.1.1",
         "styled-system": "^5.1.5",
         "warning": "^4.0.3"
     }

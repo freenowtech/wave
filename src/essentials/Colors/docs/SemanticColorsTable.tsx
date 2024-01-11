@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Box, Input, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { generateCssVariableEntries, generateCssVariables, getSemanticValue } from '../../../utils/cssVariables';
 import { Colors as ClassicColors, SemanticColors as ClassicSemanticTokens } from '../Colors';
-import { Colors as ModernColors, SemanticColors as ModernSemanticTokens } from '../RedesignedColors';
+import { Colors as ModernColors, SemanticColors as ModernSemanticTokens } from '../ModernColors';
 
 const ColorBlock = styled.div<{ color: string }>`
     background-color: ${p => p.color};

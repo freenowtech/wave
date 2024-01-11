@@ -1,7 +1,13 @@
-import { Box, ChevronUp } from '@freenow/wave';
+import { Box, BackwardLastIcon, Text } from '@freenow/wave';
 import { useEffect } from 'react';
 
-export const AlignedChevron = () => {
+interface Props {
+    name: string;
+}
+
+const AutomationIcon = () => <BackwardLastIcon data-testid="automation-campaign-icon" />;
+
+export const Automation = ({ name }: Props) => {
     useEffect(
         () =>
             function cleanUp() {
@@ -14,7 +20,8 @@ export const AlignedChevron = () => {
 
     return (
         <Box display="flex" alignItems="center">
-            <ChevronUp color="red" />
+            <AutomationIcon />
+            <Text fontSize="small">{name}</Text>
         </Box>
     );
 }

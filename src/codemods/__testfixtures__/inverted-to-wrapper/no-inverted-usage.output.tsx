@@ -1,7 +1,14 @@
-import { Box, ChevronUp } from '@freenow/wave';
 import { useEffect } from 'react';
 
-export const AlignedChevron = () => {
+import { Button } from '@freenow/wave';
+
+interface Props {
+    label: string;
+    disabled?: boolean;
+    onClick: () => void;
+}
+
+export const ActionItem = ({ label, onClick, disabled = false }: Props): JSX.Element => {
     useEffect(
         () =>
             function cleanUp() {
@@ -13,8 +20,8 @@ export const AlignedChevron = () => {
     )
 
     return (
-        <Box display="flex" alignItems="center">
-            <ChevronUp color="red" />
-        </Box>
+        <Button size="small" onClick={onClick} disabled={disabled}>
+            {label}
+        </Button>
     );
 }
