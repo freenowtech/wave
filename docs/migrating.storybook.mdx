@@ -131,6 +131,11 @@ This is not required, you can wrap multiple components at once and avoid duplica
 
 <InvertedPropMigrationTable />
 
+### Review `ref` usages
+
+We changed the place where `ref` is attached to the form components `Input`, `Password`, `PhoneInput`, etc.
+If you use `ref` to reach underlying DOM elements, you no longer need to look for `input` element. Use `ref.current` directly.
+
 ## 6️⃣ Switch to new colors (if required)
 
 Now you can easily switch to the `ModernColors` theme if your project requires rebranding:
