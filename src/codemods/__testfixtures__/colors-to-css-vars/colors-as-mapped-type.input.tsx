@@ -8,4 +8,4 @@ export const STATUS: { [K in string]: Colors } = {
     NOT_AVAILABLE: Colors.WHITE,
     OFFLINE: Colors.WHITE,
     PAYING: Colors.WHITE,
-}
+};

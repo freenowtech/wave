@@ -2,14 +2,14 @@ jest.autoMockOff();
 import { defineTest } from 'jscodeshift/dist/testUtils';
 
 const tests = [
-    // 'color-in-JSX-multi-import',
-    // 'color-in-JSX-single-import',
-    // 'template-multi-quasis-even',
-    // 'template-multi-quasis-odd',
-    // 'template-single-quasis',
-    // 'no-colors-usage',
-    'colors-as-property-signature'
-    // 'colors-as-mapped-type'
+    'color-in-JSX-multi-import',
+    'color-in-JSX-single-import',
+    'template-multi-quasis-even',
+    'template-multi-quasis-odd',
+    'template-single-quasis',
+    'no-colors-usage',
+    'colors-as-property-signature',
+    'colors-as-mapped-type'
 ];
 
 describe('colors-to-css-vars', () => {

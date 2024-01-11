@@ -1,5 +1,6 @@
 import {
     API,
+    ASTPath,
     Collection,
     FileInfo,
     Identifier,
@@ -7,8 +8,6 @@ import {
     JSCodeshift,
     Node,
     TemplateLiteral,
-    TSPropertySignature,
-    TSTypeAnnotation,
     TSTypeReference
 } from 'jscodeshift';
 import { Options } from 'recast';
@@ -114,14 +113,12 @@ const replaceColorsForCssVarsInTemplateLiterals = (
     });
 };
 
-const isPropertySignature = (node: any): node is TSPropertySignature => node.type === 'TSPropertySignature';
-
 const addLeadingEslintComment = (j: JSCodeshift, node: Node): void => {
     const comment = j.commentLine(ESLINT_DISABLE_COMMENT, true, false);
     node.comments = [comment];
 };
 
-const addDisableEslintCommentToTypes = (
+const addDisableEslintCommentToTypeUsages = (
     ast: Collection<any>,
     j: JSCodeshift,
     typeReferences: Collection<TSTypeReference>
@@ -131,12 +128,6 @@ const addDisableEslintCommentToTypes = (
     // Find lines where Colors is being used
     typeReferences.forEach(path => {
         if (path.node.loc.start.line) uniqueLinesWithColorsUsage.add(path.node.loc.start.line);
-
-        // const pathsStartingOnLine = path.node.loc && path.node.loc.start.line
-        // console.log(pathsStartingOnLine)
-        // const parent = path.parentPath.parentPath.value
-
-        // if (isPropertySignature(parent)) addLeadingEslintComment(j, parent)
     });
 
     // Find paths on those lines
@@ -148,17 +139,25 @@ const addDisableEslintCommentToTypes = (
         })
         .paths();
 
-    console.log(pathsOnLinesWithColorsUsage);
+    // Create a map to store all paths for every line
+    const pathsPerLine = new Map<number, ASTPath<Node>[]>();
 
-    // pathsOnLinesWithColorsUsage.forEach((path) => {
-    //     console.log(path.node)
-    // })
+    // Iterate all paths and store them based on their line
+    pathsOnLinesWithColorsUsage.forEach(path => {
+        const line = path.node.loc.start.line;
+        if (pathsPerLine.get(line)) pathsPerLine.get(line).push(path);
+        else pathsPerLine.set(line, [path]);
+    });
 
-    // Opt 1
     // Find the first path for each line
-    // Iterate over paths and find the highest node (parent) for each line (this will be the first node on the line)
-    // (?) Add leading comment to that node
-    // (?) If it doesn't work, check strategy in example repo
+    pathsPerLine.forEach(paths => {
+        const firstPath = paths.reduce((accum, curr) => {
+            if (curr.node.loc.start.column < accum.node.loc.start.column) return curr;
+            return accum;
+        });
+
+        addLeadingEslintComment(j, firstPath.node);
+    });
 };
 
 export default (file: FileInfo, api: API, options: Options) => {
@@ -219,40 +218,10 @@ export default (file: FileInfo, api: API, options: Options) => {
         }
     });
 
-    // // Find property signatures using Colors (e.g. backgroundColor: Colors)
-    // const propertySignatures = ast.find(j.TSPropertySignature, {
-    //     typeAnnotation: {
-    //         typeAnnotation: {
-    //             typeName: {
-    //                 name: (colorName: string) => localColorNames.includes(colorName)
-    //             }
-    //         }
-    //     }
-    // });
-
-    // propertySignatures.forEach(signature => {
-    //     // Find the type itself in the property signature
-    //     const typeReference = j(signature).find(j.TSTypeReference, {
-    //         typeName: {
-    //             name: (colorName: string) => localColorNames.includes(colorName)
-    //         }
-    //     });
-
-    //     // Build the replacement type for css variables
-    //     const cssColorTypeReference = j.tsTypeReference(j.identifier(CSS_VARS_COLORS_REPLACEMENT_TYPE));
-
-    //     // Replace the old type for the new one
-    //     typeReference.forEach(reference => {
-    //         reference.replace(cssColorTypeReference);
-    //     })
-
-    //     // Add a trailing comment disabling eslint
-    //     const comment = j.commentLine(ESLINT_DISABLE_COMMENT, false, true)
-    //     signature.node.comments = [comment]
-    // });
-
     // Add a comment to disable eslint for each Colors type usage
-    if (usagesAsTypes.length > 0) addDisableEslintCommentToTypes(ast, j, usagesAsTypes);
+    if (usagesAsTypes.length > 0) {
+        addDisableEslintCommentToTypeUsages(ast, j, usagesAsTypes);
+    }
 
     // Replace the usages of Colors as a type for the type representing our css variables
     usagesAsTypes.forEach(type => {
