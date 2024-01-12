@@ -114,9 +114,11 @@ Consider the role the color fulfils in your use case, and pick the matching vari
 -   _shadow_.
 
 The list of semantic variables is available at [the colors page](?path=/docs/essentials-colors--docs),
-but we recommend using a typed `getSemanticValue` helper instead of hardcoding variable names (they are long).
+but we recommend using a typed `getSemanticValue` helper instead of hard-coding variable names (they are long).
 
 <CssVariablesMigrationTable />
+
+After you are done, replace all mentions of `ReadCssColorVariable | (string & {})` in your code with `ReadCssColorVariable`.
 
 ### Set the default page background to Wave's
 
