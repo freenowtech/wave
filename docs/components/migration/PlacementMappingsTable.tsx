@@ -1,12 +1,12 @@
 import React from 'react';
-import { Table, TableCell, TableHeaderCell, TableRow } from '../../src/components/Table';
+import { Table, TableCell, TableHeaderCell, TableRow } from '../../../src/components/Table';
 
 export const PlacementMappingsTable: React.FC = () => (
     <Table rowStyle="zebra" rowSize="small">
         <thead>
             <TableRow>
-                <TableHeaderCell>react-tether</TableHeaderCell>
-                <TableHeaderCell>react-popper (new)</TableHeaderCell>
+                <TableHeaderCell>Removed</TableHeaderCell>
+                <TableHeaderCell>New values</TableHeaderCell>
             </TableRow>
         </thead>
         <tbody>
