@@ -122,8 +122,8 @@ const addLeadingDisableEslintComment = (j: JSCodeshift, node: Node): void => {
 const findLinesWhereNodesStart = (nodes: Collection<Node>) => {
     const uniqueStartLines = new Set<number>();
 
-    // Find the start lines of the nodes
     nodes.forEach(path => {
+        // Add the start line number to a set so they are unique
         if (path.node.loc.start.line) uniqueStartLines.add(path.node.loc.start.line);
     });
 
@@ -135,7 +135,6 @@ const findPathsOnNodesStartLines = (
     j: JSCodeshift,
     nodes: Collection<Node>
 ): Map<number, ASTPath<Node>[]> => {
-    // Find the lines where the nodes start at
     const uniqueStartLines = findLinesWhereNodesStart(nodes);
 
     // Find paths on those lines
@@ -160,13 +159,9 @@ const findPathsOnNodesStartLines = (
     return pathsPerLine;
 };
 
-const addDisableEslintCommentToTypeUsages = (
-    ast: Collection<any>,
-    j: JSCodeshift,
-    typeReferences: Collection<TSTypeReference>
-) => {
-    // Find the paths on each line where Colors is being used
-    const lineNumberToPathsMap = findPathsOnNodesStartLines(ast, j, typeReferences);
+const addLeadingDisableEslintCommentToNodes = (ast: Collection<any>, j: JSCodeshift, nodes: Collection<Node>) => {
+    // Find the paths on each line where the nodes are being used
+    const lineNumberToPathsMap = findPathsOnNodesStartLines(ast, j, nodes);
 
     lineNumberToPathsMap.forEach(paths => {
         // Find the first path for each line
@@ -238,9 +233,7 @@ export default (file: FileInfo, api: API, options: Options) => {
     });
 
     // Add a comment to disable eslint for each Colors type usage
-    if (usagesAsTypes.length > 0) {
-        addDisableEslintCommentToTypeUsages(ast, j, usagesAsTypes);
-    }
+    if (usagesAsTypes.length > 0) addLeadingDisableEslintCommentToNodes(ast, j, usagesAsTypes);
 
     // Replace the usages of Colors as a type for the type representing our css variables
     usagesAsTypes.forEach(type => {
