@@ -12,7 +12,7 @@ import { CssVariablesMigrationTable } from './components/migration/CssVariablesM
 Prerequisites:
 
 -   your project must use React@18;
--   React is mounted to the DMT using [new `createRoot` API](https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis).
+-   React is mounted to the DOM using the [new `createRoot` API](https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis).
 
 ## 1️⃣ Connect Classic colors
 
@@ -73,7 +73,7 @@ Other ways to verify the migration is done:
 -   you will see the `--wave` CSS variables in dev tools;
 -   if your OS switches between light and dark schemes, the UI will switch to the dark scheme too (you can enforce it in dev tools);
 
-In case it doesn't work, reach #ask-wave Slack channel for help.
+In case it doesn't work, reach out to the #ask-wave Slack channel for help.
 
 ## 4️⃣ Enforce light scheme
 
@@ -133,7 +133,7 @@ This is not required, you can wrap multiple components at once and avoid duplica
 
 ### Review `ref` usages
 
-We changed the place where `ref` is attached to the form components `Input`, `Password`, `PhoneInput`, etc.
+We changed the place where the `ref` is attached to the form components `Input` and `Password`.
 If you use `ref` to reach underlying DOM elements, you no longer need to look for `input` element. Use `ref.current` directly.
 
 ## 6️⃣ Switch to new colors (if required)
