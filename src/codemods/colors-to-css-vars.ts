@@ -114,28 +114,35 @@ const replaceColorsForCssVarsInTemplateLiterals = (
     });
 };
 
-const addLeadingEslintComment = (j: JSCodeshift, node: Node): void => {
+const addLeadingDisableEslintComment = (j: JSCodeshift, node: Node): void => {
     const comment = j.commentLine(ESLINT_DISABLE_COMMENT, true, false);
     node.comments = [comment];
 };
 
-const addDisableEslintCommentToTypeUsages = (
-    ast: Collection<any>,
-    j: JSCodeshift,
-    typeReferences: Collection<TSTypeReference>
-) => {
-    const uniqueLinesWithColorsUsage = new Set<number>();
+const findLinesWhereNodesStart = (nodes: Collection<Node>) => {
+    const uniqueStartLines = new Set<number>();
 
-    // Find lines where Colors is being used
-    typeReferences.forEach(path => {
-        if (path.node.loc.start.line) uniqueLinesWithColorsUsage.add(path.node.loc.start.line);
+    // Find the start lines of the nodes
+    nodes.forEach(path => {
+        if (path.node.loc.start.line) uniqueStartLines.add(path.node.loc.start.line);
     });
 
+    return uniqueStartLines;
+};
+
+const findPathsOnNodesStartLines = (
+    ast: Collection<any>,
+    j: JSCodeshift,
+    nodes: Collection<Node>
+): Map<number, ASTPath<Node>[]> => {
+    // Find the lines where the nodes start at
+    const uniqueStartLines = findLinesWhereNodesStart(nodes);
+
     // Find paths on those lines
-    const pathsOnLinesWithColorsUsage = ast
+    const pathsForLines = ast
         .find(j.Node, {
             loc: {
-                start: position => uniqueLinesWithColorsUsage.has(position.line)
+                start: position => uniqueStartLines.has(position.line)
             }
         })
         .paths();
@@ -144,20 +151,31 @@ const addDisableEslintCommentToTypeUsages = (
     const pathsPerLine = new Map<number, ASTPath<Node>[]>();
 
     // Iterate all paths and store them based on their line
-    pathsOnLinesWithColorsUsage.forEach(path => {
+    pathsForLines.forEach(path => {
         const line = path.node.loc.start.line;
         if (pathsPerLine.get(line)) pathsPerLine.get(line).push(path);
         else pathsPerLine.set(line, [path]);
     });
 
-    // Find the first path for each line
-    pathsPerLine.forEach(paths => {
+    return pathsPerLine;
+};
+
+const addDisableEslintCommentToTypeUsages = (
+    ast: Collection<any>,
+    j: JSCodeshift,
+    typeReferences: Collection<TSTypeReference>
+) => {
+    // Find the paths on each line where Colors is being used
+    const lineNumberToPathsMap = findPathsOnNodesStartLines(ast, j, typeReferences);
+
+    lineNumberToPathsMap.forEach(paths => {
+        // Find the first path for each line
         const firstPath = paths.reduce((accum, curr) => {
             if (curr.node.loc.start.column < accum.node.loc.start.column) return curr;
             return accum;
         });
 
-        addLeadingEslintComment(j, firstPath.node);
+        addLeadingDisableEslintComment(j, firstPath.node);
     });
 };
 
