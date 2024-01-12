@@ -1,6 +1,6 @@
 import { ReadCssColorVariable } from '@freenow/wave';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/ban-types you can remove this comment and only use the `ReadCssColorVariable` type after changing the bare colors to `getSemanticValue`
 export const STATUS: { [K in string]: ReadCssColorVariable | (string & {}) } = {
     APPROACH: 'var(--wave-b-color-white)',
     AVAILABLE: 'var(--wave-b-color-white)',

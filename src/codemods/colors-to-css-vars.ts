@@ -48,7 +48,8 @@ const ColorsToCssVariablesMap = {
 
 const CSS_VARS_COLORS_TYPE_NAME = 'ReadCssColorVariable';
 const CSS_VARS_COLORS_REPLACEMENT_TYPE = `${CSS_VARS_COLORS_TYPE_NAME} | (string & {})`;
-const ESLINT_DISABLE_COMMENT = ' eslint-disable-next-line @typescript-eslint/ban-types';
+const ESLINT_DISABLE_COMMENT =
+    ' eslint-disable-next-line @typescript-eslint/ban-types you can remove this comment and only use the `ReadCssColorVariable` type after changing the bare colors to `getSemanticValue`';
 
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,
