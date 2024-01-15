@@ -10,11 +10,17 @@ const QuestionmarkIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit',
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <path
                 d="M12 17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-13a5 5 0 011 9.9V16h-2v-4h1a3 3 0 10-3-3H7a5 5 0 015-5z"
                 fill="currentColor"
-                fillRule="nonzero"
             />
         </svg>
     );

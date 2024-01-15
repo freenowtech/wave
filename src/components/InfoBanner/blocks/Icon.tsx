@@ -5,11 +5,11 @@ import { variant as styledVariant } from 'styled-system';
 import { Box } from '../../Box/Box';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import {
-    CheckCircleSolidIcon,
-    CloseCircleSolidIcon,
+    CheckCircleFilledIcon,
+    XCrossCircleFilledIcon,
     IconProps,
-    InfoCircleSolidIcon,
-    WarningSolidIcon
+    InfoCircleFilledIcon,
+    WarningFilledIcon
 } from '../../../icons';
 import { BoxWithVariant, InfoBannerVariants } from '../types';
 
@@ -50,10 +50,10 @@ const emphasizedIconColorVariants = styledVariant({
 export const ICON_VARIANTS: {
     [key in InfoBannerVariants]: React.FC<IconProps>;
 } = {
-    warning: WarningSolidIcon,
-    info: InfoCircleSolidIcon,
-    success: CheckCircleSolidIcon,
-    error: CloseCircleSolidIcon
+    warning: WarningFilledIcon,
+    info: InfoCircleFilledIcon,
+    success: CheckCircleFilledIcon,
+    error: XCrossCircleFilledIcon
 };
 
 type Props = Pick<BoxWithVariant, 'variant' | 'emphasized'>;

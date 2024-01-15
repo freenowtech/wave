@@ -1,13 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>icons / 24x24 / brands / mastercard colored</title>
-    <desc>Created with Sketch.</desc>
-    <g id="icons-/-24x24-/-brands-/-mastercard-colored" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon">
-            <circle id="Oval" fill="#EB001B" cx="8.5" cy="12" r="6"></circle>
-            <circle id="Oval-Copy" fill="#F79E1B" cx="15.5" cy="12" r="6"></circle>
-            <path d="M12.0009178,7.12670777 C13.5144671,8.21594388 14.5,9.99288017 14.5,12 C14.5,14.0071198 13.5144671,15.7840561 12.0009178,16.8732922 C10.4859706,15.7848452 9.5,14.0075655 9.5,12 C9.5,10.0418995 10.4379819,8.30287647 11.8891386,7.20773806 Z" id="Combined-Shape" fill="#FF5F00"></path>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.5 18C18.8137 18 21.5 15.3137 21.5 12C21.5 8.68629 18.8137 6 15.5 6C12.1863 6 9.5 8.68629 9.5 12C9.5 15.3137 12.1863 18 15.5 18Z" fill="#F79E1B"/>
+<path d="M8.5 18C11.8137 18 14.5 15.3137 14.5 12C14.5 8.68629 11.8137 6 8.5 6C5.18629 6 2.5 8.68629 2.5 12C2.5 15.3137 5.18629 18 8.5 18Z" fill="#EB001B"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0009 7.12695C13.5145 8.21619 14.5 9.99313 14.5 12.0002C14.5 14.0074 13.5145 15.7843 12.0009 16.8735C10.486 15.7851 9.5 14.0078 9.5 12.0002C9.5 10.0421 10.438 8.30312 11.8891 7.20798L12.0009 7.12695Z" fill="#FF5F00"/>
 </svg>

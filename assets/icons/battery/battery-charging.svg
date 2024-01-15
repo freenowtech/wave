@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>icons / 24x24 / battery / charging</title>
-    <desc>Created with Sketch.</desc>
-    <g id="icons-/-24x24-/-battery-/-charging" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon" fill-rule="nonzero">
-            <path d="M18,13 L18,21 L6,21 L6,14 L8,14 L8,19 L16,19 L16,15 L18,13 Z M14,2 L14,4 L18,4 L18,10 L16,10 L16,6 L8,6 L8,9 L6,11 L6,4 L10,4 L10,2 L14,2 Z" id="battery-shape" fill="#001E3E"></path>
-            <polygon id="bolt-shape" fill="#FFCC00" points="8 12 13 7 13 12 16 12 11 17 11 12"></polygon>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 13V21H6V14H8V19H16V15L18 13ZM14 2V4H18V10H16V6H8V9L6 11V4H10V2H14Z" fill="#001E3E"/>
+<path d="M8 12L13 7V12H16L11 17V12H8Z" fill="#FFCC00"/>
 </svg>

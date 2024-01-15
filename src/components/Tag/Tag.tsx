@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { margin, MarginProps, variant } from 'styled-system';
 
 import { theme } from '../../essentials/theme';
-import { CloseIcon } from '../../icons';
+import { XCrossIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
@@ -34,7 +34,7 @@ const TagText = styled(Text).attrs({ theme })<Pick<TagProps, 'dismissible'>>`
     transition: color 125ms ease;
 `;
 
-const DismissIcon = styled(CloseIcon).attrs({ size: 18 })`
+const DismissIcon = styled(XCrossIcon).attrs({ size: 18 })`
     margin-right: 0.5rem;
     transition: color 125ms ease;
 

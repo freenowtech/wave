@@ -4,10 +4,10 @@ import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 import {
-    CheckCircleSolidIcon,
-    CloseCircleSolidIcon,
-    InfoCircleSolidIcon,
-    WarningSolidIcon,
+    CheckCircleFilledIcon,
+    XCrossCircleFilledIcon,
+    InfoCircleFilledIcon,
+    WarningFilledIcon,
     IconProps
 } from '../../icons';
 import { BoxProps, Box } from '../Box/Box';
@@ -155,10 +155,10 @@ export const IconBox = styled(Box)<BoxWithVariant>`
 export const ICON_VARIANTS: {
     [key in InfoBannerVariants]: React.FC<IconProps>;
 } = {
-    warning: WarningSolidIcon,
-    info: InfoCircleSolidIcon,
-    success: CheckCircleSolidIcon,
-    error: CloseCircleSolidIcon
+    warning: WarningFilledIcon,
+    info: InfoCircleFilledIcon,
+    success: CheckCircleFilledIcon,
+    error: XCrossCircleFilledIcon
 };
 
 export const ROLE_VARIANTS: {

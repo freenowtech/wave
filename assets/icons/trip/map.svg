@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>icons / 24x24 / map</title>
-    <desc>Created with Sketch.</desc>
-    <g id="icons-/-24x24-/-map" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon" fill="#001E3E" fill-rule="nonzero">
-            <path d="M22,3 L22,15.411 L20,15.884 L20,5.57468088 L15.999,6.596 L15.999,18.916 L20,17.9081097 L20,17.907 L22,17.403 L22,19.4665712 L14.6283408,21.3245471 L9.31122067,19.7246262 L2,21.5713321 L2,5.11046435 L9.28866294,3.25065099 L14.7503541,4.85063576 L22,3 Z M10,5.543 L10,17.843 L13.999,19.047 L13.999,6.715 L10,5.543 Z M8,5.643 L4,6.66421654 L4,19.0033488 L8,17.993 L8,5.643 Z" id="shape"></path>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22 3V15.411L20 15.884V5.57468L15.999 6.596V18.916L20 17.9081V17.907L22 17.403V19.4666L14.6283 21.3245L9.31122 19.7246L2 21.5713V5.11046L9.28866 3.25065L14.7504 4.85064L22 3ZM10 5.543V17.843L13.999 19.047V6.715L10 5.543ZM8 5.643L4 6.66422V19.0033L8 17.993V5.643Z" fill="#001E3E"/>
 </svg>

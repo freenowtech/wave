@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>icons / 24x24 / questionmark</title>
-    <desc>Created with Sketch.</desc>
-    <g id="icons-/-24x24-/-questionmark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon" fill="#001E3E" fill-rule="nonzero">
-            <path d="M12,17 C12.8284271,17 13.5,17.6715729 13.5,18.5 C13.5,19.3284271 12.8284271,20 12,20 C11.1715729,20 10.5,19.3284271 10.5,18.5 C10.5,17.6715729 11.1715729,17 12,17 Z M12,4 C14.7614237,4 17,6.23857625 17,9 C17,11.4189579 15.2822403,13.4367116 13,13.8999819 L13,13.8999819 L13,16 L11,16 L11,12 L12,12 C13.6568542,12 15,10.6568542 15,9 C15,7.34314575 13.6568542,6 12,6 C10.3431458,6 9,7.34314575 9,9 L9,9 L7,9 C7,6.23857625 9.23857625,4 12,4 Z" id="shape"></path>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 17C12.8284 17 13.5 17.6716 13.5 18.5C13.5 19.3284 12.8284 20 12 20C11.1716 20 10.5 19.3284 10.5 18.5C10.5 17.6716 11.1716 17 12 17ZM12 4C14.7614 4 17 6.23858 17 9C17 11.419 15.2822 13.4367 13 13.9V16H11V12H12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9H7C7 6.23858 9.23858 4 12 4Z" fill="#001E3E"/>
 </svg>

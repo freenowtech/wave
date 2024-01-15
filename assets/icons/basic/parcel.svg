@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>icons / 24x24 / parcel</title>
-    <desc>Created with Sketch.</desc>
-    <g id="icons-/-24x24-/-parcel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon" fill="#001E3E" fill-rule="nonzero">
-            <path d="M12.0072435,2 L20.9872994,8.4408677 L13,14.027 L13,19.686 L19,15.8835279 L19,12.1736242 L21,10.7206242 L21,16.9837206 L12,22.6886719 L3,16.9837206 L3,8.43362424 L3.037,8.433 L12.0072435,2 Z M5,9.82 L5,15.8835279 L11,19.686 L11,14.018 L5,9.82 Z M8.471,6.997 L6.48729939,8.42038011 L12.0072435,12.2813471 L13.965,10.912 L8.471,6.997 Z M12.0072435,4.46124781 L10.189,5.765 L15.704,9.695 L17.5271875,8.42038011 L12.0072435,4.46124781 Z" id="shape"></path>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.0072 2L20.9873 8.44087L13 14.027V19.686L19 15.8835V12.1736L21 10.7206V16.9837L12 22.6887L3 16.9837V8.43362L12.0072 2ZM5 9.82V15.8835L11 19.686V14.018L5 9.82ZM8.471 6.997L6.4873 8.42038L12.0072 12.2813L13.965 10.912L8.471 6.997ZM12.0072 4.46125L10.189 5.765L15.704 9.695L17.5272 8.42038L12.0072 4.46125Z" fill="#001E3E"/>
 </svg>

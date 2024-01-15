@@ -1,19 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="17px" height="22px" viewBox="0 0 17 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-    <title>ic_turbo-trips</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Android" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Incentives---Turbo-trips-cards" transform="translate(-295.000000, -301.000000)" fill="#001E3E">
-            <g id="Group-3-Copy-23" transform="translate(16.000000, 270.000000)">
-                <g id="ic_turbo-trips" transform="translate(264.000000, 18.000000)">
-                    <g id="icons-/-24x24-/-bolt-/-outline" transform="translate(12.000000, 12.000000)">
-                        <g id="icon">
-                            <path d="M15,1 L14,9 L20,9 L8,23 L8.44836674,19.4136862 L10.811,16.633 L10.8094191,16.6491629 L15.6515587,11 L11.7344356,11 L12.1905809,7.35083707 L7.34844127,13 L11.2655644,13 L10.89,16 L8.875,16 L9,15 L3,15 L15,1 Z" id="Shape" fill-rule="nonzero"></path>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 1L14 9H20L8 23L8.44837 19.4137L11.197 16.179L15.6516 11H11.7344L12.1906 7.35084L7.34844 13H11.2656L10.89 16H8.875L9 15H3L15 1Z" fill="#001E3E"/>
 </svg>
