@@ -1,4 +1,15 @@
-import { API, FileInfo, Identifier, JSCodeshift, TemplateLiteral } from 'jscodeshift';
+import {
+    API,
+    ASTPath,
+    Collection,
+    FileInfo,
+    Identifier,
+    ImportDeclaration,
+    JSCodeshift,
+    Node,
+    TemplateLiteral,
+    TSTypeReference
+} from 'jscodeshift';
 import { Options } from 'recast';
 
 const ColorsToCssVariablesMap = {
@@ -34,6 +45,11 @@ const ColorsToCssVariablesMap = {
     NEGATIVE_ORANGE_350: 'var(--wave-b-color-orange-350)',
     NEGATIVE_ORANGE_50: 'var(--wave-b-color-orange-50)'
 };
+
+const CSS_VARS_COLORS_TYPE_NAME = 'ReadCssColorVariable';
+const CSS_VARS_COLORS_REPLACEMENT_TYPE = `${CSS_VARS_COLORS_TYPE_NAME} | (string & {})`;
+const ESLINT_DISABLE_COMMENT =
+    ' eslint-disable-next-line @typescript-eslint/ban-types you can remove this comment and only use the `ReadCssColorVariable` type after changing the bare colors to `getSemanticValue`';
 
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,
@@ -98,6 +114,66 @@ const replaceColorsForCssVarsInTemplateLiterals = (
     });
 };
 
+const addLeadingDisableEslintComment = (j: JSCodeshift, node: Node): void => {
+    const comment = j.commentLine(ESLINT_DISABLE_COMMENT, true, false);
+    node.comments = [comment];
+};
+
+const findLinesWhereNodesStart = (nodes: Collection<Node>) => {
+    const uniqueStartLines = new Set<number>();
+
+    nodes.forEach(path => {
+        // Add the start line number to a set so they are unique
+        if (path.node.loc.start.line) uniqueStartLines.add(path.node.loc.start.line);
+    });
+
+    return uniqueStartLines;
+};
+
+const findPathsOnNodesStartLines = (
+    ast: Collection<any>,
+    j: JSCodeshift,
+    nodes: Collection<Node>
+): Map<number, ASTPath<Node>[]> => {
+    const uniqueStartLines = findLinesWhereNodesStart(nodes);
+
+    // Find paths on those lines
+    const pathsForLines = ast
+        .find(j.Node, {
+            loc: {
+                start: position => uniqueStartLines.has(position.line)
+            }
+        })
+        .paths();
+
+    // Create a map to store all paths for every line
+    const pathsPerLine = new Map<number, ASTPath<Node>[]>();
+
+    // Iterate all paths and store them based on their line
+    pathsForLines.forEach(path => {
+        const line = path.node.loc.start.line;
+        if (pathsPerLine.get(line)) pathsPerLine.get(line).push(path);
+        else pathsPerLine.set(line, [path]);
+    });
+
+    return pathsPerLine;
+};
+
+const addLeadingDisableEslintCommentToNodes = (ast: Collection<any>, j: JSCodeshift, nodes: Collection<Node>) => {
+    // Find the paths on each line where the nodes are being used
+    const lineNumberToPathsMap = findPathsOnNodesStartLines(ast, j, nodes);
+
+    lineNumberToPathsMap.forEach(paths => {
+        // Find the first path for each line
+        const firstPath = paths.reduce((accum, curr) => {
+            if (curr.node.loc.start.column < accum.node.loc.start.column) return curr;
+            return accum;
+        });
+
+        addLeadingDisableEslintComment(j, firstPath.node);
+    });
+};
+
 export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
     const ast = j(file.source);
@@ -132,7 +208,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         replaceColorsForCssVarsInTemplateLiterals(j, localColorNames, templateLiteral);
     });
 
-    // Find all remaining Colors usage
+    // Find all remaining Colors member usage (e.g. Colors.x)
     ast.find(j.MemberExpression, {
         object: {
             name: (colorName: string) => localColorNames.includes(colorName)
@@ -149,13 +225,34 @@ export default (file: FileInfo, api: API, options: Options) => {
         ex.replace(cssVarStringNode);
     });
 
-    // If it is the only named import from wave, remove the whole Wave import
-    if (waveImports.size() === 1 && waveNamedImports.size() === 1 && colorsImports.size() === 1) {
-        waveImports.remove();
+    // Find usages of Colors as a type
+    const usagesAsTypes = ast.find(j.TSTypeReference, {
+        typeName: {
+            name: (colorName: string) => localColorNames.includes(colorName)
+        }
+    });
 
-        // If there are other named imports from wave, remove only the Colors named import
-    } else if (waveNamedImports.size() > 1) {
-        colorsImports.remove();
+    // Add a comment to disable eslint for each Colors type usage
+    if (usagesAsTypes.length > 0) addLeadingDisableEslintCommentToNodes(ast, j, usagesAsTypes);
+
+    // Replace the usages of Colors as a type for the type representing our css variables
+    usagesAsTypes.forEach(type => {
+        const cssColorTypeReference = j.tsTypeReference(j.identifier(CSS_VARS_COLORS_REPLACEMENT_TYPE));
+        type.replace(cssColorTypeReference);
+    });
+
+    // Remove the Colors import
+    colorsImports.remove();
+
+    // If Colors is the only named import from wave, remove the whole Wave import
+    if (usagesAsTypes.size() === 0 && waveImports.size() === 1 && waveNamedImports.size() === 1) {
+        waveImports.remove();
+    }
+
+    // If Colors is used as a type add the import for the new css colors type
+    if (usagesAsTypes.size() > 0) {
+        const importDeclaration: ImportDeclaration = waveImports.get(0).node;
+        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(CSS_VARS_COLORS_TYPE_NAME)));
     }
 
     return ast.toSource(printOptions);

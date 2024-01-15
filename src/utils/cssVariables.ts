@@ -78,8 +78,11 @@ const generateHslComponentsCssVariableEntries = (
         })
         .filter(entry => entry !== undefined);
 
-export const applyPrefix = <T extends string>(variableName: T, tier: 'b' | 's' | 'l', namespace: 'color' = 'color'): string =>
-    `--${DS_PREFIX}-${tier}-${namespace}-${variableName}`;
+export const applyPrefix = <T extends string>(
+    variableName: T,
+    tier: 'b' | 's' | 'l',
+    namespace: 'color' = 'color'
+): string => `--${DS_PREFIX}-${tier}-${namespace}-${variableName}`;
 
 export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): ReadonlyArray<string> => {
     const entries = generateCssVariableEntries(tokens);
