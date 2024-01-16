@@ -70,7 +70,6 @@
         "@storybook/addon-essentials": "^7.6.8",
         "@storybook/addon-interactions": "^7.6.8",
         "@storybook/addon-links": "^7.6.8",
-        "@storybook/addon-mdx-gfm": "^7.6.8",
         "@storybook/manager-api": "^7.6.8",
         "@storybook/react": "^7.6.8",
         "@storybook/react-webpack5": "^7.6.8",
