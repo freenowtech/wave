@@ -1,6 +1,8 @@
 import React from 'react';
 import { IconGallery, IconItem } from '@storybook/blocks';
 import { IconProps } from '../IconProps';
+import { Box } from '../../components/Box/Box';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface IconGridProps {
     entries?: ReadonlyArray<[string, React.FC<IconProps>]>;
@@ -14,9 +16,11 @@ export const IconGrid: React.FC<IconGridProps> = ({ children, entries }) => {
             {entries &&
                 entries.map(([name, IconComponent]) => {
                     return (
-                        // @ts-ignore
                         <IconItem name={name} key={name}>
-                            <IconComponent />
+                            {/* temporary fix until the storybook dark theme is ready */}
+                            <Box backgroundColor={getSemanticValue('background-page-default')}>
+                                <IconComponent />
+                            </Box>
                         </IconItem>
                     );
                 })}
