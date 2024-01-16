@@ -15,8 +15,8 @@ type Story = StoryObj<typeof Icon>;
 export const Default: Story = {
     name: 'Icons',
     args: {
-        name: 'AlertIcon',
-        color: getSemanticValue('foreground-warning-default'),
+        name: 'CheckCircleFilledIcon',
+        color: getSemanticValue('foreground-success-default'),
         size: 40
     },
     argTypes: {

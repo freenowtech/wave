@@ -1,10 +1,10 @@
 export { default as AnchorHamburgIcon } from './AnchorHamburgIcon';
 export { default as ClockIcon } from './ClockIcon';
 export { default as DogIcon } from './DogIcon';
-export { default as FlagOutlineIcon } from './FlagOutlineIcon';
-export { default as FreeNowArrowIcon } from './FreeNowArrowIcon';
-export { default as MegaphoneOutlineIcon } from './MegaphoneOutlineIcon';
-export { default as MegaphoneSolidIcon } from './MegaphoneSolidIcon';
+export { default as FlagIcon } from './FlagIcon';
+export { default as FreenowLogoIcon } from './FreenowLogoIcon';
+export { default as MegaphoneFilledIcon } from './MegaphoneFilledIcon';
+export { default as MegaphoneIcon } from './MegaphoneIcon';
 export { default as ParcelIcon } from './ParcelIcon';
-export { default as StarCircleSolidIcon } from './StarCircleSolidIcon';
+export { default as StarCircleFilledIcon } from './StarCircleFilledIcon';
 export { default as TrophyIcon } from './TrophyIcon';

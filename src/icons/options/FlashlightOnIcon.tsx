@@ -10,11 +10,17 @@ const FlashlightOnIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit',
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <path
-                d="M14 7v2H8v1.465l3 2V19a1 1 0 002 0v-6.535l3-2V7h2v4.535l-3 2V19a3 3 0 01-6 0v-5.465l-3-2V7h8zm2.134-5.232l1.732 1-2 3.464-1.732-1 2-3.464zm-8.268 0l2 3.464-1.732 1-2-3.464 1.732-1zM13 1v4h-2V1h2z"
+                d="M14 7v2H8v1.465l3 2V19a1 1 0 102 0v-6.535l3-2V7h2v4.535l-3 2V19a3 3 0 11-6 0v-5.465l-3-2V7h8zm2.134-5.232l1.732 1-2 3.464-1.732-1 2-3.464zm-8.268 0l2 3.464-1.732 1-2-3.464 1.732-1zM13 1v4h-2V1h2z"
                 fill="currentColor"
-                fillRule="nonzero"
             />
         </svg>
     );

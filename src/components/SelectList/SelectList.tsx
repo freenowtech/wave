@@ -10,7 +10,7 @@ import {
 import WindowedSelect from 'react-windowed-select';
 
 import { Elevation } from '../../essentials';
-import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
+import { ChevronDownIcon, ChevronUpIcon, XCrossIcon } from '../../icons';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
@@ -295,7 +295,7 @@ const DropdownIndicator = (props: WithSelectProps<DropdownIndicatorProps>) => (
 
 const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
     <ReactSelectComponents.ClearIndicator {...props}>
-        <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
+        <XCrossIcon color="inherit" size={getIconSize(props.selectProps.size)} />
     </ReactSelectComponents.ClearIndicator>
 );
 
@@ -305,7 +305,7 @@ const IndicatorSeparator = () => null;
 
 const MultiValueRemove = props => (
     <ReactSelectComponents.MultiValueRemove {...props}>
-        <CloseIcon size={14} color="inherit" />
+        <XCrossIcon size={14} color="inherit" />
     </ReactSelectComponents.MultiValueRemove>
 );
 

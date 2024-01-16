@@ -1,4 +1,4 @@
-import { IconProps, ForwardLastIcon, MagnifyingGlassIcon } from '@freenow/wave';
+import { IconProps, ForwardLastIcon, MagnifierIcon } from '@freenow/wave';
 
 export enum CampaignType {
     REGULAR = 'REGULAR',
@@ -7,5 +7,5 @@ export enum CampaignType {
 
 export const CampaignTypeOptions: { icon: React.FC<IconProps>; type: CampaignType }[] = [
     { icon: ForwardLastIcon, type: CampaignType.REGULAR },
-    { icon: MagnifyingGlassIcon, type: CampaignType.AUTOMATION }
+    { icon: MagnifierIcon, type: CampaignType.AUTOMATION }
 ];

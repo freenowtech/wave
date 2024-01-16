@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Elevation, Spaces } from '../../../essentials';
-import { CloseIcon } from '../../../icons';
+import { XCrossIcon } from '../../../icons';
 
-const TopRightXIcon = styled(CloseIcon)`
+const TopRightXIcon = styled(XCrossIcon)`
     position: absolute;
     top: ${Spaces[1]};
     right: ${Spaces[1]};

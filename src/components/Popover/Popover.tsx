@@ -7,7 +7,7 @@ import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { Spaces } from '../../essentials';
-import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
+import { ChevronDownIcon, ChevronUpIcon } from '../../icons';
 import { useClickOutside } from '../../utils/hooks/useClickOutside';
 
 import { Text } from '../Text/Text';

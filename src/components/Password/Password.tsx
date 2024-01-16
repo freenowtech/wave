@@ -2,7 +2,7 @@ import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import styled from 'styled-components';
 
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
-import { EyeClosedIcon, EyeOpenIcon } from '../../icons';
+import { EyeClosedIcon, EyeIcon } from '../../icons';
 import { InnerInput as Input } from '../Input/InnerInput';
 import { InputProps } from '../Input/InputProps';
 import { InputWrapperProps } from '../Input/InputWrapper';
@@ -114,7 +114,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                                 '--wave-c-password-color-hover': getSemanticValue('foreground-primary')
                             }}
                         >
-                            {isHidden ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                            {isHidden ? <EyeIcon /> : <EyeClosedIcon />}
                         </ToggleButton>
                         <VisuallyHidden as="span" aria-live="polite">
                             {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}

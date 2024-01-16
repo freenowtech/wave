@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { CloseIcon, MagnifyingGlassIcon } from '../../icons/index';
+import { XCrossIcon, MagnifierIcon } from '../../icons';
 import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box, BoxProps } from '../Box/Box';
 
@@ -252,7 +252,7 @@ export const Search: FC<SearchProps> = ({
                     }}
                     onClick={() => !disabled && onEnter?.(value)}
                 >
-                    <MagnifyingGlassIcon
+                    <MagnifierIcon
                         size={size === 'small' ? 20 : 24}
                         aria-hidden="true"
                         color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-default')}
@@ -282,7 +282,7 @@ export const Search: FC<SearchProps> = ({
                         }}
                         role="button"
                     >
-                        <CloseIcon aria-hidden="true" color={getSemanticValue('foreground-neutral-default')} />
+                        <XCrossIcon aria-hidden="true" color={getSemanticValue('foreground-neutral-default')} />
                     </Box>
                 )}
             </SearchInputContainer>

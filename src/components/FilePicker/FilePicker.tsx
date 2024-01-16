@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef, FC, MouseEventHandler, useRef, useStat
 import styled, { css } from 'styled-components';
 import { MarginProps } from 'styled-system';
 import { MediaQueries } from '../../essentials';
-import { CheckCircleOutlineIcon, ShareIcon } from '../../icons';
+import { CheckCircleIcon, UploadIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { Box, BoxProps } from '../Box/Box';
@@ -197,7 +197,7 @@ const FilePicker: FC<FilePickerProps> = ({
                 </Box>
                 <Box display={{ _: 'none', medium: 'flex' }} alignItems="center" justifyContent="top">
                     {!alwaysShowActionButton && validFileSelected ? (
-                        <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} />
+                        <CheckCircleIcon color={ICON_FILE_FEEDBACK_COLOR} />
                     ) : (
                         <InputButton variant="secondary" type="button" tabIndex={-1} onClick={onClickHandler}>
                             {buttonText}
@@ -206,9 +206,9 @@ const FilePicker: FC<FilePickerProps> = ({
                 </Box>
                 <Box display={{ _: 'flex', medium: 'none' }} alignItems="top">
                     {!alwaysShowActionButton && validFileSelected ? (
-                        <CheckCircleOutlineIcon color={ICON_FILE_FEEDBACK_COLOR} />
+                        <CheckCircleIcon color={ICON_FILE_FEEDBACK_COLOR} />
                     ) : (
-                        <ShareIcon />
+                        <UploadIcon />
                     )}
                 </Box>
             </Outliner>

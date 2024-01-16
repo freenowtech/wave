@@ -1,7 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react';
 import React from 'react';
 import { Button } from '../Button';
-import TrashBinIcon from '../../../icons/actions/TrashBinIcon';
+import { TrashIcon } from '../../../icons';
 
 const meta: Meta = {
     title: 'Components/Button/Button',
@@ -82,7 +82,7 @@ export const WithIcon: Story = {
     args: {
         children: (
             <>
-                <TrashBinIcon size={20} /> Remove
+                <TrashIcon size={20} /> Remove
             </>
         ),
         variant: 'danger'
