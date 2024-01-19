@@ -1,9 +1,16 @@
 import React from 'react';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
+import { addons } from '@storybook/preview-api';
+import { DocsContainer } from '@storybook/addon-docs';
+
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
+import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
+
 import { getSemanticValue } from '../src/utils/cssVariables';
+import { LightTheme, DarkTheme } from './FreenowTheme';
+import { useDarkMode } from 'storybook-dark-mode';
 
 const THEMES = {
     classic: ClassicColors,
@@ -15,16 +22,34 @@ export const withTheme = (Story, context) => {
     return (
         <>
             <Theme />
-            <div className="wave">
-                <Story {...context} />
-            </div>
+            <Story {...context} />
         </>
     );
 };
 
+export const withColorScheme = (Story, context) => {
+    const SchemeWrapper = useDarkMode() ? DarkScheme : LightScheme;
+
+    return (
+        <SchemeWrapper>
+            <Story {...context} />
+        </SchemeWrapper>
+    );
+};
+
 export const preview: Preview = {
-    decorators: [withTheme],
+    decorators: [withTheme, withColorScheme],
     parameters: {
+        darkMode: {
+            dark: { ...themes.dark, ...DarkTheme },
+            light: {
+                ...themes.normal,
+                ...LightTheme
+            },
+            lightClass: ['wave', 'light-scheme'],
+            darkClass: ['wave', 'dark-scheme'],
+            stylePreview: true
+        },
         actions: { argTypesRegex: '^on[A-Z].*' },
         viewMode: 'docs',
         controls: {
@@ -40,18 +65,24 @@ export const preview: Preview = {
             }
         },
         docs: {
-            theme: themes.light,
+            container: props => {
+                const scheme = useDarkMode() ? DarkTheme : LightTheme;
+                const globals = props.context.store.globals.get();
+                const WaveTheme = THEMES[globals.theme];
+
+                return (
+                    <>
+                        <WaveTheme />
+                        <DocsContainer {...props} theme={scheme} />
+                    </>
+                );
+            },
             toc: {
                 headingSelector: 'h2, h3'
             }
         },
         backgrounds: {
-            default: 'auto',
-            values: [
-                { name: 'auto', value: getSemanticValue('background-page-default') },
-                { name: 'light', value: getSemanticValue('background-surface-neutral-default') },
-                { name: 'dark', value: getSemanticValue('background-surface-primary-default') }
-            ]
+            disable: true
         },
         viewport: {
             viewports: {
