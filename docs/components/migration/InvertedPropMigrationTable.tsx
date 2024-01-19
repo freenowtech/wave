@@ -1,6 +1,6 @@
 import React from 'react';
-import { Source } from '@storybook/blocks';
 
+import { Source } from '../../../src/docs/Source';
 import { Table, TableCell, TableHeaderCell, TableRow } from '../../../src/components/Table';
 
 const codemodsExample = `<Box>
