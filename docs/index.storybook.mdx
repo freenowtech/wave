@@ -35,6 +35,11 @@ import { Text } from '../src/components/Text/Text';
       right: -300px;
       max-width: 1200px;
       z-index: 0 !important;
+      display: block;
+    }
+
+    .dark-scheme .wave-bg {
+      display:none;
     }
 
     .main-content {
@@ -96,6 +101,10 @@ import { Text } from '../src/components/Text/Text';
     .icon-wrapper-white {
       background: #FFFFFF;
     }
+
+    .toc-wrapper {
+        display: none;
+    }
   `}
 </style>
 
@@ -104,8 +113,8 @@ import { Text } from '../src/components/Text/Text';
 <Box className='main-content'>
   <Unstyled>
     <Box display='flex' mb='40px'>
-      <img src={WaveLogo} width='170px' alt='wave-logo' />
-      <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
+        <svg><use href={`${WaveLogo}#logo`}/></svg>
+        <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
     </Box>
 
     <Card className='hero-banner' level={200}>
