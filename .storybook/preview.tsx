@@ -1,16 +1,14 @@
 import React from 'react';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
-import { addons } from '@storybook/preview-api';
 import { DocsContainer } from '@storybook/addon-docs';
+import { useDarkMode } from 'storybook-dark-mode';
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
 import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
 
-import { getSemanticValue } from '../src/utils/cssVariables';
 import { LightTheme, DarkTheme } from './FreenowTheme';
-import { useDarkMode } from 'storybook-dark-mode';
 
 const THEMES = {
     classic: ClassicColors,
