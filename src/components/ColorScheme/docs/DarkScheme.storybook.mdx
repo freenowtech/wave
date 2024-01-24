@@ -1,8 +1,9 @@
-import { Meta, Story, Source } from '@storybook/blocks';
-import * as DarkSchemeStories from './DarkScheme.stories';
-import { BoxWithSchemeToggle } from '../../../../docs/components/BoxWithSchemeToggle';
-import { Text } from '../../Text/Text';
+import { Meta, Story } from '@storybook/blocks';
+
+import { Source } from '../../../docs/Source';
 import { Box } from '../../Box/Box';
+import * as DarkSchemeStories from './DarkScheme.stories';
+import { CurrentScheme } from './CurrentScheme';
 
 <Meta of={DarkSchemeStories} />
 
@@ -17,15 +18,18 @@ Wave provides a few components to help you with this.
 
 `InvertedColorScheme` component inverts the color scheme of all children components:
 
--   _dark_ scheme for users with light scheme
--   _light_ scheme for users with dark scheme
+-   _dark_ scheme if user prefers light scheme
+-   _light_ scheme it user prefers dark scheme
+
+☝️ The preference is derived from the OS and browser settings.
 
 Demo:
 
 <Box className='wave'>
-    <Text>Your current scheme derived from the OS</Text>
+    <CurrentScheme />
 
     <Story of={DarkSchemeStories.InvertedColorSchemeWithButton} />
+
 </Box>
 
 <Source of={DarkSchemeStories.InvertedColorSchemeWithButton} />
@@ -34,29 +38,14 @@ Demo:
 
 `LightScheme` component forces the _light_ color scheme to children components, no matter what the user's preferred color scheme is.
 
-<BoxWithSchemeToggle>
-    <Text>Before the LightScheme</Text>
-
-    <Story of={DarkSchemeStories.LightSchemeWithButton} />
-
-    <Text>After the LightScheme</Text>
-</BoxWithSchemeToggle>
-
+<Story of={DarkSchemeStories.LightSchemeWithButton} />
 <Source of={DarkSchemeStories.LightSchemeWithButton} />
-
 
 ## Dark Scheme
 
 `DarkScheme` component forces the _dark_ color scheme to children components, no matter what the user's preferred color scheme is.
 
-<BoxWithSchemeToggle>
-    <Text>Before the DarkScheme</Text>
-
-    <Story of={DarkSchemeStories.DarkSchemeWithButton} />
-
-    <Text>After the DarkScheme</Text>
-</BoxWithSchemeToggle>
-
+<Story of={DarkSchemeStories.DarkSchemeWithButton} />
 <Source of={DarkSchemeStories.DarkSchemeWithButton} />
 
 ## Props

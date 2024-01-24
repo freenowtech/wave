@@ -1,21 +1,21 @@
 import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { Box, BoxProps } from '../Box/Box';
 
-const checkIfDarkScheme = () => window.matchMedia('(prefers-color-scheme: dark)')
+const evalColorSchemeQuery = () => window.matchMedia('(prefers-color-scheme: dark)');
+const getInvertedScheme = (query: { matches: boolean }): 'dark-scheme' | 'light-scheme' =>
+    query.matches ? 'light-scheme' : 'dark-scheme';
 
 export interface InvertedColorSchemeProps extends BoxProps {
     children: ReactNode;
 }
 
 export const InvertedColorScheme: FC<InvertedColorSchemeProps> = ({ children, ...props }) => {
-    const [preferredColorScheme, setPreferredColorScheme] = useState(
-        checkIfDarkScheme().matches ? 'light-scheme' : 'dark-scheme'
-    );
+    const [preferredColorScheme, setPreferredColorScheme] = useState(getInvertedScheme(evalColorSchemeQuery()));
 
     useEffect(() => {
-        const mql = checkIfDarkScheme();
+        const mql = evalColorSchemeQuery();
         const onMediaQueryChange = (e: MediaQueryListEvent) => {
-            setPreferredColorScheme(e.matches ? 'light-scheme' : 'dark-scheme');
+            setPreferredColorScheme(getInvertedScheme(e));
         };
 
         mql.addEventListener('change', onMediaQueryChange);
@@ -24,5 +24,9 @@ export const InvertedColorScheme: FC<InvertedColorSchemeProps> = ({ children, ..
         };
     }, []);
 
-    return <Box {...props} className={`wave ${preferredColorScheme}`}>{children}</Box>;
+    return (
+        <Box {...props} className={`wave ${preferredColorScheme}`}>
+            {children}
+        </Box>
+    );
 };

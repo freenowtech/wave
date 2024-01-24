@@ -26,7 +26,7 @@ export const createThemeGlobalStyle = (
   
   .light-scheme {
     color-scheme: light;
-    ${generateSemanticTierCssVariables(darkScheme)}
+    ${generateSemanticTierCssVariables(lightScheme)}
   }
 
   @media (prefers-color-scheme: dark) {

@@ -25,17 +25,26 @@ type Story = StoryObj<typeof DarkScheme>;
 
 export const DarkSchemeWithButton: Story = {
     args: {
-        children: <Button>Click me!</Button>,
+        children: <Button>Always dark!</Button>,
         py: 2
-    }
+    },
+    render: ({ children, ...props }) => (
+        <DarkScheme {...props} textAlign="center">
+            {children}
+        </DarkScheme>
+    )
 };
 
 export const LightSchemeWithButton: Story = {
     args: {
-        children: <Button>Click me!</Button>,
+        children: <Button>Always Light!</Button>,
         py: 2
     },
-    render: ({ children, ...props }) => <LightScheme {...props}>{children}</LightScheme>
+    render: ({ children, ...props }) => (
+        <LightScheme {...props} textAlign="center">
+            {children}
+        </LightScheme>
+    )
 };
 
 export const InvertedColorSchemeWithButton: Story = {
@@ -43,5 +52,9 @@ export const InvertedColorSchemeWithButton: Story = {
         children: <Text>The opposite scheme block</Text>,
         py: 2
     },
-    render: ({ children, ...props }) => <InvertedColorScheme {...props}>{children}</InvertedColorScheme>
+    render: ({ children, ...props }) => (
+        <InvertedColorScheme {...props} textAlign="center">
+            {children}
+        </InvertedColorScheme>
+    )
 };
