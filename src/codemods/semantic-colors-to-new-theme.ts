@@ -12,7 +12,209 @@ import { Options } from 'recast';
 
 // TODO actual map
 const DeprecatedSemanticColorsToSemanticTokensMap = {
-    'SemanticColors.button.primary.backgroundDisabled': 'background-element-disabled-default'
+    'SemanticColors.text.primary': '',
+    'SemanticColors.text.primaryInverted': '',
+    'SemanticColors.text.secondary': '',
+    'SemanticColors.text.secondaryInverted': '',
+    'SemanticColors.text.tertiary': '',
+    'SemanticColors.text.tertiaryInverted': '',
+    'SemanticColors.text.disabled': '',
+    'SemanticColors.text.disabledInverted': '',
+    'SemanticColors.text.link': '',
+    'SemanticColors.text.linkInverted': '',
+    'SemanticColors.text.linkHover': '',
+    'SemanticColors.text.linkHoverInverted': '',
+    'SemanticColors.text.danger': '',
+    'SemanticColors.text.dangerInverted': '',
+    'SemanticColors.text.success': '',
+    'SemanticColors.text.warning': '',
+
+    'SemanticColors.background.primary': '',
+    'SemanticColors.background.secondary': '',
+    'SemanticColors.background.info': '',
+    'SemanticColors.background.danger': '',
+    'SemanticColors.background.success': '',
+    'SemanticColors.background.warning': '',
+    'SemanticColors.background.primaryEmphasized': '',
+    'SemanticColors.background.secondaryEmphasized': '',
+    'SemanticColors.background.infoEmphasized': '',
+    'SemanticColors.background.dangerEmphasized': '',
+    'SemanticColors.background.successEmphasized': '',
+    'SemanticColors.background.warningEmphasized': '',
+
+    'SemanticColors.icon.primary': '',
+    'SemanticColors.icon.primaryInverted': '',
+    'SemanticColors.icon.secondary': '',
+    'SemanticColors.icon.secondaryInverted': '',
+    'SemanticColors.icon.tertiary': '',
+    'SemanticColors.icon.tertiaryInverted': '',
+    'SemanticColors.icon.disabled': '',
+    'SemanticColors.icon.disabledInverted': '',
+    'SemanticColors.icon.action': '',
+    'SemanticColors.icon.danger': '',
+    'SemanticColors.icon.success': '',
+    'SemanticColors.icon.warning': '',
+
+    'SemanticColors.border.primary': '',
+    'SemanticColors.border.secondary': '',
+    'SemanticColors.border.info': '',
+    'SemanticColors.border.danger': '',
+    'SemanticColors.border.success': '',
+    'SemanticColors.border.warning': '',
+    'SemanticColors.border.infoEmphasized': '',
+    'SemanticColors.border.dangerEmphasized': '',
+    'SemanticColors.border.successEmphasized': '',
+    'SemanticColors.border.warningEmphasized': '',
+
+    'SemanticColors.button.primary.text': 'foreground-on-background-primary',
+    'SemanticColors.button.primary.icon': 'foreground-on-background-primary',
+    'SemanticColors.button.primary.background': 'background-element-primary-default',
+    'SemanticColors.button.primary.border': 'background-element-primary-default',
+
+    'SemanticColors.button.primary.textHover': 'foreground-on-background-accent',
+    'SemanticColors.button.primary.iconHover': 'foreground-on-background-accent',
+    'SemanticColors.button.primary.backgroundHover': 'background-element-primary-emphasized',
+    'SemanticColors.button.primary.borderHover': 'background-element-primary-emphasized',
+
+    'SemanticColors.button.primary.textDisabled': 'foreground-on-background-disabled',
+    'SemanticColors.button.primary.iconDisabled': 'foreground-on-background-disabled',
+    'SemanticColors.button.primary.backgroundDisabled': 'background-element-disabled-default',
+    'SemanticColors.button.primary.borderDisabled': 'background-element-disabled-default',
+
+    'SemanticColors.button.primary.textInverted': '', // foreground-on-background-primary
+    'SemanticColors.button.primary.iconInverted': '', // foreground-on-background-primary
+    'SemanticColors.button.primary.backgroundInverted': '', // background-element-primary-default
+    'SemanticColors.button.primary.borderInverted': '', // background-element-primary-default
+
+    'SemanticColors.button.primary.textHoverInverted': '', // foreground-on-background-accent
+    'SemanticColors.button.primary.iconHoverInverted': '', // foreground-on-background-accent
+    'SemanticColors.button.primary.backgroundHoverInverted': '', // background-element-primary-emphasized
+    'SemanticColors.button.primary.borderHoverInverted': '', // background-element-primary-emphasized
+
+    'SemanticColors.button.primary.textDisabledInverted': '', // foreground-on-background-disabled
+    'SemanticColors.button.primary.iconDisabledInverted': '', // foreground-on-background-disabled
+    'SemanticColors.button.primary.backgroundDisabledInverted': '', // background-element-disabled-default
+    'SemanticColors.button.primary.borderDisabledInverted': '', // background-element-disabled-default
+
+    'SemanticColors.button.secondary.text': '',
+    'SemanticColors.button.secondary.icon': '',
+    'SemanticColors.button.secondary.background': '',
+    'SemanticColors.button.secondary.border': '',
+
+    'SemanticColors.button.secondary.textHover': '',
+    'SemanticColors.button.secondary.iconHover': '',
+    'SemanticColors.button.secondary.backgroundHover': '',
+    'SemanticColors.button.secondary.borderHover': '',
+
+    'SemanticColors.button.secondary.textDisabled': '',
+    'SemanticColors.button.secondary.iconDisabled': '',
+    'SemanticColors.button.secondary.backgroundDisabled': '',
+    'SemanticColors.button.secondary.borderDisabled': '',
+
+    'SemanticColors.button.secondary.textInverted': '',
+    'SemanticColors.button.secondary.iconInverted': '',
+    'SemanticColors.button.secondary.backgroundInverted': '',
+    'SemanticColors.button.secondary.borderInverted': '',
+
+    'SemanticColors.button.secondary.textHoverInverted': '',
+    'SemanticColors.button.secondary.iconHoverInverted': '',
+    'SemanticColors.button.secondary.backgroundHoverInverted': '',
+    'SemanticColors.button.secondary.borderHoverInverted': '',
+
+    'SemanticColors.button.secondary.textDisabledInverted': '',
+    'SemanticColors.button.secondary.iconDisabledInverted': '',
+    'SemanticColors.button.secondary.backgroundDisabledInverted': '',
+    'SemanticColors.button.secondary.borderDisabledInverted': '',
+
+    'SemanticColors.button.danger.text': '',
+    'SemanticColors.button.danger.icon': '',
+    'SemanticColors.button.danger.background': '',
+    'SemanticColors.button.danger.border': '',
+
+    'SemanticColors.button.danger.textHover': '',
+    'SemanticColors.button.danger.iconHover': '',
+    'SemanticColors.button.danger.backgroundHover': '',
+    'SemanticColors.button.danger.borderHover': '',
+
+    'SemanticColors.button.danger.textDisabled': '',
+    'SemanticColors.button.danger.iconDisabled': '',
+    'SemanticColors.button.danger.backgroundDisabled': '',
+    'SemanticColors.button.danger.borderDisabled': '',
+
+    'SemanticColors.button.danger.textInverted': '',
+    'SemanticColors.button.danger.iconInverted': '',
+    'SemanticColors.button.danger.backgroundInverted': '',
+    'SemanticColors.button.danger.borderInverted': '',
+
+    'SemanticColors.button.danger.textHoverInverted': '',
+    'SemanticColors.button.danger.iconHoverInverted': '',
+    'SemanticColors.button.danger.backgroundHoverInverted': '',
+    'SemanticColors.button.danger.borderHoverInverted': '',
+
+    'SemanticColors.button.danger.textDisabledInverted': '',
+    'SemanticColors.button.danger.iconDisabledInverted': '',
+    'SemanticColors.button.danger.backgroundDisabledInverted': '',
+    'SemanticColors.button.danger.borderDisabledInverted': '',
+
+    'SemanticColors.textButton.primary.text': '',
+    'SemanticColors.textButton.primary.icon': '',
+    'SemanticColors.textButton.primary.textHover': '',
+    'SemanticColors.textButton.primary.iconHover': '',
+    'SemanticColors.textButton.primary.textDisabled': '',
+    'SemanticColors.textButton.primary.iconDisabled': '',
+
+    'SemanticColors.textButton.primary.textInverted': '',
+    'SemanticColors.textButton.primary.iconInverted': '',
+    'SemanticColors.textButton.primary.textHoverInverted': '',
+    'SemanticColors.textButton.primary.iconHoverInverted': '',
+    'SemanticColors.textButton.primary.textDisabledInverted': '',
+    'SemanticColors.textButton.primary.iconDisabledInverted': '',
+
+    'SemanticColors.textButton.danger.textInverted': '',
+    'SemanticColors.textButton.danger.iconInverted': '',
+    'SemanticColors.textButton.danger.textHoverInverted': '',
+    'SemanticColors.textButton.danger.iconHoverInverted': '',
+    'SemanticColors.textButton.danger.textDisabledInverted': '',
+    'SemanticColors.textButton.danger.iconDisabledInverted': '',
+
+    'SemanticColors.forms.toggle.default.slideOff': '',
+    'SemanticColors.forms.toggle.default.slideOn': '',
+    'SemanticColors.forms.toggle.default.frameOff': '',
+    'SemanticColors.forms.toggle.default.frameOn': '',
+
+    'SemanticColors.forms.toggle.error.slideOff': '',
+    'SemanticColors.forms.toggle.error.slideOn': '',
+    'SemanticColors.forms.toggle.error.frameOff': '',
+    'SemanticColors.forms.toggle.error.frameOn': '',
+
+    'SemanticColors.forms.toggle.disabled.slideOff': '',
+    'SemanticColors.forms.toggle.disabled.slideOn': '',
+    'SemanticColors.forms.toggle.disabled.frameOff': '',
+    'SemanticColors.forms.toggle.disabled.frameOn': '',
+
+    'SemanticColors.forms.datePicker.calendar.border': '',
+    'SemanticColors.forms.datePicker.calendar.borderHover': '',
+    'SemanticColors.forms.datePicker.calendar.borderRange': '',
+    'SemanticColors.forms.datePicker.calendar.borderSelected': '',
+    'SemanticColors.forms.datePicker.calendar.borderRangeHover': '',
+    'SemanticColors.forms.datePicker.calendar.background': '',
+    'SemanticColors.forms.datePicker.calendar.backgroundHover': '',
+    'SemanticColors.forms.datePicker.calendar.backgroundRange': '',
+    'SemanticColors.forms.datePicker.calendar.backgroundSelected': '',
+    'SemanticColors.forms.datePicker.calendar.backgroundRangeHover': '',
+
+    'SemanticColors.table.skeleton': '',
+    'SemanticColors.table.zebraStyles.backgroundSecondary': '',
+    'SemanticColors.table.zebraStyles.backgroundHover': '',
+    'SemanticColors.table.zebraStyles.backgroundActive': '',
+    'SemanticColors.table.linesStyles.backgroundHover': '',
+    'SemanticColors.table.linesStyles.backgroundActive': '',
+    'SemanticColors.table.linesStyles.border': '',
+    'SemanticColors.table.blank.backgroundHover': '',
+    'SemanticColors.table.blank.backgroundActive': '',
+    'SemanticColors.table.header.border': '',
+
+    'SemanticColors.dialog.dimming': ''
 };
 
 /**
