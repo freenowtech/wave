@@ -1,31 +1,30 @@
 import {
     API,
     ASTPath,
-    Collection,
     FileInfo,
     Identifier,
     ImportDeclaration,
     JSCodeshift,
-    Node,
+    MemberExpression,
     TemplateLiteral
 } from 'jscodeshift';
 import { Options } from 'recast';
 
 // TODO actual map
 const DeprecatedSemanticColorsToSemanticTokensMap = {
-    'SemanticColors.button.primary.backgroundDisabled': 'var(--wave-b-color-white)'
+    'SemanticColors.button.primary.backgroundDisabled': 'background-element-disabled-default'
 };
 
 /**
  * Possible usages
  * - As `CallExpression`? -> themeGet('semanticColors.border.primary') (inside template literal)
- * * - As `CallExpression`? -> themeGet('semanticColors.border.primary') (regular)
+ * - As `CallExpression`? -> themeGet('semanticColors.border.primary') (regular)
  * - As constant -> SemanticColors.button.primary.backgroundDisabled (inside template literal)
- * - As constant -> SemanticColors.button.primary.backgroundDisabled (regular)
- * - As type -> SemanticColors (TODO get example)
+ * [DONE] As constant -> SemanticColors.button.primary.backgroundDisabled (regular)
  */
 
 const CSS_VARS_COLORS_REPLACEMENT_TYPE = `ReadCssColorVariable`;
+const SEMANTIC_VALUE_GETTER_NAME = 'getSemanticValue';
 
 const replaceColorsForCssVarsInTemplateLiterals = (
     j: JSCodeshift,
@@ -90,7 +89,21 @@ const replaceColorsForCssVarsInTemplateLiterals = (
     });
 };
 
-const buildFullPropertyAccesses = () => {};
+const isMemberExpression = (path: any): path is ASTPath<MemberExpression> => path.value?.type === 'MemberExpression';
+
+const buildFullAccessedPropertiesPath = (initialPath: string, ex: ASTPath<MemberExpression>): string => {
+    const propertyName = (ex.node.property as Identifier).name;
+    const builtPath = `${initialPath}.${propertyName}`;
+
+    // Recursively add more properties if the parent has more
+    if (isMemberExpression(ex.parentPath)) return buildFullAccessedPropertiesPath(builtPath, ex.parentPath);
+    else return builtPath;
+};
+
+const getHighesLevelMemberExpression = (ex: ASTPath<MemberExpression>): ASTPath<MemberExpression> => {
+    if (isMemberExpression(ex.parentPath)) return getHighesLevelMemberExpression(ex.parentPath);
+    return ex;
+};
 
 export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
@@ -127,53 +140,42 @@ export default (file: FileInfo, api: API, options: Options) => {
     // });
 
     // Find all remaining SemanticColors member usage (e.g. SemanticColors.x)
-    ast.find(j.MemberExpression, {
+    const semanticColorsExpressions = ast.find(j.MemberExpression, {
         object: {
             name: (colorName: string) => localColorNames.includes(colorName)
         }
-    }).forEach(ex => {
-        // Build full semantic color path (e.g. button.primary.backgroundDisabled)
-        const semanticColorPath = buildFullPropertyAccesses();
+    });
+
+    semanticColorsExpressions.forEach(ex => {
+        // Get initial object name (e.g. SemanticColors)
+        const initialIdentifier = (ex.node.object as Identifier).name;
+
+        // Build full semantic color path (e.g. SemanticColors.button.primary.backgroundDisabled)
+        const semanticColorPath = buildFullAccessedPropertiesPath(initialIdentifier, ex);
 
         // Map the Color to a semantic token
-        console.log(ex.node.property);
-        const color = (ex.node.property as Identifier).name;
-        const semanticToken = DeprecatedSemanticColorsToSemanticTokensMap[color];
+        const semanticToken = DeprecatedSemanticColorsToSemanticTokensMap[semanticColorPath];
 
         if (!semanticToken) return;
 
-        // TODO Replace the SemanticColors usage for a call to getSemanticValue with the token
+        // Find highest level MemberExpression (i.e. the one that contains the whole color path)
+        const highestExpression = getHighesLevelMemberExpression(ex);
 
-        // Replace the SemanticColors usage for a string literal (e.g. 'var(--wave-b-color-y)')
-        // const cssVarStringNode = j.stringLiteral(OldSemanticColorsToNewMap[color]);
-        // ex.replace(cssVarStringNode);
+        // Replace the SemanticColors usage for a call to getSemanticValue with the token (e.g. getSemanticValue('background-element-disabled-default'))
+        const semanticValueGetterNode = j.callExpression(j.identifier('getSemanticValue'), [j.literal(semanticToken)]);
+        highestExpression.replace(semanticValueGetterNode);
     });
 
-    // Find usages of SemanticColors as a type
-    const usagesAsTypes = ast.find(j.TSTypeReference, {
-        typeName: {
-            name: (colorName: string) => localColorNames.includes(colorName)
-        }
-    });
-
-    // Replace the usages of SemanticColors as a type for the type representing our css variables
-    usagesAsTypes.forEach(type => {
-        const cssColorTypeReference = j.tsTypeReference(j.identifier(CSS_VARS_COLORS_REPLACEMENT_TYPE));
-        type.replace(cssColorTypeReference);
-    });
+    // Add an import for `getSemanticValue`
+    const importDeclaration: ImportDeclaration = waveImports.get(0).node;
+    importDeclaration.specifiers.push(j.importSpecifier(j.identifier(SEMANTIC_VALUE_GETTER_NAME)));
 
     // Remove the SemanticColors import
     colorsImports.remove();
 
     // If SemanticColors is the only named import from wave, remove the whole Wave import
-    if (usagesAsTypes.size() === 0 && waveImports.size() === 1 && waveNamedImports.size() === 1) {
+    if (waveImports.size() === 1 && waveNamedImports.size() === 1) {
         waveImports.remove();
-    }
-
-    // If SemanticColors is used as a type add the import for the new css colors type
-    if (usagesAsTypes.size() > 0) {
-        const importDeclaration: ImportDeclaration = waveImports.get(0).node;
-        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(CSS_VARS_COLORS_REPLACEMENT_TYPE)));
     }
 
     return ast.toSource(printOptions);
