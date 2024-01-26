@@ -264,7 +264,7 @@ export default (file: FileInfo, api: API, options: Options) => {
     // Find themeGet named imports in wave imports
     const themeGetImports = waveNamedImports.filter(path => path.node.imported.name === 'themeGet');
 
-    // Early return in case no SemanticColors are imported
+    // Early return in case no SemanticColors or themeGet are imported
     if (colorsImports.length === 0 && themeGetImports.length === 0) return file.source;
 
     // Get the local SemanticColors import names
