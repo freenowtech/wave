@@ -219,78 +219,7 @@ const DeprecatedSemanticColorsToSemanticTokensMap = {
     'dialog.dimming': ''
 };
 
-/**
- * Possible usages
- * [DONE] As `CallExpression`? -> themeGet('border.primary') (regular)
- * [DONE] As `CallExpression`? -> themeGet('border.primary') (inside template literal)
- * [DONE] As constant -> SemanticColors.button.primary.backgroundDisabled (regular)
- * - As constant -> SemanticColors.button.primary.backgroundDisabled (inside template literal)
- */
-
 const SEMANTIC_VALUE_GETTER_NAME = 'getSemanticValue';
-
-const replaceColorsForCssVarsInTemplateLiterals = (
-    j: JSCodeshift,
-    localColorNames: string[],
-    templateLiteral: TemplateLiteral
-) => {
-    const { quasis } = templateLiteral;
-    const { expressions } = templateLiteral;
-
-    const expressionsToRemoveIndexes: number[] = [];
-    const quasisToRemoveIndexes: number[] = [];
-
-    // Iterate over the quasis of the template string (the parts before the `${` and after the `}`)
-    // e.g. in the template string `color: ${SemanticColors.x};` there are 2 quasis, `color: ` and `;`, the `SemanticColors.x` is an expression
-    quasis.forEach((el, index) => {
-        const expressionAfterQuasis = expressions[index];
-
-        // Check if there are arrow functions inside the template string, since they can also have nested template string
-        if (expressionAfterQuasis && expressionAfterQuasis.type === 'ArrowFunctionExpression') {
-            const templateExpressions = j(expressionAfterQuasis).find(j.TemplateLiteral);
-
-            // For every template string in the arrow function recursively replace colors for css vars
-            templateExpressions.forEach(ex => replaceColorsForCssVarsInTemplateLiterals(j, localColorNames, ex.node));
-        }
-
-        // Check if the expression is a MemberExpression (regular object property access)
-        if (expressionAfterQuasis && expressionAfterQuasis.type === 'MemberExpression') {
-            const expressionObject = expressionAfterQuasis.object as Identifier;
-
-            // Identify if it's a usage of SemanticColors
-            const isColorsExpression = localColorNames.includes(expressionObject.name);
-
-            if (isColorsExpression) {
-                // Find the color being used
-                const color = (expressionAfterQuasis.property as Identifier).name;
-                const cssVar: string = DeprecatedSemanticColorsToSemanticTokensMap[color];
-
-                if (!cssVar) return;
-
-                const nextQuasisValue = quasis[index + 1].value.raw;
-                // Append the mapped css var and the value of the next quasis to the end of the current quasis (where the color expression is)
-                el.value.raw = el.value.raw + cssVar + nextQuasisValue;
-
-                // Since the color is mapped to the css var we don't need the expression anymore, so we flag it for removal later
-                expressionsToRemoveIndexes.push(index);
-
-                // The number of quasis always has to match the number of expressions + 1, since we've flagged the expression for removal we need to
-                // flag the next quasis for removal as well, we've already appended it's value to the current one so we don't lose information
-                quasisToRemoveIndexes.push(index + 1);
-            }
-        }
-    });
-
-    // Check if there are any expression that have to be removed and remove them
-    expressionsToRemoveIndexes.forEach(indexToRemove => {
-        expressions.splice(indexToRemove, 1);
-    });
-
-    // Check if there are any quasis that have to be removed and remove them
-    quasisToRemoveIndexes.forEach(indexToRemove => {
-        quasis.splice(indexToRemove, 1);
-    });
-};
 
 const isMemberExpression = (path: any): path is ASTPath<MemberExpression> => path.value?.type === 'MemberExpression';
 
@@ -348,13 +277,6 @@ export default (file: FileInfo, api: API, options: Options) => {
         if (spec.node.local?.name) localThemeGetNames.push(spec.node.local.name);
     });
 
-    // // Iterate over template strings
-    // ast.find(j.TaggedTemplateExpression).forEach(el => {
-    //     // Get template literals in template expression
-    //     const templateLiteral = el.node.quasi;
-    //     replaceColorsForCssVarsInTemplateLiterals(j, localColorNames, templateLiteral);
-    // });
-
     // Find all themeGet CallExpressions (e.g. themeGet('text.primary'))
     const themeGetExpressions = ast.find(j.CallExpression, {
         callee: {
@@ -379,7 +301,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         ex.replace(getSemanticValueCall);
     });
 
-    // Find all remaining SemanticColors member usage (e.g. SemanticColors.x)
+    // Find all SemanticColors member usage (e.g. SemanticColors.x)
     const semanticColorsExpressions = ast.find(j.MemberExpression, {
         object: {
             name: (colorName: string) => localColorNames.includes(colorName)
