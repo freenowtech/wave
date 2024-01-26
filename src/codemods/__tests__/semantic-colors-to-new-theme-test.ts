@@ -2,8 +2,11 @@ jest.autoMockOff();
 import { defineTest } from 'jscodeshift/dist/testUtils';
 
 const tests = [
-    'color-in-JSX-multi-import'
-    // no-usage
+    'color-in-JSX-multi-import',
+    'no-colors-usage',
+    'theme-get-in-JSX',
+    'theme-get-in-template-literal',
+    'color-in-single-quasis'
 ];
 
 describe('semantic-colors-to-new-theme', () => {
