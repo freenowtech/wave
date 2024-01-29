@@ -7,31 +7,30 @@ import {
     ImportDeclaration,
     JSCodeshift,
     Literal,
-    MemberExpression,
-    TemplateLiteral
+    MemberExpression
 } from 'jscodeshift';
 import { Options } from 'recast';
 
 // TODO actual map
 const DeprecatedSemanticColorsToSemanticTokensMap = {
     'text.primary': 'foreground-primary',
-    'text.primaryInverted': '', // foreground-primary
+    'text.primaryInverted': 'foreground-on-background-primary',
     'text.secondary': 'foreground-neutral-emphasized',
-    'text.secondaryInverted': '', // foreground-neutral-emphasized
-    'text.tertiary': '', // TODO where is it??
-    'text.tertiaryInverted': '',
+    'text.secondaryInverted': 'foreground-neutral-faded',
+    'text.tertiary': 'foreground-neutral-default',
+    'text.tertiaryInverted': 'foreground-neutral-default',
     'text.disabled': 'foreground-disabled',
-    'text.disabledInverted': '', // foreground-disabled is Colors.blue.primary[350], before was Colors.blue.primary[550]
-    'text.link': '',
-    'text.linkInverted': '',
-    'text.linkHover': '',
-    'text.linkHoverInverted': '',
-    'text.danger': '',
-    'text.dangerInverted': '',
-    'text.success': '',
-    'text.warning': '',
+    'text.disabledInverted': 'foreground-neutral-emphasized',
+    'text.link': 'foreground-accent-default',
+    'text.linkInverted': 'foreground-on-background-accent',
+    'text.linkHover': 'foreground-accent-emphasized',
+    'text.linkHoverInverted': 'background-element-accent-faded',
+    'text.danger': 'foreground-danger-emphasized',
+    'text.dangerInverted': 'foreground-danger-default',
+    'text.success': 'foreground-success-default',
+    'text.warning': 'foreground-warning-default',
 
-    'background.primary': 'TODO',
+    'background.primary': 'TODO', // background-element-neutral-default
     'background.secondary': '',
     'background.info': '',
     'background.danger': '',
