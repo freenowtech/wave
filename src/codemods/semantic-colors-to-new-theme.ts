@@ -211,7 +211,6 @@ const DeprecatedSemanticColorsToSemanticTokensMap = {
     'forms.datePicker.calendar.backgroundRangeHover': 'background-element-accent-default',
 
     'table.skeleton': 'background-element-neutral-emphasized',
-    'table.zebraStyles.backgroundSecondary': 'TODO',
     'table.zebraStyles.backgroundHover': 'background-surface-info-faded',
     'table.zebraStyles.backgroundActive': 'background-surface-info-active',
     'table.linesStyles.backgroundHover': 'background-element-accent-faded',
@@ -221,7 +220,7 @@ const DeprecatedSemanticColorsToSemanticTokensMap = {
     'table.blank.backgroundActive': 'background-surface-info-faded',
     'table.header.border': 'border-neutral-emphasized',
 
-    'dialog.dimming': 'TODO'
+    'dialog.dimming': 'background-backdrop'
 };
 
 const SEMANTIC_VALUE_GETTER_NAME = 'getSemanticValue';
