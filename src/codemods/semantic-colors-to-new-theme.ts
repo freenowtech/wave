@@ -57,7 +57,7 @@ const DeprecatedSemanticColorsToSemanticTokensMap = {
     'icon.warning': 'foreground-warning-default',
 
     'border.primary': 'border-neutral-default',
-    'border.secondary': 'background-backdrop',
+    'border.secondary': 'background-element-neutral-emphasized',
     'border.info': 'border-info-banner',
     'border.danger': 'border-danger-banner',
     'border.success': 'border-success-banner',
@@ -82,80 +82,80 @@ const DeprecatedSemanticColorsToSemanticTokensMap = {
     'button.primary.backgroundDisabled': 'background-element-disabled-default',
     'button.primary.borderDisabled': 'background-element-disabled-default',
 
-    'button.primary.textInverted': '', // foreground-on-background-primary
-    'button.primary.iconInverted': '', // foreground-on-background-primary
-    'button.primary.backgroundInverted': '', // background-element-primary-default
-    'button.primary.borderInverted': '', // background-element-primary-default
+    'button.primary.textInverted': 'foreground-focus',
+    'button.primary.iconInverted': 'foreground-focus',
+    'button.primary.backgroundInverted': 'foreground-on-background-primary',
+    'button.primary.borderInverted': 'foreground-on-background-primary',
 
-    'button.primary.textHoverInverted': '', // foreground-on-background-accent
-    'button.primary.iconHoverInverted': '', // foreground-on-background-accent
-    'button.primary.backgroundHoverInverted': '', // background-element-primary-emphasized
-    'button.primary.borderHoverInverted': '', // background-element-primary-emphasized
+    'button.primary.textHoverInverted': 'foreground-on-background-primary',
+    'button.primary.iconHoverInverted': 'foreground-on-background-primary',
+    'button.primary.backgroundHoverInverted': 'foreground-focus',
+    'button.primary.borderHoverInverted': 'foreground-focus',
 
-    'button.primary.textDisabledInverted': '', // foreground-on-background-disabled
-    'button.primary.iconDisabledInverted': '', // foreground-on-background-disabled
-    'button.primary.backgroundDisabledInverted': '', // background-element-disabled-default
-    'button.primary.borderDisabledInverted': '', // background-element-disabled-default
+    'button.primary.textDisabledInverted': 'foreground-neutral-default',
+    'button.primary.iconDisabledInverted': 'foreground-neutral-default',
+    'button.primary.backgroundDisabledInverted': 'foreground-neutral-emphasized',
+    'button.primary.borderDisabledInverted': 'foreground-neutral-emphasized',
 
-    'button.secondary.text': '',
-    'button.secondary.icon': '',
-    'button.secondary.background': '',
-    'button.secondary.border': '',
+    'button.secondary.text': 'foreground-primary',
+    'button.secondary.icon': 'foreground-primary',
+    'button.secondary.background': 'foreground-on-background-primary',
+    'button.secondary.border': 'foreground-neutral-faded',
 
-    'button.secondary.textHover': '',
-    'button.secondary.iconHover': '',
-    'button.secondary.backgroundHover': '',
-    'button.secondary.borderHover': '',
+    'button.secondary.textHover': 'foreground-primary',
+    'button.secondary.iconHover': 'foreground-primary',
+    'button.secondary.backgroundHover': 'background-surface-neutral-faded',
+    'button.secondary.borderHover': 'foreground-neutral-faded',
 
-    'button.secondary.textDisabled': '',
-    'button.secondary.iconDisabled': '',
-    'button.secondary.backgroundDisabled': '',
-    'button.secondary.borderDisabled': '',
+    'button.secondary.textDisabled': 'foreground-neutral-faded',
+    'button.secondary.iconDisabled': 'foreground-neutral-faded',
+    'button.secondary.backgroundDisabled': 'foreground-on-background-disabled',
+    'button.secondary.borderDisabled': 'foreground-neutral-faded',
 
-    'button.secondary.textInverted': '',
-    'button.secondary.iconInverted': '',
-    'button.secondary.backgroundInverted': '',
-    'button.secondary.borderInverted': '',
+    'button.secondary.textInverted': 'foreground-on-background-primary',
+    'button.secondary.iconInverted': 'foreground-on-background-primary',
+    'button.secondary.backgroundInverted': 'transparent',
+    'button.secondary.borderInverted': 'foreground-on-background-primary',
 
-    'button.secondary.textHoverInverted': '',
-    'button.secondary.iconHoverInverted': '',
-    'button.secondary.backgroundHoverInverted': '',
-    'button.secondary.borderHoverInverted': '',
+    'button.secondary.textHoverInverted': 'foreground-primary',
+    'button.secondary.iconHoverInverted': 'foreground-primary',
+    'button.secondary.backgroundHoverInverted': 'foreground-on-background-primary',
+    'button.secondary.borderHoverInverted': 'foreground-on-background-primary',
 
-    'button.secondary.textDisabledInverted': '',
-    'button.secondary.iconDisabledInverted': '',
-    'button.secondary.backgroundDisabledInverted': '',
-    'button.secondary.borderDisabledInverted': '',
+    'button.secondary.textDisabledInverted': 'foreground-neutral-emphasized',
+    'button.secondary.iconDisabledInverted': 'foreground-neutral-emphasized',
+    'button.secondary.backgroundDisabledInverted': 'transparent',
+    'button.secondary.borderDisabledInverted': 'foreground-neutral-emphasized',
 
-    'button.danger.text': '',
-    'button.danger.icon': '',
-    'button.danger.background': '',
-    'button.danger.border': '',
+    'button.danger.text': 'foreground-on-background-danger',
+    'button.danger.icon': 'foreground-on-background-danger',
+    'button.danger.background': 'background-element-danger-default',
+    'button.danger.border': 'border-danger-default',
 
-    'button.danger.textHover': '',
-    'button.danger.iconHover': '',
-    'button.danger.backgroundHover': '',
-    'button.danger.borderHover': '',
+    'button.danger.textHover': 'foreground-on-background-danger',
+    'button.danger.iconHover': 'foreground-on-background-danger',
+    'button.danger.backgroundHover': 'background-element-danger-emphasized',
+    'button.danger.borderHover': 'background-element-danger-emphasized',
 
-    'button.danger.textDisabled': '',
-    'button.danger.iconDisabled': '',
-    'button.danger.backgroundDisabled': '',
-    'button.danger.borderDisabled': '',
+    'button.danger.textDisabled': 'foreground-on-background-danger',
+    'button.danger.iconDisabled': 'foreground-on-background-danger',
+    'button.danger.backgroundDisabled': 'background-element-disabled-default',
+    'button.danger.borderDisabled': 'border-disabled',
 
-    'button.danger.textInverted': '',
-    'button.danger.iconInverted': '',
-    'button.danger.backgroundInverted': '',
-    'button.danger.borderInverted': '',
+    'button.danger.textInverted': 'foreground-on-background-danger',
+    'button.danger.iconInverted': 'foreground-on-background-danger',
+    'button.danger.backgroundInverted': 'background-element-danger-default',
+    'button.danger.borderInverted': 'border-danger-default',
 
-    'button.danger.textHoverInverted': '',
-    'button.danger.iconHoverInverted': '',
-    'button.danger.backgroundHoverInverted': '',
-    'button.danger.borderHoverInverted': '',
+    'button.danger.textHoverInverted': 'foreground-on-background-danger',
+    'button.danger.iconHoverInverted': 'foreground-on-background-danger',
+    'button.danger.backgroundHoverInverted': 'background-element-danger-emphasized',
+    'button.danger.borderHoverInverted': 'background-element-danger-emphasized',
 
-    'button.danger.textDisabledInverted': '',
-    'button.danger.iconDisabledInverted': '',
-    'button.danger.backgroundDisabledInverted': '',
-    'button.danger.borderDisabledInverted': '',
+    'button.danger.textDisabledInverted': 'foreground-on-background-danger',
+    'button.danger.iconDisabledInverted': 'foreground-on-background-danger',
+    'button.danger.backgroundDisabledInverted': 'background-element-disabled-default',
+    'button.danger.borderDisabledInverted': 'border-disabled',
 
     'textButton.primary.text': '',
     'textButton.primary.icon': '',
