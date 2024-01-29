@@ -11,7 +11,6 @@ import {
 } from 'jscodeshift';
 import { Options } from 'recast';
 
-// TODO actual map
 const DeprecatedSemanticColorsToSemanticTokensMap = {
     'text.primary': 'foreground-primary',
     'text.primaryInverted': 'foreground-on-background-primary',
