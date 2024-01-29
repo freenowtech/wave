@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const DropdownList = styled.div`
     position: absolute;
-    background: ${getSemanticValue('TODO')};
+    background: ${getSemanticValue('background-element-neutral-default')};
     overflow-y: auto;
     z-index: 5;
     top: 72px;
@@ -18,11 +18,11 @@ export const DropdownItem = styled(Text).attrs({ as: 'p' })<{ active?: boolean }
     cursor: pointer;
     padding: 10px 12px;
     background-color: ${props =>
-        props.active ? getSemanticValue('TODO') : getSemanticValue('TODO')};
+        props.active ? getSemanticValue('background-element-info-emphasized') : getSemanticValue('background-element-neutral-default')};
     color: ${getSemanticValue('foreground-primary')};
 
     &:hover {
-        background-color: ${getSemanticValue('TODO')};
+        background-color: ${getSemanticValue('background-element-info-emphasized')};
         color: ${getSemanticValue('foreground-neutral-emphasized')};
     }
 `
