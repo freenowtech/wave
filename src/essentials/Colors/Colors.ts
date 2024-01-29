@@ -92,7 +92,7 @@ export const SemanticColors = {
             default: Colors.green[900]
         },
         warning: {
-            default: Colors.blue.primary[900]
+            default: Colors.yellow[900]
         },
         danger: {
             default: Colors.orange[900],
