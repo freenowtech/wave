@@ -200,6 +200,26 @@ Codemod to automatically migrate `SemanticColors`:
 npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/semantic-colors-to-new-theme.js path/to/src
 ```
 
+### `Text` and icons inherit font color from container
+
+The `Text` component and all icon components will now inherit font color from their parent container,
+replacing the previous hardcoded font colors.
+
+If you want to enforce the primary color, a new `primary` prop has been introduced for the `Text` component.
+
+```jsx
+import { Box, Text } from '@freenow/wave';
+
+const Card = () => {
+    return (
+        <Box color="pink">
+            <Text>Pink glasses!</Text>
+            <Text primary>Primary black text</Text>
+        </Box>
+    );
+};
+```
+
 ### `inverted` prop is removed
 
 With the introduction of our new dark scheme in Wave, we've removed the `inverted` property
