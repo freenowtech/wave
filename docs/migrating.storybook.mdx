@@ -185,7 +185,7 @@ export const GreyList = styled.ul`
 `;
 ```
 
-Codemode migrates the colors automatically:
+Codemod to automatically migrate `Colors`:
 
 ```bash
 npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
@@ -193,6 +193,12 @@ npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/
 
 Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
 we recommend using semantic tokens instead as a best practice and offer a `getSemanticValue` API for just that.
+
+Codemod to automatically migrate `SemanticColors`:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/semantic-colors-to-new-theme.js path/to/src
+```
 
 ### `inverted` prop is removed
 
@@ -260,18 +266,6 @@ Automatic migration via codemod:
 npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/tooltip-placement.js path/to/src
 ```
 
-### Deprecated icons are removed. Names of the rest is synced with Figma
-
-List of removed icons and their alternatives:
-
-<IconMappingsTable />
-
-Automatic migration is done via codemod:
-
-```bash
-npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
-```
-
 ### Text's `weak` property renamed to `secondary`
 
 The `weak` property was the initial way to indicate secondary information in a `Text` component, it has been deprecated for a while in favour of
@@ -292,4 +286,16 @@ Codemod for migration:
 
 ```bash
 npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/block-to-width-100.js path/to/src
+```
+
+### Deprecated icons are removed. Names of the rest is synced with Figma
+
+List of removed icons and their alternatives:
+
+<IconMappingsTable />
+
+Automatic migration is done via codemod:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
 ```

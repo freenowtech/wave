@@ -7,8 +7,7 @@ import {
     ImportDeclaration,
     JSCodeshift,
     Node,
-    TemplateLiteral,
-    TSTypeReference
+    TemplateLiteral
 } from 'jscodeshift';
 import { Options } from 'recast';
 
