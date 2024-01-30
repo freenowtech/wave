@@ -1,6 +1,6 @@
 {
     "name": "@freenow/wave",
-    "version": "2.0.0-alpha.3",
+    "version": "2.0.0-alpha.4",
     "description": "React components of the Wave design system for your Front-End project",
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
@@ -144,7 +144,7 @@
         "date-fns": "^2.11.1",
         "react-popper": "^2.3.0",
         "react-transition-group": "^4.3.0",
-        "react-windowed-select": "^5.1.1",
+        "wave-react-windowed-select": "^1.0.0",
         "styled-system": "^5.1.5",
         "warning": "^4.0.3"
     }

@@ -7,7 +7,7 @@ import {
     Props,
     StylesConfig
 } from 'react-select';
-import WindowedSelect from 'react-windowed-select';
+import WindowedSelect from 'wave-react-windowed-select';
 
 import { Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, XCrossIcon } from '../../icons';
