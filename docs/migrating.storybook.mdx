@@ -185,7 +185,7 @@ export const GreyList = styled.ul`
 `;
 ```
 
-Codemode to automatically migrate `Colors`:
+Codemod to automatically migrate `Colors`:
 
 ```bash
 npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
@@ -194,7 +194,7 @@ npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/
 Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
 we recommend using semantic tokens instead as a best practice and offer a `getSemanticValue` API for just that.
 
-Codemode to automatically migrate `SemanticColors`:
+Codemod to automatically migrate `SemanticColors`:
 
 ```bash
 npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/semantic-colors-to-new-theme.js path/to/src
