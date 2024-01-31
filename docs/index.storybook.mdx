@@ -117,7 +117,11 @@ import { Text } from '../src/components/Text/Text';
         <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
     </Box>
 
-    <Card className='hero-banner' level={200}>
+    <Card className='hero-banner' level={0}>
+          <Text as='p'>⚠️ This is documentation for Wave 2.x. <a href='https://freenowtech.github.io/wave-v1-docs'>Go to v1 docs</a></Text>
+    </Card>
+
+    <Card className='hero-banner' level={200} mt="50px">
       <Box display='flex' flexDirection='column'>
         <Headline as='h2' style={{ lineHeight: '40px', marginBottom: '16px' }}><span className='heading-red'>Develop experiences faster</span> <br/>with our UI component library</Headline>
 
