@@ -28,6 +28,24 @@ jobs:
             - name: Run tests
               run: npm run test
 
+    release_preview:
+        if: github.ref != 'refs/heads/main'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - name: Install dependencies
+              uses: bahmutov/npm-install@v1
+            - name: Preview release
+              run: npx semantic-release --dry-run
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     release:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
