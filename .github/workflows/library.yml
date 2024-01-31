@@ -44,7 +44,7 @@ jobs:
               id: semantic-release
               run: |
                   # locally get to the result of merging the current branch into the base branch (destination)
-                  git checkout -b ${{ github.base_ref }} pull/${{ github.event.number }}/merge
+                  git checkout -b ${{ github.base_ref }} ${{ github.event.after }}
                   unset GITHUB_ACTIONS; npx semantic-release --no-ci --dry-run > output.txt
                   OUTPUT=$(cat output.txt | base64 -w 0)
                   echo "::set-output name=releaseNote::$OUTPUT"
