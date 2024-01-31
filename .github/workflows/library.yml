@@ -47,7 +47,8 @@ jobs:
                   git checkout -b ${{ github.base_ref }} ${{ github.event.after }}
                   unset GITHUB_ACTIONS; npx semantic-release --no-ci --dry-run > output.txt
                   OUTPUT=$(cat output.txt | base64 -w 0)
-                  echo "releaseNote=$OUTPUT" >> $GITHUB_OUTPUT
+                  echo "::set-output name=releaseNote::$OUTPUT"
+                  # echo "releaseNote=$OUTPUT" >> $GITHUB_OUTPUT
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
