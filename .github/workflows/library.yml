@@ -40,26 +40,25 @@ jobs:
                   node-version: 18
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
-            - name: Preview release
-              id: semantic-release
+            - name: Generate release notes
+              id: generate-release-notes
               run: |
                   # locally get to the result of merging the current branch into the base branch (destination)
                   git checkout -b ${{ github.base_ref }} ${{ github.event.after }}
-                  unset GITHUB_ACTIONS; npx semantic-release --no-ci --dry-run > output.txt
-                  OUTPUT=$(cat output.txt | base64 -w 0)
-                  echo "::set-output name=releaseNote::$OUTPUT"
-                  # echo "releaseNote=$OUTPUT" >> $GITHUB_OUTPUT
+                  unset GITHUB_ACTIONS
+                  RELEASE_NOTES=$(npx semantic-release --no-ci --dry-run | base64 -w 0)
+                  echo "releaseNotes=$RELEASE_NOTES" >> $GITHUB_OUTPUT
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Report semantic release in PR
               uses: actions/github-script@v3
-              if: ${{ steps.semantic-release.outputs.releaseNote != '' }}
+              if: ${{ steps.generate-release-notes.outputs.releaseNotes != '' }}
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   script: |
                       // build release note
-                      const semanticReleaseOutput = Buffer.from('${{ steps.semantic-release.outputs.releaseNote }}', 'base64').toString('utf8');
+                      const semanticReleaseOutput = Buffer.from('${{ steps.generate-release-notes.outputs.releaseNotes }}', 'base64').toString('utf8');
                       const semanticReleaseLogMatch = /^[[0-9:\sAMPM]+\]\s\[semantic-release\].*$/;
                       const lines = semanticReleaseOutput.split('\n');
                       const lastSemanticReleaseLogIndex = [...lines]
