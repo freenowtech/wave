@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const GoogleIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const GoogleIcon: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 24 24" fill="none">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <path
                 d="M21.787 12.225c0-.658-.058-1.283-.158-1.891h-9.417v3.758h5.392c-.242 1.233-.95 2.275-2 2.983v2.5h3.217c1.883-1.741 2.966-4.308 2.966-7.35z"
                 fill="#4285F4"
@@ -29,6 +35,4 @@ const GoogleIcon: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) =
         </svg>
     );
 };
-
-GoogleIcon.defaultProps = {};
 export default GoogleIcon;

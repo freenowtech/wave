@@ -1,26 +1,13 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { BoxProps, Box } from '../../Box/Box';
+import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
 import { Link as WaveLink } from '../../Link/Link';
 import { Text } from '../../Text/Text';
-
-import { ICON_VARIANTS, IconBox, InfoBannerVariants, ROLE_VARIANTS, RoundedBox } from '../InfoBanner';
-
-interface CardProps extends BoxProps {
-    children: ReactNode;
-    variant?: InfoBannerVariants;
-    emphasized?: boolean;
-}
-
-const StyledTitle = styled(Headline).attrs(props => ({ as: 'h4', textAlign: 'left', ...props }))`
-    color: var(--info-banner-text-color);
-`;
-
-const StyledDescription = styled(Text).attrs(props => ({ fontSize: 'small', textAlign: 'left', ...props }))`
-    color: var(--info-banner-text-color);
-`;
+import { Icon } from './Icon';
+import { Container, LOCAL_CSS_VARIABLES } from './Container';
+import { CardProps } from '../types';
 
 const StyledLink = styled(WaveLink).attrs(props => ({
     fontSize: 0,
@@ -29,35 +16,39 @@ const StyledLink = styled(WaveLink).attrs(props => ({
     marginTop: '0.25rem',
     ...props
 }))`
+    color: var(${LOCAL_CSS_VARIABLES.LINK});
+
     &:link,
     &:visited {
-        color: var(--info-banner-link-color);
+        color: var(${LOCAL_CSS_VARIABLES.LINK});
     }
 
     &:hover,
     &:active {
-        color: var(--info-banner-link-hover-color);
+        color: var(${LOCAL_CSS_VARIABLES.LINK_HOVER});
     }
 `;
 
-const Title = ({ children }: { children: string }) => <StyledTitle>{children}</StyledTitle>;
+const Title = ({ children }: { children: string }) => (
+    <Headline as="h4" textAlign="left">
+        {children}
+    </Headline>
+);
 
-const Description = ({ children }: { children: string }) => <StyledDescription>{children}</StyledDescription>;
+const Description = ({ children }: { children: string }) => (
+    <Text fontSize="small" textAlign="left">
+        {children}
+    </Text>
+);
 
-const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): JSX.Element => {
-    const BannerIcon = ICON_VARIANTS[variant];
-
-    return (
-        <RoundedBox variant={variant} emphasized={emphasized} role={ROLE_VARIANTS[variant]} {...props}>
-            <IconBox mr={1} variant={variant} emphasized={emphasized}>
-                <BannerIcon size={20} color="inherit" />
-            </IconBox>
-            <Box display="flex" flexDirection="column">
-                {children}
-            </Box>
-        </RoundedBox>
-    );
-};
+const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): JSX.Element => (
+    <Container variant={variant} emphasized={emphasized} {...props}>
+        <Icon variant={variant} emphasized={emphasized} />
+        <Box display="flex" flexDirection="column">
+            {children}
+        </Box>
+    </Container>
+);
 
 InfoBannerCard.Title = Title;
 InfoBannerCard.Description = Description;

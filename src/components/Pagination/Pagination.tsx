@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-
-import { Colors } from '../../essentials/Colors/Colors';
 import { Spaces } from '../../essentials/Spaces/Spaces';
 import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons';
 import { Box } from '../Box/Box';
 import { SelectList } from '../SelectList/SelectList';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const Container = styled.div`
     text-align: center;
@@ -19,21 +18,28 @@ const ButtonsContainer = styled(Box)`
 
 const IconButton = styled.button`
     align-items: center;
-    background-color: ${Colors.WHITE};
-    border: 0.0625rem solid ${Colors.AUTHENTIC_BLUE_200};
+    background-color: ${getSemanticValue('background-page-default')};
+    border: 0.0625rem solid ${getSemanticValue('border-neutral-faded')};
     border-radius: 0.25rem;
     display: inline-flex;
     height: 2.5rem;
     justify-content: center;
     padding: 0;
     width: 2.5rem;
+    color: ${getSemanticValue('foreground-primary')};
+    fill: currentColor;
 
     &:not(:last-child) {
         margin-right: ${Spaces[1]};
     }
 
+    &:disabled {
+        color: ${getSemanticValue('foreground-disabled')};
+    }
+
     &:hover:not(:disabled) {
-        background-color: ${Colors.AUTHENTIC_BLUE_50};
+        color: ${getSemanticValue('foreground-on-background-neutral')};
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')};
         cursor: pointer;
     }
 `;
@@ -145,33 +151,21 @@ const Pagination: React.FC<PaginationProps> = ({
                 )}
                 {size !== 'small' && (
                     <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
-                        <BackwardLastIcon
-                            size="small"
-                            color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
-                        />
+                        <BackwardLastIcon size="small" color="inherit" />
                     </IconButton>
                 )}
 
                 <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
-                    <BackwardIcon
-                        size="small"
-                        color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
-                    />
+                    <BackwardIcon size="small" color="inherit" />
                 </IconButton>
 
                 <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
-                    <ForwardIcon
-                        size="small"
-                        color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
-                    />
+                    <ForwardIcon size="small" color="inherit" />
                 </IconButton>
 
                 {size !== 'small' && (
                     <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
-                        <ForwardLastIcon
-                            size="small"
-                            color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
-                        />
+                        <ForwardLastIcon size="small" color="inherit" />
                     </IconButton>
                 )}
             </ButtonsContainer>

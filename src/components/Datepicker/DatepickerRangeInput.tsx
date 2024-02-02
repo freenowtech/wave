@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { usePopper } from 'react-popper';
 import { createPortal } from 'react-dom';
-import { Colors, MediaQueries } from '../../essentials';
+import { MediaQueries } from '../../essentials';
 import { theme } from '../../essentials/theme';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { ChevronRightIcon } from '../../icons';
 import { Input } from '../Input/Input';
@@ -32,7 +33,7 @@ const DateRangeWrapper = styled.div.attrs({ theme })<DateRangerProps>`
         &:focus,
         &:active {
             box-shadow: none;
-            border-color: ${Colors.AUTHENTIC_BLUE_200};
+            border-color: ${getSemanticValue('border-neutral-default')};
         }
     }
 
@@ -69,7 +70,7 @@ const DateArrow = styled(ChevronRightIcon)`
 `;
 
 const StartDateFocusedBlock = styled.div`
-    background: ${Colors.ACTION_BLUE_900};
+    background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
 
@@ -79,7 +80,7 @@ const StartDateFocusedBlock = styled.div`
 `;
 
 const EndDateFocusedBlock = styled.div`
-    background: ${Colors.ACTION_BLUE_900};
+    background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
 
@@ -238,7 +239,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     variant = 'normal',
     disabled,
     ...rest
-}: DatepickerRangeInputProps) => {
+}) => {
     const [triggerReference, setTriggerReference] = useState(undefined);
     const [contentReference, setContentReference] = useState(undefined);
     const [arrowReference, setArrowReference] = useState(undefined);
@@ -295,20 +296,12 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
         switch (focusedInput) {
             case START_DATE: {
-                const startInputTarget = startDateRef.current && (startDateRef.current.children[0] as HTMLInputElement);
-
-                if (startInputTarget) {
-                    startInputTarget.focus();
-                }
+                if (startDateRef?.current) startDateRef.current.focus();
 
                 break;
             }
             case END_DATE: {
-                const endInputTarget = endDateRef.current && (endDateRef.current.children[0] as HTMLInputElement);
-
-                if (endInputTarget) {
-                    endInputTarget.focus();
-                }
+                if (endDateRef?.current) endDateRef.current.focus();
 
                 break;
             }
@@ -392,7 +385,9 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                     disabled={disabled}
                 />
                 {focusedInput === START_DATE && <StartDateFocusedBlock />}
-                <DateArrow color={disabled ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550} />
+                <DateArrow
+                    color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-emphasized')}
+                />
                 <Input
                     id={endId}
                     ref={endDateRef}

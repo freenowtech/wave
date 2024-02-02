@@ -1,8 +1,9 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import { Colors, Spaces } from '../../essentials';
+import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface LinkProps extends ComponentPropsWithoutRef<'a'> {
     /**
@@ -33,10 +34,11 @@ const UnderLine = styled.div`
 `;
 
 const InnerLink = styled.a.attrs({ theme })<LinkProps>`
-    color: ${Colors.AUTHENTIC_BLUE_350};
+    color: ${getSemanticValue('foreground-neutral-emphasized')};
     cursor: pointer;
     font-size: ${get('fontSizes.1')};
     font-weight: ${get('fontWeights.semibold')};
+    font-family: ${get('fonts.normal')};
     margin-right: ${Spaces[3]};
     text-decoration: none;
 
@@ -45,10 +47,10 @@ const InnerLink = styled.a.attrs({ theme })<LinkProps>`
     }
 
     &.${props => (props.activeClassName ? props.activeClassName : DEFAULT_ACTIVE_CLASS_NAME)} {
-        color: ${Colors.ACTION_BLUE_900};
+        color: ${getSemanticValue('foreground-accent-default')};
 
         ${UnderLine} {
-            background-color: ${Colors.ACTION_BLUE_900};
+            background-color: ${getSemanticValue('foreground-accent-default')};
         }
     }
 `;

@@ -56,17 +56,19 @@ describe('Pagination', () => {
         expect(getByText('test label')).toBeInTheDocument();
     });
 
-    it('should switch to the next page when clicking forward', () => {
+    it('should switch to the next page when clicking forward', async () => {
+        const user = userEvent.setup();
         const onNextMock = jest.fn();
         const { getByRole } = render(<Pagination value={1} pageSize={20} totalItems={200} onNextPage={onNextMock} />);
 
         const forwardBtn = getByRole('button', { name: 'Next' });
 
-        userEvent.click(forwardBtn);
+        await user.click(forwardBtn);
         expect(onNextMock).toHaveBeenCalled();
     });
 
     it('should select a page size when clicking on the page size list', async () => {
+        const user = userEvent.setup();
         const onSelectPageSizeMock = jest.fn();
 
         const { queryByLabelText } = render(
@@ -83,7 +85,7 @@ describe('Pagination', () => {
 
         const pageSizeSelectList = within(container).queryByRole('combobox');
 
-        userEvent.type(pageSizeSelectList, '1');
+        await user.type(pageSizeSelectList, '1');
 
         await selectEvent.select(container, ['10']);
 

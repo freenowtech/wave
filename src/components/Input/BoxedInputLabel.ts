@@ -2,11 +2,11 @@ import styled, { css, Interpolation, ThemeProps } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { InternalInputComponentProps } from './BaseInput';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
+import { InternalInputProps } from './InputProps';
 
 const activeBoxedPosition = (
-    size: Pick<InternalInputComponentProps, 'size'>['size']
+    size: InternalInputProps['waveSize']
 ): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
     ${activePositionBaseStyles};
 
@@ -15,7 +15,7 @@ const activeBoxedPosition = (
 `;
 
 const sizeVariant = variant({
-    prop: 'size',
+    prop: 'waveSize',
     variants: {
         small: {
             top: '0.5rem',
@@ -32,7 +32,7 @@ const sizeVariant = variant({
     }
 });
 
-const BoxedInputLabel = styled(BaseInputLabel).attrs({ theme })`
+const BoxedInputLabel = styled(BaseInputLabel).attrs({ theme })<Pick<InternalInputProps, 'waveSize'>>`
     ${sizeVariant};
 `;
 

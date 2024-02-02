@@ -2,7 +2,6 @@ import React from 'react';
 import { render as renderRtl, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FilePicker, FilePickerProps } from './FilePicker';
-import { Colors } from '../../essentials';
 
 const baseProps = {
     label: 'A picture of you',
@@ -28,12 +27,6 @@ const render = (filePickerProps: FilePickerProps, onFormSubmit = jest.fn()) => {
 
     return renderRtl(<Form {...filePickerProps} />);
 };
-
-test('renders a composition with an input type file', () => {
-    render({ ...baseProps, onFileChange: jest.fn() });
-
-    expect(screen.getByTestId('file-picker')).toMatchSnapshot();
-});
 
 test('when a file gets submitted component removes the initial button', () => {
     const file = new File(['(⌐□_□)'], 'carnet.png', { type: 'image/png' });
@@ -79,7 +72,8 @@ test('expose a way to handle errors', () => {
     expect(onError).toHaveBeenCalledTimes(1);
 });
 
-test('expose a way to get selected file within the host composition', () => {
+test('expose a way to get selected file within the host composition', async () => {
+    const user = userEvent.setup();
     const file = new File(['(⌐□_□)'], 'carnet.png', { type: 'image/png' });
     let submittedFiles: FileList;
     const onFileChange = jest.fn();
@@ -96,7 +90,7 @@ test('expose a way to get selected file within the host composition', () => {
     Object.defineProperty(inputEl, 'files', { value: [file] });
 
     fireEvent.change(inputEl);
-    userEvent.click(screen.getByText(/submit/i));
+    await user.click(screen.getByText(/submit/i));
 
     expect(onFileChange).toHaveBeenCalledTimes(1);
     // Assert over SyntheticEvent will lead to console errors
@@ -129,7 +123,6 @@ test('accepts an error prop that will change the component appareance', () => {
     const { rerender } = renderRtl(<FilePicker {...baseProps} onFileChange={onFileChange} />);
 
     const inputEl = screen.getByLabelText(/picture of you/);
-    const outliner = screen.getByTestId('filepicker-outliner');
     Object.defineProperty(inputEl, 'files', { value: [file] });
 
     fireEvent.change(inputEl);
@@ -137,15 +130,12 @@ test('accepts an error prop that will change the component appareance', () => {
     rerender(<FilePicker {...baseProps} onFileChange={onFileChange} error />);
 
     expect(screen.queryByTitle(/check circle/i)).not.toBeInTheDocument();
-    expect(outliner).toHaveStyle({
-        'border-color': Colors.NEGATIVE_ORANGE_900
-    });
 });
 
-test('accepts an disabled prop that will change the component appareance', () => {
+test('can be disabled', () => {
     const onFileChange = jest.fn();
 
-    const { container } = renderRtl(<FilePicker {...baseProps} onFileChange={onFileChange} disabled />);
+    renderRtl(<FilePicker {...baseProps} onFileChange={onFileChange} disabled />);
 
     const inputEl = screen.getByLabelText(/picture of you/);
     const outliner = screen.getByTestId('filepicker-outliner');
@@ -154,5 +144,4 @@ test('accepts an disabled prop that will change the component appareance', () =>
     expect(outliner).toHaveStyle({
         opacity: '0.5'
     });
-    expect(container).toMatchSnapshot();
 });

@@ -1,15 +1,14 @@
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-
-import { SemanticColors } from '../../essentials';
 import { Box } from '../Box/Box';
 import { Compact } from './components/Compact';
 import { DefaultPanel } from './components/Default';
 import { AccordionProps } from './types';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const HorizontalDivider = styled(Box)`
     border: 0;
-    border-top: solid 0.0625rem ${SemanticColors.border.primary};
+    border-top: solid 0.0625rem ${getSemanticValue('border-neutral-default')};
 `;
 
 const HorizontalDividerTop = HorizontalDivider;

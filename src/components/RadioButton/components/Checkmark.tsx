@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 interface CheckmarkProps {
     error?: boolean;
@@ -17,8 +17,9 @@ const Checkmark = styled.input<CheckmarkProps>`
     padding: 0;
     margin: 0 0.5rem 0 0;
 
-    background-color: ${Colors.WHITE};
-    box-shadow: inset 0 0 0 0.125rem ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.AUTHENTIC_BLUE_200)};
+    background-color: ${getSemanticValue('background-page-default')};
+    box-shadow: inset 0 0 0 0.125rem
+        ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-neutral-default')};
     border-radius: 50%;
     transition: background-color 100ms, box-shadow 100ms;
     cursor: pointer;
@@ -41,7 +42,7 @@ const Checkmark = styled.input<CheckmarkProps>`
 
     &:checked {
         box-shadow: inset 0 0 0 0.3125rem
-            ${props => (props.error ? Colors.NEGATIVE_ORANGE_900 : Colors.ACTION_BLUE_900)};
+            ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-info-default')};
 
         &::after {
             opacity: 1;
@@ -52,20 +53,20 @@ const Checkmark = styled.input<CheckmarkProps>`
 
     &:disabled {
         cursor: not-allowed;
-        background-color: ${Colors.AUTHENTIC_BLUE_50};
-        box-shadow: inset 0 0 0 0.125rem ${Colors.AUTHENTIC_BLUE_50};
+        background-color: ${getSemanticValue('background-element-disabled-faded')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('background-element-disabled-faded')};
 
         &:hover {
-            box-shadow: inset 0 0 0 0.125rem ${Colors.AUTHENTIC_BLUE_50};
+            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('background-element-disabled-faded')};
         }
 
         &:active {
-            background-color: ${Colors.AUTHENTIC_BLUE_50};
+            background-color: ${getSemanticValue('background-element-disabled-faded')};
         }
 
         &:checked {
-            box-shadow: inset 0 0 0 0.3125rem ${Colors.AUTHENTIC_BLUE_50};
-            background-color: ${Colors.WHITE};
+            box-shadow: inset 0 0 0 0.3125rem ${getSemanticValue('background-element-disabled-faded')};
+            background-color: ${getSemanticValue('background-page-default')};
         }
     }
 `;

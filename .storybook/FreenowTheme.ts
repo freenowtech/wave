@@ -1,19 +1,20 @@
 // .storybook/FreenowTheme.ts
 import { create } from '@storybook/theming/create';
 
-export default create({
-    base: 'light',
-
-    // Typography
+const baseVars = {
     fontBase: '"Open Sans", sans-serif',
     fontCode: 'monospace',
 
     brandTitle: 'FREENOW',
     brandUrl: 'https://wave.free-now.com/',
     brandImage: 'https://wave.free-now.com/freenow-logo.svg',
-    brandTarget: '_self',
+    brandTarget: '_self'
+};
 
-    //
+export const LightTheme = create({
+    base: 'light',
+    ...baseVars,
+
     colorPrimary: '#CA0928',
     colorSecondary: '#585C6D',
 
@@ -37,4 +38,12 @@ export default create({
     inputBorder: '#10162F',
     inputTextColor: '#10162F',
     inputBorderRadius: 2
+});
+
+export const DarkTheme = create({
+    base: 'dark',
+    appContentBg: 'hsl(0deg, 0%, 5%)',
+    appPreviewBg: '#222425',
+    inputTextColor: 'blue',
+    ...baseVars
 });

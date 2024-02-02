@@ -1,8 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react';
 import React from 'react';
 import { Button } from '../Button';
-import TrashBinIcon from '../../../icons/actions/TrashBinIcon';
-import { onDarkBackground } from '../../../docs/parameters';
+import { TrashIcon } from '../../../icons';
 
 const meta: Meta = {
     title: 'Components/Button/Button',
@@ -79,20 +78,11 @@ export const Small: Story = {
     }
 };
 
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
-    }
-};
-
 export const WithIcon: Story = {
     args: {
         children: (
             <>
-                <TrashBinIcon size={20} /> Remove
+                <TrashIcon size={20} /> Remove
             </>
         ),
         variant: 'danger'

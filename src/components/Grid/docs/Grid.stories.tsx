@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Row, Column, RowProps } from '../Grid';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { Box } from '../../Box/Box';
+import { Row, Column, RowProps } from '../Grid';
 
 const meta: Meta = {
     title: 'Components/Grid System',
@@ -15,7 +16,7 @@ const Grid = ({ numberOfColumns = 12, ...props }: RowProps & { numberOfColumns: 
         {Array.from({ length: numberOfColumns }).map((_, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Column key={index}>
-                <Box bg="#f1f2f4" textAlign="center">
+                <Box bg={getSemanticValue('background-surface-neutral-faded')} textAlign="center">
                     {1 + index}
                 </Box>
             </Column>

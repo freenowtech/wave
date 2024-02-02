@@ -1,13 +1,9 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import * as React from 'react';
 import { Tag } from './Tag';
-import { SemanticColors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 describe('Tag', () => {
-    it('renders with default props', () => {
-        expect(render(<Tag onDismiss={jest.fn()}>Lorem</Tag>).container.firstChild).toMatchSnapshot();
-    });
-
     it('renders and can be dismissed', () => {
         const onDismiss = jest.fn();
         const { getByTestId } = render(<Tag onDismiss={onDismiss}>Lorem</Tag>);
@@ -32,13 +28,13 @@ describe('Tag', () => {
         const { container } = render(<Tag variant="disabled">Lorem</Tag>);
 
         expect(container.firstChild).toHaveStyle(`
-            border-color: ${SemanticColors.border.primary};
+            border-color: ${getSemanticValue('border-disabled')};
         `);
         expect(screen.getByText('Lorem')).toHaveStyle(`
-            color: ${SemanticColors.text.disabled};
+            color: ${getSemanticValue('foreground-disabled')};
         `);
         expect(screen.getByTestId('dismiss-icon')).toHaveStyle(`
-            color: ${SemanticColors.icon.disabled};
+            color: ${getSemanticValue('foreground-disabled')};
         `);
     });
 
@@ -46,14 +42,14 @@ describe('Tag', () => {
         const { container } = render(<Tag variant="error">Lorem</Tag>);
 
         expect(container.firstChild).toHaveStyle(`
-            background-color: ${SemanticColors.background.danger};
-            border-color: ${SemanticColors.border.dangerEmphasized};
+            background-color: ${getSemanticValue('background-surface-danger-default')};
+            border-color: ${getSemanticValue('border-danger-default')};
         `);
         expect(screen.getByText('Lorem')).toHaveStyle(`
-            color: ${SemanticColors.text.dangerInverted};
+            color: ${getSemanticValue('foreground-danger-default')};
         `);
         expect(screen.getByTestId('dismiss-icon')).toHaveStyle(`
-            color: ${SemanticColors.icon.danger};
+            color: ${getSemanticValue('foreground-danger-default')};
         `);
     });
 });

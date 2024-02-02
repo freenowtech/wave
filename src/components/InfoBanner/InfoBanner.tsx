@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
-import { theme } from '../../essentials/theme';
+import { getSemanticValue } from '../../utils/cssVariables';
 import {
-    CheckCircleSolidIcon,
-    CloseCircleSolidIcon,
-    InfoCircleSolidIcon,
-    WarningSolidIcon,
+    CheckCircleFilledIcon,
+    XCrossCircleFilledIcon,
+    InfoCircleFilledIcon,
+    WarningFilledIcon,
     IconProps
 } from '../../icons';
 import { BoxProps, Box } from '../Box/Box';
@@ -15,6 +15,8 @@ import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 import { Headline } from '../Headline/Headline';
 import { Spaces } from '../../essentials';
+import { theme } from '../../essentials/theme';
+import { InfoBannerVariants, BoxWithVariant } from './types';
 
 interface InfoBannerProps extends BoxProps {
     /**
@@ -45,30 +47,27 @@ interface InfoBannerProps extends BoxProps {
     linkUrl?: string;
 }
 
-type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
-
-interface BoxWithVariant extends BoxProps {
-    variant: InfoBannerVariants;
-    emphasized: boolean;
-}
-
 const bannerVariants = styledVariant({
     variants: {
         info: {
-            background: get('semanticColors.background.info'),
-            borderColor: get('semanticColors.border.info')
+            background: getSemanticValue('background-surface-info-default'),
+            borderColor: getSemanticValue('border-info-banner'),
+            color: getSemanticValue('foreground-primary')
         },
         success: {
-            background: get('semanticColors.background.success'),
-            borderColor: get('semanticColors.border.success')
+            background: getSemanticValue('background-surface-success-default'),
+            borderColor: getSemanticValue('border-success-banner'),
+            color: getSemanticValue('foreground-primary')
         },
         warning: {
-            background: get('semanticColors.background.warning'),
-            borderColor: get('semanticColors.border.warning')
+            background: getSemanticValue('background-surface-warning-default'),
+            borderColor: getSemanticValue('border-warning-banner'),
+            color: getSemanticValue('foreground-primary')
         },
         error: {
-            background: get('semanticColors.background.danger'),
-            borderColor: get('semanticColors.border.danger')
+            background: getSemanticValue('background-surface-danger-default'),
+            borderColor: getSemanticValue('border-danger-banner'),
+            color: getSemanticValue('foreground-primary')
         }
     }
 });
@@ -76,20 +75,24 @@ const bannerVariants = styledVariant({
 const emphasizedBannerVariants = styledVariant({
     variants: {
         info: {
-            background: get('semanticColors.background.infoEmphasized'),
-            borderColor: get('semanticColors.border.infoEmphasized')
+            background: getSemanticValue('background-surface-info-emphasized'),
+            borderColor: getSemanticValue('transparent'),
+            color: getSemanticValue('foreground-on-background-info')
         },
         success: {
-            background: get('semanticColors.background.successEmphasized'),
-            borderColor: get('semanticColors.border.successEmphasized')
+            background: getSemanticValue('background-surface-success-emphasized'),
+            borderColor: getSemanticValue('transparent'),
+            color: getSemanticValue('foreground-on-background-success')
         },
         warning: {
-            background: get('semanticColors.background.warningEmphasized'),
-            borderColor: get('semanticColors.border.warningEmphasized')
+            background: getSemanticValue('background-surface-warning-emphasized'),
+            borderColor: getSemanticValue('transparent'),
+            color: getSemanticValue('foreground-on-background-warning')
         },
         error: {
-            background: get('semanticColors.background.dangerEmphasized'),
-            borderColor: get('semanticColors.border.dangerEmphasized')
+            background: getSemanticValue('background-surface-danger-emphasized'),
+            borderColor: getSemanticValue('transparent'),
+            color: getSemanticValue('foreground-on-background-danger')
         }
     }
 });
@@ -97,16 +100,16 @@ const emphasizedBannerVariants = styledVariant({
 const iconColorVariants = styledVariant({
     variants: {
         info: {
-            color: get('semanticColors.icon.action')
+            color: getSemanticValue('foreground-info-default')
         },
         success: {
-            color: get('semanticColors.icon.success')
+            color: getSemanticValue('foreground-success-default')
         },
         warning: {
-            color: get('semanticColors.icon.primary')
+            color: getSemanticValue('foreground-warning-default')
         },
         error: {
-            color: get('semanticColors.icon.danger')
+            color: getSemanticValue('foreground-danger-default')
         }
     }
 });
@@ -114,16 +117,16 @@ const iconColorVariants = styledVariant({
 const emphasizedIconColorVariants = styledVariant({
     variants: {
         info: {
-            color: get('semanticColors.icon.primaryInverted')
+            color: getSemanticValue('foreground-on-background-info')
         },
         success: {
-            color: get('semanticColors.icon.primaryInverted')
+            color: getSemanticValue('foreground-on-background-success')
         },
         warning: {
-            color: get('semanticColors.icon.primary')
+            color: getSemanticValue('foreground-on-background-warning')
         },
         error: {
-            color: get('semanticColors.icon.primaryInverted')
+            color: getSemanticValue('foreground-on-background-danger')
         }
     }
 });
@@ -137,18 +140,12 @@ export const RoundedBox = styled(Box).attrs({ theme })<BoxWithVariant>`
     padding: ${Spaces[2]};
     ${({ emphasized }) => (emphasized ? emphasizedBannerVariants : bannerVariants)};
 
-    --info-banner-text-color: ${({ emphasized, variant }) =>
-        emphasized && variant !== 'warning'
-            ? get('semanticColors.text.primaryInverted')
-            : get('semanticColors.text.primary')};
-    --info-banner-link-color: ${({ emphasized, variant }) =>
-        emphasized && variant !== 'warning'
-            ? get('semanticColors.text.primaryInverted')
-            : get('semanticColors.text.link')};
-    --info-banner-link-hover-color: ${({ emphasized, variant }) =>
-        emphasized && variant !== 'warning'
-            ? get('semanticColors.text.tertiary')
-            : get('semanticColors.text.linkHover')};
+    --info-banner-link-color: ${({ emphasized }) =>
+        emphasized
+            ? getSemanticValue('foreground-on-background-primary')
+            : getSemanticValue('foreground-accent-default')};
+    --info-banner-link-hover-color: ${({ emphasized }) =>
+        emphasized ? getSemanticValue('foreground-neutral-default') : getSemanticValue('foreground-accent-emphasized')};
 `;
 
 export const IconBox = styled(Box)<BoxWithVariant>`
@@ -158,10 +155,10 @@ export const IconBox = styled(Box)<BoxWithVariant>`
 export const ICON_VARIANTS: {
     [key in InfoBannerVariants]: React.FC<IconProps>;
 } = {
-    warning: WarningSolidIcon,
-    info: InfoCircleSolidIcon,
-    success: CheckCircleSolidIcon,
-    error: CloseCircleSolidIcon
+    warning: WarningFilledIcon,
+    info: InfoCircleFilledIcon,
+    success: CheckCircleFilledIcon,
+    error: XCrossCircleFilledIcon
 };
 
 export const ROLE_VARIANTS: {
@@ -173,7 +170,7 @@ export const ROLE_VARIANTS: {
     warning: 'status'
 };
 
-const InfoBanner = ({
+const InfoBanner: React.FC<InfoBannerProps> = ({
     title,
     description,
     variant = 'info',
@@ -181,9 +178,8 @@ const InfoBanner = ({
     linkUrl,
     emphasized,
     ...props
-}: InfoBannerProps): JSX.Element => {
+}) => {
     const BannerIcon = ICON_VARIANTS[variant];
-    const isInverted = emphasized && variant !== 'warning';
 
     return (
         <RoundedBox variant={variant} emphasized={emphasized} role={ROLE_VARIANTS[variant]} {...props}>
@@ -191,21 +187,14 @@ const InfoBanner = ({
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">
-                <Headline as="h4" textAlign="left" inverted={isInverted}>
+                <Headline as="h4" textAlign="left">
                     {title}
                 </Headline>
-                <Text fontSize="small" textAlign="left" inverted={isInverted}>
+                <Text fontSize="small" textAlign="left">
                     {description}
                 </Text>
                 {linkText && linkUrl && (
-                    <Link
-                        fontSize="0"
-                        textAlign="left"
-                        href={linkUrl}
-                        target="_blank"
-                        mt="0.25rem"
-                        inverted={isInverted}
-                    >
+                    <Link fontSize="0" textAlign="left" href={linkUrl} target="_blank" mt="0.25rem">
                         {linkText}
                     </Link>
                 )}

@@ -2,10 +2,10 @@ import React, { FC, MouseEvent, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { margin, MarginProps, variant } from 'styled-system';
 
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
-import { CloseIcon } from '../../icons';
+import { XCrossIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
 
 interface TagProps extends MarginProps {
@@ -25,6 +25,7 @@ interface TagProps extends MarginProps {
 }
 
 const TagText = styled(Text).attrs({ theme })<Pick<TagProps, 'dismissible'>>`
+    color: ${getSemanticValue('foreground-info-faded')};
     margin-left: 0.75rem;
     margin-right: ${props => (props.dismissible ? '0.25rem' : '0.75rem')};
     font-size: ${get('fontSizes.1')};
@@ -33,7 +34,7 @@ const TagText = styled(Text).attrs({ theme })<Pick<TagProps, 'dismissible'>>`
     transition: color 125ms ease;
 `;
 
-const DismissIcon = styled(CloseIcon).attrs({ size: 18 })`
+const DismissIcon = styled(XCrossIcon).attrs({ size: 18 })`
     margin-right: 0.5rem;
     transition: color 125ms ease;
 
@@ -45,63 +46,63 @@ const DismissIcon = styled(CloseIcon).attrs({ size: 18 })`
 const tagVariant = variant({
     variants: {
         default: {
-            backgroundColor: get('semanticColors.background.info'),
-            borderColor: get('semanticColors.border.infoEmphasized'),
+            backgroundColor: getSemanticValue('background-element-info-default'),
+            borderColor: getSemanticValue('border-info-default'),
 
             [`> ${TagText}`]: {
-                color: get('semanticColors.text.link')
+                color: getSemanticValue('foreground-info-default')
             },
 
             [`> ${DismissIcon}`]: {
-                color: get('semanticColors.icon.action')
+                color: getSemanticValue('foreground-info-default')
             },
 
             '&:hover': {
-                backgroundColor: get('semanticColors.background.infoEmphasized'),
-                borderColor: get('semanticColors.border.infoEmphasized'),
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                borderColor: getSemanticValue('border-info-default'),
 
                 [`> ${TagText}`]: {
-                    color: get('semanticColors.text.primaryInverted')
+                    color: getSemanticValue('foreground-on-background-info')
                 },
 
                 [`> ${DismissIcon}`]: {
-                    color: get('semanticColors.icon.primaryInverted')
+                    color: getSemanticValue('foreground-on-background-info')
                 }
             }
         },
         disabled: {
-            borderColor: get('semanticColors.border.primary'),
+            borderColor: getSemanticValue('border-disabled'),
 
             [`> ${TagText}`]: {
-                color: get('semanticColors.text.disabled')
+                color: getSemanticValue('foreground-disabled')
             },
 
             [`> ${DismissIcon}`]: {
-                color: get('semanticColors.icon.disabled')
+                color: getSemanticValue('foreground-disabled')
             }
         },
         error: {
-            backgroundColor: get('semanticColors.background.danger'),
-            borderColor: get('semanticColors.border.dangerEmphasized'),
+            backgroundColor: getSemanticValue('background-surface-danger-default'),
+            borderColor: getSemanticValue('border-danger-default'),
 
             [`> ${TagText}`]: {
-                color: get('semanticColors.text.dangerInverted')
+                color: getSemanticValue('foreground-danger-default')
             },
 
             [`> ${DismissIcon}`]: {
-                color: get('semanticColors.icon.danger')
+                color: getSemanticValue('foreground-danger-default')
             },
 
             '&:hover': {
-                backgroundColor: get('semanticColors.background.dangerEmphasized'),
-                borderColor: get('semanticColors.border.dangerEmphasized'),
+                backgroundColor: getSemanticValue('background-surface-danger-emphasized'),
+                borderColor: getSemanticValue('border-danger-default'),
 
                 [`> ${TagText}`]: {
-                    color: get('semanticColors.text.primaryInverted')
+                    color: getSemanticValue('foreground-on-background-danger')
                 },
 
                 [`> ${DismissIcon}`]: {
-                    color: get('semanticColors.icon.primaryInverted')
+                    color: getSemanticValue('foreground-on-background-danger')
                 }
             }
         }
@@ -133,7 +134,13 @@ const Tag: FC<PropsWithChildren<TagProps>> = ({
 }) => (
     <TagWrapper variant={variantValue} {...rest}>
         <TagText dismissible={dismissible}>{children}</TagText>
-        {dismissible && <DismissIcon data-testid="dismiss-icon" color={Colors.ACTION_BLUE_900} onClick={onDismiss} />}
+        {dismissible && (
+            <DismissIcon
+                data-testid="dismiss-icon"
+                color={getSemanticValue('foreground-info-faded')}
+                onClick={onDismiss}
+            />
+        )}
     </TagWrapper>
 );
 

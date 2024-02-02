@@ -2,28 +2,27 @@ import { FC } from 'react';
 import * as React from 'react';
 
 import styled from 'styled-components';
-import { Colors, Elevation } from '../../essentials';
-import { CloseIcon, MagnifyingGlassIcon } from '../../icons/index';
+import { Elevation } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
+import { XCrossIcon, MagnifierIcon } from '../../icons';
 import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box, BoxProps } from '../Box/Box';
 
 import { Input } from '../Input/Input';
 
 const ActiveStyle = `
-    background-color: ${Colors.ACTION_BLUE_50};
-    color: ${Colors.ACTION_BLUE_900};
+    background-color: ${getSemanticValue('background-element-info-default')};
+    color: ${getSemanticValue('foreground-info-faded')};
 `;
 
-interface SearchResultsContainerProps extends BoxProps, Pick<SearchProps, 'inverted'> {}
-
-const SearchResultsContainer = styled(Box)<SearchResultsContainerProps>`
+const SearchResultsContainer = styled(Box)`
     position: absolute;
     z-index: ${Elevation.SUGGESTIONS_LIST};
     margin-top: 0.0625rem;
     padding: 0.25rem 0;
     width: inherit;
-    background-color: ${props => (props.inverted ? Colors.AUTHENTIC_BLUE_900 : Colors.WHITE)};
-    box-shadow: 0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200};
+    background-color: ${getSemanticValue('background-page-elevation-1')};
+    box-shadow: 0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')};
     border-radius: 0.25rem;
     cursor: pointer;
 `;
@@ -40,11 +39,10 @@ interface SearchInputContainerProps extends BoxProps {
 
 const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     box-sizing: border-box;
-    background: white;
+    background: ${getSemanticValue('background-page-default')};
     border-radius: 0.25rem;
-    border: ${p =>
-        p.isInFocus ? `0.0625rem solid ${Colors.ACTION_BLUE_900}` : `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`};
-    box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}` : 'none')};
+    border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus' : 'border-neutral-default')}`};
+    box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}` : 'none')};
     height: ${p => (p.size === 'small' ? '2.2rem' : '3.2rem')};
     transition: box-shadow 100ms ease, border 100ms ease;
 `;
@@ -53,9 +51,14 @@ const StyledInput = styled(Input)`
     width: 100%;
 
     input {
-        caret-color: ${Colors.ACTION_BLUE_900};
+        caret-color: ${getSemanticValue('foreground-info-faded')};
         background: transparent;
         border: 0;
+
+        &::placeholder {
+            color: ${p => getSemanticValue(p.disabled ? 'foreground-disabled' : 'foreground-neutral-default')};
+            opacity: 1;
+        }
 
         &:focus,
         &:active {
@@ -68,11 +71,6 @@ const StyledInput = styled(Input)`
 
         ::-webkit-search-cancel-button {
             display: none;
-        }
-
-        &::placeholder {
-            color: ${p => (!p.disabled ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
-            opacity: 1;
         }
     }
 `;
@@ -108,10 +106,6 @@ export interface SearchProps {
      */
     disabled?: boolean;
     /**
-     * Determines whether the search box has an inverted color scheme
-     */
-    inverted?: boolean;
-    /**
      * Determines the size of the search box
      */
     size?: 'small' | 'medium';
@@ -144,7 +138,6 @@ export const Search: FC<SearchProps> = ({
     width,
     placeholder = 'Search...',
     disabled,
-    inverted,
     size,
     onInputChange,
     onClear,
@@ -259,17 +252,16 @@ export const Search: FC<SearchProps> = ({
                     }}
                     onClick={() => !disabled && onEnter?.(value)}
                 >
-                    <MagnifyingGlassIcon
+                    <MagnifierIcon
                         size={size === 'small' ? 20 : 24}
                         aria-hidden="true"
-                        color={!disabled ? Colors.AUTHENTIC_BLUE_350 : Colors.AUTHENTIC_BLUE_200}
+                        color={getSemanticValue(disabled ? 'foreground-disabled' : 'foreground-neutral-default')}
                     />
                 </Box>
 
                 <StyledInput
                     size={size}
                     type="search"
-                    inverted={inverted}
                     disabled={disabled}
                     aria-label={placeholder}
                     autoComplete="off"
@@ -290,13 +282,13 @@ export const Search: FC<SearchProps> = ({
                         }}
                         role="button"
                     >
-                        <CloseIcon aria-hidden="true" color={Colors.AUTHENTIC_BLUE_550} />
+                        <XCrossIcon aria-hidden="true" color={getSemanticValue('foreground-neutral-default')} />
                     </Box>
                 )}
             </SearchInputContainer>
 
             {showResults && results.length > 0 && (
-                <SearchResultsContainer inverted={inverted} role="listbox">
+                <SearchResultsContainer role="listbox">
                     {results.map((result, index) => (
                         <ActiveBox
                             role="option"

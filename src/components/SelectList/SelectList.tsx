@@ -1,17 +1,18 @@
 import React, { FC } from 'react';
 import {
-    components as ReactSelectComponents,
-    DropdownIndicatorProps,
     ClearIndicatorProps,
+    components as ReactSelectComponents,
     ControlProps,
+    DropdownIndicatorProps,
     Props,
     StylesConfig
 } from 'react-select';
-import WindowedSelect from 'react-windowed-select';
+import WindowedSelect from 'wave-react-windowed-select';
 
-import { Colors, Elevation } from '../../essentials';
-import { ChevronDownIcon, ChevronUpIcon, CloseIcon } from '../../icons';
+import { Elevation } from '../../essentials';
+import { ChevronDownIcon, ChevronUpIcon, XCrossIcon } from '../../icons';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
 import { Label } from './components/Label';
@@ -36,8 +37,6 @@ const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'dis
     return 'default';
 };
 
-const getColor = (key: string, props: Props) => String(get(key)(props));
-
 const customStyles: StylesConfig = {
     container: (provided, { selectProps }: WithSelectProps<Props>) => {
         const bSize = {
@@ -55,7 +54,7 @@ const customStyles: StylesConfig = {
         };
     },
     control: (_, state: WithSelectProps<ControlProps>) => {
-        const disabled = state.isDisabled && disabledStyles.control(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.control;
         const error = state.selectProps.error && errorStyles.control(state.selectProps);
         const variant = variantStyles.control({ isFocused: state.isFocused, ...state.selectProps });
 
@@ -64,8 +63,8 @@ const customStyles: StylesConfig = {
             alignItems: 'center',
             justifyContent: 'space-between',
             margin: 0,
-            background: state.selectProps.inverted ? 'transparent' : Colors.WHITE,
-            color: state.selectProps.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900,
+            background: getSemanticValue('background-page-default'),
+            color: getSemanticValue('foreground-primary'),
             ...variant,
             ...error,
             ...disabled
@@ -77,7 +76,8 @@ const customStyles: StylesConfig = {
     }),
     menu: provided => ({
         ...provided,
-        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${Colors.AUTHENTIC_BLUE_200}`
+        backgroundColor: getSemanticValue('background-page-elevation-1'),
+        boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')}`
     }),
     valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
         let margin;
@@ -119,54 +119,54 @@ const customStyles: StylesConfig = {
         color: 'inherit'
     }),
     dropdownIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
             ...provided,
             padding: '0',
             marginRight: '0.5rem',
             cursor: 'pointer',
-            color: state.selectProps.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue('foreground-neutral-default'),
             ...disabled
         };
     },
     clearIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
             ...provided,
-            color: state.selectProps.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue('foreground-neutral-default'),
             cursor: 'pointer',
             padding: 0,
             ...disabled
         };
     },
     placeholder: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.placeholder(state.selectProps);
+        const disabled = state.isDisabled && disabledStyles.placeholder;
 
         return {
             ...provided,
-            color: Colors.AUTHENTIC_BLUE_550,
+            color: getSemanticValue('foreground-neutral-emphasized'),
             ...disabled
         };
     },
     option: (provided, state: WithSelectProps<Props>) => {
         const colorsByState = {
             isDisabled: {
-                color: Colors.AUTHENTIC_BLUE_350
+                color: getSemanticValue('foreground-disabled')
             },
             isFocused: {
-                backgroundColor: Colors.ACTION_BLUE_50
+                backgroundColor: getSemanticValue('background-element-info-default')
             },
             isSelected: {
-                backgroundColor: Colors.ACTION_BLUE_900,
-                color: Colors.WHITE
+                backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                color: getSemanticValue('foreground-on-background-info')
             }
         };
 
         const defaultColors = {
-            color: Colors.AUTHENTIC_BLUE_900,
-            backgroundColor: Colors.WHITE
+            color: getSemanticValue('foreground-primary'),
+            backgroundColor: getSemanticValue('background-page-elevation-1')
         };
 
         const colors = Object.keys(colorsByState)
@@ -205,33 +205,32 @@ const customStyles: StylesConfig = {
             case 'disabled':
                 return {
                     ...styles,
-
-                    color: getColor('semanticColors.text.disabled', selectProps),
+                    color: getSemanticValue('foreground-disabled'),
                     backgroundColor: 'transparent',
-                    borderColor: getColor('semanticColors.border.primary', selectProps),
+                    borderColor: getSemanticValue('border-disabled'),
 
                     '> [role="button"]': {
-                        color: getColor('semanticColors.icon.disabled', selectProps)
+                        color: getSemanticValue('foreground-disabled')
                     }
                 };
             case 'error':
                 return {
                     ...styles,
-                    color: getColor('semanticColors.text.dangerInverted', selectProps),
+                    color: getSemanticValue('foreground-danger-default'),
                     backgroundColor: 'transparent',
-                    borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+                    borderColor: getSemanticValue('border-danger-default'),
 
                     '> [role="button"]': {
-                        color: getColor('semanticColors.icon.danger', selectProps)
+                        color: getSemanticValue('foreground-danger-default')
                     },
 
                     '&:hover': {
-                        color: getColor('semanticColors.text.primaryInverted', selectProps),
-                        backgroundColor: getColor('semanticColors.background.dangerEmphasized', selectProps),
-                        borderColor: getColor('semanticColors.border.dangerEmphasized', selectProps),
+                        color: getSemanticValue('foreground-on-background-danger'),
+                        backgroundColor: getSemanticValue('background-surface-danger-emphasized'),
+                        borderColor: getSemanticValue('border-danger-default'),
 
                         '> [role="button"]': {
-                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                            color: getSemanticValue('foreground-on-background-danger')
                         }
                     }
                 };
@@ -239,22 +238,21 @@ const customStyles: StylesConfig = {
             default:
                 return {
                     ...styles,
-
-                    color: getColor('semanticColors.text.link', selectProps),
-                    backgroundColor: getColor('semanticColors.background.info', selectProps),
-                    borderColor: getColor('semanticColors.border.infoEmphasized', selectProps),
+                    color: getSemanticValue('foreground-info-faded'),
+                    backgroundColor: getSemanticValue('background-element-info-default'),
+                    borderColor: getSemanticValue('border-info-default'),
 
                     '> [role="button"]': {
-                        color: getColor('semanticColors.icon.action', selectProps)
+                        color: getSemanticValue('foreground-info-default')
                     },
 
                     '&:hover': {
-                        color: getColor('semanticColors.text.primaryInverted', selectProps),
-                        backgroundColor: getColor('semanticColors.background.infoEmphasized', selectProps),
-                        borderColor: getColor('semanticColors.border.infoEmphasized', selectProps),
+                        color: getSemanticValue('foreground-on-background-primary'),
+                        backgroundColor: getSemanticValue('background-element-info-emphasized'),
+                        borderColor: getSemanticValue('border-info-default'),
 
                         '> [role="button"]': {
-                            color: getColor('semanticColors.icon.primaryInverted', selectProps)
+                            color: getSemanticValue('foreground-on-background-info')
                         }
                     }
                 };
@@ -297,7 +295,7 @@ const DropdownIndicator = (props: WithSelectProps<DropdownIndicatorProps>) => (
 
 const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
     <ReactSelectComponents.ClearIndicator {...props}>
-        <CloseIcon color="inherit" size={getIconSize(props.selectProps.size)} />
+        <XCrossIcon color="inherit" size={getIconSize(props.selectProps.size)} />
     </ReactSelectComponents.ClearIndicator>
 );
 
@@ -307,7 +305,7 @@ const IndicatorSeparator = () => null;
 
 const MultiValueRemove = props => (
     <ReactSelectComponents.MultiValueRemove {...props}>
-        <CloseIcon size={14} color="inherit" />
+        <XCrossIcon size={14} color="inherit" />
     </ReactSelectComponents.MultiValueRemove>
 );
 
@@ -315,7 +313,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
-    const { components, isDisabled, variant, inverted, size, error, label, inputId } = restProps;
+    const { components, isDisabled, variant, size, error, label, inputId } = restProps;
 
     const id = useGeneratedId(inputId);
 
@@ -335,14 +333,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
                 {...restProps}
             />
             {label && (
-                <Label
-                    htmlFor={id}
-                    isDisabled={isDisabled}
-                    variant={variant}
-                    inverted={inverted}
-                    size={size}
-                    error={error}
-                >
+                <Label htmlFor={id} isDisabled={isDisabled} variant={variant} size={size} error={error}>
                     {label}
                 </Label>
             )}

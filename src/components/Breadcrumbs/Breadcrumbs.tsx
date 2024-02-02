@@ -1,42 +1,22 @@
-import React, {
-    Children,
-    ComponentPropsWithoutRef,
-    ReactElement,
-    ReactNode,
-    cloneElement,
-    useEffect,
-    useRef
-} from 'react';
+import React, { Children, ReactElement, ReactNode, cloneElement, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { MarginProps } from 'styled-system';
 
 import { ChevronRightIcon } from '../../icons';
 import { Text } from '../Text/Text';
 
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { Box } from '../Box/Box';
+import { getSemanticValue } from '../../utils/cssVariables';
 
-interface InvertedStyle {
-    /**
-     * Adjust color for display on a dark background
-     * @default false
-     */
-    inverted?: boolean;
-}
-
-interface BreadcrumbsProps extends InvertedStyle, MarginProps {
+interface BreadcrumbsProps extends MarginProps {
     /**
      * Content of the Breadcrumbs
      * @required
      */
     children: ReactNode;
 }
-
-interface LinkProps extends ComponentPropsWithoutRef<'a'>, InvertedStyle {}
-
-type ItemProps = InvertedStyle;
 
 const BreadcrumbsList = styled.ul`
     padding: 0;
@@ -52,10 +32,9 @@ const BreadcrumbsList = styled.ul`
 
 const BreadcrumbsListItem = styled.li`
     display: flex;
-    text-wrap: nowrap;
 `;
 
-const Breadcrumbs = ({ children, inverted }: BreadcrumbsProps): JSX.Element => {
+const Breadcrumbs = ({ children }: BreadcrumbsProps): JSX.Element => {
     const arrayChildren = Children.toArray(children);
     const breadcrumbsListRef = useRef<HTMLUListElement | null>(null);
 
@@ -69,14 +48,10 @@ const Breadcrumbs = ({ children, inverted }: BreadcrumbsProps): JSX.Element => {
         <BreadcrumbsList ref={breadcrumbsListRef}>
             {Children.map(arrayChildren, (child, index) => (
                 <BreadcrumbsListItem>
-                    <nav aria-label="breadcrumbs">
-                        {cloneElement(child as ReactElement, {
-                            inverted
-                        })}
-                    </nav>
+                    <nav aria-label="breadcrumbs">{cloneElement(child as ReactElement)}</nav>
                     {index < arrayChildren.length - 1 ? (
                         <Box height={16} mt="0.125rem">
-                            <ChevronRightIcon size={16} color={Colors.AUTHENTIC_BLUE_350} />
+                            <ChevronRightIcon size={16} color={getSemanticValue('foreground-neutral-default')} />
                         </Box>
                     ) : // eslint-disable-next-line unicorn/no-null
                     null}
@@ -86,9 +61,9 @@ const Breadcrumbs = ({ children, inverted }: BreadcrumbsProps): JSX.Element => {
     );
 };
 
-const Link = styled.a.attrs({ theme })<LinkProps>`
+const Link = styled.a.attrs({ theme })`
     display: inline-block;
-    color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
+    color: ${getSemanticValue('foreground-accent-default')};
     cursor: pointer;
     line-height: 1.4;
     font-family: ${get('fonts.normal')};
@@ -98,16 +73,15 @@ const Link = styled.a.attrs({ theme })<LinkProps>`
 
     &:hover,
     &:active {
-        color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_350 : Colors.ACTION_BLUE_1000)};
+        color: ${getSemanticValue('foreground-accent-emphasized')};
         text-decoration: underline;
     }
 `;
 
-const Item = styled(Text).attrs(({ inverted }: ItemProps) => ({
-    secondary: inverted,
+const Item = styled(Text).attrs(() => ({
     fontSize: 'small',
     padding: '0 0.25rem 0 0.25rem'
-}))<ItemProps>``;
+}))``;
 
 Breadcrumbs.Item = Item;
 Breadcrumbs.Link = Link;

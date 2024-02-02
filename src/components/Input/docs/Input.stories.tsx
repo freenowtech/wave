@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Input } from '../Input';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta<typeof Input> = {
     title: 'Form Elements/Input',
@@ -51,15 +50,5 @@ export const WithError: Story = {
     args: {
         label: 'Error',
         error: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        label: 'Inverted',
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

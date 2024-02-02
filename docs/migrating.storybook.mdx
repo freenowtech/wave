@@ -1,0 +1,321 @@
+import { Meta } from '@storybook/blocks';
+
+import { PlacementMappingsTable } from './components/migration/PlacementMappingsTable';
+import { InvertedPropMigrationTable } from './components/migration/InvertedPropMigrationTable';
+import { IconMappingsTable } from './components/migration/IconMappingsTable';
+import { CssVariablesMigrationTable } from './components/migration/CssVariablesMigrationTable';
+
+<Meta title="Migration to v2" />
+
+# From v1 to v2
+
+Prerequisites:
+
+-   your project must use React@18;
+-   React is mounted to the DOM using the [new `createRoot` API](https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis).
+
+## 1️⃣ Connect Classic colors
+
+Version 2 provides two [color themes](?path=/docs/essentials-colors--docs) of the UI.
+Start migrating to the classic color theme no matter which primary colors your UI must have.
+
+Connect classic colors by rendering `ClassicColors` component as close as possible to the application's root, where React is mounted to the DOM.
+The component injects CSS color variables used in the design system.
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import { ClassicColors } from '@freenow/wave'; // blue primary color
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <ClassicColors />
+        <App />
+    </React.StrictMode>
+);
+```
+
+## 2️⃣ Run codemods
+
+Codemods automatically modify your code to match the new APIs. They aren't perfect, but they reduce the amount of repetitive work by a lot.
+
+Run all codemods at once against all the files in the `src` folder:
+
+npm
+
+```bash
+npx @freenow/wave run_v2_migration src/**/*
+```
+
+Yarn
+
+```bash
+yarn exec node_modules/.bin/run_v2_migration src/**/*
+```
+
+This command also accepts [jscodeshift's CLI options](https://github.com/facebook/jscodeshift?tab=readme-ov-file#usage-cli). If you prefer to run codemods one by one, you'll find individual commands in the [Breaking Changes section](#breaking-changes).
+
+## 3️⃣ Verify it works
+
+Run your application. You should see all the elements displayed and colored the same as in v1.
+
+Run the following command in the devtool's console to verify everything works well:
+
+```js
+getComputedStyle(document.documentElement).getPropertyValue('--wave-b-color-black')
+    ? console.log('%c🌊 Wave 2.0 is here', 'color: green;font-size: 1.2rem;')
+    : console.log('%c🔴 Something is wrong, let us know at #ask-wave', 'color:red;font-size: 1.2rem;');
+```
+
+Other ways to verify the migration is done:
+
+-   you will see the `--wave` CSS variables in dev tools;
+-   if your OS switches between light and dark schemes, the UI will switch to the dark scheme too (you can enforce it in dev tools);
+
+In case it doesn't work, reach out to the #ask-wave Slack channel for help.
+
+## 4️⃣ Enforce light scheme
+
+Wave v2 comes with automatic dark scheme enabled by default. That means the color of the UI will reflect the OS color preferences of the user.
+
+Most likely, your app will need adjustments to make the dark scheme readable.
+Consider adding a task to your backlog, and disable the dark scheme by wrapping your application root with the `LightScheme` until you are ready:
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import { ClassicColors, LightScheme } from '@freenow/wave'; // blue primary color
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <ClassicColors />
+        <LightScheme>
+            <App />
+        </LightScheme>
+    </React.StrictMode>
+);
+```
+
+## 5️⃣ Polish the code
+
+Codemods leave several artifacts that require manual processing. Your code will work fine without polishing, but it will be repetitive.
+
+### Migrate to semantic CSS variables
+
+Find all `--wave-b-color` usages. Those are CSS variables pointing to theme colors, like `Color` object we had before.
+The better way to work with colors is to use _semantic CSS variables_, they start with `--wave-s-color`.
+Consider the role the color fulfils in your use case, and pick the matching variable from several semantic groups:
+
+-   _foreground_ for texts and icons;
+-   _background_ for background of elements and surfaces;
+-   _border_;
+-   _shadow_.
+
+The list of semantic variables is available at [the colors page](?path=/docs/essentials-colors--docs),
+but we recommend using a typed `getSemanticValue` helper instead of hard-coding variable names (they are long).
+
+<CssVariablesMigrationTable />
+
+After you are done, replace all mentions of `ReadCssColorVariable | (string & {})` in your code with `ReadCssColorVariable`.
+
+### Set the default page background to Wave's
+
+Wave has several CSS variables for page background color because of the dark/light schemes.
+We automatically set the background color to the `body`, but you probably have it set too.
+If so, delete your manual page background setting or set it to `getSemanticValue('background-page-default')`.
+
+### Clean `inverted` props migration
+
+If you used `inverted` prop extensively, you will see that each component is now wrapped into `<InvertedColorScheme>` component.
+This is not required, you can wrap multiple components at once and avoid duplication (`InvertedColorScheme` is `Box` with a special class name):
+
+<InvertedPropMigrationTable />
+
+### Review `ref` usages
+
+We changed the place where the `ref` is attached to the form components `Input` and `Password`.
+If you use `ref` to reach underlying DOM elements, you no longer need to look for `input` element. Use `ref.current` directly.
+
+## 6️⃣ Switch to new colors (if required)
+
+Now you can easily switch to the `ModernColors` theme if your project requires rebranding:
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import { ModernColors } from '@freenow/wave'; // blue primary color
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <ModernColors />
+        <App />
+    </React.StrictMode>
+);
+```
+
+## Breaking Changes
+
+### `Colors` and `SemanticColors` objects are removed
+
+Version 2 does not export `Colors` and `SemanticColors` anymore. All the colors are now accessible via CSS custom properties (aka CSS variables).
+
+It is recommended to use semantic CSS variables at all time (see the list of variables on the [colors page](?path=/docs/essentials-colors--docs)).
+Wave exports a convenient helper with variables autocompletion.
+
+Old approach (v1):
+
+```tsx
+import { Colors } from '@freenow/wave';
+
+export const GreyList = styled.ul`
+    color: ${Colors.AUTHENTIC_BLUE_550};
+`;
+```
+
+New approach (v2):
+
+```tsx
+import { getSemanticValue } from '@freenow/wave';
+
+export const GreyList = styled.ul`
+    color: ${getSemanticValue('foreground-primary')};
+`;
+```
+
+Codemod to automatically migrate `Colors`:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/colors-to-css-vars.js path/to/src
+```
+
+Disclaimer: This codemod transforms usages of `Colors` to our bare colors CSS variables to ensure we don't introduce breaking changes, that being said,
+we recommend using semantic tokens instead as a best practice and offer a `getSemanticValue` API for just that.
+
+Codemod to automatically migrate `SemanticColors`:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/semantic-colors-to-new-theme.js path/to/src
+```
+
+### `Text` and icons inherit font color from container
+
+The `Text` component and all icon components will now inherit font color from their parent container,
+replacing the previous hardcoded font colors.
+
+If you want to enforce the primary color, a new `primary` prop has been introduced for the `Text` component.
+
+```jsx
+import { Box, Text } from '@freenow/wave';
+
+const Card = () => {
+    return (
+        <Box color="pink">
+            <Text>Pink glasses!</Text>
+            <Text primary>Primary black text</Text>
+        </Box>
+    );
+};
+```
+
+### `inverted` prop is removed
+
+With the introduction of our new dark scheme in Wave, we've removed the `inverted` property
+from `Input`, `Password`, `Textarea`, `Button`, `Select`, `SelectList`, `PhoneInput`, `Datepicker`, `Tooltip`, `Text`, and `Breadcrumbs`.
+
+In case you want a specific component to have the styling of the opposite color scheme you need to wrap it with the `InvertedColorScheme` component.
+See more on the [Color scheme management page](?path=/docs/essentials-color-scheme--docs).
+
+Old approach (v1):
+
+```tsx
+import { Button } from '@freenow/wave';
+const InvertedForm = () => (
+    <Box>
+        <Button inverted size="small" onClick={onClick}>
+            {label}
+        </Button>
+        <Button inverted size="small" onClick={onClick}>
+            {label}
+        </Button>
+    </Box>
+);
+```
+
+New approach (v2):
+
+```tsx
+import { InvertedColorScheme, Button } from '@freenow/wave';
+
+const InvertedForm = () => (
+    <InvertedColorScheme>
+        <Button size="small" onClick={onClick}>
+            {label}
+        </Button>
+        <Button size="small" onClick={onClick}>
+            {label}
+        </Button>
+    </InvertedColorScheme>
+);
+```
+
+Migration can be done via a codemod, but some polishing is required after:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/inverted-to-wrapper.js path/to/src
+```
+
+Disclaimer: This codemod wraps every Wave component that is using the `inverted` property with `InvertedColorScheme`, this could lead to a decline in performance in case the
+DOM gets too deep. Ideally when you have Wave components using the `inverted` prop with a common parent you wrap the parent instead of each individual component.
+
+### Tooltip's `placement` prop values are renamed
+
+In a previous minor release we swapped our positioning engine from `react-tether` to `react-popper`, this came with changes in the placement options
+of the engine, but to not introduce breaking changes we kept supporting the previous `react-tether` options as well. From now on you need to use the new
+`react-popper` options. This change only affects the `Tooltip` component `placement` prop.
+
+The mapping from old values to new:
+
+<PlacementMappingsTable />
+
+Automatic migration via codemod:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/tooltip-placement.js path/to/src
+```
+
+### Text's `weak` property renamed to `secondary`
+
+The `weak` property was the initial way to indicate secondary information in a `Text` component, it has been deprecated for a while in favour of
+the more semantic `secondary` prop.
+
+Codemod:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/weak-to-secondary.js path/to/src
+```
+
+### Button's `block` prop is removed
+
+The `block` property used to act as a shortcut to give the button components a width of 100%. In the future, use the `width` property
+directly. It uses the styled-system variable, which is a lot more flexible than just the boolean flag.
+
+Codemod for migration:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/block-to-width-100.js path/to/src
+```
+
+### Deprecated icons are removed. Names of the rest is synced with Figma
+
+List of removed icons and their alternatives:
+
+<IconMappingsTable />
+
+Automatic migration is done via codemod:
+
+```bash
+npx jscodeshift --parser=tsx --extension=js,jsx,ts,tsx -t node_modules/@freenow/wave/lib/cjs/codemods/deprecated-icons.js path/to/src
+```

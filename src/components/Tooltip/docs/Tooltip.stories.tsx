@@ -37,12 +37,6 @@ export const AlwaysVisible: Story = {
     }
 };
 
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    }
-};
-
 export const WithCustomPosition: Story = {
     args: {
         placement: 'bottom-center'

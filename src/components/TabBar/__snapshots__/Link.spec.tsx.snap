@@ -8,10 +8,11 @@ exports[`TabBar.Link has a bright color if selected 1`] = `
 }
 
 .c0 {
-  color: #9CA7B4;
+  color: var(--wave-s-color-foreground-neutral-emphasized);
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
+  font-family: "Open Sans",sans-serif;
   margin-right: 1.5rem;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -22,11 +23,11 @@ exports[`TabBar.Link has a bright color if selected 1`] = `
 }
 
 .c0.active {
-  color: #096BDB;
+  color: var(--wave-s-color-foreground-accent-default);
 }
 
 .c0.active .c1 {
-  background-color: #096BDB;
+  background-color: var(--wave-s-color-foreground-accent-default);
 }
 
 <a
@@ -48,10 +49,11 @@ exports[`TabBar.Link renders with default props 1`] = `
 }
 
 .c0 {
-  color: #9CA7B4;
+  color: var(--wave-s-color-foreground-neutral-emphasized);
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
+  font-family: "Open Sans",sans-serif;
   margin-right: 1.5rem;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -62,11 +64,11 @@ exports[`TabBar.Link renders with default props 1`] = `
 }
 
 .c0.active {
-  color: #096BDB;
+  color: var(--wave-s-color-foreground-accent-default);
 }
 
 .c0.active .c1 {
-  background-color: #096BDB;
+  background-color: var(--wave-s-color-foreground-accent-default);
 }
 
 <a

@@ -5,8 +5,9 @@ import { usePopper } from 'react-popper';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { Colors, Spaces } from '../../essentials';
-import { ChevronDownIcon, ChevronUpIcon } from '../../icons/index';
+import { getSemanticValue } from '../../utils/cssVariables';
+import { Spaces } from '../../essentials';
+import { ChevronDownIcon, ChevronUpIcon } from '../../icons';
 import { useClickOutside } from '../../utils/hooks/useClickOutside';
 
 import { Text } from '../Text/Text';
@@ -29,13 +30,15 @@ const DefaultPopoverWrapper = styled.div.attrs({ theme })`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${get('semanticColors.button.secondary.borderHover')};
+    border: 1px solid ${getSemanticValue('border-neutral-default')};
     padding: 0.8125rem ${Spaces[2]};
     border-radius: ${get('radii.2')};
+    fill: currentColor;
 
     &:hover {
         cursor: pointer;
-        background-color: ${get('semanticColors.background.secondary')} !important;
+        color: ${getSemanticValue('foreground-on-background-neutral')};
+        background-color: ${getSemanticValue('background-element-neutral-emphasized')};
     }
 `;
 
@@ -215,13 +218,26 @@ const Popover: React.FC<PopoverProps> = ({
                 {typeof children === 'string' ? (
                     <DefaultPopoverWrapper
                         ref={popoverTriggerRef}
-                        style={{ background: render ? Colors.AUTHENTIC_BLUE_50 : 'none' }}
+                        style={{
+                            color: render ? getSemanticValue('foreground-on-background-neutral') : undefined,
+                            background: render ? getSemanticValue('background-element-neutral-emphasized') : undefined
+                        }}
                     >
-                        <Text fontWeight="semibold">{children}</Text>
+                        <Text fontWeight="semibold" style={{ color: 'inherit' }}>
+                            {children}
+                        </Text>
                         {!render ? (
-                            <ChevronDownIcon size={20} style={{ marginLeft: Spaces[1] }} />
+                            <ChevronDownIcon
+                                size={20}
+                                color="inherit"
+                                style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
+                            />
                         ) : (
-                            <ChevronUpIcon size={20} style={{ marginLeft: Spaces[1] }} />
+                            <ChevronUpIcon
+                                size={20}
+                                color="inherit"
+                                style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
+                            />
                         )}
                     </DefaultPopoverWrapper>
                 ) : (

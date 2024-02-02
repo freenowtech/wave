@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import { SelectList } from './SelectList';
-import { SemanticColors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 describe('SelectList', () => {
     it('renders options in multi select', () => {
@@ -21,14 +21,14 @@ describe('SelectList', () => {
 
         const normalTag = screen.getByText('Sales').parentElement;
         expect(normalTag).toHaveStyle(`
-            background-color: ${SemanticColors.background.info};
-            border-color: ${SemanticColors.border.infoEmphasized};
+            background-color: ${getSemanticValue('background-element-info-default')};
+            border-color: ${getSemanticValue('border-info-default')};
         `);
 
         const errorTag = screen.getByText('Marketing').parentElement;
         expect(errorTag).toHaveStyle(`
             background-color: transparent;
-            border-color: ${SemanticColors.border.dangerEmphasized};
+            border-color: ${getSemanticValue('border-danger-default')};
         `);
     });
 
@@ -50,13 +50,13 @@ describe('SelectList', () => {
         const normalTag = screen.getByText('Sales').parentElement;
         expect(normalTag).toHaveStyle(`
             background-color: transparent;
-            border-color: ${SemanticColors.border.primary};
+            border-color: ${getSemanticValue('border-disabled')};
         `);
 
         const errorTag = screen.getByText('Marketing').parentElement;
         expect(errorTag).toHaveStyle(`
             background-color: transparent;
-            border-color: ${SemanticColors.border.primary};
+            border-color: ${getSemanticValue('border-disabled')};
         `);
     });
 });

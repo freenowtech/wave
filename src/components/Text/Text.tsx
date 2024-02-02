@@ -15,7 +15,7 @@ import {
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { deprecatedProperty } from '../../utils/deprecatedProperty';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface TextProps
     extends ComponentPropsWithoutRef<'span'>,
@@ -29,14 +29,9 @@ interface TextProps
      */
     fontWeight?: ResponsiveValue<'normal' | 'semibold' | 'bold'>;
     /**
-     * Adjust color for display on a dark background
+     * Enforce primary color
      */
-    inverted?: boolean;
-    /**
-     * Adjust color to indicate secondary information
-     * @deprecated use `secondary` instead
-     */
-    weak?: boolean;
+    primary?: boolean;
     /**
      * Adjust color to indicate secondary information
      */
@@ -48,24 +43,21 @@ interface TextProps
 }
 
 function determineTextColor(props: TextProps) {
-    const { weak, secondary, inverted, disabled } = props;
-    if (weak !== undefined) {
-        deprecatedProperty('Text', weak, 'weak', 'secondary', 'Rename `weak` to `secondary` to remove the warning.');
-    }
+    const { primary, secondary, disabled } = props;
 
     if (disabled) {
-        return get(inverted ? 'semanticColors.text.disabledInverted' : 'semanticColors.text.disabled')(props);
+        return getSemanticValue('foreground-disabled');
     }
 
-    if (secondary || weak) {
-        return get(inverted ? 'semanticColors.text.secondaryInverted' : 'semanticColors.text.secondary')(props);
+    if (secondary) {
+        return getSemanticValue('foreground-neutral-emphasized');
     }
 
-    if (inverted) {
-        return get('semanticColors.text.primaryInverted')(props);
+    if (primary) {
+        return getSemanticValue('foreground-primary');
     }
 
-    return get('semanticColors.text.primary')(props);
+    return 'inherit';
 }
 
 const Text = styled.span.attrs({ theme })<TextProps>`

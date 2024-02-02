@@ -1,36 +1,36 @@
 import { CSSObject } from 'styled-components';
 import { CSSObjectWithLabel } from 'react-select';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { SelectListProps } from './types';
 
 export const disabledStyles = {
-    control: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
-        borderColor: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200,
+    control: {
+        color: getSemanticValue('foreground-disabled'),
+        borderColor: getSemanticValue('border-disabled'),
         boxShadow: 'none'
-    }),
-    placeholder: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
-    }),
-    label: ({ inverted }: Pick<SelectListProps, 'inverted'>): CSSObject => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
-    }),
-    icons: ({ inverted }: SelectListProps): CSSObjectWithLabel => ({
-        color: inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200
-    })
+    },
+    placeholder: {
+        color: getSemanticValue('foreground-disabled')
+    },
+    label: {
+        color: getSemanticValue('foreground-disabled')
+    },
+    icons: {
+        color: getSemanticValue('foreground-disabled')
+    }
 };
 
 export const errorStyles = {
     control: ({ variant }: SelectListProps): CSSObjectWithLabel => ({
-        borderColor: Colors.NEGATIVE_ORANGE_900,
+        borderColor: getSemanticValue('border-danger-default'),
         boxShadow:
             variant === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
-                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`
+                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
+                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
     }),
     label: (): CSSObject => ({
-        color: Colors.NEGATIVE_ORANGE_900
+        color: getSemanticValue('foreground-danger-emphasized')
     })
 };
 
@@ -50,13 +50,13 @@ export const variantStyles = {
                 };
 
                 const isBFocused = props.isFocused && {
-                    borderColor: Colors.ACTION_BLUE_900,
-                    boxShadow: `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}`
+                    borderColor: getSemanticValue('border-focus'),
+                    boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}`
                 };
 
                 return {
                     borderRadius: get('radii.2')(props),
-                    border: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
+                    border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBFocused,
                     ...bSize[props.size]
                 };
@@ -73,15 +73,15 @@ export const variantStyles = {
                     }
                 };
                 const isBLFocused = props.isFocused && {
-                    borderColor: Colors.ACTION_BLUE_900,
-                    boxShadow: `inset 0 -0.0625rem 0 0 ${Colors.ACTION_BLUE_900}`
+                    borderColor: getSemanticValue('border-focus'),
+                    boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus')}`
                 };
 
                 return {
                     border: 'none',
                     borderTopLeftRadius: get('radii.1')(props),
                     borderTopRightRadius: get('radii.1')(props),
-                    borderBottom: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
+                    borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBLFocused,
                     ...btSize[props.size]
                 };

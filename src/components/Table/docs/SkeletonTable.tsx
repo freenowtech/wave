@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Button, Checkbox, Label, Text } from '../..';
-import { Colors } from '../../../essentials';
+import { getSemanticValue } from '../../../utils/cssVariables';
 import { EnvelopeIcon, PhoneIcon } from '../../../icons';
 import { TableRowSkeleton } from '../components/TableRowSkeleton';
 
@@ -74,13 +74,13 @@ export const SkeletonTable: FC = () => {
                                 <TableCell>{entry.status}</TableCell>
                                 <TableCell>
                                     <Box display="flex" alignItems="center">
-                                        <PhoneIcon size={18} color={Colors.ACTION_BLUE_900} />
+                                        <PhoneIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                                         &nbsp;+49&nbsp;{Math.round(Math.random() * 1000000000)}
                                     </Box>
                                 </TableCell>
                                 <TableCell>
                                     <Box display="flex" alignItems="center">
-                                        <EnvelopeIcon size={18} color={Colors.ACTION_BLUE_900} />
+                                        <EnvelopeIcon size={18} color={getSemanticValue('foreground-accent-default')} />
                                         &nbsp;{entry.emailAddress}
                                     </Box>
                                 </TableCell>

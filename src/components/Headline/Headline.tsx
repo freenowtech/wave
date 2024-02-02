@@ -2,15 +2,11 @@ import * as React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { compose, margin, system, MarginProps, textAlign, TextAlignProps, ResponsiveValue } from 'styled-system';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface HeadlineProps extends ComponentPropsWithoutRef<'h1'>, MarginProps, TextAlignProps {
-    /**
-     * Adjust color for display on a dark background
-     */
-    inverted?: boolean;
     /**
      * Set the html tag for the headline including the appropriate styles
      */
@@ -59,7 +55,7 @@ const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'x
     size || DEFAULT_HEADLINE_SIZE[as];
 
 const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
-    color: ${p => (p.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900)};
+    color: inherit;
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.bold')};
     margin: 0;

@@ -1,79 +1,81 @@
-import React, { FC, useState } from 'react';
+import { DocsContext } from '@storybook/blocks';
+
+import React, { FC, useContext, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Input, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
-import { Colors, SemanticColors } from '../Colors';
+import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
+import { Colors as ClassicColors, SemanticColors as ClassicSemanticTokens } from '../Colors';
+import { Colors as ModernColors, SemanticColors as ModernSemanticTokens } from '../ModernColors';
 
-function flattenObj(
-    obj: Record<string, unknown>,
-    parent?: string,
-    result: Map<string, string> = new Map()
-): Map<string, string> {
-    Object.keys(obj).forEach(key => {
-        const propName = parent ? `${parent}.${key}` : key;
-
-        if (typeof obj[key] === 'object') {
-            flattenObj(obj[key] as Record<string, unknown>, propName, result);
-        } else {
-            result.set(propName, obj[key] as string);
-        }
-    });
-
-    return result;
-}
-
-const ColorBlock = styled.div<{ color: string }>`
-    background-color: ${p => p.color};
-    border: 0.0625rem solid ${p => (p.color === Colors.WHITE ? Colors.AUTHENTIC_BLUE_200 : p.color)};
+const ColorBlock = styled.div<{ token: string }>`
+    background-color: var(${p => p.token});
+    border: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
     height: 1.5rem;
     width: 4rem;
 `;
 
-const flatSemanticColors = flattenObj(SemanticColors);
-const flatSemanticColorsKeys = [...flatSemanticColors.keys()] as string[];
+const Tokens = {
+    s: {
+        classic: ClassicSemanticTokens,
+        modern: ModernSemanticTokens
+    },
+    b: {
+        classic: ClassicColors,
+        modern: ModernColors
+    }
+} as const;
 
-export const SemanticColorsTable: FC = () => {
+export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     const [nameSearchInput, setNameSearchInput] = useState('');
+    const {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        store: { globals }
+    } = useContext(DocsContext);
 
-    const filteredColorKeys = !nameSearchInput
-        ? flatSemanticColorsKeys
-        : flatSemanticColorsKeys.filter(it => it.toLowerCase().includes(nameSearchInput.toLowerCase().trim()));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    const { theme } = globals.get();
+    const tokens = Tokens[tier][theme];
+
+    const entries = useMemo(() => generateCssVariableEntries(tokens), [tokens]);
+    const filteredTokens = !nameSearchInput
+        ? entries
+        : entries.filter(({ variable }) => variable.includes(nameSearchInput.toLowerCase().trim()));
 
     return (
-        <>
-            <Table rowStyle="lines" width="100%" rowSize="small">
-                <thead>
-                    <TableRow>
-                        <TableHeaderCell>Color</TableHeaderCell>
-                        <TableHeaderCell>
-                            <Box display="flex" justifyContent="space-between" alignItems="center">
-                                Name
-                                <Input
-                                    placeholder="Filter"
-                                    size="small"
-                                    value={nameSearchInput}
-                                    onChange={e => setNameSearchInput(e.target.value)}
-                                />
-                            </Box>
-                        </TableHeaderCell>
-                        <TableHeaderCell>Hex Code</TableHeaderCell>
+        <Table rowStyle="lines" width="100%" rowSize="small">
+            <thead>
+                <TableRow>
+                    <TableHeaderCell>Color</TableHeaderCell>
+                    <TableHeaderCell>
+                        <Box display="flex" justifyContent="space-between" alignItems="center">
+                            Name
+                            <Input
+                                placeholder="Filter"
+                                size="small"
+                                value={nameSearchInput}
+                                onChange={e => setNameSearchInput(e.target.value)}
+                            />
+                        </Box>
+                    </TableHeaderCell>
+                    <TableHeaderCell>Hex Code</TableHeaderCell>
+                </TableRow>
+            </thead>
+            <tbody>
+                {filteredTokens.map(({ variable, value }) => (
+                    <TableRow key={variable}>
+                        <TableCell>
+                            <ColorBlock token={applyPrefix(variable, tier)} />
+                        </TableCell>
+                        <TableCell>
+                            <code>{variable}</code>
+                        </TableCell>
+                        <TableCell>
+                            <code>{value}</code>
+                        </TableCell>
                     </TableRow>
-                </thead>
-                <tbody>
-                    {filteredColorKeys.map(key => (
-                        <TableRow key={key}>
-                            <TableCell>
-                                <ColorBlock color={flatSemanticColors.get(key)} />
-                            </TableCell>
-                            <TableCell>
-                                <code>{key}</code>
-                            </TableCell>
-                            <TableCell>
-                                <code>{flatSemanticColors.get(key)}</code>
-                            </TableCell>
-                        </TableRow>
-                    ))}
-                </tbody>
-            </Table>
-        </>
+                ))}
+            </tbody>
+        </Table>
     );
 };

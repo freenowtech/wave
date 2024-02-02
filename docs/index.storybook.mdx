@@ -14,23 +14,12 @@ import FigmaLogo from './assets/figma-logo-with-text.svg';
 import GithubLogo from './assets/github-logo.svg';
 import WarningIcon from './assets/warning-icon.svg';
 
-import {
-    ParcelIcon,
-    SheetOutlineIcon,
-    DiamondIcon,
-    SpeedometerIcon,
-    ArrowRightIcon,
-    MagnifyingGlassIcon,
-    AlertIcon,
-    PenIcon
-} from '../src/icons/';
+import { ArrowRightIcon, WarningIcon as AlertIcon, PenIcon } from '../src/icons/';
 import { Box } from '../src/components/Box/Box';
 import { Button } from '../src/components/Button/Button';
 import { Card } from '../src/components/Card/Card';
 import { Headline } from '../src/components/Headline/Headline';
 import { Text } from '../src/components/Text/Text';
-import { Logo } from '../src/components/Logo/Logo';
-import { Link } from '../src/components/Link/Link';
 
 <Meta title="Welcome" />
 
@@ -46,6 +35,11 @@ import { Link } from '../src/components/Link/Link';
       right: -300px;
       max-width: 1200px;
       z-index: 0 !important;
+      display: block;
+    }
+
+    .dark-scheme .wave-bg {
+      display:none;
     }
 
     .main-content {
@@ -107,6 +101,10 @@ import { Link } from '../src/components/Link/Link';
     .icon-wrapper-white {
       background: #FFFFFF;
     }
+
+    .toc-wrapper {
+        display: none;
+    }
   `}
 </style>
 
@@ -115,11 +113,15 @@ import { Link } from '../src/components/Link/Link';
 <Box className='main-content'>
   <Unstyled>
     <Box display='flex' mb='40px'>
-      <img src={WaveLogo} width='170px' alt='wave-logo' />
-      <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
+        <svg><use href={`${WaveLogo}#logo`}/></svg>
+        <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
     </Box>
 
-    <Card className='hero-banner' level={200}>
+    <Card className='hero-banner' level={0}>
+          <Text as='p'>⚠️ This is documentation for Wave 2.x. <a href='https://freenowtech.github.io/wave-v1-docs'>Go to v1 docs</a></Text>
+    </Card>
+
+    <Card className='hero-banner' level={200} mt="50px">
       <Box display='flex' flexDirection='column'>
         <Headline as='h2' style={{ lineHeight: '40px', marginBottom: '16px' }}><span className='heading-red'>Develop experiences faster</span> <br/>with our UI component library</Headline>
 

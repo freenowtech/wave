@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
 
-import { onDarkBackground } from '../../../docs/parameters';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { DefaultBreadcrumbs } from './DefaultBreadcrumbs';
 
@@ -33,14 +32,4 @@ type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
     render: DefaultBreadcrumbs
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    render: DefaultBreadcrumbs,
-    parameters: {
-        ...onDarkBackground
-    }
 };

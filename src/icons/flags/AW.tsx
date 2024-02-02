@@ -3,13 +3,19 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = Omit<IconProps, 'color'>;
-
-const AW: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
+const AW: React.FC<Props> = ({ size = 'medium', ...props }) => {
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} width={sizePx} height={sizePx} viewBox="0 0 28 20">
+        <svg
+            {...props}
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 28 20"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
             <defs>
                 <filter x="-7.1%" y="-5%" width="114.3%" height="120%" filterUnits="objectBoundingBox" id="AW__c">
                     <feOffset dy={1} in="SourceAlpha" result="shadowOffsetOuter1" />
@@ -41,6 +47,4 @@ const AW: React.FC<Props> = ({ size = 'medium', ...props }: IconProps) => {
         </svg>
     );
 };
-
-AW.defaultProps = {};
 export default AW;

@@ -2,15 +2,13 @@ import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
-import { Placement } from '@popperjs/core/lib/enums';
+import { Placement } from '@popperjs/core';
 import { variant } from 'styled-system';
-
-import type { PropsWithChildren } from 'react';
-
-import { Elevation, MediaQueries, SemanticColors } from '../../essentials';
+import { Elevation, MediaQueries } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { mapPlacementWithDeprecationWarning, TooltipPlacement } from './TooltipPlacement';
+import { InvertedColorScheme } from '../ColorScheme/InvertedColorScheme';
 
 const fadeAnimation = keyframes`
     from {
@@ -84,15 +82,13 @@ const arrowPlacementStyles = variant({
 });
 
 interface TooltipBodyProps {
-    inverted?: boolean;
     variant: string;
 }
 
 const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
-    background-color: ${p =>
-        p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
+    background-color: ${getSemanticValue('background-backdrop')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -115,8 +111,10 @@ const TooltipBody = styled.div<TooltipBodyProps>`
         position: absolute;
         pointer-events: none;
         border: 0.25rem solid rgba(0, 0, 0, 0);
-        border-bottom-color: ${p =>
-            p.inverted ? SemanticColors.background.secondary : SemanticColors.background.primaryEmphasized};
+        border-bottom-color: ${
+            // background colors are used because this border is used to create the arrow
+            getSemanticValue('background-backdrop')
+        };
         margin-left: -0.25rem;
 
         ${arrowPlacementStyles}
@@ -125,29 +123,24 @@ const TooltipBody = styled.div<TooltipBodyProps>`
 
 interface TooltipProps {
     /**
-     * The content that will be shown inside of the tooltip body
+     * The content that will be shown inside the tooltip body
      */
     content: React.ReactNode;
     /**
      * Set the position of where the tooltip is attached to the target, defaults to "top"
      */
-    placement?: TooltipPlacement | Placement;
-    /**
-     * Adjust the component for display on dark backgrounds
-     */
-    inverted?: boolean;
+    placement?: Placement;
     /**
      * Force the tooltip to always be visible, regardless of user interaction
      */
     alwaysVisible?: boolean;
 }
 
-const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
+const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     content,
     children,
     placement = 'top',
-    alwaysVisible = false,
-    inverted = false
+    alwaysVisible = false
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     /**
@@ -156,15 +149,8 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
     const [triggerReference, setTriggerReference] = React.useState(undefined);
     const [contentReference, setContentReference] = React.useState(undefined);
 
-    /**
-     * Map the older placement values to Popper placement  as we need to get the correct placement for the tooltip from the Popper library
-     * without introduce any breaking changes to the Tooltip component.
-     * TODO: Remove in the next major release.
-     */
-    const mappedPlacement = mapPlacementWithDeprecationWarning(placement);
-
     const { styles, attributes } = usePopper(triggerReference, contentReference, {
-        placement: mappedPlacement,
+        placement,
         modifiers: [
             {
                 name: 'offset',
@@ -180,9 +166,11 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-            <Text as="p" fontSize={0} inverted={!inverted}>
-                {content}
-            </Text>
+            <InvertedColorScheme>
+                <Text as="p" fontSize={0}>
+                    {content}
+                </Text>
+            </InvertedColorScheme>
         );
     }
 
@@ -204,7 +192,6 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
                 createPortal(
                     <TooltipBody
                         ref={setContentReference}
-                        inverted={inverted}
                         style={{ ...styles.popper }}
                         variant={attributes.popper?.['data-popper-placement']}
                         {...attributes.popper}

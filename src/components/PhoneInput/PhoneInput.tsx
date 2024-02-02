@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import {
     compose,
@@ -79,8 +79,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 }: PhoneInputProps) => {
     const { marginProps } = extractWrapperMarginProps(props);
 
-    const nationalNumberInputRef = React.createRef<HTMLDivElement>();
-    const containerRef = React.createRef<HTMLDivElement>();
+    const nationalNumberInputRef = useRef<HTMLInputElement>();
+    const containerRef = useRef<HTMLDivElement>();
     const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
 
     const handleCountrySelection = value => {
@@ -88,7 +88,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
             props.onCountryChange(value);
         }
 
-        (nationalNumberInputRef.current.children[0] as HTMLInputElement).focus();
+        if (nationalNumberInputRef?.current) nationalNumberInputRef.current.focus();
     };
 
     return (

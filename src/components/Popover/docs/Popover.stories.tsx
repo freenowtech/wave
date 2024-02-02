@@ -3,7 +3,7 @@ import { StoryObj, Meta } from '@storybook/react';
 import { Popover } from '../Popover';
 import { Text } from '../../Text/Text';
 import { Button } from '../../Button/Button';
-import SettingsIcon from '../../../icons/options/SettingsIcon';
+import { SettingsIcon } from '../../../icons';
 import { Link } from '../../Link/Link';
 
 const meta: Meta<typeof Popover> = {
@@ -61,7 +61,7 @@ export const WithButtonTrigger: Story = {
         ),
         children: (
             <Button size="small" variant="primary">
-                <SettingsIcon size={20} /> Manage Booking
+                <SettingsIcon color="inherit" size={20} /> Manage Booking
             </Button>
         )
     }

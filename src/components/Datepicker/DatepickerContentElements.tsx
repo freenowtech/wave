@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { SemanticColors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const baseArrowStyles = css`
     width: 1.25rem;
@@ -21,7 +21,7 @@ export const Arrow = styled.div`
 `;
 
 export const DatepickerContentContainer = styled.div`
-    background: ${SemanticColors.forms.datePicker.calendar.background};
+    background: ${getSemanticValue('background-surface-neutral-default')};
     box-shadow: 0 0 0.5rem 0.1875rem rgba(0, 0, 0, 0.08);
 
     &[data-popper-placement^='top'] > ${Arrow} {

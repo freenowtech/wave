@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { compose, margin, MarginProps, ResponsiveValue, variant, width, WidthProps } from 'styled-system';
 
 import { theme } from '../../essentials/theme';
-import { deprecatedProperty } from '../../utils/deprecatedProperty';
 import { get } from '../../utils/themeGet';
 
 interface BaseButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps, WidthProps {
@@ -11,11 +10,6 @@ interface BaseButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProp
      * Adjusts the size of the button
      */
     size?: ResponsiveValue<'small' | 'medium'>;
-    /**
-     * Sets the button width to 100% of the parent
-     * @deprecated
-     */
-    block?: boolean;
 }
 
 const sizeVariant = variant({
@@ -36,21 +30,6 @@ const sizeVariant = variant({
     }
 });
 
-/**
- * @deprecated
- */
-function handleBlockProp({ block }: BaseButtonProps): string {
-    if (block !== undefined) {
-        deprecatedProperty('Button', block, 'block', 'width');
-    }
-
-    if (block) {
-        return 'width: 100%';
-    }
-
-    return '';
-}
-
 // "svg path" fill set to "inherit" to being able to transition using button variants
 const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
     align-items: center;
@@ -64,7 +43,6 @@ const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
     justify-content: center;
     text-align: center;
     text-decoration: none;
-    ${handleBlockProp};
 
     &:disabled {
         cursor: not-allowed;

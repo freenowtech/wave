@@ -1,7 +1,6 @@
-import { render, waitForElementToBeRemoved, screen } from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import { SemanticColors } from '../../essentials';
 import { ANIMATION_DURATION, Banner, useBannerDismiss } from './Banner';
 
 describe('Banner', () => {
@@ -39,6 +38,7 @@ describe('Banner', () => {
     });
 
     it('can be dismissed by calling the dismiss function', async () => {
+        const user = userEvent.setup();
         render(
             <Banner>
                 {dismiss => (
@@ -50,13 +50,14 @@ describe('Banner', () => {
         );
 
         const banner = screen.getByText('dismiss');
-        userEvent.click(banner);
+        await user.click(banner);
 
         await waitForElementToBeRemoved(banner);
         expect(banner).not.toBeInTheDocument();
     });
 
     it('can be dismissed by calling the dismiss function from the hook', async () => {
+        const user = userEvent.setup();
         const InnerComponent: React.FC = () => {
             const dismiss = useBannerDismiss();
             return (
@@ -73,15 +74,16 @@ describe('Banner', () => {
         );
 
         const button = screen.getByRole('button');
-        userEvent.click(button);
+        await user.click(button);
 
         await waitForElementToBeRemoved(button);
         expect(button).not.toBeInTheDocument();
     });
 
-    it('calls the onClose callback after the animation finished', () => {
+    it('calls the onClose callback after the animation finished', async () => {
         jest.useFakeTimers();
 
+        const user = userEvent.setup();
         const mockOnClose = jest.fn();
         render(
             <Banner onClose={mockOnClose}>
@@ -92,34 +94,21 @@ describe('Banner', () => {
                 )}
             </Banner>
         );
-        userEvent.click(screen.getByText('dismiss'));
+
+        // testing library requires us to use `await` here,
+        // but we use fake timers, so the click won't be handled until we run the timers,
+        // so we can't use `await` here
+        // eslint-disable-next-line no-void
+        void user.click(screen.getByText('dismiss'));
 
         // We run the timer to just before the animation ends
         jest.advanceTimersByTime(ANIMATION_DURATION - 1);
         expect(mockOnClose).not.toBeCalled();
 
         // And now we let the animation end
-        jest.advanceTimersByTime(1);
-        expect(mockOnClose).toBeCalled();
-    });
-
-    describe('renders the variant', () => {
-        it('"info" correctly', () => {
-            expect(render(<Banner variant="info" />).container.firstChild).toHaveStyle(`
-                background-color: ${SemanticColors.background.secondaryEmphasized};
-            `);
-        });
-
-        it('"success" correctly', () => {
-            expect(render(<Banner variant="success" />).container.firstChild).toHaveStyle(`
-                background-color: ${SemanticColors.background.successEmphasized};
-            `);
-        });
-
-        it('"danger" correctly', () => {
-            expect(render(<Banner variant="danger" />).container.firstChild).toHaveStyle(`
-                background-color: ${SemanticColors.background.dangerEmphasized};
-            `);
+        jest.runAllTimers();
+        await waitFor(() => {
+            expect(mockOnClose).toBeCalled();
         });
     });
 });

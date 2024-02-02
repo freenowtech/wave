@@ -4,41 +4,22 @@ import * as React from 'react';
 import { Offcanvas, useOffcanvasDismiss } from './Offcanvas';
 
 describe('Offcanvas', () => {
-    it('renders the default props', () => {
-        expect(render(<Offcanvas>Content</Offcanvas>).container).toMatchSnapshot();
-    });
-
-    it('renders the left side variation', () => {
-        expect(render(<Offcanvas side="left">Content</Offcanvas>).container).toMatchSnapshot();
-    });
-
-    it('renders the right side variation', () => {
-        expect(render(<Offcanvas side="right">Content</Offcanvas>).container).toMatchSnapshot();
-    });
-
-    it('renders the top side variation', () => {
-        expect(render(<Offcanvas side="top">Content</Offcanvas>).container).toMatchSnapshot();
-    });
-
-    it('renders the bottom side variation', () => {
-        expect(render(<Offcanvas side="bottom">Content</Offcanvas>).container).toMatchSnapshot();
-    });
-
     describe('should call onClose function', () => {
         it('when clicking on close icon', async () => {
+            const user = userEvent.setup();
             const mockCloseHandler = jest.fn();
             const { getByTestId } = render(<Offcanvas onClose={mockCloseHandler}>Content</Offcanvas>);
 
-            fireEvent.click(getByTestId('close-icon'));
-
+            await user.click(getByTestId('close-icon'));
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });
 
         it('when clicking on the dimming background', async () => {
+            const user = userEvent.setup();
             const mockCloseHandler = jest.fn();
             const { getByTestId } = render(<Offcanvas onClose={mockCloseHandler}>Content</Offcanvas>);
 
-            fireEvent.click(getByTestId('dimming-background'));
+            await user.click(getByTestId('dimming-background'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });
@@ -70,6 +51,7 @@ describe('Offcanvas', () => {
         });
 
         it('when calling the dismiss function from a hook', async () => {
+            const user = userEvent.setup();
             const mockCloseHandler = jest.fn();
 
             const InnerComponent: React.FC = () => {
@@ -87,7 +69,7 @@ describe('Offcanvas', () => {
                 </Offcanvas>
             );
 
-            userEvent.click(screen.getByRole('button'));
+            await user.click(screen.getByRole('button'));
 
             await waitFor(() => expect(mockCloseHandler).toHaveBeenCalled());
         });

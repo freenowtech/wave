@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../Logo';
-import { onDarkBackground } from '../../../docs/parameters';
 
 const meta: Meta<typeof Logo> = {
     title: 'Components/Logo',
@@ -29,14 +28,5 @@ export const Business: Story = {
 export const Monochrome: Story = {
     args: {
         monochrome: true
-    }
-};
-
-export const Inverted: Story = {
-    args: {
-        inverted: true
-    },
-    parameters: {
-        ...onDarkBackground
     }
 };

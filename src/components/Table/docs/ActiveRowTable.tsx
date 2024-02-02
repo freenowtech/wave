@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-import { Table, TableCell, TableHeaderCell, TableRow, TableRowProps } from '..';
+import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Checkbox, Input, Text } from '../..';
 
 const data = [

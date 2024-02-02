@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Colors } from '../../essentials/Colors/Colors';
 import { Icon } from './Icon';
 import * as Icons from '..';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const meta: Meta = {
     title: 'Essentials/Icons/Icons',
@@ -15,8 +15,8 @@ type Story = StoryObj<typeof Icon>;
 export const Default: Story = {
     name: 'Icons',
     args: {
-        name: 'AlertIcon',
-        color: Colors.ATTENTION_YELLOW_900,
+        name: 'CheckCircleFilledIcon',
+        color: getSemanticValue('foreground-success-default'),
         size: 40
     },
     argTypes: {

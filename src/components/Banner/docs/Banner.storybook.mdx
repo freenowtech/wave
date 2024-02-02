@@ -1,4 +1,4 @@
-import { Meta, ArgTypes, Primary, Story, Stories } from '@storybook/blocks';
+import { Meta, ArgTypes, Primary, Story, Stories, Unstyled } from '@storybook/blocks';
 import * as BannerStories from './Banner.stories';
 import { Advice } from '../../../docs/Advice';
 
@@ -28,8 +28,10 @@ and bear in mind that you can use the **position** prop for it.
 <ArgTypes of={BannerStories.Default} />
 
 <Advice>
-    The `Banner` uses `position:sticky` for positioning. It means it will always be rendered on top/bottom of the
-    viewport ([MDN](http://developer.mozilla.org/en-US/docs/Web/CSS/position)).
+    <Unstyled>
+        The `Banner` uses `position:sticky` for positioning. It means it will always be rendered on top/bottom of the
+        viewport ([MDN](http://developer.mozilla.org/en-US/docs/Web/CSS/position)).
+    </Unstyled>
 </Advice>
 
 ## Visibility management (dismiss function)

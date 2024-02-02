@@ -15,10 +15,6 @@ interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps
      */
     size?: Size;
     /**
-     * Adjust colors for display on a dark background
-     */
-    inverted?: boolean;
-    /**
      * Show error state
      */
     error?: boolean;

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Label, Link, Text } from '../..';
-import { Colors } from '../../../essentials';
-import { DigitalPaymentIcon } from '../../../icons/payment';
+import { PayByAppIcon } from '../../../icons';
+import { getSemanticValue } from '../../../utils/cssVariables';
 
 export const ComplexDataTable: FC = () => (
     <Table rowStyle="lines" rowSize="large">
@@ -56,11 +56,11 @@ export const ComplexDataTable: FC = () => (
                 <TableCell>
                     <Box display="flex" alignItems="center">
                         2.52 EUR&nbsp;&nbsp;
-                        <DigitalPaymentIcon size={20} />
+                        <PayByAppIcon size={20} />
                     </Box>
                 </TableCell>
             </TableRow>
-            <TableRow style={{ borderLeft: `4px solid ${Colors.NEGATIVE_ORANGE_900}` }}>
+            <TableRow style={{ borderLeft: `4px solid ${getSemanticValue('border-danger-default')}` }}>
                 <TableCell>
                     <Label>Advanced</Label>
                 </TableCell>
@@ -119,7 +119,7 @@ export const ComplexDataTable: FC = () => (
                 <TableCell>
                     <Box display="flex" alignItems="center">
                         18.40 EUR&nbsp;&nbsp;
-                        <DigitalPaymentIcon size={20} />
+                        <PayByAppIcon size={20} />
                     </Box>
                 </TableCell>
             </TableRow>

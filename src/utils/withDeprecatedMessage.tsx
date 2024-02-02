@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 import warning from 'warning';
 
 type WithDeprecatedMessageFunc<T> = (
@@ -20,30 +20,27 @@ type WithDeprecatedMessageFunc<T> = (
  * @param externalProps Alternative component props
  */
 // eslint-disable-next-line import/no-mutable-exports
-let withDeprecatedMessage: WithDeprecatedMessageFunc<Record<string, unknown>> = (
-    deprecatedComponentName,
-    PassedComponent,
-    externalProps = {}
-) => props => <PassedComponent {...props} {...externalProps} />;
+let withDeprecatedMessage: WithDeprecatedMessageFunc<Record<string, unknown>> =
+    (deprecatedComponentName, PassedComponent, externalProps = {}) =>
+    props =>
+        <PassedComponent {...props} {...externalProps} />;
 
 if (process.env.NODE_ENV !== 'production') {
-    withDeprecatedMessage = (
-        deprecatedComponentName: string,
-        PassedComponent: React.ComponentType,
-        externalProps = {}
-    ) => (props: PropsWithChildren<Record<string, unknown>>): JSX.Element => {
-        const stringifiedProps = Object.entries(externalProps)
-            .map(([k, v]) => `${k}={${v.toString()}}`)
-            .join(' ');
+    withDeprecatedMessage =
+        (deprecatedComponentName: string, PassedComponent: React.ComponentType, externalProps = {}) =>
+        (props: Record<string, unknown>): JSX.Element => {
+            const stringifiedProps = Object.entries(externalProps)
+                .map(([k, v]) => `${k}={${v.toString()}}`)
+                .join(' ');
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        warning(
-            false,
-            `The component ${deprecatedComponentName} is deprecated. Replace it with <${PassedComponent.name} ${stringifiedProps}/>`
-        );
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+            warning(
+                false,
+                `The component ${deprecatedComponentName} is deprecated. Replace it with <${PassedComponent.name} ${stringifiedProps}/>`
+            );
 
-        return <PassedComponent {...props} {...externalProps} />;
-    };
+            return <PassedComponent {...props} {...externalProps} />;
+        };
 }
 
 export { withDeprecatedMessage };

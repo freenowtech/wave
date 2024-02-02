@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { borderRadius, BorderRadiusProps, compose, layout, LayoutProps, margin, MarginProps } from 'styled-system';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 
 const shimmerAnimation = keyframes`
@@ -46,7 +46,7 @@ export const Skeleton = styled.span<SkeletonProps>`
     position: relative;
     overflow: hidden;
     border-radius: ${get('radii.2')};
-    background-color: ${Colors.AUTHENTIC_BLUE_50};
+    background-color: ${getSemanticValue('background-surface-neutral-faded')};
 
     ${compose(layout, margin, borderRadius)};
 

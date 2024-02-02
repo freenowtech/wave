@@ -1,21 +1,17 @@
 import { ComponentPropsWithoutRef, FC } from 'react';
 import styled, { css } from 'styled-components';
 import { compose, ResponsiveValue, variant } from 'styled-system';
-import { Colors } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { SelectLabel } from './SelectLabel';
 import { bottomLinedSizeVariants, boxedSizeVariants } from './selectVariantSizes';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 interface BaseSelectProps extends Omit<ComponentPropsWithoutRef<'select'>, 'size'> {
     /**
      * Define the display variant with boxed as the default
      */
     variant?: ResponsiveValue<'boxed' | 'bottom-lined'>;
-    /**
-     * Adjust colors for display on a dark background
-     */
-    inverted?: boolean;
     /**
      * Indicate that the input contains an error
      */
@@ -32,21 +28,21 @@ const inputVariants = variant({
     variants: {
         boxed: {
             borderRadius: get('radii.2'),
-            border: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
+            border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
             '&:active:not(:disabled), &:focus:not(:disabled)': {
-                borderColor: Colors.ACTION_BLUE_900,
-                boxShadow: `inset 0 0 0 0.0625rem ${Colors.ACTION_BLUE_900}`
+                borderColor: getSemanticValue('border-focus'),
+                boxShadow: `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}`
             }
         },
         'bottom-lined': {
             border: 'none',
             borderTopLeftRadius: get('radii.1'),
             borderTopRightRadius: get('radii.1'),
-            borderBottom: `0.0625rem solid ${Colors.AUTHENTIC_BLUE_200}`,
+            borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
 
             '&:active:not(:disabled), &:focus:not(:disabled)': {
-                borderColor: Colors.ACTION_BLUE_900,
-                boxShadow: `inset 0 -0.0625rem 0 0 ${Colors.ACTION_BLUE_900}`
+                borderColor: getSemanticValue('border-focus'),
+                boxShadow: `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-focus')}`
             }
         }
     }
@@ -55,13 +51,13 @@ const inputVariants = variant({
 const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
     if (error) {
         return css`
-            border-color: ${Colors.NEGATIVE_ORANGE_900};
+            border-color: ${getSemanticValue('border-danger-default')};
             box-shadow: ${variantProp === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${Colors.NEGATIVE_ORANGE_900}`
-                : `inset 0 -0.0625rem 0 0 ${Colors.NEGATIVE_ORANGE_900}`};
+                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
+                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`};
 
             & ~ ${SelectLabel} {
-                color: ${Colors.NEGATIVE_ORANGE_900};
+                color: ${getSemanticValue('foreground-danger-emphasized')};
             }
         `;
     }
@@ -70,25 +66,25 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
 };
 
 const disabledStyles = css<BaseSelectProps>`
-    color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+    color: ${getSemanticValue('foreground-disabled')};
     cursor: not-allowed;
-    border-color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+    border-color: ${getSemanticValue('border-disabled')};
 
     & ~ ${SelectLabel} {
-        color: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+        color: ${getSemanticValue('foreground-disabled')};
     }
 
     & ~ .svg-icon svg > * {
-        fill: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_550 : Colors.AUTHENTIC_BLUE_200)};
+        fill: ${getSemanticValue('foreground-disabled')};
     }
 `;
 
 const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSelectProps>`
     margin: 0;
     box-sizing: border-box;
-    background: ${p => (p.inverted ? 'transparent' : Colors.WHITE)};
+    background: ${getSemanticValue('background-page-default')};
     border-radius: 0;
-    color: ${p => (p.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900)};
+    color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
     transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
@@ -101,7 +97,7 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     text-overflow: ellipsis;
 
     & ~ .svg-icon svg > * {
-        fill: ${p => (p.inverted ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_550)};
+        fill: ${getSemanticValue('foreground-neutral-emphasized')};
     }
 
     ${p => {
@@ -118,24 +114,25 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     ${p => (p.disabled ? disabledStyles : undefined)}
     &:-moz-focusring {
         outline: none;
-        text-shadow: 0 0 0 ${Colors.AUTHENTIC_BLUE_900};
+        text-shadow: 0 0 0 ${getSemanticValue('foreground-neutral-emphasized')};
     }
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-        -webkit-text-fill-color: ${p => (p.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900)};
+        -webkit-text-fill-color: ${getSemanticValue('foreground-neutral-emphasized')};
         transition: background-color 99999999ms ease 99999999ms;
     }
 
-    &:active:not(:disabled), &:focus:not(:disabled) {
+    &:active:not(:disabled),
+    &:focus:not(:disabled) {
         & ~ ${SelectLabel} {
-            color: ${p => (p.inverted ? Colors.WHITE : Colors.ACTION_BLUE_900)};
+            color: ${getSemanticValue('foreground-neutral-emphasized')};
         }
 
         & ~ .svg-icon svg > * {
-            fill: ${p => (p.inverted ? Colors.WHITE : Colors.AUTHENTIC_BLUE_900)};
+            fill: ${getSemanticValue('foreground-neutral-emphasized')};
         }
     }
 `;

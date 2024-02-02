@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import { SemanticColors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 
 const determineBackground = (props: SlideProps) => {
     if (props.disabled) {
-        return SemanticColors.background.secondary;
+        return getSemanticValue('background-element-disabled-faded');
     }
 
     if (props.error) {
-        return SemanticColors.background.dangerEmphasized;
+        return getSemanticValue('background-element-danger-default');
     }
 
-    return SemanticColors.background.infoEmphasized;
+    return getSemanticValue('background-element-accent-emphasized');
 };
 
 interface SlideProps {
@@ -18,13 +18,16 @@ interface SlideProps {
     error?: boolean;
 }
 
-// TODO use SemanticColors.forms once https://github.com/freenowtech/wave/issues/286 is done
 const Slide = styled.div<SlideProps>`
     width: 2.25rem;
     height: 1rem;
 
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-    background: ${props => (props.disabled ? SemanticColors.background.secondary : SemanticColors.border.primary)};
+    background: ${props =>
+        // background-element-disabled-default is used for en enabled state
+        // because this is the only time this pair of colors used for a background of an enabled element
+        // create a new semantic token when another such use case appear
+        getSemanticValue(props.disabled ? 'background-element-disabled-faded' : 'background-element-disabled-default')};
     display: inline-block;
     border-radius: 0.5rem;
     position: relative;
@@ -38,7 +41,9 @@ const Slide = styled.div<SlideProps>`
         width: 1.25rem;
         height: 1.25rem;
         background: ${props =>
-            props.disabled ? SemanticColors.background.secondary : SemanticColors.background.primary};
+            getSemanticValue(
+                props.disabled ? 'background-element-disabled-faded' : 'background-element-neutral-default'
+            )};
         border-radius: 50%;
         box-shadow: 0 0 0.0625rem 0 rgba(0, 0, 0, 0.05), 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.4);
         transform: translateX(0);

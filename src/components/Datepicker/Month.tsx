@@ -3,8 +3,7 @@ import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 
-import { generateId } from '../../utils/ids';
-import { Colors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
 import { Day } from './Day';
 
@@ -51,18 +50,26 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
             </Text>
             <Weekdays>
                 {weekdayLabels.map(dayLabel => (
-                    <Text as="p" key={dayLabel} fontSize={0} textAlign="center" color={Colors.AUTHENTIC_BLUE_550}>
+                    <Text
+                        as="p"
+                        key={dayLabel}
+                        fontSize={0}
+                        textAlign="center"
+                        color={getSemanticValue('foreground-neutral-emphasized')}
+                    >
                         {dayLabel}
                     </Text>
                 ))}
             </Weekdays>
             <DaysContainer>
-                {days.map(day => {
+                {days.map((day, index) => {
                     if (typeof day === 'object') {
                         return <Day date={day.date} key={day.date.toString()} dayLabel={day.dayLabel} />;
                     }
 
-                    return <div key={generateId()} />;
+                    // we can use index as a key since the array is never reordered
+                    // eslint-disable-next-line react/no-array-index-key
+                    return <div key={index} />;
                 })}
             </DaysContainer>
         </div>

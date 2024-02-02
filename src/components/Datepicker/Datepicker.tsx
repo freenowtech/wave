@@ -1,8 +1,9 @@
-import React, { FC, RefObject } from 'react';
+import React, { FC } from 'react';
 import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
 import styled from 'styled-components';
 
-import { Elevation, MediaQueries, SemanticColors } from '../../essentials';
+import { getSemanticValue } from '../../utils/cssVariables';
+import { Elevation, MediaQueries } from '../../essentials';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
 import { Month } from './Month';
 import { DatepickerContext } from './DatepickerContext';
@@ -22,7 +23,7 @@ const DatepickerContainer = styled.div`
 
     z-index: ${Elevation.DATEPICKER};
     position: relative;
-    background: ${SemanticColors.forms.datePicker.calendar.background};
+    background: ${getSemanticValue('background-surface-neutral-default')};
 
     ${MediaQueries.small} {
         padding: 1.5rem;
@@ -48,12 +49,11 @@ const Forward = styled(ChevronRightIcon)`
     }
 `;
 
-interface BaseDatepickerProps extends UseDatepickerProps {
-    forwardedRef: RefObject<HTMLDivElement>;
+interface DatepickerProps extends UseDatepickerProps {
     locale: Locale;
 }
 
-const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, locale, ...datepickerProps }) => {
+export const Datepicker: FC<DatepickerProps> = ({ focusedInput, locale, ...datepickerProps }) => {
     const {
         firstDayOfWeek,
         activeMonths,
@@ -88,7 +88,6 @@ const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, l
             }}
         >
             <DatepickerContainer
-                ref={forwardedRef}
                 onMouseDown={e => {
                     // Prevent mousedown event on Datepicker, so everything else dont lose focus
                     e.preventDefault();
@@ -111,9 +110,3 @@ const BaseDatepicker: FC<BaseDatepickerProps> = ({ forwardedRef, focusedInput, l
         </DatepickerContext.Provider>
     );
 };
-
-export const Datepicker = React.forwardRef(
-    (props: Omit<BaseDatepickerProps, 'forwardedRef'>, ref: RefObject<HTMLDivElement>) => (
-        <BaseDatepicker {...props} forwardedRef={ref} />
-    )
-);
