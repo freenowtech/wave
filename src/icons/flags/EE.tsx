@@ -74,13 +74,7 @@ const EE: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     />
                 </g>
             </mask>
-            <path
-                mask="url(#EE__mask-2_2_)"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                fill="#5da8f1"
-                d="M0 0h28v6.7H0z"
-            />
+            <path mask="url(#EE__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#5da8f1" d="M0 0h28v6.7H0z" />
         </svg>
     );
 };

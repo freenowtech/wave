@@ -24,7 +24,7 @@ const Link = styled.a.attrs({ theme })<LinkProps>`
 
     &:hover,
     &:active {
-        color: ${getSemanticValue( 'foreground-accent-emphasized')};
+        color: ${getSemanticValue('foreground-accent-emphasized')};
         text-decoration: underline;
     }
 

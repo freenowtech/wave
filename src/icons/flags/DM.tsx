@@ -35,11 +35,7 @@ const DM: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     fill="#262626"
                     mask="url(#DM__b)"
                 />
-                <path
-                    d="M12 9.333H0V8h12V0h1.333v8H28v1.333H13.333V20H12V9.333z"
-                    fill="#FCD449"
-                    mask="url(#DM__b)"
-                />
+                <path d="M12 9.333H0V8h12V0h1.333v8H28v1.333H13.333V20H12V9.333z" fill="#FCD449" mask="url(#DM__b)" />
                 <circle fill="url(#DM__c)" mask="url(#DM__b)" cx={14} cy={10} r={4.667} />
                 <path
                     d="M14 13.333a3.333 3.333 0 100-6.666 3.333 3.333 0 000 6.666z"

@@ -11,8 +11,8 @@ import { CardProps, InfoBannerVariants } from '../types';
 
 export const LOCAL_CSS_VARIABLES = {
     LINK: applyPrefix('infobanner-link', 'l'),
-    LINK_HOVER: applyPrefix('infobanner-link-hover', 'l'),
-}
+    LINK_HOVER: applyPrefix('infobanner-link-hover', 'l')
+};
 
 const bannerVariants = styledVariant({
     variants: {

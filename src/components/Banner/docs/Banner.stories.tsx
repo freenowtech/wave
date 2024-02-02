@@ -60,7 +60,7 @@ type Story = StoryObj<typeof Banner>;
 
 export const Default: Story = {
     args: {
-        children: <Text style={{color: 'inherit'}}>Hello</Text>
+        children: <Text style={{ color: 'inherit' }}>Hello</Text>
     }
 };
 

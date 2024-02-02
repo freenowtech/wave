@@ -7,19 +7,19 @@ export interface EnforcedColorSchemeProps extends BoxProps {
 }
 
 export const EnforcedColorScheme: React.FC<EnforcedColorSchemeProps> = ({ scheme, children, ...props }) => (
-    <Box {...props} className={`${scheme === 'dark' ? 'dark-scheme' : 'light-scheme'} wave`} >
+    <Box {...props} className={`${scheme === 'dark' ? 'dark-scheme' : 'light-scheme'} wave`}>
         {children}
     </Box>
 );
 
 export const DarkScheme: React.FC<Omit<EnforcedColorSchemeProps, 'scheme'>> = ({ children, ...props }) => (
-    <EnforcedColorScheme {...props} scheme="dark" >
+    <EnforcedColorScheme {...props} scheme="dark">
         {children}
     </EnforcedColorScheme>
 );
 
 export const LightScheme: React.FC<Omit<EnforcedColorSchemeProps, 'scheme'>> = ({ children, ...props }) => (
-    <EnforcedColorScheme {...props} scheme="light" >
+    <EnforcedColorScheme {...props} scheme="light">
         {children}
     </EnforcedColorScheme>
 );

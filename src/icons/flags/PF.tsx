@@ -215,11 +215,7 @@ const PF: React.FC<Props> = ({ size = 'medium', ...props }) => {
                             d="M2.4 1.8v-.7c0-.5 0-.7.1-.7L2.4.1c-.2.1-.5.2-.7.3l.7 1.4"
                         />
                         <path id="PF__Fill-45" className="PF__st10" d="M4.7 3v-.2l-.6.2h.6" />
-                        <path
-                            id="PF__Fill-47"
-                            className="PF__st10"
-                            d="M5.3 3.1l1.2-.2c0-.3-.1-.5-.2-.8l-1 .4v.6"
-                        />
+                        <path id="PF__Fill-47" className="PF__st10" d="M5.3 3.1l1.2-.2c0-.3-.1-.5-.2-.8l-1 .4v.6" />
                         <path id="PF__Fill-49" className="PF__st10" d="M5.3 3.2l1.3-.1v.8H5.4v-.7" />
                         <path
                             id="PF__Fill-51"

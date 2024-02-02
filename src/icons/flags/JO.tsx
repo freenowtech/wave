@@ -71,13 +71,7 @@ const JO: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     />
                 </g>
             </mask>
-            <path
-                mask="url(#JO__mask-2_2_)"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                fill="#262626"
-                d="M0 0h28v6.7H0z"
-            />
+            <path mask="url(#JO__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#262626" d="M0 0h28v6.7H0z" />
             <defs>
                 <filter
                     id="JO__Adobe_OpacityMaskFilter_2_"

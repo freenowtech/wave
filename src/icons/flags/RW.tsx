@@ -17,14 +17,7 @@ const RW: React.FC<Props> = ({ size = 'medium', ...props }) => {
             xmlnsXlink="http://www.w3.org/1999/xlink"
         >
             <defs>
-                <filter
-                    x="-5.4%"
-                    y="-28.1%"
-                    width="110.7%"
-                    height="156.2%"
-                    filterUnits="objectBoundingBox"
-                    id="RW__c"
-                >
+                <filter x="-5.4%" y="-28.1%" width="110.7%" height="156.2%" filterUnits="objectBoundingBox" id="RW__c">
                     <feMorphology radius={0.5} operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1" />
                     <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />

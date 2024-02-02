@@ -19,9 +19,7 @@ const GG: React.FC<Props> = ({ size = 'medium', ...props }) => {
             viewBox="0 0 28 20"
             xmlSpace="preserve"
         >
-            <style>
-                {'.GG__st2,.GG__st8{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.GG__st8{fill:#f9dd16}'}
-            </style>
+            <style>{'.GG__st2,.GG__st8{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.GG__st8{fill:#f9dd16}'}</style>
             <path
                 d="M2 0h24c1.1 0 2 .9 2 2.1V18c0 1.1-.9 2.1-2 2.1H2c-1.1 0-2-.9-2-2.1V2.1C0 .9.9 0 2 0z"
                 fill="#fff"
