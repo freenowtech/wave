@@ -9,7 +9,13 @@ import { Icon } from './Icon';
 import { Container, LOCAL_CSS_VARIABLES } from './Container';
 import { CardProps } from '../types';
 
-const StyledLink = styled(WaveLink).attrs({ fontSize: 0, textAlign: 'left', target: '_blank', marginTop: '0.25rem' })`
+const StyledLink = styled(WaveLink).attrs(props => ({
+    fontSize: 0,
+    textAlign: 'left',
+    target: '_blank',
+    marginTop: '0.25rem',
+    ...props
+}))`
     color: var(${LOCAL_CSS_VARIABLES.LINK});
 
     &:link,
