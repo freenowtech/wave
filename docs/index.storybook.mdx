@@ -20,6 +20,7 @@ import { Button } from '../src/components/Button/Button';
 import { Card } from '../src/components/Card/Card';
 import { Headline } from '../src/components/Headline/Headline';
 import { Text } from '../src/components/Text/Text';
+import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
 
 <Meta title="Welcome" />
 
@@ -46,7 +47,7 @@ import { Text } from '../src/components/Text/Text';
       position: relative;
       z-index: 10 !important;
     }
-    
+
     .heading-red {
       color: #CA0928;
       font-size: 32px;
@@ -117,9 +118,13 @@ import { Text } from '../src/components/Text/Text';
         <img src={ByFreenow} width='170px' alt='by-freenow-logo' />
     </Box>
 
-    <Card className='hero-banner' level={0}>
-          <Text as='p'>⚠️ This is documentation for Wave 2.x. <a href='https://freenowtech.github.io/wave-v1-docs'>Go to v1 docs</a></Text>
-    </Card>
+    <InfoBanner
+        title="This is documentation for Wave 2.x."
+        linkUrl="https://freenowtech.github.io/wave-v1-docs"
+        linkText="Go to v1 docs"
+        emphasized
+        variant="warning"
+    />
 
     <Card className='hero-banner' level={200} mt="50px">
       <Box display='flex' flexDirection='column'>
