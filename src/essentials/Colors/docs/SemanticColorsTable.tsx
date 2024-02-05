@@ -3,7 +3,17 @@ import { DocsContext } from '@storybook/blocks';
 import React, { FC, useContext, useMemo, useState } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import styled from 'styled-components';
-import { Box, Input, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
+import {
+    Box,
+    DarkScheme,
+    Input,
+    InvertedColorScheme,
+    LightScheme,
+    Table,
+    TableCell,
+    TableHeaderCell,
+    TableRow
+} from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
 import {
     Colors as ClassicColors,
@@ -16,11 +26,14 @@ import {
     SemanticColorsDarkSchema as ModernDarkSemanticTokens
 } from '../ModernColors';
 
+const BlockContainer = styled.div`
+    width: 4rem;
+`;
+
 const ColorBlock = styled.div<{ token: string }>`
     background-color: var(${p => p.token});
     border: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
     height: 1.5rem;
-    width: 4rem;
 `;
 
 const Tokens = {
@@ -58,8 +71,19 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const { theme } = globals.get();
     const tokens = Tokens[tier][isDark ? 'dark' : 'light'][theme];
+    const invertedSchemeTokens = Tokens[tier][isDark ? 'light' : 'dark'][theme];
 
-    const entries = useMemo(() => generateCssVariableEntries(tokens), [tokens]);
+    const entries = useMemo(() => {
+        const schemeEntries = generateCssVariableEntries(tokens);
+        const invertedSchemeEntries = generateCssVariableEntries(invertedSchemeTokens);
+
+        return schemeEntries.map(({ value, variable }, i) => ({
+            value,
+            variable,
+            invertedValue: invertedSchemeEntries[i].value
+        }));
+    }, [tokens, invertedSchemeTokens]);
+
     const filteredTokens = !nameSearchInput
         ? entries
         : entries.filter(({ variable }) => variable.includes(nameSearchInput.toLowerCase().trim()));
@@ -69,6 +93,7 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
             <thead>
                 <TableRow>
                     <TableHeaderCell>Color</TableHeaderCell>
+                    <TableHeaderCell>Inverted Color</TableHeaderCell>
                     <TableHeaderCell>
                         <Box display="flex" justifyContent="space-between" alignItems="center">
                             Name
@@ -80,23 +105,40 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
                             />
                         </Box>
                     </TableHeaderCell>
-                    <TableHeaderCell>Hex Code</TableHeaderCell>
                 </TableRow>
             </thead>
             <tbody>
-                {filteredTokens.map(({ variable, value }) => (
-                    <TableRow key={variable}>
-                        <TableCell>
-                            <ColorBlock token={applyPrefix(variable, tier)} />
-                        </TableCell>
-                        <TableCell>
-                            <code>{variable}</code>
-                        </TableCell>
-                        <TableCell>
-                            <code>{value}</code>
-                        </TableCell>
-                    </TableRow>
-                ))}
+                {filteredTokens.map(({ variable, value, invertedValue }) => {
+                    const token = applyPrefix(variable, tier);
+
+                    return (
+                        <TableRow key={variable}>
+                            <TableCell>
+                                <BlockContainer>
+                                    <ColorBlock token={token} />
+                                </BlockContainer>
+                                <code>{value}</code>
+                            </TableCell>
+                            <TableCell>
+                                <BlockContainer>
+                                    {isDark ? (
+                                        <LightScheme>
+                                            <ColorBlock token={token} />
+                                        </LightScheme>
+                                    ) : (
+                                        <DarkScheme>
+                                            <ColorBlock token={token} />
+                                        </DarkScheme>
+                                    )}
+                                </BlockContainer>
+                                <code>{invertedValue}</code>
+                            </TableCell>
+                            <TableCell>
+                                <code>{variable}</code>
+                            </TableCell>
+                        </TableRow>
+                    );
+                })}
             </tbody>
         </Table>
     );
