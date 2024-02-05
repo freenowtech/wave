@@ -1,11 +1,20 @@
 import { DocsContext } from '@storybook/blocks';
 
 import React, { FC, useContext, useMemo, useState } from 'react';
+import { useDarkMode } from 'storybook-dark-mode';
 import styled from 'styled-components';
 import { Box, Input, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
-import { Colors as ClassicColors, SemanticColors as ClassicSemanticTokens } from '../Colors';
-import { Colors as ModernColors, SemanticColors as ModernSemanticTokens } from '../ModernColors';
+import {
+    Colors as ClassicColors,
+    SemanticColors as ClassicSemanticTokens,
+    SemanticColorsDarkSchema as ClassicDarkSemanticTokens
+} from '../Colors';
+import {
+    Colors as ModernColors,
+    SemanticColors as ModernSemanticTokens,
+    SemanticColorsDarkSchema as ModernDarkSemanticTokens
+} from '../ModernColors';
 
 const ColorBlock = styled.div<{ token: string }>`
     background-color: var(${p => p.token});
@@ -16,17 +25,30 @@ const ColorBlock = styled.div<{ token: string }>`
 
 const Tokens = {
     s: {
-        classic: ClassicSemanticTokens,
-        modern: ModernSemanticTokens
+        light: {
+            classic: ClassicSemanticTokens,
+            modern: ModernSemanticTokens
+        },
+        dark: {
+            classic: ClassicDarkSemanticTokens,
+            modern: ModernDarkSemanticTokens
+        }
     },
     b: {
-        classic: ClassicColors,
-        modern: ModernColors
+        light: {
+            classic: ClassicColors,
+            modern: ModernColors
+        },
+        dark: {
+            classic: ClassicColors,
+            modern: ModernColors
+        }
     }
 } as const;
 
 export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     const [nameSearchInput, setNameSearchInput] = useState('');
+    const isDark = useDarkMode();
     const {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -35,7 +57,7 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const { theme } = globals.get();
-    const tokens = Tokens[tier][theme];
+    const tokens = Tokens[tier][isDark ? 'dark' : 'light'][theme];
 
     const entries = useMemo(() => generateCssVariableEntries(tokens), [tokens]);
     const filteredTokens = !nameSearchInput
