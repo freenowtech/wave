@@ -63,27 +63,27 @@ export const SemanticColors = {
     transparent: Colors.transparent,
     foreground: {
         primary: Colors.blue.primary[900],
-        'on-background': {
-            primary: Colors.white,
-            accent: Colors.white,
-            info: Colors.white,
-            success: Colors.white,
-            warning: Colors.blue.primary[900],
-            danger: Colors.white,
-            disabled: Colors.white,
-            neutral: Colors.blue.primary[900]
+        accent: {
+            default: Colors.blue.secondary[900],
+            emphasized: Colors.blue.secondary[1000]
         },
-        disabled: Colors.blue.primary[200],
-        focus: Colors.blue.secondary[900],
         neutral: {
             faded: Colors.blue.primary[200],
             default: Colors.blue.primary[350],
             emphasized: Colors.blue.primary[550]
         },
-        accent: {
-            default: Colors.blue.secondary[900],
-            emphasized: Colors.blue.secondary[1000]
+        'on-background': {
+            primary: Colors.white,
+            accent: Colors.white,
+            neutral: Colors.blue.primary[900],
+            disabled: Colors.white,
+            info: Colors.white,
+            success: Colors.white,
+            warning: Colors.blue.primary[900],
+            danger: Colors.white
         },
+        disabled: Colors.blue.primary[200],
+        focus: Colors.blue.secondary[900],
         info: {
             faded: Colors.blue.secondary[900],
             default: Colors.blue.secondary[900]
@@ -107,13 +107,13 @@ export const SemanticColors = {
             'elevation-3': Colors.white
         },
         element: {
-            disabled: {
-                faded: Colors.blue.primary[50],
-                default: Colors.blue.primary[200]
-            },
             primary: {
                 default: Colors.blue.primary[900],
                 emphasized: Colors.blue.primary[1100]
+            },
+            disabled: {
+                faded: Colors.blue.primary[50],
+                default: Colors.blue.primary[200]
             },
             neutral: {
                 default: Colors.white,
@@ -173,17 +173,17 @@ export const SemanticColors = {
         backdrop: Colors.blue.primary[900]
     },
     border: {
+        accent: {
+            faded: Colors.blue.secondary[350],
+            default: Colors.blue.secondary[900]
+        },
         neutral: {
             faded: Colors.white,
             default: Colors.blue.primary[200],
             emphasized: Colors.blue.primary[550]
         },
-        accent: {
-            faded: Colors.blue.secondary[350],
-            default: Colors.blue.secondary[900]
-        },
-        focus: Colors.blue.secondary[900],
         disabled: Colors.blue.primary[200],
+        focus: Colors.blue.secondary[900],
         info: {
             banner: Colors.blue.secondary[350],
             faded: Colors.blue.secondary[350],
@@ -231,12 +231,12 @@ export const SemanticColorsDarkSchema = {
         },
         'on-background': {
             primary: Colors.blue.secondary[900],
-            disabled: Colors.blue.primary[350],
-            success: Colors.white,
             accent: Colors.white,
             neutral: Colors.blue.primary[900],
-            warning: Colors.blue.primary[900],
+            disabled: Colors.blue.primary[350],
             info: Colors.white,
+            success: Colors.white,
+            warning: Colors.blue.primary[900],
             danger: Colors.white
         },
         disabled: Colors.blue.primary[350],
@@ -268,22 +268,22 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.white,
                 emphasized: Colors.blue.secondary[900]
             },
-            disabled: {
-                faded: Colors.blue.primary[750],
-                default: Colors.blue.primary[550]
-            },
             accent: {
                 faded: Colors.blue.secondary[1000],
                 default: Colors.blue.secondary[900],
                 emphasized: Colors.blue.secondary[900]
             },
-            info: {
-                default: Colors.blue.secondary[900],
-                emphasized: Colors.blue.secondary[1000]
+            disabled: {
+                faded: Colors.blue.primary[750],
+                default: Colors.blue.primary[550]
             },
             neutral: {
                 default: Colors.blue.primary[350],
                 emphasized: Colors.white
+            },
+            info: {
+                default: Colors.blue.secondary[900],
+                emphasized: Colors.blue.secondary[1000]
             },
             success: {
                 default: Colors.green[50]
@@ -330,15 +330,17 @@ export const SemanticColorsDarkSchema = {
         backdrop: Colors.blue.primary[50]
     },
     border: {
+        accent: {
+            faded: Colors.blue.secondary[350],
+            default: Colors.blue.secondary[350]
+        },
         neutral: {
             faded: Colors.white,
             default: Colors.white,
             emphasized: Colors.blue.primary[550]
         },
-        accent: {
-            faded: Colors.blue.secondary[350],
-            default: Colors.blue.secondary[350]
-        },
+        disabled: Colors.blue.primary[550],
+        focus: Colors.blue.secondary[900],
         info: {
             banner: Colors.blue.secondary[350],
             default: Colors.blue.secondary[900],
@@ -357,9 +359,7 @@ export const SemanticColorsDarkSchema = {
             banner: Colors.orange[350],
             faded: Colors.orange[900],
             default: Colors.orange[900]
-        },
-        focus: Colors.blue.secondary[900],
-        disabled: Colors.blue.primary[550]
+        }
     },
     logo: {
         free: 'hsl(350, 91%, 41%)',
