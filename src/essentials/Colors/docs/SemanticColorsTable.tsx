@@ -3,17 +3,7 @@ import { DocsContext } from '@storybook/blocks';
 import React, { FC, useContext, useMemo, useState } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import styled from 'styled-components';
-import {
-    Box,
-    DarkScheme,
-    Input,
-    InvertedColorScheme,
-    LightScheme,
-    Table,
-    TableCell,
-    TableHeaderCell,
-    TableRow
-} from '../../../components';
+import { Box, DarkScheme, Input, LightScheme, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
 import {
     Colors as ClassicColors,
@@ -26,8 +16,18 @@ import {
     SemanticColorsDarkSchema as ModernDarkSemanticTokens
 } from '../ModernColors';
 
+const CenteredTableCell = styled(TableCell)`
+    text-align: center;
+    width: 1%; // Hack to make width as small as possible while respecting table-layout: auto
+
+    &:first-child {
+        padding-left: 1rem;
+    }
+`;
+
 const BlockContainer = styled.div`
     width: 4rem;
+    margin: auto !important;
 `;
 
 const ColorBlock = styled.div<{ token: string }>`
@@ -113,13 +113,13 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
 
                     return (
                         <TableRow key={variable}>
-                            <TableCell>
+                            <CenteredTableCell>
                                 <BlockContainer>
                                     <ColorBlock token={token} />
                                 </BlockContainer>
                                 <code>{value}</code>
-                            </TableCell>
-                            <TableCell>
+                            </CenteredTableCell>
+                            <CenteredTableCell>
                                 <BlockContainer>
                                     {isDark ? (
                                         <LightScheme>
@@ -132,7 +132,7 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
                                     )}
                                 </BlockContainer>
                                 <code>{invertedValue}</code>
-                            </TableCell>
+                            </CenteredTableCell>
                             <TableCell>
                                 <code>{variable}</code>
                             </TableCell>
