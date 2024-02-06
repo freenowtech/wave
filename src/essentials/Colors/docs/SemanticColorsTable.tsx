@@ -18,7 +18,7 @@ import {
 
 const CenteredTableCell = styled(TableCell)`
     text-align: center;
-    width: 1%; // Hack to make width as small as possible while respecting table-layout: auto
+    width: 1%; /* Hack to make width as small as possible while respecting table-layout: auto */
 
     &:first-child {
         padding-left: 1rem;
