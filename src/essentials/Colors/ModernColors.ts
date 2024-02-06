@@ -56,28 +56,28 @@ export const SemanticColors = {
     white: Colors.white,
     transparent: Colors.transparent,
     foreground: {
-        disabled: Colors.neutral[200],
-        focus: Colors.neutral[550],
         primary: Colors.neutral[900],
-        'on-background': {
-            primary: Colors.white,
-            accent: Colors.white,
-            info: Colors.white,
-            success: Colors.white,
-            warning: Colors.neutral[900],
-            danger: Colors.white,
-            disabled: Colors.white,
-            neutral: Colors.neutral[900]
+        accent: {
+            default: Colors.primary[900],
+            emphasized: Colors.primary[1000]
         },
         neutral: {
             faded: Colors.neutral[200],
             default: Colors.neutral[350],
             emphasized: Colors.neutral[550]
         },
-        accent: {
-            default: Colors.primary[900],
-            emphasized: Colors.primary[1000]
+        'on-background': {
+            primary: Colors.white,
+            accent: Colors.white,
+            neutral: Colors.neutral[900],
+            disabled: Colors.white,
+            info: Colors.white,
+            success: Colors.white,
+            warning: Colors.neutral[900],
+            danger: Colors.white
         },
+        disabled: Colors.neutral[200],
+        focus: Colors.neutral[550],
         info: {
             faded: Colors.neutral[550],
             default: Colors.neutral[900]
@@ -101,13 +101,13 @@ export const SemanticColors = {
             'elevation-3': Colors.white
         },
         element: {
-            disabled: {
-                faded: Colors.neutral[50],
-                default: Colors.neutral[200]
-            },
             primary: {
                 default: Colors.primary[900],
                 emphasized: Colors.primary[1000]
+            },
+            disabled: {
+                faded: Colors.neutral[50],
+                default: Colors.neutral[200]
             },
             neutral: {
                 default: Colors.white,
@@ -167,17 +167,17 @@ export const SemanticColors = {
         backdrop: Colors.neutral[900]
     },
     border: {
+        accent: {
+            faded: Colors.primary[350],
+            default: Colors.primary[900]
+        },
         neutral: {
             faded: Colors.neutral[50],
             default: Colors.neutral[200],
             emphasized: Colors.neutral[550]
         },
-        accent: {
-            faded: Colors.primary[350],
-            default: Colors.primary[900]
-        },
-        focus: Colors.neutral[550],
         disabled: Colors.neutral[200],
+        focus: Colors.neutral[550],
         info: {
             banner: Colors.neutral[200],
             faded: Colors.neutral[200],
@@ -225,12 +225,12 @@ export const SemanticColorsDarkSchema = {
         },
         'on-background': {
             primary: Colors.primary[900],
-            disabled: Colors.neutral[350],
-            success: Colors.white,
             accent: Colors.primary[900],
             neutral: Colors.neutral[900],
-            warning: Colors.neutral[900],
+            disabled: Colors.neutral[350],
             info: Colors.white,
+            success: Colors.white,
+            warning: Colors.neutral[900],
             danger: Colors.white
         },
         disabled: Colors.neutral[550],
@@ -262,6 +262,11 @@ export const SemanticColorsDarkSchema = {
                 default: Colors.neutral[50],
                 emphasized: Colors.white
             },
+            accent: {
+                faded: Colors.primary[1000],
+                default: Colors.primary[900],
+                emphasized: Colors.primary[350]
+            },
             disabled: {
                 faded: Colors.neutral[650],
                 default: Colors.neutral[550]
@@ -269,11 +274,6 @@ export const SemanticColorsDarkSchema = {
             neutral: {
                 default: Colors.neutral[350],
                 emphasized: Colors.white
-            },
-            accent: {
-                faded: Colors.primary[1000],
-                default: Colors.primary[900],
-                emphasized: Colors.primary[350]
             },
             info: {
                 default: Colors.neutral[350],
@@ -324,17 +324,17 @@ export const SemanticColorsDarkSchema = {
         backdrop: Colors.neutral[50]
     },
     border: {
+        accent: {
+            faded: Colors.primary[350],
+            default: Colors.primary[350]
+        },
         neutral: {
             faded: Colors.neutral[50],
             default: Colors.neutral[200],
             emphasized: Colors.neutral[50]
         },
-        focus: Colors.neutral[550],
         disabled: Colors.neutral[550],
-        accent: {
-            faded: Colors.primary[350],
-            default: Colors.primary[350]
-        },
+        focus: Colors.neutral[550],
         info: {
             banner: Colors.neutral[200],
             faded: Colors.neutral[550],
