@@ -18,7 +18,7 @@ export const DatepickerOnModal: FC = () => {
                         <>
                             <Headline as="h2">New Event</Headline>
 
-                            <DatePicker value={value} onChange={setValue} />
+                            <DatePicker label="Date" value={value} onChange={setValue} />
 
                             <br />
                             <Button onClick={dismiss}>Add Event</Button>
