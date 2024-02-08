@@ -1,6 +1,6 @@
 import { FirstDayOfWeek, START_DATE } from '@datepicker-react/hooks';
 import parse from 'date-fns/parse';
-import React, { ChangeEventHandler, FC, useEffect, useMemo, useState } from 'react';
+import React, { ChangeEventHandler, FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { MarginProps, WidthProps } from 'styled-system';
 import { usePopper } from 'react-popper';
 import { createPortal } from 'react-dom';
@@ -163,7 +163,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     };
 
     const PortalWrapper = useMemo(() => {
-        if (!enforcedColorScheme) return React.Fragment;
+        if (!enforcedColorScheme) return Fragment;
         return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
     }, [enforcedColorScheme]);
 
