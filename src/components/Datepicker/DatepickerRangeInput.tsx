@@ -1,6 +1,6 @@
 import { END_DATE, FirstDayOfWeek, FocusedInput, START_DATE } from '@datepicker-react/hooks';
 import { compareDesc, Locale, parse, startOfDay, endOfDay } from 'date-fns';
-import React, { ChangeEventHandler, FC, useEffect, useRef, useState } from 'react';
+import React, { ChangeEventHandler, FC, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { usePopper } from 'react-popper';
@@ -19,6 +19,8 @@ import { dateToDisplayText } from './utils/dateToDisplayText';
 import { useLocaleObject } from './utils/useLocaleObject';
 import { useOnChange } from './utils/useOnChange';
 import { Arrow, DatepickerContentContainer } from './DatepickerContentElements';
+import { DarkScheme, LightScheme } from '../ColorScheme';
+import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
 
 type DateRangerProps = MarginProps & WidthProps;
 
@@ -278,6 +280,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         ]
     });
 
+    const enforcedColorScheme = useClosestColorScheme(triggerReference);
     const startId = useGeneratedId(startInputId);
     const endId = useGeneratedId(endInputId);
 
@@ -364,6 +367,11 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         }));
     };
 
+    const PortalWrapper = useMemo(() => {
+        if (!enforcedColorScheme) return React.Fragment;
+        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
+    }, [enforcedColorScheme]);
+
     return (
         <>
             <DateRangeWrapper ref={setTriggerReference} {...rest}>
@@ -412,26 +420,32 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
             )}
             {focusedInput &&
                 createPortal(
-                    <DatepickerContentContainer ref={setContentReference} style={styles.popper} {...attributes.popper}>
-                        <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
-                        <Datepicker
-                            // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
-                            numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
-                            minBookingDays={1}
-                            startDate={value.startDate}
-                            endDate={value.endDate}
-                            minBookingDate={minDate}
-                            maxBookingDate={maxDate}
-                            firstDayOfWeek={firstDayOfWeek}
-                            focusedInput={focusedInput}
-                            onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
-                                setFocusedInput(focusedValue);
-                                handleDateChange(startDate || undefined, endDate || undefined);
-                            }}
-                            isDateBlocked={isDateBlocked}
-                            locale={localeObject}
-                        />
-                    </DatepickerContentContainer>,
+                    <PortalWrapper>
+                        <DatepickerContentContainer
+                            ref={setContentReference}
+                            style={styles.popper}
+                            {...attributes.popper}
+                        >
+                            <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                            <Datepicker
+                                // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
+                                numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
+                                minBookingDays={1}
+                                startDate={value.startDate}
+                                endDate={value.endDate}
+                                minBookingDate={minDate}
+                                maxBookingDate={maxDate}
+                                firstDayOfWeek={firstDayOfWeek}
+                                focusedInput={focusedInput}
+                                onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
+                                    setFocusedInput(focusedValue);
+                                    handleDateChange(startDate || undefined, endDate || undefined);
+                                }}
+                                isDateBlocked={isDateBlocked}
+                                locale={localeObject}
+                            />
+                        </DatepickerContentContainer>
+                    </PortalWrapper>,
                     document.body
                 )}
         </>
