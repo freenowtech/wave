@@ -58,9 +58,10 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
 
         if (variant === 'bottom-lined') {
             return (
-                <InputWrapper ref={ref} {...classNameProps} {...marginProps} {...widthProps}>
+                <InputWrapper {...classNameProps} {...marginProps} {...widthProps}>
                     <BottomLinedInput
                         {...rest}
+                        ref={innerRef}
                         variant={variant}
                         id={id}
                         waveSize={size}

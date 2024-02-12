@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 const baseArrowStyles = css`
@@ -23,6 +24,7 @@ export const Arrow = styled.div`
 export const DatepickerContentContainer = styled.div`
     background: ${getSemanticValue('background-surface-neutral-default')};
     box-shadow: 0 0 0.5rem 0.1875rem rgba(0, 0, 0, 0.08);
+    z-index: ${Elevation.DATEPICKER};
 
     &[data-popper-placement^='top'] > ${Arrow} {
         bottom: -0.625rem;
