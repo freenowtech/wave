@@ -1,20 +1,44 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useMutationObserver } from './useMutationObserver';
+
+type ColorScheme = 'light' | 'dark' | undefined;
+
+const getColorSchemeFromElement = (element?: Element): ColorScheme => {
+    if (!element) return undefined;
+
+    const hasEnforcedLightScheme = element.classList.contains('light-scheme');
+    if (hasEnforcedLightScheme) return 'light';
+
+    const hasEnforcedDarkScheme = element.classList.contains('dark-scheme');
+    if (hasEnforcedDarkScheme) return 'dark';
+
+    return undefined;
+};
 
 /**
- * useClosestColorScheme - Returns 'light' / 'dark' based on the enforced color scheme closest to the element passed or `undefined` when no color scheme is enforced
+ * Gets the enforced color scheme closest to the @param element
+ *
+ * @param element DOM element
+ * @returns 'light' / 'dark' or `undefined` when no color scheme is enforced
  */
-export const useClosestColorScheme = (element?: HTMLElement): 'light' | 'dark' | undefined =>
-    useMemo(() => {
-        if (!element) return undefined;
+export const useClosestColorScheme = (element?: Element): ColorScheme => {
+    const closestParentWithColorScheme = useMemo(() => element?.closest('.wave'), [element]);
 
-        const closestParentWithColorScheme = element.closest('.wave');
-        if (!closestParentWithColorScheme) return undefined;
+    const [closestColorScheme, setClosestColorScheme] = useState<ColorScheme>();
 
-        const hasEnforcedLightScheme = closestParentWithColorScheme.classList.contains('light-scheme');
-        if (hasEnforcedLightScheme) return 'light';
+    useEffect(() => {
+        const colorScheme = getColorSchemeFromElement(closestParentWithColorScheme);
+        setClosestColorScheme(colorScheme);
+    }, [closestParentWithColorScheme]);
 
-        const hasEnforcedDarkScheme = closestParentWithColorScheme.classList.contains('dark-scheme');
-        if (hasEnforcedDarkScheme) return 'dark';
+    const callback = mutations => {
+        const lastMutation: MutationRecord = mutations[mutations.length - 1];
+        const changedElement = lastMutation.target as Element;
 
-        return undefined;
-    }, [element]);
+        setClosestColorScheme(getColorSchemeFromElement(changedElement));
+    };
+
+    useMutationObserver(closestParentWithColorScheme, callback, { attributes: true, attributeFilter: ['class'] });
+
+    return closestColorScheme;
+};
