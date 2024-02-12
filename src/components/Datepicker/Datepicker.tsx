@@ -3,7 +3,7 @@ import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/
 import styled from 'styled-components';
 
 import { getSemanticValue } from '../../utils/cssVariables';
-import { Elevation, MediaQueries } from '../../essentials';
+import { MediaQueries } from '../../essentials';
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
 import { Month } from './Month';
 import { DatepickerContext } from './DatepickerContext';
@@ -21,7 +21,6 @@ const DatepickerContainer = styled.div`
     display: flex;
     padding: 0.5rem;
 
-    z-index: ${Elevation.DATEPICKER};
     position: relative;
     background: ${getSemanticValue('background-surface-neutral-default')};
 

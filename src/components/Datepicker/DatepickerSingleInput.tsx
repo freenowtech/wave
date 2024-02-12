@@ -4,7 +4,7 @@ import React, { ChangeEventHandler, FC, useEffect, useState } from 'react';
 import { MarginProps, WidthProps } from 'styled-system';
 import { usePopper } from 'react-popper';
 import { createPortal } from 'react-dom';
-import { Input } from '../Input/Input';
+import { Input, InputProps } from '../Input/Input';
 
 import { Datepicker } from './Datepicker';
 import { isValidDateText } from './utils/isValidDateText';
@@ -14,15 +14,10 @@ import { dateToDisplayText } from './utils/dateToDisplayText';
 import { useLocaleObject } from './utils/useLocaleObject';
 import { Arrow, DatepickerContentContainer } from './DatepickerContentElements';
 
-interface DatepickerSingleInputProps extends MarginProps, WidthProps {
-    /**
-     * Placeholder for the input.
-     */
-    placeholder?: string;
-    /**
-     * Label for the input.
-     */
-    label?: string;
+interface DatepickerSingleInputProps
+    extends MarginProps,
+        WidthProps,
+        Omit<InputProps, 'value' | 'onChange' | 'disabled'> {
     /**
      * Function that is used when datepicker closes without selected date.
      */
@@ -85,8 +80,6 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     isDateBlocked,
     onClose,
     onChange,
-    placeholder,
-    label,
     displayFormat = 'dd/MM/yyyy',
     locale = 'en-US',
     value,
@@ -176,8 +169,6 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
                 autoComplete="off"
                 className="startDate"
                 data-testid="start-date-input"
-                label={label}
-                placeholder={placeholder}
                 value={inputText}
                 onFocus={() => setIsFocused(true)}
                 onBlur={handleDatepickerClose}
