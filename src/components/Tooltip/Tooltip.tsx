@@ -9,6 +9,8 @@ import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { InvertedColorScheme } from '../ColorScheme/InvertedColorScheme';
+import { DarkScheme, LightScheme } from '../ColorScheme';
+import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
 
 const fadeAnimation = keyframes`
     from {
@@ -162,6 +164,13 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
         ]
     });
 
+    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+
+    const PortalWrapper = React.useMemo(() => {
+        if (!enforcedColorScheme) return React.Fragment;
+        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
+    }, [enforcedColorScheme]);
+
     let dynamicContent = content;
 
     if (typeof content === 'string') {
@@ -190,14 +199,16 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
             {content &&
                 isVisible &&
                 createPortal(
-                    <TooltipBody
-                        ref={setContentReference}
-                        style={{ ...styles.popper }}
-                        variant={attributes.popper?.['data-popper-placement']}
-                        {...attributes.popper}
-                    >
-                        {dynamicContent}
-                    </TooltipBody>,
+                    <PortalWrapper>
+                        <TooltipBody
+                            ref={setContentReference}
+                            style={{ ...styles.popper }}
+                            variant={attributes.popper?.['data-popper-placement']}
+                            {...attributes.popper}
+                        >
+                            {dynamicContent}
+                        </TooltipBody>
+                    </PortalWrapper>,
                     document.body
                 )}
         </>
