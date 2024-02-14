@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Offcanvas, useOffcanvasDismiss } from '../Offcanvas';
+import { Offcanvas } from '../Offcanvas';
 import { Button } from '../../Button/Button';
 
 const meta: Meta = {
@@ -56,21 +56,4 @@ export const FromRightSide: Story = {
     args: {
         side: 'right'
     }
-};
-
-export const DismissedWithRenderProps: Story = {
-    render: args => <Offcanvas {...args}>{dismiss => <Button onClick={dismiss}>Close</Button>}</Offcanvas>
-};
-
-const Content = () => {
-    const dismiss = useOffcanvasDismiss();
-    return <Button onClick={dismiss}>Close</Button>;
-};
-
-export const DismissedWithHook: Story = {
-    render: args => (
-        <Offcanvas {...args}>
-            <Content />
-        </Offcanvas>
-    )
 };
