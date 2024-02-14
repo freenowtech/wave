@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StoryObj, Meta } from '@storybook/react';
-import { Modal, useModalDismiss } from '../Modal';
+import { Modal } from '../Modal';
 import { Button } from '../../Button/Button';
 
 const meta: Meta = {
@@ -58,21 +58,4 @@ export const WithoutAutomaticDismiss: Story = {
     args: {
         dismissible: false
     }
-};
-
-export const DismissedWithRenderProps: Story = {
-    render: args => <Modal {...args}>{dismiss => <Button onClick={dismiss}>Close</Button>}</Modal>
-};
-
-const Content = () => {
-    const dismiss = useModalDismiss();
-    return <Button onClick={dismiss}>Close</Button>;
-};
-
-export const DismissedWithHook: Story = {
-    render: args => (
-        <Modal {...args}>
-            <Content />
-        </Modal>
-    )
 };

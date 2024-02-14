@@ -60,7 +60,7 @@ const ANIMATION_DURATION = Math.max(
 const Offcanvas: React.FC<OffcanvasProps> = ({
     children,
     onClose,
-    dismissible,
+    dismissible = true,
     side = 'left',
     ...rest
 }: OffcanvasProps) => {
@@ -110,10 +110,6 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
             <PreventBackgroundScroll />
         </DismissContext.Provider>
     );
-};
-
-Offcanvas.defaultProps = {
-    dismissible: true
 };
 
 export { Offcanvas, OffcanvasProps, useOffcanvasDismiss };

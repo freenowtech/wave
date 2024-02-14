@@ -51,7 +51,7 @@ export { Search, SearchProps } from './Search/Search';
 export { Password } from './Password/Password';
 export { VisuallyHidden } from './VisuallyHidden/VisuallyHidden';
 export { RadioButtonProps } from './RadioButton/RadioButtonProps';
-export { Offcanvas, OffcanvasProps } from './Offcanvas/Offcanvas';
+export { Offcanvas, OffcanvasProps, useOffcanvasDismiss } from './Offcanvas/Offcanvas';
 export { SelectListProps } from './SelectList/types';
 export { Row, RowProps, Column, ColumnProps } from './Grid/Grid';
 export { Popover, PopoverProps } from './Popover/Popover';
