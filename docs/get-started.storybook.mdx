@@ -47,3 +47,36 @@ You'll see this:
     <Headline>Welcome</Headline>
     <Text>FREE NOW Design System</Text>
 </Card>
+
+## Considerations
+
+<br />
+
+### Usage with styled-components v6
+
+Wave will work with versions of `styled-components` higher than `4.3`, but in case you are using version `6` or above you may see warnings similar to `Warning: React does not recognize the {x} prop on a DOM element...`.
+The warnings appear because starting from v6 [`styled-components` does NOT automatically filter props anymore](https://styled-components.com/releases#v6.0.0), which results in props that are meant only for React components reaching the actual DOM.
+To get rid of these warning you can wrap your app with `StyleSheetManager` and pass a `shouldForwardProp` function like:
+
+```tsx
+import isPropValid from '@emotion/is-prop-valid';
+import { StyleSheetManager } from 'styled-components';
+
+const shouldForwardProp = (propName, target) => {
+    if (typeof target === 'string') {
+        // For HTML elements, forward the prop if it is a valid HTML attribute
+        return isPropValid(propName);
+    }
+    // For other elements, forward all props
+    return true;
+};
+
+const Root = () => (
+    <StyleSheetManager shouldForwardProp={shouldForwardProp}>
+        <App />
+    </StyleSheetManager>
+);
+```
+
+For the actual filtering function we recommend using the [@emotion/is-prop-valid](https://www.npmjs.com/package/@emotion/is-prop-valid) package to have a plug-and-play solution.
+For more information check out [this section in the styled-components docs about the change](https://styled-components.com/docs/faqs#shouldforwardprop-is-no-longer-provided-by-default).
