@@ -83,6 +83,13 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
     .card {
       width: 300px;
       min-width: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-link {
+      display: block;
+      margin-top: auto;
     }
 
     .card-half-width {
@@ -133,7 +140,7 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
         <Text>Our Wave design system offers a comprehensive suite <br/>of UI components to help you ship new features faster.</Text>
 
         <Box display='flex' mt='24px' alignItems='center'>
-          <a href='/?path=/docs/get-started--docs'>
+          <a href='/?path=/docs/get-started--docs' className='card-link' >
             <Button>Get started &nbsp; <ArrowRightIcon /></Button>
           </a>
 
@@ -162,7 +169,7 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
 
           <Text as='p' fontSize='14px' secondary>Convey meaning or structure, highlight various information or elements, display different states through our color palette.</Text>
 
-          <a href='/?path=/docs/essentials-colors--docs'>
+          <a href='/?path=/docs/essentials-colors--docs' className='card-link'>
             <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
           </a>
       </Card>
@@ -178,7 +185,7 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
 
           <Text as='p' fontSize='14px' secondary>Demonstrate the continuity of hierarchy, and importance of content on a page with our typography guidelines and styles.</Text>
 
-          <a href='/?path=/docs/components-text--docs'>
+          <a href='/?path=/docs/components-text--docs' className='card-link'>
             <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
           </a>
       </Card>
@@ -193,7 +200,7 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
 
           <Text as='p' fontSize='14px' secondary>Indicate the hierarchical relation of elements and consistency in layout with the distance of elements using our spacing system.</Text>
 
-          <a href='/?path=/docs/essentials-spaces--docs'>
+          <a href='/?path=/docs/essentials-spaces--docs' className='card-link'>
             <Button mt='24px' size='small' variant='secondary'>Explore &nbsp; <ArrowRightIcon /></Button>
           </a>
       </Card>
