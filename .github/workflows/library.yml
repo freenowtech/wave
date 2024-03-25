@@ -28,6 +28,85 @@ jobs:
             - name: Run tests
               run: npm run test
 
+    release_preview:
+        if: github.ref != 'refs/heads/main'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - name: Install dependencies
+              uses: bahmutov/npm-install@v1
+            - name: Generate release notes
+              id: generate-release-notes
+              run: |
+                  # locally get to the result of merging the current branch into the base branch (destination)
+                  git checkout -b ${{ github.base_ref }} ${{ github.event.after }}
+                  unset GITHUB_ACTIONS
+                  RELEASE_NOTES=$(npx semantic-release --no-ci --dry-run | base64 -w 0)
+                  echo "releaseNotes=$RELEASE_NOTES" >> $GITHUB_OUTPUT
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Report semantic release in PR
+              uses: actions/github-script@v3
+              if: ${{ steps.generate-release-notes.outputs.releaseNotes != '' }}
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  script: |
+                      // build release note
+                      const semanticReleaseOutput = Buffer.from('${{ steps.generate-release-notes.outputs.releaseNotes }}', 'base64').toString('utf8');
+                      const semanticReleaseLogMatch = /^[[0-9:\sAMPM]+\]\s\[semantic-release\].*$/;
+                      const lines = semanticReleaseOutput.split('\n');
+                      const lastSemanticReleaseLogIndex = [...lines]
+                          .reverse()
+                          .findIndex((line) => line.match(semanticReleaseLogMatch));
+
+                      const releaseNoteIndex = lines.length - lastSemanticReleaseLogIndex;
+                      const releaseNote = lines.slice(releaseNoteIndex);
+
+                      let res = releaseNote.join('\n');
+                      if (!releaseNote.length || !res) {
+                          res = '### No release note would be generated.';
+                      }
+
+                      const SEMANTIC_RELEASE_BODY_HEADER = '## 📝 Semantic Release Report';
+                      const body = [SEMANTIC_RELEASE_BODY_HEADER, res].join('\n');
+
+                      // get last comment
+                      const comments = await github.issues.listComments({
+                          issue_number: context.issue.number,
+                          owner: context.repo.owner,
+                          repo: context.repo.repo
+                      });
+
+                      // find comments to delete
+                      const commentsToDelete = comments.data.filter((comment) =>
+                          comment.body.startsWith(SEMANTIC_RELEASE_BODY_HEADER)
+                      );
+
+                      // delete comments
+                      const prms = commentsToDelete.map((comment) =>
+                          github.issues.deleteComment({
+                              comment_id: comment.id,
+                              owner: context.repo.owner,
+                              repo: context.repo.repo
+                          })
+                      );
+
+                      await Promise.all(prms);
+
+                      // create new comment for release note
+                      github.issues.createComment({
+                          issue_number: context.issue.number,
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          body
+                      });
+
     release:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
