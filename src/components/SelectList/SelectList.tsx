@@ -15,6 +15,8 @@ import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } f
 import { getSemanticValue } from '../../utils/cssVariables';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { get } from '../../utils/themeGet';
+import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
+import { DarkScheme, LightScheme } from '../ColorScheme';
 import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
@@ -309,21 +311,51 @@ const MultiValueRemove = props => (
     </ReactSelectComponents.MultiValueRemove>
 );
 
+// eslint-disable-next-line react/prop-types
+const LightSchemeMenu = ({ children, ...props }) => (
+    <LightScheme>
+        <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
+    </LightScheme>
+);
+
+// eslint-disable-next-line react/prop-types
+const DarkSchemeMenu = ({ children, ...props }) => (
+    <DarkScheme>
+        <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
+    </DarkScheme>
+);
+
+// eslint-disable-next-line react/prop-types
+const DefaultMenu = ({ children, ...props }) => (
+    <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
+);
+
 const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
     const { components, isDisabled, variant, size, error, label, inputId } = restProps;
+    const [triggerReference, setTriggerReference] = React.useState(undefined);
 
     const id = useGeneratedId(inputId);
 
+    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+
+    const Menu =
+        enforcedColorScheme === 'light'
+            ? LightSchemeMenu
+            : enforcedColorScheme === 'dark'
+            ? DarkSchemeMenu
+            : DefaultMenu;
+
     return (
-        <Wrapper {...classNameProps} {...marginProps} {...widthProps}>
+        <Wrapper ref={setTriggerReference} {...classNameProps} {...marginProps} {...widthProps}>
             <WindowedSelect
                 inputId={id}
                 styles={customStyles}
                 windowThreshold={100}
                 components={{
+                    Menu,
                     DropdownIndicator,
                     IndicatorSeparator,
                     ClearIndicator,
