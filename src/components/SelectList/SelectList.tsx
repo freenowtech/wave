@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import {
     ClearIndicatorProps,
     components as ReactSelectComponents,
@@ -21,7 +21,6 @@ import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
 import { SelectListProps } from './types';
-import { MenuProps } from 'react-select';
 
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
