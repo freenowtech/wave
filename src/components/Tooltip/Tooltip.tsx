@@ -91,7 +91,7 @@ const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
     background-color: ${getSemanticValue('background-backdrop')};
-    color: ${getSemanticValue('foreground-on-background-primary')};
+    color: ${getSemanticValue('background-page-default')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
