@@ -91,7 +91,7 @@ const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
     background-color: ${getSemanticValue('background-backdrop')};
-    color: ${getSemanticValue('foreground-on-background-primary')}
+    color: ${getSemanticValue('foreground-on-background-primary')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -176,11 +176,9 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-            <InvertedColorScheme>
                 <Text as="p" fontSize={0}>
                     {content}
                 </Text>
-            </InvertedColorScheme>
         );
     }
 
