@@ -8,7 +8,6 @@ import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { InvertedColorScheme } from '../ColorScheme/InvertedColorScheme';
 import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
 
