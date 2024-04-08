@@ -3,6 +3,7 @@ import {
     ClearIndicatorProps,
     components as ReactSelectComponents,
     ControlProps,
+    MenuProps,
     DropdownIndicatorProps,
     Props,
     StylesConfig
@@ -311,25 +312,19 @@ const MultiValueRemove = props => (
     </ReactSelectComponents.MultiValueRemove>
 );
 
-// eslint-disable-next-line react/prop-types
-const LightSchemeMenu = ({ children, ...props }) => (
+const LightSchemeMenu = (children, props: WithSelectProps<MenuProps>) => (
     <LightScheme>
-        {/* @ts-expect-error ts(2740) */}
         <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
     </LightScheme>
 );
 
-// eslint-disable-next-line react/prop-types
-const DarkSchemeMenu = ({ children, ...props }) => (
+const DarkSchemeMenu = (children, props: WithSelectProps<MenuProps>) => (
     <DarkScheme>
-        {/* @ts-expect-error ts(2740) */}
         <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
     </DarkScheme>
 );
 
-// eslint-disable-next-line react/prop-types
-const DefaultMenu = ({ children, ...props }) => (
-    // @ts-expect-error ts(2740)
+const DefaultMenu = (children, props: WithSelectProps<MenuProps>) => (
     <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
 );
 
