@@ -8,7 +8,6 @@ import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
-import { InvertedColorScheme } from '../ColorScheme/InvertedColorScheme';
 import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
 
@@ -91,6 +90,7 @@ const TooltipBody = styled.div<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
     background-color: ${getSemanticValue('background-backdrop')};
+    color: ${getSemanticValue('background-page-default')};
     padding: 0.25rem 0.5rem;
     border-radius: ${get('radii.2')};
     opacity: 0;
@@ -175,11 +175,9 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-            <InvertedColorScheme>
                 <Text as="p" fontSize={0}>
                     {content}
                 </Text>
-            </InvertedColorScheme>
         );
     }
 

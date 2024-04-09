@@ -8,7 +8,7 @@ import { XCrossIcon, MagnifierIcon } from '../../icons';
 import { useControlledState } from '../../utils/hooks/useControlledState';
 import { Box, BoxProps } from '../Box/Box';
 
-import { Input } from '../Input/Input';
+import { Input, type InputProps } from '../Input/Input';
 
 const ActiveStyle = `
     background-color: ${getSemanticValue('background-element-info-default')};
@@ -75,7 +75,7 @@ const StyledInput = styled(Input)`
     }
 `;
 
-export interface SearchProps {
+export interface SearchProps extends Omit<InputProps, 'results'> {
     results?: React.ReactNode[];
     /**
      * Sets the value
@@ -97,18 +97,6 @@ export interface SearchProps {
      * Sets the width of the search box
      */
     width?: string;
-    /**
-     * Sets the placeholder text to be shown
-     */
-    placeholder?: string;
-    /**
-     * Determines whether the search box is disabled
-     */
-    disabled?: boolean;
-    /**
-     * Determines the size of the search box
-     */
-    size?: 'small' | 'medium';
     /**
      * This function is called when the "Enter" key is pressed or the search icon is clicked
      */
@@ -142,7 +130,8 @@ export const Search: FC<SearchProps> = ({
     onInputChange,
     onClear,
     onEnter,
-    onChangeSelection
+    onChangeSelection,
+    ...props
 }: SearchProps) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -270,6 +259,7 @@ export const Search: FC<SearchProps> = ({
                     onChange={handleChangeValue}
                     onFocus={() => setIsInFocus(true)}
                     onBlur={() => setIsInFocus(false)}
+                    {...props}
                 />
 
                 {!value ? undefined : (
