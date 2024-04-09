@@ -312,20 +312,20 @@ const MultiValueRemove = props => (
     </ReactSelectComponents.MultiValueRemove>
 );
 
-const LightSchemeMenu = (children, props: WithSelectProps<MenuProps>) => (
+const LightSchemeMenu = (props: WithSelectProps<MenuProps>) => (
     <LightScheme>
-        <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
+        <ReactSelectComponents.Menu {...props}>{props.children}</ReactSelectComponents.Menu>
     </LightScheme>
 );
 
-const DarkSchemeMenu = (children, props: WithSelectProps<MenuProps>) => (
+const DarkSchemeMenu = (props: WithSelectProps<MenuProps>) => (
     <DarkScheme>
-        <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
+        <ReactSelectComponents.Menu {...props}>{props.children}</ReactSelectComponents.Menu>
     </DarkScheme>
 );
 
-const DefaultMenu = (children, props: WithSelectProps<MenuProps>) => (
-    <ReactSelectComponents.Menu {...props}>{children}</ReactSelectComponents.Menu>
+const DefaultMenu = (props: WithSelectProps<MenuProps>) => (
+    <ReactSelectComponents.Menu {...props}>{props.children}</ReactSelectComponents.Menu>
 );
 
 const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
