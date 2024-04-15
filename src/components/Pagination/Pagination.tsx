@@ -12,8 +12,8 @@ const Container = styled.div`
 
 const ButtonsContainer = styled(Box)`
     display: flex;
-    justify-content: center;
-    position: relative;
+    align-items: center;
+    gap: ${Spaces[1]};
 `;
 
 const IconButton = styled.button`
@@ -140,34 +140,39 @@ const Pagination: React.FC<PaginationProps> = ({
     return (
         <Container>
             <ButtonsContainer>
-                {hasMultiplePageSizes && (
-                    <Box aria-label={ariaLabelSelectPageSizeContainer} position="absolute" left="0">
-                        <SelectList
-                            options={pageSizes}
-                            onChange={onSelectPageSize}
-                            value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
-                        />
-                    </Box>
-                )}
-                {size !== 'small' && (
-                    <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
-                        <BackwardLastIcon size="small" color="inherit" />
+                <Box flex="1">
+                    {hasMultiplePageSizes && (
+                        <Box aria-label={ariaLabelSelectPageSizeContainer} minWidth="5em" maxWidth="5.5em">
+                            <SelectList
+                                options={pageSizes}
+                                onChange={onSelectPageSize}
+                                value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
+                            />
+                        </Box>
+                    )}
+                </Box>
+                <Box>
+                    {size !== 'small' && (
+                        <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
+                            <BackwardLastIcon size="small" color="inherit" />
+                        </IconButton>
+                    )}
+
+                    <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
+                        <BackwardIcon size="small" color="inherit" />
                     </IconButton>
-                )}
 
-                <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
-                    <BackwardIcon size="small" color="inherit" />
-                </IconButton>
-
-                <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
-                    <ForwardIcon size="small" color="inherit" />
-                </IconButton>
-
-                {size !== 'small' && (
-                    <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
-                        <ForwardLastIcon size="small" color="inherit" />
+                    <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
+                        <ForwardIcon size="small" color="inherit" />
                     </IconButton>
-                )}
+
+                    {size !== 'small' && (
+                        <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
+                            <ForwardLastIcon size="small" color="inherit" />
+                        </IconButton>
+                    )}
+                </Box>
+                <Box flex="1" />
             </ButtonsContainer>
 
             {label && <LabelContainer>{label}</LabelContainer>}
