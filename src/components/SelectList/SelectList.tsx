@@ -1,12 +1,16 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
     ClearIndicatorProps,
     components as ReactSelectComponents,
+    ValueContainerProps,
+    ContainerProps,
     ControlProps,
     MenuProps,
     DropdownIndicatorProps,
     Props,
-    StylesConfig
+    StylesConfig,
+    PlaceholderProps,
+    OptionProps
 } from 'react-select';
 import WindowedSelect from 'wave-react-windowed-select';
 
@@ -40,8 +44,8 @@ const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'dis
     return 'default';
 };
 
-const customStyles: StylesConfig = {
-    container: (provided, { selectProps }: WithSelectProps<Props>) => {
+const customStyles: StylesConfig<unknown> = {
+    container: (provided, { selectProps }: WithSelectProps<ContainerProps>) => {
         const bSize = {
             small: {
                 fontSize: get('fontSizes.1')(selectProps)
@@ -82,7 +86,7 @@ const customStyles: StylesConfig = {
         backgroundColor: getSemanticValue('background-page-elevation-1'),
         boxShadow: `0 0.125rem 0.5rem 0.0625rem ${getSemanticValue('shadow-default')}`
     }),
-    valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<Props>) => {
+    valueContainer: (provided, { selectProps: { size, variant } }: WithSelectProps<ValueContainerProps>) => {
         let margin;
 
         if (variant === 'boxed') {
@@ -121,7 +125,7 @@ const customStyles: StylesConfig = {
         ...provided,
         color: 'inherit'
     }),
-    dropdownIndicator: (provided, state: WithSelectProps<Props>) => {
+    dropdownIndicator: (provided, state: WithSelectProps<DropdownIndicatorProps>) => {
         const disabled = state.isDisabled && disabledStyles.icons;
 
         return {
@@ -133,18 +137,13 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    clearIndicator: (provided, state: WithSelectProps<Props>) => {
-        const disabled = state.isDisabled && disabledStyles.icons;
-
-        return {
-            ...provided,
-            color: getSemanticValue('foreground-neutral-default'),
-            cursor: 'pointer',
-            padding: 0,
-            ...disabled
-        };
-    },
-    placeholder: (provided, state: WithSelectProps<Props>) => {
+    clearIndicator: provided => ({
+        ...provided,
+        color: getSemanticValue('foreground-neutral-default'),
+        cursor: 'pointer',
+        padding: 0
+    }),
+    placeholder: (provided, state: WithSelectProps<PlaceholderProps>) => {
         const disabled = state.isDisabled && disabledStyles.placeholder;
 
         return {
@@ -153,7 +152,7 @@ const customStyles: StylesConfig = {
             ...disabled
         };
     },
-    option: (provided, state: WithSelectProps<Props>) => {
+    option: (provided, state: WithSelectProps<OptionProps>) => {
         const colorsByState = {
             isDisabled: {
                 color: getSemanticValue('foreground-disabled')
@@ -328,7 +327,7 @@ const DefaultMenu = (props: WithSelectProps<MenuProps>) => (
     <ReactSelectComponents.Menu {...props}>{props.children}</ReactSelectComponents.Menu>
 );
 
-const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
+const SelectList = (props: SelectListProps): JSX.Element => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
