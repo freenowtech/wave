@@ -5,3 +5,4 @@ export { TableHeaderCell, TableHeaderCellProps } from './components/TableHeaderC
 export { TableRowSkeleton, TableRowSkeletonProps } from './components/TableRowSkeleton';
 export { TableSortableHeaderCell, TableSortableHeaderCellProps } from './components/TableSortableHeaderCell';
 export { useSortBy } from './hooks/useSortBy';
+export { SortingDirection } from './types';

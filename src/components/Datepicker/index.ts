@@ -4,5 +4,6 @@ export {
 } from './DatepickerSingleInput';
 export {
     DatepickerRangeInput as DateRangePicker,
-    DatepickerRangeInputProps as DateRangePickerProps
+    DatepickerRangeInputProps as DateRangePickerProps,
+    DateRange
 } from './DatepickerRangeInput';
