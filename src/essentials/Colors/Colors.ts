@@ -211,6 +211,14 @@ export const SemanticColors = {
     },
     shadow: {
         default: Colors.blue.primary[200]
+    },
+    chart: {
+        '1': Colors.blue.secondary[50],
+        '2': Colors.blue.secondary[100],
+        '3': Colors.blue.secondary[150],
+        '4': Colors.blue.secondary[350],
+        '5': Colors.blue.secondary[900],
+        '6': Colors.blue.secondary[1000]
     }
 } satisfies SemanticColorsSchema;
 
@@ -368,6 +376,14 @@ export const SemanticColorsDarkSchema = {
     },
     shadow: {
         default: Colors.blue.primary[550]
+    },
+    chart: {
+        '1': Colors.blue.secondary[50],
+        '2': Colors.blue.secondary[100],
+        '3': Colors.blue.secondary[150],
+        '4': Colors.blue.secondary[350],
+        '5': Colors.blue.secondary[900],
+        '6': Colors.blue.secondary[1000]
     }
 } satisfies SemanticColorsSchema;
 

@@ -161,6 +161,14 @@ export type SemanticColorsSchema = {
     shadow: {
         default: Color;
     };
+    chart: {
+        '1': Color;
+        '2': Color;
+        '3': Color;
+        '4': Color;
+        '5': Color;
+        '6': Color;
+    };
 };
 
 type SemanticColorToken = Join<Leaves<SemanticColorsSchema>, '-'>;

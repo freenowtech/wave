@@ -15,12 +15,17 @@ export const Colors = {
         50: 'hsl(0, 2%, 91%)'
     },
     primary: {
-        1000: 'hsl(346, 51%, 33%)',
+        1100: 'hsl(341, 100%, 13%)',
+        1000: 'hsl(343, 70%, 22%)',
+        950: 'hsl(346, 51%, 33%)',
         900: 'hsl(347, 42%, 43%)',
-        350: 'hsl(349, 89%, 76%)',
-        150: 'hsl(351, 100%, 85%)',
-        100: 'hsl(352, 100%, 93%)',
-        50: 'hsl(9, 100%, 96%)'
+        500: 'hsl(347, 41%, 50%)',
+        350: 'hsl(349, 50%, 65%)',
+        150: 'hsl(348, 50%, 76%)',
+        120: 'hsl(351, 51%, 85%)',
+        100: 'hsl(352, 48%, 91%)',
+        50: 'hsl(350, 46%, 95%)',
+        10: 'hsl(0, 47%, 97%)'
     },
     brand: {
         rushhour: 'hsl(350, 91%, 41%)'
@@ -205,6 +210,14 @@ export const SemanticColors = {
     },
     shadow: {
         default: Colors.neutral[200]
+    },
+    chart: {
+        '1': Colors.primary[50],
+        '2': Colors.primary[120],
+        '3': Colors.primary[350],
+        '4': Colors.primary[500],
+        '5': Colors.primary[950],
+        '6': Colors.primary[1100],
     }
 } satisfies SemanticColorsSchema;
 
@@ -362,6 +375,14 @@ export const SemanticColorsDarkSchema = {
     },
     shadow: {
         default: Colors.neutral[650]
+    },
+    chart: {
+        '1': Colors.primary[50],
+        '2': Colors.primary[120],
+        '3': Colors.primary[150],
+        '4': Colors.primary[350],
+        '5': Colors.primary[500],
+        '6': Colors.primary[950],
     }
 } satisfies SemanticColorsSchema;
 
