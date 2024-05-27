@@ -17,7 +17,8 @@ interface LogoProps {
 }
 
 const monochromeCss = {
-    [applyPrefix('logo-free', 's')]: getSemanticValue('logo-now')
+    [applyPrefix('logo-free', 's')]: getSemanticValue('logo-subtitle'),
+    [applyPrefix('logo-now', 's')]: getSemanticValue('logo-subtitle')
 };
 
 const Logo: React.FC<LogoProps> = ({ monochrome, variant }: LogoProps) => {
