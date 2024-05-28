@@ -25,6 +25,13 @@ export const Business: Story = {
     }
 };
 
+export const BusinessMonochrome: Story = {
+    args: {
+        variant: 'business',
+        monochrome: true
+    }
+};
+
 export const Monochrome: Story = {
     args: {
         monochrome: true
