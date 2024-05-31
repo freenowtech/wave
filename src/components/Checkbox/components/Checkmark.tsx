@@ -70,7 +70,7 @@ const Checkmark = styled.input<CheckmarkProps>`
 
     &:disabled {
         cursor: not-allowed;
-        background-color: ${getSemanticValue('background-element-disabled-faded')};
+        background-color: ${getSemanticValue('background-element-disabled-default')};
         box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('transparent')};
 
         &:hover {
@@ -78,7 +78,7 @@ const Checkmark = styled.input<CheckmarkProps>`
         }
 
         &:active {
-            background-color: ${getSemanticValue('background-element-disabled-faded')};
+            background-color: ${getSemanticValue('background-element-disabled-default')};
         }
     }
 `;
