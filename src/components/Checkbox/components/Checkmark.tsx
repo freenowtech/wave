@@ -66,7 +66,7 @@ const Checkmark = styled.input<CheckmarkProps>`
     &:disabled {
         cursor: not-allowed;
         background-color: ${Colors.AUTHENTIC_BLUE_200};
-        box-shadow: inset 0 0 0 0.125rem ${Colors.AUTHENTIC_BLUE_50};
+        box-shadow: inset 0 0 0 0.125rem transparent;
 
         &:hover {
             box-shadow: inset 0 0 0 0.125rem ${Colors.AUTHENTIC_BLUE_50};
