@@ -127,7 +127,7 @@ We use [semantic release](https://semantic-release.gitbook.io/semantic-release) 
 
 -   `latest` tag (follows the [main](https://github.com/freenowtech/wave/tree/main) branch): It is used for releases on the current major (v2)
 -   `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for prereleases on the next major (v3)
--   `release-1.34.x` tag (follows the [1.34.x](https://github.com/freenowtech/wave/tree/1.34.x) branch): It is used to provide maintenance on our previous major version (v1)
+-   `release-1.34.x` tag (follows the [1.34.x](https://github.com/freenowtech/wave/tree/1.34.x) branch): It is used to provide maintenance on our previous major version (v1). For more information check [semantic-release maintenance releases guide](https://semantic-release.gitbook.io/semantic-release/recipes/release-workflow/maintenance-releases)
 
 ## Tools we use
 
