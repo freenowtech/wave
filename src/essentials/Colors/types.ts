@@ -9,11 +9,12 @@ export type SemanticColorsSchema = {
     white: Color;
     black: Color;
     background: {
+        default: Color;
         page: {
-            default: Color;
-            'elevation-1': Color;
-            'elevation-2': Color;
-            'elevation-3': Color;
+            default: Color; // deprecated - use background.default or surface.default instead
+            'elevation-1': Color; // deprecated - use surface.container.default instead
+            'elevation-2': Color; // deprecated - use surface.container.highest instead
+            'elevation-3': Color; // deprecated
         };
         backdrop: Color;
         // for big areas
@@ -81,6 +82,13 @@ export type SemanticColorsSchema = {
                 faded: Color;
                 emphasized: Color;
             };
+        };
+    };
+    surface: {
+        default: Color;
+        container: {
+            default: Color;
+            highest: Color;
         };
     };
     border: {
