@@ -5,17 +5,6 @@ import { createThemeGlobalStyle } from './globalStyles';
 export const Colors = {
     white: 'hsl(0, 0%, 100%)',
     black: 'hsl(0, 0%, 0%)',
-    neutral: {
-        900: 'hsl(350, 11%, 11%)',
-        800: 'hsl(0, 11%, 16%)',
-        750: 'hsl(0, 6%, 20%)',
-        650: 'hsl(353, 5%, 29%)',
-        550: 'hsl(0, 2%, 38%)',
-        350: 'hsl(0, 1%, 55%)',
-        200: 'hsl(0, 1%, 73%)',
-        50: 'hsl(0, 2%, 91%)',
-        10: 'hsl(0, 2%, 96%)'
-    },
     blue: {
         primary: {
             1100: 'hsl(211, 100%, 6%)',
