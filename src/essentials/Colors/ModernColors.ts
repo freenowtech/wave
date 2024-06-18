@@ -101,9 +101,9 @@ export const SemanticColors = {
         }
     },
     background: {
-        default: Colors.neutral[10],
         page: {
             default: Colors.white,
+            'elevation-0': Colors.neutral[10],
             'elevation-1': Colors.white,
             'elevation-2': Colors.white,
             'elevation-3': Colors.white
@@ -173,13 +173,6 @@ export const SemanticColors = {
             }
         },
         backdrop: Colors.neutral[900]
-    },
-    surface: {
-        default: Colors.white,
-        container: {
-            default: Colors.neutral[10],
-            highest: Colors.white
-        }
     },
     border: {
         accent: {
@@ -274,9 +267,9 @@ export const SemanticColorsDarkSchema = {
         }
     },
     background: {
-        default: Colors.neutral[900],
         page: {
-            default: Colors.neutral[900],
+            default: Colors.neutral[800],
+            'elevation-0': Colors.neutral[900],
             'elevation-1': Colors.neutral[750],
             'elevation-2': Colors.neutral[650],
             'elevation-3': Colors.neutral[550]
@@ -346,13 +339,6 @@ export const SemanticColorsDarkSchema = {
             }
         },
         backdrop: Colors.neutral[50]
-    },
-    surface: {
-        default: Colors.neutral[800],
-        container: {
-            default: Colors.neutral[750],
-            highest: Colors.neutral[650]
-        }
     },
     border: {
         accent: {
