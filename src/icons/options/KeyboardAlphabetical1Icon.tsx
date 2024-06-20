@@ -3,7 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
-const CreditCardPlusIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
+const KeyboardAlphabetical1Icon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
     const props = { ...rest, color };
     const sizePx = Number.isFinite(size as number)
         ? size
@@ -18,10 +18,10 @@ const CreditCardPlusIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                d="M14 5v2H4v6h18v4a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2h10zm6 10H4v2h16v-2zm0-10v1.999L22 7v2h-2v2h-2V9h-2V7h2V5h2z"
+                d="M22 5v2H4v10h16V9h2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2h18zm-5 9a1 1 0 110 2H7a1 1 0 110-2h10zm-1-3a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm6-3a1 1 0 110 2 1 1 0 010-2zm4 0a1 1 0 110 2 1 1 0 010-2zm-8 0a1 1 0 110 2 1 1 0 010-2zM6 8a1 1 0 110 2 1 1 0 010-2z"
                 fill="currentColor"
             />
         </svg>
     );
 };
-export default CreditCardPlusIcon;
+export default KeyboardAlphabetical1Icon;

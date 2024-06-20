@@ -51,3 +51,4 @@ export { default as StopwatchIcon } from './StopwatchIcon';
 export { default as ThreeDotsBubbleIcon } from './ThreeDotsBubbleIcon';
 export { default as TwoLinesBubbleIcon } from './TwoLinesBubbleIcon';
 export { default as WrenchIcon } from './WrenchIcon';
+export { default as KeyboardAlphabetical1Icon } from './KeyboardAlphabetical1Icon';

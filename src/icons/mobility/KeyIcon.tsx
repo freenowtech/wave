@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
-
 type Props = IconProps;
 const KeyIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
     const props = { ...rest, color };
