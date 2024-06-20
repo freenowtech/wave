@@ -4,7 +4,8 @@ import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 
 type Props = IconProps;
-const ArrowLeftIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...props }) => {
+const ArrowLeftIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
+    const props = { ...rest, color };
     const sizePx = Number.isFinite(size as number)
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
