@@ -11,6 +11,7 @@ export type SemanticColorsSchema = {
     background: {
         page: {
             default: Color;
+            'elevation-0': Color;
             'elevation-1': Color;
             'elevation-2': Color;
             'elevation-3': Color;
