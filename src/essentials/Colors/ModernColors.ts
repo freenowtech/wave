@@ -6,13 +6,15 @@ export const Colors = {
     white: 'hsl(0, 0%, 99%)',
     black: 'hsl(0, 0%, 0%)',
     neutral: {
-        900: 'hsl(350, 10%, 11%)',
-        750: 'hsl(0, 5%, 20%)',
+        900: 'hsl(350, 11%, 11%)',
+        800: 'hsl(0, 11%, 16%)',
+        750: 'hsl(0, 6%, 20%)',
         650: 'hsl(353, 5%, 29%)',
         550: 'hsl(0, 2%, 38%)',
         350: 'hsl(0, 1%, 55%)',
         200: 'hsl(0, 1%, 73%)',
-        50: 'hsl(0, 2%, 91%)'
+        50: 'hsl(0, 2%, 91%)',
+        10: 'hsl(0, 2%, 96%)'
     },
     primary: {
         1100: 'hsl(341, 100%, 13%)',
@@ -101,6 +103,7 @@ export const SemanticColors = {
     background: {
         page: {
             default: Colors.white,
+            'elevation-0': Colors.neutral[10],
             'elevation-1': Colors.white,
             'elevation-2': Colors.white,
             'elevation-3': Colors.white
@@ -217,7 +220,7 @@ export const SemanticColors = {
         '3': Colors.primary[350],
         '4': Colors.primary[500],
         '5': Colors.primary[950],
-        '6': Colors.primary[1100],
+        '6': Colors.primary[1100]
     }
 } satisfies SemanticColorsSchema;
 
@@ -265,7 +268,8 @@ export const SemanticColorsDarkSchema = {
     },
     background: {
         page: {
-            default: Colors.neutral[900],
+            default: Colors.neutral[800],
+            'elevation-0': Colors.neutral[900],
             'elevation-1': Colors.neutral[750],
             'elevation-2': Colors.neutral[650],
             'elevation-3': Colors.neutral[550]
@@ -382,7 +386,7 @@ export const SemanticColorsDarkSchema = {
         '3': Colors.primary[150],
         '4': Colors.primary[350],
         '5': Colors.primary[500],
-        '6': Colors.primary[950],
+        '6': Colors.primary[950]
     }
 } satisfies SemanticColorsSchema;
 
