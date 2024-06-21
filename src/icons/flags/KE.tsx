@@ -29,7 +29,14 @@ const KE: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     <stop stopColor="#FFF" offset="0%" />
                     <stop stopColor="#F0F0F0" offset="100%" />
                 </linearGradient>
-                <filter x="-37.5%" y="-3.4%" width="175%" height="113.6%" filterUnits="objectBoundingBox" id="KE__e">
+                <filter
+                    x="-37.5%"
+                    y="-3.4%"
+                    width="175%"
+                    height="113.6%"
+                    filterUnits="objectBoundingBox"
+                    id="KE__e"
+                >
                     <feOffset dy={1} in="SourceAlpha" result="shadowOffsetOuter1" />
                     <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowOffsetOuter1" />
                 </filter>

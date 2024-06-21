@@ -71,7 +71,13 @@ const SD: React.FC<Props> = ({ size = 'medium', ...props }) => {
                     />
                 </g>
             </mask>
-            <path mask="url(#SD__mask-2_2_)" fillRule="evenodd" clipRule="evenodd" fill="#ea1f44" d="M0 0h28v6.7H0z" />
+            <path
+                mask="url(#SD__mask-2_2_)"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                fill="#ea1f44"
+                d="M0 0h28v6.7H0z"
+            />
             <defs>
                 <filter
                     id="SD__Adobe_OpacityMaskFilter_2_"
