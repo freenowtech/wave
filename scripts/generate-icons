@@ -55,7 +55,6 @@ function template(babel, opts, { imports, componentName, props, jsx, exports }) 
 
         ${imports}
 
-        ${libImports}
         import { get } from '../../utils/themeGet';
         import { IconProps } from '../IconProps';
 
