@@ -8,3 +8,4 @@ export { default as MegaphoneIcon } from './MegaphoneIcon';
 export { default as ParcelIcon } from './ParcelIcon';
 export { default as StarCircleFilledIcon } from './StarCircleFilledIcon';
 export { default as TrophyIcon } from './TrophyIcon';
+export { default as BellIcon } from "./BellIcon";
