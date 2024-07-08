@@ -2,8 +2,8 @@ import { Meta, Story } from '@storybook/blocks';
 
 import { Source } from '../../../docs/Source';
 import { Box } from '../../Box/Box';
-import * as DarkSchemeStories from './DarkScheme.stories';
 import { CurrentScheme } from './CurrentScheme';
+import * as DarkSchemeStories from './DarkScheme.stories';
 
 <Meta of={DarkSchemeStories} />
 
@@ -12,7 +12,7 @@ import { CurrentScheme } from './CurrentScheme';
 All components in Wave automatically adapts to the users preferred color scheme.
 
 There are situations where you want to force a specific color scheme to a component, or a group of components.
-Wave provides a few components to help you with this.
+Wave provides a few options to help you with this.
 
 ## Invert Color Scheme
 
@@ -51,3 +51,24 @@ Demo:
 ## Props
 
 All components accept [`Box` props](/docs/components-box--docs).
+
+## Programmatically enforcing a Scheme
+
+In case the above components don't fit your use case Wave offers an `enforceSchemeOnElement` utility as an escape hatch to enforce a color scheme for a passed HTML Element.
+
+> The main use case for it is when you want to enforce a scheme for an element that you cannot access through JSX/HTML and need to do it thorugh JS.
+
+<Story of={DarkSchemeStories.ProgrammaticDarkSchemeWithButton} />
+
+```tsx
+useEffect(() => {
+    const boxElement = document.querySelector('#box-to-enforce-scheme');
+    if (boxElement) enforceSchemeOnElement('dark-scheme', boxElement);
+}, []);
+
+return (
+    <Box {...props} id="box-to-enforce-scheme" textAlign="center">
+        {children}
+    </Box>
+);
+```
