@@ -1,8 +1,10 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { DarkScheme, LightScheme } from '../EnforcedColorScheme';
-import { Text } from '../../Text/Text';
+import React, { useEffect } from 'react';
+import { enforceSchemeOnElement } from '../../../utils';
+import { Box } from '../../Box/Box';
 import { Button } from '../../Button/Button';
+import { Text } from '../../Text/Text';
+import { DarkScheme, LightScheme } from '../EnforcedColorScheme';
 import { InvertedColorScheme } from '../InvertedColorScheme';
 
 const meta: Meta = {
@@ -57,4 +59,23 @@ export const InvertedColorSchemeWithButton: Story = {
             {children}
         </InvertedColorScheme>
     )
+};
+
+export const ProgrammaticDarkSchemeWithButton: Story = {
+    args: {
+        children: <Button>The box around me is dark!</Button>,
+        py: 2
+    },
+    render: ({ children, ...props }) => {
+        useEffect(() => {
+            const boxElement = document.querySelector('#box-to-enforce-scheme');
+            if (boxElement) enforceSchemeOnElement('dark-scheme', boxElement);
+        }, []);
+
+        return (
+            <Box {...props} id="box-to-enforce-scheme" textAlign="center">
+                {children}
+            </Box>
+        );
+    }
 };

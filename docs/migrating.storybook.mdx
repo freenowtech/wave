@@ -1,9 +1,9 @@
 import { Meta } from '@storybook/blocks';
 
-import { PlacementMappingsTable } from './components/migration/PlacementMappingsTable';
-import { InvertedPropMigrationTable } from './components/migration/InvertedPropMigrationTable';
-import { IconMappingsTable } from './components/migration/IconMappingsTable';
 import { CssVariablesMigrationTable } from './components/migration/CssVariablesMigrationTable';
+import { IconMappingsTable } from './components/migration/IconMappingsTable';
+import { InvertedPropMigrationTable } from './components/migration/InvertedPropMigrationTable';
+import { PlacementMappingsTable } from './components/migration/PlacementMappingsTable';
 
 <Meta title="Migration to v2" />
 
@@ -80,22 +80,29 @@ In case it doesn't work, reach out to the #ask-wave Slack channel for help.
 Wave v2 comes with automatic dark scheme enabled by default. That means the color of the UI will reflect the OS color preferences of the user.
 
 Most likely, your app will need adjustments to make the dark scheme readable.
-Consider adding a task to your backlog, and disable the dark scheme by wrapping your application root with the `LightScheme` until you are ready:
+Consider adding a task to your backlog, and disable the dark scheme by adding the `wave` and `light-scheme` classes to the body of your app.
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import { ClassicColors, LightScheme } from '@freenow/wave'; // blue primary color
+<body class="wave light-scheme">
+    <!-- APP -->
+</body>
+```
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <ClassicColors />
-        <LightScheme>
-            <App />
-        </LightScheme>
-    </React.StrictMode>
-);
+In case you cannot access the `body` directly (e.g. NextJS projects) Wave exposes the `enforceSchemeOnElement` utility to programmatically enforce a color scheme for an element.
+
+```tsx
+import { enforceSchemeOnElement } from '@freenow/wave';
+
+export const App = () => {
+    useEffect(() => {
+        const body = document.querySelector('body');
+        if (body) enforceSchemeOnElement('light-scheme', body);
+    }, []);
+
+    return {
+        /* YOUR APP */
+    };
+};
 ```
 
 ## 5️⃣ Polish the code
