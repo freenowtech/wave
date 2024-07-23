@@ -135,7 +135,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <Container>
             <ButtonsContainer>
                 {hasMultiplePageSizes && (
-                    <Box aria-label={ariaLabelSelectPageSizeContainer} position="absolute" left="0" width="4.5em">
+                    <Box aria-label={ariaLabelSelectPageSizeContainer} position="absolute" left="0">
                         <SelectList
                             options={pageSizes}
                             onChange={onSelectPageSize}
