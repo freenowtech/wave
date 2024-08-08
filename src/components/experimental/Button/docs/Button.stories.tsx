@@ -7,7 +7,7 @@ const meta: Meta = {
     title: 'Experimental/Components/Button',
     component: Button,
     args: {
-        children: 'Button title'
+        children: 'Book now'
     },
     argTypes: {
         children: {
@@ -15,20 +15,7 @@ const meta: Meta = {
         },
         variant: {
             control: 'radio',
-            options: ['primary', 'secondary', 'danger']
-        },
-        size: {
-            control: 'radio',
-            options: ['small', 'medium']
-        },
-        as: {
-            description: 'html tag to use',
-            control: 'text',
-            table: {
-                defaultValue: {
-                    summary: 'button'
-                }
-            }
+            options: ['primary', 'secondary']
         },
         ref: {
             table: {
@@ -53,38 +40,3 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {};
-
-export const Secondary: Story = {
-    args: {
-        variant: 'secondary'
-    }
-};
-
-export const Danger: Story = {
-    args: {
-        variant: 'danger'
-    }
-};
-
-export const Disabled: Story = {
-    args: {
-        disabled: true
-    }
-};
-
-export const Small: Story = {
-    args: {
-        size: 'small'
-    }
-};
-
-export const WithIcon: Story = {
-    args: {
-        children: (
-            <>
-                <TrashIcon size={20} /> Remove
-            </>
-        ),
-        variant: 'danger'
-    }
-};
