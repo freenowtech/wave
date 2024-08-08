@@ -8,7 +8,7 @@ import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
 import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
 
-import { LightTheme, DarkTheme } from './FreenowTheme';
+import { LightTheme, DarkTheme } from '../src/docs/storybook-theme/FreenowTheme';
 
 const THEMES = {
     classic: ClassicColors,
@@ -37,6 +37,7 @@ export const withColorScheme = (Story, context) => {
 
 export const preview: Preview = {
     decorators: [withTheme, withColorScheme],
+
     parameters: {
         darkMode: {
             dark: { ...themes.dark, ...DarkTheme },
@@ -127,6 +128,7 @@ export const preview: Preview = {
             }
         }
     },
+
     globalTypes: {
         theme: {
             description: 'Global theme for components',
@@ -138,7 +140,9 @@ export const preview: Preview = {
                 dynamicTitle: true
             }
         }
-    }
+    },
+
+    tags: ['autodocs']
 };
 
 export default preview;
