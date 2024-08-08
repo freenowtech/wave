@@ -5,8 +5,6 @@ import { Chip } from '../Chip';
 import PlusIcon from '../../../../icons/actions/PlusIcon';
 import FilterIcon from '../../../../icons/actions/FilterIcon';
 
-const NoIcon = () => <></>;
-
 const meta: Meta = {
     title: 'Experimental/Components/Chip',
     component: Chip,

@@ -28,12 +28,6 @@ interface ChipProps extends ComponentPropsWithoutRef<'button'>, MarginProps {
      */
     deletable: boolean;
 }
-//
-// const TextLabel = styled.span.attrs({ theme })`
-//     font-size: ${get('fontSizes.1')};
-//     font-weight: ${get('fontWeights.medium')};
-//     line-height: ${get('lineHeights.2')};
-// `;
 
 const Container = styled.div.attrs({ theme })<{ isActive: boolean }>`
     display: inline-flex;
