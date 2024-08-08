@@ -56,8 +56,8 @@ const theme: ExperimentalTheme = {
         '0rem',
         '0.125rem',
         '0.25rem',
-        '0.75rem', // new value 12px
-        '0.5rem'
+        '0.5rem',
+        '0.75rem' // new value 12px
     ],
     iconSizes: {
         small: 12,
