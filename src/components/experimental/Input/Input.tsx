@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useId } from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { useGeneratedId } from '../../../utils/hooks';
 import { theme } from '../../../essentials/experimental/theme';
@@ -6,7 +6,6 @@ import { theme } from '../../../essentials/experimental/theme';
 const TextInput = styled.input.attrs(() => ({
     type: 'text'
 }))`
-    /* reset */
     border: none;
     background-color: unset;
     outline: none;
@@ -21,14 +20,6 @@ const TextInput = styled.input.attrs(() => ({
     display: block;
     width: 100%;
 `;
-
-// ${(props) => props.$shouldLabelAnimate ? `
-//         transition: top 0.2s ease, font-size 0.2s ease, transform 0.2s ease;
-//     ` : `
-//         top: ${theme.space[1]}rem;
-//         transform: translate3d(1px, 0 ,0);
-//         font-size: ${theme.fontSizes[0]};
-//     `}
 
 const Label = styled.label<{ $shouldDisplace: boolean; $shouldLabelAnimate?: boolean }>`
     position: absolute;
@@ -88,7 +79,6 @@ export interface InputProps {
     placeholder: string;
     id?: string;
     onChange?: (value: string) => void;
-    // initialValue: string;
 }
 
 function Input({ label, placeholder, id: providedId, onChange, ...rest }: InputProps): ReactElement {
@@ -96,8 +86,6 @@ function Input({ label, placeholder, id: providedId, onChange, ...rest }: InputP
 
     const [value, setValue] = React.useState<string>();
     const [shouldLabelDisplace, setShouldLabelDisplace] = React.useState(false);
-
-    // TODO solve the initial rendering issue for the label when there's an initial value passed as prop
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
@@ -139,11 +127,7 @@ function Input({ label, placeholder, id: providedId, onChange, ...rest }: InputP
                 onBlur={handleBlur}
                 {...rest}
             />
-            <Label
-                htmlFor={id}
-                $shouldDisplace={Boolean(placeholder) || shouldLabelDisplace}
-                // $shouldLabelAnimate={shouldLabelAnimate}
-            >
+            <Label htmlFor={id} $shouldDisplace={Boolean(placeholder) || shouldLabelDisplace}>
                 {label}
             </Label>
         </Wrapper>

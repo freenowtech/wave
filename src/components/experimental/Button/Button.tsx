@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Button as BaseButton } from '../../Button/Button';
 import { theme as experimentalTheme } from '../../../essentials/experimental/theme';
@@ -11,6 +11,7 @@ const ButtonStyled = styled(BaseButton)<{ secondary: boolean }>`
     height: unset;
 
     background-color: hsl(350, 92%, 25%); // var(--sys-color-accent, #790518);
+
     &:hover {
         background-color: hsl(350, 53%, 36%); // var(--sys-color-accent, #790518) * opacity 0.16
     }
@@ -27,7 +28,7 @@ const ButtonStyled = styled(BaseButton)<{ secondary: boolean }>`
     `}
 `;
 
-function Button({ secondary, children }: { secondary: boolean; children: React.ReactNode }) {
+function Button({ secondary, children }: { secondary: boolean; children: React.ReactNode }): ReactElement {
     return (
         <ThemeProvider theme={experimentalTheme}>
             <ButtonStyled secondary={secondary}>

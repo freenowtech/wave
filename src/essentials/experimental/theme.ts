@@ -84,51 +84,6 @@ const theme: ExperimentalTheme = {
     }
 };
 
-const componentProperties = {
-    text: {
-        label2: {
-            fontSize: theme.fontSizes[0],
-            fontWeight: theme.fontWeights.normal,
-            lineHeight: theme.lineHeights[0]
-        },
-        label1: {
-            fontSize: theme.fontSizes[2],
-            fontWeight: theme.fontWeights.medium,
-            lineHeight: theme.lineHeights[1]
-        },
-        body2: {
-            fontSize: theme.fontSizes[0],
-            fontWeight: theme.fontWeights.normal,
-            lineHeight: theme.lineHeights[0]
-        },
-        body1: {
-            fontSize: theme.fontSizes[1],
-            fontWeight: theme.fontWeights.normal,
-            lineHeight: theme.lineHeights[1]
-        },
-        title1: {
-            fontSize: theme.fontSizes[2],
-            fontWeight: theme.fontWeights.semibold,
-            lineHeight: theme.lineHeights[2]
-        },
-        title2: {
-            fontSize: theme.fontSizes[1],
-            fontWeight: theme.fontWeights.medium,
-            lineHeight: theme.lineHeights[1]
-        },
-        display: {
-            fontSize: theme.fontSizes[4],
-            fontWeight: theme.fontWeights.bold,
-            lineHeight: theme.lineHeights[4]
-        },
-        headline: {
-            fontSize: theme.fontSizes[3],
-            fontWeight: theme.fontWeights.bold,
-            lineHeight: theme.lineHeights[3]
-        }
-    }
-};
-
 /**
  * Custom aliases declaration
  * https://styled-system.com/theme-specification/#scale-aliases
@@ -155,4 +110,4 @@ function fontStack(fonts: string[]): string {
     return fonts.map(font => (font.includes(' ') ? `"${font}"` : font)).join(', ');
 }
 
-export { theme, componentProperties };
+export { theme };

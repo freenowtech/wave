@@ -140,9 +140,9 @@ export const preview: Preview = {
                 dynamicTitle: true
             }
         }
-    },
+    }
 
-    tags: ['autodocs']
+    // tags: ['autodocs']
 };
 
 export default preview;
