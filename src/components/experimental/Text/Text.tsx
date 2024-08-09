@@ -26,25 +26,15 @@ interface TextProps
 
 const variantStyles = variant({
     variants: {
-        label2: {
-            fontSize: theme.fontSizes[0],
-            fontWeight: theme.fontWeights.normal,
-            lineHeight: theme.lineHeights[0]
+        display: {
+            fontSize: theme.fontSizes[4],
+            fontWeight: theme.fontWeights.bold,
+            lineHeight: theme.lineHeights[4]
         },
-        label1: {
-            fontSize: theme.fontSizes[1],
-            fontWeight: theme.fontWeights.medium,
-            lineHeight: theme.lineHeights[1]
-        },
-        body2: {
-            fontSize: theme.fontSizes[0],
-            fontWeight: theme.fontWeights.normal,
-            lineHeight: theme.lineHeights[0]
-        },
-        body1: {
-            fontSize: theme.fontSizes[1],
-            fontWeight: theme.fontWeights.normal,
-            lineHeight: theme.lineHeights[1]
+        headline: {
+            fontSize: theme.fontSizes[3],
+            fontWeight: theme.fontWeights.bold,
+            lineHeight: theme.lineHeights[3]
         },
         title1: {
             fontSize: theme.fontSizes[2],
@@ -56,15 +46,25 @@ const variantStyles = variant({
             fontWeight: theme.fontWeights.medium,
             lineHeight: theme.lineHeights[1]
         },
-        display: {
-            fontSize: theme.fontSizes[4],
-            fontWeight: theme.fontWeights.bold,
-            lineHeight: theme.lineHeights[4]
+        body1: {
+            fontSize: theme.fontSizes[1],
+            fontWeight: theme.fontWeights.normal,
+            lineHeight: theme.lineHeights[1]
         },
-        headline: {
-            fontSize: theme.fontSizes[3],
-            fontWeight: theme.fontWeights.bold,
-            lineHeight: theme.lineHeights[3]
+        body2: {
+            fontSize: theme.fontSizes[0],
+            fontWeight: theme.fontWeights.normal,
+            lineHeight: theme.lineHeights[0]
+        },
+        label1: {
+            fontSize: theme.fontSizes[1],
+            fontWeight: theme.fontWeights.medium,
+            lineHeight: theme.lineHeights[1]
+        },
+        label2: {
+            fontSize: theme.fontSizes[0],
+            fontWeight: theme.fontWeights.normal,
+            lineHeight: theme.lineHeights[0]
         }
     }
 });
