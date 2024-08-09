@@ -1,7 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import React from 'react';
 import { Button } from '../Button';
-import TrashIcon from '../../../../icons/actions/TrashIcon';
 
 const meta: Meta = {
     title: 'Experimental/Components/Button',
@@ -11,11 +9,10 @@ const meta: Meta = {
     },
     argTypes: {
         children: {
-            description: 'Button caption'
+            description: 'Button text'
         },
-        variant: {
-            control: 'radio',
-            options: ['primary', 'secondary']
+        secondary: {
+            control: 'boolean'
         },
         ref: {
             table: {
