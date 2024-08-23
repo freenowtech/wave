@@ -213,7 +213,7 @@ export const Search: FC<SearchProps> = ({
         // eslint-disable-next-line unicorn/consistent-function-scoping
         const emitIfClickingOutsideSearch = (event: DocumentEventMap['click']) => {
             if (disabled) return;
-            if (!containerRef.current.contains(event.target as Element)) {
+            if (!containerRef.current?.contains(event.target as Element)) {
                 setShowResults(false);
             } else {
                 setShowResults(true);
