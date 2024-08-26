@@ -1,10 +1,29 @@
 {
     "name": "@freenow/wave",
-    "version": "2.5.0",
+    "version": "2.6.0-rc.8",
     "description": "React components of the Wave design system for your Front-End project",
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
+    "exports": {
+        ".": {
+            "import": "./lib/esm/index.js",
+            "require": "./lib/cjs/index.js",
+            "default": "./lib/esm/index.js"
+        },
+        "./experimental": {
+            "import": "./lib/esm/experimental/index.js",
+            "require": "./lib/cjs/experimental/index.js",
+            "default": "./lib/esm/experimental/index.js"
+        }
+    },
+    "typesVersions": {
+        "*": {
+            "experimental": [
+                "lib/types/experimental/index.d.ts"
+            ]
+        }
+    },
     "bin": {
         "run_v2_migration": "./scripts/run_v2_migration.sh"
     },
@@ -44,8 +63,7 @@
         "url": "https://github.com/freenowtech/wave.git"
     },
     "files": [
-        "lib/",
-        "codemods/"
+        "lib/"
     ],
     "license": "Apache-2.0",
     "overrides": {
