@@ -22,6 +22,25 @@ or
 yarn add @freenow/wave
 ```
 
+## Getting started
+
+After installing Wave as dependency, there are some extra steps to get the styles in place:
+
+-   Make sure to install the peerDependencies (including styled-components)
+-   Check that you don't have any pre-existing global styles that might override/clash with the styles shipped with the components (ex.: `a { color: #ffeeaa }`)
+-   Make sure to add the desired Color Scheme component to your React tree, to get the CSS variables loaded ([more details](https://wave.free-now.com/iframe.html?viewMode=docs&id=migration-to-v2--docs#1%EF%B8%8F%E2%83%A3-connect-classic-colors))
+
+```typescript jsx
+import { ModernColors } from '@freenow/wave'; // blue primary color
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <ModernColors />
+        <App />
+    </React.StrictMode>
+);
+```
+
 ## Contributing
 
 Thanks for being willing to contribute! Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) doc

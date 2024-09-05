@@ -10,7 +10,7 @@
     -   [Your First Contribution](#your-first-contribution)
         -   [Triage tickets](#triage-tickets)
         -   [Write some documentation](#write-some-documentation)
-        -   [Reporting pains and use cases](#reporting-pains-and-use-cases)
+        -   [Give us your feedback](#give-us-your-feedback)
         -   [Take from the backlog](#take-from-the-backlog)
     -   [Tools we use](#tools-we-use)
     -   [Component patterns](#component-patterns)
@@ -98,11 +98,11 @@ You can serve your self with CI tools to make easier the creation of commits wit
 
 ### Triage tickets
 
-If an unreviewed ticket reports a bug, try and reproduce it. If you can reproduce it and it seems valid, make a note that you confirmed the bug and accept the ticket. A video or clear steps on how to reproduce a bug is a great way to setup the ground for the next dev
+If an unreviewed ticket reports a bug, try and reproduce it. If you can reproduce it, and it seems valid, make a note that you confirmed the bug and accept the ticket. A video or clear steps on how to reproduce a bug is a great way to set up the ground for the next dev.
 
 ### Write some documentation
 
-Our documentation is great but it can always be improved. Did you find a typo? Do you think that something should be clarified? Go ahead and suggest a documentation patch!
+Our documentation is great, but it can always be improved. Did you find a typo? Do you think that something should be clarified? Go ahead and suggest a documentation patch!
 
 We use [Storybook](https://storybook.js.org) to run our documentation site at [wave.free-now.com](https://wave.free-now.com/).
 
@@ -113,20 +113,22 @@ To add a new component to our documentation site:
 
 To learn more how to add stories go to [Storybook docs](https://storybook.js.org/docs/react/writing-stories/introduction)
 
-### Reporting pains and use cases
+### Give us your feedback
 
-Speak out loud for us to understand your pains is valuable, challenge current approaches and help us to understand how to do better. Make sure to verify that the topic hasn't being touched yet on the issues poll otherwise open a new one and let's start the conversation
+Feedback, feedback, feedback! We appreciate and need your input to understand your needs, so we can continue delivering great value.
+If you don't know where to start from, first check with a similar issue is not already created, otherwise create a new one.
+Also, make sure to share it in our internal channel, so we can discuss effort, impact and priority: #ask-wave.
 
 ### Take from the backlog
 
-Feel like doing a bit more? You can check what is up for grabs in our public backlog and create a PR for it
+Feel like doing a bit more? You can check what is up for grabs in our public backlog and create a PR for it. All contributions are welcomed!
 
 ## Distribution channels
 
-We use [semantic release](https://semantic-release.gitbook.io/semantic-release) to automate our versioning and release process. Currently we have 3 distribution channels:
+We use [semantic release](https://semantic-release.gitbook.io/semantic-release) to automate our versioning and release process. Currently, we have 3 distribution channels:
 
 -   `latest` tag (follows the [main](https://github.com/freenowtech/wave/tree/main) branch): It is used for releases on the current major (v2)
--   `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for prereleases on the next major (v3)
+-   `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for pre-releases on the next major (v3)
 -   `release-1.34.x` tag (follows the [1.34.x](https://github.com/freenowtech/wave/tree/1.34.x) branch): It is used to provide maintenance on our previous major version (v1). For more information check [semantic-release maintenance releases guide](https://semantic-release.gitbook.io/semantic-release/recipes/release-workflow/maintenance-releases)
 
 ## Tools we use
