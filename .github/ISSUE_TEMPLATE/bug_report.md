@@ -5,9 +5,12 @@ about: Bugs, missing documentation, or unexpected behavior 🤔.
 
 <!--
 
-* Please fill out this template with all the relevant information so we can
+* Please fill out this template with all the relevant information, so we can
   understand what's going on and fix the issue. We appreciate bugs filed and PRs
   submitted!
+* If you are opening reporting a bug specific to one of the FREENOW webapps,
+  please consider adding it to the internal backlog instead!
+  More info in #ask-wave via Slack.
 
 -->
 
@@ -16,7 +19,7 @@ about: Bugs, missing documentation, or unexpected behavior 🤔.
 ### Relevant code
 
 ```js
-var your => (code) => here;
+const your = code => here;
 ```
 
 ### What was expected to happen?
@@ -27,5 +30,5 @@ var your => (code) => here;
 
 <!--
 If you can, try to reproduce the issue in a Codesandbox. You can fork the one
-here: https://codesandbox.io/s/wave-playground-w7cf3 (make sure to use latest Wave version)
+here: https://stackblitz.com/edit/fn-wave-playground?file=src%2FApp.tsx (make sure to use the related Wave version)
 -->
