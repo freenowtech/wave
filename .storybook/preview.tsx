@@ -6,6 +6,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
+import { createGlobalStyle, ColorPalette as ExperimentalColors } from '../src/essentials/experimental/Colors';
 import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
 
 import { LightTheme, DarkTheme } from '../src/docs/storybook-theme/FreenowTheme';
@@ -16,7 +17,16 @@ const THEMES = {
 } as const;
 
 export const withTheme = (Story, context) => {
-    const Theme = THEMES[context.globals.theme];
+    const { theme } = context.globals;
+    const Theme =
+        theme === 'experimental'
+            ? createGlobalStyle({
+                  accent: ExperimentalColors.red['50'],
+                  onAccent: ExperimentalColors.neutral['100'],
+                  accentDark: ExperimentalColors.red['60'],
+                  onAccentDark: ExperimentalColors.neutral['10']
+              })
+            : THEMES[theme];
     return (
         <>
             <Theme />
@@ -136,7 +146,7 @@ export const preview: Preview = {
             toolbar: {
                 title: 'Theme',
                 icon: 'paintbrush',
-                items: ['modern', 'classic'],
+                items: ['modern', 'classic', 'experimental'],
                 dynamicTitle: true
             }
         }
