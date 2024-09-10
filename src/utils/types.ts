@@ -13,7 +13,7 @@
  * // ['bar', 'baz'] | ['qux']
  */
 export type Leaves<T> = {
-    [K in keyof T]: T[K] extends Record<string, unknown> ? [K, ...Leaves<T[K]>] : [K];
+    [K in keyof T]: T[K] extends Record<string | number, unknown> ? [K, ...Leaves<T[K]>] : [K];
 }[keyof T];
 
 /**
@@ -27,6 +27,6 @@ export type Leaves<T> = {
  */
 export type Join<T extends unknown[], U extends string = '-'> = T extends [infer F, ...infer R]
     ? R['length'] extends 0
-        ? `${F & string}`
-        : `${F & string}${U}${Join<R, U>}`
+        ? `${F & (string | number)}`
+        : `${F & (string | number)}${U}${Join<R, U>}`
     : never;
