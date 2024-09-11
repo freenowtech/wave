@@ -24,7 +24,7 @@ interface TextProps
     variant?: ResponsiveValue<'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2'>;
 }
 
-const variantStyles = variant({
+export const textStyles = {
     variants: {
         display: {
             fontSize: theme.fontSizes[4],
@@ -67,7 +67,9 @@ const variantStyles = variant({
             lineHeight: theme.lineHeights[0]
         }
     }
-});
+};
+
+const variantStyles = variant(textStyles);
 
 const Text = styled.span.attrs({ theme })<TextProps>`
     color: inherit;
