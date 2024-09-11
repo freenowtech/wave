@@ -13,20 +13,23 @@ import { LightTheme, DarkTheme } from '../src/docs/storybook-theme/FreenowTheme'
 
 const THEMES = {
     classic: ClassicColors,
-    modern: ModernColors
+    modern: ModernColors,
+    'experimental (rider)': createGlobalStyle({
+        accent: ExperimentalColors.red['50'],
+        onAccent: ExperimentalColors.neutral['100'],
+        accentDark: ExperimentalColors.red['60']
+    }),
+    'experimental (driver)': createGlobalStyle({
+        accent: ExperimentalColors.red['30'],
+        onAccent: ExperimentalColors.neutral['99'],
+        accentDark: ExperimentalColors.red['90'],
+        onAccentDark: ExperimentalColors.neutral['10']
+    })
 } as const;
 
 export const withTheme = (Story, context) => {
     const { theme } = context.globals;
-    const Theme =
-        theme === 'experimental'
-            ? createGlobalStyle({
-                  accent: ExperimentalColors.red['50'],
-                  onAccent: ExperimentalColors.neutral['100'],
-                  accentDark: ExperimentalColors.red['60'],
-                  onAccentDark: ExperimentalColors.neutral['10']
-              })
-            : THEMES[theme];
+    const Theme = THEMES[theme];
     return (
         <>
             <Theme />
@@ -146,7 +149,7 @@ export const preview: Preview = {
             toolbar: {
                 title: 'Theme',
                 icon: 'paintbrush',
-                items: ['modern', 'classic', 'experimental'],
+                items: ['modern', 'classic', 'experimental (rider)', 'experimental (driver)'],
                 dynamicTitle: true
             }
         }
