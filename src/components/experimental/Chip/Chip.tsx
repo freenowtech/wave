@@ -36,7 +36,7 @@ const Container = styled.div.attrs({ theme })<{ isActive: boolean }>`
     cursor: pointer;
 
     border-radius: ${get('radii.3')};
-    padding: ${get('space.2')}rem ${get('space.3')}rem;
+    padding: ${get('space.2')} ${get('space.3')};
 
     color: ${
         props =>

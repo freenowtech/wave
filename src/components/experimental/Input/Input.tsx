@@ -14,8 +14,8 @@ const TextInput = styled.input.attrs(() => ({
     font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.lineHeights[1]};
 
-    padding-top: ${theme.space[6]}rem;
-    padding-bottom: ${theme.space[2]}rem;
+    padding-top: ${theme.space[6]};
+    padding-bottom: ${theme.space[2]};
 
     display: block;
     width: 100%;
@@ -24,7 +24,7 @@ const TextInput = styled.input.attrs(() => ({
 const Label = styled.label<{ $shouldDisplace: boolean; $shouldLabelAnimate?: boolean }>`
     position: absolute;
     top: 50%;
-    left: ${theme.space[4]}rem;
+    left: ${theme.space[4]};
     font-size: ${theme.fontSizes[1]};
     line-height: ${theme.lineHeights[0]};
 
@@ -36,7 +36,7 @@ const Label = styled.label<{ $shouldDisplace: boolean; $shouldLabelAnimate?: boo
     ${props =>
         props.$shouldDisplace &&
         `
-        top: ${theme.space[1]}rem;
+        top: ${theme.space[1]};
         font-size: ${theme.fontSizes[0]};
         transform: translate3d(1px, 0 ,0);
         color: hsla(347, 41%, 50%, 1); // var(--sys-color-interactive, #B44B61);
@@ -54,8 +54,8 @@ const Wrapper = styled.div`
     border-color: hsla(0, 6%, 82%, 1); // var(--sys-color-divider, #D4CECE);
     border-radius: ${theme.radii[4]};
 
-    padding-left: ${theme.space[4]}rem;
-    padding-right: ${theme.space[4]}rem;
+    padding-left: ${theme.space[4]};
+    padding-right: ${theme.space[4]};
     display: flex;
     align-items: end;
 
@@ -67,9 +67,8 @@ const Wrapper = styled.div`
     }
 
     &:focus-within {
-        outline-color: hsla(347, 41%, 50%, 1); // var(--sys-color-interactive, #B44B61);
-        outline-style: solid;
-        outline-width: 0.125rem;
+        // var(--sys-color-interactive, #B44B61);
+        outline: hsla(347, 41%, 50%, 1) solid 0.125rem;
         outline-offset: -0.125rem;
     }
 `;

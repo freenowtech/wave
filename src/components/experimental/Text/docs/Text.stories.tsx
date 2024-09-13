@@ -15,7 +15,7 @@ const meta: Meta = {
             description: 'Text'
         },
         variant: {
-            options: ['display', 'headline', 'title1', 'title2', 'body1', 'body2', 'label1', 'lable2'],
+            options: ['display', 'headline', 'title1', 'title2', 'body1', 'body2', 'label1', 'label2'],
             control: 'select'
         }
     }
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Text>;
 
 export const Default: Story = {};
 
-export const KitchenSink: Story = {
+export const Typography: Story = {
     render: () => (
         <Box display="flex" flexDirection="column" style={{ gap: '2rem' }}>
             <Box>
