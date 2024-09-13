@@ -54,11 +54,11 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
 
     display: inline-flex;
     align-items: center;
-    gap: ${get('space.2')}rem;
+    gap: ${get('space.2')};
     border: none;
     outline: none;
     border-radius: ${get('radii.4')};
-    padding: ${get('space.4')}rem ${get('space.6')}rem;
+    padding: ${get('space.4')} ${get('space.6')};
 
     cursor: pointer;
 

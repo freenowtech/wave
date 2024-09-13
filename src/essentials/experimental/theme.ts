@@ -1,21 +1,20 @@
 import { DefaultTheme } from 'styled-components';
 import { Spaces, Breakpoints, MediaQueries } from '../index';
-import { getSemanticValue } from '../../utils';
 
 const ExperimentalSpaces = [
     '0', // 0
-    '0.25', // 1 - 4px new smallest value
-    '0.5', // 2
-    '0.75', // 3
-    '1', // 4
-    '1.25', // 5
-    '1.5', // 6
-    '1.75', // 7
-    '2', // 8
-    '2.25', // 9
-    '2.5', // 10
-    '2.75', // 11
-    '3' // 12
+    '0.25rem', // 1 - 4px new smallest value
+    '0.5rem', // 2
+    '0.75rem', // 3
+    '1rem', // 4
+    '1.25rem', // 5
+    '1.5rem', // 6
+    '1.75rem', // 7
+    '2rem', // 8
+    '2.25rem', // 9
+    '2.5rem', // 10
+    '2.75rem', // 11
+    '3rem' // 12
 ];
 
 interface ExperimentalFontWeights {
