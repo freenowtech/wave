@@ -59,6 +59,12 @@ export const Disabled: Story = {
     }
 };
 
+export const Focused: Story = {
+    args: {
+        autoFocus: true
+    }
+};
+
 export const WithIcon: Story = {
     args: {
         children: (

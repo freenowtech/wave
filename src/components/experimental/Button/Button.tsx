@@ -8,10 +8,6 @@ import { textStyles } from '../Text/Text';
 
 type Emphasis = 'primary' | 'secondary';
 
-// TODO
-// [] focused state
-// [] pressed state
-
 interface ButtonProps extends BaseButtonProps {
     /**
      * Define style of the button component, defaults to primary
@@ -80,6 +76,11 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
 
     &[data-hovered]::before {
         opacity: 0.16;
+    }
+
+    &[data-focused]::before,
+    &[data-pressed]::before {
+        opacity: 0.24;
     }
 
     ${textStyles.variants.label1}
