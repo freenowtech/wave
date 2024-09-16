@@ -14,7 +14,7 @@ import { getSemanticValue } from '../../../essentials/experimental/cssVariables'
 import { textStyles } from '../Text/Text';
 
 // TODO
-// [] make a flying label (should be up if in focus, has placeholder or is filled)
+// [x] make a flying label (should be up if in focus, has placeholder or is filled)
 // [x] style helper text
 // [x] add counter
 // [x] style error text
@@ -46,7 +46,14 @@ const StyledTextArea = styled(TextArea).attrs({ rows: 1 })`
     resize: none;
 `;
 
-const StyledLabel = styled(Label)`
+const flyingStyles = css`
+    top: ${get('space.1')};
+    transform: translate3d(1px, 0, 0);
+
+    ${textStyles.variants.label2}
+`;
+
+const StyledLabel = styled(Label)<{ $flying: boolean }>`
     position: absolute;
     left: ${get('space.4')};
     top: 50%;
@@ -58,6 +65,8 @@ const StyledLabel = styled(Label)`
     transform-origin: 0;
 
     transition: top 0.2s ease, font-size 0.2s ease, transform 0.2s ease;
+
+    ${props => props.$flying && flyingStyles}
 `;
 
 const TopLine = styled.div`
@@ -88,11 +97,9 @@ const TopLine = styled.div`
     }
 
     &:focus-within ${StyledLabel} {
-        top: ${get('space.1')};
-        transform: translate3d(1px, 0, 0);
         color: ${getSemanticValue('interactive')};
 
-        ${textStyles.variants.label2}
+        ${flyingStyles}
     }
 `;
 
@@ -167,8 +174,8 @@ function TextField({
     return (
         <Wrapper {...props} onChange={handleChange}>
             <TopLine>
-                <StyledLabel>{label}</StyledLabel>
-                <StyledInputSource as={multiline ? StyledTextArea : Input} />
+                <StyledLabel $flying={Boolean(placeholder || text.length)}>{label}</StyledLabel>
+                <StyledInputSource as={multiline ? StyledTextArea : Input} placeholder={placeholder} />
             </TopLine>
             <BottomLine>
                 {(description || errorMessage) && (
