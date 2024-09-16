@@ -5,6 +5,25 @@
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
     "module": "lib/esm/index.js",
+    "exports": {
+        ".": {
+            "import": "./lib/esm/index.js",
+            "require": "./lib/cjs/index.js",
+            "default": "./lib/esm/index.js"
+        },
+        "./experimental": {
+            "import": "./lib/esm/experimental/index.js",
+            "require": "./lib/cjs/experimental/index.js",
+            "default": "./lib/esm/experimental/index.js"
+        }
+    },
+    "typesVersions": {
+        "*": {
+            "experimental": [
+                "lib/types/experimental/index.d.ts"
+            ]
+        }
+    },
     "bin": {
         "run_v2_migration": "./scripts/run_v2_migration.sh"
     },

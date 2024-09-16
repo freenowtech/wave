@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components';
-import { Spaces, Breakpoints, MediaQueries } from '../index';
+import { Breakpoints, MediaQueries } from '../index';
 
 const ExperimentalSpaces = [
     '0', // 0
@@ -24,7 +24,7 @@ interface ExperimentalFontWeights {
     bold: number;
 }
 
-export interface ExperimentalTheme extends DefaultTheme {
+interface ExperimentalTheme extends DefaultTheme {
     lineHeights: string[];
     fontWeights: ExperimentalFontWeights;
     chips: any;
@@ -109,4 +109,4 @@ function fontStack(fonts: string[]): string {
     return fonts.map(font => (font.includes(' ') ? `"${font}"` : font)).join(', ');
 }
 
-export { theme };
+export { theme, ExperimentalTheme };
