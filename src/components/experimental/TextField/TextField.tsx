@@ -174,7 +174,7 @@ function TextField({
     return (
         <Wrapper {...props} onChange={handleChange}>
             <TopLine>
-                <StyledLabel $flying={Boolean(placeholder || text.length)}>{label}</StyledLabel>
+                <StyledLabel $flying={Boolean(placeholder || text.length > 0)}>{label}</StyledLabel>
                 <StyledInputSource as={multiline ? StyledTextArea : Input} placeholder={placeholder} />
             </TopLine>
             <BottomLine>
