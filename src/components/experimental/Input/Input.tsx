@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
+import { Input as BaseInput, InputProps as BaseInputProps } from 'react-aria-components';
 import styled from 'styled-components';
 import { useGeneratedId } from '../../../utils/hooks';
-import { theme } from '../../../essentials/experimental/theme';
+import { theme } from '../../../essentials/experimental';
+import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 
-const TextInput = styled.input.attrs(() => ({
-    type: 'text'
-}))`
+const StyledInput = styled(BaseInput)`
     border: none;
     background-color: unset;
     outline: none;
@@ -39,7 +39,7 @@ const Label = styled.label<{ $shouldDisplace: boolean; $shouldLabelAnimate?: boo
         top: ${theme.space[1]};
         font-size: ${theme.fontSizes[0]};
         transform: translate3d(1px, 0 ,0);
-        color: hsla(347, 41%, 50%, 1); // var(--sys-color-interactive, #B44B61);
+        color: ${getSemanticValue('interactive')}
     `}
 `;
 
@@ -48,10 +48,10 @@ const Wrapper = styled.div`
 
     font-family: ${theme.fonts.normal};
 
-    background-color: hsla(0, 6%, 99%, 1); // var(--sys-color-surface, #FCFCFC);
-    border-width: 0.0625rem; // 1px
+    background-color: ${getSemanticValue('surface')};
+    border-width: 0.0625rem;
     border-style: solid;
-    border-color: hsla(0, 6%, 82%, 1); // var(--sys-color-divider, #D4CECE);
+    border-color: ${getSemanticValue('outline-variant')};
     border-radius: ${theme.radii[4]};
 
     padding-left: ${theme.space[4]};
@@ -63,21 +63,17 @@ const Wrapper = styled.div`
     overflow: hidden;
 
     &:hover {
-        border-color: hsla(0, 6%, 47%, 1); // var(--sys-color-outline, #7F7171);
+        border-color: ${getSemanticValue('outline')};
     }
 
     &:focus-within {
-        // var(--sys-color-interactive, #B44B61);
-        outline: hsla(347, 41%, 50%, 1) solid 0.125rem;
+        outline: ${getSemanticValue('interactive')} solid 0.125rem;
         outline-offset: -0.125rem;
     }
 `;
 
-export interface InputProps {
+export interface InputProps extends BaseInputProps {
     label: string;
-    placeholder: string;
-    id?: string;
-    onChange?: (value: string) => void;
 }
 
 function Input({ label, placeholder, id: providedId, onChange, ...rest }: InputProps): ReactElement {
@@ -87,7 +83,7 @@ function Input({ label, placeholder, id: providedId, onChange, ...rest }: InputP
     const [shouldLabelDisplace, setShouldLabelDisplace] = React.useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(e.target.value);
+        onChange(e);
 
         setValue(prevState => {
             if (!prevState) {
@@ -117,7 +113,7 @@ function Input({ label, placeholder, id: providedId, onChange, ...rest }: InputP
 
     return (
         <Wrapper>
-            <TextInput
+            <StyledInput
                 id={id}
                 placeholder={placeholder}
                 value={value}
