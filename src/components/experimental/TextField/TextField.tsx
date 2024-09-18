@@ -37,6 +37,7 @@ const TopLine = styled.div`
     align-items: start;
     gap: ${get('space.3')};
 
+    /* stylelint-disable selector-type-case, selector-type-no-unknown */
     & > :not(${InnerWrapper}) {
         flex-shrink: 0;
         padding-top: ${get('space.2')};
