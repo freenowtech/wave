@@ -1,6 +1,6 @@
 import React, { ReactElement, RefObject } from 'react';
 import { TextField as BaseTextField, TextFieldProps as BaseTextFieldProps, Text } from 'react-aria-components';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { textStyles } from '../Text/Text';
@@ -14,12 +14,38 @@ const defaultAriaStrings = {
     messageFieldIsCleared: 'The field is cleared'
 };
 
-const InnerWrapper = styled.div`
+const InnerWrapper = styled.div<{ $autoResize: boolean }>`
     width: 100%;
     padding-top: ${get('space.4')};
 
     position: relative;
     overflow: hidden;
+
+    ${props =>
+        props.$autoResize &&
+        css`
+            display: grid;
+
+            &::after {
+                /* Styling should be the same */
+                ${textStyles.variants.body1}
+
+                /* Note the weird space! Needed to prevent jumpy behavior */
+                content: attr(data-replicated-value) ' ';
+
+                /* This is how textarea text behaves */
+                white-space: pre-wrap;
+
+                /* Hidden from view, clicks, and screen readers */
+                visibility: hidden;
+            }
+
+            &::after,
+            ${TextArea} {
+                /* Place on top of each other */
+                grid-area: 1 / 1 / 2 / 2;
+            }
+        `}
 `;
 
 const TopLine = styled.div`
@@ -132,7 +158,7 @@ function TextField({
     ...props
 }: TextFieldProps): ReactElement {
     const [text, setText] = React.useState(props.defaultValue || props.value || '');
-    const ref = React.useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+    const inputRef = React.useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
     const handleChange = (value: string) => {
         setText(value);
@@ -143,21 +169,21 @@ function TextField({
         <Wrapper {...props} value={text} onChange={handleChange}>
             <TopLine>
                 {leadingIcon}
-                <InnerWrapper>
+                <InnerWrapper $autoResize={multiline} data-replicated-value={text}>
                     <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
                     {multiline ? (
-                        <TextArea placeholder={placeholder} ref={ref as RefObject<HTMLTextAreaElement>} />
+                        <TextArea placeholder={placeholder} ref={inputRef as RefObject<HTMLTextAreaElement>} />
                     ) : (
-                        <Input placeholder={placeholder} ref={ref as RefObject<HTMLInputElement>} />
+                        <Input placeholder={placeholder} ref={inputRef as RefObject<HTMLInputElement>} />
                     )}
                 </InnerWrapper>
                 {actionIcon ||
                     (text.length > 0 ? (
                         <ClearButton
-                            aria-controls={ref.current?.id}
+                            aria-controls={inputRef.current?.id}
                             aria-label={ariaStrings.clearFieldButton}
                             onPress={() => {
-                                ref.current.value = '';
+                                inputRef.current.value = '';
                                 setText('');
                             }}
                         />

@@ -22,7 +22,6 @@ const fieldStyles = css`
     }
 `;
 
-// TODO: Implement autogrow
 export const TextArea = styled(BaseTextArea).attrs({ rows: 1 })`
     ${fieldStyles};
 
