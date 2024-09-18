@@ -42,6 +42,8 @@ const InnerWrapper = styled.div<{ $autoResize: boolean }>`
 
             &::after,
             ${TextArea} {
+                overflow: hidden;
+
                 /* Place on top of each other */
                 grid-area: 1 / 1 / 2 / 2;
             }
