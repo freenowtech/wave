@@ -1,117 +1,73 @@
-import React, { ReactElement } from 'react';
-import {
-    Input,
-    InputProps,
-    Label,
-    TextField as BaseTextField,
-    TextFieldProps as BaseTextFieldProps,
-    Text,
-    TextArea
-} from 'react-aria-components';
-import styled, { css } from 'styled-components';
+import React, { ReactElement, RefObject } from 'react';
+import { TextField as BaseTextField, TextFieldProps as BaseTextFieldProps, Text } from 'react-aria-components';
+import styled from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { textStyles } from '../Text/Text';
+import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
+import { ClearButton } from './ClearButton';
+import { Label, flyingLabelStyles } from './Label';
+import { TextArea, Input } from './Field';
 
-// TODO
-// [x] make a flying label (should be up if in focus, has placeholder or is filled)
-// [x] style helper text
-// [x] add counter
-// [x] style error text
-// [] add autogrow
-// [] add clear control
-// [] add arrow control
-// [] add an optional icon
+const defaultAriaStrings = {
+    clearFieldButton: 'Clear field',
+    messageFieldIsCleared: 'The field is cleared'
+};
 
-const StyledInputSource = styled.div`
-    border: none;
-    background-color: unset;
-    outline: none;
-
-    padding-top: ${get('space.6')};
-    padding-bottom: ${get('space.2')};
-
-    display: block;
+const InnerWrapper = styled.div`
     width: 100%;
+    padding-top: ${get('space.4')};
 
-    caret-color: ${getSemanticValue('interactive')};
-    ${textStyles.variants.body1}
-
-    &::placeholder {
-        color: ${getSemanticValue('on-surface-variant')};
-    }
-`;
-
-const StyledTextArea = styled(TextArea).attrs({ rows: 1 })`
-    resize: none;
-`;
-
-const flyingStyles = css`
-    top: ${get('space.1')};
-    transform: translate3d(1px, 0, 0);
-
-    ${textStyles.variants.label2}
-`;
-
-const StyledLabel = styled(Label)<{ $flying: boolean }>`
-    position: absolute;
-    left: ${get('space.4')};
-    top: 50%;
-    color: ${getSemanticValue('on-surface')};
-
-    ${textStyles.variants.body1}
-
-    transform: translate3d(0, calc(-${textStyles.variants.body1.lineHeight} / 2), 0);
-    transform-origin: 0;
-
-    transition: top 0.2s ease, font-size 0.2s ease, transform 0.2s ease;
-
-    ${props => props.$flying && flyingStyles}
+    position: relative;
+    overflow: hidden;
 `;
 
 const TopLine = styled.div`
     box-sizing: content-box;
 
+    color: ${getSemanticValue('on-surface-variant')};
     background-color: ${getSemanticValue('surface')};
     border-width: 0.0625rem;
     border-style: solid;
     border-color: ${getSemanticValue('outline-variant')};
     border-radius: ${get('radii.4')};
 
-    padding-left: ${get('space.4')};
-    padding-right: ${get('space.4')};
+    padding: ${get('space.2')} ${get('space.3')} ${get('space.2')} ${get('space.4')};
     display: flex;
-    align-items: end;
-    min-width: 315px;
+    align-items: start;
+    gap: ${get('space.3')};
 
-    position: relative;
-    overflow: hidden;
+    & > :not(${InnerWrapper}) {
+        flex-shrink: 0;
+        padding-top: ${get('space.2')};
+    }
 
     &:hover {
         border-color: ${getSemanticValue('outline')};
+        color: ${getSemanticValue('on-surface')};
     }
 
     &:focus-within {
+        color: ${getSemanticValue('interactive')};
         outline: ${getSemanticValue('interactive')} solid 0.125rem;
         outline-offset: -0.125rem;
-    }
 
-    &:focus-within ${StyledLabel} {
-        color: ${getSemanticValue('interactive')};
-
-        ${flyingStyles}
+        ${Label} {
+            ${flyingLabelStyles}
+        }
     }
 `;
 
 const BottomLine = styled.footer`
     display: grid;
-    grid-template-areas: 'message counter';
+    grid-template-areas: '. counter';
     justify-content: space-between;
     gap: ${get('space.2')};
 
     padding: ${get('space.1')} ${get('space.3')} ${get('space.0')};
 
     color: ${getSemanticValue('on-surface-variant')};
+
     ${textStyles.variants.label2}
 
     &:empty {
@@ -126,34 +82,41 @@ const Counter = styled.span`
 const Wrapper = styled(BaseTextField)`
     padding: ${get('space.2')} ${get('space.0')};
 
-    ${props =>
-        props.isInvalid &&
-        css`
+    &[data-disabled] {
+        opacity: 0.38;
+
+        ${TopLine} {
+            pointer-events: none;
+        }
+    }
+
+    &[data-invalid] {
+        ${Label},
+        ${BottomLine} {
             color: ${getSemanticValue('negative')};
+        }
 
-            ${StyledLabel},
-            ${BottomLine} {
-                color: currentColor;
-            }
-
-            ${TopLine} {
-                border-color: currentColor;
-            }
-        `}
-
-    ${props =>
-        props.isDisabled &&
-        css`
-            opacity: 0.38;
-        `}
+        ${TopLine} {
+            border-color: ${getSemanticValue('negative')};
+        }
+    }
 `;
 
 export interface TextFieldProps extends BaseTextFieldProps {
     label: string;
+    leadingIcon?: React.ReactNode;
+    actionIcon?: React.ReactNode;
     placeholder?: string;
     description?: string;
     errorMessage?: string;
     multiline?: boolean;
+    /**
+     * If you project supports multiple languages, it is recommended to pass translated labels to these properties
+     */
+    ariaStrings?: {
+        clearFieldButton: string;
+        messageFieldIsCleared: string;
+    };
 }
 
 function TextField({
@@ -161,10 +124,14 @@ function TextField({
     description,
     errorMessage,
     placeholder,
+    leadingIcon,
+    actionIcon,
     multiline = false,
+    ariaStrings = defaultAriaStrings,
     ...props
 }: TextFieldProps): ReactElement {
-    const [text, setText] = React.useState('');
+    const [text, setText] = React.useState(props.defaultValue || props.value || '');
+    const ref = React.useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
     const handleChange = (value: string) => {
         setText(value);
@@ -172,10 +139,30 @@ function TextField({
     };
 
     return (
-        <Wrapper {...props} onChange={handleChange}>
+        <Wrapper {...props} value={text} onChange={handleChange}>
             <TopLine>
-                <StyledLabel $flying={Boolean(placeholder || text.length > 0)}>{label}</StyledLabel>
-                <StyledInputSource as={multiline ? StyledTextArea : Input} placeholder={placeholder} />
+                {leadingIcon}
+                <InnerWrapper>
+                    <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
+                    {multiline ? (
+                        <TextArea placeholder={placeholder} ref={ref as RefObject<HTMLTextAreaElement>} />
+                    ) : (
+                        <Input placeholder={placeholder} ref={ref as RefObject<HTMLInputElement>} />
+                    )}
+                </InnerWrapper>
+                {actionIcon ||
+                    (text.length > 0 ? (
+                        <ClearButton
+                            aria-controls={ref.current?.id}
+                            aria-label={ariaStrings.clearFieldButton}
+                            onPress={() => {
+                                ref.current.value = '';
+                                setText('');
+                            }}
+                        />
+                    ) : (
+                        <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
+                    ))}
             </TopLine>
             <BottomLine>
                 {(description || errorMessage) && (

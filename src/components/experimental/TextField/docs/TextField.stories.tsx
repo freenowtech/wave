@@ -1,5 +1,9 @@
+import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { StoryObj, Meta } from '@storybook/react';
 import { TextField } from '../TextField';
+import { EyeIcon, PersonFilledIcon } from '../../../../icons';
+import { getSemanticValue } from '../../../../essentials/experimental/cssVariables';
 
 const meta: Meta = {
     title: 'Experimental/Components/TextField',
@@ -20,6 +24,10 @@ const meta: Meta = {
         },
         isInvalid: {
             control: 'boolean'
+        },
+        type: {
+            control: 'select',
+            options: ['text', 'password', 'search', 'tel']
         }
     }
 };
@@ -33,6 +41,12 @@ export const Default: Story = {};
 export const WithPlaceholder: Story = {
     args: {
         placeholder: 'Placeholder'
+    }
+};
+
+export const WithDefaultValue: Story = {
+    args: {
+        defaultValue: 'Value'
     }
 };
 
@@ -64,5 +78,26 @@ export const InvalidWithMessage: Story = {
     args: {
         isInvalid: true,
         errorMessage: 'Error text'
+    }
+};
+
+export const WithLeadingIcon: Story = {
+    args: {
+        leadingIcon: <PersonFilledIcon color={getSemanticValue('on-surface-variant')} />
+    }
+};
+
+export const WithActionIcon: Story = {
+    args: {
+        label: 'Password',
+        type: 'password',
+        actionIcon: <EyeIcon color={getSemanticValue('on-surface-variant')} onClick={action('Show password')} />
+    }
+};
+
+export const AsTextArea: Story = {
+    args: {
+        multiline: true,
+        label: 'Leave us a comment'
     }
 };
