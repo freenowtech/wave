@@ -65,7 +65,7 @@ export const generateCssVariableEntries = (
         return { variable: [...path, key].join('-').toLowerCase(), value };
     });
 
-const generateHslComponentsCssVariableEntries = (
+export const generateHslComponentsCssVariableEntries = (
     entries: ReadonlyArray<CssVariableEntry>
 ): ReadonlyArray<CssVariableEntry> =>
     entries
