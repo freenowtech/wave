@@ -37,6 +37,7 @@ const StyledLabel = styled.span<{ $type: LabelType }>`
     box-sizing: border-box;
     border-radius: ${get('radii.2')};
     padding: ${get('space.1')} ${get('space.2')};
+    white-space: nowrap;
 
     ${textStyles.variants.label2};
 
