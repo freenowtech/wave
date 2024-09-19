@@ -6,17 +6,30 @@ import { useDarkMode } from 'storybook-dark-mode';
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
+import { createGlobalStyle, ColorPalette as ExperimentalColors } from '../src/essentials/experimental/Colors';
 import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
 
-import { LightTheme, DarkTheme } from './FreenowTheme';
+import { LightTheme, DarkTheme } from '../src/docs/storybook-theme/FreenowTheme';
 
 const THEMES = {
     classic: ClassicColors,
-    modern: ModernColors
+    modern: ModernColors,
+    'experimental (rider)': createGlobalStyle({
+        accent: ExperimentalColors.red['50'],
+        onAccent: ExperimentalColors.neutral['100'],
+        accentDark: ExperimentalColors.red['60']
+    }),
+    'experimental (driver)': createGlobalStyle({
+        accent: ExperimentalColors.red['30'],
+        onAccent: ExperimentalColors.neutral['99'],
+        accentDark: ExperimentalColors.red['90'],
+        onAccentDark: ExperimentalColors.neutral['10']
+    })
 } as const;
 
 export const withTheme = (Story, context) => {
-    const Theme = THEMES[context.globals.theme];
+    const { theme } = context.globals;
+    const Theme = THEMES[theme];
     return (
         <>
             <Theme />
@@ -37,6 +50,7 @@ export const withColorScheme = (Story, context) => {
 
 export const preview: Preview = {
     decorators: [withTheme, withColorScheme],
+
     parameters: {
         darkMode: {
             dark: { ...themes.dark, ...DarkTheme },
@@ -59,7 +73,7 @@ export const preview: Preview = {
         },
         options: {
             storySort: {
-                order: ['Welcome', 'Get Started', 'Essentials', 'Components', 'Form Elements']
+                order: ['Welcome', 'Get Started', 'Essentials', 'Experimental', 'Components', 'Form Elements']
             }
         },
         docs: {
@@ -127,6 +141,7 @@ export const preview: Preview = {
             }
         }
     },
+
     globalTypes: {
         theme: {
             description: 'Global theme for components',
@@ -134,11 +149,13 @@ export const preview: Preview = {
             toolbar: {
                 title: 'Theme',
                 icon: 'paintbrush',
-                items: ['modern', 'classic'],
+                items: ['modern', 'classic', 'experimental (rider)', 'experimental (driver)'],
                 dynamicTitle: true
             }
         }
     }
+
+    // tags: ['autodocs']
 };
 
 export default preview;
