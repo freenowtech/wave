@@ -53,6 +53,12 @@ export const getSemanticValue = (token: SemanticColorToken): ReadCssVariable<Sem
 export const getSemanticHslValue = (token: SemanticColorToken): ReadCssVariable<SemanticColorHslTokenCssVariable> =>
     `var(--${DS_PREFIX}-color-${token}-hsl)`;
 
+export const getBareValue = (token: BareColorToken): ReadCssVariable<BareColorTokenCssVariable> =>
+    `var(--${DS_PREFIX}-palette-${token})`;
+
+export const getBareHslValue = (token: BareColorToken): ReadCssVariable<BareColorHslTokenCssVariable> =>
+    `var(--${DS_PREFIX}-palette-${token}-hsl)`;
+
 export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace): ReadonlyArray<string> => {
     const entries = generateCssVariableEntries(tokens);
     const hslComponentsEntries = generateHslComponentsCssVariableEntries(entries);
