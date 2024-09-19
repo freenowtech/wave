@@ -8,8 +8,7 @@ const config: StorybookConfig = {
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
         '@storybook/addon-viewport',
-        'storybook-dark-mode',
-        '@storybook/addon-webpack5-compiler-swc'
+        'storybook-dark-mode'
     ],
 
     framework: {
@@ -17,7 +16,9 @@ const config: StorybookConfig = {
         options: {}
     },
 
-    docs: {},
+    docs: {
+        autodocs: true
+    },
 
     staticDirs: ['../public'],
 
