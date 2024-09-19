@@ -1,4 +1,4 @@
-import { createGlobalStyle, css, CSSObject, SimpleInterpolation } from 'styled-components';
+import { createGlobalStyle, css, CSSObject } from 'styled-components';
 
 import { TokenObject } from '../../utils/cssVariables';
 import { generateBareCssVariables, generateSemanticCssVariables, getSemanticValue } from './cssVariables';
@@ -7,10 +7,7 @@ import { SemanticColorsSchema } from './types';
 export const DARK_THEME_CLASS = 'dark-scheme';
 export const LIGHT_THEME_CLASS = 'light-scheme';
 
-export const darkTheme: typeof css = (
-    first: CSSObject | TemplateStringsArray,
-    ...interpolations: SimpleInterpolation[]
-) => {
+export const darkTheme: typeof css = (first: CSSObject | TemplateStringsArray, ...interpolations: never[]) => {
     const styles = css(first, ...interpolations);
 
     return css`
