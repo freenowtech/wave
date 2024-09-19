@@ -1,8 +1,28 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css, CSSObject, SimpleInterpolation } from 'styled-components';
 
 import { TokenObject } from '../../utils/cssVariables';
 import { generateBareCssVariables, generateSemanticCssVariables, getSemanticValue } from './cssVariables';
 import { SemanticColorsSchema } from './types';
+
+export const DARK_THEME_CLASS = 'dark-scheme';
+export const LIGHT_THEME_CLASS = 'light-scheme';
+
+export const darkTheme: typeof css = (
+    first: CSSObject | TemplateStringsArray,
+    ...interpolations: SimpleInterpolation[]
+) => {
+    const styles = css(first, ...interpolations);
+
+    return css`
+        .${DARK_THEME_CLASS} & {
+            ${styles};
+        }
+
+        @media (prefers-color-scheme: dark) {
+            ${styles}
+        }
+    `;
+};
 
 export const createThemeGlobalStyle = (
     bareVariables: TokenObject,
@@ -20,12 +40,12 @@ export const createThemeGlobalStyle = (
     ${semanticCssVariablesForLightTheme}
   }
 
-  .dark-scheme {
+  .${DARK_THEME_CLASS} {
     color-scheme: dark;
     ${semanticCssVariablesForDarkTheme}
   }
   
-  .light-scheme {
+  .${LIGHT_THEME_CLASS} {
     color-scheme: light;
     ${semanticCssVariablesForLightTheme}
   }
