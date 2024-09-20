@@ -27,7 +27,6 @@ interface ExperimentalFontWeights {
 interface ExperimentalTheme extends DefaultTheme {
     lineHeights: string[];
     fontWeights: ExperimentalFontWeights;
-    chips: any;
 }
 
 const theme: ExperimentalTheme = {
@@ -74,13 +73,7 @@ const theme: ExperimentalTheme = {
         `1.75rem`, // 2 - 28px
         `2.25rem`, // 3 - 36px,
         `3.625rem` // 4 - 58px,
-    ],
-    chips: {
-        default: {
-            color: 'hsla(0, 6%, 11%, 1)', // --sys-color-on-surface
-            backgroundColor: 'hsla(0, 6%, 94%, 1)' // --sys-color-surface-container,
-        }
-    }
+    ]
 };
 
 /**
