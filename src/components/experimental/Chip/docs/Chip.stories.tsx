@@ -7,20 +7,12 @@ import FilterIcon from '../../../../icons/actions/FilterIcon';
 const meta: Meta = {
     title: 'Experimental/Components/Chip',
     component: Chip,
-    argTypes: {
-        icon: {
-            description: 'Icon',
-            control: 'select',
-            options: ['filterIcon', 'plusIcon'],
-            mapping: {
-                filterIcon: FilterIcon,
-                plusIcon: PlusIcon
-            }
-        }
+    parameters: {
+        layout: 'centered'
     },
+    argTypes: {},
     args: {
-        label: 'Add one item',
-        icon: 'plusIcon'
+        children: 'Add one item'
     }
 };
 
@@ -29,3 +21,15 @@ export default meta;
 type Story = StoryObj<typeof Chip>;
 
 export const Default: Story = {};
+
+export const Active: Story = {
+    args: {
+        isActive: true
+    }
+};
+
+export const Disabled: Story = {
+    args: {
+        isDisabled: true
+    }
+};
