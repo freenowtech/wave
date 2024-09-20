@@ -2,10 +2,9 @@ import React, { type ReactElement } from 'react';
 import styled from 'styled-components';
 import { Button as BaseButton, ButtonProps as ButtonBaseProps } from 'react-aria-components';
 import { get } from '../../../utils/experimental/themeGet';
-import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
+import { getSemanticValue } from '../../../essentials/experimental';
 
 import { textStyles } from '../Text/Text';
-import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 
 interface ChipProps extends ButtonBaseProps {
     /**
@@ -62,10 +61,8 @@ const Button = styled(BaseButton)<{ isActive: boolean }>`
 function Chip({ children, isActive = false, ...props }: ChipProps): ReactElement {
     return (
         <Button isActive={isActive} {...props}>
-            <>
-                {children}
-                <XCrossCircleIcon size={20} />
-            </>
+            {/* Button expects a single child */}
+            <>{children}</>
         </Button>
     );
 }

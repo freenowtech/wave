@@ -1,8 +1,10 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import { Chip } from '../Chip';
-import PlusIcon from '../../../../icons/actions/PlusIcon';
-import FilterIcon from '../../../../icons/actions/FilterIcon';
+import { PlusIcon, XCrossCircleIcon } from '../../../../icons';
+import { getSemanticValue } from '../../../../essentials/experimental/cssVariables';
 
 const meta: Meta = {
     title: 'Experimental/Components/Chip',
@@ -12,7 +14,7 @@ const meta: Meta = {
     },
     argTypes: {},
     args: {
-        children: 'Add one item'
+        children: 'Label'
     }
 };
 
@@ -31,5 +33,21 @@ export const Active: Story = {
 export const Disabled: Story = {
     args: {
         isDisabled: true
+    }
+};
+
+export const WithIcons: Story = {
+    args: {
+        children: (
+            <>
+                <PlusIcon size={20} />
+                Add one item
+                <XCrossCircleIcon
+                    size={20}
+                    color={getSemanticValue('on-surface-variant')}
+                    onClick={action('Remove chip')}
+                />
+            </>
+        )
     }
 };
