@@ -9,12 +9,14 @@
         ".": {
             "import": "./lib/esm/index.js",
             "require": "./lib/cjs/index.js",
-            "default": "./lib/esm/index.js"
+            "default": "./lib/esm/index.js",
+            "types": "./lib/types/index.d.ts"
         },
         "./experimental": {
             "import": "./lib/esm/experimental/index.js",
             "require": "./lib/cjs/experimental/index.js",
-            "default": "./lib/esm/experimental/index.js"
+            "default": "./lib/esm/experimental/index.js",
+            "types": "./lib/types/experimental/index.d.ts"
         }
     },
     "typesVersions": {
