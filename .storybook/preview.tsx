@@ -12,28 +12,43 @@ import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
 import { LightTheme, DarkTheme } from '../src/docs/storybook-theme/FreenowTheme';
 
 const THEMES = {
-    classic: ClassicColors,
-    modern: ModernColors,
-    'experimental (rider)': createGlobalStyle({
-        accent: ExperimentalColors.red['50'],
-        onAccent: ExperimentalColors.neutral['100'],
-        accentDark: ExperimentalColors.red['60']
-    }),
-    'experimental (driver)': createGlobalStyle({
-        accent: ExperimentalColors.red['30'],
-        onAccent: ExperimentalColors.neutral['99'],
-        accentDark: ExperimentalColors.red['90'],
-        onAccentDark: ExperimentalColors.neutral['10']
-    })
+    classic: {
+        Colors: ClassicColors,
+        font: 'Open Sans'
+    },
+    modern: {
+        Colors: ModernColors,
+        font: 'Open Sans'
+    },
+    'experimental (rider)': {
+        Colors: createGlobalStyle({
+            accent: ExperimentalColors.red['50'],
+            onAccent: ExperimentalColors.neutral['100'],
+            accentDark: ExperimentalColors.red['60']
+        }),
+        font: 'Roboto Flex'
+    },
+    'experimental (driver)': {
+        Colors: createGlobalStyle({
+            accent: ExperimentalColors.red['30'],
+            onAccent: ExperimentalColors.neutral['99'],
+            accentDark: ExperimentalColors.red['90'],
+            onAccentDark: ExperimentalColors.neutral['10']
+        }),
+        font: 'Roboto Flex'
+    }
 } as const;
 
 export const withTheme = (Story, context) => {
     const { theme } = context.globals;
-    const Theme = THEMES[theme];
+    const { Colors, font } = THEMES[theme];
+
     return (
         <>
-            <Theme />
-            <Story {...context} />
+            <Colors />
+            <div style={{ fontFamily: font }}>
+                <Story {...context} />
+            </div>
         </>
     );
 };
@@ -80,13 +95,13 @@ export const preview: Preview = {
             container: props => {
                 const scheme = useDarkMode() ? DarkTheme : LightTheme;
                 const globals = props.context.store.globals.get();
-                const WaveTheme = THEMES[globals.theme];
+                const { Colors, font } = THEMES[globals.theme];
 
                 return (
-                    <>
-                        <WaveTheme />
+                    <div style={{ fontFamily: font }}>
+                        <Colors />
                         <DocsContainer {...props} theme={scheme} />
-                    </>
+                    </div>
                 );
             },
             toc: {

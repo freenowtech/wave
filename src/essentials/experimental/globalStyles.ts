@@ -1,7 +1,7 @@
 import { createGlobalStyle, css, CSSObject } from 'styled-components';
 
 import { TokenObject } from '../../utils/cssVariables';
-import { generateBareCssVariables, generateSemanticCssVariables, getSemanticValue } from './cssVariables';
+import { generateBareCssVariables, generateSemanticCssVariables } from './cssVariables';
 import { SemanticColorsSchema } from './types';
 
 export const DARK_THEME_CLASS = 'dark-scheme';
@@ -53,12 +53,7 @@ export const createThemeGlobalStyle = (
       ${semanticCssVariablesForDarkTheme}
     }
   }
-  
-  body, .wave {
-    color: ${getSemanticValue('on-surface')};
-    background-color: ${getSemanticValue('surface')}
-  }
-  
+
   svg {
     fill: currentColor;
   }
