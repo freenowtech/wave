@@ -52,6 +52,7 @@ const InnerWrapper = styled.div<{ $autoResize: boolean }>`
 
 const TopLine = styled.div`
     box-sizing: content-box;
+    cursor: text;
 
     color: ${getSemanticValue('on-surface-variant')};
     background-color: ${getSemanticValue('surface')};
@@ -169,7 +170,7 @@ function TextField({
 
     return (
         <Wrapper {...props} value={text} onChange={handleChange}>
-            <TopLine>
+            <TopLine onClick={() => inputRef.current?.focus()}>
                 {leadingIcon}
                 <InnerWrapper $autoResize={multiline} data-replicated-value={text}>
                     <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
