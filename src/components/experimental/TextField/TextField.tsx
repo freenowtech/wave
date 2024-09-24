@@ -168,6 +168,20 @@ function TextField({
         props.onChange?.(value);
     };
 
+    const clearField =
+        text.length > 0 ? (
+            <ClearButton
+                aria-controls={inputRef.current?.id}
+                aria-label={ariaStrings.clearFieldButton}
+                onPress={() => {
+                    inputRef.current.value = '';
+                    setText('');
+                }}
+            />
+        ) : (
+            <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
+        );
+
     return (
         <Wrapper {...props} value={text} onChange={handleChange}>
             <TopLine onClick={() => inputRef.current?.focus()}>
@@ -180,19 +194,7 @@ function TextField({
                         <Input placeholder={placeholder} ref={inputRef as RefObject<HTMLInputElement>} />
                     )}
                 </InnerWrapper>
-                {actionIcon ||
-                    (text.length > 0 ? (
-                        <ClearButton
-                            aria-controls={inputRef.current?.id}
-                            aria-label={ariaStrings.clearFieldButton}
-                            onPress={() => {
-                                inputRef.current.value = '';
-                                setText('');
-                            }}
-                        />
-                    ) : (
-                        <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
-                    ))}
+                {actionIcon === undefined ? clearField : actionIcon}
             </TopLine>
             <BottomLine>
                 {(description || errorMessage) && (
