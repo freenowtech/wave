@@ -52,6 +52,7 @@ const InnerWrapper = styled.div<{ $autoResize: boolean }>`
 
 const TopLine = styled.div`
     box-sizing: content-box;
+    cursor: text;
 
     color: ${getSemanticValue('on-surface-variant')};
     background-color: ${getSemanticValue('surface')};
@@ -167,9 +168,23 @@ function TextField({
         props.onChange?.(value);
     };
 
+    const clearField =
+        text.length > 0 ? (
+            <ClearButton
+                aria-controls={inputRef.current?.id}
+                aria-label={ariaStrings.clearFieldButton}
+                onPress={() => {
+                    inputRef.current.value = '';
+                    setText('');
+                }}
+            />
+        ) : (
+            <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
+        );
+
     return (
         <Wrapper {...props} value={text} onChange={handleChange}>
-            <TopLine>
+            <TopLine onClick={() => inputRef.current?.focus()}>
                 {leadingIcon}
                 <InnerWrapper $autoResize={multiline} data-replicated-value={text}>
                     <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
@@ -179,19 +194,7 @@ function TextField({
                         <Input placeholder={placeholder} ref={inputRef as RefObject<HTMLInputElement>} />
                     )}
                 </InnerWrapper>
-                {actionIcon ||
-                    (text.length > 0 ? (
-                        <ClearButton
-                            aria-controls={inputRef.current?.id}
-                            aria-label={ariaStrings.clearFieldButton}
-                            onPress={() => {
-                                inputRef.current.value = '';
-                                setText('');
-                            }}
-                        />
-                    ) : (
-                        <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
-                    ))}
+                {actionIcon === undefined ? clearField : actionIcon}
             </TopLine>
             <BottomLine>
                 {(description || errorMessage) && (

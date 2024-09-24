@@ -2,7 +2,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { StoryObj, Meta } from '@storybook/react';
 import { TextField } from '../TextField';
-import { EyeIcon, PersonFilledIcon } from '../../../../icons';
+import { ClockIcon, EyeIcon, PersonFilledIcon } from '../../../../icons';
 import { getSemanticValue } from '../../../../essentials/experimental/cssVariables';
 
 const meta: Meta = {
@@ -92,6 +92,15 @@ export const WithActionIcon: Story = {
         label: 'Password',
         type: 'password',
         actionIcon: <EyeIcon color={getSemanticValue('on-surface-variant')} onClick={action('Show password')} />
+    }
+};
+
+export const WithoutActionIcon: Story = {
+    args: {
+        label: 'Time',
+        leadingIcon: <ClockIcon />,
+        // eslint-disable-next-line unicorn/no-null
+        actionIcon: null
     }
 };
 
