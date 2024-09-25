@@ -175,7 +175,7 @@ function TextField({
                 aria-label={ariaStrings.clearFieldButton}
                 onPress={() => {
                     inputRef.current.value = '';
-                    setText('');
+                    handleChange('');
                 }}
             />
         ) : (

@@ -110,3 +110,7 @@ export const AsTextArea: Story = {
         label: 'Leave us a comment'
     }
 };
+
+export const Uncontrolled: Story = {
+    render: () => <TextField label="Uncontrolled" onChange={action('onChange')} />
+};
