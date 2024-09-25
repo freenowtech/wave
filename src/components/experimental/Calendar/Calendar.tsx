@@ -36,7 +36,7 @@ const Button = styled(BaseButton)`
     outline: 0;
 
     &[data-focused] {
-        outline: ${getSemanticValue('accent')} solid 0.125rem;
+        color: ${getSemanticValue('accent')};
     }
 
     &[data-disabled] {
