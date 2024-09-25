@@ -11,6 +11,7 @@ const StyledButton = styled(BaseButton)`
     display: flex;
     margin: 0;
     padding: 0;
+    cursor: pointer;
     color: ${getSemanticValue('on-surface-variant')};
 `;
 

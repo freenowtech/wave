@@ -163,6 +163,12 @@ function TextField({
     const [text, setText] = React.useState(props.defaultValue || props.value || '');
     const inputRef = React.useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
+    React.useEffect(() => {
+        if (props.value !== undefined) {
+            setText(props.value);
+        }
+    }, [props.value]);
+
     const handleChange = (value: string) => {
         setText(value);
         props.onChange?.(value);
