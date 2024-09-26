@@ -1,4 +1,4 @@
-import React, { ReactElement, RefObject } from 'react';
+import React from 'react';
 import { TextField as BaseTextField, TextFieldProps as BaseTextFieldProps, Text } from 'react-aria-components';
 import styled, { css } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
@@ -50,7 +50,17 @@ const InnerWrapper = styled.div<{ $autoResize: boolean }>`
         `}
 `;
 
-const TopLine = styled.div`
+const focusStyles = css`
+    color: ${getSemanticValue('interactive')};
+    outline: ${getSemanticValue('interactive')} solid 0.125rem;
+    outline-offset: -0.125rem;
+
+    ${Label} {
+        ${flyingLabelStyles}
+    }
+`;
+
+const TopLine = styled.div<{ $isVisuallyFocused: boolean }>`
     box-sizing: content-box;
     cursor: text;
 
@@ -70,6 +80,7 @@ const TopLine = styled.div`
     & > :not(${InnerWrapper}) {
         flex-shrink: 0;
         margin-top: ${get('space.2')};
+        color: ${getSemanticValue('on-surface-variant')};
     }
 
     &:hover {
@@ -78,14 +89,10 @@ const TopLine = styled.div`
     }
 
     &:focus-within {
-        color: ${getSemanticValue('interactive')};
-        outline: ${getSemanticValue('interactive')} solid 0.125rem;
-        outline-offset: -0.125rem;
-
-        ${Label} {
-            ${flyingLabelStyles}
-        }
+        ${focusStyles}
     }
+
+    ${props => props.$isVisuallyFocused && focusStyles}
 `;
 
 const BottomLine = styled.footer`
@@ -147,69 +154,80 @@ export interface TextFieldProps extends BaseTextFieldProps {
         clearFieldButton: string;
         messageFieldIsCleared: string;
     };
+    /* If text field shouldn't lose visual focus */
+    isVisuallyFocused?: boolean;
 }
 
-function TextField({
-    label,
-    description,
-    errorMessage,
-    placeholder,
-    leadingIcon,
-    actionIcon,
-    multiline = false,
-    ariaStrings = defaultAriaStrings,
-    ...props
-}: TextFieldProps): ReactElement {
-    const [text, setText] = React.useState(props.defaultValue || props.value || '');
-    const inputRef = React.useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
+    (
+        {
+            label,
+            description,
+            errorMessage,
+            placeholder,
+            leadingIcon,
+            actionIcon,
+            multiline = false,
+            ariaStrings = defaultAriaStrings,
+            isVisuallyFocused = false,
+            ...props
+        },
+        forwardedRef
+    ) => {
+        const [text, setText] = React.useState(props.defaultValue || props.value || '');
+        const inputRef = React.useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
-    React.useEffect(() => {
-        if (props.value !== undefined) {
-            setText(props.value);
-        }
-    }, [props.value]);
+        React.useEffect(() => {
+            if (props.value !== undefined) {
+                setText(props.value);
+            }
+        }, [props.value]);
 
-    const handleChange = (value: string) => {
-        setText(value);
-        props.onChange?.(value);
-    };
+        const handleChange = (value: string) => {
+            setText(value);
+            props.onChange?.(value);
+        };
 
-    const clearField =
-        text.length > 0 ? (
-            <ClearButton
-                aria-controls={inputRef.current?.id}
-                aria-label={ariaStrings.clearFieldButton}
-                onPress={() => {
-                    inputRef.current.value = '';
-                    handleChange('');
-                }}
-            />
-        ) : (
-            <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
-        );
+        const clearField =
+            text.length > 0 ? (
+                <ClearButton
+                    aria-controls={inputRef.current?.id}
+                    aria-label={ariaStrings.clearFieldButton}
+                    onPress={() => {
+                        inputRef.current.value = '';
+                        handleChange('');
+                    }}
+                />
+            ) : (
+                <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
+            );
 
-    return (
-        <Wrapper {...props} value={text} onChange={handleChange}>
-            <TopLine onClick={() => inputRef.current?.focus()}>
-                {leadingIcon}
-                <InnerWrapper $autoResize={multiline} data-replicated-value={text}>
-                    <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
-                    {multiline ? (
-                        <TextArea placeholder={placeholder} ref={inputRef as RefObject<HTMLTextAreaElement>} />
-                    ) : (
-                        <Input placeholder={placeholder} ref={inputRef as RefObject<HTMLInputElement>} />
+        return (
+            <Wrapper {...props} ref={forwardedRef} value={text} onChange={handleChange}>
+                <TopLine $isVisuallyFocused={isVisuallyFocused} onClick={() => inputRef.current?.focus()}>
+                    {leadingIcon}
+                    <InnerWrapper $autoResize={multiline} data-replicated-value={text}>
+                        <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
+                        {multiline ? (
+                            <TextArea
+                                placeholder={placeholder}
+                                ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+                            />
+                        ) : (
+                            <Input placeholder={placeholder} ref={inputRef as React.RefObject<HTMLInputElement>} />
+                        )}
+                    </InnerWrapper>
+                    {actionIcon === undefined ? clearField : actionIcon}
+                </TopLine>
+                <BottomLine>
+                    {(description || errorMessage) && (
+                        <Text slot={description ? 'description' : 'errorMessage'}>{errorMessage || description}</Text>
                     )}
-                </InnerWrapper>
-                {actionIcon === undefined ? clearField : actionIcon}
-            </TopLine>
-            <BottomLine>
-                {(description || errorMessage) && (
-                    <Text slot={description ? 'description' : 'errorMessage'}>{errorMessage || description}</Text>
-                )}
-                {Boolean(props.maxLength) && <Counter>{`${text.length} / ${props.maxLength}`}</Counter>}
-            </BottomLine>
-        </Wrapper>
-    );
-}
+                    {Boolean(props.maxLength) && <Counter>{`${text.length} / ${props.maxLength}`}</Counter>}
+                </BottomLine>
+            </Wrapper>
+        );
+    }
+);
 
 export { TextField };
