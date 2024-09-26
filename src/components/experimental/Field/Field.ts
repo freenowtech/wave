@@ -1,9 +1,11 @@
-import { Input as BaseInput, TextArea as BaseTextArea } from 'react-aria-components';
 import styled, { css } from 'styled-components';
-import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
+import { Input as BaseInput, TextArea as BaseTextArea } from 'react-aria-components';
+import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 
-const fieldStyles = css`
+export const fieldTextStyles = textStyles.variants.body1;
+
+export const fieldStyles = css`
     border: none;
     background-color: unset;
     outline: none;
@@ -15,18 +17,11 @@ const fieldStyles = css`
     caret-color: ${getSemanticValue('interactive')};
     color: ${getSemanticValue('on-surface')};
 
-    ${textStyles.variants.body1}
+    ${fieldTextStyles}
 
     &::placeholder {
         color: ${getSemanticValue('on-surface-variant')};
     }
-`;
-
-export const TextArea = styled(BaseTextArea).attrs({ rows: 1 })`
-    ${fieldStyles};
-
-    resize: none;
-    min-height: ${textStyles.variants.body1.lineHeight};
 `;
 
 export const Input = styled(BaseInput)`
@@ -37,4 +32,11 @@ export const Input = styled(BaseInput)`
             display: none;
         }
     }
+`;
+
+export const TextArea = styled(BaseTextArea).attrs({ rows: 1 })`
+    ${fieldStyles};
+
+    resize: none;
+    min-height: ${fieldTextStyles.lineHeight};
 `;

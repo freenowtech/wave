@@ -1,115 +1,52 @@
 import React from 'react';
 import { TextField as BaseTextField, TextFieldProps as BaseTextFieldProps, Text } from 'react-aria-components';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
-import { textStyles } from '../Text/Text';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
-import { ClearButton } from './ClearButton';
-import { Label, flyingLabelStyles } from './Label';
-import { TextArea, Input } from './Field';
+import { ClearButton } from '../Field/ClearButton';
+import { Label } from '../Field/Label';
+import { TextArea, Input, fieldTextStyles } from '../Field/Field';
+import { FakeInput } from '../Field/FakeInput';
+import { Footer } from '../Field/Footer';
+import { InnerWrapper } from '../Field/InnerWrapper';
 
 const defaultAriaStrings = {
     clearFieldButton: 'Clear field',
     messageFieldIsCleared: 'The field is cleared'
 };
 
-const InnerWrapper = styled.div<{ $autoResize: boolean }>`
-    width: 100%;
-    padding-top: ${get('space.4')};
+const AutoResizingInnerWrapper = styled(InnerWrapper)`
+    display: grid;
 
-    position: relative;
-    overflow: hidden;
+    &::after {
+        /* Styling should be the same */
+        ${fieldTextStyles};
 
-    ${props =>
-        props.$autoResize &&
-        css`
-            display: grid;
+        /* Note the weird space! Needed to prevent jumpy behavior */
+        content: attr(data-replicated-value) ' ';
 
-            &::after {
-                /* Styling should be the same */
-                ${textStyles.variants.body1}
+        /* This is how textarea text behaves */
+        white-space: pre-wrap;
 
-                /* Note the weird space! Needed to prevent jumpy behavior */
-                content: attr(data-replicated-value) ' ';
+        /* Hidden from view, clicks, and screen readers */
+        visibility: hidden;
+    }
 
-                /* This is how textarea text behaves */
-                white-space: pre-wrap;
+    &::after,
+    ${TextArea} {
+        overflow: hidden;
 
-                /* Hidden from view, clicks, and screen readers */
-                visibility: hidden;
-            }
-
-            &::after,
-            ${TextArea} {
-                overflow: hidden;
-
-                /* Place on top of each other */
-                grid-area: 1 / 1 / 2 / 2;
-            }
-        `}
-`;
-
-const focusStyles = css`
-    color: ${getSemanticValue('interactive')};
-    outline: ${getSemanticValue('interactive')} solid 0.125rem;
-    outline-offset: -0.125rem;
-
-    ${Label} {
-        ${flyingLabelStyles}
+        /* Place on top of each other */
+        grid-area: 1 / 1 / 2 / 2;
     }
 `;
 
-const TopLine = styled.div<{ $isVisuallyFocused: boolean }>`
-    box-sizing: content-box;
-    cursor: text;
-
-    color: ${getSemanticValue('on-surface-variant')};
-    background-color: ${getSemanticValue('surface')};
-    border-width: 0.0625rem;
-    border-style: solid;
-    border-color: ${getSemanticValue('outline-variant')};
-    border-radius: ${get('radii.4')};
-
-    padding: ${get('space.2')} ${get('space.3')} ${get('space.2')} ${get('space.4')};
-    display: flex;
-    align-items: start;
-    gap: ${get('space.3')};
-
-    /* stylelint-disable selector-type-case, selector-type-no-unknown */
-    & > :not(${InnerWrapper}) {
-        flex-shrink: 0;
-        margin-top: ${get('space.2')};
-        color: ${getSemanticValue('on-surface-variant')};
-    }
-
-    &:hover {
-        border-color: ${getSemanticValue('outline')};
-        color: ${getSemanticValue('on-surface')};
-    }
-
-    &:focus-within {
-        ${focusStyles}
-    }
-
-    ${props => props.$isVisuallyFocused && focusStyles}
-`;
-
-const BottomLine = styled.footer`
+const BottomLine = styled(Footer)`
     display: grid;
     grid-template-areas: '. counter';
     justify-content: space-between;
     gap: ${get('space.2')};
-
-    padding: ${get('space.1')} ${get('space.3')} ${get('space.0')};
-
-    color: ${getSemanticValue('on-surface-variant')};
-
-    ${textStyles.variants.label2}
-
-    &:empty {
-        display: none;
-    }
 `;
 
 const Counter = styled.span`
@@ -122,7 +59,7 @@ const Wrapper = styled(BaseTextField)`
     &[data-disabled] {
         opacity: 0.38;
 
-        ${TopLine} {
+        ${FakeInput} {
             pointer-events: none;
         }
     }
@@ -133,7 +70,7 @@ const Wrapper = styled(BaseTextField)`
             color: ${getSemanticValue('negative')};
         }
 
-        ${TopLine} {
+        ${FakeInput} {
             border-color: ${getSemanticValue('negative')};
         }
     }
@@ -202,23 +139,28 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
                 <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
             );
 
+        const flyingLabel = <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>;
+
         return (
             <Wrapper {...props} ref={forwardedRef} value={text} onChange={handleChange}>
-                <TopLine $isVisuallyFocused={isVisuallyFocused} onClick={() => inputRef.current?.focus()}>
+                <FakeInput $isVisuallyFocused={isVisuallyFocused} onClick={() => inputRef.current?.focus()}>
                     {leadingIcon}
-                    <InnerWrapper $autoResize={multiline} data-replicated-value={text}>
-                        <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>
-                        {multiline ? (
+                    {multiline ? (
+                        <AutoResizingInnerWrapper data-replicated-value={text}>
+                            {flyingLabel}
                             <TextArea
                                 placeholder={placeholder}
                                 ref={inputRef as React.RefObject<HTMLTextAreaElement>}
                             />
-                        ) : (
+                        </AutoResizingInnerWrapper>
+                    ) : (
+                        <InnerWrapper>
+                            {flyingLabel}
                             <Input placeholder={placeholder} ref={inputRef as React.RefObject<HTMLInputElement>} />
-                        )}
-                    </InnerWrapper>
+                        </InnerWrapper>
+                    )}
                     {actionIcon === undefined ? clearField : actionIcon}
-                </TopLine>
+                </FakeInput>
                 <BottomLine>
                     {(description || errorMessage) && (
                         <Text slot={description ? 'description' : 'errorMessage'}>{errorMessage || description}</Text>
