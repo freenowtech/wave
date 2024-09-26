@@ -69,7 +69,7 @@ const TopLine = styled.div`
     /* stylelint-disable selector-type-case, selector-type-no-unknown */
     & > :not(${InnerWrapper}) {
         flex-shrink: 0;
-        padding-top: ${get('space.2')};
+        margin-top: ${get('space.2')};
     }
 
     &:hover {
