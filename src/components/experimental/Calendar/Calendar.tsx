@@ -12,7 +12,8 @@ import {
     Button as BaseButton
 } from 'react-aria-components';
 import styled from 'styled-components';
-import { ChevronLeftIcon, ChevronRightIcon } from '../../../icons';
+import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
+import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 import { get } from '../../../utils/experimental/themeGet';
@@ -103,9 +104,9 @@ const Day = styled(CalendarCell)`
     }
 `;
 
-type CalendarProps<T extends DateValue> = BaseCalendarProps<T>;
+type CalendarProps = BaseCalendarProps<DateValue>;
 
-function Calendar<T extends DateValue>(props: CalendarProps<T>): ReactElement {
+function Calendar({ value, minValue, defaultValue, maxValue, onChange, ...props }: CalendarProps): ReactElement {
     return (
         <BaseCalendar {...props}>
             <Header>

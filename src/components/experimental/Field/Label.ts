@@ -15,6 +15,7 @@ export const Label = styled(BaseLabel)<{ $flying: boolean }>`
     color: currentColor;
 
     ${textStyles.variants.body1}
+    white-space: nowrap;
 
     transform: translate3d(0, calc(-${textStyles.variants.body1.lineHeight} / 2), 0);
     transform-origin: 0;

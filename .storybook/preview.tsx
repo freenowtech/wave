@@ -1,4 +1,5 @@
 import React from 'react';
+import { I18nProvider } from 'react-aria-components';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import { DocsContainer } from '@storybook/addon-docs';
@@ -63,8 +64,18 @@ export const withColorScheme = (Story, context) => {
     );
 };
 
+export const withI18nProvider = (Story, context) => {
+    const { locale } = context.globals;
+
+    return (
+        <I18nProvider locale={locale}>
+            <Story {...context} />
+        </I18nProvider>
+    );
+};
+
 export const preview: Preview = {
-    decorators: [withTheme, withColorScheme],
+    decorators: [withTheme, withColorScheme, withI18nProvider],
 
     parameters: {
         darkMode: {
@@ -165,6 +176,16 @@ export const preview: Preview = {
                 title: 'Theme',
                 icon: 'paintbrush',
                 items: ['modern', 'classic', 'experimental (rider)', 'experimental (driver)'],
+                dynamicTitle: true
+            }
+        },
+        locale: {
+            description: 'Global locale for components',
+            defaultValue: 'en-GB',
+            toolbar: {
+                title: 'Locale',
+                icon: 'globe',
+                items: ['en-GB', 'de-DE', 'es-ES'],
                 dynamicTitle: true
             }
         }

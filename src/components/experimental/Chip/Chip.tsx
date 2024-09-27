@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react';
+import React, { forwardRef, type ReactElement } from 'react';
 import styled from 'styled-components';
 import { Button as BaseButton, ButtonProps as ButtonBaseProps } from 'react-aria-components';
 import { get } from '../../../utils/experimental/themeGet';
@@ -58,13 +58,13 @@ const Button = styled(BaseButton)<{ isActive: boolean }>`
     ${textStyles.variants.label1}
 `;
 
-function Chip({ children, isActive = false, ...props }: ChipProps): ReactElement {
-    return (
-        <Button isActive={isActive} {...props}>
+const Chip = forwardRef<HTMLButtonElement, ChipProps>(
+    ({ children, isActive = false, ...props }, ref): ReactElement => (
+        <Button isActive={isActive} ref={ref} {...props}>
             {/* Button expects a single child */}
             <>{children}</>
         </Button>
-    );
-}
+    )
+);
 
 export { Chip, ChipProps };
