@@ -96,5 +96,4 @@ function Button({ children, emphasis = 'primary', ...restProps }: ButtonProps): 
     );
 }
 
-export default Button;
 export { Button };

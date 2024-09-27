@@ -8,7 +8,7 @@ import { Footer } from './Footer';
 export const Wrapper = styled.div`
     padding: ${get('space.2')} 0;
 
-    &[data-disabled] {
+    &:has([data-disabled]) {
         opacity: 0.38;
 
         ${FakeInput} {
@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
         }
     }
 
-    &[data-invalid] {
+    &:has([data-invalid]) {
         ${Label},
         ${Footer} {
             color: ${getSemanticValue('negative')};
