@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import {
     Calendar as BaseCalendar,
+    CalendarProps as BaseCalendarProps,
     CalendarCell,
     CalendarGrid as BaseCalendarGrid,
     CalendarGridHeader,
@@ -8,12 +9,11 @@ import {
     CalendarHeaderCell,
     Heading as BaseHeading,
     DateValue,
-    Button as BaseButton,
-    I18nProvider
+    Button as BaseButton
 } from 'react-aria-components';
-import { getLocalTimeZone, parseAbsolute } from '@internationalized/date';
 import styled from 'styled-components';
-import { ChevronLeftIcon, ChevronRightIcon } from '../../../icons';
+import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
+import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 import { get } from '../../../utils/experimental/themeGet';
@@ -104,72 +104,31 @@ const Day = styled(CalendarCell)`
     }
 `;
 
-const parseDate = (date: Date | undefined, timeZone: string): DateValue =>
-    date ? parseAbsolute(date.toISOString(), timeZone) : undefined;
+type CalendarProps = BaseCalendarProps<DateValue>;
 
-interface CalendarProps {
-    'aria-label'?: string;
-    locale?: string;
-    timeZone?: string;
-    value?: Date;
-    minValue?: Date;
-    maxValue?: Date;
-    defaultValue?: Date;
-    onChange?: (value: Date) => void;
-}
-
-function Calendar({
-    locale,
-    value,
-    minValue,
-    defaultValue,
-    maxValue,
-    timeZone = getLocalTimeZone(),
-    onChange,
-    ...props
-}: CalendarProps): ReactElement {
-    const handleChange = React.useCallback(
-        (calendarDate: DateValue) => {
-            if (onChange) {
-                onChange(calendarDate.toDate(timeZone));
-            }
-        },
-        [onChange, timeZone]
-    );
-
+function Calendar({ value, minValue, defaultValue, maxValue, onChange, ...props }: CalendarProps): ReactElement {
     return (
-        <I18nProvider locale={locale}>
-            <BaseCalendar
-                defaultValue={parseDate(defaultValue, timeZone)}
-                value={parseDate(value, timeZone)}
-                minValue={parseDate(minValue, timeZone)}
-                maxValue={parseDate(maxValue, timeZone)}
-                onChange={handleChange}
-                {...props}
-            >
-                <Header>
-                    <Button slot="previous">
-                        <ChevronLeftIcon size={24} />
-                    </Button>
-                    <Heading />
-                    <Button slot="next">
-                        <ChevronRightIcon size={24} />
-                    </Button>
-                </Header>
-                <CalendarGrid weekdayStyle="short">
-                    <CalendarGridHeader>{weekDay => <WeekDay>{weekDay}</WeekDay>}</CalendarGridHeader>
-                    <CalendarGridBody>
-                        {date => (
-                            <Day date={date}>
-                                {({ formattedDate }) =>
-                                    formattedDate.length > 1 ? formattedDate : `0${formattedDate}`
-                                }
-                            </Day>
-                        )}
-                    </CalendarGridBody>
-                </CalendarGrid>
-            </BaseCalendar>
-        </I18nProvider>
+        <BaseCalendar {...props}>
+            <Header>
+                <Button slot="previous">
+                    <ChevronLeftIcon size={24} />
+                </Button>
+                <Heading />
+                <Button slot="next">
+                    <ChevronRightIcon size={24} />
+                </Button>
+            </Header>
+            <CalendarGrid weekdayStyle="short">
+                <CalendarGridHeader>{weekDay => <WeekDay>{weekDay}</WeekDay>}</CalendarGridHeader>
+                <CalendarGridBody>
+                    {date => (
+                        <Day date={date}>
+                            {({ formattedDate }) => (formattedDate.length > 1 ? formattedDate : `0${formattedDate}`)}
+                        </Day>
+                    )}
+                </CalendarGridBody>
+            </CalendarGrid>
+        </BaseCalendar>
     );
 }
 
