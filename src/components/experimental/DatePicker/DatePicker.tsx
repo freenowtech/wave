@@ -12,8 +12,9 @@ import { Calendar } from '../Calendar/Calendar';
 import { Popover } from '../Popover/Popover';
 import { DateField } from '../DateField/DateField';
 import { Button } from '../Field/Button';
+import { FieldProps } from '../Field/Props';
 
-interface DatePickerProps extends BaseDatePickerProps<DateValue> {
+interface DatePickerProps extends Pick<FieldProps, 'description' | 'errorMessage'>, BaseDatePickerProps<DateValue> {
     label: string;
 }
 
@@ -22,7 +23,7 @@ const StyledPopover = styled(Popover)`
     border-radius: 1.5rem;
 `;
 
-function DatePicker({ label, onChange, ...props }: DatePickerProps): ReactElement {
+function DatePicker({ label, onChange, description, errorMessage, ...props }: DatePickerProps): ReactElement {
     const [isOpen, setIsOpen] = React.useState(false);
     const positionRef = React.useRef(null);
     const triggerRef = React.useRef(null);
@@ -44,6 +45,8 @@ function DatePicker({ label, onChange, ...props }: DatePickerProps): ReactElemen
             <Group>
                 <DateField
                     label={label}
+                    description={description}
+                    errorMessage={errorMessage}
                     isVisuallyFocused={isOpen}
                     leadingIcon={<CalendarTodayOutlineIcon size={24} />}
                     actionIcon={

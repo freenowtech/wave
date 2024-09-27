@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField as BaseTextField, TextFieldProps as BaseTextFieldProps } from 'react-aria-components';
+import { FieldError, TextField as BaseTextField, TextFieldProps as BaseTextFieldProps } from 'react-aria-components';
 import styled from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
@@ -11,7 +11,6 @@ import { FakeInput } from '../Field/FakeInput';
 import { Footer } from '../Field/Footer';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
-import { Message } from '../Field/Message';
 import { FieldProps } from '../Field/Props';
 
 const defaultAriaStrings = {
@@ -117,32 +116,39 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
         const flyingLabel = <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>;
 
         return (
-            <BaseTextField {...props} ref={forwardedRef} value={text} onChange={handleChange}>
-                <Wrapper>
-                    <FakeInput $isVisuallyFocused={isVisuallyFocused} onClick={() => inputRef.current?.focus()}>
-                        {leadingIcon}
-                        {multiline ? (
-                            <AutoResizingInnerWrapper data-replicated-value={text}>
-                                {flyingLabel}
-                                <TextArea
-                                    placeholder={placeholder}
-                                    ref={inputRef as React.RefObject<HTMLTextAreaElement>}
-                                />
-                            </AutoResizingInnerWrapper>
-                        ) : (
-                            <InnerWrapper>
-                                {flyingLabel}
-                                <Input placeholder={placeholder} ref={inputRef as React.RefObject<HTMLInputElement>} />
-                            </InnerWrapper>
-                        )}
-                        {actionIcon === undefined ? clearField : actionIcon}
-                    </FakeInput>
-                    <BottomLine>
-                        <Message description={description} errorMessage={errorMessage} />
-                        {Boolean(props.maxLength) && <Counter>{`${text.length} / ${props.maxLength}`}</Counter>}
-                    </BottomLine>
-                </Wrapper>
-            </BaseTextField>
+            <Wrapper>
+                <BaseTextField {...props} ref={forwardedRef} value={text} onChange={handleChange}>
+                    {({ isInvalid }) => (
+                        <>
+                            <FakeInput $isVisuallyFocused={isVisuallyFocused} onClick={() => inputRef.current?.focus()}>
+                                {leadingIcon}
+                                {multiline ? (
+                                    <AutoResizingInnerWrapper data-replicated-value={text}>
+                                        {flyingLabel}
+                                        <TextArea
+                                            placeholder={placeholder}
+                                            ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+                                        />
+                                    </AutoResizingInnerWrapper>
+                                ) : (
+                                    <InnerWrapper>
+                                        {flyingLabel}
+                                        <Input
+                                            placeholder={placeholder}
+                                            ref={inputRef as React.RefObject<HTMLInputElement>}
+                                        />
+                                    </InnerWrapper>
+                                )}
+                                {actionIcon === undefined ? clearField : actionIcon}
+                            </FakeInput>
+                            <BottomLine>
+                                {isInvalid ? <FieldError>{errorMessage}</FieldError> : description}
+                                {Boolean(props.maxLength) && <Counter>{`${text.length} / ${props.maxLength}`}</Counter>}
+                            </BottomLine>
+                        </>
+                    )}
+                </BaseTextField>
+            </Wrapper>
         );
     }
 );
