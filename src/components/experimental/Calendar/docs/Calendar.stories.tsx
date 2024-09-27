@@ -1,8 +1,8 @@
-import { I18nProvider } from 'react-aria-components';
-import { getLocalTimeZone, today } from '@internationalized/date';
 import { StoryObj, Meta } from '@storybook/react';
-import React from 'react';
+import { getLocalTimeZone, today } from '@internationalized/date';
 import { Calendar } from '../Calendar';
+
+const TODAY = today(getLocalTimeZone());
 
 const meta: Meta = {
     title: 'Experimental/Components/Calendar',
@@ -10,16 +10,9 @@ const meta: Meta = {
     parameters: {
         layout: 'centered'
     },
-    decorators: [
-        Story => (
-            <I18nProvider locale="de-DE">
-                <Story />
-            </I18nProvider>
-        )
-    ],
     args: {
         'aria-label': 'Appointment date',
-        defaultValue: today(getLocalTimeZone())
+        defaultValue: TODAY
     }
 };
 
@@ -31,6 +24,6 @@ export const Default: Story = {};
 
 export const WithMinValue: Story = {
     args: {
-        minValue: today(getLocalTimeZone())
+        minValue: TODAY
     }
 };

@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions';
 import { StoryObj, Meta } from '@storybook/react';
 import { TextField } from '../TextField';
 import { ClockIcon, EyeIcon, PersonFilledIcon } from '../../../../icons';
-import { getSemanticValue } from '../../../../essentials/experimental/cssVariables';
 
 const meta: Meta = {
     title: 'Experimental/Components/TextField',
@@ -83,7 +82,7 @@ export const InvalidWithMessage: Story = {
 
 export const WithLeadingIcon: Story = {
     args: {
-        leadingIcon: <PersonFilledIcon color={getSemanticValue('on-surface-variant')} />
+        leadingIcon: <PersonFilledIcon />
     }
 };
 
@@ -91,7 +90,7 @@ export const WithActionIcon: Story = {
     args: {
         label: 'Password',
         type: 'password',
-        actionIcon: <EyeIcon color={getSemanticValue('on-surface-variant')} onClick={action('Show password')} />
+        actionIcon: <EyeIcon onClick={action('Show password')} />
     }
 };
 
