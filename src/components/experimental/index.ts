@@ -1,6 +1,11 @@
 export { Button } from './Button/Button';
 export { Calendar } from './Calendar/Calendar';
 export { Chip } from './Chip/Chip';
+export { DateField } from './DateField/DateField';
+export { DatePicker } from './DatePicker/DatePicker';
 export { Label } from './Label/Label';
+export { Popover } from './Popover/Popover';
 export { Text } from './Text/Text';
 export { TextField } from './TextField/TextField';
+export { TimeField } from './TimeField/TimeField';
+export * from '../../icons/experimental';
