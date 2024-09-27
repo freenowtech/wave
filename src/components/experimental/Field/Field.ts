@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Input as BaseInput, TextArea as BaseTextArea } from 'react-aria-components';
+import { DateInput as BaseDateInput, Input as BaseInput, TextArea as BaseTextArea } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 
@@ -39,4 +39,9 @@ export const TextArea = styled(BaseTextArea).attrs({ rows: 1 })`
 
     resize: none;
     min-height: ${fieldTextStyles.lineHeight};
+`;
+
+export const DateInput = styled(BaseDateInput)`
+    display: flex;
+    ${fieldTextStyles}
 `;
