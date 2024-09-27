@@ -1,7 +1,6 @@
+import React from 'react';
 import { StoryObj, Meta } from '@storybook/react';
 import { getLocalTimeZone, today } from '@internationalized/date';
-import { DateValue } from 'react-aria-components';
-import React, { useState } from 'react';
 import { DatePicker } from '../DatePicker';
 
 const meta: Meta = {
@@ -22,10 +21,36 @@ type Story = StoryObj<typeof DatePicker>;
 const TZ = getLocalTimeZone();
 const TODAY = today(TZ);
 
-export const Default: Story = {
-    render: ({ minValue, maxValue, ...args }) => {
-        const [value, setValue] = useState<DateValue>(TODAY);
+export const Default: Story = {};
 
-        return <DatePicker {...args} minValue={minValue} maxValue={maxValue} value={value} onChange={setValue} />;
+export const WithDefaultValue: Story = {
+    args: {
+        defaultValue: TODAY
+    }
+};
+
+export const WithDescription: Story = {
+    args: {
+        description: 'Enter current date'
+    }
+};
+
+export const WithValidation: Story = {
+    args: {
+        label: 'Only from today'
+    },
+    render: args => <DatePicker {...args} minValue={TODAY} />
+};
+
+export const Disabled: Story = {
+    args: {
+        isDisabled: true
+    }
+};
+
+export const Invalid: Story = {
+    args: {
+        isInvalid: true,
+        errorMessage: 'Error'
     }
 };
