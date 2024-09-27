@@ -30,6 +30,7 @@ export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
     align-items: start;
     gap: ${get('space.3')};
 
+    /* stylelint-disable selector-type-case, selector-type-no-unknown */
     & > :not(${InnerWrapper}) {
         flex-shrink: 0;
         margin-top: ${get('space.2')};
