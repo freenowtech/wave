@@ -37,7 +37,8 @@ const Button = styled(BaseButton)`
     outline: 0;
 
     &[data-focused] {
-        color: ${getSemanticValue('accent')};
+        outline: ${getSemanticValue('interactive')} solid 0.125rem;
+        border-radius: ${get('radii.2')};
     }
 
     &[data-disabled] {
@@ -81,7 +82,7 @@ const Day = styled(CalendarCell)`
     transition: background ease 200ms;
 
     &[data-focused] {
-        outline: ${getSemanticValue('accent')} solid 0.125rem;
+        outline: ${getSemanticValue('interactive')} solid 0.125rem;
     }
 
     &[data-hovered] {
@@ -90,7 +91,6 @@ const Day = styled(CalendarCell)`
     }
 
     &[data-selected] {
-        outline: 0;
         background: ${getSemanticValue('interactive-container')};
         color: ${getSemanticValue('on-interactive-container')};
     }

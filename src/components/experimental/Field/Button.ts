@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Button as BaseButton } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
+import { get } from '../../../utils/experimental/themeGet';
 
 export const Button = styled(BaseButton)`
     appearance: none;
@@ -14,5 +15,6 @@ export const Button = styled(BaseButton)`
 
     &[data-focused] {
         outline: ${getSemanticValue('interactive')} solid 0.125rem;
+        border-radius: ${get('radii.2')};
     }
 `;

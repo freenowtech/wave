@@ -48,10 +48,10 @@ function DatePicker({ label, onChange, description, errorMessage, ...props }: Da
                     description={description}
                     errorMessage={errorMessage}
                     isVisuallyFocused={isOpen}
-                    leadingIcon={<CalendarTodayOutlineIcon size={24} />}
+                    leadingIcon={<CalendarTodayOutlineIcon />}
                     actionIcon={
                         <Button ref={triggerRef} onPress={toggleOpen}>
-                            {isOpen ? <DropupSelectIcon size={24} /> : <DropdownSelectIcon size={24} />}
+                            {isOpen ? <DropupSelectIcon /> : <DropdownSelectIcon />}
                         </Button>
                     }
                 />
