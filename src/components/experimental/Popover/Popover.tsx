@@ -23,9 +23,9 @@ const FocusTrap = styled(Dialog)`
 function Popover({ children, placement = 'bottom', offset = 8, ...props }: PopoverProps): ReactElement {
     return (
         <StyledPopover placement={placement} offset={offset} {...props}>
-            <FocusTrap>{children}</FocusTrap>
+            {children}
         </StyledPopover>
     );
 }
 
-export { Popover, DialogTrigger as PopoverTrigger };
+export { Popover, DialogTrigger as PopoverTrigger, FocusTrap };

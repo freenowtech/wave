@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import { DropdownSelectIcon, DropupSelectIcon } from '../../../icons';
 import { CalendarTodayOutlineIcon } from '../../../icons/experimental';
 import { Calendar } from '../Calendar/Calendar';
-import { Popover } from '../Popover/Popover';
+import { FocusTrap, Popover } from '../Popover/Popover';
 import { DateField } from '../DateField/DateField';
 import { Button } from '../Field/Button';
 import { FieldProps } from '../Field/Props';
@@ -65,7 +65,9 @@ function DatePicker({ label, onChange, description, errorMessage, ...props }: Da
                 onOpenChange={setIsOpen}
                 shouldCloseOnInteractOutside={element => element !== triggerRef.current}
             >
-                <Calendar />
+                <FocusTrap>
+                    <Calendar />
+                </FocusTrap>
             </StyledPopover>
         </BaseDatePicker>
     );

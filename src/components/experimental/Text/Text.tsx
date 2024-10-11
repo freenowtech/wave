@@ -1,25 +1,11 @@
-import { ComponentPropsWithoutRef } from 'react';
+import React from 'react';
+import { Text as BaseText, TextContext, useContextProps, TextProps as BaseTextProps } from 'react-aria-components';
 import styled from 'styled-components';
-import {
-    compose,
-    fontFamily,
-    FontFamilyProps,
-    FontSizeProps,
-    margin,
-    MarginProps,
-    ResponsiveValue,
-    textAlign,
-    TextAlignProps,
-    variant
-} from 'styled-system';
+import { compose, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../../essentials/experimental';
 
-interface TextProps
-    extends ComponentPropsWithoutRef<'span'>,
-        MarginProps,
-        FontSizeProps,
-        FontFamilyProps,
-        TextAlignProps {
+interface TextProps extends BaseTextProps {
+    as?: React.ElementType;
     variant?: ResponsiveValue<'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2'>;
 }
 
@@ -80,15 +66,17 @@ export const textStyles = {
 
 const variantStyles = variant(textStyles);
 
-const Text = styled.span.attrs({ theme })<TextProps>`
+const StyledText = styled(BaseText).attrs({ theme })<TextProps>`
     color: inherit;
     margin: 0;
 
-    ${compose(margin, variantStyles, fontFamily, textAlign)}
+    ${compose(variantStyles)}
 `;
 
-Text.defaultProps = {
-    variant: 'body1'
-};
+const Text = React.forwardRef((textProps: TextProps, forwardedRef: React.ForwardedRef<HTMLElement>) => {
+    const [props, ref] = useContextProps(textProps, forwardedRef, TextContext);
+
+    return <StyledText {...props} variant={textProps.variant || 'body1'} ref={ref} />;
+});
 
 export { Text, TextProps };

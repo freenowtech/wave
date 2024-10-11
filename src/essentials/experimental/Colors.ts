@@ -105,7 +105,7 @@ export const SemanticColorsLight = {
     // Interactive
     interactive: ColorPalette.marooned['50'],
     'on-interactive': ColorPalette.neutral['99'],
-    'interactive-container': ColorPalette.marooned['90'],
+    'interactive-container': ColorPalette.marooned['95'],
     'on-interactive-container': ColorPalette.marooned['20'],
     // Neutrals
     surface: ColorPalette.neutral['99'],
