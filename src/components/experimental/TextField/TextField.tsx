@@ -59,7 +59,8 @@ interface TextFieldProps extends FieldProps, BaseTextFieldProps {
     placeholder?: string;
     multiline?: boolean;
     /**
-     * If you project supports multiple languages, it is recommended to pass translated labels to these properties
+     * If your project supports multiple languages,
+     * it is recommended to pass translated labels to these properties
      */
     ariaStrings?: {
         clearFieldButton: string;

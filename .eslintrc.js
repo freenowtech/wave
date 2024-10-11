@@ -24,6 +24,7 @@ module.exports = {
         // conflicts with stylelint rule
         'unicorn/numeric-separators-style': 'off',
         'unicorn/no-useless-undefined': 'off',
+        'unicorn/no-null': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         'react/require-default-props': 'off',
