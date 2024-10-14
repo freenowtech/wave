@@ -13,4 +13,8 @@ export const Footer = styled.footer`
     &:empty {
         display: none;
     }
+
+    [data-invalid] & {
+        color: ${getSemanticValue('negative')};
+    }
 `;

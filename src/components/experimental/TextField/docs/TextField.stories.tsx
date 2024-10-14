@@ -7,6 +7,16 @@ import { ClockIcon, EyeIcon, PersonFilledIcon } from '../../../../icons';
 const meta: Meta = {
     title: 'Experimental/Components/TextField',
     component: TextField,
+    parameters: {
+        layout: 'centered'
+    },
+    decorators: [
+        Story => (
+            <div style={{ width: '590px' }}>
+                <Story />
+            </div>
+        )
+    ],
     args: {
         label: 'Passenger name'
     },

@@ -19,7 +19,7 @@ export const fieldStyles = css`
 
     ${fieldTextStyles}
 
-    &::placeholder {
+    [data-placeholder] {
         color: ${getSemanticValue('on-surface-variant')};
     }
 `;

@@ -9,6 +9,16 @@ import DropdownSelectIcon from '../../../../icons/arrows/DropdownSelectIcon';
 const meta: Meta = {
     title: 'Experimental/Components/DateField',
     component: DateField,
+    parameters: {
+        layout: 'centered'
+    },
+    decorators: [
+        Story => (
+            <div style={{ width: '168px' }}>
+                <Story />
+            </div>
+        )
+    ],
     args: {
         label: 'Appointment date'
     }
