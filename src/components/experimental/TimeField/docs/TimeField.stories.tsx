@@ -9,6 +9,16 @@ import DropdownSelectIcon from '../../../../icons/arrows/DropdownSelectIcon';
 const meta: Meta = {
     title: 'Experimental/Components/TimeField',
     component: TimeField,
+    parameters: {
+        layout: 'centered'
+    },
+    decorators: [
+        Story => (
+            <div style={{ width: '150px' }}>
+                <Story />
+            </div>
+        )
+    ],
     args: {
         label: 'Appointment time'
     }

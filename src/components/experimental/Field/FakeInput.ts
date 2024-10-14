@@ -5,11 +5,11 @@ import { flyingLabelStyles, Label } from './Label';
 import { InnerWrapper } from './InnerWrapper';
 
 const focusStyles = css`
-    color: ${getSemanticValue('interactive')};
     outline: ${getSemanticValue('interactive')} solid 0.125rem;
     outline-offset: -0.125rem;
 
     ${Label} {
+        color: ${getSemanticValue('interactive')};
         ${flyingLabelStyles}
     }
 `;
@@ -44,6 +44,10 @@ export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
 
     &:focus-within {
         ${focusStyles}
+    }
+
+    [data-invalid] & {
+        border-color: ${getSemanticValue('negative')};
     }
 
     ${props => props.$isVisuallyFocused && focusStyles}

@@ -7,6 +7,7 @@ export { DatePicker } from './DatePicker/DatePicker';
 export { Label } from './Label/Label';
 export { ListBox, ListBoxItem } from './ListBox/ListBox';
 export { Popover } from './Popover/Popover';
+export { Select } from './Select/Select';
 export { Text } from './Text/Text';
 export { TextField } from './TextField/TextField';
 export { TimeField } from './TimeField/TimeField';

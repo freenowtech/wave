@@ -15,10 +15,10 @@ import { InnerWrapper } from '../Field/InnerWrapper';
 import { Input } from '../Field/Field';
 import { FieldProps } from '../Field/Props';
 import { Button } from '../Field/Button';
-import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
-import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
+import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
+import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
 const defaultAriaStrings = {
     clearFieldButton: 'Clear field',
@@ -30,8 +30,7 @@ const StyledPopover = styled(Popover)`
     width: var(--trigger-width);
 `;
 
-interface ComboBoxFieldProps extends Pick<FieldProps, 'description' | 'errorMessage' | 'leadingIcon'> {
-    label: string;
+interface ComboBoxFieldProps extends Pick<FieldProps, 'label' | 'description' | 'errorMessage' | 'leadingIcon'> {
     placeholder?: string;
     /**
      * If your project supports multiple languages,
@@ -118,7 +117,6 @@ function ComboBox<T extends Record<string, unknown>>({
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
                     <StyledPopover
-                        containerPadding={0}
                         triggerRef={triggerRef}
                         style={{ '--trigger-width': menuWidth } as React.CSSProperties}
                     >
