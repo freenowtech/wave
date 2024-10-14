@@ -1,5 +1,6 @@
 import { Label as BaseLabel } from 'react-aria-components';
 import styled, { css } from 'styled-components';
+import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 
 export const flyingLabelStyles = css`
@@ -23,4 +24,8 @@ export const Label = styled(BaseLabel)<{ $flying: boolean }>`
     transition: top 200ms ease, font-size 200ms ease, transform 200ms ease;
 
     ${props => props.$flying && flyingLabelStyles}
+
+    [data-invalid] & {
+        color: ${getSemanticValue('negative')};
+    }
 `;
