@@ -27,6 +27,7 @@ const defaultAriaStrings = {
 
 const StyledPopover = styled(Popover)`
     box-sizing: border-box;
+    overflow: auto;
     width: var(--trigger-width);
 `;
 
