@@ -101,6 +101,7 @@ export const ColorPalette = {
 export const SemanticColorsLight = {
     // Accent
     accent: 'transparent',
+    divider: ColorPalette.neutral['90'],
     'on-accent': 'transparent',
     // Interactive
     interactive: ColorPalette.marooned['50'],
@@ -130,6 +131,7 @@ export const SemanticColorsLight = {
 export const SemanticColorsDark = {
     // Accent
     accent: 'transparent',
+    divider: ColorPalette.neutral['40'],
     'on-accent': 'transparent',
     // Interactive
     interactive: ColorPalette.marooned['70'],
