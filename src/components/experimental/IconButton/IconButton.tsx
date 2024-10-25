@@ -19,7 +19,7 @@ const StandardIconContainer = styled.button<Omit<IconButtonProps, 'Icon' | 'onCl
     background-color: transparent;
     border-color: transparent;
     &:not([disabled]) {
-        color: ${props => (props.active ? getSemanticValue('interactive') : 'inherit')};
+        color: ${props => (props.active ? getSemanticValue('interactive') : getSemanticValue('on-surface'))};
     }
     &:hover:not([disabled]) {
         background-color: ${getSemanticValue('surface-variant')};
@@ -32,10 +32,19 @@ const TonalIconContainer = styled.button<Omit<IconButtonProps, 'Icon' | 'onClick
     border-radius: 100%;
     padding: 0.25rem;
     background-color: ${props =>
-        props.active ? getSemanticValue('interactive-container') : getSemanticValue('surface-container')};
+        props.active ? getSemanticValue('interactive-container') : getSemanticValue('surface-variant')};
     border-color: transparent;
+    color: ${getSemanticValue('on-surface')};
     &:hover:not([disabled]) {
-        background-color: ${getSemanticValue('outline-variant')};
+        background-color: color-mix(
+            in hsl,
+            ${getSemanticValue('outline-variant')} 100%,
+            ${props => (props.active ? getSemanticValue('interactive-container') : getSemanticValue('outline-variant'))}
+                100%
+        );
+    }
+    &:disabled {
+        background-color: ${getSemanticValue('surface')};
     }
 `;
 

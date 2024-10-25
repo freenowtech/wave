@@ -110,7 +110,6 @@ export const SemanticColorsLight = {
     'on-interactive-container': ColorPalette.marooned['20'],
     // Neutrals
     surface: ColorPalette.neutral['99'],
-    'surface-container': ColorPalette.neutral['97'],
     'on-surface': ColorPalette.neutral['10'],
     'surface-variant': ColorPalette.neutral['95'],
     'on-surface-variant': ColorPalette.neutral['40'],
@@ -141,7 +140,6 @@ export const SemanticColorsDark = {
     'on-interactive-container': ColorPalette.marooned['95'],
     // Neutrals
     surface: ColorPalette.neutral['10'],
-    'surface-container': ColorPalette.marooned['20'],
     'on-surface': ColorPalette.neutral['99'],
     'surface-variant': ColorPalette.neutral['30'],
     'on-surface-variant': ColorPalette.neutral['80'],
