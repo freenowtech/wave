@@ -29,6 +29,7 @@ export type SemanticColorsSchema = {
     'on-interactive-container': Color;
     // Neutrals
     surface: Color;
+    'surface-container': Color;
     divider: Color;
     'on-surface': Color;
     'surface-variant': Color;
