@@ -6,6 +6,7 @@ import {
     SelectStateContext,
     FieldError
 } from 'react-aria-components';
+import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
 import styled from 'styled-components';
 import { Popover } from '../Popover/Popover';
@@ -94,6 +95,7 @@ function Select<T extends Record<string, unknown>>({
 }: SelectProps<T>): ReactElement {
     const [menuWidth, setMenuWidth] = useState<string | null>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
+    const isSSR = useIsSSR();
 
     const onResize = React.useCallback(() => {
         if (triggerRef.current) {
@@ -113,7 +115,7 @@ function Select<T extends Record<string, unknown>>({
                 <>
                     <Wrapper>
                         <SelectTrigger
-                            ref={triggerRef}
+                            ref={isSSR ? null : triggerRef}
                             label={label}
                             leadingIcon={leadingIcon}
                             placeholder={placeholder}
