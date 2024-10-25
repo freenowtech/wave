@@ -5,6 +5,7 @@ import {
     ComboBoxStateContext,
     FieldError
 } from 'react-aria-components';
+import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
 import styled from 'styled-components';
 import { Popover } from '../Popover/Popover';
@@ -90,6 +91,7 @@ function ComboBox<T extends Record<string, unknown>>({
 }: ComboBoxProps<T>): ReactElement {
     const [menuWidth, setMenuWidth] = useState<string | null>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
+    const isSSR = useIsSSR();
 
     const onResize = React.useCallback(() => {
         if (triggerRef.current) {
@@ -109,7 +111,7 @@ function ComboBox<T extends Record<string, unknown>>({
                 <>
                     <Wrapper>
                         <ComboBoxInput
-                            ref={triggerRef}
+                            ref={isSSR ? null : triggerRef}
                             label={label}
                             placeholder={placeholder}
                             leadingIcon={leadingIcon}
