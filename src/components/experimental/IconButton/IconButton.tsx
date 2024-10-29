@@ -18,7 +18,7 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     background-color: transparent;
     border-color: transparent;
 
-    // we create a before pseudo element to mess with the opacity (see the hovered state)
+    /* we create a before pseudo element to mess with the opacity (see the hovered state) */
     &::before {
         position: absolute;
         content: '';
@@ -28,17 +28,17 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         width: 5rem;
     }
 
-    // we want to change the opacity here but not affect the icon, so we have to use the before pseudo element
+    /* we want to change the opacity here but not affect the icon, so we have to use the before pseudo element */
     &[data-hovered]::before {
         opacity: 0.16;
         background-color: ${getSemanticValue('on-surface')};
     }
 
-    // this is to position the svg relative to the before pseudo element
+    /* this is to position the svg relative to the before pseudo element */
     > svg {
         padding: 1rem;
-        min-width: 3rem;
-        min-height: 3rem;
+        width: 3rem;
+        height: 3rem;
     }
 
     &:not([data-disabled]) {
@@ -57,7 +57,7 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     border-color: transparent;
     background: none;
 
-    // we create a before pseudo element to mess with the opacity (see the hovered state)
+    /* we create a before pseudo element to mess with the opacity (see the hovered state) */
     &::before {
         position: absolute;
         content: '';
@@ -71,7 +71,7 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         z-index: -1;
     }
 
-    // we want to change the opacity here but not affect the icon, so we have to use the before pseudo element
+    /* we want to change the opacity here but not affect the icon, so we have to use the before pseudo element */
     &[data-hovered]::before {
         background-color: color-mix(
             in hsl,
@@ -82,11 +82,11 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         opacity: 0.16;
     }
 
-    // this is to position the svg relative to the before pseudo element
+    /* this is to position the svg relative to the before pseudo element */
     > svg {
         padding: 2rem;
-        min-width: 3rem;
-        min-height: 3rem;
+        width: 3rem;
+        height: 3rem;
     }
 
     &:not([data-disabled]) {
