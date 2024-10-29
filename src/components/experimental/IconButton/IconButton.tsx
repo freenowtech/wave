@@ -12,8 +12,8 @@ export interface IconButtonProps extends ButtonProps {
 }
 
 const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
-    height: 5rem;
-    width: 5rem;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 100%;
     background-color: transparent;
     border-color: transparent;
@@ -24,8 +24,8 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         content: '';
         border-radius: inherit;
         opacity: 0;
-        height: 5rem;
-        width: 5rem;
+        height: inherit;
+        width: inherit;
     }
 
     /* we want to change the opacity here but not affect the icon, so we have to use the before pseudo element */
@@ -36,9 +36,9 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
 
     /* this is to position the svg relative to the before pseudo element */
     > svg {
-        padding: 1rem;
-        width: 3rem;
-        height: 3rem;
+        padding: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     &:not([data-disabled]) {
@@ -51,8 +51,8 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
 `;
 
 const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
-    height: 7rem;
-    width: 7rem;
+    height: 3.5rem;
+    width: 3.5rem;
     border-radius: 100%;
     border-color: transparent;
     background: none;
@@ -62,8 +62,8 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         position: absolute;
         content: '';
         border-radius: inherit;
-        height: 7rem;
-        width: 7rem;
+        height: inherit;
+        width: inherit;
         background-color: ${props =>
             props.isActive && !props.isDisabled
                 ? getSemanticValue('interactive-container')
@@ -84,9 +84,9 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
 
     /* this is to position the svg relative to the before pseudo element */
     > svg {
-        padding: 2rem;
-        width: 3rem;
-        height: 3rem;
+        padding: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     &:not([data-disabled]) {
