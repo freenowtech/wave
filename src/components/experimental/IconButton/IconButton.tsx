@@ -34,12 +34,9 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         background-color: ${getSemanticValue('on-surface')};
     }
 
-    /* this is to position the svg relative to the before pseudo element */
-    > svg {
-        padding: 0.5rem;
-        width: 1.5rem;
-        height: 1.5rem;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:not([data-disabled]) {
         color: ${props => (props.isActive ? getSemanticValue('interactive') : getSemanticValue('on-surface'))};
@@ -82,12 +79,9 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         opacity: 0.16;
     }
 
-    /* this is to position the svg relative to the before pseudo element */
-    > svg {
-        padding: 1rem;
-        width: 1.5rem;
-        height: 1.5rem;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:not([data-disabled]) {
         color: ${props =>

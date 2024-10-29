@@ -32,9 +32,6 @@ describe('Experimental: IconButton', () => {
         expect(containerStyle.width).toBe('2.5rem');
         expect(containerStyle.height).toBe('2.5rem');
         expect(containerStyle.borderRadius).toBe('100%');
-        const svgInstance = screen.getByTestId('iconbutton-icon');
-        const svgStyle = window.getComputedStyle(svgInstance);
-        expect(svgStyle.padding).toBe('0.5rem');
     });
 
     it('sets the right sizes for tonal variant', () => {
@@ -45,8 +42,5 @@ describe('Experimental: IconButton', () => {
         expect(containerStyle.width).toBe('3.5rem');
         expect(containerStyle.height).toBe('3.5rem');
         expect(containerStyle.borderRadius).toBe('100%');
-        const svgInstance = screen.getByTestId('iconbutton-icon');
-        const svgStyle = window.getComputedStyle(svgInstance);
-        expect(svgStyle.padding).toBe('1rem');
     });
 });
