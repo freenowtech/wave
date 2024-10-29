@@ -1,5 +1,4 @@
 import { StoryObj, Meta } from '@storybook/react';
-import React from 'react';
 import { IconButton } from '../IconButton';
 import { TrashIcon } from '../../../../icons';
 
@@ -11,7 +10,8 @@ const meta: Meta = {
     },
     args: {
         Icon: TrashIcon,
-        onClick: () => alert('Clicked!')
+        onPress: () => alert('Clicked!'),
+        isDisabled: false
     }
 };
 
@@ -23,12 +23,25 @@ export const Default: Story = {};
 
 export const Disabled: Story = {
     args: {
-        disabled: true
+        isDisabled: true
+    }
+};
+
+export const Active: Story = {
+    args: {
+        isActive: true
     }
 };
 
 export const Tonal: Story = {
     args: {
         variant: 'tonal'
+    }
+};
+
+export const TonalActive: Story = {
+    args: {
+        variant: 'tonal',
+        isActive: true
     }
 };

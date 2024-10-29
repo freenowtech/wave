@@ -5,44 +5,48 @@ import { TrashIcon } from '../../../icons';
 
 describe('Experimental: IconButton', () => {
     it('renders an icon button with the provided icon', () => {
-        const onClick = jest.fn();
-        render(<IconButton onClick={onClick} Icon={TrashIcon} />);
-        expect(screen.getByTestId('icon-container')).toBeInTheDocument();
+        const onPress = jest.fn();
+        render(<IconButton onPress={onPress} Icon={TrashIcon} />);
+        expect(screen.getByTestId('standard-icon-container')).toBeInTheDocument();
     });
 
-    it('calls onClick when clicked', () => {
-        const onClick = jest.fn();
-        render(<IconButton Icon={TrashIcon} onClick={onClick} />);
-        screen.getByTestId('icon-container').click();
-        expect(onClick).toHaveBeenCalledTimes(1);
+    it('calls onPress when clicked', () => {
+        const onPress = jest.fn();
+        render(<IconButton Icon={TrashIcon} onPress={onPress} />);
+        screen.getByTestId('standard-icon-container').click();
+        expect(onPress).toHaveBeenCalledTimes(1);
     });
 
-    it('does not call onClick when disabled', () => {
-        const onClick = jest.fn();
-        render(<IconButton Icon={TrashIcon} onClick={onClick} disabled />);
-        screen.getByTestId('icon-container').click();
-        expect(onClick).toHaveBeenCalledTimes(0);
+    it('does not call onPress when disabled', () => {
+        const onPress = jest.fn();
+        render(<IconButton Icon={TrashIcon} onPress={onPress} isDisabled />);
+        screen.getByTestId('standard-icon-container').click();
+        expect(onPress).toHaveBeenCalledTimes(0);
     });
 
     it('sets the right sizes for standard variant', () => {
-        const onClick = jest.fn();
-        render(<IconButton Icon={TrashIcon} onClick={onClick} />);
-        const iconContainerInstance = screen.getByTestId('icon-container');
+        const onPress = jest.fn();
+        render(<IconButton Icon={TrashIcon} onPress={onPress} />);
+        const iconContainerInstance = screen.getByTestId('standard-icon-container');
         const containerStyle = window.getComputedStyle(iconContainerInstance);
-        expect(containerStyle.width).toBe('2.5rem');
-        expect(containerStyle.height).toBe('2.5rem');
-        expect(containerStyle.padding).toBe('0.25rem');
+        expect(containerStyle.width).toBe('5rem');
+        expect(containerStyle.height).toBe('5rem');
         expect(containerStyle.borderRadius).toBe('100%');
+        const svgInstance = screen.getByTestId('iconbutton-icon');
+        const svgStyle = window.getComputedStyle(svgInstance);
+        expect(svgStyle.padding).toBe('1rem');
     });
 
     it('sets the right sizes for tonal variant', () => {
-        const onClick = jest.fn();
-        render(<IconButton Icon={TrashIcon} onClick={onClick} variant="tonal" />);
-        const iconContainerInstance = screen.getByTestId('icon-container');
+        const onPress = jest.fn();
+        render(<IconButton Icon={TrashIcon} onPress={onPress} variant="tonal" />);
+        const iconContainerInstance = screen.getByTestId('tonal-icon-container');
         const containerStyle = window.getComputedStyle(iconContainerInstance);
-        expect(containerStyle.width).toBe('3.5rem');
-        expect(containerStyle.height).toBe('3.5rem');
-        expect(containerStyle.padding).toBe('0.25rem');
+        expect(containerStyle.width).toBe('7rem');
+        expect(containerStyle.height).toBe('7rem');
         expect(containerStyle.borderRadius).toBe('100%');
+        const svgInstance = screen.getByTestId('iconbutton-icon');
+        const svgStyle = window.getComputedStyle(svgInstance);
+        expect(svgStyle.padding).toBe('2rem');
     });
 });
