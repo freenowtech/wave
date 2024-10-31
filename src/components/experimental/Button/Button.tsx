@@ -62,6 +62,10 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
 
     cursor: pointer;
 
+    &[data-disabled] {
+        cursor: not-allowed;
+    }
+
     &::before {
         position: absolute;
         top: 0;
