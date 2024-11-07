@@ -53,7 +53,7 @@ const emphasisStyles = variant<Record<string, unknown>, Emphasis>({
         },
         textButton: {
             color: getSemanticValue('on-surface'),
-            background: getSemanticValue('on-accent'),
+            background: 'transparent',
 
             '&::before': {
                 background: getSemanticValue('interactive')
