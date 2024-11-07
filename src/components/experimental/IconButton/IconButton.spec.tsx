@@ -24,6 +24,13 @@ describe('Experimental: IconButton', () => {
         expect(onPress).toHaveBeenCalledTimes(0);
     });
 
+    it('does not call onPress when is loading', () => {
+        const onPress = jest.fn();
+        render(<IconButton Icon={TrashIcon} onPress={onPress} isLoading />);
+        screen.getByTestId('standard-icon-container').click();
+        expect(onPress).toHaveBeenCalledTimes(0);
+    });
+
     it('sets the right sizes for standard variant', () => {
         const onPress = jest.fn();
         render(<IconButton Icon={TrashIcon} onPress={onPress} />);
@@ -42,5 +49,11 @@ describe('Experimental: IconButton', () => {
         expect(containerStyle.width).toBe('3.5rem');
         expect(containerStyle.height).toBe('3.5rem');
         expect(containerStyle.borderRadius).toBe('100%');
+    });
+
+    it('spinner is rendered when loading', () => {
+        const onPress = jest.fn();
+        render(<IconButton Icon={TrashIcon} onPress={onPress} isLoading />);
+        expect(screen.getByTestId('iconbutton-spinner')).toBeInTheDocument();
     });
 });
