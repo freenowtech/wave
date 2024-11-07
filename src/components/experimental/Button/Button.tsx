@@ -5,14 +5,19 @@ import { Button as BaseButton, ButtonProps as BaseButtonProps } from 'react-aria
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
+import { InlineSpinner } from '../../InlineSpinner/InlineSpinner';
 
-type Emphasis = 'primary' | 'secondary';
+type Emphasis = 'primary' | 'secondary' | 'textButton';
 
 interface ButtonProps extends BaseButtonProps {
     /**
      * Define style of the button component, defaults to primary
      */
     emphasis?: Emphasis;
+    /**
+     * Loading state, defaults to false
+     */
+    isLoading?: boolean;
 }
 
 const emphasisStyles = variant<Record<string, unknown>, Emphasis>({
@@ -45,6 +50,23 @@ const emphasisStyles = variant<Record<string, unknown>, Emphasis>({
             '&[data-disabled]::before': {
                 opacity: 0.06
             }
+        },
+        textButton: {
+            color: getSemanticValue('on-surface'),
+            background: 'transparent',
+
+            '&::before': {
+                background: getSemanticValue('interactive')
+            },
+
+            '&[data-disabled]': {
+                opacity: 0.38
+            },
+
+            '&[data-disabled]::before': {
+                opacity: 0.06,
+                background: 'transparent'
+            }
         }
     }
 });
@@ -62,7 +84,8 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
 
     cursor: pointer;
 
-    &[data-disabled] {
+    &[data-disabled],
+    &[data-pending] {
         cursor: not-allowed;
     }
 
@@ -87,15 +110,25 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
         opacity: 0.24;
     }
 
+    &[data-pending] {
+        opacity: 0.38;
+    }
+
     ${textStyles.variants.label1}
 
     ${emphasisStyles};
 `;
 
-function Button({ children, emphasis = 'primary', ...restProps }: ButtonProps): ReactElement {
+const spinnerColor: Record<Emphasis, string> = {
+    primary: getSemanticValue('surface'),
+    secondary: getSemanticValue('on-surface'),
+    textButton: getSemanticValue('on-surface')
+};
+
+function Button({ children, emphasis = 'primary', isLoading = false, ...restProps }: ButtonProps): ReactElement {
     return (
-        <ButtonStyled $emphasis={emphasis} {...restProps}>
-            {children}
+        <ButtonStyled isPending={isLoading} $emphasis={emphasis} {...restProps}>
+            {isLoading ? <InlineSpinner color={spinnerColor[emphasis]} /> : children}
         </ButtonStyled>
     );
 }
