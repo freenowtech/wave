@@ -120,7 +120,7 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
 `;
 
 const spinnerColor: Record<Emphasis, string> = {
-    primary: getSemanticValue('surface'),
+    primary: getSemanticValue('on-accent'),
     secondary: getSemanticValue('on-surface'),
     textButton: getSemanticValue('on-surface')
 };
