@@ -125,7 +125,7 @@ export const IconButton = ({
         <Container
             data-testid={variant === 'standard' ? 'standard-icon-container' : 'tonal-icon-container'}
             onPress={onPress}
-            isDisabled={isDisabled || isLoading}
+            isDisabled={isDisabled}
             isActive={isActive}
             isPending={isLoading}
         >

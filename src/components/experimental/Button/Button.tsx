@@ -53,7 +53,7 @@ const emphasisStyles = variant<Record<string, unknown>, Emphasis>({
         },
         textButton: {
             color: getSemanticValue('on-surface'),
-            background: 'transparent',
+            background: getSemanticValue('on-accent'),
 
             '&::before': {
                 background: getSemanticValue('interactive')
@@ -127,8 +127,8 @@ const spinnerColor: Record<Emphasis, string> = {
 
 function Button({ children, emphasis = 'primary', isLoading = false, ...restProps }: ButtonProps): ReactElement {
     return (
-        <ButtonStyled isPending={isLoading} $emphasis={emphasis} {...restProps}>
-            {isLoading ? <InlineSpinner color={spinnerColor[emphasis]} /> : children}
+        <ButtonStyled data-testid="button-container" isPending={isLoading} $emphasis={emphasis} {...restProps}>
+            {isLoading ? <InlineSpinner data-testid="button-spinner" color={spinnerColor[emphasis]} /> : children}
         </ButtonStyled>
     );
 }
