@@ -14,6 +14,12 @@ const StyledPopover = styled(BasePopover)`
     box-shadow: 0 2px 4px -1px hsla(0, 0%, 0%, 0.2), 0 1px 10px 0 hsla(0, 0%, 0%, 0.12),
         0 4px 5px 0 hsla(0, 0%, 0%, 0.14);
     border-radius: ${get('radii.4')};
+
+    &[data-trigger='Select'],
+    &[data-trigger='ComboBox'] {
+        box-sizing: border-box;
+        width: var(--trigger-width);
+    }
 `;
 
 const FocusTrap = styled(Dialog)`
