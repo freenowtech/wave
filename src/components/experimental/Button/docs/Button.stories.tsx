@@ -18,11 +18,15 @@ const meta: Meta = {
         },
         emphasis: {
             control: 'radio',
-            options: ['primary', 'secondary']
+            options: ['primary', 'secondary', 'textButton']
         },
         isDisabled: {
             control: 'boolean'
         },
+        isLoading: {
+            control: 'boolean'
+        },
+
         ref: {
             table: {
                 disable: true
@@ -53,9 +57,21 @@ export const Secondary: Story = {
     }
 };
 
+export const TextButton: Story = {
+    args: {
+        emphasis: 'textButton'
+    }
+};
+
 export const Disabled: Story = {
     args: {
         isDisabled: true
+    }
+};
+
+export const Loading: Story = {
+    args: {
+        isLoading: true
     }
 };
 
