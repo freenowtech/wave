@@ -7,6 +7,7 @@ import { getSemanticValue } from '../../../essentials/experimental';
 
 const StyledListBoxItem = styled(BaseListBoxItem)`
     position: relative;
+    display: block;
     padding: ${get('space.3')} ${get('space.4')};
     border-radius: ${get('radii.4')};
     color: ${getSemanticValue('on-surface')};
