@@ -11,7 +11,8 @@ const meta: Meta = {
     args: {
         Icon: TrashIcon,
         onPress: () => alert('Clicked!'),
-        isDisabled: false
+        isDisabled: false,
+        isLoading: false
     }
 };
 
@@ -24,6 +25,12 @@ export const Default: Story = {};
 export const Disabled: Story = {
     args: {
         isDisabled: true
+    }
+};
+
+export const Loading: Story = {
+    args: {
+        isLoading: true
     }
 };
 

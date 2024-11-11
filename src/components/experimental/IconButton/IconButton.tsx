@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { ButtonProps, Button } from 'react-aria-components';
 import { IconProps } from '../../../icons';
 import { getSemanticValue } from '../../../essentials/experimental';
+import { InlineSpinner } from '../../InlineSpinner/InlineSpinner';
 
 export interface IconButtonProps extends ButtonProps {
     isActive?: boolean;
+    isLoading?: boolean;
     variant?: 'standard' | 'tonal';
     Icon: React.FC<IconProps>;
     onPress: () => void;
@@ -17,6 +19,13 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     border-radius: 100%;
     background-color: transparent;
     border-color: transparent;
+
+    cursor: pointer;
+
+    &[data-disabled],
+    &[data-pending] {
+        cursor: not-allowed;
+    }
 
     /* we create a before pseudo element to mess with the opacity (see the hovered state) */
     &::before {
@@ -42,7 +51,8 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
         color: ${props => (props.isActive ? getSemanticValue('interactive') : getSemanticValue('on-surface'))};
     }
 
-    &[data-disabled] {
+    &[data-disabled],
+    &[data-pending] {
         opacity: 0.38;
     }
 `;
@@ -53,6 +63,13 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     border-radius: 100%;
     border-color: transparent;
     background: none;
+
+    cursor: pointer;
+
+    &[data-disabled],
+    &[data-pending] {
+        cursor: not-allowed;
+    }
 
     /* we create a before pseudo element to mess with the opacity (see the hovered state) */
     &::before {
@@ -88,7 +105,8 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
             props.isActive ? getSemanticValue('on-interactive-container') : getSemanticValue('on-surface')};
     }
 
-    &[data-disabled] {
+    &[data-disabled],
+    &[data-pending] {
         opacity: 0.38;
     }
 `;
@@ -96,26 +114,26 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
 export const IconButton = ({
     isDisabled = false,
     isActive = false,
+    isLoading = false,
     Icon,
     variant = 'standard',
     onPress
-}: IconButtonProps) =>
-    variant === 'standard' ? (
-        <StandardIconContainer
-            data-testid="standard-icon-container"
+}: IconButtonProps): ReactElement => {
+    const Container = variant === 'standard' ? StandardIconContainer : TonalIconContainer;
+
+    return (
+        <Container
+            data-testid={variant === 'standard' ? 'standard-icon-container' : 'tonal-icon-container'}
             onPress={onPress}
             isDisabled={isDisabled}
             isActive={isActive}
+            isPending={isLoading}
         >
-            <Icon data-testid="iconbutton-icon" />
-        </StandardIconContainer>
-    ) : (
-        <TonalIconContainer
-            data-testid="tonal-icon-container"
-            onPress={onPress}
-            isDisabled={isDisabled}
-            isActive={isActive}
-        >
-            <Icon data-testid="iconbutton-icon" />
-        </TonalIconContainer>
+            {isLoading ? (
+                <InlineSpinner data-testid="iconbutton-spinner" color={getSemanticValue('on-surface')} />
+            ) : (
+                <Icon data-testid="iconbutton-icon" />
+            )}
+        </Container>
     );
+};
