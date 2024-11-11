@@ -25,6 +25,7 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     &[data-disabled],
     &[data-pending] {
         cursor: not-allowed;
+        opacity: 0.38;
     }
 
     /* we create a before pseudo element to mess with the opacity (see the hovered state) */
@@ -50,11 +51,6 @@ const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     &:not([data-disabled]) {
         color: ${props => (props.isActive ? getSemanticValue('interactive') : getSemanticValue('on-surface'))};
     }
-
-    &[data-disabled],
-    &[data-pending] {
-        opacity: 0.38;
-    }
 `;
 
 const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
@@ -69,6 +65,7 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     &[data-disabled],
     &[data-pending] {
         cursor: not-allowed;
+        opacity: 0.38;
     }
 
     /* we create a before pseudo element to mess with the opacity (see the hovered state) */
@@ -103,11 +100,6 @@ const TonalIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     &:not([data-disabled]) {
         color: ${props =>
             props.isActive ? getSemanticValue('on-interactive-container') : getSemanticValue('on-surface')};
-    }
-
-    &[data-disabled],
-    &[data-pending] {
-        opacity: 0.38;
     }
 `;
 
