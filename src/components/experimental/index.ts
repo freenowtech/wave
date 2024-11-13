@@ -4,6 +4,7 @@ export { Chip } from './Chip/Chip';
 export { ComboBox } from './ComboBox/ComboBox';
 export { DateField } from './DateField/DateField';
 export { DatePicker } from './DatePicker/DatePicker';
+export { Dialog } from './Dialog/Dialog';
 export { Divider } from './Divider/Divider';
 export { IconButton } from './IconButton/IconButton';
 export { Label } from './Label/Label';
