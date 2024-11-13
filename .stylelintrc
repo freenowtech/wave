@@ -10,7 +10,7 @@
   "rules": {
     "declaration-empty-line-before": null,
     "declaration-property-unit-whitelist": {
-      "/.*/": ["rem", "deg", "fr", "ms", "%", "px"]
+      "/.*/": ["rem", "deg", "fr", "ms", "%", "px", "vw"]
     },
     "declaration-property-value-blacklist": {
       "/.*/": ["(\\d+[1]+px|[^1]+px)"]
