@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { I18nProvider } from 'react-aria-components';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
@@ -44,12 +44,14 @@ export const withTheme = (Story, context) => {
     const { theme } = context.globals;
     const { Colors, font } = THEMES[theme];
 
+    useLayoutEffect(() => {
+        document.body.style.fontFamily = font;
+    }, []);
+
     return (
         <>
             <Colors />
-            <div style={{ fontFamily: font }}>
-                <Story {...context} />
-            </div>
+            <Story {...context} />
         </>
     );
 };
@@ -106,13 +108,13 @@ export const preview: Preview = {
             container: props => {
                 const scheme = useDarkMode() ? DarkTheme : LightTheme;
                 const globals = props.context.store.globals.get();
-                const { Colors, font } = THEMES[globals.theme];
+                const { Colors } = THEMES[globals.theme];
 
                 return (
-                    <div style={{ fontFamily: font }}>
+                    <>
                         <Colors />
                         <DocsContainer {...props} theme={scheme} />
-                    </div>
+                    </>
                 );
             },
             toc: {
