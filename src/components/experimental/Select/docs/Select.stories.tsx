@@ -70,3 +70,9 @@ export const Invalid: Story = {
         errorMessage: 'Error'
     }
 };
+
+export const WithCustomValueRenderer: Story = {
+    args: {
+        renderValue: ({ selectedText, isPlaceholder }) => (isPlaceholder ? '' : `${selectedText} ♥`)
+    }
+};
