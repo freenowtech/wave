@@ -1,10 +1,11 @@
-import React, { ReactElement, useState } from 'react';
+import React from 'react';
 import {
     Select as BaseSelect,
     SelectProps as BaseSelectProps,
     SelectValue,
     SelectStateContext,
-    FieldError
+    FieldError,
+    SelectValueRenderProps
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
@@ -41,42 +42,47 @@ const FakeButton = styled(FakeInput)`
     }
 `;
 
-interface SelectFieldProps extends Pick<FieldProps, 'label' | 'description' | 'errorMessage' | 'leadingIcon'> {
+interface SelectFieldProps<T> extends Pick<FieldProps, 'label' | 'description' | 'errorMessage' | 'leadingIcon'> {
     placeholder?: string;
+    renderValue?: (props: SelectValueRenderProps<T> & { defaultChildren: React.ReactNode }) => React.ReactNode;
 }
 
-const SelectTrigger = React.forwardRef<HTMLDivElement, SelectFieldProps>(
-    ({ label, leadingIcon, placeholder }, forwardedRef) => {
-        const state = React.useContext(SelectStateContext);
-        const buttonRef = React.useRef<HTMLButtonElement>(null);
+// eslint-disable-next-line @typescript-eslint/ban-types
+function SelectTriggerWithRef<T extends object>(
+    { label, leadingIcon, placeholder, renderValue }: SelectFieldProps<T>,
+    forwardedRef: React.ForwardedRef<HTMLDivElement>
+) {
+    const state = React.useContext(SelectStateContext);
+    const buttonRef = React.useRef<HTMLButtonElement>(null);
 
-        return (
-            <FakeButton
-                $isVisuallyFocused={state?.isOpen}
-                ref={forwardedRef}
-                onClick={() => buttonRef.current?.click()}
-            >
-                {leadingIcon}
-                <InnerWrapper>
-                    <Label $flying={Boolean(placeholder || state?.selectedItem)}>{label}</Label>
-                    <Button ref={buttonRef}>
-                        <SelectValue>
-                            {({ defaultChildren, isPlaceholder }) =>
-                                isPlaceholder
-                                    ? placeholder || <VisuallyHidden>{defaultChildren}</VisuallyHidden>
-                                    : defaultChildren
-                            }
-                        </SelectValue>
-                    </Button>
-                </InnerWrapper>
-                {state?.isOpen ? <DropupSelectIcon /> : <DropdownSelectIcon />}
-            </FakeButton>
-        );
-    }
-);
+    return (
+        <FakeButton $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => buttonRef.current?.click()}>
+            {leadingIcon}
+            <InnerWrapper>
+                <Label $flying={Boolean(placeholder || state?.selectedItem)}>{label}</Label>
+                <Button ref={buttonRef}>
+                    <SelectValue<T>>
+                        {selectValueRenderProps =>
+                            renderValue
+                                ? renderValue(selectValueRenderProps)
+                                : (function defaultRenderValue({ isPlaceholder, defaultChildren }) {
+                                      return isPlaceholder
+                                          ? placeholder || <VisuallyHidden>{defaultChildren}</VisuallyHidden>
+                                          : defaultChildren;
+                                  })(selectValueRenderProps)
+                        }
+                    </SelectValue>
+                </Button>
+            </InnerWrapper>
+            {state?.isOpen ? <DropupSelectIcon /> : <DropdownSelectIcon />}
+        </FakeButton>
+    );
+}
+
+const SelectTrigger = React.forwardRef(SelectTriggerWithRef);
 
 interface SelectProps<T extends Record<string, unknown>>
-    extends SelectFieldProps,
+    extends SelectFieldProps<T>,
         Omit<BaseSelectProps<T>, 'children'> {
     items?: Iterable<T>;
     children: React.ReactNode | ((item: T) => React.ReactNode);
@@ -89,9 +95,10 @@ function Select<T extends Record<string, unknown>>({
     errorMessage,
     description,
     placeholder,
+    renderValue,
     ...props
-}: SelectProps<T>): ReactElement {
-    const [menuWidth, setMenuWidth] = useState<string | null>(null);
+}: SelectProps<T>): React.ReactElement {
+    const [menuWidth, setMenuWidth] = React.useState<string | null>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
     const isSSR = useIsSSR();
 
@@ -117,6 +124,7 @@ function Select<T extends Record<string, unknown>>({
                             label={label}
                             leadingIcon={leadingIcon}
                             placeholder={placeholder}
+                            renderValue={renderValue}
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
