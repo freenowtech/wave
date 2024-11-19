@@ -76,6 +76,7 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: ${get('space.2')};
     border: none;
     outline: none;
