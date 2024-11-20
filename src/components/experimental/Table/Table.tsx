@@ -20,7 +20,7 @@ const Table = styled(BaseTable)`
     max-height: 100vh;
     background: ${getSemanticValue('surface')};
     color: ${getSemanticValue('on-surface')};
-`;
+` as typeof BaseTable;
 
 const Cell = styled(BaseCell)`
     padding: 0 ${get('space.3')};
@@ -49,7 +49,7 @@ const Cell = styled(BaseCell)`
     &[data-focused] {
         outline: 0;
     }
-`;
+` as typeof BaseCell;
 
 const Column = styled(BaseColumn)`
     position: sticky;
@@ -63,7 +63,7 @@ const Column = styled(BaseColumn)`
     white-space: nowrap;
     outline: 0;
     ${textStyles.variants.title2}
-`;
+` as typeof BaseColumn;
 
 const Row = styled(BaseRow)`
     height: 3rem;
@@ -84,7 +84,7 @@ const Row = styled(BaseRow)`
         outline: 0.125rem solid ${getSemanticValue('accent')};
         outline-offset: -0.125rem;
     }
-`;
+` as typeof BaseRow;
 
 const Skeleton = styled.div`
     height: 1rem;
