@@ -56,7 +56,7 @@ const Column = styled(BaseColumn)`
     top: 0;
     z-index: 1; /* for sticky headers to be on top of cells */
     padding: 0 ${get('space.3')};
-    height: 3rem; // large 4.5rem
+    height: 3rem;
     background: ${getSemanticValue('surface')};
     border-bottom: 1px solid ${getSemanticValue('divider')};
     text-align: start;
@@ -64,11 +64,6 @@ const Column = styled(BaseColumn)`
     outline: 0;
     ${textStyles.variants.title2}
 `;
-
-// TODO:
-//  [x] hover state
-//  [] large-small variants for sizes
-//  [] loading state
 
 const Row = styled(BaseRow)`
     height: 3rem;
@@ -91,4 +86,10 @@ const Row = styled(BaseRow)`
     }
 `;
 
-export { Table, TableProps, Cell, Column, Row, TableBody, TableHeader };
+const Skeleton = styled.div`
+    height: 1rem;
+    border-radius: ${get('radii.2')};
+    background: ${getSemanticValue('surface-variant')};
+`;
+
+export { Table, TableProps, Cell, Column, Row, TableBody, TableHeader, Skeleton };
