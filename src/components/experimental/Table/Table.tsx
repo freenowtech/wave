@@ -51,10 +51,11 @@ const Cell = styled(BaseCell)`
     }
 ` as typeof BaseCell;
 
+/* Z-Index is needed for sticky header cells to be on top of other cells */
 const Column = styled(BaseColumn)`
     position: sticky;
     top: 0;
-    z-index: 1; /* for sticky headers to be on top of cells */
+    z-index: 1;
     padding: 0 ${get('space.3')};
     height: 3rem;
     background: ${getSemanticValue('surface')};
