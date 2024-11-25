@@ -109,7 +109,8 @@ export const IconButton = ({
     isLoading = false,
     Icon,
     variant = 'standard',
-    onPress
+    onPress,
+    ...restProps
 }: IconButtonProps): ReactElement => {
     const Container = variant === 'standard' ? StandardIconContainer : TonalIconContainer;
 
@@ -120,6 +121,7 @@ export const IconButton = ({
             isDisabled={isDisabled}
             isActive={isActive}
             isPending={isLoading}
+            {...restProps}
         >
             {isLoading ? (
                 <InlineSpinner data-testid="iconbutton-spinner" color={getSemanticValue('on-surface')} />
