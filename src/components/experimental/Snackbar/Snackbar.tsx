@@ -6,6 +6,7 @@ import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 import { XCrossIcon } from '../../../icons';
+import { IconButton } from '../IconButton/IconButton';
 
 const Container = styled.div`
     position: relative;
@@ -25,6 +26,12 @@ const Container = styled.div`
     ${textStyles.variants.body2}
 `;
 
+const DismissButton = styled(IconButton)`
+    height: unset;
+    width: unset;
+    padding: 0;
+`;
+
 interface SnackbarProps extends SpaceProps, LayoutProps, PositionProps, FlexboxProps {
     children: ReactNode;
     hasDismissButton?: boolean;
@@ -40,12 +47,10 @@ const Snackbar = ({
     <Container {...restProps}>
         {children}
         {hasDismissButton && (
-            <XCrossIcon
+            <DismissButton
                 data-testid="snackbar-close-icon"
-                cursor="pointer"
-                size={24}
-                color={getSemanticValue('inverse-on-surface')}
-                onClick={onDismiss}
+                Icon={() => <XCrossIcon cursor="pointer" size={24} color={getSemanticValue('inverse-on-surface')} />}
+                onPress={onDismiss}
             />
         )}
     </Container>
