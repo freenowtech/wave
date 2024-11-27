@@ -49,7 +49,7 @@ const Snackbar = ({
         {hasDismissButton && (
             <DismissButton
                 data-testid="snackbar-close-icon"
-                Icon={() => <XCrossIcon cursor="pointer" size={24} color={getSemanticValue('inverse-on-surface')} />}
+                Icon={() => <XCrossIcon size={24} color={getSemanticValue('inverse-on-surface')} />}
                 onPress={onDismiss}
             />
         )}
