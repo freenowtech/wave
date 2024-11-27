@@ -13,7 +13,7 @@ const Container = styled.div`
     border: none;
     outline: none;
     border-radius: ${get('radii.4')};
-    padding: ${get('space.4')} ${get('space.5')};
+    padding: ${get('space.3')} ${get('space.4')};
     color: ${getSemanticValue('inverse-on-surface')};
     background-color: ${getSemanticValue('inverse-surface')};
 
