@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Snackbar } from './Snackbar';
 
 test('renders the Snackbar component with children', () => {
@@ -11,15 +11,14 @@ test('renders the Snackbar component with children', () => {
     expect(screen.getByText('Test Snackbar')).toBeInTheDocument();
 });
 
-test('clickable component inside Snackbar can be clicked', () => {
-    const handleClick = jest.fn();
+test('renders the dismiss button when hasDismissButton is true and calls onDismiss when clicked', () => {
+    const onDismiss = jest.fn();
     render(
-        <Snackbar>
-            <button type="button" onClick={handleClick}>
-                Click Me
-            </button>
+        <Snackbar hasDismissButton onDismiss={onDismiss}>
+            <span>Test Snackbar</span>
         </Snackbar>
     );
-    screen.getByText('Click Me').click();
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    const dismissButton = screen.getByTestId('snackbar-close-icon');
+    fireEvent.click(dismissButton);
+    expect(onDismiss).toHaveBeenCalledTimes(1);
 });

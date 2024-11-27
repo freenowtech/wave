@@ -5,6 +5,7 @@ import { SpaceProps, LayoutProps, PositionProps, FlexboxProps } from 'styled-sys
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
+import { XCrossIcon } from '../../../icons';
 
 const Container = styled.div`
     position: relative;
@@ -25,11 +26,29 @@ const Container = styled.div`
 `;
 
 interface SnackbarProps extends SpaceProps, LayoutProps, PositionProps, FlexboxProps {
-    children?: ReactNode;
+    children: ReactNode;
+    hasDismissButton?: boolean;
+    onDismiss?: () => void;
 }
 
-const Snackbar = ({ children, ...restProps }: SnackbarProps): ReactElement => (
-    <Container {...restProps}>{children}</Container>
+const Snackbar = ({
+    children,
+    hasDismissButton = false,
+    onDismiss = null,
+    ...restProps
+}: SnackbarProps): ReactElement => (
+    <Container {...restProps}>
+        {children}
+        {hasDismissButton && (
+            <XCrossIcon
+                data-testid="snackbar-close-icon"
+                cursor="pointer"
+                size={24}
+                color={getSemanticValue('inverse-on-surface')}
+                onClick={onDismiss}
+            />
+        )}
+    </Container>
 );
 
 export { Snackbar, SnackbarProps };
