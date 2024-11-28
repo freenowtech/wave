@@ -1,4 +1,4 @@
-import React, { ReactNode, type ReactElement } from 'react';
+import React, { forwardRef, ReactNode, type ReactElement } from 'react';
 import styled from 'styled-components';
 import { SpaceProps, LayoutProps, PositionProps, FlexboxProps } from 'styled-system';
 
@@ -32,28 +32,31 @@ const DismissButton = styled(IconButton)`
     padding: 0;
 `;
 
-interface SnackbarProps extends SpaceProps, LayoutProps, PositionProps, FlexboxProps {
+interface SnackbarProps
+    extends SpaceProps,
+        LayoutProps,
+        PositionProps,
+        FlexboxProps,
+        React.HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     hasDismissButton?: boolean;
     onDismiss?: () => void;
 }
 
-const Snackbar = ({
-    children,
-    hasDismissButton = false,
-    onDismiss = null,
-    ...restProps
-}: SnackbarProps): ReactElement => (
-    <Container {...restProps}>
-        {children}
-        {hasDismissButton && (
-            <DismissButton
-                data-testid="snackbar-close-icon"
-                Icon={() => <XCrossIcon size={24} color={getSemanticValue('inverse-on-surface')} />}
-                onPress={onDismiss}
-            />
-        )}
-    </Container>
+const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
+    ({ children, hasDismissButton = false, onDismiss = null, ...restProps }, ref): ReactElement => (
+        <Container ref={ref} {...restProps}>
+            {children}
+            {hasDismissButton && (
+                <DismissButton
+                    data-testid="snackbar-close-icon"
+                    Icon={() => <XCrossIcon size={24} color={getSemanticValue('inverse-on-surface')} />}
+                    onPress={onDismiss}
+                    aria-label="close"
+                />
+            )}
+        </Container>
+    )
 );
 
 export { Snackbar, SnackbarProps };
