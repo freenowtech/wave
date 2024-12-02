@@ -10,7 +10,6 @@ export interface IconButtonProps extends ButtonProps {
     isLoading?: boolean;
     variant?: 'standard' | 'tonal';
     Icon: React.FC<IconProps>;
-    onPress: () => void;
 }
 
 const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`

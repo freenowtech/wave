@@ -1,4 +1,5 @@
 import React, { forwardRef, ReactNode, type ReactElement } from 'react';
+import { PressEvent } from 'react-aria';
 import styled from 'styled-components';
 import { SpaceProps, LayoutProps, PositionProps, FlexboxProps } from 'styled-system';
 
@@ -40,7 +41,7 @@ interface SnackbarProps
         React.HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     hasDismissButton?: boolean;
-    onDismiss?: () => void;
+    onDismiss?: (e: PressEvent) => void;
 }
 
 const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
