@@ -23,8 +23,13 @@ const Table = styled(BaseTable)`
 ` as typeof BaseTable;
 
 const Cell = styled(BaseCell)`
+    box-sizing: border-box;
     padding: 0 ${get('space.3')};
     position: relative;
+
+    > * {
+        position: relative;
+    }
 
     &::before {
         position: absolute;
@@ -56,6 +61,7 @@ const Column = styled(BaseColumn)`
     position: sticky;
     top: 0;
     z-index: 1;
+    box-sizing: border-box;
     padding: 0 ${get('space.3')};
     height: 3rem;
     background: ${getSemanticValue('surface')};
