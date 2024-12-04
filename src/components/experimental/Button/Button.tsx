@@ -5,7 +5,7 @@ import { Button as BaseButton, ButtonProps as BaseButtonProps } from 'react-aria
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
-import { InlineSpinner } from '../../InlineSpinner/InlineSpinner';
+import { InlineSpinner } from '../InlineSpinner/InlineSpinner';
 
 type Emphasis = 'primary' | 'secondary' | 'textButton';
 
@@ -129,7 +129,11 @@ const spinnerColor: Record<Emphasis, string> = {
 function Button({ children, emphasis = 'primary', isLoading = false, ...restProps }: ButtonProps): ReactElement {
     return (
         <ButtonStyled data-testid="button-container" isPending={isLoading} $emphasis={emphasis} {...restProps}>
-            {isLoading ? <InlineSpinner data-testid="button-spinner" color={spinnerColor[emphasis]} /> : children}
+            {isLoading ? (
+                <InlineSpinner data-testid="button-spinner" color={spinnerColor[emphasis]} size="medium" />
+            ) : (
+                children
+            )}
         </ButtonStyled>
     );
 }
