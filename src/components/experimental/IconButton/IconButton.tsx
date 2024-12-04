@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ButtonProps, Button } from 'react-aria-components';
 import { IconProps } from '../../../icons';
 import { getSemanticValue } from '../../../essentials/experimental';
-import { InlineSpinner } from '../../InlineSpinner/InlineSpinner';
+import { InlineSpinner } from '../InlineSpinner/InlineSpinner';
 
 export interface IconButtonProps extends ButtonProps {
     isActive?: boolean;
@@ -123,7 +123,7 @@ export const IconButton = ({
             {...restProps}
         >
             {isLoading ? (
-                <InlineSpinner data-testid="iconbutton-spinner" color={getSemanticValue('on-surface')} />
+                <InlineSpinner data-testid="iconbutton-spinner" color={getSemanticValue('on-surface')} size="medium" />
             ) : (
                 <Icon data-testid="iconbutton-icon" />
             )}

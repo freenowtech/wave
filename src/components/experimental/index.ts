@@ -7,6 +7,7 @@ export { DatePicker } from './DatePicker/DatePicker';
 export { Dialog } from './Dialog/Dialog';
 export { Divider } from './Divider/Divider';
 export { IconButton } from './IconButton/IconButton';
+export { InlineSpinner } from './InlineSpinner/InlineSpinner';
 export { Label } from './Label/Label';
 export { ListBox, ListBoxItem } from './ListBox/ListBox';
 export { Popover } from './Popover/Popover';
