@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 import { variant } from 'styled-system';
-import { Button as BaseButton, ButtonProps as BaseButtonProps } from 'react-aria-components';
+import { Button as BaseButton, ButtonProps as BaseButtonProps, ButtonRenderProps } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
@@ -74,14 +74,10 @@ const emphasisStyles = variant<Record<string, unknown>, Emphasis>({
 const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
     position: relative;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${get('space.2')};
     border: none;
     outline: none;
     border-radius: ${get('radii.4')};
-    padding: ${get('space.4')} ${get('space.6')};
+    padding: 0;
 
     cursor: pointer;
 
@@ -120,6 +116,29 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
     ${emphasisStyles};
 `;
 
+const ChildrenContainer = styled.span<{ isLoading: boolean }>`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: ${get('space.2')};
+    padding: ${get('space.4')} ${get('space.6')};
+
+    opacity: ${({ isLoading }) => (isLoading ? 0 : 1)};
+    visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+    transition: opacity ease 200ms;
+`;
+
+const SpinnerContainer = styled.span`
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+`;
+
 const spinnerColor: Record<Emphasis, string> = {
     primary: getSemanticValue('on-accent'),
     secondary: getSemanticValue('on-surface'),
@@ -127,13 +146,22 @@ const spinnerColor: Record<Emphasis, string> = {
 };
 
 function Button({ children, emphasis = 'primary', isLoading = false, ...restProps }: ButtonProps): ReactElement {
+    const renderContent = (props: ButtonRenderProps & { defaultChildren: ReactNode }) => (
+        <>
+            <ChildrenContainer isLoading={isLoading}>
+                {typeof children === 'function' ? children(props) : children}
+            </ChildrenContainer>
+            {isLoading && (
+                <SpinnerContainer>
+                    <InlineSpinner data-testid="button-spinner" color={spinnerColor[emphasis]} size="medium" />
+                </SpinnerContainer>
+            )}
+        </>
+    );
+
     return (
         <ButtonStyled data-testid="button-container" isPending={isLoading} $emphasis={emphasis} {...restProps}>
-            {isLoading ? (
-                <InlineSpinner data-testid="button-spinner" color={spinnerColor[emphasis]} size="medium" />
-            ) : (
-                children
-            )}
+            {renderContent}
         </ButtonStyled>
     );
 }
