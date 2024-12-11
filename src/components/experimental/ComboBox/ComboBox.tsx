@@ -57,15 +57,18 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
             <FakeInput $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => inputRef.current?.focus()}>
                 {leadingIcon}
                 <InnerWrapper>
-                    <Label $flying={Boolean(placeholder || state?.inputValue.length > 0)}>{label}</Label>
+                    <Label $flying={Boolean(placeholder || state?.inputValue?.length > 0)}>{label}</Label>
                     <Input placeholder={placeholder} ref={inputRef} />
                 </InnerWrapper>
-                {state?.inputValue.length > 0 ? (
+                {state?.inputValue?.length > 0 ? (
                     <Button
                         // Don't inherit default Button behavior from ComboBox.
                         slot={null}
                         aria-label={ariaStrings.clearFieldButton}
-                        onPress={() => state?.setSelectedKey(null)}
+                        onPress={() => {
+                            state?.setSelectedKey(null);
+                            state?.setInputValue('');
+                        }}
                     >
                         <XCrossCircleIcon />
                     </Button>
