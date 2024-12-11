@@ -104,3 +104,52 @@ export const AsyncValues: StoryObj<typeof ComboBox<Character>> = {
         );
     }
 };
+
+export const FullyControlled: Story = {
+    render: () => {
+        const [items, setItems] = React.useState<Character[]>([]);
+        const [filterText, setFilterText] = React.useState('');
+        const [key, setKey] = React.useState<string | null>(null);
+
+        React.useEffect(() => {
+            let ignore = false;
+
+            async function startFetching() {
+                const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`);
+                const json = await res.json();
+
+                if (!ignore) {
+                    setItems(json.results);
+                }
+            }
+
+            // eslint-disable-next-line no-void
+            void startFetching();
+
+            return () => {
+                ignore = true;
+            };
+        }, [filterText]);
+
+        return (
+            <ComboBox
+                label="Star Wars Character"
+                items={items}
+                inputValue={filterText}
+                selectedKey={key}
+                onSelectionChange={newKey => {
+                    setFilterText(newKey as string);
+                    setKey(newKey as string);
+                }}
+                onInputChange={input => {
+                    setFilterText(input);
+                    if (input === '') {
+                        setKey(null);
+                    }
+                }}
+            >
+                {item => <ListBoxItem id={item.name}>{item.name}</ListBoxItem>}
+            </ComboBox>
+        );
+    }
+};
