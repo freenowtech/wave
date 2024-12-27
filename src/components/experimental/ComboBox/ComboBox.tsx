@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactElement, Ref, RefObject, useState } from 'react';
+import React, { forwardRef, ReactElement, Ref, useState } from 'react';
 import {
     ComboBox as BaseComboBox,
     ComboBoxProps as BaseComboBoxProps,
