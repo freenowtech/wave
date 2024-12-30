@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { forwardRef, ReactElement, Ref, useState } from 'react';
 import {
     ComboBox as BaseComboBox,
     ComboBoxProps as BaseComboBoxProps,
@@ -19,6 +19,7 @@ import { Button } from '../Field/Button';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
+import useMergeRefs from '../../../utils/hooks/useMergeRefs';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
 const defaultAriaStrings = {
@@ -40,25 +41,33 @@ interface ComboBoxFieldProps extends Pick<FieldProps, 'label' | 'description' | 
         clearFieldButton: string;
         messageFieldIsCleared: string;
     };
+    inputRef?: Ref<HTMLInputElement>;
 }
 
 interface ComboBoxProps<T extends Record<string, unknown>>
     extends ComboBoxFieldProps,
-        Omit<BaseComboBoxProps<T>, 'children'> {
+        Omit<BaseComboBoxProps<T>, 'children'>,
+        React.RefAttributes<HTMLDivElement> {
     children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
 const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
-    ({ label, placeholder, leadingIcon, ariaStrings }, forwardedRef) => {
+    ({ label, placeholder, leadingIcon, ariaStrings, inputRef: externalInputRef }, forwardedRef) => {
         const state = React.useContext(ComboBoxStateContext);
-        const inputRef = React.useRef<HTMLInputElement>(null);
+        const internalInputRef = React.useRef<HTMLInputElement>(null);
+
+        const combinedInputRef = useMergeRefs(internalInputRef, externalInputRef);
 
         return (
-            <FakeInput $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => inputRef.current?.focus()}>
+            <FakeInput
+                $isVisuallyFocused={state?.isOpen}
+                ref={forwardedRef}
+                onClick={() => internalInputRef.current?.focus()}
+            >
                 {leadingIcon}
                 <InnerWrapper>
                     <Label $flying={Boolean(placeholder || state?.inputValue?.length > 0)}>{label}</Label>
-                    <Input placeholder={placeholder} ref={inputRef} />
+                    <Input placeholder={placeholder} ref={combinedInputRef} />
                 </InnerWrapper>
                 {state?.inputValue?.length > 0 ? (
                     <Button
@@ -80,16 +89,21 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
     }
 );
 
-function ComboBox<T extends Record<string, unknown>>({
-    label,
-    children,
-    placeholder,
-    leadingIcon,
-    ariaStrings = defaultAriaStrings,
-    errorMessage,
-    description,
-    ...props
-}: ComboBoxProps<T>): ReactElement {
+function ComboBoxComponent<T extends Record<string, unknown>>(
+    props: ComboBoxProps<T>,
+    inputRef: React.Ref<HTMLInputElement>
+): ReactElement {
+    const {
+        label,
+        children,
+        placeholder,
+        leadingIcon,
+        ariaStrings = defaultAriaStrings,
+        errorMessage,
+        description,
+        ...restProps
+    } = props;
+
     const [menuWidth, setMenuWidth] = useState<string | null>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
     const isSSR = useIsSSR();
@@ -107,12 +121,13 @@ function ComboBox<T extends Record<string, unknown>>({
     });
 
     return (
-        <BaseComboBox<T> aria-label={label} shouldFocusWrap {...props}>
+        <BaseComboBox<T> aria-label={label} shouldFocusWrap {...restProps}>
             {({ isInvalid }) => (
                 <>
                     <Wrapper>
                         <ComboBoxInput
                             ref={isSSR ? null : triggerRef}
+                            inputRef={inputRef}
                             label={label}
                             placeholder={placeholder}
                             leadingIcon={leadingIcon}
@@ -131,5 +146,9 @@ function ComboBox<T extends Record<string, unknown>>({
         </BaseComboBox>
     );
 }
+
+const ComboBox = forwardRef(ComboBoxComponent) as <T extends Record<string, unknown>>(
+    props: ComboBoxProps<T> & { ref?: React.Ref<HTMLInputElement> }
+) => ReactElement;
 
 export { ComboBox };
