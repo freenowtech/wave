@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StoryObj, Meta } from '@storybook/react';
 import { ComboBox } from '../ComboBox';
 import { ListBoxItem } from '../../ListBox/ListBox';
+import { Button } from '../../../Button/Button';
 import DogIcon from '../../../../icons/basic/DogIcon';
 
 const meta: Meta = {
@@ -150,6 +151,84 @@ export const FullyControlled: Story = {
             >
                 {item => <ListBoxItem id={item.name}>{item.name}</ListBoxItem>}
             </ComboBox>
+        );
+    }
+};
+
+export const WithRef: StoryObj<typeof ComboBox> = {
+    render: () => {
+        const [items, setItems] = React.useState<Character[]>([]);
+        const [filterText, setFilterText] = React.useState('');
+        const comboBoxRef = useRef<HTMLInputElement>(null);
+
+        React.useEffect(() => {
+            let ignore = false;
+
+            async function startFetching() {
+                const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`);
+                const json = await res.json();
+
+                if (!ignore) {
+                    setItems(json.results);
+                }
+            }
+
+            // eslint-disable-next-line no-void
+            void startFetching();
+
+            return () => {
+                ignore = true;
+            };
+        }, [filterText]);
+
+        const handleFocus = () => {
+            if (comboBoxRef.current) {
+                comboBoxRef.current.focus();
+                // eslint-disable-next-line no-console
+                console.log('input focused');
+            }
+        };
+
+        const handleBlur = () => {
+            if (comboBoxRef.current) {
+                comboBoxRef.current.blur();
+                // eslint-disable-next-line no-console
+                console.log('input blurred');
+            }
+        };
+
+        const handleGetValue = () => {
+            if (comboBoxRef.current) {
+                // eslint-disable-next-line no-console
+                console.log('current value:', comboBoxRef.current.value);
+            }
+        };
+
+        return (
+            <div>
+                <div style={{ marginTop: '10px', zIndex: -1 }}>
+                    <Button onClick={handleFocus} size="small" style={{ marginRight: '5px' }}>
+                        Focus
+                    </Button>
+                    <Button onClick={handleBlur} size="small" style={{ marginRight: '5px' }}>
+                        Blur
+                    </Button>
+                    <Button onClick={handleGetValue} size="small">
+                        Get value
+                    </Button>
+                </div>
+                <ComboBox
+                    label="Star Wars Character"
+                    ref={comboBoxRef}
+                    items={items}
+                    inputValue={filterText}
+                    onInputChange={setFilterText}
+                >
+                    {item => <ListBoxItem id={item.name}>{item.name}</ListBoxItem>}
+                </ComboBox>
+                {/* Adding this div so the dropdown appears below and doesn't overlap with the buttons */}
+                <div style={{ height: '45px' }} />
+            </div>
         );
     }
 };
