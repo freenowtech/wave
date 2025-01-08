@@ -13,8 +13,8 @@ const Container = styled.div`
 
 const ButtonsContainer = styled(Box)`
     display: flex;
-    justify-content: center;
-    position: relative;
+    align-items: center;
+    gap: ${Spaces[1]};
 `;
 
 const IconButton = styled.button`
@@ -134,49 +134,54 @@ const Pagination: React.FC<PaginationProps> = ({
     return (
         <Container>
             <ButtonsContainer>
-                {hasMultiplePageSizes && (
-                    <Box aria-label={ariaLabelSelectPageSizeContainer} position="absolute" left="0" width="4.5em">
-                        <SelectList
-                            options={pageSizes}
-                            onChange={onSelectPageSize}
-                            value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
-                        />
-                    </Box>
-                )}
-                {size !== 'small' && (
-                    <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
-                        <BackwardLastIcon
+                <Box flex={1}>
+                    {hasMultiplePageSizes && (
+                        <Box aria-label={ariaLabelSelectPageSizeContainer} width="fit-content" minWidth="5rem">
+                            <SelectList
+                                options={pageSizes}
+                                onChange={onSelectPageSize}
+                                value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
+                            />
+                        </Box>
+                    )}
+                </Box>
+
+                <Box>
+                    {size !== 'small' && (
+                        <IconButton aria-label={ariaLabelFirst} disabled={isFirstPage} onClick={onSkipBackward}>
+                            <BackwardLastIcon
+                                size="small"
+                                color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
+                            />
+                        </IconButton>
+                    )}
+
+                    <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
+                        <BackwardIcon
                             size="small"
                             color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
                         />
                     </IconButton>
-                )}
 
-                <IconButton aria-label={ariaLabelPrevious} disabled={isFirstPage} onClick={onPrevPage}>
-                    <BackwardIcon
-                        size="small"
-                        color={isFirstPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
-                    />
-                </IconButton>
-
-                <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
-                    <ForwardIcon
-                        size="small"
-                        color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
-                    />
-                </IconButton>
-
-                {size !== 'small' && (
-                    <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
-                        <ForwardLastIcon
+                    <IconButton aria-label={ariaLabelNext} disabled={isLastPage} onClick={onNextPage}>
+                        <ForwardIcon
                             size="small"
                             color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
                         />
                     </IconButton>
-                )}
-            </ButtonsContainer>
 
-            {label && <LabelContainer>{label}</LabelContainer>}
+                    {size !== 'small' && (
+                        <IconButton aria-label={ariaLabelLast} disabled={isLastPage} onClick={onSkipForward}>
+                            <ForwardLastIcon
+                                size="small"
+                                color={isLastPage ? Colors.AUTHENTIC_BLUE_200 : Colors.AUTHENTIC_BLUE_900}
+                            />
+                        </IconButton>
+                    )}
+                </Box>
+
+                <Box flex={1}>{label && <LabelContainer>{label}</LabelContainer>}</Box>
+            </ButtonsContainer>
         </Container>
     );
 };
