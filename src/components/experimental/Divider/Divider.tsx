@@ -53,8 +53,7 @@ const HorizontalLine = styled.div<DividerProps>`
 `;
 
 const VerticalLine = styled.div<DividerProps>`
-    display: inline-block;
-    height: 100%;
+    align-self: stretch;
     border-left: 1px solid ${getSemanticValue('divider')};
     ${compose(space, verticalVariants)}
 `;
