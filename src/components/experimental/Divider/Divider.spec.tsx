@@ -38,8 +38,8 @@ describe('Experimental: Divider', () => {
         const dividerInstance = screen.getByTestId('vertical-divider-experimental');
         const dividerStyle = window.getComputedStyle(dividerInstance);
 
-        expect(dividerStyle.marginTop).toBe('1rem');
-        expect(dividerStyle.marginBottom).toBe('1rem');
+        expect(dividerStyle.marginTop).toBe('0.5rem');
+        expect(dividerStyle.marginBottom).toBe('0.5rem');
     });
 
     it('renders vertical divider with 1rem offset when variant is inset', () => {
@@ -47,7 +47,7 @@ describe('Experimental: Divider', () => {
         const dividerInstance = screen.getByTestId('vertical-divider-experimental');
         const dividerStyle = window.getComputedStyle(dividerInstance);
 
-        expect(dividerStyle.marginTop).toBe('1rem');
+        expect(dividerStyle.marginTop).toBe('0.5rem');
         expect(dividerStyle.marginBottom).toBe('');
     });
 
@@ -57,7 +57,7 @@ describe('Experimental: Divider', () => {
         const dividerStyle = window.getComputedStyle(dividerInstance);
 
         expect(dividerStyle.marginRight).toBe('');
-        expect(dividerStyle.marginLeft).toBe('1rem');
+        expect(dividerStyle.marginLeft).toBe('0.5rem');
     });
 
     it('renders horizontal divider with overridden offset when variant is inset', () => {
@@ -74,8 +74,8 @@ describe('Experimental: Divider', () => {
         const dividerInstance = screen.getByTestId('horizontal-divider-experimental');
         const dividerStyle = window.getComputedStyle(dividerInstance);
 
-        expect(dividerStyle.marginRight).toBe('1rem');
-        expect(dividerStyle.marginLeft).toBe('1rem');
+        expect(dividerStyle.marginRight).toBe('0.5rem');
+        expect(dividerStyle.marginLeft).toBe('0.5rem');
     });
 
     it('renders horizontal divider with overridden offset when variant is middle-inset', () => {
@@ -84,6 +84,6 @@ describe('Experimental: Divider', () => {
         const dividerStyle = window.getComputedStyle(dividerInstance);
 
         expect(dividerStyle.marginRight).toBe('2rem');
-        expect(dividerStyle.marginLeft).toBe('1rem');
+        expect(dividerStyle.marginLeft).toBe('0.5rem');
     });
 });
