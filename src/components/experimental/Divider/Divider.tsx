@@ -22,11 +22,11 @@ const horizontalVariants = variant({
             minWidth: '100%'
         },
         inset: {
-            marginLeft: '1rem'
+            marginLeft: '0.5rem'
         },
         'middle-inset': {
-            marginLeft: '1rem',
-            marginRight: '1rem'
+            marginLeft: '0.5rem',
+            marginRight: '0.5rem'
         }
     }
 });
@@ -38,11 +38,11 @@ const verticalVariants = variant({
             minHeight: '100%'
         },
         inset: {
-            marginTop: '1rem'
+            marginTop: '0.5rem'
         },
         'middle-inset': {
-            marginTop: '1rem',
-            marginBottom: '1rem'
+            marginTop: '0.5rem',
+            marginBottom: '0.5rem'
         }
     }
 });
