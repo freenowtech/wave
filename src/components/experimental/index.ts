@@ -1,3 +1,4 @@
+export { Backdrop } from './Backdrop/Backdrop';
 export { Button } from './Button/Button';
 export { Calendar } from './Calendar/Calendar';
 export { Chip } from './Chip/Chip';
@@ -10,6 +11,7 @@ export { IconButton } from './IconButton/IconButton';
 export { InlineSpinner } from './InlineSpinner/InlineSpinner';
 export { Label } from './Label/Label';
 export { ListBox, ListBoxItem } from './ListBox/ListBox';
+export { Modal } from './Modal/Modal';
 export { Popover } from './Popover/Popover';
 export { Select } from './Select/Select';
 export { Snackbar, SnackbarProps } from './Snackbar/Snackbar';
