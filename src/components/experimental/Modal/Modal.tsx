@@ -4,7 +4,6 @@ import { Dialog, DialogProps, Modal as BaseModal } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 
 const ModalCard = styled(BaseModal)`
-    padding: 2rem;
     border-radius: 1.5rem;
     background: ${getSemanticValue('surface')};
     color: ${getSemanticValue('on-surface')};

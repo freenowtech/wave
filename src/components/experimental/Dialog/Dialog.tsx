@@ -20,6 +20,7 @@ const ButtonsWrapper = styled.div`
 `;
 
 const StyledModal = styled(Modal)`
+    padding: 2rem;
     width: 30rem;
 `;
 
