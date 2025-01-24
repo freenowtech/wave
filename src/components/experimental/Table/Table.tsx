@@ -81,6 +81,7 @@ const Row = styled(BaseRow)`
     &[data-hovered] td::before {
         background: ${getSemanticValue('on-surface')};
         opacity: 0.08;
+        cursor: pointer;
     }
 
     &[data-selected] {
