@@ -53,7 +53,6 @@ const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
                     label="Close snackbar"
                     Icon={() => <XCrossIcon size={24} color={getSemanticValue('inverse-on-surface')} />}
                     onPress={onDismiss}
-                    aria-label="close"
                 />
             )}
         </Container>
