@@ -14,7 +14,7 @@ export interface IconButtonProps extends ButtonProps {
     label: string;
 }
 
-const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon' >>`
+const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 100%;
@@ -123,11 +123,16 @@ export const IconButton = ({
             isDisabled={isDisabled}
             isActive={isActive}
             isPending={isLoading}
+            label={label}
             {...restProps}
         >
             <>
                 {isLoading ? (
-                    <InlineSpinner data-testid="iconbutton-spinner" color={getSemanticValue('on-surface')} size="medium" />
+                    <InlineSpinner
+                        data-testid="iconbutton-spinner"
+                        color={getSemanticValue('on-surface')}
+                        size="medium"
+                    />
                 ) : (
                     <Icon data-testid="iconbutton-icon" />
                 )}
