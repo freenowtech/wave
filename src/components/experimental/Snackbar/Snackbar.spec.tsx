@@ -18,7 +18,7 @@ test('renders the dismiss button when hasDismissButton is true and calls onDismi
             <span>Test Snackbar</span>
         </Snackbar>
     );
-    const dismissButton = screen.getByTestId('snackbar-close-icon');
+    const dismissButton = screen.getByRole("button", { name: 'Close snackbar'});
     fireEvent.click(dismissButton);
     expect(onDismiss).toHaveBeenCalledTimes(1);
 });

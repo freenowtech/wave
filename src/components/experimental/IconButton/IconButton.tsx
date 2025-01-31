@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { ButtonProps, Button } from 'react-aria-components';
+import { VisuallyHidden } from 'react-aria';
 import { IconProps } from '../../../icons';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { InlineSpinner } from '../InlineSpinner/InlineSpinner';
@@ -10,6 +11,7 @@ export interface IconButtonProps extends ButtonProps {
     isLoading?: boolean;
     variant?: 'standard' | 'tonal';
     Icon: React.FC<IconProps>;
+    label: string;
 }
 
 const StandardIconContainer = styled(Button)<Omit<IconButtonProps, 'Icon'>>`
@@ -109,6 +111,7 @@ export const IconButton = ({
     Icon,
     variant = 'standard',
     onPress,
+    label,
     ...restProps
 }: IconButtonProps): ReactElement => {
     const Container = variant === 'standard' ? StandardIconContainer : TonalIconContainer;
@@ -120,13 +123,21 @@ export const IconButton = ({
             isDisabled={isDisabled}
             isActive={isActive}
             isPending={isLoading}
+            label={label}
             {...restProps}
         >
-            {isLoading ? (
-                <InlineSpinner data-testid="iconbutton-spinner" color={getSemanticValue('on-surface')} size="medium" />
-            ) : (
-                <Icon data-testid="iconbutton-icon" />
-            )}
+            <>
+                {isLoading ? (
+                    <InlineSpinner
+                        data-testid="iconbutton-spinner"
+                        color={getSemanticValue('on-surface')}
+                        size="medium"
+                    />
+                ) : (
+                    <Icon data-testid="iconbutton-icon" />
+                )}
+                <VisuallyHidden>{label}</VisuallyHidden>
+            </>
         </Container>
     );
 };
