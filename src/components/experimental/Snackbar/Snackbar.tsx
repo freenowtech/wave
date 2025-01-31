@@ -50,10 +50,9 @@ const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
             {children}
             {hasDismissButton && (
                 <DismissButton
-                    data-testid="snackbar-close-icon"
+                    label="Close snackbar"
                     Icon={() => <XCrossIcon size={24} color={getSemanticValue('inverse-on-surface')} />}
                     onPress={onDismiss}
-                    aria-label="close"
                 />
             )}
         </Container>
