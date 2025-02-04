@@ -15,7 +15,7 @@ const Checkmark = styled.input<CheckmarkProps>`
     width: 1rem;
     height: 1rem;
     padding: 0;
-    margin: 0 0.5rem 0 0;
+    margin: 0 0 0 0;
 
     background-color: ${getSemanticValue('background-page-default')};
     box-shadow: inset 0 0 0 0.125rem

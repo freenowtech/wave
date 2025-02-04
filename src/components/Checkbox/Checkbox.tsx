@@ -38,7 +38,7 @@ const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
     align-items: center;
 
     height: 1rem;
-    margin: 0 0.5rem 0 0;
+    margin: 0 0 0 0;
     ${({ textVerticalAlign }) => (textVerticalAlign === 'top' ? 'margin-top: 0.1875rem' : undefined)}
 `;
 
