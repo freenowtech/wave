@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { isSSR } from '../utils/isSSR';
 import { FlagErrorBoundary } from './FlagErrorBoundary';

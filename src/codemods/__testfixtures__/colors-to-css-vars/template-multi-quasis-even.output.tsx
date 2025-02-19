@@ -1,5 +1,5 @@
 import { Button, Spaces } from '@freenow/wave';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 interface Props {
     label: string;

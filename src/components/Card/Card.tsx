@@ -1,4 +1,4 @@
-import styled, { StyledComponent } from 'styled-components';
+import { styled } from 'styled-components';
 import {
     borderRadius,
     BorderRadiusProps,
@@ -52,7 +52,7 @@ const levelVariant = variant({
     }
 });
 
-const Card: StyledComponent<'div', typeof theme, CardProps, 'theme'> = styled.div.attrs({ theme })`
+const Card = styled.div.attrs({ theme })`
     overflow: auto;
     box-sizing: border-box;
     border-radius: ${get('radii.1')};

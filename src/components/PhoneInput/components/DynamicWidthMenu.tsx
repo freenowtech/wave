@@ -1,5 +1,5 @@
 import { components } from 'react-select';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 interface DynamicWidthMenuProps {
     width?: number;

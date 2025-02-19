@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Placement } from '@popperjs/core/lib/enums';
 import { usePopper } from 'react-popper';
 

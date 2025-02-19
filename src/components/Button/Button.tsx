@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { ButtonStyleProps, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 

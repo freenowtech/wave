@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose, LayoutProps, space, SpaceProps, variant } from 'styled-system';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 
 type DividerProps = SpaceProps &

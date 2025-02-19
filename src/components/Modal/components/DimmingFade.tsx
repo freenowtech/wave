@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { Dimming } from '../../Dimming/Dimming';
 import { getSemanticValue } from '../../../utils/cssVariables';
 

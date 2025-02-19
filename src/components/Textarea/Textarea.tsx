@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, FC, useEffect, useState } from 'react';
-import styled, { CSSProperties } from 'styled-components';
+import { styled, CSSProperties } from 'styled-components';
 
 import { compose, height, HeightProps, margin, MarginProps, ResponsiveValue, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';

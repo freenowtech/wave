@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, variant, width } from 'styled-system';
 import { get } from '../../utils/themeGet';
 import { InputProps } from './InputProps';

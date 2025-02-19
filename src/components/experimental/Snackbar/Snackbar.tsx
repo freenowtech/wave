@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode, type ReactElement } from 'react';
 import { PressEvent } from 'react-aria';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { SpaceProps, LayoutProps, PositionProps, FlexboxProps } from 'styled-system';
 
 import { get } from '../../../utils/experimental/themeGet';

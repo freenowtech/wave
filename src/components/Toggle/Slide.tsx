@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 const determineBackground = (props: SlideProps) => {

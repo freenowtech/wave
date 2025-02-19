@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { Elevation } from '../../../essentials';
 import { Card, CardProps } from '../../Card/Card';
 
@@ -81,7 +81,9 @@ const StyledCard = styled(Card)<{ side?: string }>`
     ${p => inFrom[p.side]};
     ${p => position[p.side]};
 
-    @media (max-width: calc(${p => p.width} + 2rem)) {
+    @media (max-width: calc(${p =>
+            /* @ts-expect-error TS2339 */
+            p.width} + 2rem)) {
         width: calc(100% - 2rem);
     }
 `;
@@ -97,6 +99,7 @@ const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
     ...rest
 }: CenteredCardProps) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        {/* @ts-expect-error TS2769 */}
         <StyledCard {...rest} height={height} level={300} />
     </CSSTransition>
 );

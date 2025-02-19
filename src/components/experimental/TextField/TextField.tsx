@@ -1,6 +1,6 @@
 import React from 'react';
 import { FieldError, TextField as BaseTextField, TextFieldProps as BaseTextFieldProps } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';

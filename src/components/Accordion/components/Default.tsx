@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactElement, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';

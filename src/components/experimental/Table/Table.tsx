@@ -7,7 +7,7 @@ import {
     TableBody,
     TableHeader
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
 import { getSemanticValue } from '../../../essentials/experimental';

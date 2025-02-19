@@ -5,7 +5,7 @@ import {
     DateValue,
     Group
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { DropdownSelectIcon, DropupSelectIcon } from '../../../icons';
 import { CalendarTodayOutlineIcon } from '../../../icons/experimental';
 import { Calendar } from '../Calendar/Calendar';

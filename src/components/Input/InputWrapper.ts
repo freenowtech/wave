@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { ClassNameProps } from '../../utils/extractProps';

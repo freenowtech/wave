@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
@@ -30,7 +30,7 @@ interface TableProps extends TableElementProps {
     columnSpace?: 'normal' | 'small' | string;
 }
 
-const TableElement: StyledComponent<FC<TableElementProps>, typeof theme> = styled.table.attrs({
+const TableElement = styled.table.attrs({
     theme
 })<TableElementProps>`
     font-size: ${get('fontSizes.1')};

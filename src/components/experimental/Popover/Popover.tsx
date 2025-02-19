@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Dialog, DialogTrigger, Popover as BasePopover, PopoverProps as BasePopoverProps } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { get } from '../../../utils/experimental/themeGet';
 

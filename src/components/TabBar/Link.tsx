@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';

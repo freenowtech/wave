@@ -1,5 +1,5 @@
 import React, { ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { variant } from 'styled-system';
 import { Button as BaseButton, ButtonProps as BaseButtonProps, ButtonRenderProps } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';

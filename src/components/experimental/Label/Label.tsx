@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { variant } from 'styled-system';
 import React, { ComponentPropsWithoutRef, ReactElement } from 'react';
 import { textStyles } from '../Text/Text';

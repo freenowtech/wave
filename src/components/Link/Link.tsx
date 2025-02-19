@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, fontSize, FontSizeProps, margin, MarginProps, textAlign, TextAlignProps } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { theme } from '../../essentials/theme';

@@ -1,7 +1,7 @@
 import { END_DATE, FirstDayOfWeek, FocusedInput, START_DATE } from '@datepicker-react/hooks';
 import { compareDesc, Locale, parse, startOfDay, endOfDay } from 'date-fns';
 import React, { ChangeEventHandler, FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { usePopper } from 'react-popper';
 import { createPortal } from 'react-dom';

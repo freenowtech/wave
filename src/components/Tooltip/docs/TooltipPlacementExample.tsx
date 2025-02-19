@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Placement } from '@popperjs/core/lib/enums';
 import { RadioButton, Tooltip } from '../..';
 import { MediaQueries } from '../../../essentials';

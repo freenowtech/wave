@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { DateInput as BaseDateInput, Input as BaseInput, TextArea as BaseTextArea } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';

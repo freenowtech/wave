@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, FC, ReactNode, useEffect } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { MarginProps, ResponsiveValue } from 'styled-system';
 
 import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';

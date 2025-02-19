@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { components, OptionProps } from 'react-select';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Flag } from '../../../icons';
 import { PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
 import { isFlagAvailable } from '../util/isFlagAvailable';
 
+// @ts-expect-error TS2345: role is not assignable
 const OptionWithFlag = styled(components.Option).attrs({ role: 'option' })`
     display: inline-flex !important;
 

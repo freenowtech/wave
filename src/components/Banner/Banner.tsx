@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Elevation } from '../../essentials';
 import { theme } from '../../essentials/theme';

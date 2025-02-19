@@ -1,5 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
 import { EyeClosedIcon, EyeIcon } from '../../icons';

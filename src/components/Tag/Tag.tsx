@@ -1,5 +1,5 @@
 import React, { FC, MouseEvent, PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { margin, MarginProps, variant } from 'styled-system';
 
 import { theme } from '../../essentials/theme';

@@ -1,5 +1,5 @@
 import { Label as BaseLabel } from 'react-aria-components';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
 

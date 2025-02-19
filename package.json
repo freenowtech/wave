@@ -27,7 +27,7 @@
         }
     },
     "bin": {
-        "run_v2_migration": "./scripts/run_v2_migration.sh"
+        "run_v2_migration": "scripts/run_v2_migration.sh"
     },
     "sideEffects": false,
     "scripts": {
@@ -62,7 +62,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/freenowtech/wave.git"
+        "url": "git+https://github.com/freenowtech/wave.git"
     },
     "files": [
         "lib/",
@@ -146,7 +146,7 @@
         "semantic-release": "^17.4.2",
         "storybook": "^7.6.20",
         "storybook-dark-mode": "^3.0.3",
-        "styled-components": "^5.3.8",
+        "styled-components": "^6.1.15",
         "stylelint": "^13.2.1",
         "stylelint-config-prettier": "^8.0.1",
         "stylelint-config-standard": "^20.0.0",

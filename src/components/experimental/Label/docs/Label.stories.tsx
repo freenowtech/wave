@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { StoryObj, Meta } from '@storybook/react';
 import { Label } from '../Label';
 import { darkTheme, getBareValue } from '../../../../essentials/experimental';

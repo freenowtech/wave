@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Spaces } from '../../essentials';
 
 export const GuidelineBlock = styled.div`

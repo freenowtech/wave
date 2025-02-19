@@ -29,6 +29,7 @@ describe('Card', () => {
         test.each(testCases)(
             'with level %s and sets the correct box-shadow',
             (level: 0 | 100 | 200 | 300, expected) => {
+                /* @ts-expect-error TS2769 */
                 expect(render(<Card level={level} />).container.firstChild).toHaveStyle(`
                     box-shadow: ${expected};
                 `);

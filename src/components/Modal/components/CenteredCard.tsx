@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { Elevation } from '../../../essentials';
 import { Card, CardProps } from '../../Card/Card';
 
@@ -51,7 +51,7 @@ const scaleUp = css`
     }
 `;
 
-const StyledCard = styled(Card)<{ fullscreen?: boolean }>`
+const StyledCard = styled(Card)<{ fullscreen?: boolean; width: any }>`
     position: fixed;
     top: 50%;
     left: 50%;
@@ -79,6 +79,7 @@ const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
     ...rest
 }) => (
     <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        {/* @ts-expect-error TS2769 */}
         <StyledCard {...rest} width={width} level={rest.fullscreen ? 0 : 300} />
     </CSSTransition>
 );

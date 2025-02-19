@@ -5,8 +5,7 @@ import {
     ControlProps,
     MenuProps,
     DropdownIndicatorProps,
-    Props,
-    StylesConfig
+    Props
 } from 'react-select';
 import WindowedSelect from 'wave-react-windowed-select';
 
@@ -40,7 +39,7 @@ const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'dis
     return 'default';
 };
 
-const customStyles: StylesConfig = {
+const customStyles = {
     container: (provided, { selectProps }: WithSelectProps<Props>) => {
         const bSize = {
             small: {
@@ -350,6 +349,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
         <Wrapper ref={setTriggerReference} {...classNameProps} {...marginProps} {...widthProps}>
             <WindowedSelect
                 inputId={id}
+                // @ts-expect-error TS2322
                 styles={customStyles}
                 windowThreshold={100}
                 components={{

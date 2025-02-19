@@ -1,5 +1,5 @@
 import React, { Children, ReactElement, ReactNode, cloneElement, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { MarginProps } from 'styled-system';
 
 import { ChevronRightIcon } from '../../icons';

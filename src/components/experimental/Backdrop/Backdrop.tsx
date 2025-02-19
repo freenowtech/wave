@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { ModalOverlayProps, ModalOverlay } from 'react-aria-components';
 import { getSemanticHslValue } from '../../../essentials/experimental';
 import { Elevation } from '../../../essentials';

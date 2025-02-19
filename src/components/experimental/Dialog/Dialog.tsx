@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { Heading } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Text, textStyles } from '../Text/Text';
 import { Modal } from '../Modal/Modal';
 import { Backdrop, BackdropProps } from '../Backdrop/Backdrop';

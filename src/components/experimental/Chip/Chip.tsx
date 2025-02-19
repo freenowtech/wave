@@ -1,5 +1,5 @@
 import React, { forwardRef, type ReactElement } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Button as BaseButton, ButtonProps as ButtonBaseProps } from 'react-aria-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';

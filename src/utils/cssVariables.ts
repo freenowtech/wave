@@ -84,7 +84,7 @@ export const applyPrefix = <T extends string>(
     namespace: 'color' = 'color'
 ): string => `--${DS_PREFIX}-${tier}-${namespace}-${variableName}`;
 
-export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): ReadonlyArray<string> => {
+export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's') => {
     const entries = generateCssVariableEntries(tokens);
     const hslComponentsEntries = generateHslComponentsCssVariableEntries(entries);
 
@@ -93,10 +93,8 @@ export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): Read
     );
 };
 
-export const generateBareTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 'b');
+export const generateBareTierCssVariables = (tokens: TokenObject) => generateCssVariables(tokens, 'b');
 
-export const generateSemanticTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 's');
+export const generateSemanticTierCssVariables = (tokens: TokenObject) => generateCssVariables(tokens, 's');
 
 export const getSemanticValue = (token: SemanticToken): ReadCssVariable => `var(--${DS_PREFIX}-s-color-${token})`;

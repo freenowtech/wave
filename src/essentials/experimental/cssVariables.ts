@@ -59,7 +59,7 @@ export const getBareValue = (token: BareColorToken): ReadCssVariable<BareColorTo
 export const getBareHslValue = (token: BareColorToken): ReadCssVariable<BareColorHslTokenCssVariable> =>
     `var(--${DS_PREFIX}-palette-${token}-hsl)`;
 
-export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace): ReadonlyArray<string> => {
+export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace) => {
     const entries = generateCssVariableEntries(tokens);
     const hslComponentsEntries = generateHslComponentsCssVariableEntries(entries);
 
@@ -68,8 +68,6 @@ export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace):
     );
 };
 
-export const generateBareCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 'palette');
+export const generateBareCssVariables = (tokens: TokenObject) => generateCssVariables(tokens, 'palette');
 
-export const generateSemanticCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 'color');
+export const generateSemanticCssVariables = (tokens: TokenObject) => generateCssVariables(tokens, 'color');

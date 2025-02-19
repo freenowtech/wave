@@ -1,13 +1,11 @@
-import styled, { css, Interpolation, ThemeProps } from 'styled-components';
+import { styled, css, Interpolation } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
 import { InternalInputProps } from './InputProps';
 
-const activeBoxedPosition = (
-    size: InternalInputProps['waveSize']
-): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
+const activeBoxedPosition = (size: InternalInputProps['waveSize']) => css`
     ${activePositionBaseStyles};
 
     top: ${size === 'small' ? '-0.375rem' : '-0.5rem'};

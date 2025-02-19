@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import * as React from 'react';
 
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { XCrossIcon, MagnifierIcon } from '../../icons';

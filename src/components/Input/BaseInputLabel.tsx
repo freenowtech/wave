@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 

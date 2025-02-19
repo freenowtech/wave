@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { TableContext } from '../context/TableContext';
 import { TableProps } from './Table';
 import { getSemanticValue } from '../../../utils/cssVariables';

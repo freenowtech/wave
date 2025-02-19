@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, MarginProps, padding, PaddingProps } from 'styled-system';
 import { Spaces } from '../../src/essentials';
 import { getSemanticValue } from '../../src/utils/cssVariables';

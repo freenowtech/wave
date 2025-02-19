@@ -1,13 +1,11 @@
-import styled, { css, Interpolation, ThemeProps } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
 import { InternalInputProps } from './InputProps';
 
-const activeBottomLinedPosition = (
-    size?: InternalInputProps['waveSize']
-): ReadonlyArray<Interpolation<ThemeProps<unknown>>> => css`
+const activeBottomLinedPosition = (size?: InternalInputProps['waveSize']) => css`
     ${activePositionBaseStyles};
     top: ${size === 'small' ? '0' : '0.25rem'};
     font-size: ${size === 'small' ? '0.625rem' : get('fontSizes.0')};

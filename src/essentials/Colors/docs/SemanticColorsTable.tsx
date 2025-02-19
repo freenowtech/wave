@@ -2,7 +2,7 @@ import { DocsContext } from '@storybook/blocks';
 
 import React, { FC, useContext, useMemo, useState } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Box, DarkScheme, Input, LightScheme, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
 import {

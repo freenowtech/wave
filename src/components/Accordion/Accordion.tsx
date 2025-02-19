@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Box } from '../Box/Box';
 import { Compact } from './components/Compact';
 import { DefaultPanel } from './components/Default';

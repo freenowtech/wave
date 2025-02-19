@@ -1,5 +1,5 @@
 import { Spaces, TextButton, TextButtonProps } from '@freenow/wave';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const NavigationLink: React.FC<TextButtonProps & { active: boolean }> = styled(TextButton)<{ active: boolean }>`
     display: flex;

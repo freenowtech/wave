@@ -1,4 +1,4 @@
-import { createGlobalStyle, css, CSSObject } from 'styled-components';
+import { createGlobalStyle, css, CSSObject, Interpolation } from 'styled-components';
 
 import { TokenObject } from '../../utils/cssVariables';
 import { generateBareCssVariables, generateSemanticCssVariables } from './cssVariables';

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { ListBox, ListBoxItem as BaseListBoxItem, ListBoxItemProps } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { Text, TextProps } from '../Text/Text';
 import { getSemanticValue } from '../../../essentials/experimental';

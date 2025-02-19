@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, system, MarginProps, textAlign, TextAlignProps, ResponsiveValue } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';

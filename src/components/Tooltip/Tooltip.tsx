@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core';
@@ -175,9 +175,9 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-                <Text as="p" fontSize={0}>
-                    {content}
-                </Text>
+            <Text as="p" fontSize={0}>
+                {content}
+            </Text>
         );
     }
 

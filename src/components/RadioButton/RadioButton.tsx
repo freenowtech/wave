@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { Text } from '../Text/Text';

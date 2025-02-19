@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Elevation, Spaces } from '../../../essentials';
 import { XCrossIcon } from '../../../icons';
 

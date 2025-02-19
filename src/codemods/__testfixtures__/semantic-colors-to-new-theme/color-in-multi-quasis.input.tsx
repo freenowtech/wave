@@ -1,5 +1,5 @@
 import { SemanticColors, Spaces, Text } from '@freenow/wave'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const DropdownList = styled.div`
     position: absolute;

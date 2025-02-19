@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Box } from '../../Box/Box';
 import { SortingIndicator } from './SortingIndicator';
 import { TableHeaderCell, TableHeaderCellProps } from './TableHeaderCell';

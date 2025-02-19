@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Spaces } from '../../essentials';
 import { Card } from '../Card/Card';
@@ -24,6 +24,7 @@ const PopoverContentContainer = styled(Card)<{ padding: string | number }>`
 
 export const PopoverContent = ({ padding = DEFAULT_PADDING, children }: PopoverContentProps): React.ReactElement => (
     <>
+        {/* @ts-expect-error TS2769 */}
         <PopoverContentContainer padding={padding} level={200}>
             {children}
         </PopoverContentContainer>

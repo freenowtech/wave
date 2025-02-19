@@ -7,7 +7,7 @@ import {
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Popover } from '../Popover/Popover';
 import { ListBox } from '../ListBox/ListBox';
 import { FakeInput } from '../Field/FakeInput';

@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, FC, MouseEventHandler, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { MarginProps } from 'styled-system';
 import { MediaQueries } from '../../essentials';
 import { CheckCircleIcon, UploadIcon } from '../../icons';

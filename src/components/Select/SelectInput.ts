@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, FC } from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { compose, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';

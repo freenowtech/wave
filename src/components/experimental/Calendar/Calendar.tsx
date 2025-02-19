@@ -11,7 +11,7 @@ import {
     DateValue,
     Button as BaseButton
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 import { getSemanticValue } from '../../../essentials/experimental';
