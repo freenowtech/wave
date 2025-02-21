@@ -5,3 +5,4 @@ export { default as CarOutlineIcon } from './CarOutlineIcon';
 export { default as LocationIcon } from './LocationIcon';
 export { default as SpinnerIcon } from './SpinnerIcon';
 export { default as PhoneCarOutlineIcon } from './PhoneCarOutlineIcon';
+export { default as SearchIcon } from './SearchIcon';
