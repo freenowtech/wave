@@ -34,7 +34,7 @@ const meta: Meta = {
         )
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div
                 style={{
                     willChange: 'transform',

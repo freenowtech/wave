@@ -36,7 +36,7 @@ export const WithMultilineLabel: Story = {
         label: 'A very long label which can stretch to more than one line without any issues'
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <Box width="20rem">
                 <Story />
             </Box>

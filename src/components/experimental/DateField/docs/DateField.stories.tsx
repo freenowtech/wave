@@ -13,7 +13,7 @@ const meta: Meta = {
         layout: 'centered'
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ width: '168px' }}>
                 <Story />
             </div>

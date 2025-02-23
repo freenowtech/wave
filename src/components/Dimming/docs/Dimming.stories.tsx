@@ -33,7 +33,7 @@ const meta: Meta = {
         }
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             // use a workaround with `willChange: transform` to keep the fixed positioned element inside the container
             <div style={{ width: '15rem', height: '21rem', willChange: 'transform' }}>
                 <Story />

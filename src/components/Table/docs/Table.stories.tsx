@@ -32,32 +32,32 @@ export default meta;
 type TableStory = StoryObj<typeof Table>;
 
 export const Default: TableStory = {
-    render: DefaultTable
+    render: () => <DefaultTable />
 };
 
 export const WithActiveRow: TableStory = {
-    render: ActiveRowTable
+    render: () => <ActiveRowTable />
 };
 
 export const WithComplexData: TableStory = {
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
                 <Story />
             </div>
         )
     ],
-    render: ComplexDataTable
+    render: () => <ComplexDataTable />
 };
 
 export const WithSkeletonLoader: TableStory = {
-    render: SkeletonTable
+    render: () => <SkeletonTable />
 };
 
 export const WithSortableTable: TableStory = {
-    render: SortableTable
+    render: () => <SortableTable />
 };
 
 export const WithDefaultSortedTable: TableStory = {
-    render: SortableTableDefault
+    render: () => <SortableTableDefault />
 };

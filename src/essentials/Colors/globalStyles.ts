@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, DefaultTheme, GlobalStyleComponent } from 'styled-components';
 
 import {
     generateBareTierCssVariables,
@@ -12,7 +12,7 @@ export const createThemeGlobalStyle = (
     bareVariables: TokenObject,
     lightScheme: SemanticColorsSchema,
     darkScheme: SemanticColorsSchema
-) => createGlobalStyle`
+): GlobalStyleComponent<Record<string, unknown>, DefaultTheme> => createGlobalStyle`
   :root {
     color-scheme: light;
     ${generateBareTierCssVariables(bareVariables)}
