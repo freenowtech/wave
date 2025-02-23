@@ -39,6 +39,6 @@ export const AlwaysVisible: Story = {
 
 export const WithCustomPosition: Story = {
     args: {
-        placement: 'bottom-center'
+        placement: 'bottom-end'
     }
 };
