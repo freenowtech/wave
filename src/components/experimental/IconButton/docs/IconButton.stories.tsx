@@ -10,7 +10,7 @@ const meta: Meta = {
     },
     args: {
         Icon: TrashIcon,
-        onPress: () => alert('Clicked!'),
+        onPress: () => {},
         isDisabled: false,
         isLoading: false
     }
