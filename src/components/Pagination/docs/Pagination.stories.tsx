@@ -48,7 +48,7 @@ export const WithPageSizeSelector: Story = {
         ]
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ height: '200px' }}>
                 <Story />
             </div>

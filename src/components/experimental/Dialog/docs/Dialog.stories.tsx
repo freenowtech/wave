@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { DialogTrigger } from 'react-aria-components';
 import { StoryObj, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Dialog } from '../Dialog';

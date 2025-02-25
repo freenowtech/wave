@@ -5,13 +5,13 @@ import { Text } from '../../Text/Text';
 const evalColorSchemeQuery = () => window.matchMedia('(prefers-color-scheme: dark)');
 const getCurrentScheme = (query: MediaQueryList): 'dark' | 'light' => (query.matches ? 'dark' : 'light');
 
-export const CurrentScheme = () => {
+export const CurrentScheme: React.FC = () => {
     const [currentScheme, setCurrentScheme] = useState(getCurrentScheme(evalColorSchemeQuery()));
 
     useEffect(() => {
         const mql = evalColorSchemeQuery();
-        const onMediaQueryChange = (e: MediaQueryListEvent) => {
-            setCurrentScheme(getCurrentScheme(e));
+        const onMediaQueryChange = () => {
+            setCurrentScheme(getCurrentScheme(mql));
         };
 
         mql.addEventListener('change', onMediaQueryChange);

@@ -165,7 +165,12 @@ type Accents = {
     onAccentDark?: SemanticColorsSchema['on-accent'];
 };
 
-export const createGlobalStyle = ({ accent, onAccent, accentDark, onAccentDark }: Accents) =>
+export const createGlobalStyle = ({
+    accent,
+    onAccent,
+    accentDark,
+    onAccentDark
+}: Accents): ReturnType<typeof createThemeGlobalStyle> =>
     createThemeGlobalStyle(
         ColorPalette,
         { ...SemanticColorsLight, accent, 'on-accent': onAccent },

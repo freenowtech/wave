@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { compose, margin, system, MarginProps, textAlign, TextAlignProps, ResponsiveValue } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { getSemanticValue } from '../../utils/cssVariables';
 
 interface HeadlineProps extends ComponentPropsWithoutRef<'h1'>, MarginProps, TextAlignProps {
     /**
