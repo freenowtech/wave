@@ -17,7 +17,7 @@ type Story = StoryObj<typeof Divider>;
 
 export const Default: Story = {
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ width: '6rem', height: '6rem' }}>
                 <Text>One</Text>
                 <Story />
@@ -32,7 +32,7 @@ export const Default: Story = {
 
 export const Inset: Story = {
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ width: '6rem', height: '6rem' }}>
                 <Text>One</Text>
                 <Story />
@@ -48,7 +48,7 @@ export const Inset: Story = {
 
 export const MiddleInset: Story = {
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ width: '6rem', height: '6rem' }}>
                 <Text>One</Text>
                 <Story />
@@ -67,7 +67,7 @@ export const VerticalDivider: Story = {
         vertical: true
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div
                 style={{
                     display: 'flex',
@@ -86,7 +86,7 @@ export const VerticalDivider: Story = {
 
 export const VerticalInset: Story = {
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div
                 style={{
                     display: 'flex',
@@ -109,7 +109,7 @@ export const VerticalInset: Story = {
 
 export const VerticalMiddleInset: Story = {
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div
                 style={{
                     display: 'flex',

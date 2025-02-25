@@ -7,7 +7,7 @@ const meta: Meta = {
     title: 'Components/Offcanvas',
     component: Offcanvas,
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ willChange: 'transform', height: '150px', border: '1px dashed gray' }}>
                 <Story />
             </div>

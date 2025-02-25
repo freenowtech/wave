@@ -16,7 +16,7 @@ const meta: Meta = {
         }
     },
     decorators: [
-        (Story, context) => (
+        (Story: React.FC, context: { args: { vertical?: boolean } }): JSX.Element => (
             <Box display={context.args.vertical ? 'flex' : undefined}>
                 <Text>One</Text>
                 <Story />

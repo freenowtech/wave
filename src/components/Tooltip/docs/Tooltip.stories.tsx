@@ -17,7 +17,7 @@ const meta: Meta = {
         content: 'This is a regular tooltip 🏓'
     },
     decorators: [
-        Story => (
+        (Story: React.FC): JSX.Element => (
             <div style={{ height: '100px', display: 'flex', alignItems: 'center' }}>
                 <Story />
             </div>
@@ -39,6 +39,6 @@ export const AlwaysVisible: Story = {
 
 export const WithCustomPosition: Story = {
     args: {
-        placement: 'bottom-center'
+        placement: 'bottom-end'
     }
 };
