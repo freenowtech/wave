@@ -1,4 +1,5 @@
 import React, { ComponentPropsWithoutRef, FC, ReactNode, Ref } from 'react';
+import styled from 'styled-components';
 import { MarginProps } from 'styled-system';
 
 import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
@@ -22,6 +23,11 @@ interface ToggleProps extends ToggleHtmlInputProps, ClassNameProps, MarginProps 
     error?: boolean;
 }
 
+const SlideWrapper = styled.span`
+    display: inline-flex;
+    align-items: center;
+`;
+
 const Toggle: FC<ToggleProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
@@ -34,8 +40,10 @@ const Toggle: FC<ToggleProps> = props => {
 
     return (
         <Label disabled={disabled} {...classNameProps} {...marginProps}>
-            <Input disabled={disabled} error={error} {...rest} type="checkbox" />
-            <Slide disabled={disabled} error={error} />
+            <SlideWrapper>
+                <Input disabled={disabled} error={error} {...rest} type="checkbox" />
+                <Slide disabled={disabled} error={error} />
+            </SlideWrapper>
             {dynamicLabel}
         </Label>
     );

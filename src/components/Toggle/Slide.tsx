@@ -31,7 +31,6 @@ const Slide = styled.div<SlideProps>`
     display: inline-block;
     border-radius: 0.5rem;
     position: relative;
-    margin-right: 0.5rem;
 
     &::before {
         content: '';
