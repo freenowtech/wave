@@ -3,7 +3,6 @@ import { FieldError, TextField as BaseTextField, TextFieldProps as BaseTextField
 import styled from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
-import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 import { Button } from '../Field/Button';
 import { Label } from '../Field/Label';
 import { TextArea, Input, fieldTextStyles } from '../Field/Field';
@@ -14,8 +13,7 @@ import { Wrapper } from '../Field/Wrapper';
 import { FieldProps } from '../Field/Props';
 
 const defaultAriaStrings = {
-    clearFieldButton: 'Clear field',
-    messageFieldIsCleared: 'The field is cleared'
+    clearFieldButton: 'Clear field'
 };
 
 const AutoResizingInnerWrapper = styled(InnerWrapper)`
@@ -64,7 +62,6 @@ interface TextFieldProps extends FieldProps, BaseTextFieldProps {
      */
     ariaStrings?: {
         clearFieldButton: string;
-        messageFieldIsCleared: string;
     };
 }
 
@@ -107,12 +104,12 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
                         inputRef.current.value = '';
                         handleChange('');
                     }}
+                    excludeFromTabOrder
+                    preventFocusOnPress
                 >
                     <XCrossCircleIcon />
                 </Button>
-            ) : (
-                <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
-            );
+            ) : null;
 
         const flyingLabel = <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>;
 
