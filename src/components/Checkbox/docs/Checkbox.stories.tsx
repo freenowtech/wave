@@ -23,7 +23,11 @@ export default meta;
 
 type Story = StoryObj<typeof Checkbox>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    args: {
+        label: undefined
+    }
+};
 
 export const Selected: Story = {
     args: {
