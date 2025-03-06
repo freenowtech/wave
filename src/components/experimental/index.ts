@@ -13,6 +13,7 @@ export { Label } from './Label/Label';
 export { ListBox, ListBoxItem } from './ListBox/ListBox';
 export { Modal } from './Modal/Modal';
 export { Popover } from './Popover/Popover';
+export { Search } from './Search/Search';
 export { Select } from './Select/Select';
 export { Snackbar, SnackbarProps } from './Snackbar/Snackbar';
 export { Table, Row, Cell, Skeleton, Column, TableBody, TableHeader } from './Table/Table';
