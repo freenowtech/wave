@@ -10,7 +10,7 @@ import { TapArea } from './components/TapArea';
 import { RadioButtonProps } from './RadioButtonProps';
 
 const WithTapAreaWrapper = styled.div<Pick<RadioButtonProps, 'textVerticalAlign'>>`
-    width: 1.5rem;
+    width: 1rem;
     position: relative;
     display: inline-flex;
     align-items: center;
