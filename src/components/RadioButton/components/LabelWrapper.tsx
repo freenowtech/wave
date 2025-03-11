@@ -63,6 +63,8 @@ const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
     font-family: ${get('fonts.normal')};
     line-height: 1;
 
+    gap: 0.5rem;
+
     &:hover {
         ${hoverStyle}
     }

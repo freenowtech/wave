@@ -11,6 +11,8 @@ const Label = styled.label<LabelProps>`
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     user-select: none;
 
+    gap: 0.5rem;
+
     ${margin}
 `;
 
