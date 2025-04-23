@@ -35,11 +35,11 @@ const hoverStyle = ({ disabled, error, indeterminate, isHovered }: StyledLabelPr
             cursor: pointer;
 
             & ${/* sc-selector */ TapArea}:not(:active) {
-                background-color: ${getSemanticValue(error ? 'negative' : 'surface')};
+                background-color: ${getSemanticValue(error ? 'negative' : 'surface-variant')};
             }
 
             & ${/* sc-selector */ Checkmark}:not(:checked) {
-                box-shadow: inset 0 0 0 0.125rem ${getSemanticValue(error ? 'negative' : 'surface')};
+                box-shadow: inset 0 0 0 0.125rem ${getSemanticValue(error ? 'negative' : 'surface-variant')};
             }
         `;
     }

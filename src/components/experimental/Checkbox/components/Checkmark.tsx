@@ -60,14 +60,16 @@ const Checkmark = styled.input<CheckmarkProps>`
         }
     }
 
+    &:indeterminate {
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='2' x='5' y='9.5' rx='1' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
+        background-color: ${props => getSemanticValue(props.error ? 'negative' : 'outline-variant')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('outline-variant')};
+    }
+
     &:disabled {
         cursor: not-allowed;
-        background-color: ${getSemanticValue('surface')};
-        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('on-surface')};
-
-        &:hover {
-            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('surface-variant')};
-        }
+        background-color: ${getSemanticValue('outline-variant')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('outline-variant')};
 
         &:active {
             background-color: ${getSemanticValue('surface')};
