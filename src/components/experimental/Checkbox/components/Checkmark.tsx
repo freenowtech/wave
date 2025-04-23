@@ -1,0 +1,78 @@
+import styled from 'styled-components';
+import { getSemanticValue, themeGet } from '../../../../experimental';
+
+interface CheckmarkProps {
+    error?: boolean;
+}
+
+const Checkmark = styled.input<CheckmarkProps>`
+    appearance: none;
+    outline-offset: 0.25rem;
+    border: none;
+
+    position: relative;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    margin: 0;
+
+    background-color: transparent;
+
+    box-shadow: inset 0 0 0 0.125rem ${props => getSemanticValue(props.error ? 'negative' : 'divider')};
+    border-radius: ${themeGet('radii.2')};
+    transition: background-color 100ms, box-shadow 100ms;
+    cursor: pointer;
+
+    vertical-align: text-bottom;
+
+    &:hover {
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('surface-variant')};
+    }
+
+    &::after {
+        content: ' ';
+
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath d='M3.711 8.037a1.051 1.051 0 0 1 1.485-.063l1.411 1.297 4.113-4.806a1.051 1.051 0 1 1 1.597 1.367l-4.63 5.41a1.333 1.333 0 0 1-1.916.116L3.774 9.522a1.051 1.051 0 0 1-.063-1.485z' id='a'/%3E%3C/defs%3E%3Cuse fill='%23FFF' fill-rule='nonzero' xlink:href='%23a'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 1.25rem;
+        height: 1.25rem;
+
+        position: absolute;
+        top: 50%;
+        left: 45%;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-45%, -40%) scale(0.2);
+        transition: visibility 175ms, opacity 150ms, scale 175ms, transform 175ms;
+    }
+
+    &:checked {
+        background-color: ${props => getSemanticValue(props.error ? 'negative' : 'accent')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('accent')};
+
+        &::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-45%, -50%) scale(1);
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: ${getSemanticValue('surface')};
+        box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('on-surface')};
+
+        &:hover {
+            box-shadow: inset 0 0 0 0.125rem ${getSemanticValue('surface-variant')};
+        }
+
+        &:active {
+            background-color: ${getSemanticValue('surface')};
+        }
+    }
+`;
+
+export { Checkmark };
