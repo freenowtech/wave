@@ -5,10 +5,6 @@ const meta: Meta = {
     title: 'Experimental/Components/Checkbox',
     component: Checkbox,
     argTypes: {
-        size: {
-            control: 'radio',
-            options: ['small', 'medium', 'large']
-        },
         textVerticalAlign: {
             control: 'radio',
             options: ['center', 'top']
@@ -31,32 +27,49 @@ export const Default: Story = {
 
 export const Selected: Story = {
     args: {
-        defaultChecked: true
+        defaultSelected: true
     }
 };
 
 export const Error: Story = {
     args: {
         label: 'With Error',
-        error: true
+        isInvalid: true
     }
 };
 
 export const Disabled: Story = {
     args: {
-        disabled: true
+        isDisabled: true
     }
 };
 
 export const DisabledChecked: Story = {
     args: {
-        disabled: true,
-        defaultChecked: true
+        isDisabled: true,
+        defaultSelected: true
+    }
+};
+
+export const DisabledIndeterminate: Story = {
+    args: {
+        isDisabled: true,
+        isIndeterminate: true,
+        defaultSelected: true,
+        label: 'Disabled indeterminate checkbox'
     }
 };
 
 export const Indeterminate: Story = {
     args: {
-        indeterminate: true
+        isIndeterminate: true
+    }
+};
+
+export const InvalidSelected: Story = {
+    args: {
+        isInvalid: true,
+        defaultSelected: true,
+        label: 'Invalid selected checkbox'
     }
 };
