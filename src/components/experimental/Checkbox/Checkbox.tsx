@@ -30,10 +30,8 @@ const StyledCheckbox = styled(CheckboxComponent)`
 
     position: relative;
     display: inline-flex;
-
     align-items: center;
     forced-color-adjust: none;
-
     cursor: pointer;
 
     .checkbox {
@@ -54,14 +52,11 @@ const StyledCheckbox = styled(CheckboxComponent)`
 
     svg {
         position: absolute;
-
         width: 65%;
         height: 62%;
-
         top: 45%;
         left: 54%;
         transform: translate(-45%, -40%);
-
         fill: none;
         stroke: ${getSemanticValue('surface')};
         stroke-width: 3px;
@@ -79,14 +74,6 @@ const StyledCheckbox = styled(CheckboxComponent)`
         outline-offset: 2px;
     }
 
-    &[data-indeterminate] {
-        & svg {
-            stroke: none;
-            fill: ${getSemanticValue('surface')};
-            left: 52%;
-        }
-    }
-
     &[data-disabled] {
         color: transparent;
         cursor: not-allowed;
@@ -97,71 +84,74 @@ const StyledCheckbox = styled(CheckboxComponent)`
         }
     }
 
-    &[data-selected],
-    &[data-indeterminate] {
+    &[data-invalid] .checkbox {
+        border-color: ${getSemanticValue('negative-variant')};
+    }
+
+    &[data-selected] .checkbox,
+    &[data-indeterminate] .checkbox {
+        border-color: ${getSemanticValue('accent')};
+        background: ${getSemanticValue('accent')};
+    }
+
+    &[data-selected] svg,
+    &[data-indeterminate] svg {
+        stroke-dashoffset: 44;
+    }
+
+    &[data-indeterminate] svg {
+        stroke: none;
+        fill: ${getSemanticValue('surface')};
+        left: 52%;
+    }
+
+    &[data-invalid] .checkbox:hover {
+        border-color: ${getSemanticValue('negative')};
+    }
+
+    &[data-selected] .checkbox:hover,
+    &[data-indeterminate] .checkbox:hover {
+        border-color: ${getSemanticValue('on-interactive-container')};
+        background: ${getSemanticValue('on-interactive-container')};
+    }
+
+    &[data-selected][data-pressed] .checkbox,
+    &[data-indeterminate][data-pressed] .checkbox {
+        border-color: ${getSemanticValue('interactive')};
+        background: ${getSemanticValue('interactive')};
+    }
+
+    &[data-selected][data-disabled],
+    &[data-indeterminate][data-disabled] {
+        color: transparent;
+        cursor: not-allowed;
+
         .checkbox {
-            border-color: ${getSemanticValue('accent')};
-            background: ${getSemanticValue('accent')};
-
-            &:hover {
-                border-color: ${getSemanticValue('on-interactive-container')};
-                background: ${getSemanticValue('on-interactive-container')};
-            }
-        }
-
-        &[data-pressed] .checkbox {
-            border-color: ${getSemanticValue('interactive')};
-            background: ${getSemanticValue('interactive')};
+            background-color: ${getSemanticValue('surface')};
+            border-color: ${getSemanticValue('surface-variant')};
         }
 
         svg {
-            stroke-dashoffset: 44;
-        }
-
-        &[data-disabled] {
-            color: transparent;
-            cursor: not-allowed;
-
-            .checkbox {
-                background-color: ${getSemanticValue('surface')};
-                border-color: ${getSemanticValue('surface-variant')};
-            }
-
-            & svg {
-                stroke: ${getSemanticValue('outline-variant')};
-            }
-
-            &[data-indeterminate] {
-                & svg {
-                    stroke: none;
-                    fill: ${getSemanticValue('outline-variant')};
-                    left: 52%;
-                }
-            }
+            stroke: ${getSemanticValue('outline-variant')};
         }
     }
 
-    &[data-invalid] {
-        .checkbox {
-            border-color: ${getSemanticValue('negative-variant')};
+    &[data-indeterminate][data-disabled] svg {
+        stroke: none;
+        fill: ${getSemanticValue('outline-variant')};
+        left: 52%;
+    }
 
-            &:hover {
-                border-color: ${getSemanticValue('negative')};
-            }
-        }
+    &[data-invalid][data-selected] .checkbox,
+    &[data-invalid][data-indeterminate] .checkbox {
+        background-color: ${getSemanticValue('negative-variant')};
+        border-color: ${getSemanticValue('negative-variant')};
+    }
 
-        &[data-selected],
-        &[data-indeterminate] {
-            .checkbox {
-                background-color: ${getSemanticValue('negative-variant')};
-                border-color: ${getSemanticValue('negative-variant')};
-
-                &:hover {
-                    background-color: ${getSemanticValue('negative')};
-                    border-color: ${getSemanticValue('negative')};
-                }
-            }
-        }
+    &[data-invalid][data-selected] .checkbox:hover,
+    &[data-invalid][data-indeterminate] .checkbox:hover {
+        background-color: ${getSemanticValue('negative')};
+        border-color: ${getSemanticValue('negative')};
     }
 `;
 
