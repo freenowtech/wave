@@ -22,6 +22,7 @@ const StyledLabel = styled.label.attrs({ theme })<StyledLabelProps>`
         getSemanticValue(props.isDisabled ? 'outline-variant' : props.isInvalid ? 'negative-variant' : 'on-surface')};
     line-height: 1;
     gap: 0.5rem;
+    padding: 3px 2px;
     align-items: center;
 `;
 
