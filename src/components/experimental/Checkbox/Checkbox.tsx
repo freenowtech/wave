@@ -52,7 +52,7 @@ const StyledCheckbox = styled(CheckboxComponent)`
         width: 65%;
         height: 62%;
         top: 45%;
-        left: 54%;
+        left: 53%;
         transform: translate(-45%, -40%);
         fill: none;
         stroke: ${getSemanticValue('surface')};
