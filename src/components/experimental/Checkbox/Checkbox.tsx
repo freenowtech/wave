@@ -15,9 +15,6 @@ interface CheckboxProps extends Omit<ReactAriaCheckboxProps, 'children'> {
      */
     label?: ReactNode;
     /**
-     * Align label text relatively to the checkbox
-     */
-    /**
      * Text variant for the label
      */
     variant?: TextVariant;
