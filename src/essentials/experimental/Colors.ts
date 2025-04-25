@@ -125,7 +125,8 @@ export const SemanticColorsLight = {
     'on-negative-container': ColorPalette.red[30],
     positive: ColorPalette.green[40],
     'positive-container': ColorPalette.green[95],
-    'on-positive-container': ColorPalette.green[30]
+    'on-positive-container': ColorPalette.green[30],
+    'negative-variant': ColorPalette.red[50]
 } satisfies SemanticColorsSchema;
 
 export const SemanticColorsDark = {
@@ -155,7 +156,8 @@ export const SemanticColorsDark = {
     'on-negative-container': ColorPalette.red[95],
     positive: ColorPalette.green[80],
     'positive-container': ColorPalette.green[30],
-    'on-positive-container': ColorPalette.green[95]
+    'on-positive-container': ColorPalette.green[95],
+    'negative-variant': ColorPalette.red[50]
 } satisfies SemanticColorsSchema;
 
 type Accents = {

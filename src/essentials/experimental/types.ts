@@ -46,4 +46,5 @@ export type SemanticColorsSchema = {
     positive: Color;
     'positive-container': Color;
     'on-positive-container': Color;
+    'negative-variant': Color;
 };
