@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { compose, ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../../essentials/experimental';
 
+export type TextVariant = 'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2';
+
 interface TextProps extends BaseTextProps {
-    variant?: ResponsiveValue<'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2'>;
+    variant?: ResponsiveValue<TextVariant>;
 }
 
 export const textStyles = {

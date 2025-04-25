@@ -2,12 +2,9 @@ import React, { FC, ReactNode } from 'react';
 import { Checkbox as CheckboxComponent, CheckboxProps as ReactAriaCheckboxProps } from 'react-aria-components';
 import styled from 'styled-components';
 
-import { Text } from '../Text/Text';
+import { Text, TextVariant } from '../Text/Text';
 import { LabelWrapper } from './components/LabelWrapper';
-
 import { getSemanticValue, themeGet } from '../../../experimental';
-
-type TextVariant = 'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2';
 
 interface CheckboxProps extends Omit<ReactAriaCheckboxProps, 'children'> {
     /**
