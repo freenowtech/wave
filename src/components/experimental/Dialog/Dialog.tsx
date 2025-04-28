@@ -19,6 +19,13 @@ const ButtonsWrapper = styled.div`
     gap: 1rem;
 `;
 
+const BodyWrapper = styled.div`
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+`;
+
 const StyledModal = styled(Modal)`
     padding: 2rem;
     width: 30rem;
@@ -37,8 +44,9 @@ interface DialogProps extends Omit<BackdropProps, 'isDismissable' | 'isKeyboardD
     role?: 'dialog' | 'alertdialog';
     headline: ReactNode;
     subtitle: ReactNode;
-    dismissButton: ReactNode;
+    dismissButton?: ReactNode;
     actionButton: ReactNode;
+    body?: ReactNode;
 }
 
 const Dialog = ({
@@ -47,6 +55,7 @@ const Dialog = ({
     subtitle,
     dismissButton,
     actionButton,
+    body,
     ...props
 }: DialogProps): ReactElement => (
     <Backdrop {...props} isDismissable={false} isKeyboardDismissDisabled>
@@ -57,6 +66,8 @@ const Dialog = ({
                 <SubtitleText as="p" variant="body1">
                     {subtitle}
                 </SubtitleText>
+
+                {body && <BodyWrapper>{body}</BodyWrapper>}
 
                 <ButtonsWrapper>
                     {dismissButton}
