@@ -93,7 +93,7 @@ export const Alert: Story = {
     }
 };
 
-export const WithCheckboxes: Story = {
+export const WithCheckboxesAsBody: Story = {
     render: () => {
         const [isOpen, setIsOpen] = useState(false);
         const [termsChecked, setTermsChecked] = useState(false);
@@ -131,7 +131,7 @@ export const WithCheckboxes: Story = {
                     headline="Review and Accept: Terms & Privacy"
                     subtitle="To continue using the Dispatcher tool, please review and accept both our Terms and Conditions and Privacy Policy."
                     actionButton={<Button onPress={handleProceed}>Proceed</Button>}
-                    checkboxes={[
+                    body={[
                         <Checkbox
                             key="terms"
                             isSelected={termsChecked}

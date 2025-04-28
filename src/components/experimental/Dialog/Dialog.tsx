@@ -19,7 +19,7 @@ const ButtonsWrapper = styled.div`
     gap: 1rem;
 `;
 
-const CheckboxesWrapper = styled.div`
+const BodyWrapper = styled.div`
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@ interface DialogProps extends Omit<BackdropProps, 'isDismissable' | 'isKeyboardD
     subtitle: ReactNode;
     dismissButton?: ReactNode;
     actionButton: ReactNode;
-    checkboxes?: ReactNode;
+    body?: ReactNode;
 }
 
 const Dialog = ({
@@ -55,7 +55,7 @@ const Dialog = ({
     subtitle,
     dismissButton,
     actionButton,
-    checkboxes,
+    body,
     ...props
 }: DialogProps): ReactElement => (
     <Backdrop {...props} isDismissable={false} isKeyboardDismissDisabled>
@@ -67,7 +67,7 @@ const Dialog = ({
                     {subtitle}
                 </SubtitleText>
 
-                {checkboxes && <CheckboxesWrapper>{checkboxes}</CheckboxesWrapper>}
+                {body && <BodyWrapper>{body}</BodyWrapper>}
 
                 <ButtonsWrapper>
                     {dismissButton}

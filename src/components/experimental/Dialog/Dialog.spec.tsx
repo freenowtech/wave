@@ -57,11 +57,11 @@ describe('Dialog', () => {
         expect(screen.getByRole('alertdialog')).toBeInTheDocument();
     });
 
-    it('renders checkboxes when provided', () => {
+    it('renders body when provided', () => {
         render(
             <Dialog
                 {...defaultProps}
-                checkboxes={[
+                body={[
                     <Checkbox key="terms" label="Accept Terms" />,
                     <Checkbox key="privacy" label="Accept Privacy" />
                 ]}
@@ -85,7 +85,7 @@ describe('Dialog', () => {
         render(
             <Dialog
                 {...defaultProps}
-                checkboxes={[<Checkbox key="terms" label="Accept Terms" onChange={handleCheckbox} />]}
+                body={[<Checkbox key="terms" label="Accept Terms" onChange={handleCheckbox} />]}
             />
         );
 
