@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import { Text, TextVariant } from '../Text/Text';
 import { LabelWrapper } from './components/LabelWrapper';
-import { getSemanticValue, themeGet } from '../../../experimental';
+import { getSemanticValue } from '../../../essentials/experimental';
+import { themeGet } from '../../../utils/experimental';
 
 interface CheckboxProps extends Omit<ReactAriaCheckboxProps, 'children'> {
     /**
