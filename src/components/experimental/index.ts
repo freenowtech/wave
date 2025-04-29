@@ -1,6 +1,7 @@
 export { Backdrop } from './Backdrop/Backdrop';
 export { Button } from './Button/Button';
 export { Calendar } from './Calendar/Calendar';
+export { Checkbox } from './Checkbox/Checkbox';
 export { Chip } from './Chip/Chip';
 export { ComboBox } from './ComboBox/ComboBox';
 export { DateField } from './DateField/DateField';
