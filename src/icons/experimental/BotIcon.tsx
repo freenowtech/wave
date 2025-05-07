@@ -17,12 +17,12 @@ const BotIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest 
             viewBox="0 0 24 24"
             fill="none"
         >
-            <path d="M16 12a2 2 0 11-4 0 2 2 0 014 0zM8 14a2 2 0 100-4 2 2 0 000 4z" fill="#1E1A1A" />
+            <path d="M16 12a2 2 0 11-4 0 2 2 0 014 0zM8 14a2 2 0 100-4 2 2 0 000 4z" fill="currentColor" />
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M12 3.732a2 2 0 10-2 0V5H4a2 2 0 00-2 2v3H1a1 1 0 00-1 1v3a1 1 0 001 1h1v3a2 2 0 002 2h14a2 2 0 002-2v-3h1a1 1 0 001-1v-3a1 1 0 00-1-1h-1V7a2 2 0 00-2-2h-6V3.732zM18 18V7H4v11h14z"
-                fill="#1E1A1A"
+                fill="currentColor"
             />
         </svg>
     );
