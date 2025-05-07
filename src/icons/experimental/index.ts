@@ -6,3 +6,4 @@ export { default as LocationIcon } from './LocationIcon';
 export { default as SpinnerIcon } from './SpinnerIcon';
 export { default as PhoneCarOutlineIcon } from './PhoneCarOutlineIcon';
 export { default as SearchIcon } from './SearchIcon';
+export { default as BotIcon } from './BotIcon';
