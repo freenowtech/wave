@@ -8,8 +8,8 @@ import './tooltip.css';
 interface TooltipProps {
     children: any;
     content: string;
-    hideArrow?: boolean;
     customTrigger?: boolean;
+    hideArrow?: boolean;
     tooltipProps?: Omit<AriaTooltipProps, 'children'>;
     triggerProps?: Omit<TooltipTriggerComponentProps, 'children'>;
 }
