@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { ButtonProps, Button } from 'react-aria-components';
-import { VisuallyHidden } from 'react-aria';
+import { useVisuallyHidden } from 'react-aria';
 import { IconProps } from '../../../icons';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { InlineSpinner } from '../InlineSpinner/InlineSpinner';
@@ -115,6 +115,7 @@ export const IconButton = ({
     ...restProps
 }: IconButtonProps): ReactElement => {
     const Container = variant === 'standard' ? StandardIconContainer : TonalIconContainer;
+    const { visuallyHiddenProps } = useVisuallyHidden();
 
     return (
         <Container
@@ -136,7 +137,7 @@ export const IconButton = ({
                 ) : (
                     <Icon data-testid="iconbutton-icon" />
                 )}
-                <VisuallyHidden>{label}</VisuallyHidden>
+                <div {...visuallyHiddenProps}>{label}</div>
             </>
         </Container>
     );
