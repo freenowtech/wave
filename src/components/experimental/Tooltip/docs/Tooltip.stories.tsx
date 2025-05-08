@@ -50,3 +50,19 @@ export const TooltipWithBottomPlacement: Story = {
         content: 'I am a bottom tooltip'
     }
 };
+
+export const TooltipWithoutArrow: Story = {
+    args: {
+        hideArrow: true,
+        content: 'I have no arrow'
+    }
+};
+
+export const TooltipWithOffset: Story = {
+    args: {
+        tooltipProps: {
+            crossOffset: 50
+        },
+        content: 'I have an offset of 50px'
+    }
+};
