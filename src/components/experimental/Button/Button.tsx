@@ -116,15 +116,15 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
     ${emphasisStyles};
 `;
 
-const ChildrenContainer = styled.span<{ isLoading: boolean }>`
+const ChildrenContainer = styled.span<{ $isLoading: boolean }>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: ${get('space.2')};
     padding: ${get('space.4')} ${get('space.6')};
 
-    opacity: ${({ isLoading }) => (isLoading ? 0 : 1)};
-    visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+    opacity: ${({ $isLoading }) => ($isLoading ? 0 : 1)};
+    visibility: ${({ $isLoading }) => ($isLoading ? 'hidden' : 'visible')};
     transition: opacity ease 200ms;
 `;
 
@@ -148,7 +148,7 @@ const spinnerColor: Record<Emphasis, string> = {
 function Button({ children, emphasis = 'primary', isLoading = false, ...restProps }: ButtonProps): ReactElement {
     const renderContent = (props: ButtonRenderProps & { defaultChildren: ReactNode }) => (
         <>
-            <ChildrenContainer isLoading={isLoading}>
+            <ChildrenContainer $isLoading={isLoading}>
                 {typeof children === 'function' ? children(props) : children}
             </ChildrenContainer>
             {isLoading && (
