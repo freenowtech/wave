@@ -23,19 +23,17 @@ const Tooltip = ({
     customTrigger = false
 }: TooltipProps) => (
     <TooltipTrigger {...triggerProps}>
-        <>
-            {customTrigger ? <Focusable>{children}</Focusable> : children}
-            <AriaTooltip {...tooltipProps}>
-                {!hideArrow && (
-                    <OverlayArrow>
-                        <svg width={8} height={8} viewBox="0 0 8 8">
-                            <path d="M0 0 L4 4 L8 0" />
-                        </svg>
-                    </OverlayArrow>
-                )}
-                {content}
-            </AriaTooltip>
-        </>
+        {customTrigger ? <Focusable>{children}</Focusable> : children}
+        <AriaTooltip {...tooltipProps}>
+            {!hideArrow && (
+                <OverlayArrow>
+                    <svg width={8} height={8} viewBox="0 0 8 8">
+                        <path d="M0 0 L4 4 L8 0" />
+                    </svg>
+                </OverlayArrow>
+            )}
+            {content}
+        </AriaTooltip>
     </TooltipTrigger>
 );
 
