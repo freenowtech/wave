@@ -21,4 +21,5 @@ export { Table, Row, Cell, Skeleton, Column, TableBody, TableHeader } from './Ta
 export { Text } from './Text/Text';
 export { TextField } from './TextField/TextField';
 export { TimeField } from './TimeField/TimeField';
+export { Tooltip } from './Tooltip/Tooltip';
 export * from '../../icons/experimental';
