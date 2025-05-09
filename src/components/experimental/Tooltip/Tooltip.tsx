@@ -24,9 +24,15 @@ const TooltipStyles = createGlobalStyle`
         outline: none;
         padding: 2px 8px;
         max-width: 150px;
+        
         /* fixes FF gap */
         transform: translate3d(0, 0, 0);
         transition: transform 200ms, opacity 200ms;
+
+        & .react-aria-OverlayArrow svg {
+            display: block;
+            fill: var(--wave-exp-color-inverse-surface);
+        }
 
         &[data-entering],
         &[data-exiting] {
@@ -36,11 +42,13 @@ const TooltipStyles = createGlobalStyle`
 
         &[data-placement='top'] {
             margin-bottom: 8px;
+            
             --origin: translateY(4px);
         }
 
         &[data-placement='bottom'] {
             margin-top: 8px;
+            
             --origin: translateY(-4px);
             & .react-aria-OverlayArrow svg {
                 transform: rotate(180deg);
@@ -49,6 +57,7 @@ const TooltipStyles = createGlobalStyle`
 
         &[data-placement='right'] {
             margin-left: 8px;
+            
             --origin: translateX(-4px);
             & .react-aria-OverlayArrow svg {
                 transform: rotate(90deg);
@@ -57,15 +66,11 @@ const TooltipStyles = createGlobalStyle`
 
         &[data-placement='left'] {
             margin-right: 8px;
+            
             --origin: translateX(4px);
             & .react-aria-OverlayArrow svg {
                 transform: rotate(-90deg);
             }
-        }
-
-        & .react-aria-OverlayArrow svg {
-            display: block;
-            fill: var(--wave-exp-color-inverse-surface);
         }
     }
 `;
