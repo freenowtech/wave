@@ -3,19 +3,32 @@ import { ModalOverlayProps, ModalOverlay } from 'react-aria-components';
 import { getSemanticHslValue } from '../../../essentials/experimental';
 import { Elevation } from '../../../essentials';
 
-type BackdropProps = ModalOverlayProps;
+interface BackdropProps extends ModalOverlayProps {
+    isBackdropVisible?: boolean;
+}
 
-const Backdrop = styled(ModalOverlay)`
+const Backdrop = styled(ModalOverlay)<{ isBackdropVisible?: boolean }>`
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: var(--visual-viewport-height);
-    background: hsla(${getSemanticHslValue('on-surface')}, 60%);
+    background: ${props =>
+        props.isBackdropVisible !== false ? `hsla(${getSemanticHslValue('on-surface')}, 60%)` : 'transparent'};
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: ${Elevation.DIMMING};
+
+    ${props =>
+        props.isBackdropVisible === false &&
+        `
+        pointer-events: none;
+        
+        & > * {
+            pointer-events: auto;
+        }
+    `}
 
     &[data-entering] {
         animation: backdrop-fade 200ms;

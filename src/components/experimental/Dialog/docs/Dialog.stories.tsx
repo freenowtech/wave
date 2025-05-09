@@ -19,6 +19,13 @@ const meta: Meta = {
     component: Dialog,
     parameters: {
         layout: 'centered'
+    },
+    argTypes: {
+        isBackdropVisible: {
+            control: 'boolean',
+            description: 'Whether to show the backdrop behind the dialog',
+            defaultValue: true
+        }
     }
 };
 
@@ -85,6 +92,40 @@ export const Alert: Story = {
                             }}
                         >
                             Try again
+                        </Button>
+                    }
+                />
+            </>
+        );
+    }
+};
+
+export const WithInvisibleBackdrop: Story = {
+    render: () => {
+        const [isOpen, setIsOpen] = useState(false);
+
+        return (
+            <>
+                <Button onPress={() => setIsOpen(true)}>Open dialog without backdrop</Button>
+                <Dialog
+                    isOpen={isOpen}
+                    onOpenChange={setIsOpen}
+                    isBackdropVisible={false}
+                    headline="No Backdrop Dialog"
+                    subtitle="This dialog has no visible backdrop"
+                    dismissButton={
+                        <Button emphasis="secondary" onPress={() => setIsOpen(false)}>
+                            Cancel
+                        </Button>
+                    }
+                    actionButton={
+                        <Button
+                            onPress={() => {
+                                action('Action')();
+                                setIsOpen(false);
+                            }}
+                        >
+                            Confirm
                         </Button>
                     }
                 />

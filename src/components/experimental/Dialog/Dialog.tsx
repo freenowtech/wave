@@ -47,6 +47,7 @@ interface DialogProps extends Omit<BackdropProps, 'isDismissable' | 'isKeyboardD
     dismissButton?: ReactNode;
     actionButton: ReactNode;
     body?: ReactNode;
+    isBackdropVisible?: boolean;
 }
 
 const Dialog = ({
@@ -56,9 +57,10 @@ const Dialog = ({
     dismissButton,
     actionButton,
     body,
+    isBackdropVisible = true,
     ...props
 }: DialogProps): ReactElement => (
-    <Backdrop {...props} isDismissable={false} isKeyboardDismissDisabled>
+    <Backdrop {...props} isDismissable={false} isKeyboardDismissDisabled isBackdropVisible={isBackdropVisible}>
         <StyledModal role={role}>
             <Card>
                 <HeadlineText slot="title">{headline}</HeadlineText>
