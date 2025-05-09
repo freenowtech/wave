@@ -1,6 +1,6 @@
 {
     "name": "@freenow/wave",
-    "version": "2.31.0",
+    "version": "2.31.1",
     "description": "React components of the Wave design system for your Front-End project",
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
@@ -132,7 +132,6 @@
         "husky": "^4.2.3",
         "jest": "^26.6.3",
         "jest-axe": "^3.4.0",
-        "jest-css-modules-transform": "^4.4.2",
         "jest-date-mock": "^1.0.8",
         "jest-styled-components": "^7.0.2",
         "jscodeshift": "^0.15.0",
