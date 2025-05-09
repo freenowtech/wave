@@ -2,8 +2,7 @@ module.exports = {
     roots: ['<rootDir>/src'],
     transform: {
         '^.+\\.tsx?$': 'ts-jest',
-        '^.+\\.svg$': '<rootDir>/svgTransform.js',
-        '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform'
+        '^.+\\.svg$': '<rootDir>/svgTransform.js'
     },
     testRegex: '(test|spec)\\.tsx?$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'svg'],
