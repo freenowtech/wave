@@ -5,7 +5,7 @@ import { get } from '../../../utils/experimental/themeGet';
 import { Text, TextProps } from '../Text/Text';
 import { getSemanticValue } from '../../../essentials/experimental';
 
-const StyledListBoxItem = styled(BaseListBoxItem)`
+const StyledListBoxItem = styled(BaseListBoxItem as React.ComponentType<ListBoxItemProps>)`
     position: relative;
     display: block;
     padding: ${get('space.3')} ${get('space.4')};
