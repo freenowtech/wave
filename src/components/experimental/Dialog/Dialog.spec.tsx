@@ -92,4 +92,12 @@ describe('Dialog', () => {
         fireEvent.click(screen.getByLabelText('Accept Terms'));
         expect(handleCheckbox).toHaveBeenCalled();
     });
+
+    it('correctly renders the component when isBackdropVisible is false', () => {
+        render(<Dialog {...defaultProps} isBackdropVisible={false} />);
+
+        expect(screen.getByText('Test Headline')).toBeInTheDocument();
+        expect(screen.getByText('Test Subtitle')).toBeInTheDocument();
+        expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
 });
