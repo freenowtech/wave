@@ -1,9 +1,16 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-import { OverlayArrow, Tooltip as AriaTooltip, TooltipTrigger, Focusable } from 'react-aria-components';
+import {
+    OverlayArrow,
+    Tooltip as AriaTooltip,
+    TooltipTrigger as BaseTooltipTrigger,
+    Focusable
+} from 'react-aria-components';
 
 import type { TooltipProps as AriaTooltipProps, TooltipTriggerComponentProps } from 'react-aria-components';
+
+const TooltipTrigger = BaseTooltipTrigger as React.ComponentType<TooltipTriggerComponentProps>;
 
 interface TooltipProps {
     children: any;
@@ -83,7 +90,7 @@ const Tooltip = ({
     tooltipProps,
     hideArrow = false,
     customTrigger = false
-}: TooltipProps) => (
+}: TooltipProps): JSX.Element => (
     <>
         <TooltipStyles />
         <TooltipTrigger {...triggerProps}>

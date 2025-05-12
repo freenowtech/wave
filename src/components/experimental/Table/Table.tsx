@@ -5,14 +5,17 @@ import {
     Column as BaseColumn,
     Row as BaseRow,
     TableBody,
-    TableHeader
+    TableHeader,
+    CellProps,
+    ColumnProps,
+    RowProps
 } from 'react-aria-components';
 import styled from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
 import { getSemanticValue } from '../../../essentials/experimental';
 
-const Table = styled(BaseTable)`
+const Table = styled(BaseTable as React.ComponentType<TableProps>)`
     border-collapse: collapse;
     border-spacing: 0;
     position: relative;
@@ -22,7 +25,7 @@ const Table = styled(BaseTable)`
     color: ${getSemanticValue('on-surface')};
 ` as typeof BaseTable;
 
-const Cell = styled(BaseCell)`
+const Cell = styled(BaseCell as React.ComponentType<CellProps>)`
     box-sizing: border-box;
     padding: 0 ${get('space.3')};
     position: relative;
@@ -57,7 +60,7 @@ const Cell = styled(BaseCell)`
 ` as typeof BaseCell;
 
 /* Z-Index is needed for sticky header cells to be on top of other cells */
-const Column = styled(BaseColumn)`
+const Column = styled(BaseColumn as React.ComponentType<ColumnProps>)`
     position: sticky;
     top: 0;
     z-index: 1;
@@ -72,7 +75,7 @@ const Column = styled(BaseColumn)`
     ${textStyles.variants.title2}
 ` as typeof BaseColumn;
 
-const Row = styled(BaseRow)`
+const Row = styled(BaseRow as React.ComponentType<RowProps<Record<string, unknown>>>)`
     height: 3rem;
     border-bottom: 1px solid ${getSemanticValue('divider')};
     border-radius: ${get('radii.4')};
