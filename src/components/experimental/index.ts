@@ -10,6 +10,7 @@ export { Dialog } from './Dialog/Dialog';
 export { Divider } from './Divider/Divider';
 export { IconButton } from './IconButton/IconButton';
 export { InlineSpinner } from './InlineSpinner/InlineSpinner';
+export { Input } from './Input/Input';
 export { Label } from './Label/Label';
 export { ListBox, ListBoxItem } from './ListBox/ListBox';
 export { Modal } from './Modal/Modal';
