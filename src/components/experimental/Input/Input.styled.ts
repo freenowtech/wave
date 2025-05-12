@@ -19,6 +19,10 @@ export const Wrapper = styled.span`
 
     cursor: text;
 
+    & > * {
+        flex-shrink: 0;
+    }
+
     &::after {
         position: absolute;
         pointer-events: none;
@@ -52,10 +56,13 @@ export const Wrapper = styled.span`
 `;
 
 export const Input = styled(BaseInput)`
-    background-color: unset;
-    display: block;
     border: 0;
     outline: 0;
+    padding: 0;
+
+    flex-grow: 1;
+
+    background-color: unset;
     color: ${getSemanticValue('on-surface')};
     caret-color: ${getSemanticValue('interactive')};
 
