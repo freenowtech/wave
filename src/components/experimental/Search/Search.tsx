@@ -1,25 +1,29 @@
 import React, { ReactElement } from 'react';
-import { SearchFieldProps } from 'react-aria-components';
+import { SearchFieldProps, SearchField } from 'react-aria-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
-
-import * as Styled from './Search.styled';
+import SearchIcon from '../../../icons/experimental/SearchIcon';
+import { Input } from '../Input/Input';
+import { Button } from '../Field/Button';
+import { getSemanticValue } from '../../../essentials/experimental';
 
 interface SearchProps extends SearchFieldProps {
     placeholder: string;
 }
 
 export const Search = ({ placeholder, ...rest }: SearchProps): ReactElement => (
-    <Styled.SearchField aria-label={placeholder} {...rest}>
+    <SearchField aria-label={placeholder} {...rest}>
         {({ state }) => (
-            <>
-                <Styled.Icon size={20} />
-                <Styled.Input placeholder={placeholder} />
-                {state.value !== '' && (
-                    <Styled.Button>
-                        <XCrossCircleIcon size={20} />
-                    </Styled.Button>
-                )}
-            </>
+            <Input
+                leadingIcon={<SearchIcon />}
+                placeholder={placeholder}
+                actionIcon={
+                    state.value !== '' && (
+                        <Button>
+                            <XCrossCircleIcon size={20} color={getSemanticValue('on-surface')} />
+                        </Button>
+                    )
+                }
+            />
         )}
-    </Styled.SearchField>
+    </SearchField>
 );
