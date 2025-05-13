@@ -4,11 +4,13 @@ import { createGlobalStyle } from 'styled-components';
 import {
     OverlayArrow,
     Tooltip as AriaTooltip,
-    TooltipTrigger
-    // Focusable
+    TooltipTrigger as BaseTooltipTrigger,
+    Focusable
 } from 'react-aria-components';
 
 import type { TooltipProps as AriaTooltipProps, TooltipTriggerComponentProps } from 'react-aria-components';
+
+const TooltipTrigger = BaseTooltipTrigger as React.ComponentType<TooltipTriggerComponentProps>;
 
 interface TooltipProps {
     children: any;
@@ -86,14 +88,13 @@ const Tooltip = ({
     content,
     triggerProps,
     tooltipProps,
-    hideArrow = false
-}: // customTrigger = false
-TooltipProps): JSX.Element => (
+    hideArrow = false,
+    customTrigger = false
+}: TooltipProps): JSX.Element => (
     <>
         <TooltipStyles />
         <TooltipTrigger {...triggerProps}>
-            {/* {customTrigger ? <Focusable>{children}</Focusable> : children} */}
-            {children}
+            {customTrigger ? <Focusable>{children}</Focusable> : children}
             <AriaTooltip {...tooltipProps}>
                 {!hideArrow && (
                     <OverlayArrow>
