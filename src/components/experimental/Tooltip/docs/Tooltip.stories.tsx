@@ -34,13 +34,13 @@ export const TooltipWithDelay: Story = {
     }
 };
 
-// export const TooltipWithCustomTrigger: Story = {
-//     args: {
-//         customTrigger: true,
-//         children: <p>Hover over me, a non focusable element!</p>,
-//         content: "I don't need a focusable element"
-//     }
-// };
+export const TooltipWithCustomTrigger: Story = {
+    args: {
+        customTrigger: true,
+        children: <p>Hover over me, a non focusable element!</p>,
+        content: "I don't need a focusable element"
+    }
+};
 
 export const TooltipWithBottomPlacement: Story = {
     args: {
