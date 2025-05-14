@@ -7,3 +7,6 @@ export { default as SpinnerIcon } from './SpinnerIcon';
 export { default as PhoneCarOutlineIcon } from './PhoneCarOutlineIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as BotIcon } from './BotIcon';
+export { default as EventRepeatIcon } from './EventRepeatIcon';
+export { default as CogOutlineIcon } from './CogOutlineIcon';
+export { default as SupportAgentIcon } from './SupportAgentIcon';
