@@ -9,6 +9,7 @@ interface PopoverProps extends Omit<BasePopoverProps, 'children'> {
 }
 
 const StyledPopover = styled(BasePopover)`
+    overflow: auto;
     background: ${getSemanticValue('surface')};
     padding: ${get('space.4')};
     box-shadow: 0 2px 4px -1px hsla(0, 0%, 0%, 0.2), 0 1px 10px 0 hsla(0, 0%, 0%, 0.12),

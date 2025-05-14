@@ -10,3 +10,4 @@ export { default as BotIcon } from './BotIcon';
 export { default as EventRepeatIcon } from './EventRepeatIcon';
 export { default as CogOutlineIcon } from './CogOutlineIcon';
 export { default as SupportAgentIcon } from './SupportAgentIcon';
+export { default as ExitIcon } from './ExitIcon';
