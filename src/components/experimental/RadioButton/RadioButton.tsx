@@ -9,7 +9,6 @@ const Indicator = styled.span<{ $selected: boolean }>`
     position: relative;
     flex-shrink: 0;
 
-    // Size M
     top: calc((var(--wave-exp-typescale-body-1-line-height) - 1rem) / 2);
     width: 1rem;
     height: 1rem;
@@ -34,8 +33,6 @@ const Radio = styled(BaseRadio)`
     line-height: var(--wave-exp-typescale-body-1-line-height);
 
     color: ${getSemanticValue('on-surface')};
-
-    // Default
 
     ${Indicator} {
         color: ${getSemanticValue('divider')};
@@ -66,8 +63,6 @@ const Radio = styled(BaseRadio)`
     &[data-hovered][data-invalid] ${Indicator} {
         color: ${getSemanticValue('negative')};
     }
-
-    // Selected
 
     &[data-selected] ${Indicator} {
         color: ${getSemanticValue('accent')};

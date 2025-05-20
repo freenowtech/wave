@@ -1,10 +1,4 @@
-import {
-    FieldError,
-    RadioGroup as BaseRadioGroup,
-    RadioGroupProps as BaseRadioGroupProps,
-    ValidationResult,
-    Label
-} from 'react-aria-components';
+import { RadioGroup as BaseRadioGroup } from 'react-aria-components';
 import styled from 'styled-components';
 
 import { themeGet } from '../../../utils/experimental';
