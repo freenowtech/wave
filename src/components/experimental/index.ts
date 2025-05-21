@@ -15,6 +15,8 @@ export { Label } from './Label/Label';
 export { ListBox, ListBoxItem, LabelText, DescriptionText } from './ListBox/ListBox';
 export { Modal } from './Modal/Modal';
 export { Popover } from './Popover/Popover';
+export { RadioButton } from './RadioButton/RadioButton';
+export { RadioGroup } from './RadioGroup/RadioGroup';
 export { Search } from './Search/Search';
 export { Select } from './Select/Select';
 export { Snackbar, SnackbarProps } from './Snackbar/Snackbar';

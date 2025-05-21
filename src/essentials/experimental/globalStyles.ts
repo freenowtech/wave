@@ -1,7 +1,7 @@
 import { createGlobalStyle, css, CSSObject, GlobalStyleComponent, DefaultTheme } from 'styled-components';
 
 import { TokenObject } from '../../utils/cssVariables';
-import { generateBareCssVariables, generateSemanticCssVariables } from './cssVariables';
+import { generateBareCssVariables, generateCssVariables, generateSemanticCssVariables } from './cssVariables';
 import { SemanticColorsSchema } from './types';
 
 export const DARK_THEME_CLASS = 'dark-scheme';
@@ -35,6 +35,15 @@ export const createThemeGlobalStyle = (
     color-scheme: light;
     ${bareCssVariables}
     ${semanticCssVariablesForLightTheme}
+    ${generateCssVariables(
+        {
+            'body-1-font': 'Roboto Flex',
+            'body-1-size': '1rem',
+            'body-1-weight': 400,
+            'body-1-line-height': '1.5rem'
+        },
+        'typescale'
+    )}
   }
 
   .${DARK_THEME_CLASS} {
