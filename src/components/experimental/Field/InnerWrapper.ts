@@ -8,7 +8,7 @@ export const InnerWrapper = styled.div`
     box-sizing: border-box;
     width: 100%;
 
-    /* stylelint-disable selector-type-no-unknown */
+    /* stylelint-disable selector-type-case, selector-type-no-unknown */
     &:has(${Label}) {
         padding-top: var(--wave-exp-typescale-label-2-line-height);
     }
