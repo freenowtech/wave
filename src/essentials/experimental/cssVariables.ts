@@ -30,7 +30,7 @@ import { Join, Leaves } from '../../utils/types';
 import { ColorPaletteSchema, SemanticColorsSchema } from './types';
 
 const DS_PREFIX = 'wave-exp';
-type NameSpace = 'color' | 'palette';
+type NameSpace = 'color' | 'palette' | 'typescale';
 
 type BareColorToken = Join<Leaves<ColorPaletteSchema>, '-'>;
 type SemanticColorToken = Join<Leaves<SemanticColorsSchema>, '-'>;
