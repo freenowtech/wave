@@ -38,11 +38,11 @@ export const WithDescription: Story = {
     }
 };
 
-export const WithValidation: Story = {
+export const WithLimits: Story = {
     args: {
         label: 'Only positive'
     },
-    render: args => <NumberField {...args} minValue={0} />
+    render: args => <NumberField {...args} defaultValue={0} minValue={0} />
 };
 
 export const Disabled: Story = {

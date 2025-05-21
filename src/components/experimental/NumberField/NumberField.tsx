@@ -34,6 +34,10 @@ const GroupControl = styled(Group)`
             color: ${getSemanticValue('interactive')};
         }
 
+        &[data-disabled] {
+            opacity: 0.38;
+        }
+
         svg {
             position: relative;
             pointer-events: none;
