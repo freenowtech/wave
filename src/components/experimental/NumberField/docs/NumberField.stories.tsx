@@ -14,10 +14,7 @@ const meta: Meta = {
                 <Story />
             </div>
         )
-    ],
-    args: {
-        label: 'Group size'
-    }
+    ]
 };
 
 export default meta;
@@ -28,12 +25,14 @@ export const Default: Story = {};
 
 export const WithDefaultValue: Story = {
     args: {
+        label: 'Group size',
         defaultValue: 5
     }
 };
 
 export const WithDescription: Story = {
     args: {
+        label: 'Group size',
         description: 'Number of passengers'
     }
 };

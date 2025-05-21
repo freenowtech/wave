@@ -61,7 +61,7 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
                     <>
                         <FakeInput $isVisuallyFocused={isVisuallyFocused}>
                             <InnerWrapper>
-                                <Label $flying>{label}</Label>
+                                {label && <Label $flying>{label}</Label>}
                                 <Input />
                             </InnerWrapper>
                             <GroupControl>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface FieldProps {
-    label: string;
+    label?: string;
     leadingIcon?: React.ReactNode;
     actionIcon?: React.ReactNode;
     description?: string;

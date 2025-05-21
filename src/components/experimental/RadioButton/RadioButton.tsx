@@ -27,7 +27,7 @@ const Radio = styled(BaseRadio)`
     gap: ${themeGet('space.2')};
     cursor: pointer;
 
-    font-family: var(--wave-exp-typescale-body-1-font), sans-serif;
+    font-family: inherit;
     font-size: var(--wave-exp-typescale-body-1-size);
     font-weight: var(--wave-exp-typescale-body-1-weight);
     line-height: var(--wave-exp-typescale-body-1-line-height);
