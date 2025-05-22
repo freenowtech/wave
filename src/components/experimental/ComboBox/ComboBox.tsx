@@ -7,7 +7,6 @@ import {
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
-import styled from 'styled-components';
 import { Popover } from '../Popover/Popover';
 import { ListBox } from '../ListBox/ListBox';
 import { FakeInput } from '../Field/FakeInput';
@@ -27,11 +26,8 @@ const defaultAriaStrings = {
     messageFieldIsCleared: 'The field is cleared'
 };
 
-const StyledPopover = styled(Popover)`
-    overflow: auto;
-`;
-
-interface ComboBoxFieldProps extends Pick<FieldProps, 'label' | 'description' | 'errorMessage' | 'leadingIcon'> {
+interface ComboBoxFieldProps extends Pick<FieldProps, 'description' | 'errorMessage' | 'leadingIcon'> {
+    label: string;
     placeholder?: string;
     /**
      * If your project supports multiple languages,
@@ -135,12 +131,9 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
-                    <StyledPopover
-                        triggerRef={triggerRef}
-                        style={{ '--trigger-width': menuWidth } as React.CSSProperties}
-                    >
+                    <Popover triggerRef={triggerRef} style={{ '--trigger-width': menuWidth } as React.CSSProperties}>
                         <ListBox>{children}</ListBox>
-                    </StyledPopover>
+                    </Popover>
                 </>
             )}
         </BaseComboBox>

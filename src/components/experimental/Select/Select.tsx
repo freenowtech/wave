@@ -24,16 +24,12 @@ import DropupSelectIcon from '../../../icons/arrows/DropupSelectIcon';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 import { fieldStyles, fieldTextStyles } from '../Field/Field';
 
-const StyledPopover = styled(Popover)`
-    overflow: auto;
-`;
-
 const FakeButton = styled(FakeInput)`
     cursor: pointer;
 
     ${Button} {
         text-align: start;
-        height: ${fieldTextStyles.lineHeight};
+        height: var(--wave-exp-typescale-body-1-line-height);
         ${fieldStyles};
     }
 
@@ -43,6 +39,7 @@ const FakeButton = styled(FakeInput)`
 `;
 
 interface SelectFieldProps<T> extends Pick<FieldProps, 'label' | 'description' | 'errorMessage' | 'leadingIcon'> {
+    label: string;
     placeholder?: string;
     renderValue?: (props: SelectValueRenderProps<T> & { defaultChildren: React.ReactNode }) => React.ReactNode;
 }
@@ -128,12 +125,12 @@ function Select<T extends Record<string, unknown>>({
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
-                    <StyledPopover
+                    <Popover
                         triggerRef={triggerRef}
                         style={{ '--trigger-width': menuWidth } as React.CSSProperties}
                     >
                         <ListBox items={props.items}>{children}</ListBox>
-                    </StyledPopover>
+                    </Popover>
                 </>
             )}
         </BaseSelect>

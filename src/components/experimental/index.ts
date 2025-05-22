@@ -14,6 +14,7 @@ export { Input } from './Input/Input';
 export { Label } from './Label/Label';
 export { ListBox, ListBoxItem, LabelText, DescriptionText } from './ListBox/ListBox';
 export { Modal } from './Modal/Modal';
+export { NumberField } from './NumberField/NumberField';
 export { Popover } from './Popover/Popover';
 export { RadioButton } from './RadioButton/RadioButton';
 export { RadioGroup } from './RadioGroup/RadioGroup';

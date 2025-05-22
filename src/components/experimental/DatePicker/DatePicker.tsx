@@ -15,7 +15,7 @@ import { Button } from '../Field/Button';
 import { FieldProps } from '../Field/Props';
 
 interface DatePickerProps extends Pick<FieldProps, 'description' | 'errorMessage'>, BaseDatePickerProps<DateValue> {
-    label: string;
+    label?: string;
 }
 
 const StyledPopover = styled(Popover)`
