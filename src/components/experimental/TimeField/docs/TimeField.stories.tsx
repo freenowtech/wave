@@ -19,9 +19,6 @@ const meta: Meta = {
             </div>
         )
     ],
-    args: {
-        label: 'Appointment time'
-    }
 };
 
 export default meta;
@@ -34,12 +31,14 @@ const NOW = now(getLocalTimeZone());
 
 export const WithDefaultValue: Story = {
     args: {
+        label: 'Appointment time',
         defaultValue: NOW
     }
 };
 
 export const WithPlaceholderValue: Story = {
     args: {
+        label: 'Appointment time',
         description: 'I will start from 9:00',
         placeholderValue: parseTime('09:00')
     }

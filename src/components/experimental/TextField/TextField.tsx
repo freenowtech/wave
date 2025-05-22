@@ -111,7 +111,7 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
                 </Button>
             ) : null;
 
-        const flyingLabel = <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>;
+        const flyingLabel = label && <Label $flying={Boolean(placeholder || text.length > 0)}>{label}</Label>;
 
         return (
             <Wrapper>

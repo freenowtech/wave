@@ -24,7 +24,7 @@ const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
                         <FakeInput $isVisuallyFocused={isVisuallyFocused}>
                             {leadingIcon}
                             <InnerWrapper>
-                                <Label $flying>{label}</Label>
+                                {label && <Label $flying>{label}</Label>}
                                 <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
                             </InnerWrapper>
                             {actionIcon}

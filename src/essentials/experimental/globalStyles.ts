@@ -37,10 +37,12 @@ export const createThemeGlobalStyle = (
     ${semanticCssVariablesForLightTheme}
     ${generateCssVariables(
         {
-            'body-1-font': 'Roboto Flex',
             'body-1-size': '1rem',
-            'body-1-weight': 400,
-            'body-1-line-height': '1.5rem'
+            'body-1-weight': 'normal',
+            'body-1-line-height': '1.5rem',
+            'label-2-size': '0.875rem',
+            'label-2-weight': 'normal',
+            'label-2-line-height': '1.25rem'
         },
         'typescale'
     )}

@@ -15,7 +15,7 @@ const focusStyles = css`
 `;
 
 export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
-    box-sizing: content-box;
+    box-sizing: border-box;
     cursor: text;
 
     color: ${getSemanticValue('on-surface-variant')};
@@ -25,15 +25,15 @@ export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
     border-color: ${getSemanticValue('outline-variant')};
     border-radius: ${get('radii.4')};
 
-    padding: ${get('space.2')} ${get('space.3')} ${get('space.2')} ${get('space.4')};
+    min-height: 3.5rem;
+    padding: 0 ${get('space.3')} 0 ${get('space.4')};
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: ${get('space.3')};
 
     /* stylelint-disable selector-type-case, selector-type-no-unknown */
     & > :not(${InnerWrapper}) {
         flex-shrink: 0;
-        margin-top: ${get('space.2')};
         color: ${getSemanticValue('on-surface-variant')};
     }
 
