@@ -27,3 +27,15 @@ export const WithMinValue: Story = {
         minValue: TODAY
     }
 };
+
+export const MultiMonth: Story = {
+    args: {
+        visibleMonths: 2
+    }
+};
+
+export const RangeSelection: Story = {
+    args: {
+        selectionType: 'range'
+    }
+};
