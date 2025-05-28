@@ -23,4 +23,4 @@ jobs:
               run: npm run build
 
             - name: Publish preview
-              run: npx pkg-pr-new publish --compact --comment=update
+              run: npx pkg-pr-new publish --compact --comment=update --template './.github/PREVIEW_TEMPLATE/*'
