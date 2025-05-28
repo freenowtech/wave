@@ -50,5 +50,10 @@ export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
         border-color: ${getSemanticValue('negative')};
     }
 
+    [data-disabled] & {
+        opacity: 0.38;
+        pointer-events: none;
+    }
+
     ${props => props.$isVisuallyFocused && focusStyles}
 `;
