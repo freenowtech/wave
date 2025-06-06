@@ -23,4 +23,6 @@ jobs:
               run: npm run build
 
             - name: Publish preview
-              run: npx pkg-pr-new publish --compact --comment=update --template './.github/PREVIEW_TEMPLATE/*'
+              # TODO: use the commented line below when package is react19 compatible
+              # run: npx pkg-pr-new publish --compact --comment=update --template './.github/PREVIEW_TEMPLATE/*'
+              run: npx pkg-pr-new publish --compact --comment=update
