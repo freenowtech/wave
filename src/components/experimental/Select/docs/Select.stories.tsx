@@ -40,6 +40,12 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {};
 
+export const WithHideLabel: Story = {
+    args: {
+        hideLabel: true
+    }
+};
+
 export const WithIcon: Story = {
     args: {
         leadingIcon: <DogIcon />
