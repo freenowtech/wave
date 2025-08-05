@@ -56,7 +56,7 @@ function SelectTriggerWithRef<T extends object>(
     return (
         <FakeButton $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => buttonRef.current?.click()}>
             {leadingIcon}
-            <InnerWrapper>
+            <InnerWrapper hideLabel={hideLabel}>
                 {hideLabel ? (
                     <VisuallyHidden>
                         <Label>{label}</Label>
