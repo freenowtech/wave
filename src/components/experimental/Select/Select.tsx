@@ -40,13 +40,14 @@ const FakeButton = styled(FakeInput)`
 
 interface SelectFieldProps<T> extends Pick<FieldProps, 'label' | 'description' | 'errorMessage' | 'leadingIcon'> {
     label: string;
+    hideLabel?: boolean;
     placeholder?: string;
     renderValue?: (props: SelectValueRenderProps<T> & { defaultChildren: React.ReactNode }) => React.ReactNode;
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function SelectTriggerWithRef<T extends object>(
-    { label, leadingIcon, placeholder, renderValue }: SelectFieldProps<T>,
+    { label, hideLabel, leadingIcon, placeholder, renderValue }: SelectFieldProps<T>,
     forwardedRef: React.ForwardedRef<HTMLDivElement>
 ) {
     const state = React.useContext(SelectStateContext);
@@ -56,7 +57,13 @@ function SelectTriggerWithRef<T extends object>(
         <FakeButton $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => buttonRef.current?.click()}>
             {leadingIcon}
             <InnerWrapper>
-                <Label $flying={Boolean(placeholder || state?.selectedItem)}>{label}</Label>
+                {hideLabel ? (
+                    <VisuallyHidden>
+                        <Label>{label}</Label>
+                    </VisuallyHidden>
+                ) : (
+                    <Label $flying={Boolean(placeholder || state?.selectedItem)}>{label}</Label>
+                )}
                 <Button ref={buttonRef}>
                     <SelectValue<T>>
                         {selectValueRenderProps =>
@@ -83,6 +90,7 @@ interface SelectProps<T extends Record<string, unknown>>
         Omit<BaseSelectProps<T>, 'children'> {
     items?: Iterable<T>;
     children: React.ReactNode | ((item: T) => React.ReactNode);
+    hideLabel?: boolean;
 }
 
 function Select<T extends Record<string, unknown>>({
@@ -93,6 +101,7 @@ function Select<T extends Record<string, unknown>>({
     description,
     placeholder,
     renderValue,
+    hideLabel,
     ...props
 }: SelectProps<T>): React.ReactElement {
     const [menuWidth, setMenuWidth] = React.useState<string | null>(null);
@@ -119,16 +128,14 @@ function Select<T extends Record<string, unknown>>({
                         <SelectTrigger
                             ref={isSSR ? null : triggerRef}
                             label={label}
+                            hideLabel={hideLabel}
                             leadingIcon={leadingIcon}
                             placeholder={placeholder}
                             renderValue={renderValue}
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
-                    <Popover
-                        triggerRef={triggerRef}
-                        style={{ '--trigger-width': menuWidth } as React.CSSProperties}
-                    >
+                    <Popover triggerRef={triggerRef} style={{ '--trigger-width': menuWidth } as React.CSSProperties}>
                         <ListBox items={props.items}>{children}</ListBox>
                     </Popover>
                 </>

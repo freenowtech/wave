@@ -11,7 +11,7 @@ export const flyingLabelStyles = css`
     line-height: var(--wave-exp-typescale-label-2-line-height);
 `;
 
-export const Label = styled(BaseLabel)<{ $flying: boolean }>`
+export const Label = styled(BaseLabel)<{ $flying?: boolean }>`
     position: absolute;
     top: 50%;
     color: currentColor;
