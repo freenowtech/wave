@@ -32,7 +32,7 @@ const TimeField = React.forwardRef<HTMLDivElement, TimeFieldProps>(
                     <>
                         <FakeInput $isVisuallyFocused={isVisuallyFocused}>
                             {leadingIcon}
-                            <InnerWrapper>
+                            <InnerWrapper hideLabel={!label}>
                                 {label && <Label $flying>{label}</Label>}
                                 <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
                             </InnerWrapper>
