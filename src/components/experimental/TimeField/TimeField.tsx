@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimeValue, VisuallyHidden } from 'react-aria';
+import { TimeValue } from 'react-aria';
 import { FieldError, TimeField as BaseTimeField, TimeFieldProps as BaseTimeFieldProps } from 'react-aria-components';
 import { Label } from '../Field/Label';
 import { Footer } from '../Field/Footer';
@@ -9,6 +9,7 @@ import { DateInput } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { Wrapper } from '../Field/Wrapper';
 import { FieldProps } from '../Field/Props';
+import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
 type TimeFieldProps = Omit<FieldProps, 'label'> &
     BaseTimeFieldProps<TimeValue> & {
