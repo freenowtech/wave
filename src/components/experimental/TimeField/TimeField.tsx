@@ -9,13 +9,19 @@ import { DateInput } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { Wrapper } from '../Field/Wrapper';
 import { FieldProps } from '../Field/Props';
+import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
-type TimeFieldProps = FieldProps & BaseTimeFieldProps<TimeValue>;
+type TimeFieldProps = Omit<FieldProps, 'label'> &
+    BaseTimeFieldProps<TimeValue> & {
+        label: string;
+        hideLabel?: boolean;
+    };
 
 const TimeField = React.forwardRef<HTMLDivElement, TimeFieldProps>(
     (
         {
             label,
+            hideLabel = false,
             description,
             errorMessage,
             leadingIcon,
@@ -32,8 +38,14 @@ const TimeField = React.forwardRef<HTMLDivElement, TimeFieldProps>(
                     <>
                         <FakeInput $isVisuallyFocused={isVisuallyFocused}>
                             {leadingIcon}
-                            <InnerWrapper hideLabel={!label}>
-                                {label && <Label $flying>{label}</Label>}
+                            <InnerWrapper hideLabel={hideLabel}>
+                                {hideLabel ? (
+                                    <VisuallyHidden>
+                                        <Label>{label}</Label>
+                                    </VisuallyHidden>
+                                ) : (
+                                    <Label $flying>{label}</Label>
+                                )}
                                 <DateInput>{segment => <DateSegment segment={segment} />}</DateInput>
                             </InnerWrapper>
                             {actionIcon}
