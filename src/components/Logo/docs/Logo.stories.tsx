@@ -25,6 +25,30 @@ export const Business: Story = {
     }
 };
 
+export const Drivers: Story = {
+    args: {
+        variant: 'drivers'
+    }
+};
+
+export const DefaultVertical: Story = {
+    args: {
+        variant: 'default-vertical'
+    }
+};
+
+export const TrustInTaxi: Story = {
+    args: {
+        variant: 'trust-in-taxi'
+    }
+};
+
+export const ByLyft: Story = {
+    args: {
+        variant: 'by-lyft'
+    }
+};
+
 export const BusinessMonochrome: Story = {
     args: {
         variant: 'business',
@@ -34,6 +58,34 @@ export const BusinessMonochrome: Story = {
 
 export const Monochrome: Story = {
     args: {
+        monochrome: true
+    }
+};
+
+export const DefaultVerticalMonochrome: Story = {
+    args: {
+        variant: 'default-vertical',
+        monochrome: true
+    }
+};
+
+export const TrustInTaxiMonochrome: Story = {
+    args: {
+        variant: 'trust-in-taxi',
+        monochrome: true
+    }
+};
+
+export const DriversMonochrome: Story = {
+    args: {
+        variant: 'drivers',
+        monochrome: true
+    }
+};
+
+export const ByLyftMonochrome: Story = {
+    args: {
+        variant: 'by-lyft',
         monochrome: true
     }
 };

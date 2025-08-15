@@ -5,7 +5,33 @@ import { createThemeGlobalStyle } from './globalStyles';
 export const Colors = {
     white: 'hsl(0, 0%, 100%)',
     black: 'hsl(0, 0%, 0%)',
+    neutral: {
+        10: 'hsl(0, 0%, 11%)',
+        20: 'hsl(0, 0%, 19%)',
+        30: 'hsl(0, 0%, 28%)',
+        40: 'hsl(0, 0%, 37%)',
+        50: 'hsl(0, 0%, 47%)',
+        60: 'hsl(0, 0%, 57%)',
+        70: 'hsl(0, 0%, 67%)',
+        80: 'hsl(0, 0%, 78%)',
+        90: 'hsl(0, 0%, 89%)',
+        95: 'hsl(0, 0%, 95%)',
+        97: 'hsl(0, 0%, 98%)',
+        99: 'hsl(0, 0%, 99%)'
+    },
     blue: {
+        10: 'hsl(214, 77%, 10%)',
+        20: 'hsl(215, 75%, 20%)',
+        30: 'hsl(214, 76%, 31%)',
+        40: 'hsl(214, 75%, 41%)',
+        50: 'hsl(214, 78%, 51%)',
+        60: 'hsl(214, 78%, 61%)',
+        70: 'hsl(214, 79%, 71%)',
+        80: 'hsl(215, 78%, 80%)',
+        90: 'hsl(215, 80%, 90%)',
+        95: 'hsl(215, 76%, 95%)',
+        97: 'hsl(218, 80%, 98%)',
+
         primary: {
             1100: 'hsl(211, 100%, 6%)',
             900: 'hsl(211, 100%, 12%)',
@@ -25,8 +51,17 @@ export const Colors = {
         }
     },
     red: {
-        1000: 'hsl(352, 92%, 39%)',
-        900: 'hsl(352, 100%, 52%)'
+        10: 'hsl(348, 100%, 13%)',
+        20: 'hsl(345, 100%, 20%)',
+        30: 'hsl(344, 100%, 29%)',
+        40: 'hsl(342, 100%, 37%)',
+        50: 'hsl(342, 100%, 45%)',
+        60: 'hsl(352, 100%, 66%)',
+        70: 'hsl(355, 100%, 76%)',
+        80: 'hsl(357, 100%, 85%)',
+        90: 'hsl(0, 100%, 93%)',
+        95: 'hsl(3, 100%, 96%)',
+        97: 'hsl(0, 100%, 98%)'
     },
     magenta: {
         1000: 'hsl(302, 100%, 37%)',
@@ -38,18 +73,44 @@ export const Colors = {
         1000: 'hsl(149, 92%, 24%)',
         900: 'hsl(149, 93%, 32%)',
         350: 'hsl(149, 44%, 74%)',
-        50: 'hsl(147, 47%, 96%)'
+
+        10: 'hsl(124, 47%, 7%)',
+        20: 'hsl(122, 47%, 13%)',
+        30: 'hsl(124, 48%, 20%)',
+        40: 'hsl(123, 48%, 26%)',
+        50: 'hsl(123, 48%, 33%)',
+        60: 'hsl(123, 27%, 46%)',
+        70: 'hsl(124, 23%, 60%)',
+        80: 'hsl(122, 24%, 73%)',
+        90: 'hsl(124, 24%, 87%)',
+        95: 'hsl(120, 24%, 93%)',
+        97: 'hsl(120, 20%, 97%)'
     },
     yellow: {
-        900: 'hsl(48, 100%, 50%)',
-        350: 'hsl(48, 100%, 81%)',
-        50: 'hsl(47, 100%, 97%)'
+        10: 'hsl(45, 92%, 5%)',
+        20: 'hsl(45, 95%, 15%)',
+        30: 'hsl(46, 94%, 25%)',
+        40: 'hsl(46, 93%, 36%)',
+        50: 'hsl(46, 94%, 46%)',
+        60: 'hsl(46, 98%, 51%)',
+        70: 'hsl(46, 98%, 61%)',
+        80: 'hsl(46, 97%, 71%)',
+        90: 'hsl(46, 98%, 80%)',
+        95: 'hsl(46, 96%, 90%)',
+        97: 'hsl(46, 100%, 95%)'
     },
     orange: {
-        1000: 'hsl(21, 96%, 38%)',
-        900: 'hsl(21, 100%, 51%)',
-        350: 'hsl(21, 100%, 81%)',
-        50: 'hsl(21, 100%, 97%)'
+        10: 'hsl(32, 92%, 10%)',
+        20: 'hsl(32, 92%, 20%)',
+        30: 'hsl(33, 92%, 30%)',
+        40: 'hsl(32, 92%, 45%)',
+        50: 'hsl(32, 92%, 50%)',
+        60: 'hsl(32, 91%, 55%)',
+        70: 'hsl(32, 91%, 65%)',
+        80: 'hsl(32, 92%, 75%)',
+        90: 'hsl(32, 92%, 85%)',
+        95: 'hsl(32, 92%, 90%)',
+        97: 'hsl(30, 100%, 96%)'
     },
     transparent: 'transparent'
 } as const;
@@ -92,11 +153,11 @@ export const SemanticColors = {
             default: Colors.green[900]
         },
         warning: {
-            default: Colors.yellow[900]
+            default: Colors.yellow[60]
         },
         danger: {
-            default: Colors.orange[900],
-            emphasized: Colors.orange[1000]
+            default: Colors.orange[40],
+            emphasized: Colors.orange[30]
         }
     },
     background: {
@@ -130,15 +191,15 @@ export const SemanticColors = {
                 emphasized: Colors.blue.secondary[900]
             },
             success: {
-                default: Colors.green[50]
+                default: Colors.green[97]
             },
             warning: {
-                default: Colors.yellow[50]
+                default: Colors.yellow[97]
             },
             danger: {
-                faded: Colors.orange[50],
-                default: Colors.orange[900],
-                emphasized: Colors.orange[1000]
+                faded: Colors.orange[97],
+                default: Colors.orange[40],
+                emphasized: Colors.orange[30]
             }
         },
         surface: {
@@ -158,17 +219,17 @@ export const SemanticColors = {
                 emphasized: Colors.blue.secondary[900]
             },
             success: {
-                default: Colors.green[50],
+                default: Colors.green[97],
                 emphasized: Colors.green[900]
             },
             warning: {
-                default: Colors.yellow[50],
-                emphasized: Colors.yellow[900]
+                default: Colors.yellow[97],
+                emphasized: Colors.yellow[60]
             },
             danger: {
-                faded: Colors.orange[50],
-                default: Colors.orange[50],
-                emphasized: Colors.orange[900]
+                faded: Colors.orange[97],
+                default: Colors.orange[97],
+                emphasized: Colors.orange[40]
             }
         },
         backdrop: Colors.blue.primary[900]
@@ -196,19 +257,20 @@ export const SemanticColors = {
             default: Colors.green[900]
         },
         warning: {
-            banner: Colors.yellow[350],
-            default: Colors.yellow[900]
+            banner: Colors.yellow[90],
+            default: Colors.yellow[60]
         },
         danger: {
-            banner: Colors.orange[350],
-            faded: Colors.orange[350],
-            default: Colors.orange[900]
+            banner: Colors.orange[80],
+            faded: Colors.orange[80],
+            default: Colors.orange[40]
         }
     },
     logo: {
         free: 'hsl(350, 91%, 41%)',
         now: 'hsl(350, 91%, 41%)',
-        subtitle: Colors.black
+        subtitle: Colors.black,
+        lyft: 'hsl(316, 81%, 56%)'
     },
     shadow: {
         default: Colors.blue.primary[200]
@@ -258,11 +320,11 @@ export const SemanticColorsDarkSchema = {
             default: Colors.green[900]
         },
         warning: {
-            default: Colors.yellow[900]
+            default: Colors.yellow[60]
         },
         danger: {
-            default: Colors.orange[900],
-            emphasized: Colors.orange[1000]
+            default: Colors.orange[40],
+            emphasized: Colors.orange[30]
         }
     },
     background: {
@@ -296,15 +358,15 @@ export const SemanticColorsDarkSchema = {
                 emphasized: Colors.blue.secondary[1000]
             },
             success: {
-                default: Colors.green[50]
+                default: Colors.green[97]
             },
             warning: {
-                default: Colors.yellow[50]
+                default: Colors.yellow[97]
             },
             danger: {
-                faded: Colors.orange[1000],
-                default: Colors.orange[900],
-                emphasized: Colors.orange[1000]
+                faded: Colors.orange[30],
+                default: Colors.orange[40],
+                emphasized: Colors.orange[30]
             }
         },
         surface: {
@@ -329,12 +391,12 @@ export const SemanticColorsDarkSchema = {
             },
             warning: {
                 default: Colors.blue.primary[750],
-                emphasized: Colors.yellow[900]
+                emphasized: Colors.yellow[60]
             },
             danger: {
-                faded: Colors.orange[350],
+                faded: Colors.orange[80],
                 default: Colors.blue.primary[750],
-                emphasized: Colors.red[1000]
+                emphasized: Colors.red[40]
             }
         },
         backdrop: Colors.blue.primary[50]
@@ -362,19 +424,20 @@ export const SemanticColorsDarkSchema = {
             default: Colors.green[900]
         },
         warning: {
-            banner: Colors.yellow[350],
-            default: Colors.yellow[900]
+            banner: Colors.yellow[90],
+            default: Colors.yellow[60]
         },
         danger: {
-            banner: Colors.orange[350],
-            faded: Colors.orange[900],
-            default: Colors.orange[900]
+            banner: Colors.orange[80],
+            faded: Colors.orange[40],
+            default: Colors.orange[40]
         }
     },
     logo: {
         free: 'hsl(350, 91%, 41%)',
         now: Colors.white,
-        subtitle: Colors.white
+        subtitle: Colors.white,
+        lyft: Colors.white
     },
     shadow: {
         default: Colors.blue.primary[550]

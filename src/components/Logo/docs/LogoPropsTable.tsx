@@ -6,7 +6,7 @@ export const LogoPropsTable: FC = () => {
     const props = [
         {
             name: 'variant',
-            type: '"default" | "business"',
+            type: "'default' | 'business' | 'drivers' | 'default-vertical' | 'trust-in-taxi' | 'rider'",
             description: 'Specify the department of the company',
             defaultValue: '"default"'
         },

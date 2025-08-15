@@ -158,6 +158,7 @@ export type SemanticColorsSchema = {
         free: Color;
         now: Color;
         subtitle: Color;
+        lyft: Color;
     };
     shadow: {
         default: Color;
