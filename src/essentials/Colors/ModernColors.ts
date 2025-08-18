@@ -6,31 +6,35 @@ export const Colors = {
     white: 'hsl(0, 0%, 99%)',
     black: 'hsl(0, 0%, 0%)',
     neutral: {
-        900: 'hsl(350, 11%, 11%)',
-        800: 'hsl(0, 11%, 16%)',
-        750: 'hsl(0, 6%, 20%)',
-        650: 'hsl(353, 5%, 29%)',
-        550: 'hsl(0, 2%, 38%)',
-        350: 'hsl(0, 1%, 55%)',
-        200: 'hsl(0, 1%, 73%)',
-        50: 'hsl(0, 2%, 91%)',
-        10: 'hsl(0, 2%, 96%)'
+        10: 'hsl(0, 0%, 11%)',
+        20: 'hsl(0, 0%, 19%)',
+        30: 'hsl(0, 0%, 28%)',
+        40: 'hsl(0, 0%, 37%)',
+        50: 'hsl(0, 0%, 47%)',
+        60: 'hsl(0, 0%, 57%)',
+        70: 'hsl(0, 0%, 67%)',
+        80: 'hsl(0, 0%, 78%)',
+        90: 'hsl(0, 0%, 89%)',
+        95: 'hsl(0, 0%, 95%)',
+        97: 'hsl(0, 0%, 98%)',
+        99: 'hsl(0, 0%, 99%)'
     },
     primary: {
-        1100: 'hsl(341, 100%, 13%)',
-        1000: 'hsl(343, 70%, 22%)',
-        950: 'hsl(346, 51%, 33%)',
-        900: 'hsl(347, 42%, 43%)',
-        500: 'hsl(347, 41%, 50%)',
-        350: 'hsl(349, 50%, 65%)',
-        150: 'hsl(348, 50%, 76%)',
-        120: 'hsl(351, 51%, 85%)',
-        100: 'hsl(352, 48%, 91%)',
-        50: 'hsl(350, 46%, 95%)',
-        10: 'hsl(0, 47%, 97%)'
+        10: 'hsl(348, 100%, 13%)',
+        20: 'hsl(345, 100%, 20%)',
+        30: 'hsl(344, 100%, 29%)',
+        40: 'hsl(342, 100%, 37%)',
+        50: 'hsl(342, 100%, 45%)',
+        60: 'hsl(352, 100%, 66%)',
+        70: 'hsl(355, 100%, 76%)',
+        80: 'hsl(357, 100%, 85%)',
+        90: 'hsl(0, 100%, 93%)',
+        95: 'hsl(3, 100%, 96%)',
+        97: 'hsl(0, 100%, 98%)'
     },
     brand: {
-        rushhour: 'hsl(350, 91%, 41%)'
+        freenow: 'hsl(342, 100%, 45%)', // RED-50
+        lyft: 'hsl(316, 81%, 56%)'
     },
     magenta: {
         1000: 'hsl(302, 100%, 18%)',
@@ -39,20 +43,43 @@ export const Colors = {
         50: 'hsl(324, 100%, 96%)'
     },
     green: {
-        1000: 'hsl(146, 100%, 11%)',
-        900: 'hsl(149, 98%, 22%)',
-        350: 'hsl(134, 55%, 68%)',
-        50: 'hsl(128, 94%, 94%)'
+        10: 'hsl(124, 47%, 7%)',
+        20: 'hsl(122, 47%, 13%)',
+        30: 'hsl(124, 48%, 20%)',
+        40: 'hsl(123, 48%, 26%)',
+        50: 'hsl(123, 48%, 33%)',
+        60: 'hsl(123, 27%, 46%)',
+        70: 'hsl(124, 23%, 60%)',
+        80: 'hsl(122, 24%, 73%)',
+        90: 'hsl(124, 24%, 87%)',
+        95: 'hsl(120, 24%, 93%)',
+        97: 'hsl(120, 20%, 97%)'
     },
     yellow: {
-        900: 'hsl(48, 100%, 47%)',
-        350: 'hsl(42, 100%, 79%)',
-        50: 'hsl(30, 100%, 97%)'
+        10: 'hsl(45, 92%, 5%)',
+        20: 'hsl(45, 95%, 15%)',
+        30: 'hsl(46, 94%, 25%)',
+        40: 'hsl(46, 93%, 36%)',
+        50: 'hsl(46, 94%, 46%)',
+        60: 'hsl(46, 98%, 51%)',
+        70: 'hsl(46, 98%, 61%)',
+        80: 'hsl(46, 97%, 71%)',
+        90: 'hsl(46, 98%, 80%)',
+        95: 'hsl(46, 96%, 90%)',
+        97: 'hsl(46, 100%, 95%)'
     },
     red: {
-        1000: 'hsl(356, 100%, 29%)',
-        900: 'hsl(0, 75%, 42%)',
-        350: 'hsl(6, 100%, 84%)'
+        10: 'hsl(348, 100%, 13%)',
+        20: 'hsl(345, 100%, 20%)',
+        30: 'hsl(344, 100%, 29%)',
+        40: 'hsl(342, 100%, 37%)',
+        50: 'hsl(342, 100%, 45%)',
+        60: 'hsl(352, 100%, 66%)',
+        70: 'hsl(355, 100%, 76%)',
+        80: 'hsl(357, 100%, 85%)',
+        90: 'hsl(0, 100%, 93%)',
+        95: 'hsl(3, 100%, 96%)',
+        97: 'hsl(0, 100%, 98%)'
     },
     transparent: 'transparent'
 } as const;
@@ -63,72 +90,72 @@ export const SemanticColors = {
     white: Colors.white,
     transparent: Colors.transparent,
     foreground: {
-        primary: Colors.neutral[900],
+        primary: Colors.neutral[10],
         accent: {
-            default: Colors.primary[900],
-            emphasized: Colors.primary[1000]
+            default: Colors.primary[40],
+            emphasized: Colors.primary[20]
         },
         neutral: {
-            faded: Colors.neutral[200],
-            default: Colors.neutral[350],
-            emphasized: Colors.neutral[550]
+            faded: Colors.neutral[80],
+            default: Colors.neutral[60],
+            emphasized: Colors.neutral[40]
         },
         'on-background': {
             primary: Colors.white,
             accent: Colors.white,
-            neutral: Colors.neutral[900],
+            neutral: Colors.neutral[10],
             disabled: Colors.white,
             info: Colors.white,
             success: Colors.white,
-            warning: Colors.neutral[900],
+            warning: Colors.neutral[10],
             danger: Colors.white
         },
-        disabled: Colors.neutral[200],
-        focus: Colors.neutral[550],
+        disabled: Colors.neutral[80],
+        focus: Colors.neutral[40],
         info: {
-            faded: Colors.neutral[550],
-            default: Colors.neutral[900]
+            faded: Colors.neutral[40],
+            default: Colors.neutral[10]
         },
         success: {
-            default: Colors.green[900]
+            default: Colors.green[40]
         },
         warning: {
-            default: Colors.yellow[900]
+            default: Colors.yellow[60]
         },
         danger: {
-            default: Colors.red[900],
-            emphasized: Colors.red[1000]
+            default: Colors.red[40],
+            emphasized: Colors.red[30]
         }
     },
     background: {
         page: {
             default: Colors.white,
-            'elevation-0': Colors.neutral[10],
+            'elevation-0': Colors.neutral[95],
             'elevation-1': Colors.white,
             'elevation-2': Colors.white,
             'elevation-3': Colors.white
         },
         element: {
             primary: {
-                default: Colors.primary[900],
-                emphasized: Colors.primary[1000]
+                default: Colors.primary[40],
+                emphasized: Colors.primary[20]
             },
             disabled: {
-                faded: Colors.neutral[50],
-                default: Colors.neutral[200]
+                faded: Colors.neutral[90],
+                default: Colors.neutral[80]
             },
             neutral: {
                 default: Colors.white,
-                emphasized: Colors.neutral[50]
+                emphasized: Colors.neutral[90]
             },
             accent: {
                 faded: Colors.primary[50],
-                default: Colors.primary[350],
-                emphasized: Colors.primary[900]
+                default: Colors.primary[70],
+                emphasized: Colors.primary[40]
             },
             info: {
-                default: Colors.neutral[50],
-                emphasized: Colors.neutral[550]
+                default: Colors.neutral[90],
+                emphasized: Colors.neutral[40]
             },
             success: {
                 default: Colors.white
@@ -138,89 +165,90 @@ export const SemanticColors = {
             },
             danger: {
                 faded: Colors.primary[50],
-                default: Colors.red[900],
-                emphasized: Colors.red[1000]
+                default: Colors.red[40],
+                emphasized: Colors.red[30]
             }
         },
         surface: {
             primary: {
-                default: Colors.neutral[550],
-                emphasized: Colors.neutral[900]
+                default: Colors.neutral[40],
+                emphasized: Colors.neutral[10]
             },
             neutral: {
-                faded: Colors.neutral[50],
+                faded: Colors.neutral[90],
                 default: Colors.white,
-                emphasized: Colors.neutral[550]
+                emphasized: Colors.neutral[40]
             },
             info: {
-                faded: Colors.primary[100],
-                active: Colors.primary[150],
-                default: Colors.neutral[50],
-                emphasized: Colors.neutral[550]
+                faded: Colors.primary[95],
+                active: Colors.primary[80],
+                default: Colors.neutral[90],
+                emphasized: Colors.neutral[40]
             },
             success: {
                 default: Colors.white,
-                emphasized: Colors.green[900]
+                emphasized: Colors.green[40]
             },
             warning: {
                 default: Colors.white,
-                emphasized: Colors.yellow[900]
+                emphasized: Colors.yellow[60]
             },
             danger: {
                 faded: Colors.primary[50],
                 default: Colors.white,
-                emphasized: Colors.red[900]
+                emphasized: Colors.red[40]
             }
         },
-        backdrop: Colors.neutral[900]
+        backdrop: Colors.neutral[10]
     },
     border: {
         accent: {
-            faded: Colors.primary[350],
-            default: Colors.primary[900]
+            faded: Colors.primary[70],
+            default: Colors.primary[40]
         },
         neutral: {
-            faded: Colors.neutral[50],
-            default: Colors.neutral[200],
-            emphasized: Colors.neutral[550]
+            faded: Colors.neutral[90],
+            default: Colors.neutral[80],
+            emphasized: Colors.neutral[40]
         },
-        disabled: Colors.neutral[200],
-        focus: Colors.neutral[550],
+        disabled: Colors.neutral[80],
+        focus: Colors.neutral[40],
         info: {
-            banner: Colors.neutral[200],
-            faded: Colors.neutral[200],
-            default: Colors.neutral[550]
+            banner: Colors.neutral[80],
+            faded: Colors.neutral[80],
+            default: Colors.neutral[40]
         },
         success: {
-            banner: Colors.neutral[200],
-            faded: Colors.green[350],
-            default: Colors.green[900]
+            banner: Colors.neutral[80],
+            faded: Colors.green[60],
+            default: Colors.green[40]
         },
         warning: {
-            banner: Colors.neutral[200],
-            default: Colors.yellow[900]
+            banner: Colors.neutral[80],
+            default: Colors.yellow[60]
         },
         danger: {
-            banner: Colors.neutral[200],
-            faded: Colors.red[350],
-            default: Colors.red[900]
+            banner: Colors.neutral[80],
+            faded: Colors.red[80],
+            default: Colors.red[40]
         }
     },
     logo: {
-        free: Colors.brand.rushhour,
-        now: Colors.brand.rushhour,
-        subtitle: Colors.black
+        free: Colors.brand.freenow,
+        now: Colors.brand.freenow,
+        subtitle: Colors.black,
+        lyft: Colors.brand.lyft
     },
     shadow: {
-        default: Colors.neutral[200]
+        default: Colors.neutral[80]
     },
     chart: {
         '1': Colors.primary[50],
-        '2': Colors.primary[120],
-        '3': Colors.primary[350],
-        '4': Colors.primary[500],
-        '5': Colors.primary[950],
-        '6': Colors.primary[1100]
+        '2': Colors.primary[90],
+        '3': Colors.primary[70],
+        '4': Colors.primary[60],
+        '5': Colors.primary[30],
+        '6': Colors.primary[10]
     }
 } satisfies SemanticColorsSchema;
 
@@ -232,161 +260,162 @@ export const SemanticColorsDarkSchema = {
         primary: Colors.white,
         accent: {
             default: Colors.white,
-            emphasized: Colors.neutral[350]
+            emphasized: Colors.neutral[60]
         },
         neutral: {
-            faded: Colors.neutral[350],
-            default: Colors.neutral[350],
-            emphasized: Colors.neutral[200]
+            faded: Colors.neutral[60],
+            default: Colors.neutral[60],
+            emphasized: Colors.neutral[80]
         },
         'on-background': {
-            primary: Colors.primary[900],
-            accent: Colors.primary[900],
-            neutral: Colors.neutral[900],
-            disabled: Colors.neutral[350],
+            primary: Colors.primary[40],
+            accent: Colors.primary[40],
+            neutral: Colors.neutral[10],
+            disabled: Colors.neutral[60],
             info: Colors.white,
             success: Colors.white,
-            warning: Colors.neutral[900],
+            warning: Colors.neutral[10],
             danger: Colors.white
         },
-        disabled: Colors.neutral[550],
+        disabled: Colors.neutral[40],
         focus: Colors.white,
         info: {
             faded: Colors.white,
             default: Colors.white
         },
         success: {
-            default: Colors.green[900]
+            default: Colors.green[40]
         },
         warning: {
-            default: Colors.yellow[900]
+            default: Colors.yellow[60]
         },
         danger: {
-            default: Colors.red[900],
+            default: Colors.red[40],
             emphasized: Colors.primary[50]
         }
     },
     background: {
         page: {
-            default: Colors.neutral[800],
-            'elevation-0': Colors.neutral[900],
-            'elevation-1': Colors.neutral[750],
-            'elevation-2': Colors.neutral[650],
-            'elevation-3': Colors.neutral[550]
+            default: Colors.neutral[20],
+            'elevation-0': Colors.neutral[10],
+            'elevation-1': Colors.neutral[20],
+            'elevation-2': Colors.neutral[30],
+            'elevation-3': Colors.neutral[40]
         },
         element: {
             primary: {
-                default: Colors.neutral[50],
+                default: Colors.neutral[90],
                 emphasized: Colors.white
             },
             accent: {
-                faded: Colors.primary[1000],
-                default: Colors.primary[900],
-                emphasized: Colors.primary[350]
+                faded: Colors.primary[20],
+                default: Colors.primary[40],
+                emphasized: Colors.primary[70]
             },
             disabled: {
-                faded: Colors.neutral[650],
-                default: Colors.neutral[550]
+                faded: Colors.neutral[30],
+                default: Colors.neutral[40]
             },
             neutral: {
-                default: Colors.neutral[350],
+                default: Colors.neutral[60],
                 emphasized: Colors.white
             },
             info: {
-                default: Colors.neutral[350],
-                emphasized: Colors.neutral[550]
+                default: Colors.neutral[60],
+                emphasized: Colors.neutral[40]
             },
             success: {
-                default: Colors.green[50]
+                default: Colors.green[90]
             },
             warning: {
-                default: Colors.yellow[50]
+                default: Colors.yellow[97]
             },
             danger: {
-                faded: Colors.red[1000],
-                default: Colors.red[900],
-                emphasized: Colors.red[1000]
+                faded: Colors.red[30],
+                default: Colors.red[40],
+                emphasized: Colors.red[30]
             }
         },
         surface: {
             primary: {
-                default: Colors.neutral[550],
-                emphasized: Colors.neutral[200]
+                default: Colors.neutral[40],
+                emphasized: Colors.neutral[80]
             },
             neutral: {
-                faded: Colors.neutral[350],
-                default: Colors.neutral[550],
-                emphasized: Colors.neutral[550]
+                faded: Colors.neutral[60],
+                default: Colors.neutral[40],
+                emphasized: Colors.neutral[40]
             },
             info: {
-                faded: Colors.primary[900],
-                active: Colors.primary[900],
-                default: Colors.primary[1000],
-                emphasized: Colors.neutral[550]
+                faded: Colors.primary[40],
+                active: Colors.primary[40],
+                default: Colors.primary[20],
+                emphasized: Colors.neutral[40]
             },
             success: {
-                default: Colors.neutral[750],
-                emphasized: Colors.green[900]
+                default: Colors.neutral[20],
+                emphasized: Colors.green[40]
             },
             warning: {
-                default: Colors.neutral[750],
-                emphasized: Colors.yellow[900]
+                default: Colors.neutral[20],
+                emphasized: Colors.yellow[60]
             },
             danger: {
-                faded: Colors.red[1000],
-                default: Colors.neutral[750],
-                emphasized: Colors.red[900]
+                faded: Colors.red[30],
+                default: Colors.neutral[20],
+                emphasized: Colors.red[40]
             }
         },
-        backdrop: Colors.neutral[50]
+        backdrop: Colors.neutral[90]
     },
     border: {
         accent: {
-            faded: Colors.primary[350],
-            default: Colors.primary[350]
+            faded: Colors.primary[70],
+            default: Colors.primary[70]
         },
         neutral: {
-            faded: Colors.neutral[50],
-            default: Colors.neutral[200],
-            emphasized: Colors.neutral[50]
+            faded: Colors.neutral[90],
+            default: Colors.neutral[80],
+            emphasized: Colors.neutral[90]
         },
-        disabled: Colors.neutral[550],
-        focus: Colors.neutral[550],
+        disabled: Colors.neutral[40],
+        focus: Colors.neutral[40],
         info: {
-            banner: Colors.neutral[200],
-            faded: Colors.neutral[550],
-            default: Colors.neutral[550]
+            banner: Colors.neutral[80],
+            faded: Colors.neutral[40],
+            default: Colors.neutral[40]
         },
         success: {
-            banner: Colors.green[900],
-            faded: Colors.green[900],
-            default: Colors.green[900]
+            banner: Colors.green[40],
+            faded: Colors.green[40],
+            default: Colors.green[40]
         },
         warning: {
-            banner: Colors.yellow[900],
-            default: Colors.yellow[900]
+            banner: Colors.yellow[60],
+            default: Colors.yellow[60]
         },
         danger: {
-            banner: Colors.red[900],
-            faded: Colors.red[900],
-            default: Colors.red[900]
+            banner: Colors.red[40],
+            faded: Colors.red[40],
+            default: Colors.red[40]
         }
     },
     logo: {
-        free: Colors.brand.rushhour,
+        free: Colors.brand.freenow,
         now: Colors.white,
-        subtitle: Colors.white
+        subtitle: Colors.white,
+        lyft: Colors.white
     },
     shadow: {
-        default: Colors.neutral[650]
+        default: Colors.neutral[30]
     },
     chart: {
         '1': Colors.primary[50],
-        '2': Colors.primary[120],
-        '3': Colors.primary[150],
-        '4': Colors.primary[350],
-        '5': Colors.primary[500],
-        '6': Colors.primary[950]
+        '2': Colors.primary[90],
+        '3': Colors.primary[80],
+        '4': Colors.primary[70],
+        '5': Colors.primary[60],
+        '6': Colors.primary[30]
     }
 } satisfies SemanticColorsSchema;
 
