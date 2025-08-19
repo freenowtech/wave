@@ -1,8 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { getLocalTimeZone, today } from '@internationalized/date';
 import { Calendar } from '../Calendar';
 
-const TODAY = today(getLocalTimeZone());
+const TODAY = new Date();
 
 const meta: Meta = {
     title: 'Experimental/Components/Calendar',
@@ -12,7 +11,7 @@ const meta: Meta = {
     },
     args: {
         'aria-label': 'Appointment date',
-        defaultValue: TODAY
+        defaultMonth: TODAY
     }
 };
 
@@ -24,7 +23,7 @@ export const Default: Story = {};
 
 export const WithMinValue: Story = {
     args: {
-        minValue: TODAY
+        disabled: [{ before: TODAY }]
     }
 };
 
@@ -36,6 +35,7 @@ export const MultiMonth: Story = {
 
 export const RangeSelection: Story = {
     args: {
-        selectionType: 'range'
+        selectionType: 'range',
+        defaultMonth: TODAY
     }
 };

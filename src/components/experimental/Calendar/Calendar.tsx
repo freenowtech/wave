@@ -1,84 +1,77 @@
-import React, { ReactElement } from 'react';
-import {
-    Calendar as BaseCalendar,
-    CalendarProps as BaseCalendarProps,
-    RangeCalendarProps,
-    CalendarGridHeader,
-    CalendarGridBody,
-    DateValue,
-    RangeCalendar
-} from 'react-aria-components';
+import React from 'react';
+import { DayPicker, DayButton, getDefaultClassNames } from 'react-day-picker';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 
 import * as Styled from './Calendar.styled';
 
-type CalendarProps = { visibleMonths?: 1 | 2 | 3 } & (
-    | ({ selectionType?: 'single' } & Omit<BaseCalendarProps<DateValue>, 'visibleDuration'>)
-    | ({ selectionType: 'range' } & Omit<RangeCalendarProps<DateValue>, 'visibleDuration'>)
-);
+type Props = React.ComponentProps<typeof DayPicker> & {
+    selectionType?: 'single' | 'range';
+    visibleMonths?: 1 | 2 | 3;
+};
 
 function Calendar({
-    value,
-    minValue,
-    defaultValue,
-    maxValue,
-    onChange,
+    className,
+    classNames,
+    components,
     selectionType = 'single',
     visibleMonths = 1,
-    ...props
-}: CalendarProps): ReactElement {
-    const calendarInner = (
-        <>
-            <Styled.Header>
-                <Styled.Button slot="previous">
-                    <ChevronLeftIcon size={24} />
-                </Styled.Button>
-                <Styled.Heading />
-                <Styled.Button slot="next">
-                    <ChevronRightIcon size={24} />
-                </Styled.Button>
-            </Styled.Header>
-            <Styled.MonthGrid>
-                {Array.from({ length: visibleMonths }).map((_, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <Styled.CalendarGrid weekdayStyle="short" key={`month_${index}`} offset={{ months: index }}>
-                        <CalendarGridHeader>{weekDay => <Styled.WeekDay>{weekDay}</Styled.WeekDay>}</CalendarGridHeader>
-                        <CalendarGridBody>
-                            {date => (
-                                <Styled.Day date={date}>
-                                    {({ formattedDate }) =>
-                                        formattedDate.length > 1 ? formattedDate : `0${formattedDate}`
-                                    }
-                                </Styled.Day>
-                            )}
-                        </CalendarGridBody>
-                    </Styled.CalendarGrid>
-                ))}
-            </Styled.MonthGrid>
-        </>
-    );
+    captionLayout = 'label',
+    weekStartsOn = 1
+}: Props) {
+    const defaults = getDefaultClassNames();
 
-    if (selectionType === 'single') {
-        return (
-            <BaseCalendar
-                {...(props as BaseCalendarProps<DateValue>)}
-                visibleDuration={{ months: visibleMonths }}
-                data-selection-type="single"
-            >
-                {calendarInner}
-            </BaseCalendar>
-        );
-    }
+    const common = {
+        showOutsideDays: false,
+        numberOfMonths: visibleMonths,
+        weekStartsOn,
+        captionLayout,
+        classNames: {
+            root: defaults.root,
+            months: defaults.months,
+            month: defaults.month,
+            nav: defaults.nav,
+            button_previous: defaults.button_previous,
+            button_next: defaults.button_next,
+            month_caption: defaults.month_caption,
+            dropdowns: defaults.dropdowns,
+            dropdown_root: defaults.dropdown_root,
+            dropdown: defaults.dropdown,
+            caption_label: defaults.caption_label,
+            weekdays: defaults.weekdays,
+            weekday: defaults.weekday,
+            week: defaults.week,
+            week_number_header: defaults.week_number_header,
+            week_number: defaults.week_number,
+            day: defaults.day,
+            // Include range classes always, harmless in single mode
+            range_start: defaults.range_start,
+            range_middle: defaults.range_middle,
+            range_end: defaults.range_end,
+            today: defaults.today,
+            outside: defaults.outside,
+            disabled: defaults.disabled,
+            hidden: defaults.hidden,
+            ...classNames
+        },
+        components: {
+            Chevron: ({ orientation, ...p }: { orientation?: 'left' | 'right' }) => {
+                if (orientation === 'left') return <ChevronLeftIcon size={24} {...p} />;
+                if (orientation === 'right') return <ChevronRightIcon size={24} {...p} />;
+                return null as unknown as React.ReactElement;
+            },
+            DayButton: (dpProps: React.ComponentProps<typeof DayButton>) => <Styled.DayButton {...dpProps} />,
+            ...components
+        }
+    } satisfies Omit<React.ComponentProps<typeof DayPicker>, 'mode'>;
 
     return (
-        <RangeCalendar
-            {...(props as RangeCalendarProps<DateValue>)}
-            visibleDuration={{ months: visibleMonths }}
-            data-selection-type="range"
-        >
-            {calendarInner}
-        </RangeCalendar>
+        <Styled.Container className={className}>
+            <DayPicker
+                {...common}
+                {...(selectionType === 'range' ? ({ mode: 'range' } as const) : ({ mode: 'single' } as const))}
+            />
+        </Styled.Container>
     );
 }
 
