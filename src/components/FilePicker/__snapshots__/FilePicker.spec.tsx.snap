@@ -66,7 +66,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
 .c7 {
   color: inherit;
   font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto Flex","Open Sans",sans-serif;
   line-height: 1.4;
   margin: 0;
   font-size: 0.875rem;
@@ -75,7 +75,7 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
 .c8 {
   color: var(--wave-s-color-foreground-neutral-emphasized);
   font-size: 1rem;
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto Flex","Open Sans",sans-serif;
   line-height: 1.4;
   margin: 0;
   font-size: 0.875rem;
