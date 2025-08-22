@@ -239,4 +239,11 @@ export const DayButton = styled.button`
     &[data-selected-single='true'] {
         border-radius: 50%;
     }
+
+    /* Multiple selected days */
+    &[data-selected-multiple='true'] {
+        border-radius: 50%;
+        background: ${getSemanticValue('interactive-container')};
+        color: ${getSemanticValue('on-interactive-container')};
+    }
 `;

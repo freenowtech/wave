@@ -39,3 +39,10 @@ export const RangeSelection: Story = {
         defaultMonth: TODAY
     }
 };
+
+export const MultipleSelection: Story = {
+    args: {
+        selectionType: 'multiple',
+        defaultMonth: TODAY
+    }
+};

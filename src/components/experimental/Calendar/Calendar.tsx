@@ -7,7 +7,7 @@ import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 import * as Styled from './Calendar.styled';
 
 type Props = React.ComponentProps<typeof DayPicker> & {
-    selectionType?: 'single' | 'range';
+    selectionType?: 'single' | 'range' | 'multiple';
     visibleMonths?: 1 | 2 | 3;
 };
 
@@ -45,12 +45,20 @@ function Calendar({
         }
     } satisfies Omit<React.ComponentProps<typeof DayPicker>, 'mode'>;
 
+    const modeProps = (() => {
+        switch (selectionType) {
+            case 'range':
+                return { mode: 'range' } as const;
+            case 'multiple':
+                return { mode: 'multiple' } as const;
+            default:
+                return { mode: 'single' } as const;
+        }
+    })();
+
     return (
         <Styled.Container className={className}>
-            <DayPicker
-                {...common}
-                {...(selectionType === 'range' ? ({ mode: 'range' } as const) : ({ mode: 'single' } as const))}
-            />
+            <DayPicker {...common} {...modeProps} />
         </Styled.Container>
     );
 }
@@ -72,6 +80,9 @@ function CalendarDayButton({ day, modifiers, ...props }: React.ComponentProps<ty
             ref={ref}
             data-day={day.date.toLocaleDateString()}
             data-selected-single={
+                modifiers.selected && !modifiers.range_start && !modifiers.range_end && !modifiers.range_middle
+            }
+            data-selected-multiple={
                 modifiers.selected && !modifiers.range_start && !modifiers.range_end && !modifiers.range_middle
             }
             data-selected={modifiers.selected}
