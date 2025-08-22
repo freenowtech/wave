@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 
-// Root container that scopes all DayPicker styles
 export const Container = styled.div`
     /* Define react-day-picker CSS custom properties */
-    --rdp-accent-color: ${getSemanticValue('interactive')};
+    --rdp-accent-color: ${getSemanticValue('on-interactive-container')};
     --rdp-accent-background-color: ${getSemanticValue('interactive-container')};
     --rdp-animation_duration: 0.2s;
     --rdp-animation_timing: ease;
@@ -18,7 +17,7 @@ export const Container = styled.div`
     --rdp-selected-border: none;
     --rdp-disabled-opacity: 0.38;
     --rdp-outside-opacity: 0;
-    --rdp-today-color: ${getSemanticValue('on-surface')};
+    --rdp-today-color: ${getSemanticValue('accent')};
     --rdp-months-gap: 1.5rem;
     --rdp-nav_button-disabled-opacity: 0;
     --rdp-nav_button-height: 2.5rem;
@@ -134,7 +133,6 @@ export const Container = styled.div`
     }
 `;
 
-// Custom Day button used via components.DayButton
 export const DayButton = styled.button`
     position: relative;
     display: flex;
@@ -180,44 +178,65 @@ export const DayButton = styled.button`
     }
 
     /* Today's date */
-    &.rdp-day_today {
+    &[data-today='true'] {
         color: var(--rdp-today-color);
     }
 
     /* Selected day */
-    &.rdp-day_selected {
-        background: var(--rdp-accent-background-color);
-        color: var(--rdp-range_start-color);
+    &[data-selected='true'] {
+        background: ${getSemanticValue('interactive-container')};
+        color: ${getSemanticValue('on-interactive-container')};
         border: var(--rdp-selected-border);
     }
 
     /* Disabled and outside */
-    &.rdp-day_disabled {
+    &[data-disabled='true'] {
         opacity: var(--rdp-disabled-opacity);
+        cursor: not-allowed;
+
+        &:hover {
+            background: transparent;
+        }
     }
 
-    &.rdp-day_outside {
+    &[data-outside='true'] {
         opacity: var(--rdp-outside-opacity);
+        color: ${getSemanticValue('on-surface-variant')};
     }
 
-    /* Range selection rounding */
-    &.rdp-day_range_start.rdp-day_selected {
-        background: var(--rdp-range_start-background);
-        color: var(--rdp-range_start-color);
-        border-start-start-radius: var(--rdp-day_button-border-radius);
-        border-end-start-radius: var(--rdp-day_button-border-radius);
+    /* Focused state */
+    &[data-focused='true']::after {
+        outline: ${getSemanticValue('interactive')} solid 0.125rem;
+        outline-offset: 0.125rem;
     }
 
-    &.rdp-day_range_middle {
+    /* Range selection styling */
+    &[data-range-start='true'] {
+        background: ${getSemanticValue('interactive-container')};
+        color: ${getSemanticValue('on-interactive-container')};
+        border-start-start-radius: 50%;
+        border-end-start-radius: 50%;
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+    }
+
+    &[data-range-middle='true'] {
         border-radius: 0;
-        background: var(--rdp-range_middle-background-color);
-        color: var(--rdp-range_middle-color);
+        background: ${getSemanticValue('interactive-container')};
+        color: ${getSemanticValue('on-interactive-container')};
     }
 
-    &.rdp-day_range_end.rdp-day_selected {
-        background: var(--rdp-range_end-background);
-        color: var(--rdp-range_end-color);
-        border-start-end-radius: var(--rdp-day_button-border-radius);
-        border-end-end-radius: var(--rdp-day_button-border-radius);
+    &[data-range-end='true'] {
+        background: ${getSemanticValue('interactive-container')};
+        color: ${getSemanticValue('on-interactive-container')};
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+        border-start-end-radius: 50%;
+        border-end-end-radius: 50%;
+    }
+
+    /* Single selected day (not part of range) */
+    &[data-selected-single='true'] {
+        border-radius: 50%;
     }
 `;

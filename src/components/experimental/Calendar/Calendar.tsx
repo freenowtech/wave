@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { DayPicker, DayButton, getDefaultClassNames } from 'react-day-picker';
+import { format } from 'date-fns';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 
@@ -26,32 +27,11 @@ function Calendar({
         numberOfMonths: visibleMonths,
         weekStartsOn,
         captionLayout,
+        formatters: {
+            formatWeekdayName: (date, options?: { locale }) => format(date, 'eee', { locale: options?.locale })
+        },
         classNames: {
-            root: defaults.root,
-            months: defaults.months,
-            month: defaults.month,
-            nav: defaults.nav,
-            button_previous: defaults.button_previous,
-            button_next: defaults.button_next,
-            month_caption: defaults.month_caption,
-            dropdowns: defaults.dropdowns,
-            dropdown_root: defaults.dropdown_root,
-            dropdown: defaults.dropdown,
-            caption_label: defaults.caption_label,
-            weekdays: defaults.weekdays,
-            weekday: defaults.weekday,
-            week: defaults.week,
-            week_number_header: defaults.week_number_header,
-            week_number: defaults.week_number,
-            day: defaults.day,
-            // Include range classes always, harmless in single mode
-            range_start: defaults.range_start,
-            range_middle: defaults.range_middle,
-            range_end: defaults.range_end,
-            today: defaults.today,
-            outside: defaults.outside,
-            disabled: defaults.disabled,
-            hidden: defaults.hidden,
+            ...defaults,
             ...classNames
         },
         components: {
@@ -60,7 +40,7 @@ function Calendar({
                 if (orientation === 'right') return <ChevronRightIcon size={24} {...p} />;
                 return null as unknown as React.ReactElement;
             },
-            DayButton: (dpProps: React.ComponentProps<typeof DayButton>) => <Styled.DayButton {...dpProps} />,
+            DayButton: CalendarDayButton,
             ...components
         }
     } satisfies Omit<React.ComponentProps<typeof DayPicker>, 'mode'>;
@@ -72,6 +52,41 @@ function Calendar({
                 {...(selectionType === 'range' ? ({ mode: 'range' } as const) : ({ mode: 'single' } as const))}
             />
         </Styled.Container>
+    );
+}
+
+function CalendarDayButton({ day, modifiers, ...props }: React.ComponentProps<typeof DayButton>) {
+    const ref = useRef<HTMLButtonElement>(null);
+    const defaults = getDefaultClassNames();
+
+    useEffect(() => {
+        if (modifiers.focused) {
+            ref.current?.focus();
+        }
+    }, [modifiers.focused]);
+
+    const dayNumber = day.date.getDate().toString().padStart(2, '0');
+
+    return (
+        <Styled.DayButton
+            ref={ref}
+            data-day={day.date.toLocaleDateString()}
+            data-selected-single={
+                modifiers.selected && !modifiers.range_start && !modifiers.range_end && !modifiers.range_middle
+            }
+            data-selected={modifiers.selected}
+            data-today={modifiers.today}
+            data-outside={modifiers.outside}
+            data-disabled={modifiers.disabled}
+            data-range-start={modifiers.range_start}
+            data-range-end={modifiers.range_end && !modifiers.range_start}
+            data-range-middle={modifiers.range_middle}
+            data-focused={modifiers.focused}
+            className={defaults.day_button}
+            {...props}
+        >
+            {dayNumber}
+        </Styled.DayButton>
     );
 }
 
