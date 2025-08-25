@@ -6,14 +6,15 @@ import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 
 import * as Styled from './Calendar.styled';
 
-type Props = React.ComponentProps<typeof DayPicker> & {
+type Props = React.ComponentProps<Exclude<typeof DayPicker, 'mode' | 'classNames'>> & {
     selectionType?: 'single' | 'range' | 'multiple';
     visibleMonths?: 1 | 2 | 3;
+    internalClassNames?: React.ComponentProps<typeof DayPicker>['classNames'];
 };
 
 function Calendar({
     className,
-    classNames,
+    internalClassNames,
     components,
     selectionType = 'single',
     visibleMonths = 1,
@@ -32,7 +33,7 @@ function Calendar({
         },
         classNames: {
             ...defaults,
-            ...classNames
+            ...internalClassNames
         },
         components: {
             Chevron: ({ orientation, ...p }: { orientation?: 'left' | 'right' }) => {
