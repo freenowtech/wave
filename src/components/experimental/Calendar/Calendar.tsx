@@ -1,84 +1,104 @@
-import React, { ReactElement } from 'react';
-import {
-    Calendar as BaseCalendar,
-    CalendarProps as BaseCalendarProps,
-    RangeCalendarProps,
-    CalendarGridHeader,
-    CalendarGridBody,
-    DateValue,
-    RangeCalendar
-} from 'react-aria-components';
+import React, { useRef, useEffect } from 'react';
+import { DayPicker, DayButton, getDefaultClassNames } from 'react-day-picker';
+import { format } from 'date-fns';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 
 import * as Styled from './Calendar.styled';
 
-type CalendarProps = { visibleMonths?: 1 | 2 | 3 } & (
-    | ({ selectionType?: 'single' } & Omit<BaseCalendarProps<DateValue>, 'visibleDuration'>)
-    | ({ selectionType: 'range' } & Omit<RangeCalendarProps<DateValue>, 'visibleDuration'>)
-);
+type Props = React.ComponentProps<Exclude<typeof DayPicker, 'mode' | 'classNames'>> & {
+    selectionType?: 'single' | 'range' | 'multiple';
+    visibleMonths?: 1 | 2 | 3;
+    internalClassNames?: React.ComponentProps<typeof DayPicker>['classNames'];
+};
 
 function Calendar({
-    value,
-    minValue,
-    defaultValue,
-    maxValue,
-    onChange,
+    className,
+    internalClassNames,
+    components,
     selectionType = 'single',
     visibleMonths = 1,
-    ...props
-}: CalendarProps): ReactElement {
-    const calendarInner = (
-        <>
-            <Styled.Header>
-                <Styled.Button slot="previous">
-                    <ChevronLeftIcon size={24} />
-                </Styled.Button>
-                <Styled.Heading />
-                <Styled.Button slot="next">
-                    <ChevronRightIcon size={24} />
-                </Styled.Button>
-            </Styled.Header>
-            <Styled.MonthGrid>
-                {Array.from({ length: visibleMonths }).map((_, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <Styled.CalendarGrid weekdayStyle="short" key={`month_${index}`} offset={{ months: index }}>
-                        <CalendarGridHeader>{weekDay => <Styled.WeekDay>{weekDay}</Styled.WeekDay>}</CalendarGridHeader>
-                        <CalendarGridBody>
-                            {date => (
-                                <Styled.Day date={date}>
-                                    {({ formattedDate }) =>
-                                        formattedDate.length > 1 ? formattedDate : `0${formattedDate}`
-                                    }
-                                </Styled.Day>
-                            )}
-                        </CalendarGridBody>
-                    </Styled.CalendarGrid>
-                ))}
-            </Styled.MonthGrid>
-        </>
-    );
+    captionLayout = 'label',
+    weekStartsOn = 1
+}: Props) {
+    const defaults = getDefaultClassNames();
 
-    if (selectionType === 'single') {
-        return (
-            <BaseCalendar
-                {...(props as BaseCalendarProps<DateValue>)}
-                visibleDuration={{ months: visibleMonths }}
-                data-selection-type="single"
-            >
-                {calendarInner}
-            </BaseCalendar>
-        );
-    }
+    const common = {
+        showOutsideDays: false,
+        numberOfMonths: visibleMonths,
+        weekStartsOn,
+        captionLayout,
+        formatters: {
+            formatWeekdayName: (date, options?: { locale }) => format(date, 'eee', { locale: options?.locale })
+        },
+        classNames: {
+            ...defaults,
+            ...internalClassNames
+        },
+        components: {
+            Chevron: ({ orientation, ...p }: { orientation?: 'left' | 'right' }) => {
+                if (orientation === 'left') return <ChevronLeftIcon size={24} {...p} />;
+                if (orientation === 'right') return <ChevronRightIcon size={24} {...p} />;
+                return null as unknown as React.ReactElement;
+            },
+            DayButton: CalendarDayButton,
+            ...components
+        }
+    } satisfies Omit<React.ComponentProps<typeof DayPicker>, 'mode'>;
+
+    const modeProps = (() => {
+        switch (selectionType) {
+            case 'range':
+                return { mode: 'range' } as const;
+            case 'multiple':
+                return { mode: 'multiple' } as const;
+            default:
+                return { mode: 'single' } as const;
+        }
+    })();
 
     return (
-        <RangeCalendar
-            {...(props as RangeCalendarProps<DateValue>)}
-            visibleDuration={{ months: visibleMonths }}
-            data-selection-type="range"
+        <Styled.Container className={className}>
+            <DayPicker {...common} {...modeProps} />
+        </Styled.Container>
+    );
+}
+
+function CalendarDayButton({ day, modifiers, ...props }: React.ComponentProps<typeof DayButton>) {
+    const ref = useRef<HTMLButtonElement>(null);
+    const defaults = getDefaultClassNames();
+
+    useEffect(() => {
+        if (modifiers.focused) {
+            ref.current?.focus();
+        }
+    }, [modifiers.focused]);
+
+    const dayNumber = day.date.getDate().toString().padStart(2, '0');
+
+    return (
+        <Styled.DayButton
+            ref={ref}
+            data-day={day.date.toLocaleDateString()}
+            data-selected-single={
+                modifiers.selected && !modifiers.range_start && !modifiers.range_end && !modifiers.range_middle
+            }
+            data-selected-multiple={
+                modifiers.selected && !modifiers.range_start && !modifiers.range_end && !modifiers.range_middle
+            }
+            data-selected={modifiers.selected}
+            data-today={modifiers.today}
+            data-outside={modifiers.outside}
+            data-disabled={modifiers.disabled}
+            data-range-start={modifiers.range_start}
+            data-range-end={modifiers.range_end && !modifiers.range_start}
+            data-range-middle={modifiers.range_middle}
+            data-focused={modifiers.focused}
+            className={defaults.day_button}
+            {...props}
         >
-            {calendarInner}
-        </RangeCalendar>
+            {dayNumber}
+        </Styled.DayButton>
     );
 }
 
