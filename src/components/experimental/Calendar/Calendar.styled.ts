@@ -6,7 +6,7 @@ export const Container = styled.div`
     /* Define react-day-picker CSS custom properties */
     --rdp-accent-color: ${getSemanticValue('on-interactive-container')};
     --rdp-accent-background-color: ${getSemanticValue('interactive-container')};
-    --rdp-animation_duration: 0.2s;
+    --rdp-animation_duration: 200ms;
     --rdp-animation_timing: ease;
     --rdp-day-height: 2.5rem;
     --rdp-day-width: 2.5rem;
@@ -125,7 +125,9 @@ export const Container = styled.div`
     }
 
     .rdp-week {
-        margin-top: 0.125rem; /* match original row spacing */
+        /* match original row spacing */
+        margin-top: 0.125rem;
+
         /* Fixed 7-column grid to keep days aligned when outside days are hidden */
         display: grid;
         grid-template-columns: repeat(7, var(--rdp-day-width));
