@@ -11,7 +11,7 @@ const theme: DefaultTheme = {
         bold: 700
     },
     fonts: {
-        normal: fontStack(['Roboto Flex', 'Open Sans', 'sans-serif']),
+        normal: fontStack(['Roboto Flex Variable', 'Open Sans', 'sans-serif']),
         monospace: fontStack(['Hack', 'monospace'])
     },
     mediaQueries: MediaQueries,
