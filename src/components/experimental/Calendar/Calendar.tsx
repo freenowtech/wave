@@ -1,16 +1,22 @@
 import React, { useRef, useEffect } from 'react';
-import { DayPicker, DayButton, getDefaultClassNames } from 'react-day-picker';
+import { DayPicker, DayButton, getDefaultClassNames, DateRange } from 'react-day-picker';
 import { format } from 'date-fns';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 
 import * as Styled from './Calendar.styled';
 
-type Props = React.ComponentProps<Exclude<typeof DayPicker, 'mode' | 'classNames'>> & {
+type Props = {
+    className?: string;
+    internalClassNames?: React.ComponentProps<typeof DayPicker>['classNames'];
+    components?: React.ComponentProps<typeof DayPicker>['components'];
     selectionType?: 'single' | 'range' | 'multiple';
     visibleMonths?: 1 | 2 | 3;
-    internalClassNames?: React.ComponentProps<typeof DayPicker>['classNames'];
-};
+    captionLayout?: React.ComponentProps<typeof DayPicker>['captionLayout'];
+    weekStartsOn?: React.ComponentProps<typeof DayPicker>['weekStartsOn'];
+    selected?: Date | Date[] | DateRange;
+    onSelect?: (date: Date | Date[] | DateRange | undefined) => void;
+} & Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'classNames' | 'selected' | 'onSelect'>;
 
 function Calendar({
     className,
@@ -19,7 +25,10 @@ function Calendar({
     selectionType = 'single',
     visibleMonths = 1,
     captionLayout = 'label',
-    weekStartsOn = 1
+    weekStartsOn = 1,
+    selected,
+    onSelect,
+    ...restProps
 }: Props) {
     const defaults = getDefaultClassNames();
 
@@ -57,9 +66,17 @@ function Calendar({
         }
     })();
 
+    const dayPickerProps = {
+        ...common,
+        ...modeProps,
+        selected,
+        onSelect,
+        ...restProps
+    };
+
     return (
         <Styled.Container className={className}>
-            <DayPicker {...common} {...modeProps} />
+            <DayPicker {...(dayPickerProps as any)} />
         </Styled.Container>
     );
 }

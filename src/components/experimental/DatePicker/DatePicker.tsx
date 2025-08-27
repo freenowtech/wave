@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
     DatePicker as BaseDatePicker,
     DatePickerProps as BaseDatePickerProps,
@@ -6,6 +6,7 @@ import {
     Group
 } from 'react-aria-components';
 import styled from 'styled-components';
+import { CalendarDate } from '@internationalized/date';
 import { DropdownSelectIcon, DropupSelectIcon } from '../../../icons';
 import { CalendarTodayOutlineIcon } from '../../../icons/experimental';
 import { Calendar } from '../Calendar/Calendar';
@@ -13,6 +14,20 @@ import { FocusTrap, Popover } from '../Popover/Popover';
 import { DateField } from '../DateField/DateField';
 import { Button } from '../Field/Button';
 import { FieldProps } from '../Field/Props';
+
+function dateValueToDate(dateValue: DateValue | null | undefined): Date | undefined {
+    if (!dateValue) return undefined;
+    if (typeof dateValue === 'object' && 'toDate' in dateValue && typeof dateValue.toDate === 'function')
+        return dateValue.toDate('UTC');
+    if (typeof dateValue === 'object' && 'year' in dateValue && 'month' in dateValue && 'day' in dateValue)
+        return new Date(dateValue.year, dateValue.month - 1, dateValue.day);
+    return undefined;
+}
+
+function dateToDateValue(date: Date | undefined): DateValue | null {
+    if (!date) return null;
+    return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
+}
 
 interface DatePickerProps extends Pick<FieldProps, 'description' | 'errorMessage'>, BaseDatePickerProps<DateValue> {
     label?: string;
@@ -23,25 +38,56 @@ const StyledPopover = styled(Popover)`
     border-radius: 1.5rem;
 `;
 
-function DatePicker({ label, onChange, description, errorMessage, ...props }: DatePickerProps): ReactElement {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const positionRef = React.useRef(null);
-    const triggerRef = React.useRef(null);
+function DatePicker({
+    label,
+    onChange,
+    description,
+    errorMessage,
+    value,
+    defaultValue,
+    ...props
+}: DatePickerProps): ReactElement {
+    const [isOpen, setIsOpen] = useState(false);
+    const [internalValue, setInternalValue] = useState<DateValue | null>(value || defaultValue || null);
+    const positionRef = useRef(null);
+    const triggerRef = useRef(null);
 
-    const handleCalendarChange = React.useCallback(
-        (calendarDate: DateValue) => {
-            if (onChange) {
-                onChange(calendarDate);
-            }
+    const currentValue = value !== undefined ? value : internalValue;
+
+    const selectedDate = useMemo(() => dateValueToDate(currentValue), [currentValue]);
+
+    const handleCalendarChange = useCallback(
+        (date: Date | undefined) => {
+            const dateValue = dateToDateValue(date);
+            if (value === undefined) setInternalValue(dateValue);
+            onChange?.(dateValue);
             setIsOpen(false);
         },
-        [onChange]
+        [onChange, value]
     );
 
-    const toggleOpen = React.useCallback(() => setIsOpen(v => !v), []);
+    const handleDateFieldChange = useCallback(
+        (dateValue: DateValue) => {
+            if (value === undefined) setInternalValue(dateValue);
+            onChange?.(dateValue);
+        },
+        [onChange, value]
+    );
+
+    const toggleOpen = useCallback(() => setIsOpen(v => !v), []);
+
+    useEffect(() => {
+        if (value !== undefined) setInternalValue(value);
+    }, [value]);
 
     return (
-        <BaseDatePicker onChange={handleCalendarChange} aria-label={label} {...props} ref={positionRef}>
+        <BaseDatePicker
+            onChange={handleDateFieldChange}
+            aria-label={label}
+            value={currentValue}
+            {...props}
+            ref={positionRef}
+        >
             <Group>
                 <DateField
                     label={label}
@@ -66,7 +112,7 @@ function DatePicker({ label, onChange, description, errorMessage, ...props }: Da
                 shouldCloseOnInteractOutside={element => element !== triggerRef.current}
             >
                 <FocusTrap>
-                    <Calendar />
+                    <Calendar selected={selectedDate} onSelect={handleCalendarChange} selectionType="single" />
                 </FocusTrap>
             </StyledPopover>
         </BaseDatePicker>
