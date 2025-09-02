@@ -45,6 +45,7 @@ function DatePicker({
     errorMessage,
     value,
     defaultValue,
+    minValue,
     ...props
 }: DatePickerProps): ReactElement {
     const [isOpen, setIsOpen] = useState(false);
@@ -112,7 +113,12 @@ function DatePicker({
                 shouldCloseOnInteractOutside={element => element !== triggerRef.current}
             >
                 <FocusTrap>
-                    <Calendar selected={selectedDate} onSelect={handleCalendarChange} selectionType="single" />
+                    <Calendar
+                        selected={selectedDate}
+                        onSelect={handleCalendarChange}
+                        selectionType="single"
+                        disabled={[{ before: dateValueToDate(minValue) }]}
+                    />
                 </FocusTrap>
             </StyledPopover>
         </BaseDatePicker>
