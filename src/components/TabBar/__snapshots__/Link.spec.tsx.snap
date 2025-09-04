@@ -12,7 +12,7 @@ exports[`TabBar.Link has a bright color if selected 1`] = `
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto Flex Variable","Open Sans",sans-serif;
   margin-right: 1.5rem;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -53,7 +53,7 @@ exports[`TabBar.Link renders with default props 1`] = `
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  font-family: "Open Sans",sans-serif;
+  font-family: "Roboto Flex Variable","Open Sans",sans-serif;
   margin-right: 1.5rem;
   -webkit-text-decoration: none;
   text-decoration: none;
