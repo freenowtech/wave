@@ -19,3 +19,4 @@ export { default as StripeIcon } from './StripeIcon';
 export { default as VisaIcon } from './VisaIcon';
 export { default as WirecardIcon } from './WirecardIcon';
 export { default as PayPalIcon } from './PayPalIcon';
+export { default as CheckoutIcon } from './CheckoutIcon';
