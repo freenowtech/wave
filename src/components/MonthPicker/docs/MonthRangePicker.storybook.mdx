@@ -1,0 +1,31 @@
+import { Meta, ArgTypes, Primary, Story, Stories, Unstyled } from '@storybook/blocks';
+
+import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
+import * as MonthRangePickerStories from './MonthRangePicker.stories';
+
+<Meta of={MonthRangePickerStories} />
+
+# MonthRangePicker
+
+<Primary />
+
+### Properties
+
+<ArgTypes of={MonthRangePickerStories.Default} />
+
+<StyledSystemLinks component="MonthRangePicker" supportedProps={['margin', 'width']} />
+
+## Usage
+
+### Restricted dates range
+
+There are two ways to restrict selectable dates.
+
+If you need to allow months no later than some month or only after a certain month, use `minMonth` and `maxMonth`
+properties. They accept plain JavaScript `Date`.
+
+For example, the monthpicker allow to select Months Range (Mar-Nov 2025):
+
+<Story of={MonthRangePickerStories.MonthRangePickerWithMinMax} />
+
+<Stories includePrimary={false} />
