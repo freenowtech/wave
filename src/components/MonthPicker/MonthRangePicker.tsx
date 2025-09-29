@@ -71,7 +71,7 @@ const Forward = styled(NavButton)`
     right: 1.5rem;
 `;
 
-interface MonthRangePickerProps extends MarginProps, WidthProps {
+export interface MonthRangePickerProps extends MarginProps, WidthProps {
     onRangeSelect?: (start: Date | null, end: Date | null) => void;
     minMonth?: Date;
     maxMonth?: Date;

@@ -22,6 +22,7 @@ export { Tag, TagProps } from './Tag/Tag';
 export { InlineSpinner, InlineSpinnerProps } from './InlineSpinner/InlineSpinner';
 export { TabBar, TabBarWithLink as TabBarProps } from './TabBar/TabBar';
 export { DatePicker, DateRangePicker, DateRangePickerProps, DatePickerProps, DateRange } from './Datepicker';
+export { MonthRangePicker, MonthRangePickerProps } from './MonthPicker';
 export { Divider, DividerProps } from './Divider/Divider';
 export { Tooltip, TooltipProps } from './Tooltip/Tooltip';
 export { Toggle, ToggleProps } from './Toggle/Toggle';
