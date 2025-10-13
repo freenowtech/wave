@@ -28,31 +28,27 @@ export const MultiMonth: SingleStory = {
 
 export const SingleSelection: SingleStory = {
     args: { selectionType: 'single', defaultMonth: TODAY },
-    render: args => {
+    render: (args: SingleProps) => {
         const [date, setDate] = React.useState<Date | undefined>();
-        return <Calendar {...args} selected={date} onSelect={(v?: Date) => setDate(v)} />;
+        const handleSelect: SingleProps['onSelect'] = v => setDate(v);
+        return <Calendar {...args} selectionType="single" selected={date} onSelect={handleSelect} />;
     }
 };
 
 export const MultipleSelection: MultipleStory = {
     args: { selectionType: 'multiple', defaultMonth: TODAY },
-    render: args => {
+    render: (args: MultipleProps) => {
         const [dates, setDates] = React.useState<Date[]>([]);
-        return <Calendar {...args} selected={dates} onSelect={(v?: Date[]) => setDates(v ?? [])} />;
+        const handleSelect = (v?: Date[]) => setDates(v ?? []);
+        return <Calendar {...args} selectionType="multiple" selected={dates} onSelect={handleSelect} />;
     }
 };
 
 export const RangeSelection: RangeStory = {
     args: { selectionType: 'range', defaultMonth: TODAY },
-    render: args => {
+    render: (args: RangeProps) => {
         const [range, setRange] = React.useState<Range | undefined>();
-        return <Calendar {...args} selected={range} onSelect={(v?: Range) => setRange(v)} />;
-    }
-};
-
-export const MultipleSelection: Story = {
-    args: {
-        selectionType: 'multiple',
-        defaultMonth: TODAY
+        const handleSelect: RangeProps['onSelect'] = v => setRange(v);
+        return <Calendar {...args} selectionType="range" selected={range} onSelect={handleSelect} />;
     }
 };

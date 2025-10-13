@@ -12,6 +12,7 @@ export const ChipRemoveButton = styled(BaseButton)`
     align-items: center;
     justify-content: center;
     border-radius: 999px;
+
     /* tweak hover/focus styles as you like */
     &:hover {
         background: var(--surface-variant);

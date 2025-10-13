@@ -1,18 +1,22 @@
 import React, { useRef, useEffect, useMemo } from 'react';
-import { DateRange, DayPicker, DayButton as RdpDayButton, getDefaultClassNames } from 'react-day-picker';
+import {
+    DayPicker,
+    DayButton as RdpDayButton,
+    getDefaultClassNames,
+    type DateRange as RdpRange
+} from 'react-day-picker';
 import { format } from 'date-fns';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 import * as Styled from './Calendar.styled';
 
-export type Range = { from?: Date; to?: Date };
+export type Range = RdpRange;
 
 type BaseProps = Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'selected' | 'onSelect'> & {
     visibleMonths?: 1 | 2 | 3;
     captionLayout?: React.ComponentProps<typeof DayPicker>['captionLayout'];
     weekStartsOn?: React.ComponentProps<typeof DayPicker>['weekStartsOn'];
-    selected?: Date | Date[] | DateRange;
-    onSelect?: (date: Date | Date[] | DateRange | undefined) => void;
+    selected?: Date | Date[] | RdpRange;
 } & Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'classNames' | 'selected' | 'onSelect'>;
 
 export type SingleProps = BaseProps & {

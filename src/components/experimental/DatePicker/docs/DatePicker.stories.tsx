@@ -1,6 +1,7 @@
 import React from 'react';
-import { StoryObj, Meta } from '@storybook/react';
+import type { DateRange as RdpRange } from 'react-day-picker';
 import { getLocalTimeZone, today } from '@internationalized/date';
+import { Meta, StoryObj } from '@storybook/react';
 import { DatePicker } from '../DatePicker';
 
 const meta: Meta = {
@@ -51,11 +52,10 @@ export const MultipleSelection: Story = {
 
 export const RangeSelection: Story = {
     render: args => {
-        const [range, setRange] = React.useState<{ from?: Date; to?: Date }>();
+        const [range, setRange] = React.useState<RdpRange | undefined>(undefined);
         return <DatePicker {...args} mode="range" visibleMonths={2} value={range} onChange={setRange} />;
     }
 };
-
 export const Disabled: Story = {
     args: {
         isDisabled: true

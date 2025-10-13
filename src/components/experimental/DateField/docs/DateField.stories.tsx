@@ -3,15 +3,14 @@ import { StoryObj, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { getLocalTimeZone, today } from '@internationalized/date';
 import { DateField } from '../DateField';
+import type { DateFieldProps } from '../DateField';
 import CalendarTodayOutlineIcon from '../../../../icons/experimental/CalendarTodayOutlineIcon';
 import DropdownSelectIcon from '../../../../icons/arrows/DropdownSelectIcon';
 
-const meta: Meta = {
+const meta: Meta<DateFieldProps> = {
     title: 'Experimental/Components/DateField',
-    component: DateField,
-    parameters: {
-        layout: 'centered'
-    },
+    component: DateField as React.ComponentType<DateFieldProps>,
+    parameters: { layout: 'centered' },
     decorators: [
         (Story: React.FC): JSX.Element => (
             <div style={{ width: '168px' }}>
@@ -20,17 +19,18 @@ const meta: Meta = {
         )
     ],
     args: {
-        label: 'Appointment date'
+        label: 'Appointment date',
+        variant: 'segments'
     }
 };
 
 export default meta;
 
-type Story = StoryObj<typeof DateField>;
-
-export const Default: Story = {};
+type Story = StoryObj<DateFieldProps>;
 
 const TODAY = today(getLocalTimeZone());
+
+export const Default: Story = {};
 
 export const WithDefaultValue: Story = {
     args: {
@@ -46,9 +46,9 @@ export const WithDescription: Story = {
 
 export const WithValidation: Story = {
     args: {
-        label: 'Only from today'
-    },
-    render: args => <DateField {...args} variant="segments" minValue={TODAY} />
+        label: 'Only from today',
+        minValue: TODAY
+    }
 };
 
 export const Disabled: Story = {
@@ -80,5 +80,17 @@ export const WithLeadingIcon: Story = {
 export const WithActionIcon: Story = {
     args: {
         actionIcon: <DropdownSelectIcon onClick={action('Show dropdown')} />
+    }
+};
+
+export const TextVariant: Story = {
+    args: {
+        variant: 'text',
+        placeholder: 'dd / mm / yyyy',
+        description: 'Free-typed date string'
+    },
+    render: (args: Extract<DateFieldProps, { variant: 'text' }>) => {
+        const [val, setVal] = React.useState('');
+        return <DateField {...args} value={val} onChange={setVal} actionIcon={<DropdownSelectIcon />} />;
     }
 };

@@ -2,7 +2,7 @@ import { format as dfFormat, isValid as dfIsValid, parse as dfParse } from 'date
 import React from 'react';
 import styled from 'styled-components';
 
-import type { Matcher } from 'react-day-picker';
+import type { Matcher, DateRange as RdpRange } from 'react-day-picker';
 import { DropdownSelectIcon, DropupSelectIcon } from '../../../icons';
 import { CalendarTodayOutlineIcon } from '../../../icons/experimental';
 import { Calendar } from '../Calendar/Calendar';
@@ -12,7 +12,7 @@ import type { FieldProps } from '../Field/Props';
 import { FocusTrap, Popover } from '../Popover/Popover';
 import { Chip, ChipRemoveButton, Chips } from './DatePicker.styled';
 
-type DateRange = { from?: Date; to?: Date } | undefined;
+type DateRange = RdpRange | undefined;
 
 type CommonProps = Pick<FieldProps, 'description' | 'errorMessage'> & {
     label?: string;
@@ -253,11 +253,11 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
     );
 
     const handleSelectRange = React.useCallback(
-        (range?: { from?: Date; to?: Date }) => {
+        (range?: RdpRange) => {
             const { onChange } = props as RangeProps;
             onChange(range);
             if (range?.from || range?.to) {
-                const a = range?.from ? dfFormat(range.from, displayFormat, { locale }) : '';
+                const a = range.from ? dfFormat(range.from, displayFormat, { locale }) : '';
                 const b = range?.to ? dfFormat(range.to, displayFormat, { locale }) : '';
                 setText(a || b ? `${a}${sepForRange}${b}` : '');
             }

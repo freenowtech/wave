@@ -10,12 +10,14 @@ import { DateInput } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { FieldProps } from '../Field/Props';
 
-type SegmentedProps = FieldProps &
+type TextOnlyKeys = 'value' | 'onChange' | 'placeholder' | 'inputProps';
+
+export type SegmentedProps = Omit<FieldProps, TextOnlyKeys> &
     BaseDateFieldProps<DateValue> & {
-        variant?: 'segments';
+        variant: 'segments';
     };
 
-type TextProps = FieldProps & {
+export type TextProps = FieldProps & {
     variant: 'text';
     value: string;
     onChange: (v: string) => void;
@@ -33,6 +35,12 @@ type TextProps = FieldProps & {
 
 export type DateFieldProps = SegmentedProps | TextProps;
 
+// overloads to preserve good inference with forwardRef
+export interface DateFieldOverloads {
+    (props: SegmentedProps & React.RefAttributes<HTMLDivElement>): JSX.Element;
+    (props: TextProps & React.RefAttributes<HTMLDivElement>): JSX.Element;
+}
+
 const inputStyle: React.CSSProperties = {
     border: 0,
     outline: 0,
@@ -43,7 +51,7 @@ const inputStyle: React.CSSProperties = {
     padding: 0
 };
 
-const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwardedRef) => {
+const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwardedRef) => {
     if (props.variant === 'text') {
         const {
             label,
@@ -65,7 +73,6 @@ const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwa
                     {leadingIcon}
                     <InnerWrapper>
                         {label && <Label $flying>{label}</Label>}
-                        {/* Plain input for free-typed date text */}
                         <input
                             value={value}
                             onChange={e => onChange(e.target.value)}
@@ -81,7 +88,7 @@ const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwa
         );
     }
 
-    // Default: keep original segmented DateField behavior
+    // default segmented behavior (react-aria)
     const { label, description, errorMessage, leadingIcon, actionIcon, isVisuallyFocused = false, ...rest } = props;
     return (
         <Wrapper ref={forwardedRef}>
@@ -104,4 +111,6 @@ const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwa
     );
 });
 
-export { DateField };
+// we cast to an overload interface to keep better call signatures
+// with variant-discriminated props when using forwardRef.
+export const DateField = DateFieldInner as unknown as DateFieldOverloads;
