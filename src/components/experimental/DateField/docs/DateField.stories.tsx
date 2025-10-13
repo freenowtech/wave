@@ -48,7 +48,7 @@ export const WithValidation: Story = {
     args: {
         label: 'Only from today'
     },
-    render: args => <DateField {...args} minValue={TODAY} />
+    render: args => <DateField {...args} variant="segments" minValue={TODAY} />
 };
 
 export const Disabled: Story = {

@@ -42,6 +42,20 @@ export const WithValidation: Story = {
     render: args => <DatePicker {...args} minValue={TODAY} />
 };
 
+export const MultipleSelection: Story = {
+    render: args => {
+        const [dates, setDates] = React.useState<Date[]>([]);
+        return <DatePicker {...args} mode="multiple" visibleMonths={2} value={dates} onChange={setDates} />;
+    }
+};
+
+export const RangeSelection: Story = {
+    render: args => {
+        const [range, setRange] = React.useState<{ from?: Date; to?: Date }>();
+        return <DatePicker {...args} mode="range" visibleMonths={2} value={range} onChange={setRange} />;
+    }
+};
+
 export const Disabled: Story = {
     args: {
         isDisabled: true

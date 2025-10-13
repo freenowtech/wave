@@ -10,15 +10,82 @@ import { DateInput } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { FieldProps } from '../Field/Props';
 
-type DateFieldProps = FieldProps & BaseDateFieldProps<DateValue>;
+type SegmentedProps = FieldProps &
+    BaseDateFieldProps<DateValue> & {
+        variant?: 'segments';
+    };
 
-const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
-    (
-        { label, description, errorMessage, leadingIcon, actionIcon, isVisuallyFocused = false, ...props },
-        forwardedRef
-    ) => (
-        <Wrapper>
-            <BaseDateField {...props} ref={forwardedRef}>
+type TextProps = FieldProps & {
+    variant: 'text';
+    value: string;
+    onChange: (v: string) => void;
+    placeholder?: string;
+    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    id?: string;
+    name?: string;
+    isVisuallyFocused?: boolean;
+    leadingIcon?: React.ReactNode;
+    actionIcon?: React.ReactNode;
+    errorMessage?: React.ReactNode;
+    description?: React.ReactNode;
+    isInvalid?: boolean;
+};
+
+export type DateFieldProps = SegmentedProps | TextProps;
+
+const inputStyle: React.CSSProperties = {
+    border: 0,
+    outline: 0,
+    background: 'transparent',
+    width: '100%',
+    font: 'inherit',
+    color: 'inherit',
+    padding: 0
+};
+
+const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwardedRef) => {
+    if (props.variant === 'text') {
+        const {
+            label,
+            description,
+            errorMessage,
+            isInvalid,
+            leadingIcon,
+            actionIcon,
+            isVisuallyFocused = false,
+            value,
+            onChange,
+            placeholder,
+            inputProps
+        } = props;
+
+        return (
+            <Wrapper ref={forwardedRef}>
+                <FakeInput $isVisuallyFocused={isVisuallyFocused}>
+                    {leadingIcon}
+                    <InnerWrapper>
+                        {label && <Label $flying>{label}</Label>}
+                        {/* Plain input for free-typed date text */}
+                        <input
+                            value={value}
+                            onChange={e => onChange(e.target.value)}
+                            placeholder={placeholder}
+                            style={inputStyle}
+                            {...inputProps}
+                        />
+                    </InnerWrapper>
+                    {actionIcon}
+                </FakeInput>
+                <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
+            </Wrapper>
+        );
+    }
+
+    // Default: keep original segmented DateField behavior
+    const { label, description, errorMessage, leadingIcon, actionIcon, isVisuallyFocused = false, ...rest } = props;
+    return (
+        <Wrapper ref={forwardedRef}>
+            <BaseDateField {...rest}>
                 {({ isInvalid }) => (
                     <>
                         <FakeInput $isVisuallyFocused={isVisuallyFocused}>
@@ -34,7 +101,7 @@ const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
                 )}
             </BaseDateField>
         </Wrapper>
-    )
-);
+    );
+});
 
-export { DateField, DateFieldProps };
+export { DateField };
