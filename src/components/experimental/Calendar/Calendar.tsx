@@ -12,6 +12,8 @@ import * as Styled from './Calendar.styled';
 
 export type Range = RdpRange;
 
+type DateFnsFormatOptions = Parameters<typeof format>[2];
+
 type BaseProps = Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'selected' | 'onSelect'> & {
     visibleMonths?: 1 | 2 | 3;
     captionLayout?: React.ComponentProps<typeof DayPicker>['captionLayout'];
@@ -71,9 +73,7 @@ export function Calendar(props: CalendarProps): JSX.Element {
         weekStartsOn,
         captionLayout,
         formatters: {
-            formatWeekdayName: (date, options?: { locale: unknown }) =>
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                format(date, 'eee', { locale: (options as any)?.locale })
+            formatWeekdayName: (date, options?: DateFnsFormatOptions) => format(date, 'eee', options)
         },
         classNames: { ...defaults, ...classNames },
         components: {
