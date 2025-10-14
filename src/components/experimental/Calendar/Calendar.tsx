@@ -41,6 +41,8 @@ export type RangeProps = BaseProps & {
 
 export type CalendarProps = SingleProps | MultipleProps | RangeProps;
 
+const SelectionTypeContext = React.createContext<SelectionType>('single');
+
 export function Calendar(props: SingleProps): JSX.Element;
 export function Calendar(props: MultipleProps): JSX.Element;
 export function Calendar(props: RangeProps): JSX.Element;
@@ -61,11 +63,13 @@ export function Calendar(props: CalendarProps): JSX.Element {
     const selectionType = props.selectionType ?? 'single';
     const defaults = getDefaultClassNames();
 
-    const DayBtn = useMemo(
-        () => (p: React.ComponentProps<typeof RdpDayButton>) =>
-            <CalendarDayButton selectionType={selectionType} {...p} />,
-        [selectionType]
-    );
+    const MemoCalendarDayButton = React.memo(CalendarDayButton);
+    MemoCalendarDayButton.displayName = 'MemoCalendarDayButton';
+
+    const DayButtonComp = (p: React.ComponentProps<typeof RdpDayButton>) => {
+        const ctxSelectionType = React.useContext(SelectionTypeContext);
+        return <MemoCalendarDayButton selectionType={ctxSelectionType} {...p} />;
+    };
 
     const common = {
         showOutsideDays: false,
@@ -82,7 +86,7 @@ export function Calendar(props: CalendarProps): JSX.Element {
                 if (orientation === 'right') return <ChevronRightIcon size={24} {...p} />;
                 return null as unknown as React.ReactElement;
             },
-            DayButton: DayBtn,
+            DayButton: DayButtonComp,
             ...(components ?? {})
         },
         ...rest
