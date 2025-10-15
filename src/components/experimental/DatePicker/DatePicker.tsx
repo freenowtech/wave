@@ -32,6 +32,8 @@ type CommonProps = Pick<FieldProps, 'description' | 'errorMessage'> & {
     /** ids */
     id?: string;
     name?: string;
+    /** focus input on mount */
+    autoFocus: boolean;
 };
 
 type SingleProps = CommonProps & {
@@ -98,7 +100,8 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
         minValue,
         maxValue,
         isDisabled,
-        isInvalid
+        isInvalid,
+        autoFocus
     } = props;
 
     // legacy compat
@@ -330,6 +333,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                         'aria-controls': contentId,
                         'aria-autocomplete': 'none',
                         readOnly,
+                        autoFocus,
                         onBlur: event => {
                             const nextEl = event.relatedTarget as HTMLElement | null;
                             if (nextEl && nextEl === triggerRef.current) return;

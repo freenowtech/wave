@@ -23,6 +23,8 @@ export type TextProps = FieldProps & {
     onChange: (v: string) => void;
     placeholder?: string;
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    // allow passing autoFocus at the top level
+    autoFocus?: boolean;
     id?: string;
     name?: string;
     isVisuallyFocused?: boolean;
@@ -31,6 +33,7 @@ export type TextProps = FieldProps & {
     errorMessage?: React.ReactNode;
     description?: React.ReactNode;
     isInvalid?: boolean;
+    isDisabled?: boolean;
 };
 
 export type DateFieldProps = SegmentedProps | TextProps;
@@ -64,8 +67,16 @@ const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, 
             value,
             onChange,
             placeholder,
-            inputProps
+            inputProps,
+            autoFocus,
+            isDisabled
         } = props;
+
+        const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+        React.useEffect(() => {
+            if (autoFocus && !isDisabled) queueMicrotask(() => inputRef.current?.focus());
+        }, [autoFocus, isDisabled]);
 
         return (
             <Wrapper ref={forwardedRef}>
@@ -74,6 +85,7 @@ const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, 
                     <InnerWrapper>
                         {label && <Label $flying>{label}</Label>}
                         <input
+                            ref={inputRef}
                             value={value}
                             onChange={e => onChange(e.target.value)}
                             placeholder={placeholder}

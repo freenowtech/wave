@@ -94,3 +94,26 @@ export const TextVariant: Story = {
         return <DateField {...args} value={val} onChange={setVal} actionIcon={<DropdownSelectIcon />} />;
     }
 };
+
+export const TextVariantAutoFocus: Story = {
+    args: {
+        variant: 'text',
+        label: 'Auto-focused text date',
+        placeholder: 'dd / mm / yyyy',
+        description: 'This text field should receive focus on mount.',
+        autoFocus: true
+    },
+    render: (args: Extract<DateFieldProps, { variant: 'text' }>) => {
+        const [val, setVal] = React.useState('');
+        return <DateField {...args} value={val} onChange={setVal} actionIcon={<DropdownSelectIcon />} />;
+    }
+};
+
+export const SegmentsAutoFocus: Story = {
+    args: {
+        variant: 'segments',
+        label: 'Auto-focused segmented date',
+        defaultValue: TODAY,
+        autoFocus: true
+    }
+};
