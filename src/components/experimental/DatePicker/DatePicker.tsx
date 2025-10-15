@@ -2,6 +2,8 @@ import { format as dfFormat, isValid as dfIsValid, parse as dfParse } from 'date
 import React from 'react';
 import styled from 'styled-components';
 
+import { CalendarDate, fromDate, getLocalTimeZone, type DateValue } from '@internationalized/date';
+
 import type { Matcher, DateRange as RdpRange } from 'react-day-picker';
 import { DropdownSelectIcon, DropupSelectIcon } from '../../../icons';
 import { CalendarTodayOutlineIcon } from '../../../icons/experimental';
@@ -13,6 +15,8 @@ import { FocusTrap, Popover } from '../Popover/Popover';
 import { Chip, ChipRemoveButton, Chips } from './DatePicker.styled';
 
 type DateRange = RdpRange | undefined;
+
+type Mode = 'single' | 'multiple' | 'range';
 
 type CommonProps = Pick<FieldProps, 'description' | 'errorMessage'> & {
     label?: string;
@@ -110,6 +114,8 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
     const legacyMaxValue = maxValue;
     const legacyIsDisabled = isDisabled;
 
+    const modeLocal: Mode = (props as { mode?: Mode }).mode ?? 'single';
+
     const minDateCompat = toJSDate(legacyMinValue) ?? minDate;
     const maxDateCompat = toJSDate(legacyMaxValue) ?? maxDate;
 
@@ -120,23 +126,23 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
     const positionRef = React.useRef<HTMLDivElement | null>(null);
     const triggerRef = React.useRef<HTMLButtonElement | null>(null);
     const contentId = React.useId();
-    const inputId = id ?? `dp-${mode}`;
+    const inputId = id ?? `dp-${modeLocal}`;
 
     // current values by mode
-    const isControlledSingle = mode === 'single' && (props as SingleProps).value instanceof Date;
+    const isControlledSingle = modeLocal === 'single' && (props as SingleProps).value instanceof Date;
     const singleSource: Date | null =
-        mode === 'single' ? (isControlledSingle ? (props as SingleProps).value : internalSingle) : null;
-    const singleValue = mode === 'single' ? (props as SingleProps).value : null;
-    const multipleValue = mode === 'multiple' ? (props as MultipleProps).value : undefined;
-    const rangeValue = mode === 'range' ? (props as RangeProps).value : undefined;
+        modeLocal === 'single' ? (isControlledSingle ? (props as SingleProps).value : internalSingle) : null;
+    const singleValue = modeLocal === 'single' ? (props as SingleProps).value : null;
+    const multipleValue = modeLocal === 'multiple' ? (props as MultipleProps).value : undefined;
+    const rangeValue = modeLocal === 'range' ? (props as RangeProps).value : undefined;
 
-    const sepForRange = React.useMemo<string>(() => getSeparator(props), [mode, (props as RangeProps).separator]);
+    const sepForRange = React.useMemo<string>(() => getSeparator(props), [modeLocal, (props as RangeProps).separator]);
 
     const neutralPlaceholder =
         placeholder ??
-        (mode === 'range'
+        (modeLocal === 'range'
             ? `dd / mm / yyyy${sepForRange}dd / mm / yyyy`
-            : mode === 'multiple'
+            : modeLocal === 'multiple'
             ? 'Select dates'
             : 'dd / mm / yyyy');
 
@@ -145,22 +151,22 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
 
     // visible month
     const [month, setMonth] = React.useState<Date | undefined>(
-        mode === 'single'
+        modeLocal === 'single'
             ? singleValue ?? initialMonth
-            : mode === 'multiple'
+            : modeLocal === 'multiple'
             ? multipleValue?.[0] ?? initialMonth
             : rangeValue?.from ?? initialMonth
     );
 
     React.useEffect(() => {
-        if (mode === 'single') {
+        if (modeLocal === 'single') {
             const source = singleSource;
             setText(source ? dfFormat(source, displayFormat, { locale }) : '');
             if (source) setMonth(source);
             return;
         }
 
-        if (mode === 'range') {
+        if (modeLocal === 'range') {
             const a = rangeValue?.from ? dfFormat(rangeValue.from, displayFormat, { locale }) : '';
             const b = rangeValue?.to ? dfFormat(rangeValue.to, displayFormat, { locale }) : '';
             setText(a || b ? `${a}${sepForRange}${b}` : '');
@@ -172,7 +178,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
         // multiple
         if (multipleValue?.[0]) setMonth(multipleValue[0]);
     }, [
-        mode,
+        modeLocal,
         displayFormat,
         locale,
         singleSource?.getTime?.(),
@@ -304,80 +310,113 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
     return (
         <div ref={positionRef} aria-label={label}>
             <div style={{ position: 'relative' }}>
-                <DateField
-                    variant="text"
-                    id={inputId}
-                    name={name}
-                    label={label}
-                    description={description}
-                    errorMessage={errorMessage}
-                    isInvalid={isInvalid}
-                    isVisuallyFocused={open}
-                    leadingIcon={<CalendarTodayOutlineIcon />}
-                    value={inputValue}
-                    placeholder={neutralPlaceholder}
-                    onChange={(v: string) => {
-                        if (readOnly) return;
-                        setText(v);
-                        // optimistic month update for valid partials
-                        const tmp =
-                            mode === 'single'
-                                ? tryParse(v, displayFormat, locale)
-                                : tryParse(v.split(sepForRange)[0]?.trim(), displayFormat, locale);
-                        if (tmp) setMonth(tmp);
-                    }}
-                    inputProps={{
-                        role: 'combobox',
-                        'aria-haspopup': 'dialog',
-                        'aria-expanded': open,
-                        'aria-controls': contentId,
-                        'aria-autocomplete': 'none',
-                        readOnly,
-                        autoFocus,
-                        onBlur: event => {
-                            const nextEl = event.relatedTarget as HTMLElement | null;
-                            if (nextEl && nextEl === triggerRef.current) return;
-                            if (mode === 'single') commitSingle(event.currentTarget.value);
-                            else if (mode === 'range') commitRange(event.currentTarget.value, sepForRange);
-                        },
-                        onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
-                            switch (event.key) {
-                                case 'ArrowDown':
-                                    event.preventDefault();
-                                    setOpen(true);
-                                    break;
-                                case 'Enter': {
-                                    const v = (event.target as HTMLInputElement).value;
-                                    if (mode === 'single') commitSingle(v);
-                                    else if (mode === 'range') commitRange(v, sepForRange);
-                                    break;
-                                }
-                                case 'Escape':
-                                    setOpen(false);
-                                    break;
-                                default:
-                                    break;
-                            }
+                {mode === 'single' ? (
+                    <DateField
+                        variant="segments"
+                        id={inputId}
+                        name={name}
+                        label={label}
+                        description={description}
+                        errorMessage={errorMessage}
+                        isInvalid={isInvalid}
+                        isVisuallyFocused={open}
+                        leadingIcon={<CalendarTodayOutlineIcon />}
+                        value={singleSource ? dateToCalendarDate(singleSource) : undefined}
+                        onChange={(dv: DateValue | null | undefined) => {
+                            const next = dv ? calendarDateToDate(dv) : null;
+                            handleSelectSingle(next);
+                        }}
+                        autoFocus={autoFocus}
+                        actionIcon={
+                            <Button
+                                ref={triggerRef}
+                                isDisabled={legacyIsDisabled}
+                                onPress={() => !legacyIsDisabled && setOpen(v => !v)}
+                                aria-haspopup="dialog"
+                                aria-expanded={open}
+                                aria-controls={contentId}
+                                aria-label={label ? `${label}: open calendar` : 'Open calendar'}
+                            >
+                                {open ? <DropupSelectIcon /> : <DropdownSelectIcon />}
+                            </Button>
                         }
-                    }}
-                    actionIcon={
-                        <Button
-                            ref={triggerRef}
-                            isDisabled={legacyIsDisabled}
-                            onPress={() => !legacyIsDisabled && setOpen(v => !v)}
-                            aria-haspopup="dialog"
-                            aria-expanded={open}
-                            aria-controls={contentId}
-                            aria-label={label ? `${label}: open calendar` : 'Open calendar'}
-                        >
-                            {open ? <DropupSelectIcon /> : <DropdownSelectIcon />}
-                        </Button>
-                    }
-                />
+                    />
+                ) : (
+                    <DateField
+                        variant="text"
+                        id={inputId}
+                        name={name}
+                        label={label}
+                        description={description}
+                        errorMessage={errorMessage}
+                        isInvalid={isInvalid}
+                        isVisuallyFocused={open}
+                        leadingIcon={<CalendarTodayOutlineIcon />}
+                        value={inputValue}
+                        placeholder={neutralPlaceholder}
+                        onChange={(v: string) => {
+                            if (readOnly) return;
+                            setText(v);
+                            // optimistic month update for valid partials
+                            const tmp =
+                                modeLocal === 'single'
+                                    ? tryParse(v, displayFormat, locale)
+                                    : tryParse(v.split(sepForRange)[0]?.trim(), displayFormat, locale);
+                            if (tmp) setMonth(tmp);
+                        }}
+                        inputProps={{
+                            role: 'combobox',
+                            'aria-haspopup': 'dialog',
+                            'aria-expanded': open,
+                            'aria-controls': contentId,
+                            'aria-autocomplete': 'none',
+                            readOnly,
+                            autoFocus,
+                            onBlur: event => {
+                                const nextEl = event.relatedTarget as HTMLElement | null;
+                                if (nextEl && nextEl === triggerRef.current) return;
+                                if (modeLocal === 'single') commitSingle(event.currentTarget.value);
+                                else if (modeLocal === 'range') commitRange(event.currentTarget.value, sepForRange);
+                            },
+                            onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
+                                switch (event.key) {
+                                    case 'ArrowDown':
+                                        event.preventDefault();
+                                        setOpen(true);
+                                        break;
+                                    case 'Enter': {
+                                        const v = (event.target as HTMLInputElement).value;
+                                        if (modeLocal === 'single') commitSingle(v);
+                                        else if (modeLocal === 'range') commitRange(v, sepForRange);
+                                        break;
+                                    }
+                                    case 'Escape':
+                                        setOpen(false);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }}
+                        actionIcon={
+                            <Button
+                                ref={triggerRef}
+                                isDisabled={legacyIsDisabled}
+                                onPress={() => !legacyIsDisabled && setOpen(v => !v)}
+                                aria-haspopup="dialog"
+                                aria-expanded={open}
+                                aria-controls={contentId}
+                                aria-label={label ? `${label}: open calendar` : 'Open calendar'}
+                            >
+                                {open ? <DropupSelectIcon /> : <DropdownSelectIcon />}
+                            </Button>
+                        }
+                    />
+                )}
             </div>
 
             {/* chips for multiple */}
-            {mode === 'multiple' && (multipleValue?.length ?? 0) > 0 && (
+            {modeLocal === 'multiple' && (multipleValue?.length ?? 0) > 0 && (
                 <Chips aria-label="Selected dates">
                     {multipleValue.map(d => {
                         const key = stripTime(d).getTime(); // stable per day
@@ -418,7 +457,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                 <FocusTrap role="dialog">
                     <div id={contentId} ref={contentRef}>
                         {/* eslint-disable react/jsx-no-bind */}
-                        {mode === 'single' && (
+                        {modeLocal === 'single' && (
                             <Calendar
                                 selectionType="single"
                                 {...commonCalProps}
@@ -428,7 +467,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                             />
                         )}
 
-                        {mode === 'multiple' && (
+                        {modeLocal === 'multiple' && (
                             <Calendar
                                 selectionType="multiple"
                                 {...commonCalProps}
@@ -438,7 +477,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                             />
                         )}
 
-                        {mode === 'range' && (
+                        {modeLocal === 'range' && (
                             <Calendar
                                 selectionType="range"
                                 {...commonCalProps}
@@ -497,4 +536,15 @@ function toJSDate(d: any): Date | undefined {
         return new Date(d.year as number, (d.month as number) - 1, d.day as number);
     }
     return undefined;
+}
+
+function dateToCalendarDate(d: Date): CalendarDate {
+    const zdt = fromDate(d, getLocalTimeZone());
+    return new CalendarDate(zdt.year, zdt.month, zdt.day);
+}
+
+function calendarDateToDate(dv: DateValue): Date {
+    // DateValue has year/month/day in Gregorian by default
+    // Construct a JS Date in local time at midnight.
+    return new Date(dv.year, dv.month - 1, dv.day);
 }
