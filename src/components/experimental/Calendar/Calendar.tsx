@@ -9,8 +9,8 @@ import { format } from 'date-fns';
 import ChevronLeftIcon from '../../../icons/arrows/ChevronLeftIcon';
 import ChevronRightIcon from '../../../icons/arrows/ChevronRightIcon';
 import * as Styled from './Calendar.styled';
-import { CalendarDayButton } from './CalendarDayButton';
-import { SelectionTypeContext, type SelectionType } from './Calendar.context';
+import { CalendarDayButton } from './components/CalendarDayButton';
+import { SelectionTypeContext, type SelectionType } from './context/Calendar.context';
 
 export type Range = RdpRange;
 type DateFnsFormatOptions = Parameters<typeof format>[2];

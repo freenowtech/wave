@@ -1,8 +1,8 @@
-import { format as dfFormat, isValid as dfIsValid, parse as dfParse } from 'date-fns';
+import { format as dfFormat } from 'date-fns';
 import React from 'react';
 import styled from 'styled-components';
 
-import { CalendarDate, fromDate, getLocalTimeZone, type DateValue } from '@internationalized/date';
+import { type DateValue } from '@internationalized/date';
 
 import type { Matcher, DateRange as RdpRange } from 'react-day-picker';
 import { DropdownSelectIcon, DropupSelectIcon } from '../../../icons';
@@ -13,10 +13,19 @@ import { Button } from '../Field/Button';
 import type { FieldProps } from '../Field/Props';
 import { FocusTrap, Popover } from '../Popover/Popover';
 import { Chip, ChipRemoveButton, Chips } from './DatePicker.styled';
+import {
+    calendarDateToDate,
+    dateToCalendarDate,
+    getSeparator,
+    inBounds,
+    multipleSummary,
+    stripTime,
+    toJSDate,
+    tryParse,
+    type Mode
+} from './util';
 
 type DateRange = RdpRange | undefined;
-
-type Mode = 'single' | 'multiple' | 'range';
 
 type CommonProps = Pick<FieldProps, 'description' | 'errorMessage'> & {
     label?: string;
@@ -136,7 +145,10 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
     const multipleValue = modeLocal === 'multiple' ? (props as MultipleProps).value : undefined;
     const rangeValue = modeLocal === 'range' ? (props as RangeProps).value : undefined;
 
-    const sepForRange = React.useMemo<string>(() => getSeparator(props), [modeLocal, (props as RangeProps).separator]);
+    const sepForRange = React.useMemo<string>(
+        () => getSeparator(modeLocal, (props as RangeProps).separator),
+        [modeLocal, (props as RangeProps).separator]
+    );
 
     const neutralPlaceholder =
         placeholder ??
@@ -229,7 +241,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
 
     // input value
     const inputValue =
-        mode === 'multiple'
+        modeLocal === 'multiple'
             ? multipleSummary(
                   multipleValue ?? [],
                   displayFormat,
@@ -238,7 +250,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
               )
             : text;
 
-    const readOnly = mode === 'multiple' || !!legacyIsDisabled;
+    const readOnly = modeLocal === 'multiple' || !!legacyIsDisabled;
 
     // calendar handlers
     const handleSelectSingle = React.useCallback(
@@ -492,59 +504,4 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
             </StyledPopover>
         </div>
     );
-}
-
-/* ---------- helpers ---------- */
-
-function tryParse(raw: string, fmt: string, locale?: Locale): Date | null {
-    if (!raw?.trim()) return null;
-    const p = dfParse(raw, fmt, new Date(), { locale });
-    if (dfIsValid(p)) return p;
-    const loose = new Date(raw);
-    return dfIsValid(loose) ? loose : null;
-}
-
-function inBounds(d: Date, min?: Date, max?: Date) {
-    const t = stripTime(d).getTime();
-    return (min ? t >= stripTime(min).getTime() : true) && (max ? t <= stripTime(max).getTime() : true);
-}
-
-function stripTime(d: Date) {
-    const x = new Date(d);
-    x.setHours(0, 0, 0, 0);
-    return x;
-}
-
-function multipleSummary(dates: Date[], fmt: string, locale?: Locale, strategy: 'firstDate' | 'count' = 'count') {
-    const count = dates.length;
-    if (count === 0) return '';
-    if (strategy === 'firstDate') {
-        return dfFormat(dates[0], fmt, { locale }) + (count > 1 ? ` +${count - 1}` : '');
-    }
-    return count === 1 ? dfFormat(dates[0], fmt, { locale }) : `${count} dates selected`;
-}
-
-function getSeparator(props: DatePickerProps) {
-    return (props.mode === 'range' ? props.separator : undefined) ?? ' – ';
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function toJSDate(d: any): Date | undefined {
-    if (!d) return undefined;
-    if (d instanceof Date) return d;
-    if (typeof d === 'object' && 'year' in d && 'month' in d && 'day' in d) {
-        return new Date(d.year as number, (d.month as number) - 1, d.day as number);
-    }
-    return undefined;
-}
-
-function dateToCalendarDate(d: Date): CalendarDate {
-    const zdt = fromDate(d, getLocalTimeZone());
-    return new CalendarDate(zdt.year, zdt.month, zdt.day);
-}
-
-function calendarDateToDate(dv: DateValue): Date {
-    // DateValue has year/month/day in Gregorian by default
-    // Construct a JS Date in local time at midnight.
-    return new Date(dv.year, dv.month - 1, dv.day);
 }
