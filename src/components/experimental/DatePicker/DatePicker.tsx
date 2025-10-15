@@ -1,3 +1,4 @@
+// DatePicker.tsx
 import { format as dfFormat } from 'date-fns';
 import React from 'react';
 import styled from 'styled-components';
@@ -82,17 +83,20 @@ type LegacyCompatProps = {
     isInvalid?: boolean;
 };
 
-export type DatePickerProps = (SingleProps | MultipleProps | RangeProps) & LegacyCompatProps;
+type DatePickerProps = (SingleProps | MultipleProps | RangeProps) & LegacyCompatProps;
 
 const StyledPopover = styled(Popover)`
     padding: 1.5rem;
     border-radius: 1.5rem;
 `;
 
-export function DatePicker(props: SingleProps & LegacyCompatProps): JSX.Element;
-export function DatePicker(props: MultipleProps & LegacyCompatProps): JSX.Element;
-export function DatePicker(props: RangeProps & LegacyCompatProps): JSX.Element;
-export function DatePicker(props: DatePickerProps): JSX.Element {
+export interface DatePickerOverloads {
+    (props: SingleProps & LegacyCompatProps): JSX.Element;
+    (props: MultipleProps & LegacyCompatProps): JSX.Element;
+    (props: RangeProps & LegacyCompatProps): JSX.Element;
+}
+
+function DatePickerImpl(props: DatePickerProps): JSX.Element {
     const {
         label,
         description,
@@ -363,7 +367,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                         description={description}
                         errorMessage={errorMessage}
                         isInvalid={isInvalid}
-                        isDisabled={legacyIsDisabled || isDisabled}
+                        isDisabled={legacyIsDisabled}
                         isVisuallyFocused={open}
                         leadingIcon={<CalendarTodayOutlineIcon />}
                         value={inputValue}
@@ -436,7 +440,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                         const key = stripTime(d).getTime(); // stable per day
                         return (
                             <Chip key={key}>
-                                {dfFormat(d, displayFormat, { locale })} {/* ensure same format */}
+                                {dfFormat(d, displayFormat, { locale })}
                                 <ChipRemoveButton
                                     onPress={() =>
                                         (props as MultipleProps).onChange(
@@ -507,3 +511,10 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
         </div>
     );
 }
+
+DatePickerImpl.displayName = 'DatePicker';
+
+export type { DatePickerProps, LegacyCompatProps, SingleProps, MultipleProps, RangeProps };
+
+// exported component with proper overloads at the value level
+export const DatePicker = DatePickerImpl as unknown as DatePickerOverloads;
