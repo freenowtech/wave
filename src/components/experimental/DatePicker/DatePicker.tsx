@@ -331,6 +331,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                         description={description}
                         errorMessage={errorMessage}
                         isInvalid={isInvalid}
+                        isDisabled={legacyIsDisabled}
                         isVisuallyFocused={open}
                         leadingIcon={<CalendarTodayOutlineIcon />}
                         value={singleSource ? dateToCalendarDate(singleSource) : undefined}
@@ -362,6 +363,7 @@ export function DatePicker(props: DatePickerProps): JSX.Element {
                         description={description}
                         errorMessage={errorMessage}
                         isInvalid={isInvalid}
+                        isDisabled={legacyIsDisabled || isDisabled}
                         isVisuallyFocused={open}
                         leadingIcon={<CalendarTodayOutlineIcon />}
                         value={inputValue}

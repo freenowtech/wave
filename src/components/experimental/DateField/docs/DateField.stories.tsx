@@ -95,6 +95,19 @@ export const TextVariant: Story = {
     }
 };
 
+export const TextVariantDisabled: Story = {
+    args: {
+        variant: 'text',
+        placeholder: 'dd / mm / yyyy',
+        description: 'Text variant should be disabled',
+        isDisabled: true
+    },
+    render: (args: Extract<DateFieldProps, { variant: 'text' }>) => {
+        const [val, setVal] = React.useState('');
+        return <DateField {...args} value={val} onChange={setVal} actionIcon={<DropdownSelectIcon />} />;
+    }
+};
+
 export const TextVariantAutoFocus: Story = {
     args: {
         variant: 'text',

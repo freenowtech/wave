@@ -6,7 +6,7 @@ import { Footer } from '../Field/Footer';
 import { FakeInput } from '../Field/FakeInput';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
-import { DateInput } from '../Field/Field';
+import { DateInput, Input } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { FieldProps } from '../Field/Props';
 
@@ -84,12 +84,17 @@ const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, 
                     {leadingIcon}
                     <InnerWrapper>
                         {label && <Label $flying>{label}</Label>}
-                        <input
+                        <Input
                             ref={inputRef}
                             value={value}
-                            onChange={e => onChange(e.target.value)}
+                            onChange={e => {
+                                if (isDisabled) return;
+                                onChange(e.target.value);
+                            }}
                             placeholder={placeholder}
                             style={inputStyle}
+                            disabled={isDisabled}
+                            aria-disabled={isDisabled}
                             {...inputProps}
                         />
                     </InnerWrapper>
