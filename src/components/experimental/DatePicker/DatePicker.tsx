@@ -47,11 +47,12 @@ type CommonProps = Pick<FieldProps, 'description' | 'errorMessage'> & {
     id?: string;
     name?: string;
     /** focus input on mount */
-    autoFocus: boolean;
+    autoFocus?: boolean;
+    onBlur?: React.FocusEventHandler;
 };
 
 type SingleProps = CommonProps & {
-    mode: 'single';
+    mode?: 'single';
     value: Date | null;
     onChange: (date: Date | null) => void;
 };
@@ -118,7 +119,8 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         maxValue,
         isDisabled,
         isInvalid,
-        autoFocus
+        autoFocus,
+        onBlur
     } = props;
 
     // legacy compat
@@ -344,6 +346,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                             handleSelectSingle(next);
                         }}
                         autoFocus={autoFocus}
+                        onBlur={onBlur}
                         actionIcon={
                             <Button
                                 ref={triggerRef}
@@ -391,6 +394,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                             readOnly,
                             autoFocus,
                             onBlur: event => {
+                                onBlur?.(event);
                                 const nextEl = event.relatedTarget as HTMLElement | null;
                                 if (nextEl && nextEl === triggerRef.current) return;
                                 if (modeLocal === 'single') commitSingle(event.currentTarget.value);
