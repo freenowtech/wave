@@ -1,8 +1,13 @@
-// util/index.ts
 import { format as dfFormat, isValid as dfIsValid, parse as dfParse } from 'date-fns';
 import { CalendarDate, fromDate, getLocalTimeZone, type DateValue } from '@internationalized/date';
 
 export type Mode = 'single' | 'multiple' | 'range';
+
+type CalendarLike = { year: number; month: number; day: number };
+
+function isCalendarLike(v: unknown): v is CalendarLike {
+    return !!v && typeof v === 'object' && 'year' in v && 'month' in v && 'day' in v;
+}
 
 export function tryParse(raw: string, fmt: string, locale?: Locale): Date | null {
     if (!raw?.trim()) return null;
@@ -41,11 +46,6 @@ export function getSeparator(mode?: Mode, separator?: string): string {
     return (mode === 'range' ? separator : undefined) ?? ' – ';
 }
 
-type CalendarLike = { year: number; month: number; day: number };
-function isCalendarLike(v: unknown): v is CalendarLike {
-    return !!v && typeof v === 'object' && 'year' in v && 'month' in v && 'day' in v;
-}
-
 export function toJSDate(d: unknown): Date | undefined {
     if (!d) return undefined;
     if (d instanceof Date) return d;
@@ -61,6 +61,5 @@ export function dateToCalendarDate(d: Date): CalendarDate {
 }
 
 export function calendarDateToDate(dv: DateValue): Date {
-    // DateValue has year/month/day; create a local JS Date at midnight.
     return new Date(dv.year, dv.month - 1, dv.day);
 }

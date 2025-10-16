@@ -3,13 +3,7 @@ import type { DateRange as RdpRange } from 'react-day-picker';
 import { getLocalTimeZone, today } from '@internationalized/date';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DatePicker } from '../DatePicker';
-import type {
-    DatePickerProps,
-    SingleProps,
-    MultipleProps,
-    RangeProps,
-    LegacyCompatProps // <-- import
-} from '../DatePicker';
+import type { DatePickerProps, SingleProps, MultipleProps, RangeProps, LegacyCompatProps } from '../DatePicker';
 
 const meta = {
     title: 'Experimental/Components/DatePicker',
@@ -27,7 +21,6 @@ type RangeStory = StoryObj<RangeProps & LegacyCompatProps>;
 const TZ = getLocalTimeZone();
 const TODAY = today(TZ);
 
-// Single mode
 export const Default: SingleStory = { args: { mode: 'single' } };
 
 export const WithDefaultValue: SingleStory = {
