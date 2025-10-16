@@ -1,6 +1,8 @@
 import React from 'react';
 import {
+    DayEventHandler,
     DayPicker,
+    Matcher,
     DayButton as RdpDayButton,
     getDefaultClassNames,
     type DateRange as RdpRange
@@ -20,6 +22,8 @@ type BaseProps = Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'selected
     captionLayout?: React.ComponentProps<typeof DayPicker>['captionLayout'];
     weekStartsOn?: React.ComponentProps<typeof DayPicker>['weekStartsOn'];
     selected?: Date | Date[] | RdpRange;
+    modifiers?: Record<string, Matcher | Matcher[]>;
+    onDayClick?: DayEventHandler<React.MouseEvent>;
 } & Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'classNames' | 'selected' | 'onSelect'>;
 
 export type SingleProps = BaseProps & {

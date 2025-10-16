@@ -97,14 +97,14 @@ function hasMode(p: DatePickerProps): p is DatePickerProps & { mode: Mode } {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return 'mode' in p && typeof (p as any).mode === 'string';
 }
-function isSingleProps(p: DatePickerProps): p is SingleProps & LegacyCompatProps {
-    return !hasMode(p) || p.mode === 'single';
+function isSingleProps(props: DatePickerProps): props is SingleProps & LegacyCompatProps {
+    return !hasMode(props) || props.mode === 'single';
 }
-function isMultipleProps(p: DatePickerProps): p is MultipleProps & LegacyCompatProps {
-    return hasMode(p) && p.mode === 'multiple';
+function isMultipleProps(props: DatePickerProps): props is MultipleProps & LegacyCompatProps {
+    return hasMode(props) && props.mode === 'multiple';
 }
-function isRangeProps(p: DatePickerProps): p is RangeProps & LegacyCompatProps {
-    return hasMode(p) && p.mode === 'range';
+function isRangeProps(props: DatePickerProps): props is RangeProps & LegacyCompatProps {
+    return hasMode(props) && props.mode === 'range';
 }
 
 export interface DatePickerOverloads {
