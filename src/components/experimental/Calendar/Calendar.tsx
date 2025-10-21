@@ -18,7 +18,7 @@ export type Range = RdpRange;
 type DateFnsFormatOptions = Parameters<typeof format>[2];
 
 type BaseProps = Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'selected' | 'onSelect'> & {
-    visibleMonths?: 1 | 2 | 3;
+    visibleMonths?: 1 | 2 | 3 | 4 | 5 | 6;
     captionLayout?: React.ComponentProps<typeof DayPicker>['captionLayout'];
     weekStartsOn?: React.ComponentProps<typeof DayPicker>['weekStartsOn'];
     selected?: Date | Date[] | RdpRange;
