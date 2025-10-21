@@ -65,7 +65,6 @@ export function Calendar(props: CalendarProps): JSX.Element {
     const selectionType: SelectionType = props.selectionType ?? 'single';
     const defaults = getDefaultClassNames();
 
-    // expose a plain function (required by your shared type), but render the memoized component
     const DayButtonComp = (p: React.ComponentProps<typeof RdpDayButton>) => <CalendarDayButton {...p} />;
 
     const common = {

@@ -126,7 +126,6 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         locale,
         initialMonth,
         name,
-        // mode is optional; effective mode resolved via guards below
         placeholder,
         id,
         visibleMonths,
@@ -488,7 +487,6 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                 )}
             </div>
 
-            {/* chips for multiple */}
             {isMultiple && (multipleSource?.length ?? 0) > 0 && (
                 <Chips aria-label="Selected dates">
                     {multipleSource.map(d => {
