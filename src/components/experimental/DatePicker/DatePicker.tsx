@@ -31,6 +31,7 @@ type DateRange = RdpRange | undefined;
 type CommonProps = Pick<FieldProps, 'description' | 'errorMessage'> & {
     label?: string;
     placeholder?: string;
+    hideOutOfRange?: boolean;
     /** date-fns format used for display/parse */
     displayFormat?: string;
     /** day constraints */
@@ -129,6 +130,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         placeholder,
         id,
         visibleMonths,
+        hideOutOfRange = false,
         defaultValue,
         minValue,
         maxValue,
@@ -358,11 +360,12 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
     ]);
 
     const hiddenMatcher = React.useMemo<Matcher[] | undefined>(() => {
+        if (!hideOutOfRange) return undefined;
         const arr: Matcher[] = [];
         if (minDateCompat) arr.push({ before: stripTime(minDateCompat) });
         if (maxDateCompat) arr.push({ after: stripTime(maxDateCompat) });
         return arr.length > 0 ? arr : undefined;
-    }, [minDateCompat?.getTime(), maxDateCompat?.getTime()]);
+    }, [hideOutOfRange, minDateCompat?.getTime(), maxDateCompat?.getTime()]);
 
     // common Calendar props
     const commonCalProps = {
