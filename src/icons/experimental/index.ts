@@ -13,3 +13,4 @@ export { default as SupportAgentIcon } from './SupportAgentIcon';
 export { default as ExitIcon } from './ExitIcon';
 export { default as GroupIcon } from './GroupIcon';
 export { default as TrashIcon } from './TrashIcon';
+export { default as EditPenIcon } from './EditPenIcon';
