@@ -24,7 +24,6 @@ export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
     border-style: solid;
     border-color: ${getSemanticValue('outline-variant')};
     border-radius: ${get('radii.4')};
-
     min-height: 3.5rem;
     padding: 0 ${get('space.3')} 0 ${get('space.4')};
     display: flex;
@@ -51,6 +50,12 @@ export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
     }
 
     [data-disabled] & {
+        opacity: 0.38;
+        pointer-events: none;
+    }
+
+    &:has(input[disabled]),
+    &:has([aria-disabled='true']) {
         opacity: 0.38;
         pointer-events: none;
     }
