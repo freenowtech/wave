@@ -13,7 +13,7 @@ const EditPenIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...r
             {...props}
             width={sizePx}
             height={sizePx}
-            viewBox="0 0 18 18"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
