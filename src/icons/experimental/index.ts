@@ -14,3 +14,5 @@ export { default as ExitIcon } from './ExitIcon';
 export { default as GroupIcon } from './GroupIcon';
 export { default as TrashIcon } from './TrashIcon';
 export { default as EditPenIcon } from './EditPenIcon';
+export { default as HailingIcon } from './HailingIcon';
+export { default as PinIcon } from './PinIcon';
