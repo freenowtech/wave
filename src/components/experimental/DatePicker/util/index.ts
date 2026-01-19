@@ -11,7 +11,6 @@ function isCalendarLike(v: unknown): v is CalendarLike {
 
 export function tryParse(raw: string, fmt: string, locale?: Locale): Date | null {
     if (!raw?.trim()) return null;
-
     const p = dfParse(raw, fmt, new Date(), { locale });
     if (dfIsValid(p)) return p;
     const loose = new Date(raw);
