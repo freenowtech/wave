@@ -11,6 +11,22 @@ function isCalendarLike(v: unknown): v is CalendarLike {
 
 export function tryParse(raw: string, fmt: string, locale?: Locale): Date | null {
     if (!raw?.trim()) return null;
+
+    // const formatParts = fmt.replace(/[^a-zA-Z]/g, ' ').split(' ').filter(Boolean);
+    // const rawParts = raw.replace(/[^0-9]/g, ' ').split(' ').filter(Boolean);
+
+    // const yearFormatIndex = formatParts.findIndex(p => p.toLowerCase().includes('y'));
+
+    // if (yearFormatIndex !== -1) {
+    //     const yearFormat = formatParts[yearFormatIndex];
+    //     if (yearFormat.length === 4 && rawParts.length === yearFormatIndex + 1) {
+    //         const yearPart = rawParts[yearFormatIndex];
+    //         if (yearPart && yearPart.length > 0 && yearPart.length < 4) {
+    //             return null;
+    //         }
+    //     }
+    // }
+
     const p = dfParse(raw, fmt, new Date(), { locale });
     if (dfIsValid(p)) return p;
     const loose = new Date(raw);
@@ -61,5 +77,10 @@ export function dateToCalendarDate(d: Date): CalendarDate {
 }
 
 export function calendarDateToDate(dv: DateValue): Date {
+    // const d = new Date(dv.year, dv.month - 1, dv.day);
+    // if (dv.year < 100) {
+    //     d.setFullYear(dv.year);
+    // }
+    // return d;
     return new Date(dv.year, dv.month - 1, dv.day);
 }
