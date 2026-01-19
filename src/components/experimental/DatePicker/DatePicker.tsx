@@ -397,7 +397,6 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                         value={singleSource ? dateToCalendarDate(singleSource) : undefined}
                         onChange={(dv: DateValue | null | undefined) => {
                             const next = dv ? calendarDateToDate(dv) : null;
-                            // emitSingle(next);
                             handleSelectSingle(next);
                         }}
                         autoFocus={autoFocus}
