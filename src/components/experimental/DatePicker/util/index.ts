@@ -61,5 +61,10 @@ export function dateToCalendarDate(d: Date): CalendarDate {
 }
 
 export function calendarDateToDate(dv: DateValue): Date {
-    return new Date(dv.year, dv.month - 1, dv.day);
+    const d = new Date(dv.year, dv.month - 1, dv.day);
+    // `new Date()` treats 2-digit years as 19xx, `setFullYear` corrects this.
+    if (dv.year < 100) {
+        d.setFullYear(dv.year);
+    }
+    return d;
 }
