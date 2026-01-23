@@ -18,7 +18,7 @@ jobs:
                   fetch-depth: 0
             - uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 24
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
             - name: Run linter
@@ -31,22 +31,25 @@ jobs:
     release:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
+        permissions:
+            id-token: write # to enable use of OIDC for trusted publishing and npm provenance
         steps:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
             - uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 24
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+            - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+              run: npm audit signatures
             - name: Run build
               run: npm run build
             - name: Release
               run: npx semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     merge-main:
         if: github.ref == 'refs/heads/main'
