@@ -16,3 +16,4 @@ export { default as TrashIcon } from './TrashIcon';
 export { default as EditPenIcon } from './EditPenIcon';
 export { default as HailingIcon } from './HailingIcon';
 export { default as PinIcon } from './PinIcon';
+export { default as SwapIcon } from './SwapIcon';
