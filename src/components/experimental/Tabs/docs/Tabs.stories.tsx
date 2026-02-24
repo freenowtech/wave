@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from '@storybook/react';
 import React from 'react';
+import { StoryObj, Meta } from '@storybook/react';
 import { Tabs, TabList, Tab, TabPanel } from '../Tabs';
 
 const meta: Meta = {
