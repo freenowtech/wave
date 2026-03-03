@@ -12,8 +12,9 @@
 # Acknowledgment
 
 -   [Lloyd Francis](https://github.com/lloydaf)
--   [Artur Miglio](https://github.com/arturmiglio)
+-   [Elena Rashkovan](https://github.com/shiba-codes)
 -   [Nelson Dornelas](https://github.com/dornelasN)
+-   [Artur Miglio](https://github.com/arturmiglio)
 -   [Rafael Sepeda Errera](https://github.com/rafael-sepeda)
 -   [Nikolai Lopin](https://github.com/nlopin)
 -   [Leonardo Di Vittorio](https://github.com/div-Leo)
