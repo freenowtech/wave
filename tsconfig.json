@@ -4,6 +4,7 @@
         "removeComments": true,
         "esModuleInterop": true,
         "moduleResolution": "bundler",
+        "module": "esnext",
         "jsx": "react",
         "lib": ["dom", "es2023"],
         "declaration": true,
