@@ -22,7 +22,7 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'> {
      * @default 'a'
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+    as?: keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
 }
 
 const DEFAULT_ACTIVE_CLASS_NAME = 'active';

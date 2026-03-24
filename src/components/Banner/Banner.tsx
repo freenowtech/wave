@@ -148,6 +148,7 @@ const useBannerDismiss: () => DismissFunc = () => {
 
 const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerProps) => {
     const [visible, setVisible] = useState(true);
+    const nodeRef = React.useRef(null);
 
     const dismissFunction = () => {
         setVisible(false);
@@ -165,8 +166,8 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
     };
 
     return (
-        <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-            <AnimatedBanner {...rest}>
+        <CSSTransition nodeRef={nodeRef} in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+            <AnimatedBanner ref={nodeRef} {...rest}>
                 <DismissContext.Provider value={dismissFunction}>{renderChildren()}</DismissContext.Provider>
             </AnimatedBanner>
         </CSSTransition>

@@ -25,15 +25,11 @@ const variants = variant({
     }
 });
 
-const HelperText: React.FC<HelperTextProps> = styled(Text).attrs({ theme })`
+const HelperText: React.FC<HelperTextProps> = styled(Text).attrs<HelperTextProps>({ theme, variant: 'info' })`
     display: block;
     font-size: ${get('fontSizes.0')};
     text-align: left;
     ${compose(variants, margin)};
 `;
-
-HelperText.defaultProps = {
-    variant: 'info'
-};
 
 export { HelperText, HelperTextProps };

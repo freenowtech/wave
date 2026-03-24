@@ -34,7 +34,7 @@ const BreadcrumbsListItem = styled.li`
     display: flex;
 `;
 
-const Breadcrumbs = ({ children }: BreadcrumbsProps): JSX.Element => {
+const Breadcrumbs = ({ children }: BreadcrumbsProps): React.JSX.Element => {
     const arrayChildren = Children.toArray(children);
     const breadcrumbsListRef = useRef<HTMLUListElement | null>(null);
 

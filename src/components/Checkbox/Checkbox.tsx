@@ -46,7 +46,7 @@ const Checkbox: FC<CheckboxProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
 
-    const { disabled, error, label, textVerticalAlign, size, indeterminate, ...rest } = restProps;
+    const { disabled, error, label, textVerticalAlign = 'center', size = 'medium', indeterminate, ...rest } = restProps;
     let dynamicLabel: ReactNode = label;
 
     if (typeof label === 'string') {
@@ -84,12 +84,6 @@ const Checkbox: FC<CheckboxProps> = props => {
             {dynamicLabel}
         </LabelWrapper>
     );
-};
-
-Checkbox.defaultProps = {
-    textVerticalAlign: 'center',
-    // TODO: size defaults to "large" when theme fontSizes aliases are fixed
-    size: 'medium'
 };
 
 export { Checkbox, CheckboxProps };

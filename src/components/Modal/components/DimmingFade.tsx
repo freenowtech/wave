@@ -45,10 +45,13 @@ interface DimmingFadeProps {
     onClick: (event: React.MouseEvent) => void;
 }
 
-const DimmingFade: React.FC<React.PropsWithChildren<DimmingFadeProps>> = ({ visible, ...rest }: DimmingFadeProps) => (
-    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-        <DimmingFadeStyled {...rest} />
-    </CSSTransition>
-);
+const DimmingFade: React.FC<React.PropsWithChildren<DimmingFadeProps>> = ({ visible, ...rest }: DimmingFadeProps) => {
+    const nodeRef = React.useRef(null);
+    return (
+        <CSSTransition nodeRef={nodeRef} in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+            <DimmingFadeStyled ref={nodeRef} {...rest} />
+        </CSSTransition>
+    );
+};
 
 export { DimmingFade, ANIMATION_DURATION };

@@ -26,7 +26,7 @@ const StyledLabel = styled.label.attrs({ theme })<StyledLabelProps>`
     align-items: center;
 `;
 
-function LabelWrapper(props: LabelWrapperProps & React.LabelHTMLAttributes<HTMLLabelElement>): JSX.Element {
+function LabelWrapper(props: LabelWrapperProps & React.LabelHTMLAttributes<HTMLLabelElement>): React.JSX.Element {
     const { isDisabled = false, isInvalid = false, ...otherProps } = props;
 
     const { hoverProps, isHovered } = useHover({ isDisabled });

@@ -46,10 +46,10 @@ export type RangeProps = BaseProps & {
 
 export type CalendarProps = SingleProps | MultipleProps | RangeProps;
 
-export function Calendar(props: SingleProps): JSX.Element;
-export function Calendar(props: MultipleProps): JSX.Element;
-export function Calendar(props: RangeProps): JSX.Element;
-export function Calendar(props: CalendarProps): JSX.Element {
+export function Calendar(props: SingleProps): React.JSX.Element;
+export function Calendar(props: MultipleProps): React.JSX.Element;
+export function Calendar(props: RangeProps): React.JSX.Element;
+export function Calendar(props: CalendarProps): React.JSX.Element {
     const {
         className,
         classNames,

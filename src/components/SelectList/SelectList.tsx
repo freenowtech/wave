@@ -335,7 +335,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
-    const { components, isDisabled, variant, size, error, label, inputId } = restProps;
+    const { components, isDisabled, variant = 'boxed', size = 'medium', error, label, inputId } = restProps;
     const [triggerReference, setTriggerReference] = React.useState(undefined);
 
     const id = useGeneratedId(inputId);
@@ -372,11 +372,6 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
             )}
         </Wrapper>
     );
-};
-
-SelectList.defaultProps = {
-    variant: 'boxed',
-    size: 'medium'
 };
 
 export { SelectList };

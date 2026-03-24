@@ -79,7 +79,7 @@ const filledVariantStyles = variant({
     }
 });
 
-const Label = styled(Text).attrs({ theme })<LabelProps>`
+const Label = styled(Text).attrs<LabelProps>({ theme, variant: 'default' })<LabelProps>`
     display: inline-block;
     box-sizing: border-box;
     font-size: 0.625rem;
@@ -92,9 +92,5 @@ const Label = styled(Text).attrs({ theme })<LabelProps>`
 
     ${props => compose(props.filled ? filledVariantStyles : normalVariantStyles, margin)(props)}
 `;
-
-Label.defaultProps = {
-    variant: 'default'
-};
 
 export { Label, LabelProps };

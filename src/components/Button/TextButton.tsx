@@ -47,15 +47,10 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
     }
 });
 
-const TextButton = styled(BaseButton)<TextButtonProps>`
+const TextButton = styled(BaseButton).attrs<TextButtonProps>({ size: 'medium', variant: 'default' })<TextButtonProps>`
     transition: color 200ms, fill 200ms;
 
     ${variantStyles};
 `;
-
-TextButton.defaultProps = {
-    size: 'medium',
-    variant: 'default'
-};
 
 export { TextButton, TextButtonProps };
