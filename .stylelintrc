@@ -1,20 +1,13 @@
 {
-  "processors": [
-    "stylelint-processor-styled-components"
-  ],
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier",
-    "stylelint-config-styled-components"
-  ],
-  "rules": {
-    "declaration-empty-line-before": null,
-    "declaration-property-unit-allowed-list": {
-      "/.*/": ["rem", "deg", "fr", "ms", "%", "px", "vw", "vh"]
-    },
-    "declaration-property-value-disallowed-list": {
-      "/.*/": ["(\\d+[1]+px|[^1]+px)"]
-    },
-    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }]
-  }
+    "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+    "rules": {
+        "declaration-empty-line-before": null,
+        "declaration-property-unit-allowed-list": {
+            "/.*/": ["rem", "deg", "fr", "ms", "%", "px", "vw", "vh"]
+        },
+        "declaration-property-value-disallowed-list": {
+            "/.*/": ["(\\d+[1]+px|[^1]+px)"]
+        },
+        "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }]
+    }
 }

@@ -1,15 +1,15 @@
 import {
-    API,
-    ASTPath,
-    Collection,
-    FileInfo,
-    Identifier,
-    ImportDeclaration,
-    JSCodeshift,
-    Node,
-    TemplateLiteral
+    type API,
+    type ASTPath,
+    type Collection,
+    type FileInfo,
+    type Identifier,
+    type ImportDeclaration,
+    type JSCodeshift,
+    type Node,
+    type TemplateLiteral
 } from 'jscodeshift';
-import { Options } from 'recast';
+import { type Options } from 'recast';
 
 const ColorsToCssVariablesMap = {
     WHITE: 'var(--wave-b-color-white)',
@@ -79,7 +79,7 @@ const replaceColorsForCssVarsInTemplateLiterals = (
             const expressionObject = expressionAfterQuasis.object as Identifier;
 
             // Identify if it's a usage of Colors
-            const isColorsExpression = localColorNames.includes(expressionObject.name as string);
+            const isColorsExpression = localColorNames.includes(expressionObject.name);
 
             if (isColorsExpression) {
                 // Find the color being used

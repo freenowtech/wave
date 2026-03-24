@@ -309,7 +309,7 @@ const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
 );
 
 // Remove Separator component
-// eslint-disable-next-line unicorn/no-null
+
 const IndicatorSeparator = () => null;
 
 const MultiValueRemove = props => (

@@ -108,7 +108,7 @@ export const WithoutActionIcon: Story = {
     args: {
         label: 'Time',
         leadingIcon: <ClockIcon />,
-        // eslint-disable-next-line unicorn/no-null
+
         actionIcon: null
     }
 };

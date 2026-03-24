@@ -1,6 +1,4 @@
-export default function useMergeRefs<T>(
-    ...inputRefs: (React.Ref<T> | undefined)[]
-): React.Ref<T> | React.RefCallback<T> {
+export default function mergeRefs<T>(...inputRefs: (React.Ref<T> | undefined)[]): React.Ref<T> | React.RefCallback<T> {
     const filteredInputRefs = inputRefs.filter(Boolean);
 
     if (filteredInputRefs.length <= 1) {
@@ -13,7 +11,6 @@ export default function useMergeRefs<T>(
             if (typeof inputRef === 'function') {
                 inputRef(ref);
             } else if (inputRef) {
-                // eslint-disable-next-line no-param-reassign
                 (inputRef as React.MutableRefObject<T | null>).current = ref;
             }
         });

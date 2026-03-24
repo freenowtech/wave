@@ -15,7 +15,6 @@ import { Text } from '../Text/Text';
 import { PopoverContent } from './PopoverContent';
 
 interface PopoverRefObjectProps {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: any;
 }
 
@@ -159,7 +158,6 @@ const Popover: React.FC<PopoverProps> = ({
 
     const handleOut = React.useCallback(
         ev => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             if (popoverTriggerRef && popoverTriggerRef.current && !popoverTriggerRef.current.contains(ev.target)) {
                 if (openByDefault) {
                     setOpenByDefault(false);
@@ -173,7 +171,6 @@ const Popover: React.FC<PopoverProps> = ({
     );
 
     const handleKeyControl = (ev: React.KeyboardEvent<HTMLElement>) => {
-        // eslint-disable-next-line default-case
         switch (ev.keyCode) {
             case KEY_CODE_MAP.ESC: {
                 handleClose();

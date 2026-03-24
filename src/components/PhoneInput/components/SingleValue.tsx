@@ -16,7 +16,6 @@ const StyledSingleValue = styled(components.SingleValue)`
     max-width: 100%;
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SingleValue: FC<SingleValueProps<any>> = (props: SingleValueProps<PhoneAreaCodeCountry>) => {
     if (!props.hasValue) {
         return props.children as ReactElement;

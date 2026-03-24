@@ -57,7 +57,7 @@ const Checkbox: FC<CheckboxProps> = props => {
         );
     }
 
-    const checkboxRef = React.createRef<HTMLInputElement>();
+    const checkboxRef = React.useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         /**

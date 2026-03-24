@@ -248,9 +248,9 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     const localeObject = useLocaleObject(locale);
     const startDateRef = useRef<HTMLInputElement | null>(null);
     const endDateRef = useRef<HTMLInputElement | null>(null);
-    // eslint-disable-next-line unicorn/no-null
+
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
-    const [inputText, setInputText] = useState<DateRangeInputText>(
+    const [inputText, setInputText] = useState<DateRangeInputText>(() =>
         dateRangeToDisplayText(localeObject, displayFormat, value)
     );
     const [error, setError] = useState({ startDate: false, endDate: false });
@@ -379,7 +379,6 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                     label={label}
                     placeholder={startPlaceholder}
                     onFocus={() => setFocusedInput(START_DATE)}
-                    // eslint-disable-next-line unicorn/no-null
                     onBlur={() => setFocusedInput(null)}
                     value={inputText.startText}
                     width="100%"
@@ -400,7 +399,6 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                     data-testid="end-date-input"
                     placeholder={endPlaceholder}
                     onFocus={() => setFocusedInput(value.startDate ? END_DATE : START_DATE)}
-                    // eslint-disable-next-line unicorn/no-null
                     onBlur={() => setFocusedInput(null)}
                     value={inputText.endText}
                     onChange={handleEndDateInputChange}

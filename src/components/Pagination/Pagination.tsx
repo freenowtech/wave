@@ -175,7 +175,7 @@ const Pagination: React.FC<PaginationProps> = ({
                 <Box flex="1" />
             </ButtonsContainer>
 
-            {label && <LabelContainer>{label}</LabelContainer>}
+            {label != null && <LabelContainer>{label}</LabelContainer>}
         </Container>
     );
 };

@@ -93,7 +93,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
 
     const localeObject = useLocaleObject(locale);
     const [isFocused, setIsFocused] = useState(false);
-    const [inputText, setInputText] = useState(dateToDisplayText(localeObject, displayFormat, value));
+    const [inputText, setInputText] = useState(() => dateToDisplayText(localeObject, displayFormat, value));
     const [error, setError] = useState(false);
     const displayErrorMessage = typeof errorHandler === 'string';
 

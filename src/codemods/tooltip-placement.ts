@@ -1,5 +1,5 @@
-import { API, ASTPath, FileInfo, StringLiteral } from 'jscodeshift';
-import { Options } from 'recast';
+import { type API, type ASTPath, type FileInfo, type StringLiteral } from 'jscodeshift';
+import { type Options } from 'recast';
 
 const DeprecatedToValidPlacementsMap = {
     'bottom-left': 'bottom-start',

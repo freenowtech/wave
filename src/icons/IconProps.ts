@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef } from 'react';
-import { ReadCssColorVariable } from '../essentials/Colors/types';
+import { type ComponentPropsWithoutRef } from 'react';
+import { type ReadCssColorVariable } from '../essentials/Colors/types';
 
 interface IconProps extends ComponentPropsWithoutRef<'svg'> {
     /**

@@ -59,6 +59,15 @@ const inputStyle: React.CSSProperties = {
 };
 
 const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwardedRef) => {
+    const isText = props.variant === 'text';
+    const autoFocus = isText ? props.autoFocus : undefined;
+    const isDisabledForEffect = isText ? props.isDisabled : undefined;
+    const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+    React.useEffect(() => {
+        if (autoFocus && !isDisabledForEffect) queueMicrotask(() => inputRef.current?.focus());
+    }, [autoFocus, isDisabledForEffect]);
+
     if (props.variant === 'text') {
         const {
             label,
@@ -72,15 +81,8 @@ const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, 
             onChange,
             placeholder,
             inputProps,
-            autoFocus,
             isDisabled
         } = props;
-
-        const inputRef = React.useRef<HTMLInputElement | null>(null);
-
-        React.useEffect(() => {
-            if (autoFocus && !isDisabled) queueMicrotask(() => inputRef.current?.focus());
-        }, [autoFocus, isDisabled]);
 
         return (
             <Wrapper ref={forwardedRef}>

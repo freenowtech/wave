@@ -66,7 +66,6 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
         store: { globals }
     } = useContext(DocsContext);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const { theme, darkMode } = globals.get();
     const isDark = Boolean(darkMode);
     const tokens = Tokens[tier][isDark ? 'dark' : 'light'][theme];

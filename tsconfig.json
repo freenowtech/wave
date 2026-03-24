@@ -5,7 +5,7 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "jsx": "react",
-        "lib": ["dom", "es2020"],
+        "lib": ["dom", "es2023"],
         "declaration": true,
         "declarationDir": "lib/types/",
         "rootDir": "src/",

@@ -21,7 +21,7 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'> {
      * Replace the rendered component with an HTML tag or another component
      * @default 'a'
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     as?: keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
 }
 

@@ -56,13 +56,13 @@ const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_D
 const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ...rest }: ModalProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
-    const closeTimeout = useRef(null);
+    const closeTimeoutRef = useRef(null);
 
     const handleClose: DismissFunc = () => {
         setVisible(false);
 
         if (onClose) {
-            closeTimeout.current = setTimeout(() => onClose(), ANIMATION_DURATION);
+            closeTimeoutRef.current = setTimeout(() => onClose(), ANIMATION_DURATION);
         }
     };
 
@@ -80,7 +80,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ..
 
     useEffect(
         () => () => {
-            if (closeTimeout.current) clearTimeout(closeTimeout.current);
+            if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
         },
         []
     );

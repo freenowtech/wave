@@ -100,13 +100,7 @@ export function Calendar(props: CalendarProps): React.JSX.Element {
     return (
         <Styled.Container className={className}>
             <SelectionTypeContext.Provider value={selectionType}>
-                <DayPicker
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    {...(common as any)}
-                    {...modeProps}
-                    {...selectedProp}
-                    {...onSelectProp}
-                />
+                <DayPicker {...(common as any)} {...modeProps} {...selectedProp} {...onSelectProp} />
             </SelectionTypeContext.Provider>
         </Styled.Container>
     );

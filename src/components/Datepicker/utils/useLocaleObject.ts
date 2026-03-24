@@ -10,7 +10,6 @@ const useLocaleObject = (locale: string): Locale | undefined => {
             .then(importedLocaleObject => setLocaleObject(Object.values(importedLocaleObject)[0] as Locale))
             .catch(() => {
                 if (process.env.NODE_ENV === 'development') {
-                    // eslint-disable-next-line no-console
                     console.log(`Available locales do not include selected locale ${currentLocale}`);
                 }
 

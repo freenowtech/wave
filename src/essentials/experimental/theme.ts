@@ -81,8 +81,6 @@ const theme: ExperimentalTheme = {
  * https://styled-system.com/theme-specification/#scale-aliases
  */
 
-/* eslint-disable prefer-destructuring */
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 theme.fontSizes.small = theme.fontSizes[1];
@@ -95,8 +93,6 @@ theme.fontSizes.medium = theme.fontSizes[2];
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 theme.fontSizes.large = '1.125rem';
-
-/* eslint-enable prefer-destructuring */
 
 function fontStack(fonts: string[]): string {
     return fonts.map(font => (font.includes(' ') ? `"${font}"` : font)).join(', ');

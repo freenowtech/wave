@@ -1,5 +1,5 @@
-import { API, FileInfo } from 'jscodeshift';
-import { Options } from 'recast';
+import { type API, type FileInfo } from 'jscodeshift';
+import { type Options } from 'recast';
 
 module.exports = (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
