@@ -1,5 +1,15 @@
 module.exports = {
-    plugins: ['@typescript-eslint', 'eslint-comments', 'jest', 'promise', 'unicorn'],
+    plugins: [
+        '@typescript-eslint',
+        'eslint-comments',
+        'import',
+        'jest',
+        'jsx-a11y',
+        'promise',
+        'react',
+        'react-hooks',
+        'unicorn'
+    ],
     extends: [
         'airbnb-typescript',
         'plugin:@typescript-eslint/recommended',
@@ -61,7 +71,21 @@ module.exports = {
         // It's not accurate in the monorepo style
         'import/no-extraneous-dependencies': 'off',
         // Storybook Template.bind returns any type
-        '@typescript-eslint/no-unsafe-member-access': 'off'
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-redundant-type-constituents': 'off',
+        'unicorn/prefer-logical-operator-over-ternary': 'off',
+        'unicorn/no-useless-switch-case': 'off',
+        'unicorn/no-await-expression-member': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-base-to-string': 'off',
+        '@typescript-eslint/consistent-type-imports': [
+            'error',
+            { prefer: 'type-imports', fixStyle: 'inline-type-imports' }
+        ],
+        '@typescript-eslint/consistent-type-exports': ['error', { fixMixedExportsWithInlineTypeSpecifier: true }]
     },
     overrides: [
         {
