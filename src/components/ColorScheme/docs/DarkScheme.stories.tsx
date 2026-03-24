@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import React, { useEffect } from 'react';
 import { enforceSchemeOnElement } from '../../../utils';
 import { Box } from '../../Box/Box';

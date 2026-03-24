@@ -1,4 +1,4 @@
-import { DocsContext } from '@storybook/blocks';
+import { DocsContext } from '@storybook/addon-docs/blocks';
 
 import React, { type FC, useContext, useMemo, useState } from 'react';
 import styled from 'styled-components';

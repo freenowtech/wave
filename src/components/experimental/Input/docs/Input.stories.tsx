@@ -1,6 +1,6 @@
 import React from 'react';
-import { type StoryObj, type Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 
 import { Input } from '../Input';
 import { EyeIcon } from '../../../../icons';

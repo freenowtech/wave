@@ -1,5 +1,5 @@
 import React from 'react';
-import { type StoryObj, type Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { Tabs, TabList, Tab, TabPanel } from '../Tabs';
 
 const meta: Meta = {

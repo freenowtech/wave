@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 import { Colors, SemanticColors } from '../Colors';
 import { CssVariablesTable } from './SemanticColorsTable';
 
@@ -10,13 +10,13 @@ Wave has a set of colors that are used throughout the design system. HSL model i
 
 The exact set of colors depend on the theme that is used. Two themes provided as a part of the library:
 
--   `classic` - the default theme with primary blue color;
--   `modern` - the redesigned theme with maroon primary color.
+- `classic` - the default theme with primary blue color;
+- `modern` - the redesigned theme with maroon primary color.
 
 Each theme provides a set of CSS variables used to style components. They are divided into two tiers:
 
--   _bare colors_ - matching color names provided by the theme. this tier is theme-specific and changes when the theme changes;
--   _semantic colors_ - color names that convey semantic meaning, e.g. `foreground-primary`. This tier is theme-agnostic and does not change when the theme changes.
+- _bare colors_ - matching color names provided by the theme. this tier is theme-specific and changes when the theme changes;
+- _semantic colors_ - color names that convey semantic meaning, e.g. `foreground-primary`. This tier is theme-agnostic and does not change when the theme changes.
 
 You can create you own theme by creating a set of semantic CSS variables with predefined names.
 
@@ -31,10 +31,10 @@ Prefer to use them for your app.
 
 Every color token follows the naming convention:
 
--   design system prefix for semantic colors `wave-s`;
--   semantic role `foreground`, `background-surface`, `background-element`, or `border`;
--   color name `primary`, `neutral`, `info`, `accent`, `success`, `warning`, `danger`, `disabled`;
--   optional modifier `default`, `faded` or `highlighted`.
+- design system prefix for semantic colors `wave-s`;
+- semantic role `foreground`, `background-surface`, `background-element`, or `border`;
+- color name `primary`, `neutral`, `info`, `accent`, `success`, `warning`, `danger`, `disabled`;
+- optional modifier `default`, `faded` or `highlighted`.
 
 Use `getSemanticValue` function to reduce boilerplate when using semantic colors in your components:
 

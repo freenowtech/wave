@@ -1,9 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { I18nProvider } from 'react-aria-components';
-import { Preview } from '@storybook/react';
-import { themes } from '@storybook/theming';
-import { DocsContainer } from '@storybook/addon-docs';
-import { addons } from '@storybook/preview-api';
+import { Preview } from '@storybook/react-vite';
+import { themes } from 'storybook/theming';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
+import { addons } from 'storybook/preview-api';
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 
 const STORAGE_KEY = 'sb-addon-themes-3';
@@ -145,10 +145,10 @@ export const preview: Preview = {
             }
         },
         backgrounds: {
-            disable: true
+            disabled: true
         },
         viewport: {
-            viewports: {
+            options: {
                 mobile: {
                     name: 'Mobile',
                     styles: {
@@ -214,7 +214,9 @@ export const preview: Preview = {
                 dynamicTitle: true
             }
         }
-    }
+    },
+
+    tags: ['autodocs']
 };
 
 export default preview;
