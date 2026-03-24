@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import * as Icons from '../experimental';
 import { getSemanticValue } from '../../essentials/experimental';
 

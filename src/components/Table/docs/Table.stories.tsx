@@ -1,5 +1,5 @@
 import React from 'react';
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { Table } from '../components/Table';
 import { DefaultTable } from './DefaultTable';
 import { ActiveRowTable } from './ActiveRowTable';

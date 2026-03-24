@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Source as StorybookSource } from '@storybook/blocks';
+import { Source as StorybookSource } from '@storybook/addon-docs/blocks';
 
 interface SourceProps {
     [key: string]: unknown;

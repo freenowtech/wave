@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook';
+
 import tseslint from 'typescript-eslint';
 import reactPlugin from '@eslint-react/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -26,13 +29,10 @@ export default tseslint.config(
             'src/codemods/__testfixtures__/**'
         ]
     },
-
     // TypeScript recommended + type-checked rules
     tseslint.configs.recommendedTypeChecked,
-
     // React rules (type-checked)
     reactPlugin.configs['recommended-type-checked'],
-
     // React Hooks — classic rules only (no React Compiler rules)
     {
         plugins: { 'react-hooks': reactHooks },
@@ -41,20 +41,15 @@ export default tseslint.config(
             'react-hooks/exhaustive-deps': 'warn'
         }
     },
-
     // Unicorn (opinionated JS quality rules)
     unicorn.configs['flat/recommended'],
-
     // Promise best practices
     promise.configs['flat/recommended'],
-
     // JSX accessibility
     jsxA11y.flatConfigs.recommended,
-
     // Import order and resolution (TypeScript-aware)
     importX.flatConfigs.recommended,
     importX.flatConfigs.typescript,
-
     // eslint-disable comments must be valid
     {
         plugins: { '@eslint-community/eslint-comments': eslintComments },
@@ -62,13 +57,11 @@ export default tseslint.config(
             ...eslintComments.configs.recommended.rules
         }
     },
-
     // Jest rules scoped to test files
     {
         files: ['src/**/*.spec.{ts,tsx}', 'src/**/*.test.{ts,tsx}', 'codemods/**/__tests__/**/*.ts'],
         ...jest.configs['flat/recommended']
     },
-
     // ── Main config — component library source ────────────────────────────────
     {
         files: ['src/**/*.{ts,tsx}'],
@@ -142,7 +135,6 @@ export default tseslint.config(
             '@eslint-react/no-forward-ref': 'off'
         }
     },
-
     // ── Storybook stories — hooks rules relaxed ───────────────────────────────
     // CSF3 render() functions are React components but named lowercase
     {
@@ -152,7 +144,6 @@ export default tseslint.config(
             '@eslint-react/rules-of-hooks': 'off'
         }
     },
-
     // ── Codemods — Node.js/CommonJS scripts ───────────────────────────────────
     {
         files: ['src/codemods/**/*.{ts,js}'],
@@ -181,7 +172,6 @@ export default tseslint.config(
             ]
         }
     },
-
     // ── Scripts ───────────────────────────────────────────────────────────────
     {
         files: ['scripts/**/*.{ts,js}'],
@@ -197,15 +187,14 @@ export default tseslint.config(
             'unicorn/filename-case': 'off'
         }
     },
-
     // Disable Prettier-conflicting formatting rules (must be last)
     { rules: prettier.rules },
-
     // JS/CJS files — allow require()
     {
         files: ['**/*.js', '**/*.cjs'],
         rules: {
             '@typescript-eslint/no-require-imports': 'off'
         }
-    }
+    },
+    storybook.configs['flat/recommended']
 );

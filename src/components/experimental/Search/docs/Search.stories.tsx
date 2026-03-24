@@ -1,4 +1,4 @@
-import { type StoryObj, type Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { Search } from '../Search';
 
 const meta: Meta = {

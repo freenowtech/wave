@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconGallery, IconItem } from '@storybook/blocks';
+import { IconGallery, IconItem } from '@storybook/addon-docs/blocks';
 import type { IconProps } from '../IconProps';
 import { Box } from '../../components/Box/Box';
 import { getSemanticValue } from '../../utils/cssVariables';

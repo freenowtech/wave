@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 import { CssVariablesMigrationTable } from './components/migration/CssVariablesMigrationTable';
 import { IconMappingsTable } from './components/migration/IconMappingsTable';
@@ -11,8 +11,8 @@ import { PlacementMappingsTable } from './components/migration/PlacementMappings
 
 Prerequisites:
 
--   your project must use React@18;
--   React is mounted to the DOM using the [new `createRoot` API](https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis).
+- your project must use React@18;
+- React is mounted to the DOM using the [new `createRoot` API](https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis).
 
 ## 1️⃣ Connect Classic colors
 
@@ -70,8 +70,8 @@ getComputedStyle(document.documentElement).getPropertyValue('--wave-b-color-blac
 
 Other ways to verify the migration is done:
 
--   you will see the `--wave` CSS variables in dev tools;
--   if your OS switches between light and dark schemes, the UI will switch to the dark scheme too (you can enforce it in dev tools);
+- you will see the `--wave` CSS variables in dev tools;
+- if your OS switches between light and dark schemes, the UI will switch to the dark scheme too (you can enforce it in dev tools);
 
 In case it doesn't work, reach out to the #ask-wave Slack channel for help.
 
@@ -115,10 +115,10 @@ Find all `--wave-b-color` usages. Those are CSS variables pointing to theme colo
 The better way to work with colors is to use _semantic CSS variables_, they start with `--wave-s-color`.
 Consider the role the color fulfils in your use case, and pick the matching variable from several semantic groups:
 
--   _foreground_ for texts and icons;
--   _background_ for background of elements and surfaces;
--   _border_;
--   _shadow_.
+- _foreground_ for texts and icons;
+- _background_ for background of elements and surfaces;
+- _border_;
+- _shadow_.
 
 The list of semantic variables is available at [the colors page](?path=/docs/essentials-colors--docs),
 but we recommend using a typed `getSemanticValue` helper instead of hard-coding variable names (they are long).

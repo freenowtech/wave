@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Icon } from './Icon';
 import * as Icons from '..';
 import { getSemanticValue } from '../../utils/cssVariables';

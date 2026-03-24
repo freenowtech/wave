@@ -1,5 +1,5 @@
 // .storybook/FreenowTheme.ts
-import { create } from '@storybook/theming/create';
+import { create } from 'storybook/theming/create';
 
 const baseVars = {
     fontBase: '"Open Sans", sans-serif',

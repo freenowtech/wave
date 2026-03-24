@@ -1,5 +1,5 @@
 import React from 'react';
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { Box } from '../../Box/Box';
 import { Row, Column, type RowProps } from '../Grid';
