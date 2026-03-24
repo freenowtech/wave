@@ -1,4 +1,4 @@
-import { createGlobalStyle, type DefaultTheme, type GlobalStyleComponent } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import '@fontsource-variable/roboto-flex/index.css';
 
@@ -14,7 +14,7 @@ export const createThemeGlobalStyle = (
     bareVariables: TokenObject,
     lightScheme: SemanticColorsSchema,
     darkScheme: SemanticColorsSchema
-): GlobalStyleComponent<Record<string, unknown>, DefaultTheme> => createGlobalStyle`
+) => createGlobalStyle`
   :root {
     color-scheme: light;
     ${generateBareTierCssVariables(bareVariables)}

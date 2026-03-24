@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { getSemanticValue } from '../../../utils/cssVariables';
@@ -12,7 +13,9 @@ type TableHeaderCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     TextAlignProps &
     LayoutProps;
 
-const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
+const TableHeaderCellElement = styled.th
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<TableHeaderCellProps>`
     border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-emphasized')} !important;
     font-weight: ${get('fontWeights.bold')};
     height: ${p => p.rowSize};

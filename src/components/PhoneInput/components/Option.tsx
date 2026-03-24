@@ -5,8 +5,11 @@ import { Flag } from '../../../icons';
 import { type PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
 import { isFlagAvailable } from '../util/isFlagAvailable';
 
-const OptionWithFlag = styled(components.Option).attrs({ role: 'option' })`
-    display: inline-flex !important;
+// Styled wrapper for content inside react-select's Option.
+// We avoid wrapping components.Option directly with styled() because
+// styled-components v6 strips the `theme` prop, which react-select needs internally.
+const OptionContent = styled.div`
+    display: inline-flex;
 
     svg {
         min-width: 1.5rem;
@@ -20,10 +23,12 @@ const Option: FC<OptionProps<any>> = (props: OptionProps<PhoneAreaCodeCountry>) 
     return (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        <OptionWithFlag {...props}>
-            <Flag code={isFlagAvailable(data.value) ? data.value : 'WW'} />
-            {data.label}
-        </OptionWithFlag>
+        <components.Option {...props}>
+            <OptionContent>
+                <Flag code={isFlagAvailable(data.value) ? data.value : 'WW'} />
+                {data.label}
+            </OptionContent>
+        </components.Option>
     );
 };
 

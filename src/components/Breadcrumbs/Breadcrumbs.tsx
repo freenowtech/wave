@@ -1,4 +1,5 @@
 import React, { Children, type ReactElement, type ReactNode, cloneElement, useEffect, useRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { type MarginProps } from 'styled-system';
 
@@ -60,7 +61,7 @@ const Breadcrumbs = ({ children }: BreadcrumbsProps): React.JSX.Element => {
     );
 };
 
-const Link = styled.a.attrs({ theme })`
+const Link = styled.a.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     display: inline-block;
     color: ${getSemanticValue('foreground-accent-default')};
     cursor: pointer;

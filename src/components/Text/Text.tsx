@@ -1,4 +1,5 @@
 import { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import {
     compose,
@@ -56,7 +57,7 @@ function determineTextColor(props: TextProps) {
     return 'inherit';
 }
 
-const Text = styled.span.attrs({ theme })<TextProps>`
+const Text = styled.span.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<TextProps>`
     color: ${determineTextColor};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};

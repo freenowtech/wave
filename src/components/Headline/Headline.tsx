@@ -1,5 +1,6 @@
 import type * as React from 'react';
 import { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import {
     compose,
@@ -61,7 +62,9 @@ const parser = system({
 const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'> =>
     size || DEFAULT_HEADLINE_SIZE[as];
 
-const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
+const Headline: React.FC<HeadlineProps> = styled.h1
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<HeadlineProps>`
     color: inherit;
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.bold')};

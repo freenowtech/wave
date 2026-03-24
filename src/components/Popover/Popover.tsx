@@ -1,4 +1,5 @@
 import * as React from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import type { Placement } from '@floating-ui/react';
 import { useFloating, offset as floatingOffset, flip, autoUpdate } from '@floating-ui/react';
@@ -18,13 +19,15 @@ interface PopoverRefObjectProps {
     ref: any;
 }
 
-const PopoverTrigger = styled.div.attrs({ theme })<PopoverRefObjectProps>`
+const PopoverTrigger = styled.div
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<PopoverRefObjectProps>`
     display: inline-block;
     width: fit-content;
     border-radius: ${get('radii.2')};
 `;
 
-const DefaultPopoverWrapper = styled.div.attrs({ theme })`
+const DefaultPopoverWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     position: relative;
     display: flex;
     align-items: center;

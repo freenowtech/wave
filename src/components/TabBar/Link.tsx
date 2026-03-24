@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
@@ -33,7 +34,7 @@ const UnderLine = styled.div`
     margin-top: ${Spaces[1]};
 `;
 
-const InnerLink = styled.a.attrs({ theme })<LinkProps>`
+const InnerLink = styled.a.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<LinkProps>`
     color: ${getSemanticValue('foreground-neutral-emphasized')};
     cursor: pointer;
     font-size: ${get('fontSizes.1')};

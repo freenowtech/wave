@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import {
     background,
@@ -31,7 +32,7 @@ interface BoxProps
         BackgroundProps,
         TextAlignProps {}
 
-const Box = styled.div.attrs({ theme })<BoxProps>`
+const Box = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<BoxProps>`
     ${compose(space, layout, position, color, flexbox, grid, background, textAlign)}
 `;
 

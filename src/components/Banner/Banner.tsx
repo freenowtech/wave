@@ -1,5 +1,6 @@
 import React, { type ReactNode, useContext, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Elevation } from '../../essentials';
@@ -115,7 +116,7 @@ const getBannerPosition = (props: BannerProps) => {
     return props.variant === 'danger' ? fallDown : riseUp;
 };
 
-const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
+const AnimatedBanner = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<BannerProps>`
     overflow: auto;
     box-sizing: border-box;
     padding: ${get('space.3')};

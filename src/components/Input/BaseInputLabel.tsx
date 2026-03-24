@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -8,7 +9,7 @@ const activePositionBaseStyles = css`
     font-weight: ${get('fontWeights.semibold')};
 `;
 
-const BaseInputLabel = styled.label.attrs({ theme })`
+const BaseInputLabel = styled.label.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     position: absolute;
     pointer-events: none;
     background-color: transparent;
