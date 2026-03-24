@@ -1,9 +1,20 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { I18nProvider } from 'react-aria-components';
 import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import { DocsContainer } from '@storybook/addon-docs';
-import { useDarkMode } from 'storybook-dark-mode';
+import { addons } from '@storybook/preview-api';
+import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
+
+const STORAGE_KEY = 'sb-addon-themes-3';
+
+const getInitialDarkMode = (): boolean => {
+    try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) return JSON.parse(stored).current === 'dark';
+    } catch {}
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+};
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
@@ -57,6 +68,7 @@ export const withTheme = (Story, context) => {
 };
 
 export const withColorScheme = (Story, context) => {
+    // useDarkMode from storybook-dark-mode works inside decorators (preview hook context)
     const SchemeWrapper = useDarkMode() ? DarkScheme : LightScheme;
 
     return (
@@ -106,9 +118,20 @@ export const preview: Preview = {
         },
         docs: {
             container: props => {
-                const scheme = useDarkMode() ? DarkTheme : LightTheme;
-                const globals = props.context.store.globals.get();
-                const { Colors } = THEMES[globals.theme];
+                // Use React hooks + channel to track dark mode in docs context.
+                // storybook-dark-mode's useDarkMode() uses preview-api hooks which
+                // only work in decorator/story context, not here.
+                const [isDark, setIsDark] = useState(getInitialDarkMode);
+                useEffect(() => {
+                    const channel = addons.getChannel();
+                    channel.on(DARK_MODE_EVENT_NAME, setIsDark);
+                    return () => channel.off(DARK_MODE_EVENT_NAME, setIsDark);
+                }, []);
+
+                const scheme = isDark ? DarkTheme : LightTheme;
+                const globals = props.context.globals ?? {};
+                const theme = (globals.theme as keyof typeof THEMES) ?? 'modern';
+                const { Colors } = THEMES[theme] ?? THEMES.modern;
 
                 return (
                     <>
