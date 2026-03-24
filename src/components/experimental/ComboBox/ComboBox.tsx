@@ -57,20 +57,20 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
 
         return (
             <FakeInput
-                $isVisuallyFocused={state?.isOpen}
+                $isVisuallyFocused={state?.isOpen ?? false}
                 ref={forwardedRef}
                 onClick={() => internalInputRef.current?.focus()}
             >
                 {leadingIcon}
                 <InnerWrapper>
-                    <Label $flying={Boolean(placeholder || state?.inputValue?.length > 0)}>{label}</Label>
+                    <Label $flying={Boolean(placeholder || (state?.inputValue?.length ?? 0) > 0)}>{label}</Label>
                     <Input placeholder={placeholder} ref={combinedInputRef} />
                 </InnerWrapper>
-                {!hideClearButton && state?.inputValue?.length > 0 ? (
+                {(state?.inputValue?.length ?? 0) > 0 ? (
                     <Button
                         // Don't inherit default Button behavior from ComboBox.
                         slot={null}
-                        aria-label={ariaStrings.clearFieldButton}
+                        aria-label={ariaStrings?.clearFieldButton}
                         onPress={() => {
                             state?.setSelectedKey(null);
                             state?.setInputValue('');
@@ -78,8 +78,8 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
                     >
                         <XCrossCircleIcon />
                     </Button>
-                ) : state?.inputValue?.length > 0 ? null : (
-                    <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
+                ) : (
+                    <VisuallyHidden aria-live="polite">{ariaStrings?.messageFieldIsCleared}</VisuallyHidden>
                 )}
             </FakeInput>
         );

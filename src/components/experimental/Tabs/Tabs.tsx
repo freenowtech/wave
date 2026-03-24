@@ -111,7 +111,7 @@ function Tabs(props: TabsProps): ReactElement {
 }
 
 function TabList<T extends Record<string, unknown>>(props: TabListProps<T>): ReactElement {
-    return <StyledTabList {...props} />;
+    return <StyledTabList {...(props as TabListProps<Record<string, unknown>>)} />;
 }
 
 function Tab(props: TabProps): ReactElement {

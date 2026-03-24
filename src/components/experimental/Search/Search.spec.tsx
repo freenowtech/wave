@@ -22,7 +22,7 @@ describe('Experimental: Search', () => {
         expect(searchField).toHaveValue('Text');
         expect(clearButton).toBeVisible();
 
-        await user.click(clearButton);
+        await user.click(clearButton!);
 
         expect(searchField).toHaveValue('');
         expect(clearButton).not.toBeInTheDocument();

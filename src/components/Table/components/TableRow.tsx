@@ -17,7 +17,7 @@ type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
     hover?: boolean;
 };
 
-const zebraStyles = (active, hover) => css`
+const zebraStyles = (active: boolean, hover: boolean) => css`
     &:nth-child(even) {
         background-color: hsla(${getSemanticValue('background-surface-neutral-faded-hsl')}, 0.3);
     }
@@ -29,7 +29,7 @@ const zebraStyles = (active, hover) => css`
     ${active ? `background-color: ${getSemanticValue('background-surface-info-active')} !important` : ''};
 `;
 
-const linesStyles = (active, hover) => css`
+const linesStyles = (active: boolean, hover: boolean) => css`
     td,
     th {
         border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
@@ -52,10 +52,10 @@ const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
     ({ rowStyle, active, hover = true }) => {
         switch (rowStyle) {
             case 'zebra': {
-                return zebraStyles(active, hover);
+                return zebraStyles(active ?? false, hover);
             }
             case 'lines': {
-                return linesStyles(active, hover);
+                return linesStyles(active ?? false, hover);
             }
             case 'blank':
             default: {

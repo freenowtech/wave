@@ -11,11 +11,11 @@ type DeprecatedWarningFunction = (
 let deprecatedProperty: DeprecatedWarningFunction = function deprecatedFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-    const hasWarned = {};
+    const hasWarned: Record<string, boolean> = {};
 
     deprecatedProperty = function deprecatedFunction(
         componentName: string,
-        propValue: string | number | undefined,
+        propValue: string | number | boolean | undefined,
         oldProp: string,
         newProp?: string,
         comment?: string

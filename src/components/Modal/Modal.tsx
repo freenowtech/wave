@@ -8,7 +8,7 @@ import { TopRightXIcon } from './components/TopRightXIcon';
 
 type DismissFunc = () => void;
 
-const DismissContext = React.createContext<DismissFunc>(undefined);
+const DismissContext = React.createContext<DismissFunc>(() => {});
 
 const useModalDismiss = (): DismissFunc => {
     const dismiss = useContext(DismissContext);
@@ -56,7 +56,7 @@ const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_D
 const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ...rest }: ModalProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
-    const closeTimeoutRef = useRef(null);
+    const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleClose: DismissFunc = () => {
         setVisible(false);

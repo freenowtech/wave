@@ -5,7 +5,7 @@ import { createContext } from 'react';
 const datepickerContextDefaultValue = {
     // todo: check if this can be changed to undefined, could be breaking clients
 
-    focusedDate: null,
+    focusedDate: null as Date | null,
     isDateFocused: (date: Date) => false,
     isDateSelected: (date: Date) => false,
     isDateHovered: (date: Date) => false,

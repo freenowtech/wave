@@ -150,7 +150,7 @@ const FilePicker: FC<FilePickerProps> = ({
         const eventFile = e.target.files?.[0];
 
         onChange(e);
-        onFileChange(eventFile, e);
+        if (eventFile) onFileChange(eventFile, e);
         setFile(eventFile);
     };
     const onClickHandler: MouseEventHandler = e => {
@@ -159,7 +159,7 @@ const FilePicker: FC<FilePickerProps> = ({
         // Avoid button trigger file selection twice
         e.stopPropagation();
         // Allow other spaces of the component trigger file selection
-        inputElRef.current.click();
+        inputElRef.current?.click();
     };
     const validFileSelected = file && !error;
 
@@ -181,9 +181,9 @@ const FilePicker: FC<FilePickerProps> = ({
                 alignItems="stretch"
                 data-testid="filepicker-outliner"
                 display="flex"
-                disabled={disabled}
-                hasValidFile={validFileSelected}
-                error={error}
+                disabled={disabled ?? false}
+                hasValidFile={validFileSelected ?? false}
+                error={error ?? false}
                 justifyContent="space-between"
                 onClick={onClickHandler}
                 px={2}

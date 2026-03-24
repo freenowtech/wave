@@ -194,13 +194,13 @@ const dateRangeToDisplayText = (locale: Locale, displayFormat?: string, dateRang
     }
 
     return {
-        startText: dateToDisplayText(locale, displayFormat, dateRange.startDate),
-        endText: dateToDisplayText(locale, displayFormat, dateRange.endDate)
+        startText: dateToDisplayText(locale, displayFormat!, dateRange.startDate),
+        endText: dateToDisplayText(locale, displayFormat!, dateRange.endDate)
     };
 };
 
 // https://date-fns.org/v2.12.0/docs/compareDesc
-const isValidRange = (startDate, endDate) => {
+const isValidRange = (startDate: Date | undefined, endDate: Date | undefined) => {
     if (startDate && endDate) {
         return compareDesc(startDate, endDate) >= 0;
     }
@@ -212,7 +212,7 @@ const isValidRange = (startDate, endDate) => {
 type DatepickerPopperPlacement = 'bottom-end' | 'bottom-start' | 'bottom';
 
 const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
-    [key in DatepickerRangeInputProps['placement']]: DatepickerPopperPlacement;
+    [key in NonNullable<DatepickerRangeInputProps['placement']>]: DatepickerPopperPlacement;
 } = {
     center: 'bottom',
     left: 'bottom-start',
@@ -220,7 +220,7 @@ const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
 };
 
 const mapPlacementToPopperPlacement = (placement: DatepickerRangeInputProps['placement']) =>
-    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement];
+    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement ?? 'center'];
 
 const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     minDate,
@@ -252,7 +252,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
     const [inputText, setInputText] = useState<DateRangeInputText>(() =>
-        dateRangeToDisplayText(localeObject, displayFormat, value)
+        dateRangeToDisplayText(localeObject!, displayFormat, value)
     );
     const [error, setError] = useState({ startDate: false, endDate: false });
     const displayErrorMessage = typeof errorHandler === 'string';
@@ -275,7 +275,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         setTriggerElement(el);
     };
 
-    const enforcedColorScheme = useClosestColorScheme(triggerElement);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
     const startId = useGeneratedId(startInputId);
     const endId = useGeneratedId(endInputId);
 
@@ -286,7 +286,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     }, [error.startDate, error.endDate, focusedInput]);
 
     useEffect(() => {
-        setInputText(dateRangeToDisplayText(localeObject, displayFormat, value));
+        setInputText(dateRangeToDisplayText(localeObject!, displayFormat, value));
     }, [value.startDate, value.endDate, displayFormat, localeObject]);
 
     useEffect(() => {
@@ -431,18 +431,18 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                                 // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
                                 numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
                                 minBookingDays={1}
-                                startDate={value.startDate}
-                                endDate={value.endDate}
+                                startDate={value.startDate ?? null}
+                                endDate={value.endDate ?? null}
                                 minBookingDate={minDate}
                                 maxBookingDate={maxDate}
                                 firstDayOfWeek={firstDayOfWeek}
                                 focusedInput={focusedInput}
                                 onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
                                     setFocusedInput(focusedValue);
-                                    handleDateChange(startDate || undefined, endDate || undefined);
+                                    handleDateChange(startDate ?? undefined, endDate ?? undefined);
                                 }}
                                 isDateBlocked={isDateBlocked}
-                                locale={localeObject}
+                                locale={localeObject!}
                             />
                         </DatepickerContentContainer>
                     </PortalWrapper>,

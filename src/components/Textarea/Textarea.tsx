@@ -86,16 +86,16 @@ const Textarea: FC<WrapperProps & TextAreaProps> = ({ resize = 'both', ...props 
     const { label, onChange, ...rest } = restProps;
     const id = useGeneratedId(props.id);
 
-    const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
+    const [hasValue, setHasValue] = useState(Boolean(rest.value && rest.value.toString().length > 0));
 
-    const handleChange = event => {
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         if (onChange) {
             onChange(event);
         }
     };
 
     useEffect(() => {
-        setHasValue(rest.value && rest.value.toString().length > 0);
+        setHasValue(Boolean(rest.value && rest.value.toString().length > 0));
     }, [rest.value]);
 
     return (

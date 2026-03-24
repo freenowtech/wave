@@ -53,7 +53,11 @@ function SelectTriggerWithRef<T extends object>(
     const buttonRef = React.useRef<HTMLButtonElement>(null);
 
     return (
-        <FakeButton $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => buttonRef.current?.click()}>
+        <FakeButton
+            $isVisuallyFocused={state?.isOpen ?? false}
+            ref={forwardedRef}
+            onClick={() => buttonRef.current?.click()}
+        >
             {leadingIcon}
             <InnerWrapper hideLabel={hideLabel}>
                 {hideLabel ? (
@@ -129,7 +133,11 @@ function Select<T extends Record<string, unknown>>({
                             hideLabel={hideLabel}
                             leadingIcon={leadingIcon}
                             placeholder={placeholder}
-                            renderValue={renderValue}
+                            renderValue={
+                                renderValue as
+                                    | ((props: object & { defaultChildren: React.ReactNode }) => React.ReactNode)
+                                    | undefined
+                            }
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>

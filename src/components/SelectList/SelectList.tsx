@@ -26,7 +26,10 @@ import { type SelectListProps } from './types';
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
 const getOptionError = (option: unknown): boolean =>
-    typeof option === 'object' && 'error' in option && Boolean(option.error);
+    typeof option === 'object' &&
+    option !== null &&
+    'error' in option &&
+    Boolean((option as Record<string, unknown>).error);
 
 const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'disabled' | 'error' => {
     if (selectProps.isDisabled) {
@@ -53,7 +56,7 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            ...bSize[selectProps.size]
+            ...(selectProps.size > 0 ? bSize[selectProps.size] : {})
         };
     },
     control: (_, state: WithSelectProps<ControlProps>) => {
@@ -176,9 +179,12 @@ const customStyles: StylesConfig = {
         };
 
         const colors = Object.keys(colorsByState)
-            .filter(key => state[key])
+            .filter(key => (state as unknown as Record<string, unknown>)[key])
             // eslint-disable-next-line unicorn/no-array-reduce
-            .reduce((acc, style) => ({ ...acc, ...colorsByState[style] }), defaultColors);
+            .reduce(
+                (acc, style) => ({ ...acc, ...(colorsByState as Record<string, Record<string, unknown>>)[style] }),
+                defaultColors
+            );
 
         return {
             ...provided,
@@ -290,21 +296,29 @@ const customStyles: StylesConfig = {
     })
 };
 
-const getIconSize = sizeAsString => (sizeAsString === 'medium' ? 24 : 18);
+const getIconSize = (sizeAsString: string) => (sizeAsString === 'medium' ? 24 : 18);
 
 const DropdownIndicator = (props: WithSelectProps<DropdownIndicatorProps>) => (
     <ReactSelectComponents.DropdownIndicator {...props}>
         {props.selectProps.menuIsOpen ? (
-            <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+            <ChevronUpIcon
+                data-testid="close-icon"
+                color="inherit"
+                size={getIconSize(props.selectProps.size ?? 'medium')}
+            />
         ) : (
-            <ChevronDownIcon data-testid="open-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+            <ChevronDownIcon
+                data-testid="open-icon"
+                color="inherit"
+                size={getIconSize(props.selectProps.size ?? 'medium')}
+            />
         )}
     </ReactSelectComponents.DropdownIndicator>
 );
 
 const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
     <ReactSelectComponents.ClearIndicator {...props}>
-        <XCrossIcon color="inherit" size={getIconSize(props.selectProps.size)} />
+        <XCrossIcon color="inherit" size={getIconSize(props.selectProps.size ?? 'medium')} />
     </ReactSelectComponents.ClearIndicator>
 );
 
@@ -312,7 +326,7 @@ const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
 
 const IndicatorSeparator = () => null;
 
-const MultiValueRemove = props => (
+const MultiValueRemove = (props: Parameters<typeof ReactSelectComponents.MultiValueRemove>[0]) => (
     <ReactSelectComponents.MultiValueRemove {...props}>
         <XCrossIcon size={14} color="inherit" />
     </ReactSelectComponents.MultiValueRemove>
@@ -339,11 +353,12 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
     const { components, isDisabled, variant = 'boxed', size = 'medium', error, label, inputId } = restProps;
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
+    const [triggerReference, setTriggerReference] = React.useState<HTMLDivElement | null>(null);
+    const triggerRefCallback = (el: HTMLDivElement | null) => setTriggerReference(el);
 
     const id = useGeneratedId(inputId);
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const enforcedColorScheme = useClosestColorScheme(triggerReference ?? undefined);
 
     const Menu =
         enforcedColorScheme === 'light'
@@ -353,7 +368,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
               : DefaultMenu;
 
     return (
-        <Wrapper ref={setTriggerReference} {...classNameProps} {...marginProps} {...widthProps}>
+        <Wrapper ref={triggerRefCallback} {...classNameProps} {...marginProps} {...widthProps}>
             <WindowedSelect
                 inputId={id}
                 styles={customStyles}

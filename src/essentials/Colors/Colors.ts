@@ -268,7 +268,7 @@ export const SemanticColorsDarkSchema = {
     },
     background: {
         page: {
-            default: Colors.blue.primary[1000],
+            default: Colors.blue.primary[900],
             'elevation-0': Colors.blue.primary[1100],
             'elevation-1': Colors.blue.primary[750],
             'elevation-2': Colors.blue.primary[550],

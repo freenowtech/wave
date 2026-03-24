@@ -82,7 +82,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
         const inputRef = useRef<HTMLInputElement | null>(null);
-        useImperativeHandle(ref, () => inputRef.current, []);
+        useImperativeHandle(ref, () => inputRef.current!, []);
 
         return (
             <PasswordWrapper {...widthProps} {...marginProps}>

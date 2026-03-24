@@ -7,7 +7,7 @@ import { type SemanticColorsSchema } from './types';
 export const DARK_THEME_CLASS = 'dark-scheme';
 export const LIGHT_THEME_CLASS = 'light-scheme';
 
-export const darkTheme: typeof css = (first: CSSObject | TemplateStringsArray, ...interpolations: never[]) => {
+export const darkTheme = (first: CSSObject | TemplateStringsArray, ...interpolations: never[]) => {
     const styles = css(first, ...interpolations);
 
     return css`

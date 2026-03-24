@@ -7,7 +7,7 @@
 export const shrinkFileName = (file: File, cap = 20): string => {
     // https://stackoverflow.com/a/680982/1422380
     const regExp = /(?:\.([^.]+))?$/;
-    const format = regExp.exec(file.name)[0];
+    const format = regExp.exec(file.name)![0];
     const name = file.name.replace(format, '');
     const separator = '...';
 

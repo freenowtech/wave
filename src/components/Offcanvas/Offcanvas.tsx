@@ -9,7 +9,7 @@ import { TopRightXIcon } from './components/TopRightXIcon';
 
 type DismissFunc = () => void;
 
-const DismissContext = React.createContext<DismissFunc>(undefined);
+const DismissContext = React.createContext<DismissFunc>(() => {});
 
 const useOffcanvasDismiss = (): DismissFunc => {
     const dismiss = useContext(DismissContext);

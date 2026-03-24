@@ -198,7 +198,7 @@ export const Search: FC<SearchProps> = ({
     React.useEffect(() => {
         const emitIfClickingOutsideSearch = (event: DocumentEventMap['click']) => {
             if (disabled) return;
-            if (containerRef.current.contains(event.target as Element)) {
+            if (containerRef.current?.contains(event.target as Element)) {
                 setShowResults(true);
             } else {
                 setShowResults(false);

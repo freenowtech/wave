@@ -26,10 +26,10 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         const id = useGeneratedId(providedId);
 
         const innerRef = useRef<HTMLInputElement | null>(null);
-        useImperativeHandle(ref, () => innerRef.current, []);
+        useImperativeHandle(ref, () => innerRef.current!, []);
 
-        const [hasValue, setHasValue] = useState(rest?.value?.toString().length > 0);
-        const hasUncontrolledValue = innerRef?.current?.value?.length > 0;
+        const [hasValue, setHasValue] = useState((rest?.value?.toString()?.length ?? 0) > 0);
+        const hasUncontrolledValue = (innerRef?.current?.value?.length ?? 0) > 0;
 
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             setHasValue(event.target.value.length > 0);
@@ -39,7 +39,7 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         };
 
         useEffect(() => {
-            setHasValue(rest?.value?.toString().length > 0);
+            setHasValue((rest?.value?.toString()?.length ?? 0) > 0);
         }, [rest.value]);
 
         if (variant === 'boxed') {

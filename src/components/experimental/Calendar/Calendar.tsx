@@ -76,7 +76,15 @@ export function Calendar(props: CalendarProps): React.JSX.Element {
         },
         classNames: { ...defaults, ...classNames },
         components: {
-            Chevron: ({ orientation, ...p }: { orientation?: 'left' | 'right' }) => {
+            Chevron: ({
+                orientation,
+                ...p
+            }: {
+                orientation?: 'left' | 'right' | 'up' | 'down';
+                className?: string;
+                size?: number;
+                disabled?: boolean;
+            }) => {
                 if (orientation === 'left') return <ChevronLeftIcon size={24} {...p} />;
                 if (orientation === 'right') return <ChevronRightIcon size={24} {...p} />;
                 return null as unknown as React.ReactElement;

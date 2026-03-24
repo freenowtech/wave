@@ -80,8 +80,8 @@ const StyledCard = styled(Card)<{ side?: string }>`
         transform ${ANIMATION_DURATION}ms ease-out,
         opacity ${ANIMATION_DURATION}ms ease-out;
 
-    ${p => inFrom[p.side]};
-    ${p => position[p.side]};
+    ${p => (p.side ? inFrom[p.side as keyof typeof inFrom] : '')};
+    ${p => (p.side ? position[p.side as keyof typeof position] : '')};
 
     @media (max-width: calc(${p => p.width} + 2rem)) {
         width: calc(100% - 2rem);
