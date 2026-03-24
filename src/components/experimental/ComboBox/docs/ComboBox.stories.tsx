@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { StoryObj, Meta } from '@storybook/react';
+import { useAsyncList } from 'react-aria-components';
 import { ComboBox } from '../ComboBox';
 import { ListBoxItem } from '../../ListBox/ListBox';
 import { Button } from '../../../Button/Button';
@@ -70,33 +71,24 @@ type Character = { name: string };
 
 export const AsyncValues: StoryObj<typeof ComboBox<Character>> = {
     render: () => {
-        const [items, setItems] = React.useState<Character[]>([]);
         const [filterText, setFilterText] = React.useState('');
 
-        React.useEffect(() => {
-            let ignore = false;
-
-            async function startFetching() {
+        const list = useAsyncList<Character>({
+            async load({ signal, cursor }) {
                 const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`);
                 const json = await res.json();
 
-                if (!ignore) {
-                    setItems(json.results);
-                }
+                return {
+                    items: json.results,
+                    cursor: json.next
+                };
             }
-
-            // eslint-disable-next-line no-void
-            void startFetching();
-
-            return () => {
-                ignore = true;
-            };
-        }, [filterText]);
+        });
 
         return (
             <ComboBox<Character>
                 label="Star Wars Character"
-                items={items}
+                items={list.items}
                 inputValue={filterText}
                 onInputChange={setFilterText}
             >
