@@ -56,6 +56,7 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
+            // eslint-disable-next-line unicorn/explicit-length-check
             ...(selectProps.size ? bSize[selectProps.size] : {})
         };
     },

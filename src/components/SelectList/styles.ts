@@ -60,6 +60,7 @@ export const variantStyles = {
                     borderRadius: get('radii.2')(props),
                     border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBFocused,
+                    // eslint-disable-next-line unicorn/explicit-length-check
                     ...(props.size ? bSize[props.size] : {})
                 };
             }
@@ -85,6 +86,7 @@ export const variantStyles = {
                     borderTopRightRadius: get('radii.1')(props),
                     borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBLFocused,
+                    // eslint-disable-next-line unicorn/explicit-length-check
                     ...(props.size ? btSize[props.size] : {})
                 };
             }
@@ -111,6 +113,7 @@ export const variantStyles = {
                     }
                 };
 
+                // eslint-disable-next-line unicorn/explicit-length-check
                 return props.size ? bSize[props.size] : {};
             }
             case 'bottom-lined': {
@@ -129,6 +132,7 @@ export const variantStyles = {
                     }
                 };
 
+                // eslint-disable-next-line unicorn/explicit-length-check
                 return props.size ? btSize[props.size] : {};
             }
             default: {
