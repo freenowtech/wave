@@ -68,7 +68,7 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
                     }
 
                     // we can use index as a key since the array is never reordered
-                    // eslint-disable-next-line react/no-array-index-key
+                    // eslint-disable-next-line @eslint-react/no-array-index-key
                     return <div key={index} />;
                 })}
             </DaysContainer>

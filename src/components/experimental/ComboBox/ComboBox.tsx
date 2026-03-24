@@ -18,7 +18,7 @@ import { Button } from '../Field/Button';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
-import useMergeRefs from '../../../utils/hooks/useMergeRefs';
+import mergeRefs from '../../../utils/hooks/useMergeRefs';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
 const defaultAriaStrings = {
@@ -50,7 +50,7 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
         const state = React.useContext(ComboBoxStateContext);
         const internalInputRef = React.useRef<HTMLInputElement>(null);
 
-        const combinedInputRef = useMergeRefs(internalInputRef, externalInputRef);
+        const combinedInputRef = mergeRefs(internalInputRef, externalInputRef);
 
         return (
             <FakeInput

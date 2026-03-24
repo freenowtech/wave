@@ -98,7 +98,7 @@ describe('Banner', () => {
         // testing library requires us to use `await` here,
         // but we use fake timers, so the click won't be handled until we run the timers,
         // so we can't use `await` here
-        // eslint-disable-next-line no-void
+
         void user.click(screen.getByText('dismiss'));
 
         // We run the timer to just before the animation ends

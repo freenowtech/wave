@@ -69,7 +69,7 @@ const Dialog = ({
                     {subtitle}
                 </SubtitleText>
 
-                {body && <BodyWrapper>{body}</BodyWrapper>}
+                {body != null && <BodyWrapper>{body}</BodyWrapper>}
 
                 <ButtonsWrapper>
                     {dismissButton}

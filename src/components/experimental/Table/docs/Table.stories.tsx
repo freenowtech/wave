@@ -119,7 +119,7 @@ export const Async: Story = {
         const [isLoading, setIsLoading] = React.useState(true);
         const [items, setItems] = React.useState<Character[]>(
             /* eslint-disable-next-line unicorn/no-new-array */
-            new Array(pageSize).fill(emptyCharacter).map((value, idx) => ({ ...value, name: idx.toString() }))
+            () => new Array(pageSize).fill(emptyCharacter).map((value, idx) => ({ ...value, name: idx.toString() }))
         );
 
         React.useEffect(() => {
@@ -136,7 +136,6 @@ export const Async: Story = {
                 setIsLoading(false);
             }
 
-            // eslint-disable-next-line no-void
             void startFetching();
 
             return () => {

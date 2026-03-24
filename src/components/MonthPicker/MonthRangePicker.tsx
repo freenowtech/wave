@@ -109,7 +109,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     ...rest
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+    const [currentYear, setCurrentYear] = useState(() => new Date().getFullYear());
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
 
     const [rangeStart, setRangeStart] = useState<Date | null>(null);

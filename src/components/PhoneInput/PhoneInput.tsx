@@ -102,7 +102,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
                 width="8rem"
                 components={{
                     SingleValue,
-                    // eslint-disable-next-line unicorn/no-null
+
                     IndicatorSeparator: () => null,
                     Option,
                     // DynamicWidthMenu is a styled-component with its own `theme` prop since menuProps has `theme` prop

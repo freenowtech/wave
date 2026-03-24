@@ -10,7 +10,7 @@ export interface InvertedColorSchemeProps extends BoxProps {
 }
 
 export const InvertedColorScheme: FC<InvertedColorSchemeProps> = ({ children, ...props }) => {
-    const [preferredColorScheme, setPreferredColorScheme] = useState(getInvertedScheme(evalColorSchemeQuery()));
+    const [preferredColorScheme, setPreferredColorScheme] = useState(() => getInvertedScheme(evalColorSchemeQuery()));
 
     useEffect(() => {
         const mql = evalColorSchemeQuery();

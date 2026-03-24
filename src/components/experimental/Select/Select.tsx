@@ -45,7 +45,6 @@ interface SelectFieldProps<T> extends Pick<FieldProps, 'label' | 'description' |
     renderValue?: (props: SelectValueRenderProps<T> & { defaultChildren: React.ReactNode }) => React.ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 function SelectTriggerWithRef<T extends object>(
     { label, hideLabel, leadingIcon, placeholder, renderValue }: SelectFieldProps<T>,
     forwardedRef: React.ForwardedRef<HTMLDivElement>

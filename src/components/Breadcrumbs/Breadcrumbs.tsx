@@ -53,8 +53,7 @@ const Breadcrumbs = ({ children }: BreadcrumbsProps): React.JSX.Element => {
                         <Box height={16} mt="0.125rem">
                             <ChevronRightIcon size={16} color={getSemanticValue('foreground-neutral-default')} />
                         </Box>
-                    ) : // eslint-disable-next-line unicorn/no-null
-                    null}
+                    ) : null}
                 </BreadcrumbsListItem>
             ))}
         </BreadcrumbsList>

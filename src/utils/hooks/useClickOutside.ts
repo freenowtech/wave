@@ -8,7 +8,6 @@ type UseClickOutside = (ref: { current: HTMLElement | null | undefined }, handle
 const useClickOutside: UseClickOutside = (ref, handler) => {
     useEffect(() => {
         const handleClose = event => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             if (ref.current && !ref.current.contains(event.target)) {
                 handler(event);
             }

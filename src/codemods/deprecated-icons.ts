@@ -1,5 +1,5 @@
-import { API, FileInfo } from 'jscodeshift';
-import { Options } from 'recast';
+import { type API, type FileInfo } from 'jscodeshift';
+import { type Options } from 'recast';
 
 const DeprecatedToValidIconsMap = {
     BackwardSmallIcon: 'BackwardLastIcon',

@@ -144,7 +144,7 @@ const FilePicker: FC<FilePickerProps> = ({
     alwaysShowActionButton = false,
     ...nonInputProps
 }: FilePickerProps) => {
-    const inputEl = useRef<HTMLInputElement>(null);
+    const inputElRef = useRef<HTMLInputElement>(null);
     const [file, setFile] = useState<File | null>();
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const eventFile = e.target.files?.[0];
@@ -159,7 +159,7 @@ const FilePicker: FC<FilePickerProps> = ({
         // Avoid button trigger file selection twice
         e.stopPropagation();
         // Allow other spaces of the component trigger file selection
-        inputEl.current.click();
+        inputElRef.current.click();
     };
     const validFileSelected = file && !error;
 
@@ -173,7 +173,7 @@ const FilePicker: FC<FilePickerProps> = ({
                 multiple={false}
                 name={name}
                 onChange={onInputChange}
-                ref={inputEl}
+                ref={inputElRef}
                 type="file"
             />
             <Outliner

@@ -196,7 +196,6 @@ export const Search: FC<SearchProps> = ({
 
     // this is to keep track of clicks outside the component (useful to close the search results)
     React.useEffect(() => {
-        // eslint-disable-next-line unicorn/consistent-function-scoping
         const emitIfClickingOutsideSearch = (event: DocumentEventMap['click']) => {
             if (disabled) return;
             if (containerRef.current.contains(event.target as Element)) {
@@ -288,7 +287,7 @@ export const Search: FC<SearchProps> = ({
                             role="option"
                             id={`${prefix}-${index}`}
                             key={
-                                // eslint-disable-next-line react/no-array-index-key
+                                // eslint-disable-next-line @eslint-react/no-array-index-key
                                 index
                             }
                             onMouseEnter={() => setActiveIndex(index)}

@@ -1,15 +1,15 @@
 import {
-    API,
-    ASTPath,
-    CallExpression,
-    FileInfo,
-    Identifier,
-    ImportDeclaration,
-    JSCodeshift,
-    Literal,
-    MemberExpression
+    type API,
+    type ASTPath,
+    type CallExpression,
+    type FileInfo,
+    type Identifier,
+    type ImportDeclaration,
+    type JSCodeshift,
+    type Literal,
+    type MemberExpression
 } from 'jscodeshift';
-import { Options } from 'recast';
+import { type Options } from 'recast';
 
 const DeprecatedSemanticColorsToSemanticTokensMap = {
     'text.primary': 'foreground-primary',
@@ -232,8 +232,7 @@ const buildFullAccessedPropertiesPath = (ex: ASTPath<MemberExpression>, initialP
     const builtPath = initialPath ? `${initialPath}.${propertyName}` : propertyName;
 
     // Recursively add more properties if the parent has more
-    if (isMemberExpression(ex.parentPath)) return buildFullAccessedPropertiesPath(ex.parentPath, builtPath);
-    else return builtPath;
+    return isMemberExpression(ex.parentPath) ? buildFullAccessedPropertiesPath(ex.parentPath, builtPath) : builtPath;
 };
 
 const getHighesLevelMemberExpression = (ex: ASTPath<MemberExpression>): ASTPath<MemberExpression> => {
@@ -293,7 +292,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         const firstArgument = ex.node.arguments[0] as Literal;
 
         // Remove the `semanticColors.` part of the string to later map to the token, 15 is the number of chars it has
-        const semanticColor = (firstArgument.value as string).substring(15);
+        const semanticColor = (firstArgument.value as string).slice(15);
 
         // Map the Color to a semantic token
         const semanticToken = DeprecatedSemanticColorsToSemanticTokensMap[semanticColor];

@@ -4,7 +4,7 @@ import { createContext } from 'react';
 
 const datepickerContextDefaultValue = {
     // todo: check if this can be changed to undefined, could be breaking clients
-    // eslint-disable-next-line unicorn/no-null
+
     focusedDate: null,
     isDateFocused: (date: Date) => false,
     isDateSelected: (date: Date) => false,

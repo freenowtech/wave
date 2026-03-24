@@ -1,5 +1,11 @@
-import { API, FileInfo, ImportDeclaration, JSXAttribute, VariableDeclarator } from 'jscodeshift';
-import { Options } from 'recast';
+import {
+    type API,
+    type FileInfo,
+    type ImportDeclaration,
+    type JSXAttribute,
+    type VariableDeclarator
+} from 'jscodeshift';
+import { type Options } from 'recast';
 
 const ComponentNamesWithInvertedProp = [
     'Input',
@@ -46,7 +52,7 @@ export default (file: FileInfo, api: API, options: Options) => {
     const styledExpressions = ast.find(j.TaggedTemplateExpression, {
         tag: {
             arguments: ([argument]) =>
-                argument?.type === 'Identifier' && ComponentNamesWithInvertedProp.includes(argument.name as string)
+                argument?.type === 'Identifier' && ComponentNamesWithInvertedProp.includes(argument.name)
         }
     });
 
@@ -54,8 +60,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         if (ex.parent?.node && ex.parent.node.type === 'VariableDeclarator') {
             const styledDeclaration: VariableDeclarator = ex.parent.node;
             // Mark the name of the declared styled component as a local component which can have the inverted prop
-            if (styledDeclaration.id.type === 'Identifier')
-                localComponentNames.push(styledDeclaration.id.name as string);
+            if (styledDeclaration.id.type === 'Identifier') localComponentNames.push(styledDeclaration.id.name);
         }
     });
 
@@ -81,17 +86,14 @@ export default (file: FileInfo, api: API, options: Options) => {
         let shouldWrap = false;
         const invertedProp: JSXAttribute = invertedProps.get(0).node;
 
-        // In case the prop has a value (`inverted={true}` or `inverted={false}`) set shouldWrap based on the value
-        if (
+        // In case the prop has a value (`inverted={true}` or `inverted={false}`) set shouldWrap based on the value,
+        // otherwise (implicit `true`) set shouldWrap to `true`
+        shouldWrap =
             invertedProp.value &&
             invertedProp.value.type === 'JSXExpressionContainer' &&
             invertedProp.value.expression.type === 'BooleanLiteral'
-        ) {
-            shouldWrap = invertedProp.value.expression.value;
-        } else {
-            // In case the prop has an implicit `true` value set shouldWrap to `true`
-            shouldWrap = true;
-        }
+                ? invertedProp.value.expression.value
+                : true;
 
         // Remove the inverted prop
         invertedProps.at(0).remove();

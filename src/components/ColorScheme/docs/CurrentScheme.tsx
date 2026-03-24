@@ -6,7 +6,7 @@ const evalColorSchemeQuery = () => window.matchMedia('(prefers-color-scheme: dar
 const getCurrentScheme = (query: MediaQueryList): 'dark' | 'light' => (query.matches ? 'dark' : 'light');
 
 export const CurrentScheme: React.FC = () => {
-    const [currentScheme, setCurrentScheme] = useState(getCurrentScheme(evalColorSchemeQuery()));
+    const [currentScheme, setCurrentScheme] = useState(() => getCurrentScheme(evalColorSchemeQuery()));
 
     useEffect(() => {
         const mql = evalColorSchemeQuery();
