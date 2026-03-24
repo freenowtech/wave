@@ -58,11 +58,11 @@ export const generateCssVariableEntries = (
     path: string[] = []
 ): ReadonlyArray<CssVariableEntry> =>
     Object.entries(tokenObject).flatMap(([key, value]) => {
-        if (typeof value === 'object') {
+        if (typeof value === 'object' && value !== null) {
             return generateCssVariableEntries(value, [...path, key]);
         }
 
-        return { variable: [...path, key].join('-').toLowerCase(), value };
+        return { variable: [...path, key].join('-').toLowerCase(), value: value as string | number };
     });
 
 export const generateHslComponentsCssVariableEntries = (

@@ -87,7 +87,7 @@ export interface MonthRangePickerProps extends MarginProps, WidthProps {
 type DatepickerPopperPlacement = 'bottom-end' | 'bottom-start' | 'bottom';
 
 const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
-    [key in MonthRangePickerProps['placement']]: DatepickerPopperPlacement;
+    [key in NonNullable<MonthRangePickerProps['placement']>]: DatepickerPopperPlacement;
 } = {
     center: 'bottom',
     left: 'bottom-start',
@@ -95,7 +95,7 @@ const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
 };
 
 const mapPlacementToPopperPlacement = (placement: MonthRangePickerProps['placement']) =>
-    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement];
+    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement ?? 'center'];
 
 export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     onRangeSelect,
@@ -121,7 +121,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     const arrowRef = useRef<HTMLDivElement | null>(null);
     const localeObject = useLocaleObject(locale);
 
-    const enforcedColorScheme = useClosestColorScheme(triggerElement);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
     const mappedPlacement = mapPlacementToPopperPlacement(placement);
 
     const {
@@ -149,9 +149,9 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
 
     const inputText = useMemo(() => {
         if (rangeStart && rangeEnd) {
-            return `${dateToText(rangeStart, localeObject)} - ${dateToText(rangeEnd, localeObject)}`;
+            return `${dateToText(rangeStart, localeObject!)} - ${dateToText(rangeEnd, localeObject!)}`;
         }
-        return rangeStart ? `${dateToText(rangeStart, localeObject)} - ...` : '';
+        return rangeStart ? `${dateToText(rangeStart, localeObject!)} - ...` : '';
     }, [rangeStart, rangeEnd]);
 
     // Close the picker when clicking outside
@@ -290,7 +290,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
                                     isMonthDisabled={isMonthDisabled}
                                     isSelectedStartOrEnd={isSelectedStartOrEnd}
                                     isInRange={isInRange}
-                                    locale={localeObject}
+                                    locale={localeObject!}
                                 />
                                 <MonthCalendar
                                     year={currentYear + 1}
@@ -299,7 +299,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
                                     isMonthDisabled={isMonthDisabled}
                                     isSelectedStartOrEnd={isSelectedStartOrEnd}
                                     isInRange={isInRange}
-                                    locale={localeObject}
+                                    locale={localeObject!}
                                 />
                             </YearGridContainer>
                         </MonthPickerContentContainer>

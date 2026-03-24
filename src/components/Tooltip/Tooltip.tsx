@@ -162,7 +162,7 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
         setTriggerElement(el);
     };
 
-    const enforcedColorScheme = useClosestColorScheme(triggerElement);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
 
     const PortalWrapper = React.useMemo(() => {
         if (!enforcedColorScheme) return React.Fragment;
@@ -195,8 +195,7 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
                     ref: handleTriggerRef
                 }
             )}
-            {content &&
-                isVisible &&
+            {!!(content && isVisible) &&
                 createPortal(
                     <PortalWrapper>
                         <TooltipBody ref={refs.setFloating} style={floatingStyles} variant={currentPlacement}>

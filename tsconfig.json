@@ -4,6 +4,7 @@
         "removeComments": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
+        "ignoreDeprecations": "6.0",
         "jsx": "react",
         "lib": ["dom", "es2023"],
         "declaration": true,
@@ -13,5 +14,5 @@
         "skipDefaultLibCheck": true
     },
     "include": ["src/**/*"],
-    "exclude": ["src/**/docs", "**/node_modules", "src/codemods/__*"]
+    "exclude": ["src/**/docs", "**/node_modules", "src/codemods"]
 }

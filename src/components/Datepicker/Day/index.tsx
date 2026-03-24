@@ -14,7 +14,7 @@ const Day: FC<DayProps> = ({ dayLabel, date }: DayProps) => {
     const datepickerContext = useContext(DatepickerContext);
     const dayProps = useDay({
         date,
-        dayRef,
+        dayRef: dayRef as React.RefObject<HTMLButtonElement>,
         ...datepickerContext,
         // This overwrite prevent undesired @datepicker-react behavior to set focus on selected day button when calendar is open.
         // The Wave's behavior is to keep focus on input element. When focus is moved out of the input, the calendar collapses.

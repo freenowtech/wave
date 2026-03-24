@@ -9,7 +9,7 @@ function toggle(currentValue: boolean, newValue: boolean | undefined) {
 }
 
 function useToggle(initialValue = false): UseToggleType<boolean> {
-    return useReducer(toggle, initialValue);
+    return useReducer(toggle, initialValue) as unknown as UseToggleType<boolean>;
 }
 
 export { useToggle };

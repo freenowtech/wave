@@ -61,7 +61,7 @@ describe('DatepickerRangeInput', () => {
             const user = userEvent.setup();
             const mockCloseHandler = jest.fn();
             const { getByTestId, getAllByText } = render(<ControlledRangeInput onClose={mockCloseHandler} />);
-            const selectDate = async day => {
+            const selectDate = async (day: string) => {
                 // Open datepicker
                 await user.click(getByTestId('start-date-input'));
 

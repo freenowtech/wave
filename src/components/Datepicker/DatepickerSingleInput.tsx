@@ -93,7 +93,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
 
     const localeObject = useLocaleObject(locale);
     const [isFocused, setIsFocused] = useState(false);
-    const [inputText, setInputText] = useState(() => dateToDisplayText(localeObject, displayFormat, value));
+    const [inputText, setInputText] = useState(() => dateToDisplayText(localeObject!, displayFormat, value));
     const [error, setError] = useState(false);
     const displayErrorMessage = typeof errorHandler === 'string';
 
@@ -113,7 +113,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
         setTriggerElement(el);
     };
 
-    const enforcedColorScheme = useClosestColorScheme(triggerElement);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
     const id = useGeneratedId(inputId);
 
     useEffect(() => {
@@ -123,7 +123,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     }, [error]);
 
     useEffect(() => {
-        setInputText(dateToDisplayText(localeObject, displayFormat, value));
+        setInputText(dateToDisplayText(localeObject!, displayFormat, value));
     }, [value, localeObject, displayFormat]);
 
     const handleDatepickerClose = () => {
@@ -197,18 +197,18 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
                                 numberOfMonths={1}
                                 exactMinBookingDays
                                 minBookingDays={1}
-                                startDate={value}
-                                endDate={value}
+                                startDate={value ?? null}
+                                endDate={value ?? null}
                                 minBookingDate={minDate}
                                 maxBookingDate={maxDate}
                                 firstDayOfWeek={firstDayOfWeek}
-                                focusedInput={isFocused ? START_DATE : undefined}
+                                focusedInput={isFocused ? START_DATE : null}
                                 onDatesChange={({ focusedInput, startDate }) => {
                                     setIsFocused(focusedInput !== null);
-                                    handleDateChange(startDate || undefined);
+                                    handleDateChange(startDate ?? undefined);
                                 }}
                                 isDateBlocked={isDateBlocked}
-                                locale={localeObject}
+                                locale={localeObject!}
                             />
                         </DatepickerContentContainer>
                     </PortalWrapper>,

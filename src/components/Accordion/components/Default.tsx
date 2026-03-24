@@ -72,7 +72,7 @@ export const DefaultPanel = ({
                     <CardHeader
                         onClick={() => {
                             setIsOpen(!isOpen);
-                            onCollapse();
+                            onCollapse?.();
                         }}
                     >
                         <Box display="flex" flexDirection="column" maxWidth="33%">
@@ -92,7 +92,7 @@ export const DefaultPanel = ({
                 <PanelHeader
                     onClick={() => {
                         setIsOpen(!isOpen);
-                        onExpand();
+                        onExpand?.();
                     }}
                 >
                     <Headline as="h4" mr="3">

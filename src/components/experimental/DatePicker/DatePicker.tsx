@@ -307,7 +307,7 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
                 if (a && b && a > b) [a, b] = [b, a];
                 if (a && !inBounds(a, minDateCompat, maxDateCompat)) return;
                 if (b && !inBounds(b, minDateCompat, maxDateCompat)) return;
-                range = { from: a, to: b };
+                range = { from: a ?? undefined, to: b ?? undefined };
             }
 
             emitRange(range);
@@ -506,7 +506,7 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
 
             {isMultiple && (multipleSource?.length ?? 0) > 0 && (
                 <Chips aria-label="Selected dates">
-                    {multipleSource.map(d => {
+                    {multipleSource!.map(d => {
                         const key = stripTime(d).getTime(); // stable per day
                         return (
                             <Chip key={key}>

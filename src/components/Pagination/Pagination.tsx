@@ -145,7 +145,7 @@ const Pagination: React.FC<PaginationProps> = ({
                         <Box aria-label={ariaLabelSelectPageSizeContainer} width="fit-content" minWidth="5em">
                             <SelectList
                                 options={pageSizes}
-                                onChange={onSelectPageSize}
+                                onChange={onSelectPageSize as any}
                                 value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
                             />
                         </Box>

@@ -27,18 +27,21 @@ export const useClosestColorScheme = (element?: Element): ColorScheme => {
     const [closestColorScheme, setClosestColorScheme] = useState<ColorScheme>();
 
     useEffect(() => {
-        const colorScheme = getColorSchemeFromElement(closestParentWithColorScheme);
+        const colorScheme = getColorSchemeFromElement(closestParentWithColorScheme ?? undefined);
         setClosestColorScheme(colorScheme);
     }, [closestParentWithColorScheme]);
 
-    const callback = mutations => {
-        const lastMutation: MutationRecord = mutations.at(-1);
-        const changedElement = lastMutation.target as Element;
+    const callback = (mutations: MutationRecord[]) => {
+        const lastMutation = mutations.at(-1);
+        const changedElement = lastMutation?.target as Element;
 
-        setClosestColorScheme(getColorSchemeFromElement(changedElement));
+        if (changedElement) setClosestColorScheme(getColorSchemeFromElement(changedElement));
     };
 
-    useMutationObserver(closestParentWithColorScheme, callback, { attributes: true, attributeFilter: ['class'] });
+    useMutationObserver(closestParentWithColorScheme ?? undefined, callback, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
 
     return closestColorScheme;
 };

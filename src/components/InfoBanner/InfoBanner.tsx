@@ -182,8 +182,8 @@ const InfoBanner: React.FC<InfoBannerProps> = ({
     const BannerIcon = ICON_VARIANTS[variant];
 
     return (
-        <RoundedBox variant={variant} emphasized={emphasized} role={ROLE_VARIANTS[variant]} {...props}>
-            <IconBox mr={1} variant={variant} emphasized={emphasized} data-testid="infobanner-icon-container">
+        <RoundedBox variant={variant} emphasized={emphasized ?? false} role={ROLE_VARIANTS[variant]} {...props}>
+            <IconBox mr={1} variant={variant} emphasized={emphasized ?? false} data-testid="infobanner-icon-container">
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">

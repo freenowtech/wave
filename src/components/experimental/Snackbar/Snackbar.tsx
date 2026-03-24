@@ -41,7 +41,7 @@ interface SnackbarProps
 }
 
 const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
-    ({ children, hasDismissButton = false, onDismiss = null, ...restProps }, ref): ReactElement => (
+    ({ children, hasDismissButton = false, onDismiss = undefined, ...restProps }, ref): ReactElement => (
         <Container ref={ref} {...restProps}>
             {children}
             {hasDismissButton && (

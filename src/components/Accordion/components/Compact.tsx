@@ -39,9 +39,9 @@ export const Compact = ({
             <PanelHeader
                 onClick={() => {
                     if (isOpen) {
-                        onExpand();
+                        onExpand?.();
                     } else {
-                        onCollapse();
+                        onCollapse?.();
                     }
                     setIsOpen(!isOpen);
                 }}

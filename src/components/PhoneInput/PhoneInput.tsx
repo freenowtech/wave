@@ -81,9 +81,9 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     const containerRef = useRef<HTMLDivElement | null>(null);
     const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
 
-    const handleCountrySelection = value => {
+    const handleCountrySelection = (value: unknown) => {
         if (props.onCountryChange) {
-            props.onCountryChange(value);
+            props.onCountryChange(value as Parameters<typeof props.onCountryChange>[0]);
         }
 
         if (nationalNumberInputRef?.current) nationalNumberInputRef.current.focus();

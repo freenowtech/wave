@@ -105,7 +105,7 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
                     aria-controls={inputRef.current?.id}
                     aria-label={ariaStrings.clearFieldButton}
                     onPress={() => {
-                        inputRef.current.value = '';
+                        if (inputRef.current) inputRef.current.value = '';
                         handleChange('');
                     }}
                     excludeFromTabOrder

@@ -128,7 +128,7 @@ const Popover: React.FC<PopoverProps> = ({
     });
 
     const resolveCallback = React.useCallback(
-        state => {
+        (state: boolean) => {
             if (onClose && !state) onClose();
             if (onOpen && state) onOpen();
         },
@@ -160,8 +160,12 @@ const Popover: React.FC<PopoverProps> = ({
     }, [resolveCallback, setRender, render, hidePopover]);
 
     const handleOut = React.useCallback(
-        ev => {
-            if (popoverTriggerRef && popoverTriggerRef.current && !popoverTriggerRef.current.contains(ev.target)) {
+        (ev: Event) => {
+            if (
+                popoverTriggerRef &&
+                popoverTriggerRef.current &&
+                !popoverTriggerRef.current.contains(ev.target as Node)
+            ) {
                 if (openByDefault) {
                     setOpenByDefault(false);
                     resolveCallback(false);
@@ -242,7 +246,7 @@ const Popover: React.FC<PopoverProps> = ({
                     style={{ ...floatingStyles, zIndex: 999 }}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
-                        <PopoverContent padding={padding}>{content}</PopoverContent>
+                        <PopoverContent padding={padding ?? 0}>{content}</PopoverContent>
                     </PopoverContentWrapper>
                 </PopoverContentContainer>
             )}

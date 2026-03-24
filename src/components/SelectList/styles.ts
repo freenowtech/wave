@@ -27,7 +27,9 @@ export const errorStyles = {
         boxShadow:
             variant === 'boxed'
                 ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
-                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
+                : variant === 'bottom-lined'
+                  ? `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
+                  : undefined
     }),
     label: (): CSSObject => ({
         color: getSemanticValue('foreground-danger-emphasized')
@@ -58,7 +60,7 @@ export const variantStyles = {
                     borderRadius: get('radii.2')(props),
                     border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBFocused,
-                    ...bSize[props.size]
+                    ...(props.size > 0 ? bSize[props.size] : {})
                 };
             }
             case 'bottom-lined': {
@@ -83,7 +85,7 @@ export const variantStyles = {
                     borderTopRightRadius: get('radii.1')(props),
                     borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBLFocused,
-                    ...btSize[props.size]
+                    ...(props.size > 0 ? btSize[props.size] : {})
                 };
             }
             default: {
@@ -109,7 +111,7 @@ export const variantStyles = {
                     }
                 };
 
-                return bSize[props.size];
+                return props.size > 0 ? bSize[props.size] : {};
             }
             case 'bottom-lined': {
                 const btSize = {
@@ -127,7 +129,7 @@ export const variantStyles = {
                     }
                 };
 
-                return btSize[props.size];
+                return props.size > 0 ? btSize[props.size] : {};
             }
             default: {
                 return {};
