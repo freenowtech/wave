@@ -1,5 +1,13 @@
 import styled, { css, keyframes } from 'styled-components';
-import { borderRadius, BorderRadiusProps, compose, layout, LayoutProps, margin, MarginProps } from 'styled-system';
+import {
+    borderRadius,
+    type BorderRadiusProps,
+    compose,
+    layout,
+    type LayoutProps,
+    margin,
+    type MarginProps
+} from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 

@@ -1,9 +1,9 @@
-import React, { FC, ReactElement } from 'react';
-import { components, SingleValueProps } from 'react-select';
+import React, { type FC, type ReactElement } from 'react';
+import { components, type SingleValueProps } from 'react-select';
 import styled from 'styled-components';
 import { Flag } from '../../../icons';
 import { Text } from '../../Text/Text';
-import { PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
+import { type PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
 import { isFlagAvailable } from '../util/isFlagAvailable';
 
 const StyledSingleValue = styled(components.SingleValue)`

@@ -24,10 +24,10 @@
 import {
     generateHslComponentsCssVariableEntries,
     generateCssVariableEntries,
-    TokenObject
+    type TokenObject
 } from '../../utils/cssVariables';
-import { Join, Leaves } from '../../utils/types';
-import { ColorPaletteSchema, SemanticColorsSchema } from './types';
+import { type Join, type Leaves } from '../../utils/types';
+import { type ColorPaletteSchema, type SemanticColorsSchema } from './types';
 
 const DS_PREFIX = 'wave-exp';
 type NameSpace = 'color' | 'palette' | 'typescale';

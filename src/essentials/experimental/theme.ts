@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+import { type DefaultTheme } from 'styled-components';
 import { Breakpoints, MediaQueries } from '../index';
 
 const ExperimentalSpaces = [
@@ -102,4 +102,4 @@ function fontStack(fonts: string[]): string {
     return fonts.map(font => (font.includes(' ') ? `"${font}"` : font)).join(', ');
 }
 
-export { theme, ExperimentalTheme };
+export { theme, type ExperimentalTheme };

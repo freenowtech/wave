@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { variant } from 'styled-system';
-import React, { ComponentPropsWithoutRef, ReactElement } from 'react';
+import React, { type ComponentPropsWithoutRef, type ReactElement } from 'react';
 import { textStyles } from '../Text/Text';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';
@@ -52,4 +52,4 @@ function Label({ children, type = 'default', ...restProps }: LabelProps): ReactE
     );
 }
 
-export { Label, LabelProps };
+export { Label, type LabelProps };

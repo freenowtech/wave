@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { Table, TableHeader, TableBody, Row, Cell, Column, Skeleton } from '../Table';
 import { Text } from '../../Text/Text';
 

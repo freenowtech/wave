@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumbs, BreadcrumbsProps } from '../Breadcrumbs';
+import { Breadcrumbs, type BreadcrumbsProps } from '../Breadcrumbs';
 
 export const DefaultBreadcrumbs: React.FC<BreadcrumbsProps> = ({ ...props }: BreadcrumbsProps) => (
     <Breadcrumbs {...props}>

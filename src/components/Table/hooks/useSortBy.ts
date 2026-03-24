@@ -60,4 +60,6 @@ function useSortBy(defaultField: Sorting['field'] = '', initialDirection: Sortin
     };
 }
 
-export { useSortBy, SortingDirection };
+export { useSortBy };
+
+export { type SortingDirection } from '../types';

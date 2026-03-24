@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useContext } from 'react';
-import { DayButton as RdpDayButton, getDefaultClassNames } from 'react-day-picker';
+import { type DayButton as RdpDayButton, getDefaultClassNames } from 'react-day-picker';
 import * as Styled from '../Calendar.styled';
 import { SelectionTypeContext } from '../context/Calendar.context';
 

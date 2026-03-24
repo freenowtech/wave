@@ -1,27 +1,28 @@
 import styled from 'styled-components';
 import {
     background,
-    BackgroundProps,
+    type BackgroundProps,
     color,
-    ColorProps,
+    type ColorProps,
     compose,
     flexbox,
-    FlexboxProps,
+    type FlexboxProps,
     grid,
-    GridProps,
+    type GridProps,
     layout,
-    LayoutProps,
+    type LayoutProps,
     position,
-    PositionProps,
+    type PositionProps,
     space,
-    SpaceProps,
+    type SpaceProps,
     textAlign,
-    TextAlignProps
+    type TextAlignProps
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 
 interface BoxProps
-    extends SpaceProps,
+    extends
+        SpaceProps,
         LayoutProps,
         PositionProps,
         Omit<ColorProps, 'color'>, // HACK: avoid collision of `color` prop
@@ -34,4 +35,4 @@ const Box = styled.div.attrs({ theme })<BoxProps>`
     ${compose(space, layout, position, color, flexbox, grid, background, textAlign)}
 `;
 
-export { Box, BoxProps };
+export { Box, type BoxProps };

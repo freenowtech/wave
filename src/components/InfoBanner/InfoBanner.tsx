@@ -8,15 +8,15 @@ import {
     XCrossCircleFilledIcon,
     InfoCircleFilledIcon,
     WarningFilledIcon,
-    IconProps
+    type IconProps
 } from '../../icons';
-import { BoxProps, Box } from '../Box/Box';
+import { type BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 import { Headline } from '../Headline/Headline';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
-import { InfoBannerVariants, BoxWithVariant } from './types';
+import { type InfoBannerVariants, type BoxWithVariant } from './types';
 
 interface InfoBannerProps extends BoxProps {
     /**
@@ -203,4 +203,6 @@ const InfoBanner: React.FC<InfoBannerProps> = ({
     );
 };
 
-export { InfoBanner, InfoBannerProps, InfoBannerVariants };
+export { InfoBanner, type InfoBannerProps };
+
+export { type InfoBannerVariants } from './types';

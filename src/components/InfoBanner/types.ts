@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { BoxProps } from '../Box/Box';
+import { type ReactNode } from 'react';
+import { type BoxProps } from '../Box/Box';
 
 export type InfoBannerVariants = 'info' | 'success' | 'warning' | 'error';
 

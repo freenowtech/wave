@@ -1,6 +1,6 @@
-import React, { Children, ReactElement, ReactNode, cloneElement, useEffect, useRef } from 'react';
+import React, { Children, type ReactElement, type ReactNode, cloneElement, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { MarginProps } from 'styled-system';
+import { type MarginProps } from 'styled-system';
 
 import { ChevronRightIcon } from '../../icons';
 import { Text } from '../Text/Text';
@@ -86,4 +86,4 @@ const Item = styled(Text).attrs(() => ({
 Breadcrumbs.Item = Item;
 Breadcrumbs.Link = Link;
 
-export { Breadcrumbs, BreadcrumbsProps };
+export { Breadcrumbs, type BreadcrumbsProps };

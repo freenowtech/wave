@@ -1,6 +1,14 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import { compose, fontSize, FontSizeProps, margin, MarginProps, textAlign, TextAlignProps } from 'styled-system';
+import {
+    compose,
+    fontSize,
+    type FontSizeProps,
+    margin,
+    type MarginProps,
+    textAlign,
+    type TextAlignProps
+} from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -31,4 +39,4 @@ const Link = styled.a.attrs({ theme })<LinkProps>`
     ${compose(margin, fontSize, textAlign)}
 `;
 
-export { Link, LinkProps };
+export { Link, type LinkProps };

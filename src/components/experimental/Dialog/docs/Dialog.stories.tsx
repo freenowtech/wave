@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Dialog } from '../Dialog';

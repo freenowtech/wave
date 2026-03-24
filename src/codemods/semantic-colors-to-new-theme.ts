@@ -263,22 +263,22 @@ export default (file: FileInfo, api: API, options: Options) => {
     const waveNamedImports = waveImports.find(j.ImportSpecifier);
 
     // Find SemanticColors named imports in wave imports
-    const colorsImports = waveNamedImports.filter(path => path.node.imported.name === 'SemanticColors');
+    const colorsImports = waveNamedImports.filter(path => (path.node.imported.name as string) === 'SemanticColors');
 
     // Find themeGet named imports in wave imports
-    const themeGetImports = waveNamedImports.filter(path => path.node.imported.name === 'themeGet');
+    const themeGetImports = waveNamedImports.filter(path => (path.node.imported.name as string) === 'themeGet');
 
     // Early return in case no SemanticColors or themeGet are imported
     if (colorsImports.length === 0 && themeGetImports.length === 0) return file.source;
 
     // Get the local SemanticColors import names
     colorsImports.forEach(spec => {
-        if (spec.node.local?.name) localColorNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localColorNames.push(spec.node.local.name as string);
     });
 
     // Get the local themeGet import names
     themeGetImports.forEach(spec => {
-        if (spec.node.local?.name) localThemeGetNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localThemeGetNames.push(spec.node.local.name as string);
     });
 
     // Find all themeGet CallExpressions (e.g. themeGet('text.primary'))

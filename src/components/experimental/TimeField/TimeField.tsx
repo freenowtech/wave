@@ -1,6 +1,10 @@
 import React from 'react';
-import { TimeValue } from 'react-aria';
-import { FieldError, TimeField as BaseTimeField, TimeFieldProps as BaseTimeFieldProps } from 'react-aria-components';
+import { type TimeValue } from 'react-aria';
+import {
+    FieldError,
+    TimeField as BaseTimeField,
+    type TimeFieldProps as BaseTimeFieldProps
+} from 'react-aria-components';
 import { Label } from '../Field/Label';
 import { Footer } from '../Field/Footer';
 import { FakeInput } from '../Field/FakeInput';
@@ -8,7 +12,7 @@ import { InnerWrapper } from '../Field/InnerWrapper';
 import { DateInput } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { Wrapper } from '../Field/Wrapper';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
 type TimeFieldProps = Omit<FieldProps, 'label'> &
@@ -58,4 +62,4 @@ const TimeField = React.forwardRef<HTMLDivElement, TimeFieldProps>(
     )
 );
 
-export { TimeField, TimeFieldProps };
+export { TimeField, type TimeFieldProps };

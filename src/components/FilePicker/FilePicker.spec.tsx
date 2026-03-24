@@ -1,7 +1,7 @@
 import React from 'react';
 import { render as renderRtl, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FilePicker, FilePickerProps } from './FilePicker';
+import { FilePicker, type FilePickerProps } from './FilePicker';
 
 const baseProps = {
     label: 'A picture of you',

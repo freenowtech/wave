@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { StoryObj, Meta } from '@storybook/react';
 import { useAsyncList } from 'react-aria-components';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { ComboBox } from '../ComboBox';
 import { ListBoxItem } from '../../ListBox/ListBox';
 import { Button } from '../../../Button/Button';
@@ -74,7 +74,7 @@ export const AsyncValues: StoryObj<typeof ComboBox<Character>> = {
         const [filterText, setFilterText] = React.useState('');
 
         const list = useAsyncList<Character>({
-            async load({ signal, cursor }) {
+            async load() {
                 const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`);
                 const json = await res.json();
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getSemanticValue } from '../../../utils/cssVariables';
-import { IconProps } from '../../../icons';
+import type { IconProps } from '../../../icons';
 
 type Props = IconProps & {
     direction: 'ASC' | 'DESC' | 'NONE';

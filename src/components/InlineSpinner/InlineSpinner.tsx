@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import styled, { keyframes } from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
+import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { ReadCssColorVariable } from '../../essentials/Colors/types';
+import { type ReadCssColorVariable } from '../../essentials/Colors/types';
 
 interface InlineSpinnerProps extends MarginProps {
     /**
@@ -64,4 +64,4 @@ const InlineSpinner: React.FC<InlineSpinnerProps> = ({
     </span>
 );
 
-export { InlineSpinner, InlineSpinnerProps };
+export { InlineSpinner, type InlineSpinnerProps };

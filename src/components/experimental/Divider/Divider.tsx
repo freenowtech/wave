@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, LayoutProps, space, SpaceProps, variant } from 'styled-system';
+import { compose, type LayoutProps, space, type SpaceProps, variant } from 'styled-system';
 import styled from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 

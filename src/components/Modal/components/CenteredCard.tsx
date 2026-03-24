@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { Elevation } from '../../../essentials';
-import { Card, CardProps } from '../../Card/Card';
+import { Card, type CardProps } from '../../Card/Card';
 
 const ANIMATION_DURATION = 150;
 const TRANSITION_KEY = 'centered-card-animation';
@@ -59,7 +59,9 @@ const StyledCard = styled(Card)<{ fullscreen?: boolean }>`
     z-index: ${Elevation.CARD_ON_DIMMING};
     max-height: calc(100% - 2rem);
     will-change: transform, opacity;
-    transition: transform ${ANIMATION_DURATION}ms ease-out, opacity ${ANIMATION_DURATION}ms ease-out;
+    transition:
+        transform ${ANIMATION_DURATION}ms ease-out,
+        opacity ${ANIMATION_DURATION}ms ease-out;
 
     ${p => (p.fullscreen ? scaleUp : fromTop)};
 
@@ -80,7 +82,14 @@ const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
 }) => {
     const nodeRef = React.useRef(null);
     return (
-        <CSSTransition nodeRef={nodeRef} in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        <CSSTransition
+            nodeRef={nodeRef}
+            in={visible}
+            classNames={TRANSITION_KEY}
+            timeout={ANIMATION_DURATION}
+            unmountOnExit
+            appear
+        >
             <StyledCard ref={nodeRef} {...rest} width={width} level={rest.fullscreen ? 0 : 300} />
         </CSSTransition>
     );

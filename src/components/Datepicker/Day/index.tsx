@@ -1,4 +1,4 @@
-import React, { useRef, useContext, FC } from 'react';
+import React, { useRef, useContext, type FC } from 'react';
 import { useDay } from '@datepicker-react/hooks';
 
 import { DatepickerContext } from '../DatepickerContext';

@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
+import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
 import styled from 'styled-components';
-import { compose, LayoutProps, textAlign, TextAlignProps, layout } from 'styled-system';
+import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
 import { TableContext } from '../context/TableContext';
-import { TableProps } from './Table';
+import { type TableProps } from './Table';
 
 type TableHeaderCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     ComponentPropsWithoutRef<'th'> &
@@ -38,4 +38,4 @@ const TableHeaderCell: FC<TableHeaderCellProps> = (props: TableHeaderCellProps) 
     return <TableHeaderCellElement rowSize={rowSize} columnSpace={columnSpace} {...props} />;
 };
 
-export { TableHeaderCell, TableHeaderCellProps };
+export { TableHeaderCell, type TableHeaderCellProps };

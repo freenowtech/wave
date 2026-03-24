@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { IconButton } from '../IconButton';
 import { TrashIcon } from '../../../../icons';
 

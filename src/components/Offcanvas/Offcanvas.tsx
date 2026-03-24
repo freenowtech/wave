@@ -1,6 +1,6 @@
-import React, { useEffect, useState, ReactNode, useContext } from 'react';
+import React, { useEffect, useState, type ReactNode, useContext } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { WidthProps } from 'styled-system';
+import { type WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, CenteredCard } from './components/CenteredCard';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION_SIDE, SideCard } from './components/SideCard';
@@ -112,4 +112,4 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
     );
 };
 
-export { Offcanvas, OffcanvasProps, useOffcanvasDismiss };
+export { Offcanvas, type OffcanvasProps, useOffcanvasDismiss };

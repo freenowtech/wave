@@ -1,5 +1,5 @@
 // List originally from [jackocnr/intl-tel-input](https://github.com/jackocnr/intl-tel-input)
-import { PhoneAreaCodeCountry } from './types/PhoneAreaCodeCountry';
+import { type PhoneAreaCodeCountry } from './types/PhoneAreaCodeCountry';
 
 const COUNTRIES: PhoneAreaCodeCountry[] = [
     { label: 'Afghanistan (‫افغانستان‬‎)', value: 'AF', dialCode: '+93' },

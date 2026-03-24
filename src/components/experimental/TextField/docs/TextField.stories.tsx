@@ -1,6 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { TextField } from '../TextField';
 import { ClockIcon, EyeIcon, PersonFilledIcon } from '../../../../icons';
 

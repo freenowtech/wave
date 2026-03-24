@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { getLocalTimeZone, today } from '@internationalized/date';
 import { DateField } from '../DateField';

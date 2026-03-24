@@ -1,7 +1,7 @@
-import React, { forwardRef, ReactElement, Ref, useState } from 'react';
+import React, { forwardRef, type ReactElement, type Ref, useState } from 'react';
 import {
     ComboBox as BaseComboBox,
-    ComboBoxProps as BaseComboBoxProps,
+    type ComboBoxProps as BaseComboBoxProps,
     ComboBoxStateContext,
     FieldError
 } from 'react-aria-components';
@@ -13,7 +13,7 @@ import { FakeInput } from '../Field/FakeInput';
 import { Label } from '../Field/Label';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Input } from '../Field/Field';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { Button } from '../Field/Button';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
@@ -41,9 +41,7 @@ interface ComboBoxFieldProps extends Pick<FieldProps, 'description' | 'errorMess
 }
 
 interface ComboBoxProps<T extends Record<string, unknown>>
-    extends ComboBoxFieldProps,
-        Omit<BaseComboBoxProps<T>, 'children'>,
-        React.RefAttributes<HTMLDivElement> {
+    extends ComboBoxFieldProps, Omit<BaseComboBoxProps<T>, 'children'>, React.RefAttributes<HTMLDivElement> {
     children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 

@@ -1,6 +1,14 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant, width, WidthProps } from 'styled-system';
+import {
+    compose,
+    margin,
+    type MarginProps,
+    type ResponsiveValue,
+    variant,
+    width,
+    type WidthProps
+} from 'styled-system';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -55,4 +63,4 @@ const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
     ${compose(margin, sizeVariant, width)}
 `;
 
-export { BaseButton, BaseButtonProps };
+export { BaseButton, type BaseButtonProps };

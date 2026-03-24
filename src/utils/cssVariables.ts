@@ -21,7 +21,7 @@
 // 3. Apply the design system prefix to the variable names.
 // 4. Concatenate entries to a valid CSS variables declaration.
 
-import { ReadCssVariable, SemanticToken } from '../essentials/Colors/types';
+import { type ReadCssVariable, type SemanticToken } from '../essentials/Colors/types';
 
 export const DS_PREFIX = 'wave';
 

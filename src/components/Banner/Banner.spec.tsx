@@ -103,12 +103,12 @@ describe('Banner', () => {
 
         // We run the timer to just before the animation ends
         jest.advanceTimersByTime(ANIMATION_DURATION - 1);
-        expect(mockOnClose).not.toBeCalled();
+        expect(mockOnClose).not.toHaveBeenCalled();
 
         // And now we let the animation end
         jest.runAllTimers();
         await waitFor(() => {
-            expect(mockOnClose).toBeCalled();
+            expect(mockOnClose).toHaveBeenCalled();
         });
     });
 });

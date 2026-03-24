@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import { Dialog, DialogTrigger, Popover as BasePopover, PopoverProps as BasePopoverProps } from 'react-aria-components';
+import React, { type ReactElement } from 'react';
+import { Dialog, Popover as BasePopover, type PopoverProps as BasePopoverProps } from 'react-aria-components';
 import styled from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { get } from '../../../utils/experimental/themeGet';
@@ -12,7 +12,9 @@ const StyledPopover = styled(BasePopover)`
     overflow: auto;
     background: ${getSemanticValue('surface')};
     padding: ${get('space.4')};
-    box-shadow: 0 2px 4px -1px hsla(0, 0%, 0%, 0.2), 0 1px 10px 0 hsla(0, 0%, 0%, 0.12),
+    box-shadow:
+        0 2px 4px -1px hsla(0, 0%, 0%, 0.2),
+        0 1px 10px 0 hsla(0, 0%, 0%, 0.12),
         0 4px 5px 0 hsla(0, 0%, 0%, 0.14);
     border-radius: ${get('radii.4')};
 
@@ -35,4 +37,6 @@ function Popover({ children, placement = 'bottom', offset = 8, ...props }: Popov
     );
 }
 
-export { Popover, DialogTrigger as PopoverTrigger, FocusTrap };
+export { Popover, FocusTrap };
+
+export { DialogTrigger as PopoverTrigger } from 'react-aria-components';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { get as themeGet } from '../../utils/themeGet';
 import { theme } from '../../essentials/theme';
-import { InfoBannerVariants, InfoBanner } from './InfoBanner';
+import { type InfoBannerVariants, InfoBanner } from './InfoBanner';
 
 const get = (path: string) => themeGet(path)({ theme });
 

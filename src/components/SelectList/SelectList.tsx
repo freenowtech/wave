@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import {
-    ClearIndicatorProps,
+    type ClearIndicatorProps,
     components as ReactSelectComponents,
-    ControlProps,
-    MenuProps,
-    DropdownIndicatorProps,
-    Props,
-    StylesConfig
+    type ControlProps,
+    type MenuProps,
+    type DropdownIndicatorProps,
+    type Props,
+    type StylesConfig
 } from 'react-select';
 import WindowedSelect from 'wave-react-windowed-select';
 
@@ -21,7 +21,7 @@ import { DarkScheme, LightScheme } from '../ColorScheme';
 import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
-import { SelectListProps } from './types';
+import { type SelectListProps } from './types';
 
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
@@ -205,7 +205,7 @@ const customStyles: StylesConfig = {
         };
 
         switch (optionVariant) {
-            case 'disabled':
+            case 'disabled': {
                 return {
                     ...styles,
                     color: getSemanticValue('foreground-disabled'),
@@ -216,7 +216,8 @@ const customStyles: StylesConfig = {
                         color: getSemanticValue('foreground-disabled')
                     }
                 };
-            case 'error':
+            }
+            case 'error': {
                 return {
                     ...styles,
                     color: getSemanticValue('foreground-danger-default'),
@@ -237,8 +238,9 @@ const customStyles: StylesConfig = {
                         }
                     }
                 };
+            }
             case 'default':
-            default:
+            default: {
                 return {
                     ...styles,
                     color: getSemanticValue('foreground-info-faded'),
@@ -259,6 +261,7 @@ const customStyles: StylesConfig = {
                         }
                     }
                 };
+            }
         }
     },
     multiValueLabel: (provided, { selectProps }) => ({
@@ -343,8 +346,8 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
         enforcedColorScheme === 'light'
             ? LightSchemeMenu
             : enforcedColorScheme === 'dark'
-            ? DarkSchemeMenu
-            : DefaultMenu;
+              ? DarkSchemeMenu
+              : DefaultMenu;
 
     return (
         <Wrapper ref={setTriggerReference} {...classNameProps} {...marginProps} {...widthProps}>

@@ -90,8 +90,8 @@ exports[`when a file gets submitted component removes the initial button 1`] = `
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
-  -webkit-transition: background-color ease 200ms,border-color ease 200ms;
-  transition: background-color ease 200ms,border-color ease 200ms;
+  -webkit-transition: background-color ease 200ms, border-color ease 200ms;
+  transition: background-color ease 200ms, border-color ease 200ms;
 }
 
 .c4 .c6 {

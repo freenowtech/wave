@@ -3,7 +3,7 @@ import { endOfDay, format, startOfDay } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { advanceTo, clear } from 'jest-date-mock';
 import * as React from 'react';
-import { DatepickerRangeInput, DatepickerRangeInputProps, DateRange } from './DatepickerRangeInput';
+import { DatepickerRangeInput, type DatepickerRangeInputProps, type DateRange } from './DatepickerRangeInput';
 
 const ControlledRangeInput: React.FC<DatepickerRangeInputProps> = ({
     onChange,
@@ -74,11 +74,11 @@ describe('DatepickerRangeInput', () => {
 
             // initial date selection
             await selectDate('01');
-            expect(mockCloseHandler).toBeCalledTimes(1);
+            expect(mockCloseHandler).toHaveBeenCalledTimes(1);
 
             await selectDate('02');
 
-            expect(mockCloseHandler).toBeCalledTimes(2);
+            expect(mockCloseHandler).toHaveBeenCalledTimes(2);
         });
     });
 

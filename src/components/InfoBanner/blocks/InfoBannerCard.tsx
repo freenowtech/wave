@@ -7,7 +7,7 @@ import { Link as WaveLink } from '../../Link/Link';
 import { Text } from '../../Text/Text';
 import { Icon } from './Icon';
 import { Container, LOCAL_CSS_VARIABLES } from './Container';
-import { CardProps } from '../types';
+import { type CardProps } from '../types';
 
 const StyledLink = styled(WaveLink).attrs(props => ({
     fontSize: 0,

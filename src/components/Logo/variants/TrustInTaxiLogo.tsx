@@ -1,4 +1,4 @@
-import React, { ElementRef, FC, SVGProps, memo } from 'react';
+import React, { type ElementRef, type FC, type SVGProps, memo } from 'react';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 const TrustInTaxiLogo: FC<SVGProps<ElementRef<'svg'>>> = memo(props => (

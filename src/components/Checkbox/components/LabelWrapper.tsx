@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
+import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';

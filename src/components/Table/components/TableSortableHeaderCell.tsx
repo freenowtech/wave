@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import styled from 'styled-components';
 import { Box } from '../../Box/Box';
 import { SortingIndicator } from './SortingIndicator';
-import { TableHeaderCell, TableHeaderCellProps } from './TableHeaderCell';
+import { TableHeaderCell, type TableHeaderCellProps } from './TableHeaderCell';
 import type { SortingDirection } from '../types';
 
 const TableHeaderCellWithPointer = styled(TableHeaderCell)`
@@ -40,4 +40,4 @@ const TableSortableHeaderCell: FC<TableSortableHeaderCellProps> = ({
     </TableHeaderCellWithPointer>
 );
 
-export { TableSortableHeaderCell, TableSortableHeaderCellProps };
+export { TableSortableHeaderCell, type TableSortableHeaderCellProps };

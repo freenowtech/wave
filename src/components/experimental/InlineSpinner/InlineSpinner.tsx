@@ -64,4 +64,4 @@ const InlineSpinner: React.FC<InlineSpinnerProps> = ({
     </Wrapper>
 );
 
-export { InlineSpinner, InlineSpinnerProps };
+export { InlineSpinner, type InlineSpinnerProps };

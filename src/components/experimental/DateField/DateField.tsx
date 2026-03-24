@@ -1,6 +1,10 @@
 import React from 'react';
-import { DateValue } from 'react-aria';
-import { DateField as BaseDateField, DateFieldProps as BaseDateFieldProps, FieldError } from 'react-aria-components';
+import { type DateValue } from 'react-aria';
+import {
+    DateField as BaseDateField,
+    type DateFieldProps as BaseDateFieldProps,
+    FieldError
+} from 'react-aria-components';
 import { Label } from '../Field/Label';
 import { Footer } from '../Field/Footer';
 import { FakeInput } from '../Field/FakeInput';
@@ -8,7 +12,7 @@ import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
 import { DateInput, Input } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 
 type TextOnlyKeys = 'value' | 'onChange' | 'placeholder' | 'inputProps';
 

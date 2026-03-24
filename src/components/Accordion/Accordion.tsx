@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Box } from '../Box/Box';
 import { Compact } from './components/Compact';
 import { DefaultPanel } from './components/Default';
-import { AccordionProps } from './types';
+import { type AccordionProps } from './types';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 const HorizontalDivider = styled(Box)`
@@ -63,4 +63,6 @@ const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
     </RenderedSection>
 );
 
-export { Accordion, AccordionProps };
+export { Accordion };
+
+export { type AccordionProps } from './types';

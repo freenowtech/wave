@@ -1,4 +1,4 @@
-import { render, RenderResult, within } from '@testing-library/react';
+import { render, type RenderResult, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import React from 'react';

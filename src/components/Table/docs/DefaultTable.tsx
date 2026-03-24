@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Table, TableCell, TableHeaderCell, TableProps, TableRow } from '..';
+import React, { type FC } from 'react';
+import { Table, TableCell, TableHeaderCell, type TableProps, TableRow } from '..';
 import { Box, Button, Label } from '../..';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { EnvelopeIcon, PhoneIcon } from '../../../icons';

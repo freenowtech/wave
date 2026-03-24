@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Placement } from '@popperjs/core/lib/enums';
-import { usePopper } from 'react-popper';
+import type { Placement } from '@floating-ui/react';
+import { useFloating, offset as floatingOffset, flip, autoUpdate } from '@floating-ui/react';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -111,8 +111,6 @@ const Popover: React.FC<PopoverProps> = ({
     onOpen,
     onClose
 }: PopoverProps) => {
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
-    const [contentReference, setContentReference] = React.useState(undefined);
     const popoverTriggerRef = React.useRef<HTMLDivElement>(null);
     const popoverContentRef = React.useRef<HTMLDivElement>(null);
 
@@ -120,22 +118,11 @@ const Popover: React.FC<PopoverProps> = ({
 
     const [render, setRender] = React.useState(openByDefault);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const { refs, floatingStyles } = useFloating({
         placement,
         strategy: 'fixed',
-        modifiers: [
-            {
-                name: 'offset',
-                enabled: !!offset,
-                options: {
-                    offset: [0, offset]
-                }
-            },
-            {
-                name: 'flip',
-                enabled: true
-            }
-        ]
+        middleware: [...(offset ? [floatingOffset(offset)] : []), flip()],
+        whileElementsMounted: autoUpdate
     });
 
     const resolveCallback = React.useCallback(
@@ -174,11 +161,11 @@ const Popover: React.FC<PopoverProps> = ({
         ev => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             if (popoverTriggerRef && popoverTriggerRef.current && !popoverTriggerRef.current.contains(ev.target)) {
-                if (!openByDefault) {
-                    handleClose();
-                } else {
+                if (openByDefault) {
                     setOpenByDefault(false);
                     resolveCallback(false);
+                } else {
+                    handleClose();
                 }
             }
         },
@@ -188,14 +175,17 @@ const Popover: React.FC<PopoverProps> = ({
     const handleKeyControl = (ev: React.KeyboardEvent<HTMLElement>) => {
         // eslint-disable-next-line default-case
         switch (ev.keyCode) {
-            case KEY_CODE_MAP.ESC:
+            case KEY_CODE_MAP.ESC: {
                 handleClose();
                 break;
-            case KEY_CODE_MAP.ENTER:
+            }
+            case KEY_CODE_MAP.ENTER: {
                 handleClick();
                 break;
-            case KEY_CODE_MAP.SPACE:
+            }
+            case KEY_CODE_MAP.SPACE: {
                 handleClick();
+            }
         }
     };
 
@@ -208,7 +198,7 @@ const Popover: React.FC<PopoverProps> = ({
     return (
         <>
             <PopoverTrigger
-                ref={setTriggerReference}
+                ref={refs.setReference}
                 onClick={handleClick}
                 tabIndex={0}
                 aria-describedby="popover-content"
@@ -226,14 +216,14 @@ const Popover: React.FC<PopoverProps> = ({
                         <Text fontWeight="semibold" style={{ color: 'inherit' }}>
                             {children}
                         </Text>
-                        {!render ? (
-                            <ChevronDownIcon
+                        {render ? (
+                            <ChevronUpIcon
                                 size={20}
                                 color="inherit"
                                 style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
                             />
                         ) : (
-                            <ChevronUpIcon
+                            <ChevronDownIcon
                                 size={20}
                                 color="inherit"
                                 style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
@@ -248,9 +238,8 @@ const Popover: React.FC<PopoverProps> = ({
             {render && (
                 <PopoverContentContainer
                     id="popover-content"
-                    ref={setContentReference}
-                    style={{ ...styles.popper, zIndex: 999 }}
-                    {...attributes.popper}
+                    ref={refs.setFloating}
+                    style={{ ...floatingStyles, zIndex: 999 }}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
                         <PopoverContent padding={padding}>{content}</PopoverContent>
@@ -261,4 +250,4 @@ const Popover: React.FC<PopoverProps> = ({
     );
 };
 
-export { Popover, PopoverProps };
+export { Popover, type PopoverProps };

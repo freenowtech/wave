@@ -1,6 +1,6 @@
-import React, { useEffect, useState, ReactNode, useContext, useRef } from 'react';
+import React, { useEffect, useState, type ReactNode, useContext, useRef } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { WidthProps } from 'styled-system';
+import { type WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, CenteredCard } from './components/CenteredCard';
 import { ANIMATION_DURATION as DIMMING_ANIMATION_DURATION, DimmingFade } from './components/DimmingFade';
@@ -112,4 +112,4 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ..
     );
 };
 
-export { Modal, ModalProps, useModalDismiss };
+export { Modal, type ModalProps, useModalDismiss };

@@ -1,8 +1,14 @@
-import { createGlobalStyle, css, CSSObject, GlobalStyleComponent, DefaultTheme } from 'styled-components';
+import {
+    createGlobalStyle,
+    css,
+    type CSSObject,
+    type GlobalStyleComponent,
+    type DefaultTheme
+} from 'styled-components';
 
-import { TokenObject } from '../../utils/cssVariables';
+import { type TokenObject } from '../../utils/cssVariables';
 import { generateBareCssVariables, generateCssVariables, generateSemanticCssVariables } from './cssVariables';
-import { SemanticColorsSchema } from './types';
+import { type SemanticColorsSchema } from './types';
 
 export const DARK_THEME_CLASS = 'dark-scheme';
 export const LIGHT_THEME_CLASS = 'light-scheme';

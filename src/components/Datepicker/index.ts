@@ -1,9 +1,9 @@
 export {
     DatepickerSingleInput as DatePicker,
-    DatepickerSingleInputProps as DatePickerProps
+    type DatepickerSingleInputProps as DatePickerProps
 } from './DatepickerSingleInput';
 export {
     DatepickerRangeInput as DateRangePicker,
-    DatepickerRangeInputProps as DateRangePickerProps,
-    DateRange
+    type DatepickerRangeInputProps as DateRangePickerProps,
+    type DateRange
 } from './DatepickerRangeInput';

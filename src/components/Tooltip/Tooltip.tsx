@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
-import { usePopper } from 'react-popper';
-import { Placement } from '@popperjs/core';
+import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/react';
+import type { Placement } from '@floating-ui/react';
 import { variant } from 'styled-system';
 import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -145,26 +145,24 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     alwaysVisible = false
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
-    /**
-     * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
-     */
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
-    const [contentReference, setContentReference] = React.useState(undefined);
+    const [triggerElement, setTriggerElement] = React.useState<Element | null>(null);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement
+    } = useFloating({
         placement,
-        modifiers: [
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 5]
-                }
-            }
-        ]
+        middleware: [offset(5), flip(), shift()],
+        whileElementsMounted: autoUpdate
     });
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const handleTriggerRef = (el: Element | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
+
+    const enforcedColorScheme = useClosestColorScheme(triggerElement);
 
     const PortalWrapper = React.useMemo(() => {
         if (!enforcedColorScheme) return React.Fragment;
@@ -175,9 +173,9 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     if (typeof content === 'string') {
         dynamicContent = (
-                <Text as="p" fontSize={0}>
-                    {content}
-                </Text>
+            <Text as="p" fontSize={0}>
+                {content}
+            </Text>
         );
     }
 
@@ -189,21 +187,19 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     return (
         <>
-            {React.cloneElement(children as React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>, {
-                onMouseOver: () => handleVisibilityChange(true),
-                onMouseOut: () => handleVisibilityChange(false),
-                ref: setTriggerReference
-            })}
+            {React.cloneElement(
+                children as React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>,
+                {
+                    onMouseOver: () => handleVisibilityChange(true),
+                    onMouseOut: () => handleVisibilityChange(false),
+                    ref: handleTriggerRef
+                }
+            )}
             {content &&
                 isVisible &&
                 createPortal(
                     <PortalWrapper>
-                        <TooltipBody
-                            ref={setContentReference}
-                            style={{ ...styles.popper }}
-                            variant={attributes.popper?.['data-popper-placement']}
-                            {...attributes.popper}
-                        >
+                        <TooltipBody ref={refs.setFloating} style={floatingStyles} variant={currentPlacement}>
                             {dynamicContent}
                         </TooltipBody>
                     </PortalWrapper>,
@@ -213,4 +209,4 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     );
 };
 
-export { Tooltip, TooltipProps };
+export { Tooltip, type TooltipProps };

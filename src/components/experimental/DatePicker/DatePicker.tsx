@@ -183,11 +183,15 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
     const isControlledRange = isRange && rangeValueProp !== undefined;
 
     // sources per mode
-    const singleSource: Date | null = isSingle ? (isControlledSingle ? singleValueProp ?? null : internalSingle) : null;
+    const singleSource: Date | null = isSingle
+        ? isControlledSingle
+            ? (singleValueProp ?? null)
+            : internalSingle
+        : null;
 
     const multipleSource: Date[] | undefined = isMultiple
         ? isControlledMultiple
-            ? multipleValueProp ?? []
+            ? (multipleValueProp ?? [])
             : internalMultiple
         : undefined;
 
@@ -208,10 +212,10 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
     // visible month
     const [month, setMonth] = React.useState<Date | undefined>(
         isSingle
-            ? singleSource ?? initialMonth
+            ? (singleSource ?? initialMonth)
             : isMultiple
-            ? multipleSource?.[0] ?? initialMonth
-            : rangeSource?.from ?? initialMonth
+              ? (multipleSource?.[0] ?? initialMonth)
+              : (rangeSource?.from ?? initialMonth)
     );
 
     // reflect controlled changes in the UI
@@ -354,7 +358,7 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
         if (maxDateCompat) arr.push({ after: stripTime(maxDateCompat) });
         return arr.length > 0 ? arr : undefined;
     }, [
-        Array.isArray(disabledDays) ? disabledDays.map(el => String(el)).join('|') : String(disabledDays),
+        Array.isArray(disabledDays) ? disabledDays.map(String).join('|') : String(disabledDays),
         minDateCompat?.getTime(),
         maxDateCompat?.getTime()
     ]);
@@ -455,21 +459,24 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
                             },
                             onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
                                 switch (event.key) {
-                                    case 'ArrowDown':
+                                    case 'ArrowDown': {
                                         event.preventDefault();
                                         setOpen(true);
                                         break;
+                                    }
                                     case 'Enter': {
                                         const v = (event.target as HTMLInputElement).value;
                                         if (isSingle) commitSingle(v);
                                         else if (isRange) commitRange(v, sepForRange);
                                         break;
                                     }
-                                    case 'Escape':
+                                    case 'Escape': {
                                         setOpen(false);
                                         break;
-                                    default:
+                                    }
+                                    default: {
                                         break;
+                                    }
                                 }
                             }
                         }}

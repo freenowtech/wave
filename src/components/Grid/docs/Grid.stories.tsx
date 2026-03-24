@@ -1,8 +1,8 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { Box } from '../../Box/Box';
-import { Row, Column, RowProps } from '../Grid';
+import { Row, Column, type RowProps } from '../Grid';
 
 const meta: Meta = {
     title: 'Components/Grid System',

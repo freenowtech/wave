@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useState } from 'react';
+import React, { type ReactNode, useContext, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
@@ -127,7 +127,9 @@ const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
     width: 100%;
     z-index: ${Elevation.BANNER};
 
-    transition: transform ${ANIMATION_DURATION}ms ease-out, opacity ${ANIMATION_DURATION * 0.75}ms ease;
+    transition:
+        transform ${ANIMATION_DURATION}ms ease-out,
+        opacity ${ANIMATION_DURATION * 0.75}ms ease;
 
     ${props => getBannerPosition(props)}
 
@@ -166,7 +168,14 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
     };
 
     return (
-        <CSSTransition nodeRef={nodeRef} in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+        <CSSTransition
+            nodeRef={nodeRef}
+            in={visible}
+            classNames={TRANSITION_KEY}
+            timeout={ANIMATION_DURATION}
+            unmountOnExit
+            appear
+        >
             <AnimatedBanner ref={nodeRef} {...rest}>
                 <DismissContext.Provider value={dismissFunction}>{renderChildren()}</DismissContext.Provider>
             </AnimatedBanner>
@@ -174,4 +183,4 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
     );
 };
 
-export { Banner, BannerProps, useBannerDismiss, DismissFunc };
+export { Banner, type BannerProps, useBannerDismiss, type DismissFunc };

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { Skeleton } from '../../Skeleton/Skeleton';
 import { TableCell } from './TableCell';
 import { TableRow } from './TableRow';

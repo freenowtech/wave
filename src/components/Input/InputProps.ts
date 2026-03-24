@@ -1,5 +1,5 @@
-import { ComponentPropsWithRef } from 'react';
-import { ResponsiveValue } from 'styled-system';
+import { type ComponentPropsWithRef } from 'react';
+import { type ResponsiveValue } from 'styled-system';
 
 interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size' | 'width'> {
     /**
@@ -38,4 +38,4 @@ interface InternalInputProps {
     variant: InputProps['variant'];
 }
 
-export { InputProps, InternalInputProps };
+export type { InputProps, InternalInputProps };
