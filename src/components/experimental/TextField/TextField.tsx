@@ -1,5 +1,9 @@
 import React from 'react';
-import { FieldError, TextField as BaseTextField, TextFieldProps as BaseTextFieldProps } from 'react-aria-components';
+import {
+    FieldError,
+    TextField as BaseTextField,
+    type TextFieldProps as BaseTextFieldProps
+} from 'react-aria-components';
 import styled from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
@@ -10,7 +14,7 @@ import { FakeInput } from '../Field/FakeInput';
 import { Footer } from '../Field/Footer';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 
 const defaultAriaStrings = {
     clearFieldButton: 'Clear field'
@@ -151,4 +155,4 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
     }
 );
 
-export { TextField, TextFieldProps };
+export { TextField, type TextFieldProps };

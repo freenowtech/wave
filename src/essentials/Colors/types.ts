@@ -1,4 +1,4 @@
-import { Join, Leaves } from '../../utils/types';
+import { type Join, type Leaves } from '../../utils/types';
 
 export type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 

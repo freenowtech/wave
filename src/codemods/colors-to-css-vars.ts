@@ -79,7 +79,7 @@ const replaceColorsForCssVarsInTemplateLiterals = (
             const expressionObject = expressionAfterQuasis.object as Identifier;
 
             // Identify if it's a usage of Colors
-            const isColorsExpression = localColorNames.includes(expressionObject.name);
+            const isColorsExpression = localColorNames.includes(expressionObject.name as string);
 
             if (isColorsExpression) {
                 // Find the color being used
@@ -190,14 +190,14 @@ export default (file: FileInfo, api: API, options: Options) => {
     const waveNamedImports = waveImports.find(j.ImportSpecifier);
 
     // Find Colors named imports in @freenow/wave imports
-    const colorsImports = waveNamedImports.filter(path => path.node.imported.name === 'Colors');
+    const colorsImports = waveNamedImports.filter(path => (path.node.imported.name as string) === 'Colors');
 
     // Early return in case no Colors are imported
     if (colorsImports.length === 0) return file.source;
 
     // Get the local Colors import names
     colorsImports.forEach(spec => {
-        if (spec.node.local?.name) localColorNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localColorNames.push(spec.node.local.name as string);
     });
 
     // Iterate over template strings

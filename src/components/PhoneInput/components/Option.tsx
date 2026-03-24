@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { components, OptionProps } from 'react-select';
+import React, { type FC } from 'react';
+import { components, type OptionProps } from 'react-select';
 import styled from 'styled-components';
 import { Flag } from '../../../icons';
-import { PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
+import { type PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
 import { isFlagAvailable } from '../util/isFlagAvailable';
 
 const OptionWithFlag = styled(components.Option).attrs({ role: 'option' })`

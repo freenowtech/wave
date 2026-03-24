@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ModalOverlayProps, ModalOverlay } from 'react-aria-components';
+import { type ModalOverlayProps, ModalOverlay } from 'react-aria-components';
 import { getSemanticHslValue } from '../../../essentials/experimental';
 import { Elevation } from '../../../essentials';
 
@@ -14,7 +14,7 @@ const Backdrop = styled(ModalOverlay)<{ isBackdropVisible?: boolean }>`
     width: 100vw;
     height: var(--visual-viewport-height);
     background: ${props =>
-        props.isBackdropVisible !== false ? `hsla(${getSemanticHslValue('on-surface')}, 60%)` : 'transparent'};
+        props.isBackdropVisible === false ? 'transparent' : `hsla(${getSemanticHslValue('on-surface')}, 60%)`};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,4 +48,4 @@ const Backdrop = styled(ModalOverlay)<{ isBackdropVisible?: boolean }>`
     }
 `;
 
-export { Backdrop, BackdropProps };
+export { Backdrop, type BackdropProps };

@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import { ListBox, ListBoxItem as BaseListBoxItem, ListBoxItemProps } from 'react-aria-components';
+import React, { type ReactElement } from 'react';
+import { ListBoxItem as BaseListBoxItem, type ListBoxItemProps } from 'react-aria-components';
 import styled from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
-import { Text, TextProps } from '../Text/Text';
+import { Text, type TextProps } from '../Text/Text';
 import { getSemanticValue } from '../../../essentials/experimental';
 
 const StyledListBoxItem = styled(BaseListBoxItem as React.ComponentType<ListBoxItemProps>)`
@@ -71,4 +71,6 @@ function ListBoxItem(props: ListBoxItemProps): ReactElement {
     return <StyledListBoxItem {...props}>{props.children}</StyledListBoxItem>;
 }
 
-export { ListBox, ListBoxItem, LabelText, DescriptionText };
+export { ListBoxItem, LabelText, DescriptionText };
+
+export { ListBox } from 'react-aria-components';

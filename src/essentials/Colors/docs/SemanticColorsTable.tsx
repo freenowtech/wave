@@ -1,7 +1,6 @@
 import { DocsContext } from '@storybook/blocks';
 
-import React, { FC, useContext, useMemo, useState } from 'react';
-import { useDarkMode } from 'storybook-dark-mode';
+import React, { type FC, useContext, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { Box, DarkScheme, Input, LightScheme, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
@@ -61,7 +60,6 @@ const Tokens = {
 
 export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     const [nameSearchInput, setNameSearchInput] = useState('');
-    const isDark = useDarkMode();
     const {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -69,7 +67,8 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     } = useContext(DocsContext);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    const { theme } = globals.get();
+    const { theme, darkMode } = globals.get();
+    const isDark = Boolean(darkMode);
     const tokens = Tokens[tier][isDark ? 'dark' : 'light'][theme];
     const invertedSchemeTokens = Tokens[tier][isDark ? 'light' : 'dark'][theme];
 
@@ -84,9 +83,9 @@ export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
         }));
     }, [tokens, invertedSchemeTokens]);
 
-    const filteredTokens = !nameSearchInput
-        ? entries
-        : entries.filter(({ variable }) => variable.includes(nameSearchInput.toLowerCase().trim()));
+    const filteredTokens = nameSearchInput
+        ? entries.filter(({ variable }) => variable.includes(nameSearchInput.toLowerCase().trim()))
+        : entries;
 
     return (
         <Table rowStyle="lines" width="100%" rowSize="small">

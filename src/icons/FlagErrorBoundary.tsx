@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlagProps } from './FlagProps';
+import type { FlagProps } from './FlagProps';
 import WW from './flags/WW';
 
 interface State {

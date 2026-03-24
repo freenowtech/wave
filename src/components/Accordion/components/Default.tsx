@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactElement, useState } from 'react';
+import React, { type PropsWithChildren, type ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
@@ -7,7 +7,7 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
-import { AccordionProps } from '../types';
+import { type AccordionProps } from '../types';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`

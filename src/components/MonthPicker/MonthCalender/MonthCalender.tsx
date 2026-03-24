@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import { Text } from '../../Text/Text';

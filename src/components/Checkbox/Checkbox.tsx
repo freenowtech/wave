@@ -1,8 +1,8 @@
-import React, { ComponentPropsWithoutRef, FC, ReactNode, useEffect } from 'react';
+import React, { type ComponentPropsWithoutRef, type FC, type ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
-import { MarginProps, ResponsiveValue } from 'styled-system';
+import { type MarginProps, type ResponsiveValue } from 'styled-system';
 
-import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { type ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { Text } from '../Text/Text';
 
 import { Checkmark } from './components/Checkmark';
@@ -86,4 +86,4 @@ const Checkbox: FC<CheckboxProps> = props => {
     );
 };
 
-export { Checkbox, CheckboxProps };
+export { Checkbox, type CheckboxProps };

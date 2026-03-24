@@ -1,11 +1,11 @@
 import React from 'react';
 import {
     Select as BaseSelect,
-    SelectProps as BaseSelectProps,
+    type SelectProps as BaseSelectProps,
     SelectValue,
     SelectStateContext,
     FieldError,
-    SelectValueRenderProps
+    type SelectValueRenderProps
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
@@ -15,7 +15,7 @@ import { ListBox } from '../ListBox/ListBox';
 import { FakeInput } from '../Field/FakeInput';
 import { Label } from '../Field/Label';
 import { InnerWrapper } from '../Field/InnerWrapper';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { Button } from '../Field/Button';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
@@ -86,8 +86,7 @@ function SelectTriggerWithRef<T extends object>(
 const SelectTrigger = React.forwardRef(SelectTriggerWithRef);
 
 interface SelectProps<T extends Record<string, unknown>>
-    extends SelectFieldProps<T>,
-        Omit<BaseSelectProps<T>, 'children'> {
+    extends SelectFieldProps<T>, Omit<BaseSelectProps<T>, 'children'> {
     items?: Iterable<T>;
     children: React.ReactNode | ((item: T) => React.ReactNode);
     hideLabel?: boolean;

@@ -1,8 +1,8 @@
-import { CSSObject } from 'styled-components';
-import { CSSObjectWithLabel } from 'react-select';
+import { type CSSObject } from 'styled-components';
+import { type CSSObjectWithLabel } from 'react-select';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
-import { SelectListProps } from './types';
+import { type SelectListProps } from './types';
 
 export const disabledStyles = {
     control: {
@@ -86,8 +86,9 @@ export const variantStyles = {
                     ...btSize[props.size]
                 };
             }
-            default:
+            default: {
                 return {};
+            }
         }
     },
     label: (props: Pick<SelectListProps, 'variant' | 'size'>): CSSObject => {
@@ -128,8 +129,9 @@ export const variantStyles = {
 
                 return btSize[props.size];
             }
-            default:
+            default: {
                 return {};
+            }
         }
     }
 };

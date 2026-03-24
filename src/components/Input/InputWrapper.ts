@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { ClassNameProps } from '../../utils/extractProps';
+import { type ClassNameProps } from '../../utils/extractProps';
 
 type InputWrapperProps = ClassNameProps & MarginProps & WidthProps;
 
@@ -13,4 +13,5 @@ const InputWrapper = styled.div.attrs<InputWrapperProps>({ theme })`
     ${compose(margin, width)}
 `;
 
-export { InputWrapper, InputWrapperProps };
+export { InputWrapper };
+export type { InputWrapperProps };

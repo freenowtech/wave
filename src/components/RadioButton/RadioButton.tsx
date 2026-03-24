@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { type FC, type ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
@@ -7,7 +7,7 @@ import { Text } from '../Text/Text';
 import { Checkmark } from './components/Checkmark';
 import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
-import { RadioButtonProps } from './RadioButtonProps';
+import { type RadioButtonProps } from './RadioButtonProps';
 
 const WithTapAreaWrapper = styled.div<Pick<RadioButtonProps, 'textVerticalAlign'>>`
     width: 1rem;

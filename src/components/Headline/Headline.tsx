@@ -1,7 +1,15 @@
-import * as React from 'react';
-import { ComponentPropsWithoutRef } from 'react';
+import type * as React from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
-import { compose, margin, system, MarginProps, textAlign, TextAlignProps, ResponsiveValue } from 'styled-system';
+import {
+    compose,
+    margin,
+    system,
+    type MarginProps,
+    textAlign,
+    type TextAlignProps,
+    type ResponsiveValue
+} from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
@@ -63,4 +71,4 @@ const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlinePro
     ${compose(margin, textAlign)}
 `;
 
-export { Headline, HeadlineProps };
+export { Headline, type HeadlineProps };

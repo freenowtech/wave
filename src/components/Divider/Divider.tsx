@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
-import { compose, space, SpaceProps } from 'styled-system';
+import styled, { type StyledComponent } from 'styled-components';
+import { compose, space, type SpaceProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { getSemanticValue } from '../../utils/cssVariables';
 
@@ -49,4 +49,4 @@ const Divider: React.FC<DividerProps> = ({ vertical = false, offset = '1rem' }: 
         <HorizontalLine my={offset} data-testid="horizontal-divider" />
     );
 
-export { Divider, DividerProps, DividerOffset };
+export { Divider, type DividerProps, type DividerOffset };

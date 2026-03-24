@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Placement } from '@popperjs/core/lib/enums';
+import type { Placement } from '@floating-ui/react';
 import { RadioButton, Tooltip } from '../..';
 import { MediaQueries } from '../../../essentials';
 import { getSemanticValue } from '../../../utils/cssVariables';
@@ -51,10 +51,7 @@ const TooltipPlacementExample: FC = () => {
         'top',
         'bottom',
         'right',
-        'left',
-        'auto',
-        'auto-start',
-        'auto-end'
+        'left'
     ];
 
     return (

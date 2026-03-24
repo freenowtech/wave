@@ -4,27 +4,25 @@ import warning from 'warning';
 import {
     compose,
     layout,
-    LayoutProps,
+    type LayoutProps,
     margin as marginFn,
-    MarginProps,
+    type MarginProps,
     width as widthFn,
-    WidthProps
+    type WidthProps
 } from 'styled-system';
 import { extractWrapperMarginProps } from '../../utils/extractProps';
 import { Input } from '../Input/Input';
-import { InputProps } from '../Input/InputProps';
+import { type InputProps } from '../Input/InputProps';
 import { SelectList } from '../SelectList/SelectList';
-import { SelectListProps } from '../SelectList/types';
+import { type SelectListProps } from '../SelectList/types';
 import { DynamicWidthMenu } from './components/DynamicWidthMenu';
 import { Option } from './components/Option';
 import { SingleValue } from './components/SingleValue';
 import { COUNTRIES } from './constants';
-import { PhoneAreaCodeCountry } from './types/PhoneAreaCodeCountry';
+import { type PhoneAreaCodeCountry } from './types/PhoneAreaCodeCountry';
 
 interface PhoneInputProps
-    extends WidthProps,
-        MarginProps,
-        Pick<InputProps, 'name' | 'label' | 'placeholder' | 'error' | 'disabled'> {
+    extends WidthProps, MarginProps, Pick<InputProps, 'name' | 'label' | 'placeholder' | 'error' | 'disabled'> {
     /**
      * Sets the variant of the phone input element
      */
@@ -158,4 +156,4 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     );
 };
 
-export { PhoneInput, PhoneInputProps };
+export { PhoneInput, type PhoneInputProps };

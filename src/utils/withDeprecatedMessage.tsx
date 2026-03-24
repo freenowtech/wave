@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import warning from 'warning';
 
 type WithDeprecatedMessageFunc<T> = (
@@ -22,8 +22,7 @@ type WithDeprecatedMessageFunc<T> = (
 // eslint-disable-next-line import/no-mutable-exports
 let withDeprecatedMessage: WithDeprecatedMessageFunc<Record<string, unknown>> =
     (deprecatedComponentName, PassedComponent, externalProps = {}) =>
-    props =>
-        <PassedComponent {...props} {...externalProps} />;
+    props => <PassedComponent {...props} {...externalProps} />;
 
 if (process.env.NODE_ENV !== 'production') {
     withDeprecatedMessage =

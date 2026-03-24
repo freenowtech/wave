@@ -1,6 +1,6 @@
 import React, { forwardRef, type ReactElement } from 'react';
 import styled from 'styled-components';
-import { Button as BaseButton, ButtonProps as ButtonBaseProps } from 'react-aria-components';
+import { Button as BaseButton, type ButtonProps as ButtonBaseProps } from 'react-aria-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 
@@ -66,4 +66,4 @@ const Chip = forwardRef<HTMLButtonElement, ChipProps>(
     )
 );
 
-export { Chip, ChipProps };
+export { Chip, type ChipProps };

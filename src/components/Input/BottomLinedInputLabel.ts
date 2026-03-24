@@ -1,9 +1,9 @@
-import styled, { css, Interpolation, ThemeProps } from 'styled-components';
+import styled, { css, type Interpolation, type ThemeProps } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { activePositionBaseStyles, BaseInputLabel } from './BaseInputLabel';
-import { InternalInputProps } from './InputProps';
+import { type InternalInputProps } from './InputProps';
 
 const activeBottomLinedPosition = (
     size?: InternalInputProps['waveSize']

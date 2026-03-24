@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-    DayEventHandler,
+    type DayEventHandler,
     DayPicker,
-    Matcher,
-    DayButton as RdpDayButton,
+    type Matcher,
+    type DayButton as RdpDayButton,
     getDefaultClassNames,
     type DateRange as RdpRange
 } from 'react-day-picker';
@@ -15,7 +15,6 @@ import { CalendarDayButton } from './components/CalendarDayButton';
 import { SelectionTypeContext, type SelectionType } from './context/Calendar.context';
 
 export type Range = RdpRange;
-type DateFnsFormatOptions = Parameters<typeof format>[2];
 
 type BaseProps = Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'selected' | 'onSelect'> & {
     visibleMonths?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -73,7 +72,7 @@ export function Calendar(props: CalendarProps): React.JSX.Element {
         weekStartsOn,
         captionLayout,
         formatters: {
-            formatWeekdayName: (date, options?: DateFnsFormatOptions) => format(date, 'eee', options)
+            formatWeekdayName: date => format(date, 'eee')
         },
         classNames: { ...defaults, ...classNames },
         components: {
@@ -83,20 +82,20 @@ export function Calendar(props: CalendarProps): React.JSX.Element {
                 return null as unknown as React.ReactElement;
             },
             DayButton: DayButtonComp,
-            ...(components ?? {})
+            ...components
         },
         ...rest
     } satisfies Omit<React.ComponentProps<typeof DayPicker>, 'mode'>;
 
-    const selectedProp = selected !== undefined ? { selected: selected as unknown } : {};
+    const selectedProp = selected === undefined ? {} : { selected: selected as unknown };
     const onSelectProp = onSelect ? { onSelect: onSelect as unknown } : {};
 
     const modeProps =
         selectionType === 'range'
             ? ({ mode: 'range' } as const)
             : selectionType === 'multiple'
-            ? ({ mode: 'multiple' } as const)
-            : ({ mode: 'single' } as const);
+              ? ({ mode: 'multiple' } as const)
+              : ({ mode: 'single' } as const);
 
     return (
         <Styled.Container className={className}>

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import styled from 'styled-components';
 import { Spaces } from '../../essentials/Spaces/Spaces';
 import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons';
@@ -180,4 +180,4 @@ const Pagination: React.FC<PaginationProps> = ({
     );
 };
 
-export { Pagination, PaginationProps };
+export { Pagination, type PaginationProps };

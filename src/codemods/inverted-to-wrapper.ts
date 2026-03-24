@@ -35,18 +35,18 @@ export default (file: FileInfo, api: API, options: Options) => {
     // Find component named imports in @freenow/wave imports that potentially have an inverted prop
     const componentImports = waveImports
         .find(j.ImportSpecifier)
-        .filter(path => ComponentNamesWithInvertedProp.includes(path.node.imported.name));
+        .filter(path => ComponentNamesWithInvertedProp.includes(path.node.imported.name as string));
 
     // Get the local icons import names
     componentImports.forEach(spec => {
-        if (spec.node.local?.name) localComponentNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localComponentNames.push(spec.node.local.name as string);
     });
 
     // Find declarations of styled components that use a component which has the inverted prop
     const styledExpressions = ast.find(j.TaggedTemplateExpression, {
         tag: {
             arguments: ([argument]) =>
-                argument?.type === 'Identifier' && ComponentNamesWithInvertedProp.includes(argument.name)
+                argument?.type === 'Identifier' && ComponentNamesWithInvertedProp.includes(argument.name as string)
         }
     });
 
@@ -54,7 +54,8 @@ export default (file: FileInfo, api: API, options: Options) => {
         if (ex.parent?.node && ex.parent.node.type === 'VariableDeclarator') {
             const styledDeclaration: VariableDeclarator = ex.parent.node;
             // Mark the name of the declared styled component as a local component which can have the inverted prop
-            if (styledDeclaration.id.type === 'Identifier') localComponentNames.push(styledDeclaration.id.name);
+            if (styledDeclaration.id.type === 'Identifier')
+                localComponentNames.push(styledDeclaration.id.name as string);
         }
     });
 

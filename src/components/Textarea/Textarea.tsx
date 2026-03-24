@@ -1,7 +1,16 @@
-import React, { ComponentPropsWithoutRef, FC, useEffect, useState } from 'react';
-import styled, { CSSProperties } from 'styled-components';
+import React, { type ComponentPropsWithoutRef, type FC, useEffect, useState } from 'react';
+import styled, { type CSSProperties } from 'styled-components';
 
-import { compose, height, HeightProps, margin, MarginProps, ResponsiveValue, width, WidthProps } from 'styled-system';
+import {
+    compose,
+    height,
+    type HeightProps,
+    margin,
+    type MarginProps,
+    type ResponsiveValue,
+    width,
+    type WidthProps
+} from 'styled-system';
 import { theme } from '../../essentials/theme';
 import {
     extractClassNameProps,
@@ -12,7 +21,7 @@ import {
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BoxedInput } from '../Input/BoxedInput';
 import { BoxedInputLabel } from '../Input/BoxedInputLabel';
-import { InternalInputProps } from '../Input/InputProps';
+import { type InternalInputProps } from '../Input/InputProps';
 
 type WrapperProps = MarginProps &
     WidthProps &
@@ -42,9 +51,7 @@ const TextareaField: FC<TextAreaProps & Pick<InternalInputProps, 'hasValue'>> = 
 
 // TODO looks like neither variant nor size props are used
 interface TextAreaProps
-    extends WrapperProps,
-        Omit<ComponentPropsWithoutRef<'textarea'>, 'size' | 'width'>,
-        Pick<CSSProperties, 'resize'> {
+    extends WrapperProps, Omit<ComponentPropsWithoutRef<'textarea'>, 'size' | 'width'>, Pick<CSSProperties, 'resize'> {
     /**
      * Sets the variant of the textarea
      * @default 'boxed'
@@ -110,4 +117,4 @@ const Textarea: FC<WrapperProps & TextAreaProps> = ({ resize = 'both', ...props 
     );
 };
 
-export { Textarea, TextAreaProps };
+export { Textarea, type TextAreaProps };

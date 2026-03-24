@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 import styled, { css } from 'styled-components';
-import { compose, ResponsiveValue, variant } from 'styled-system';
+import { compose, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { SelectLabel } from './SelectLabel';
@@ -87,7 +87,9 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
-    transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
+    transition:
+        box-shadow ${ANIMATION_DURATION}ms,
+        border ${ANIMATION_DURATION}ms;
     outline: none;
     appearance: none;
     width: 100%;
@@ -102,12 +104,15 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
 
     ${p => {
         switch (p.variant) {
-            case 'boxed':
+            case 'boxed': {
                 return compose(boxedSizeVariants, inputVariants)(p);
-            case 'bottom-lined':
+            }
+            case 'bottom-lined': {
                 return compose(bottomLinedSizeVariants, inputVariants)(p);
-            default:
+            }
+            default: {
                 return undefined;
+            }
         }
     }}
     ${getErrorStyles}
@@ -137,4 +142,5 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     }
 `;
 
-export { SelectInput, BaseSelectProps };
+export { SelectInput };
+export type { BaseSelectProps };

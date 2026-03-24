@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled, { StyledComponent } from 'styled-components';
-import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import styled, { type StyledComponent } from 'styled-components';
+import { compose, height, type HeightProps, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
 import { TableContext } from '../context/TableContext';
@@ -8,7 +8,8 @@ import { getColumnSpace } from '../util/getColumnSpace';
 import { getRowSize } from '../util/getRowSize';
 
 interface TableElementProps
-    extends MarginProps,
+    extends
+        MarginProps,
         HeightProps,
         WidthProps,
         // do not include width property from the `<table>` tag type because styled-system provides its own
@@ -66,4 +67,4 @@ const Table: FC<TableProps> = ({
     );
 };
 
-export { Table, TableElement, TableProps };
+export { Table, TableElement, type TableProps };

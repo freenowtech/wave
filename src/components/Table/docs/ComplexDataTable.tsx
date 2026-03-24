@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { Table, TableCell, TableHeaderCell, TableRow } from '..';
 import { Box, Label, Link, Text } from '../..';
 import { PayByAppIcon } from '../../../icons';

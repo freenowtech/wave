@@ -1,18 +1,18 @@
-import styled, { StyledComponent } from 'styled-components';
+import styled, { type StyledComponent } from 'styled-components';
 import {
     borderRadius,
-    BorderRadiusProps,
+    type BorderRadiusProps,
     compose,
     height,
-    HeightProps,
+    type HeightProps,
     padding,
-    PaddingProps,
-    ResponsiveValue,
+    type PaddingProps,
+    type ResponsiveValue,
     space,
-    SpaceProps,
+    type SpaceProps,
     variant,
     width,
-    WidthProps
+    type WidthProps
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -61,4 +61,4 @@ const Card: StyledComponent<'div', typeof theme, CardProps, 'theme'> = styled.di
     ${compose(levelVariant, borderRadius, height, space, width, padding)}
 `;
 
-export { Card, CardProps };
+export { Card, type CardProps };

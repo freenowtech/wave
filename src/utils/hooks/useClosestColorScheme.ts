@@ -32,7 +32,7 @@ export const useClosestColorScheme = (element?: Element): ColorScheme => {
     }, [closestParentWithColorScheme]);
 
     const callback = mutations => {
-        const lastMutation: MutationRecord = mutations[mutations.length - 1];
+        const lastMutation: MutationRecord = mutations.at(-1);
         const changedElement = lastMutation.target as Element;
 
         setClosestColorScheme(getColorSchemeFromElement(changedElement));

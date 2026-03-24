@@ -5,8 +5,8 @@ import { BottomLinedInput } from './BottomLinedInput';
 import { BottomLinedInputLabel } from './BottomLinedInputLabel';
 import { BoxedInput } from './BoxedInput';
 import { BoxedInputLabel } from './BoxedInputLabel';
-import { InputProps } from './InputProps';
-import { InputWrapper, InputWrapperProps } from './InputWrapper';
+import { type InputProps } from './InputProps';
+import { InputWrapper, type InputWrapperProps } from './InputWrapper';
 
 const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     (props: InputWrapperProps & InputProps, ref) => {
@@ -14,7 +14,15 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
-        const { label, onChange, size = 'medium', id: providedId, variant = 'boxed', type = 'text', ...rest } = restProps;
+        const {
+            label,
+            onChange,
+            size = 'medium',
+            id: providedId,
+            variant = 'boxed',
+            type = 'text',
+            ...rest
+        } = restProps;
         const id = useGeneratedId(providedId);
 
         const innerRef = useRef<HTMLInputElement | null>(null);
@@ -84,4 +92,6 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     }
 );
 
-export { InnerInput, InputProps };
+export { InnerInput };
+
+export { type InputProps } from './InputProps';

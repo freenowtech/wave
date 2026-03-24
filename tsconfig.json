@@ -10,14 +10,7 @@
         "declarationDir": "lib/types/",
         "rootDir": "src/",
         "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "plugins": [
-            {
-                "transform": "typescript-plugin-styled-components",
-                "type": "config",
-                "ssr": true
-            }
-        ]
+        "skipDefaultLibCheck": true
     },
     "include": ["src/**/*"],
     "exclude": ["src/**/docs", "**/node_modules", "src/codemods/__*"]

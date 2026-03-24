@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
+import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { TableContext } from '../context/TableContext';
-import { TableProps } from './Table';
+import { type TableProps } from './Table';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
@@ -51,12 +51,14 @@ const linesStyles = (active, hover) => css`
 const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
     ({ rowStyle, active, hover = true }) => {
         switch (rowStyle) {
-            case 'zebra':
+            case 'zebra': {
                 return zebraStyles(active, hover);
-            case 'lines':
+            }
+            case 'lines': {
                 return linesStyles(active, hover);
+            }
             case 'blank':
-            default:
+            default: {
                 return css`
                     &:hover {
                         ${hover ? `background-color: ${getSemanticValue('background-surface-neutral-faded')}` : ''};
@@ -66,6 +68,7 @@ const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
                         ? `background-color: ${getSemanticValue('background-surface-info-faded')} !important`
                         : ''};
                 `;
+            }
         }
     }
 );
@@ -76,4 +79,4 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
     return <TableRowElement rowStyle={rowStyle} {...props} />;
 };
 
-export { TableRow, TableRowProps };
+export { TableRow, type TableRowProps };

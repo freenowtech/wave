@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { ListBox, ListBoxItem, DescriptionText, LabelText } from '../ListBox';
 
 type Animal = {

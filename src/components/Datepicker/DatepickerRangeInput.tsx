@@ -1,9 +1,9 @@
-import { END_DATE, FirstDayOfWeek, FocusedInput, START_DATE } from '@datepicker-react/hooks';
-import { compareDesc, Locale, parse, startOfDay, endOfDay } from 'date-fns';
-import React, { ChangeEventHandler, FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { END_DATE, type FirstDayOfWeek, type FocusedInput, START_DATE } from '@datepicker-react/hooks';
+import { compareDesc, type Locale, parse, startOfDay, endOfDay } from 'date-fns';
+import React, { type ChangeEventHandler, type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
-import { usePopper } from 'react-popper';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
+import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { createPortal } from 'react-dom';
 import { MediaQueries } from '../../essentials';
 import { theme } from '../../essentials/theme';
@@ -242,9 +242,8 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     disabled,
     ...rest
 }) => {
-    const [triggerReference, setTriggerReference] = useState(undefined);
-    const [contentReference, setContentReference] = useState(undefined);
-    const [arrowReference, setArrowReference] = useState(undefined);
+    const [triggerElement, setTriggerElement] = useState<Element | null>(null);
+    const arrowRef = useRef<HTMLDivElement | null>(null);
 
     const localeObject = useLocaleObject(locale);
     const startDateRef = useRef<HTMLInputElement | null>(null);
@@ -259,28 +258,23 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
     const mappedPlacement = mapPlacementToPopperPlacement(placement);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement,
+        middlewareData
+    } = useFloating({
         placement: mappedPlacement,
-        modifiers: [
-            {
-                name: 'flip',
-                enabled: true
-            },
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 15]
-                }
-            },
-            {
-                name: 'arrow',
-                options: { element: arrowReference }
-            }
-        ]
+        middleware: [flip(), offset(15), shift(), arrow({ element: arrowRef })],
+        whileElementsMounted: autoUpdate
     });
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const handleTriggerRef = (el: HTMLDivElement | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
+
+    const enforcedColorScheme = useClosestColorScheme(triggerElement);
     const startId = useGeneratedId(startInputId);
     const endId = useGeneratedId(endInputId);
 
@@ -308,8 +302,9 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
                 break;
             }
-            default:
+            default: {
                 break;
+            }
         }
     }, [focusedInput]);
 
@@ -374,7 +369,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
     return (
         <>
-            <DateRangeWrapper ref={setTriggerReference} {...rest}>
+            <DateRangeWrapper ref={handleTriggerRef} {...rest}>
                 <Input
                     id={startId}
                     ref={startDateRef}
@@ -399,12 +394,12 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                 <Input
                     id={endId}
                     ref={endDateRef}
-                    tabIndex={!inputText.startText ? -1 : 0}
+                    tabIndex={inputText.startText ? 0 : -1}
                     autoComplete="off"
                     className="endDate"
                     data-testid="end-date-input"
                     placeholder={endPlaceholder}
-                    onFocus={() => setFocusedInput(!value.startDate ? START_DATE : END_DATE)}
+                    onFocus={() => setFocusedInput(value.startDate ? END_DATE : START_DATE)}
                     // eslint-disable-next-line unicorn/no-null
                     onBlur={() => setFocusedInput(null)}
                     value={inputText.endText}
@@ -422,11 +417,17 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                 createPortal(
                     <PortalWrapper>
                         <DatepickerContentContainer
-                            ref={setContentReference}
-                            style={styles.popper}
-                            {...attributes.popper}
+                            ref={refs.setFloating}
+                            style={floatingStyles}
+                            data-popper-placement={currentPlacement}
                         >
-                            <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                            <Arrow
+                                ref={arrowRef}
+                                style={{
+                                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                                }}
+                            />
                             <Datepicker
                                 // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
                                 numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
@@ -452,4 +453,4 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     );
 };
 
-export { DatepickerRangeInput, DatepickerRangeInputProps };
+export { DatepickerRangeInput, type DatepickerRangeInputProps };

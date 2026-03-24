@@ -1,14 +1,12 @@
 import {
     Table as BaseTable,
-    TableProps,
+    type TableProps,
     Cell as BaseCell,
     Column as BaseColumn,
     Row as BaseRow,
-    TableBody,
-    TableHeader,
-    CellProps,
-    ColumnProps,
-    RowProps
+    type CellProps,
+    type ColumnProps,
+    type RowProps
 } from 'react-aria-components';
 import styled from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
@@ -103,4 +101,6 @@ const Skeleton = styled.div`
     background: ${getSemanticValue('surface-variant')};
 `;
 
-export { Table, TableProps, Cell, Column, Row, TableBody, TableHeader, Skeleton };
+export { Table, Cell, Column, Row, Skeleton };
+
+export { TableBody, TableHeader, type TableProps } from 'react-aria-components';

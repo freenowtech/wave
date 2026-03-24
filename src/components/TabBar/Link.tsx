@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, { type ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
@@ -70,4 +70,4 @@ const Link: React.FC<LinkProps> = ({ children, selected, ...rest }: LinkProps) =
     );
 };
 
-export { Link, LinkProps };
+export { Link, type LinkProps };

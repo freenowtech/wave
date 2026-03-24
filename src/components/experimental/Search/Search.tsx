@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import { SearchFieldProps, SearchField } from 'react-aria-components';
+import React, { type ReactElement } from 'react';
+import { type SearchFieldProps, SearchField } from 'react-aria-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import SearchIcon from '../../../icons/experimental/SearchIcon';
 import { Input } from '../Input/Input';

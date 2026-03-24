@@ -1,4 +1,4 @@
-import { HeightProps, MarginProps, WidthProps } from 'styled-system';
+import { type HeightProps, type MarginProps, type WidthProps } from 'styled-system';
 
 function removeUndefinedKeys(object: Record<string, unknown>) {
     // eslint-disable-next-line no-param-reassign

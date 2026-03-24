@@ -1,7 +1,7 @@
-import React, { forwardRef, ReactNode, type ReactElement } from 'react';
-import { PressEvent } from 'react-aria';
+import React, { forwardRef, type ReactNode, type ReactElement } from 'react';
+import { type PressEvent } from 'react-aria';
 import styled from 'styled-components';
-import { SpaceProps, LayoutProps, PositionProps, FlexboxProps } from 'styled-system';
+import { type SpaceProps, type LayoutProps, type PositionProps, type FlexboxProps } from 'styled-system';
 
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
@@ -34,11 +34,7 @@ const DismissButton = styled(IconButton)`
 `;
 
 interface SnackbarProps
-    extends SpaceProps,
-        LayoutProps,
-        PositionProps,
-        FlexboxProps,
-        React.HTMLAttributes<HTMLDivElement> {
+    extends SpaceProps, LayoutProps, PositionProps, FlexboxProps, React.HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     hasDismissButton?: boolean;
     onDismiss?: (e: PressEvent) => void;
@@ -59,4 +55,4 @@ const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
     )
 );
 
-export { Snackbar, SnackbarProps };
+export { Snackbar, type SnackbarProps };

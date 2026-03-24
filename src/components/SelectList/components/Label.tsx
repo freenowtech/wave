@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
 import { disabledStyles, errorStyles, variantStyles } from '../styles';
-import { Size, Variant } from '../types';
+import { type Size, type Variant } from '../types';
 
 interface LabelProps {
     error?: boolean;

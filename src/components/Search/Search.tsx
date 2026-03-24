@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 import * as React from 'react';
 
 import styled from 'styled-components';
@@ -6,7 +6,7 @@ import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { XCrossIcon, MagnifierIcon } from '../../icons';
 import { useControlledState } from '../../utils/hooks/useControlledState';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 
 import { Input, type InputProps } from '../Input/Input';
 
@@ -44,7 +44,9 @@ const SearchInputContainer = styled(Box)<SearchInputContainerProps>`
     border: ${p => `0.0625rem solid ${getSemanticValue(p.isInFocus ? 'border-focus' : 'border-neutral-default')}`};
     box-shadow: ${p => (p.isInFocus ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-focus')}` : 'none')};
     height: ${p => (p.size === 'small' ? '2.2rem' : '3.2rem')};
-    transition: box-shadow 100ms ease, border 100ms ease;
+    transition:
+        box-shadow 100ms ease,
+        border 100ms ease;
 `;
 
 const StyledInput = styled(Input)`
@@ -176,12 +178,14 @@ export const Search: FC<SearchProps> = ({
                     break;
                 }
 
-                case 'Escape':
+                case 'Escape': {
                     setShowResults(false);
                     break;
+                }
 
-                default:
+                default: {
                     break;
+                }
             }
         };
         document.addEventListener('keydown', emitKeyEvent);
@@ -195,10 +199,10 @@ export const Search: FC<SearchProps> = ({
         // eslint-disable-next-line unicorn/consistent-function-scoping
         const emitIfClickingOutsideSearch = (event: DocumentEventMap['click']) => {
             if (disabled) return;
-            if (!containerRef.current.contains(event.target as Element)) {
-                setShowResults(false);
-            } else {
+            if (containerRef.current.contains(event.target as Element)) {
                 setShowResults(true);
+            } else {
+                setShowResults(false);
             }
         };
         document.addEventListener('click', emitIfClickingOutsideSearch);
@@ -262,7 +266,7 @@ export const Search: FC<SearchProps> = ({
                     {...props}
                 />
 
-                {!value ? undefined : (
+                {value ? (
                     <Box
                         aria-label="clear-search"
                         style={{ margin: '1rem', marginLeft: 'auto', cursor: 'pointer', display: 'flex' }}
@@ -274,7 +278,7 @@ export const Search: FC<SearchProps> = ({
                     >
                         <XCrossIcon aria-hidden="true" color={getSemanticValue('foreground-neutral-default')} />
                     </Box>
-                )}
+                ) : undefined}
             </SearchInputContainer>
 
             {showResults && results.length > 0 && (

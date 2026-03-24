@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, PropsWithChildren } from 'react';
+import React, { type ReactElement, useState, type PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
@@ -6,7 +6,7 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
-import { AccordionProps } from '../types';
+import { type AccordionProps } from '../types';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 type Props = PropsWithChildren<

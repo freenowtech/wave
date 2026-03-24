@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC, MouseEventHandler, useRef, useState } from 'react';
+import React, { type ComponentPropsWithoutRef, type FC, type MouseEventHandler, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { MarginProps } from 'styled-system';
+import { type MarginProps } from 'styled-system';
 import { MediaQueries } from '../../essentials';
 import { CheckCircleIcon, UploadIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { Text } from '../Text/Text';
 import { shrinkFileName } from './utils/format';
@@ -74,7 +74,9 @@ const Outliner = styled(Box)<OutlinerProps>`
     box-sizing: border-box;
     cursor: pointer;
     position: relative;
-    transition: background-color ease 200ms, border-color ease 200ms;
+    transition:
+        background-color ease 200ms,
+        border-color ease 200ms;
 
     ${Text} {
         cursor: pointer;
@@ -216,4 +218,4 @@ const FilePicker: FC<FilePickerProps> = ({
     );
 };
 
-export { FilePicker, FilePickerProps };
+export { FilePicker, type FilePickerProps };

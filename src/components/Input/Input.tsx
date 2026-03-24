@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 
 import { Password } from '../Password/Password';
-import { InputProps } from './InputProps';
-import { InputWrapperProps } from './InputWrapper';
+import { type InputProps } from './InputProps';
+import { type InputWrapperProps } from './InputWrapper';
 import { InnerInput } from './InnerInput';
 
 const Input = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
@@ -15,4 +15,6 @@ const Input = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     }
 );
 
-export { Input, InputProps };
+export { Input };
+
+export { type InputProps } from './InputProps';

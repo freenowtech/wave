@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { StoryObj, Meta } from '@storybook/react';
 import { useAsyncList } from 'react-aria-components';
+import { type StoryObj, type Meta } from '@storybook/react';
 import { ComboBox } from '../ComboBox';
 import { ListBoxItem } from '../../ListBox/ListBox';
 import { Button } from '../../../Button/Button';

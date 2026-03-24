@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useMemo, Fragment } from 'react';
+import React, { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
-import { usePopper } from 'react-popper';
+import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { isBefore, isAfter, isSameMonth, startOfMonth, endOfMonth } from 'date-fns';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { dateToText, isBetween } from './utils';
 import { Input } from '../Input/Input';
 import { MonthCalendar } from './MonthCalender/MonthCalender';
@@ -116,34 +116,28 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     const [rangeEnd, setRangeEnd] = useState<Date | null>(null);
     const [hoveredMonth, setHoveredMonth] = useState<Date | null>(null);
 
-    const [triggerReference, setTriggerReference] = useState<HTMLDivElement | null>(null);
-    const [contentReference, setContentReference] = useState<HTMLDivElement | null>(null);
-    const [arrowReference, setArrowReference] = useState(undefined);
+    const [triggerElement, setTriggerElement] = useState<Element | null>(null);
+    const arrowRef = useRef<HTMLDivElement | null>(null);
     const localeObject = useLocaleObject(locale);
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement);
     const mappedPlacement = mapPlacementToPopperPlacement(placement);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement,
+        middlewareData
+    } = useFloating({
         placement: mappedPlacement,
-        modifiers: [
-            {
-                name: 'flip',
-                enabled: true
-            },
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 15]
-                }
-            },
-            {
-                name: 'arrow',
-                options: { element: arrowReference }
-            }
-        ]
+        middleware: [flip(), offset(15), shift(), arrow({ element: arrowRef })],
+        whileElementsMounted: autoUpdate
     });
+
+    const handleTriggerRef = (el: HTMLDivElement | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
 
     useEffect(() => {
         const start = value?.start instanceof Date ? value.start : null;
@@ -163,10 +157,10 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (
-                triggerReference &&
-                !triggerReference.contains(event.target as Node) &&
-                contentReference &&
-                !contentReference.contains(event.target as Node)
+                triggerElement &&
+                !triggerElement.contains(event.target as Node) &&
+                refs.floating.current &&
+                !refs.floating.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
                 setFocusedInput(null);
@@ -174,7 +168,8 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
         }
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [triggerReference, contentReference]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [triggerElement]);
 
     const handleMonthClick = (monthIndex: number, year: number) => {
         const clickedDate = startOfMonth(new Date(year, monthIndex, 1));
@@ -246,7 +241,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
 
     return (
         <Wrapper {...rest}>
-            <div ref={setTriggerReference}>
+            <div ref={handleTriggerRef}>
                 <Input
                     label={label}
                     placeholder={placeholder}
@@ -261,11 +256,17 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
                 createPortal(
                     <PortalWrapper>
                         <MonthPickerContentContainer
-                            ref={setContentReference}
-                            style={styles.popper}
-                            {...attributes.popper}
+                            ref={refs.setFloating}
+                            style={floatingStyles}
+                            data-popper-placement={currentPlacement}
                         >
-                            <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                            <Arrow
+                                ref={arrowRef}
+                                style={{
+                                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                                }}
+                            />
                             <Back
                                 onClick={() => setCurrentYear(y => y - 1)}
                                 aria-label="Previous year"
