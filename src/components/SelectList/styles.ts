@@ -60,7 +60,7 @@ export const variantStyles = {
                     borderRadius: get('radii.2')(props),
                     border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBFocused,
-                    ...(props.size > 0 ? bSize[props.size] : {})
+                    ...(props.size ? bSize[props.size] : {})
                 };
             }
             case 'bottom-lined': {
@@ -85,7 +85,7 @@ export const variantStyles = {
                     borderTopRightRadius: get('radii.1')(props),
                     borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBLFocused,
-                    ...(props.size > 0 ? btSize[props.size] : {})
+                    ...(props.size ? btSize[props.size] : {})
                 };
             }
             default: {
@@ -111,7 +111,7 @@ export const variantStyles = {
                     }
                 };
 
-                return props.size > 0 ? bSize[props.size] : {};
+                return props.size ? bSize[props.size] : {};
             }
             case 'bottom-lined': {
                 const btSize = {
@@ -129,7 +129,7 @@ export const variantStyles = {
                     }
                 };
 
-                return props.size > 0 ? btSize[props.size] : {};
+                return props.size ? btSize[props.size] : {};
             }
             default: {
                 return {};

@@ -56,7 +56,7 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            ...(selectProps.size > 0 ? bSize[selectProps.size] : {})
+            ...(selectProps.size ? bSize[selectProps.size] : {})
         };
     },
     control: (_, state: WithSelectProps<ControlProps>) => {

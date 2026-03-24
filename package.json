@@ -33,7 +33,7 @@
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
-        "build:cjs": "tsc --target es5 --module commonjs --outDir lib/cjs",
+        "build:cjs": "tsc --target es2015 --module commonjs --outDir lib/cjs",
         "build:esm": "tsc --target es6 --module esnext --outDir lib/esm",
         "build:documentation": "storybook build",
         "generate": "npm run generate:icons",
