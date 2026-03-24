@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 import { compose, margin, type MarginProps, variant } from 'styled-system';
 
@@ -52,7 +53,7 @@ const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
     `;
 };
 
-const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
+const LabelWrapper = styled.label.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<LabelWrapperProps>`
     display: inline-flex;
     align-items: center;
     position: relative;

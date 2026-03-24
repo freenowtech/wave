@@ -1,4 +1,5 @@
-import styled, { type StyledComponent } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import styled from 'styled-components';
 import {
     borderRadius,
     type BorderRadiusProps,
@@ -52,7 +53,7 @@ const levelVariant = variant({
     }
 });
 
-const Card: StyledComponent<'div', typeof theme, CardProps, 'theme'> = styled.div.attrs({ theme })`
+const Card = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<CardProps>`
     overflow: auto;
     box-sizing: border-box;
     border-radius: ${get('radii.1')};

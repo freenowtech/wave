@@ -1,4 +1,5 @@
 import React, { type FC, type MouseEvent, type PropsWithChildren } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { margin, type MarginProps, variant } from 'styled-system';
 
@@ -109,7 +110,7 @@ const tagVariant = variant({
     }
 });
 
-const TagWrapper = styled.div.attrs({ theme })<TagProps>`
+const TagWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<TagProps>`
     box-sizing: border-box;
     border: solid 0.0625rem;
     display: inline-flex;

@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type FC, useEffect, useState } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { type CSSProperties } from 'styled-components';
 
 import {
@@ -29,7 +30,7 @@ type WrapperProps = MarginProps &
         className?: string;
     };
 
-const TextAreaWrapper: FC<WrapperProps> = styled.div.attrs({ theme })`
+const TextAreaWrapper: FC<WrapperProps> = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     display: inline-block;
     position: relative;
     box-sizing: border-box;

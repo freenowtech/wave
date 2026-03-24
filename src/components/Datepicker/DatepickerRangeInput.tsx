@@ -1,6 +1,7 @@
 import { END_DATE, type FirstDayOfWeek, type FocusedInput, START_DATE } from '@datepicker-react/hooks';
 import { compareDesc, type Locale, parse, startOfDay, endOfDay } from 'date-fns';
 import React, { type ChangeEventHandler, type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
@@ -24,7 +25,7 @@ import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
 
 type DateRangerProps = MarginProps & WidthProps;
 
-const DateRangeWrapper = styled.div.attrs({ theme })<DateRangerProps>`
+const DateRangeWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<DateRangerProps>`
     display: inline-flex;
     align-items: center;
     position: relative;

@@ -6,14 +6,17 @@ import { Text } from '../../Text/Text';
 import { type PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
 import { isFlagAvailable } from '../util/isFlagAvailable';
 
-const StyledSingleValue = styled(components.SingleValue)`
+// Styled wrapper for content inside react-select's SingleValue.
+// We avoid wrapping components.SingleValue directly with styled() because
+// styled-components v6 strips the `theme` prop, which react-select needs internally.
+const SingleValueContent = styled.div`
     display: inline-flex;
+    max-width: 100%;
 
     svg {
         min-width: 1.5rem;
         margin-right: 0.5rem;
     }
-    max-width: 100%;
 `;
 
 const SingleValue: FC<SingleValueProps<any>> = (props: SingleValueProps<PhoneAreaCodeCountry>) => {
@@ -26,10 +29,12 @@ const SingleValue: FC<SingleValueProps<any>> = (props: SingleValueProps<PhoneAre
     return (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        <StyledSingleValue {...props}>
-            <Flag code={isFlagAvailable(selectedOption.value) ? selectedOption.value : 'WW'} />
-            <Text>{selectedOption.dialCode}</Text>
-        </StyledSingleValue>
+        <components.SingleValue {...props}>
+            <SingleValueContent>
+                <Flag code={isFlagAvailable(selectedOption.value) ? selectedOption.value : 'WW'} />
+                <Text>{selectedOption.dialCode}</Text>
+            </SingleValueContent>
+        </components.SingleValue>
     );
 };
 

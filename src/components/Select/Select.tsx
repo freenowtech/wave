@@ -1,4 +1,5 @@
 import React from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
@@ -20,7 +21,7 @@ interface SelectProps extends BaseSelectProps, WidthProps, MarginProps {
     placeholder?: string;
 }
 
-const SelectWrapper = styled.div.attrs({ theme })`
+const SelectWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     display: inline-block;
     position: relative;
     box-sizing: border-box;

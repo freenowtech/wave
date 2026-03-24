@@ -1,4 +1,5 @@
 import { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import {
     compose,
@@ -15,7 +16,7 @@ import { get } from '../../utils/themeGet';
 
 interface LinkProps extends ComponentPropsWithoutRef<'a'>, MarginProps, FontSizeProps, TextAlignProps {}
 
-const Link = styled.a.attrs({ theme })<LinkProps>`
+const Link = styled.a.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<LinkProps>`
     display: inline-block;
     color: ${getSemanticValue('foreground-accent-default')};
     cursor: pointer;

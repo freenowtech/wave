@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { createPortal } from 'react-dom';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { isBefore, isAfter, isSameMonth, startOfMonth, endOfMonth } from 'date-fns';
@@ -18,7 +19,7 @@ import { useLocaleObject } from '../Datepicker/utils/useLocaleObject';
 
 type FocusedInput = 'start' | 'end' | null;
 
-const Wrapper = styled.div.attrs({ theme })<MarginProps & WidthProps>`
+const Wrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<MarginProps & WidthProps>`
     display: inline-flex;
     align-items: center;
     position: relative;

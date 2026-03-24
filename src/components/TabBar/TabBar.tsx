@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 import { margin } from 'styled-system';
 
@@ -6,7 +7,7 @@ import { Link } from './Link';
 import { type TabBarWithLink } from './TabBarWithLink';
 
 const TabBar: TabBarWithLink = Object.assign(
-    styled.nav.attrs({ theme })`
+    styled.nav.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
         display: flex;
 
         ${margin}

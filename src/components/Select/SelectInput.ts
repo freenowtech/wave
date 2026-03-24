@@ -1,4 +1,5 @@
 import { type ComponentPropsWithoutRef, type FC } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 import { compose, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
@@ -79,7 +80,9 @@ const disabledStyles = css<BaseSelectProps>`
     }
 `;
 
-const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSelectProps>`
+const SelectInput: FC<BaseSelectProps> = styled.select
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<BaseSelectProps>`
     margin: 0;
     box-sizing: border-box;
     background: ${getSemanticValue('background-page-default')};

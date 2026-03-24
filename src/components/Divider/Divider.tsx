@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { type StyledComponent } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import styled from 'styled-components';
 import { compose, space, type SpaceProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -17,7 +18,7 @@ interface DividerProps extends SpaceProps {
     offset?: DividerOffset;
 }
 
-const HorizontalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'> = styled.div.attrs({ theme })<
+const HorizontalLine = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<
     Pick<SpaceProps, 'my'>
 >`
     width: 100%;
@@ -29,9 +30,7 @@ const HorizontalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'
     ${compose(space)}
 `;
 
-const VerticalLine: StyledComponent<'div', typeof theme, DividerProps, 'theme'> = styled.div.attrs({ theme })<
-    Pick<SpaceProps, 'mx'>
->`
+const VerticalLine = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<Pick<SpaceProps, 'mx'>>`
     display: inline-block;
     width: 0.06rem;
     margin-top: 0;

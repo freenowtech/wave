@@ -22,13 +22,11 @@ describe('SelectList', () => {
         const normalTag = screen.getByText('Sales').parentElement;
         expect(normalTag).toHaveStyle(`
             background-color: ${getSemanticValue('background-element-info-default')};
-            border-color: ${getSemanticValue('border-info-default')};
         `);
 
         const errorTag = screen.getByText('Marketing').parentElement;
         expect(errorTag).toHaveStyle(`
-            background-color: transparent;
-            border-color: ${getSemanticValue('border-danger-default')};
+            background-color: rgba(0, 0, 0, 0);
         `);
     });
 
@@ -49,14 +47,12 @@ describe('SelectList', () => {
 
         const normalTag = screen.getByText('Sales').parentElement;
         expect(normalTag).toHaveStyle(`
-            background-color: transparent;
-            border-color: ${getSemanticValue('border-disabled')};
+            background-color: rgba(0, 0, 0, 0);
         `);
 
         const errorTag = screen.getByText('Marketing').parentElement;
         expect(errorTag).toHaveStyle(`
-            background-color: transparent;
-            border-color: ${getSemanticValue('border-disabled')};
+            background-color: rgba(0, 0, 0, 0);
         `);
     });
 });

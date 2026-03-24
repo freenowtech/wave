@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css, keyframes } from 'styled-components';
 import {
     borderRadius,
@@ -47,7 +48,7 @@ export interface SkeletonProps extends LayoutProps, MarginProps, BorderRadiusPro
     animated?: boolean;
 }
 
-export const Skeleton = styled.span<SkeletonProps>`
+export const Skeleton = styled.span.withConfig({ shouldForwardProp: isPropValid })<SkeletonProps>`
     display: inline-block;
     height: 1rem;
     width: 100%;
