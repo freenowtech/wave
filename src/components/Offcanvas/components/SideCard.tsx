@@ -95,10 +95,13 @@ const SideCard: React.FC<React.PropsWithChildren<SideCardProps>> = ({
     visible,
     width = '28.375rem',
     ...rest
-}: SideCardProps) => (
-    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-        <StyledCard {...rest} width={width} level={300} />
-    </CSSTransition>
-);
+}: SideCardProps) => {
+    const nodeRef = React.useRef(null);
+    return (
+        <CSSTransition nodeRef={nodeRef} in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+            <StyledCard ref={nodeRef} {...rest} width={width} level={300} />
+        </CSSTransition>
+    );
+};
 
 export { SideCard, ANIMATION_DURATION };

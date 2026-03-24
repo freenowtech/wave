@@ -40,8 +40,8 @@ export type DateFieldProps = SegmentedProps | TextProps;
 
 // overloads to preserve good inference with forwardRef
 export interface DateFieldOverloads {
-    (props: SegmentedProps & React.RefAttributes<HTMLDivElement>): JSX.Element;
-    (props: TextProps & React.RefAttributes<HTMLDivElement>): JSX.Element;
+    (props: SegmentedProps & React.RefAttributes<HTMLDivElement>): React.JSX.Element;
+    (props: TextProps & React.RefAttributes<HTMLDivElement>): React.JSX.Element;
 }
 
 const inputStyle: React.CSSProperties = {

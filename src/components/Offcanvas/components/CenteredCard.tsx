@@ -95,10 +95,13 @@ const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
     visible,
     height = '28.375rem',
     ...rest
-}: CenteredCardProps) => (
-    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-        <StyledCard {...rest} height={height} level={300} />
-    </CSSTransition>
-);
+}: CenteredCardProps) => {
+    const nodeRef = React.useRef(null);
+    return (
+        <CSSTransition nodeRef={nodeRef} in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
+            <StyledCard ref={nodeRef} {...rest} height={height} level={300} />
+        </CSSTransition>
+    );
+};
 
 export { CenteredCard, ANIMATION_DURATION };

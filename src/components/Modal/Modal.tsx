@@ -53,7 +53,7 @@ const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_D
  * when only using `React.FC<ModalProps>`. This leads to compiler errors when passing the
  * dismiss function.
  */
-const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ...rest }: ModalProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
     const closeTimeout = useRef(null);
@@ -110,10 +110,6 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }
             <PreventBackgroundScroll />
         </DismissContext.Provider>
     );
-};
-
-Modal.defaultProps = {
-    dismissible: true
 };
 
 export { Modal, ModalProps, useModalDismiss };

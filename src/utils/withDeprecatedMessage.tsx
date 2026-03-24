@@ -28,7 +28,7 @@ let withDeprecatedMessage: WithDeprecatedMessageFunc<Record<string, unknown>> =
 if (process.env.NODE_ENV !== 'production') {
     withDeprecatedMessage =
         (deprecatedComponentName: string, PassedComponent: React.ComponentType, externalProps = {}) =>
-        (props: Record<string, unknown>): JSX.Element => {
+        (props: Record<string, unknown>): React.JSX.Element => {
             const stringifiedProps = Object.entries(externalProps)
                 .map(([k, v]) => `${k}={${v.toString()}}`)
                 .join(' ');

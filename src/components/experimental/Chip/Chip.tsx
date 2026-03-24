@@ -61,8 +61,7 @@ const Button = styled(BaseButton)<{ isActive: boolean }>`
 const Chip = forwardRef<HTMLButtonElement, ChipProps>(
     ({ children, isActive = false, ...props }, ref): ReactElement => (
         <Button isActive={isActive} ref={ref} {...props}>
-            {/* Button expects a single child */}
-            <>{children}</>
+            {children}
         </Button>
     )
 );

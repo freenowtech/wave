@@ -79,8 +79,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 }: PhoneInputProps) => {
     const { marginProps } = extractWrapperMarginProps(props);
 
-    const nationalNumberInputRef = useRef<HTMLInputElement>();
-    const containerRef = useRef<HTMLDivElement>();
+    const nationalNumberInputRef = useRef<HTMLInputElement | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
 
     const handleCountrySelection = value => {

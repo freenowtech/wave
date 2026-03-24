@@ -41,7 +41,7 @@ const Description = ({ children }: { children: string }) => (
     </Text>
 );
 
-const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): JSX.Element => (
+const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): React.JSX.Element => (
     <Container variant={variant} emphasized={emphasized} {...props}>
         <Icon variant={variant} emphasized={emphasized} />
         <Box display="flex" flexDirection="column">

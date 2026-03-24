@@ -189,7 +189,7 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     return (
         <>
-            {React.cloneElement(children as React.ReactElement, {
+            {React.cloneElement(children as React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>, {
                 onMouseOver: () => handleVisibilityChange(true),
                 onMouseOut: () => handleVisibilityChange(false),
                 ref: setTriggerReference

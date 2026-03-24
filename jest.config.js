@@ -1,7 +1,8 @@
 module.exports = {
+    testEnvironment: 'jsdom',
     roots: ['<rootDir>/src'],
     transform: {
-        '^.+\\.tsx?$': 'ts-jest',
+        '^.+\\.tsx?$': ['ts-jest', { tsconfig: { jsx: 'react' } }],
         '^.+\\.svg$': '<rootDir>/svgTransform.js'
     },
     testRegex: '(test|spec)\\.tsx?$',

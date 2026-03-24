@@ -67,15 +67,10 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
     }
 });
 
-const Button = styled(BaseButton).attrs({ theme })<ButtonProps>`
+const Button = styled(BaseButton).attrs<ButtonProps>({ theme, size: 'medium', variant: 'primary' })<ButtonProps>`
     transition: background ease 200ms, border-color ease 200ms, color ease 200ms, fill ease 200ms;
 
     ${variantStyles};
 `;
-
-Button.defaultProps = {
-    size: 'medium',
-    variant: 'primary'
-};
 
 export { Button, ButtonProps };

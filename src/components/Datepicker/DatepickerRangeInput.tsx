@@ -247,8 +247,8 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     const [arrowReference, setArrowReference] = useState(undefined);
 
     const localeObject = useLocaleObject(locale);
-    const startDateRef = useRef<HTMLInputElement>();
-    const endDateRef = useRef<HTMLInputElement>();
+    const startDateRef = useRef<HTMLInputElement | null>(null);
+    const endDateRef = useRef<HTMLInputElement | null>(null);
     // eslint-disable-next-line unicorn/no-null
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
     const [inputText, setInputText] = useState<DateRangeInputText>(

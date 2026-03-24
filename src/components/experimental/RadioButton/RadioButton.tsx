@@ -81,7 +81,9 @@ const Radio = styled(BaseRadio)`
     }
 `;
 
-export const RadioButton: FC<RadioProps> = ({ children, ...rest }) => (
+type RadioButtonProps = Omit<RadioProps, 'children'> & { children?: React.ReactNode };
+
+export const RadioButton: FC<RadioButtonProps> = ({ children, ...rest }) => (
     <Radio {...rest}>
         {({ isSelected }) => (
             <>

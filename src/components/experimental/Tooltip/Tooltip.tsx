@@ -90,7 +90,7 @@ const Tooltip = ({
     tooltipProps,
     hideArrow = false,
     customTrigger = false
-}: TooltipProps): JSX.Element => (
+}: TooltipProps): React.JSX.Element => (
     <>
         <TooltipStyles />
         <TooltipTrigger {...triggerProps}>

@@ -14,10 +14,10 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
-        const { label, onChange, size, id: providedId, variant, ...rest } = restProps;
+        const { label, onChange, size = 'medium', id: providedId, variant = 'boxed', type = 'text', ...rest } = restProps;
         const id = useGeneratedId(providedId);
 
-        const innerRef = useRef<HTMLInputElement>();
+        const innerRef = useRef<HTMLInputElement | null>(null);
         useImperativeHandle(ref, () => innerRef.current, []);
 
         const [hasValue, setHasValue] = useState(rest?.value?.toString().length > 0);
@@ -40,6 +40,7 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
                     <BoxedInput
                         {...rest}
                         ref={innerRef}
+                        type={type}
                         variant={variant}
                         id={id}
                         waveSize={size}
@@ -62,6 +63,7 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
                     <BottomLinedInput
                         {...rest}
                         ref={innerRef}
+                        type={type}
                         variant={variant}
                         id={id}
                         waveSize={size}
@@ -81,11 +83,5 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         return undefined;
     }
 );
-
-InnerInput.defaultProps = {
-    size: 'medium',
-    variant: 'boxed',
-    type: 'text'
-};
 
 export { InnerInput, InputProps };

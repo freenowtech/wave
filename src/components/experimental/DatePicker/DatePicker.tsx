@@ -109,12 +109,12 @@ function isRangeProps(props: DatePickerProps): props is RangeProps & LegacyCompa
 }
 
 export interface DatePickerOverloads {
-    (props: SingleProps & LegacyCompatProps): JSX.Element;
-    (props: MultipleProps & LegacyCompatProps): JSX.Element;
-    (props: RangeProps & LegacyCompatProps): JSX.Element;
+    (props: SingleProps & LegacyCompatProps): React.JSX.Element;
+    (props: MultipleProps & LegacyCompatProps): React.JSX.Element;
+    (props: RangeProps & LegacyCompatProps): React.JSX.Element;
 }
 
-function DatePickerImpl(props: DatePickerProps): JSX.Element {
+function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
     const {
         label,
         description,
