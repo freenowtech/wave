@@ -9,20 +9,25 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        timeout-minutes: 15
+        permissions:
+            contents: read
+            pull-requests: write # to post the preview comment
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
 
             - name: Setup node
               uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+                  cache: 'npm'
 
             - name: Install deps
-              run: npm install
+              run: npm ci --legacy-peer-deps
 
             - name: Build package
               run: npm run build
 
             - name: Publish preview
-              # TODO: use the commented line below when package is react19 compatible
-              # run: npx pkg-pr-new publish --compact --comment=update --template './.github/PREVIEW_TEMPLATE/*'
-              run: npx pkg-pr-new publish --compact --comment=update
+              run: npx pkg-pr-new publish --compact --comment=update --template './.github/PREVIEW_TEMPLATE/*'

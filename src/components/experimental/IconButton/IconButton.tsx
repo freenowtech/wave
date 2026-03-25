@@ -1,5 +1,5 @@
 import React, { type ReactElement } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { type ButtonProps, Button } from 'react-aria-components';
 import { useVisuallyHidden } from 'react-aria';
 import type { IconProps } from '../../../icons';

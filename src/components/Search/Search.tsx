@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import * as React from 'react';
 
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { XCrossIcon, MagnifierIcon } from '../../icons';
@@ -192,7 +192,17 @@ export const Search: FC<SearchProps> = ({
         return () => {
             document.removeEventListener('keydown', emitKeyEvent);
         };
-    }, [isInFocus, activeIndex, setActiveIndex, onChangeSelection, onEnter, value, propsValue, results]);
+    }, [
+        isInFocus,
+        activeIndex,
+        setActiveIndex,
+        onChangeSelection,
+        onEnter,
+        value,
+        propsValue,
+        results,
+        setShowResults
+    ]);
 
     // this is to keep track of clicks outside the component (useful to close the search results)
     React.useEffect(() => {

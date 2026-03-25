@@ -1,4 +1,4 @@
-import styled, { css, type RuleSet } from 'styled-components';
+import { styled, css, type RuleSet } from 'styled-components';
 import { variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';

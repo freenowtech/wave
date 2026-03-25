@@ -1,5 +1,5 @@
 import type React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, type ResponsiveValue, variant } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { theme } from '../../essentials/theme';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ReactNode, useContext } from 'react';
+import React, { useCallback, useEffect, useState, type ReactNode, useContext } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { type WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
@@ -67,13 +67,14 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
 
-    const handleClose: DismissFunc = () => {
+    const handleClose: DismissFunc = useCallback(() => {
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setVisible(false);
 
         if (onClose) {
             setTimeout(() => onClose(), ANIMATION_DURATION);
         }
-    };
+    }, [onClose]);
 
     const handleDimmingClick = () => {
         if (dismissible) handleClose();
@@ -83,7 +84,7 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
         if (dismissible && isEscKeyPressed) {
             handleClose();
         }
-    }, [dismissible, isEscKeyPressed]);
+    }, [dismissible, isEscKeyPressed, handleClose]);
 
     const renderChildren = () => {
         if (typeof children === 'function') {

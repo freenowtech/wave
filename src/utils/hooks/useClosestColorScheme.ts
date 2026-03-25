@@ -28,6 +28,8 @@ export const useClosestColorScheme = (element?: Element): ColorScheme => {
 
     useEffect(() => {
         const colorScheme = getColorSchemeFromElement(closestParentWithColorScheme ?? undefined);
+        // Sync color scheme from DOM element — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setClosestColorScheme(colorScheme);
     }, [closestParentWithColorScheme]);
 

@@ -120,9 +120,13 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
         if (error && typeof errorHandler === 'function') {
             errorHandler();
         }
+        // errorHandler is a user-provided callback; intentionally excluded to avoid re-running on every render
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [error]);
 
     useEffect(() => {
+        // Sync display text when controlled value changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setInputText(dateToDisplayText(localeObject!, displayFormat, value));
     }, [value, localeObject, displayFormat]);
 

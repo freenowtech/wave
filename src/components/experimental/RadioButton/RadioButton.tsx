@@ -1,5 +1,5 @@
 import React, { type FC } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Radio as BaseRadio, type RadioProps } from 'react-aria-components';
 
 import { getSemanticValue } from '../../../essentials/experimental';

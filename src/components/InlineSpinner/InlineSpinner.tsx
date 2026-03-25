@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { type ReadCssColorVariable } from '../../essentials/Colors/types';

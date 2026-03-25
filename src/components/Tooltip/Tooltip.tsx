@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
 import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/react';
 import type { Placement } from '@floating-ui/react';
@@ -187,6 +187,8 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     return (
         <>
+            {/* cloneElement is required here to inject the ref and mouse handlers without adding a wrapper DOM node */}
+            {/* eslint-disable-next-line @eslint-react/no-clone-element */}
             {React.cloneElement(
                 children as React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>,
                 {

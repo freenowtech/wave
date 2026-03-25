@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { compose, variant } from 'styled-system';
 import SpinnerIcon from '../../../icons/experimental/SpinnerIcon';
 import { getSemanticValue } from '../../../essentials/experimental';

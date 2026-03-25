@@ -1,6 +1,6 @@
 import React, { type FC } from 'react';
 import { components, type OptionProps } from 'react-select';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Flag } from '../../../icons';
 import { type PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';
 import { isFlagAvailable } from '../util/isFlagAvailable';

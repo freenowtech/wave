@@ -1,6 +1,6 @@
 import { format as dfFormat } from 'date-fns';
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { type DateValue } from '@internationalized/date';
 import type { Matcher, DateRange as RdpRange } from 'react-day-picker';
@@ -225,9 +225,13 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
 
     // reflect controlled changes in the UI
     React.useEffect(() => {
+        // Sync display text and calendar month when controlled value changes.
+        // "Time" aliases (singleSourceTime etc.) are stable primitives used instead of Date objects.
         if (isSingle) {
             const src = singleSource;
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             setText(src ? dfFormat(src, displayFormat, { locale }) : '');
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             if (src) setMonth(src);
             return;
         }
@@ -235,14 +239,20 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
         if (isRange) {
             const a = rangeSource?.from ? dfFormat(rangeSource.from, displayFormat, { locale }) : '';
             const b = rangeSource?.to ? dfFormat(rangeSource.to, displayFormat, { locale }) : '';
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             setText(a || b ? `${a}${sepForRange}${b}` : '');
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             if (rangeSource?.from) setMonth(rangeSource.from);
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             else if (rangeSource?.to) setMonth(rangeSource.to);
             return;
         }
 
         // multiple
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         if (multipleSource?.[0]) setMonth(multipleSource[0]);
+        // Deps use stable "time" primitive aliases instead of Date object refs to avoid re-runs
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [
         isSingle,
         isRange,
@@ -367,6 +377,8 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
         if (minDateCompat) arr.push({ before: stripTime(minDateCompat) });
         if (maxDateCompat) arr.push({ after: stripTime(maxDateCompat) });
         return arr.length > 0 ? arr : undefined;
+        // Deps use stable primitive aliases (disabledDaysKey, *Time) instead of object refs
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [disabledDaysKey, minDateCompatTime, maxDateCompatTime]);
 
     const hiddenMatcher = React.useMemo<Matcher[] | undefined>(() => {
@@ -375,6 +387,8 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
         if (minDateCompat) arr.push({ before: stripTime(minDateCompat) });
         if (maxDateCompat) arr.push({ after: stripTime(maxDateCompat) });
         return arr.length > 0 ? arr : undefined;
+        // Deps use stable primitive aliases (*Time) instead of Date object refs
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [hideOutOfRange, minDateCompatTime, maxDateCompatTime]);
 
     // common Calendar props

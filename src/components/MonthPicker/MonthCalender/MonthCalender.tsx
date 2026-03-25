@@ -1,6 +1,6 @@
 import React, { type FC } from 'react';
 import { format } from 'date-fns';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Text } from '../../Text/Text';
 import { MonthButton } from './MonthButton';
 

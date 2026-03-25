@@ -55,7 +55,7 @@ export const withTheme = (Story, context) => {
 
     useLayoutEffect(() => {
         document.body.style.fontFamily = font;
-    }, []);
+    }, [font]);
 
     return (
         <>

@@ -1,6 +1,6 @@
 import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, height, type HeightProps, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { createPortal } from 'react-dom';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { isBefore, isAfter, isSameMonth, startOfMonth, endOfMonth } from 'date-fns';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
@@ -143,7 +143,10 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     useEffect(() => {
         const start = value?.start instanceof Date ? value.start : null;
         const end = value?.end instanceof Date ? value.end : null;
+        // Sync controlled value prop into local state — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRangeStart(start ? startOfMonth(start) : null);
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRangeEnd(end ? endOfMonth(end) : null);
     }, [value]);
 
@@ -152,7 +155,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
             return `${dateToText(rangeStart, localeObject!)} - ${dateToText(rangeEnd, localeObject!)}`;
         }
         return rangeStart ? `${dateToText(rangeStart, localeObject!)} - ...` : '';
-    }, [rangeStart, rangeEnd]);
+    }, [rangeStart, rangeEnd, localeObject]);
 
     // Close the picker when clicking outside
     useEffect(() => {
@@ -169,7 +172,8 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
         }
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // refs.floating is a stable ref object from @floating-ui/react — intentionally excluded
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [triggerElement]);
 
     const handleMonthClick = (monthIndex: number, year: number) => {

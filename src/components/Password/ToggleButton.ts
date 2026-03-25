@@ -1,5 +1,5 @@
 import { variant } from 'styled-system';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { get } from '../../utils/themeGet';
 import { type InputProps } from '../Input/InputProps';

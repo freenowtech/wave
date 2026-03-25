@@ -33,5 +33,5 @@ export function useMutationObserver(
         return stop;
     }, [callback, stop, options, element]);
 
-    useEffect(() => stop, []);
+    useEffect(() => stop, [stop]);
 }

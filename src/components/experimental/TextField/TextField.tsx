@@ -4,7 +4,7 @@ import {
     TextField as BaseTextField,
     type TextFieldProps as BaseTextFieldProps
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
 import { Button } from '../Field/Button';
@@ -90,6 +90,8 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
 
         React.useEffect(() => {
             if (props.value !== undefined) {
+                // Sync controlled value into local text state — intentional derived state pattern
+                // eslint-disable-next-line @eslint-react/set-state-in-effect
                 setText(props.value);
             }
         }, [props.value]);

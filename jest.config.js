@@ -9,7 +9,7 @@ module.exports = {
                 '^.+\\.tsx?$': ['ts-jest', { tsconfig: { jsx: 'react' } }],
                 '^.+\\.svg$': '<rootDir>/svgTransform.js'
             },
-            testRegex: '(test|spec)\\.tsx?$',
+            testRegex: String.raw`(test|spec)\.tsx?$`,
             moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'svg'],
             setupFiles: ['jest-date-mock'],
             setupFilesAfterEnv: ['<rootDir>/src/utils/testing.ts'],
@@ -24,7 +24,7 @@ module.exports = {
             transform: {
                 '^.+\\.tsx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.jest.json', diagnostics: false }]
             },
-            testRegex: '(test|spec)\\.tsx?$',
+            testRegex: String.raw`(test|spec)\.tsx?$`,
             moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json']
         }
     ]

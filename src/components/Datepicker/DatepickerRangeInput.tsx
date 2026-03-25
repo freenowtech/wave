@@ -2,7 +2,7 @@ import { END_DATE, type FirstDayOfWeek, type FocusedInput, START_DATE } from '@d
 import { compareDesc, type Locale, parse, startOfDay, endOfDay } from 'date-fns';
 import React, { type ChangeEventHandler, type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { createPortal } from 'react-dom';
@@ -283,10 +283,15 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         if (!focusedInput && (error.startDate || error.endDate) && typeof errorHandler === 'function') {
             errorHandler();
         }
+        // errorHandler is a user-provided callback; intentionally excluded to avoid re-running on every render
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [error.startDate, error.endDate, focusedInput]);
 
     useEffect(() => {
+        // Sync display text when controlled value changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setInputText(dateRangeToDisplayText(localeObject!, displayFormat, value));
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [value.startDate, value.endDate, displayFormat, localeObject]);
 
     useEffect(() => {

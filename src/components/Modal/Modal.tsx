@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ReactNode, useContext, useRef } from 'react';
+import React, { useCallback, useEffect, useState, type ReactNode, useContext, useRef } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { type WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
@@ -58,13 +58,14 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ..
     const isEscKeyPressed = useIsEscKeyPressed();
     const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const handleClose: DismissFunc = () => {
+    const handleClose: DismissFunc = useCallback(() => {
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setVisible(false);
 
         if (onClose) {
             closeTimeoutRef.current = setTimeout(() => onClose(), ANIMATION_DURATION);
         }
-    };
+    }, [onClose]);
 
     const handleDimmingClick = () => {
         if (dismissible && !rest.fullscreen) {
@@ -76,7 +77,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ..
         if (dismissible && isEscKeyPressed) {
             handleClose();
         }
-    }, [dismissible, isEscKeyPressed]);
+    }, [dismissible, isEscKeyPressed, handleClose]);
 
     useEffect(
         () => () => {

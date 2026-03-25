@@ -1,7 +1,7 @@
 import { DocsContext } from '@storybook/addon-docs/blocks';
 
 import React, { type FC, useContext, useMemo, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Box, DarkScheme, Input, LightScheme, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
 import {

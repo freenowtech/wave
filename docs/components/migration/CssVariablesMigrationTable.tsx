@@ -3,14 +3,14 @@ import React from 'react';
 import { Source } from '../../../src/docs/Source';
 import { Table, TableCell, TableHeaderCell, TableRow } from '../../../src/components/Table';
 
-const codemodsExample = `import styled from 'styled-components';
+const codemodsExample = `import { styled } from 'styled-components';
 
 export const GreyList = styled.ul\`
     color: var(--wave-b-color-blue-primary-550);
 \`;
 `;
 
-const polishedExample = `import styled from 'styled-components';
+const polishedExample = `import { styled } from 'styled-components';
 import {getSemanticValue} from '@freenow/wave';
 
 export const GreyList = styled.ul\`

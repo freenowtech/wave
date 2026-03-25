@@ -45,7 +45,7 @@
         "test:watch": "jest --watch",
         "test:codemods": "jest codemods",
         "lint": "npm run lint:eslint",
-        "lint:eslint": "eslint src/",
+        "lint:eslint": "eslint .",
         "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
         "husky:precommit": "npm run lint:eslint -- --fix && npm run prettier",
         "storybook": "storybook dev -p 6006",
@@ -70,7 +70,9 @@
             "react": "19.2.4",
             "react-dom": "19.2.4",
             "@types/react": "^19.0.0"
-        }
+        },
+        "@csstools/css-tokenizer": "^3.0.4",
+        "@csstools/css-parser-algorithms": "^3.0.5"
     },
     "peerDependencies": {
         "react": "^18.2.0 || ^19.0.0",

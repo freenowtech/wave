@@ -1,5 +1,5 @@
 import isPropValid from '@emotion/is-prop-valid';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 
 import { getSemanticValue } from '../../../utils/cssVariables';

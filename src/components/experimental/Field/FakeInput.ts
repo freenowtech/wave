@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { get } from '../../../utils/experimental/themeGet';
 import { flyingLabelStyles, Label } from './Label';

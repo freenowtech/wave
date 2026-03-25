@@ -1,5 +1,5 @@
 import React, { type ReactElement, type ReactNode } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { variant } from 'styled-system';
 import {
     Button as BaseButton,
