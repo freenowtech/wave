@@ -1,15 +1,15 @@
 import {
-    API,
-    ASTPath,
-    CallExpression,
-    FileInfo,
-    Identifier,
-    ImportDeclaration,
-    JSCodeshift,
-    Literal,
-    MemberExpression
+    type API,
+    type ASTPath,
+    type CallExpression,
+    type FileInfo,
+    type Identifier,
+    type ImportDeclaration,
+    type JSCodeshift,
+    type Literal,
+    type MemberExpression
 } from 'jscodeshift';
-import { Options } from 'recast';
+import { type Options } from 'recast';
 
 const DeprecatedSemanticColorsToSemanticTokensMap = {
     'text.primary': 'foreground-primary',
@@ -232,8 +232,7 @@ const buildFullAccessedPropertiesPath = (ex: ASTPath<MemberExpression>, initialP
     const builtPath = initialPath ? `${initialPath}.${propertyName}` : propertyName;
 
     // Recursively add more properties if the parent has more
-    if (isMemberExpression(ex.parentPath)) return buildFullAccessedPropertiesPath(ex.parentPath, builtPath);
-    else return builtPath;
+    return isMemberExpression(ex.parentPath) ? buildFullAccessedPropertiesPath(ex.parentPath, builtPath) : builtPath;
 };
 
 const getHighesLevelMemberExpression = (ex: ASTPath<MemberExpression>): ASTPath<MemberExpression> => {
@@ -263,22 +262,22 @@ export default (file: FileInfo, api: API, options: Options) => {
     const waveNamedImports = waveImports.find(j.ImportSpecifier);
 
     // Find SemanticColors named imports in wave imports
-    const colorsImports = waveNamedImports.filter(path => path.node.imported.name === 'SemanticColors');
+    const colorsImports = waveNamedImports.filter(path => (path.node.imported.name as string) === 'SemanticColors');
 
     // Find themeGet named imports in wave imports
-    const themeGetImports = waveNamedImports.filter(path => path.node.imported.name === 'themeGet');
+    const themeGetImports = waveNamedImports.filter(path => (path.node.imported.name as string) === 'themeGet');
 
     // Early return in case no SemanticColors or themeGet are imported
     if (colorsImports.length === 0 && themeGetImports.length === 0) return file.source;
 
     // Get the local SemanticColors import names
     colorsImports.forEach(spec => {
-        if (spec.node.local?.name) localColorNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localColorNames.push(spec.node.local.name as string);
     });
 
     // Get the local themeGet import names
     themeGetImports.forEach(spec => {
-        if (spec.node.local?.name) localThemeGetNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localThemeGetNames.push(spec.node.local.name as string);
     });
 
     // Find all themeGet CallExpressions (e.g. themeGet('text.primary'))
@@ -293,7 +292,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         const firstArgument = ex.node.arguments[0] as Literal;
 
         // Remove the `semanticColors.` part of the string to later map to the token, 15 is the number of chars it has
-        const semanticColor = (firstArgument.value as string).substring(15);
+        const semanticColor = (firstArgument.value as string).slice(15);
 
         // Map the Color to a semantic token
         const semanticToken = DeprecatedSemanticColorsToSemanticTokensMap[semanticColor];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { Calendar, type Range, type SingleProps, type MultipleProps, type RangeProps } from '../Calendar';
 
 const TODAY = new Date();

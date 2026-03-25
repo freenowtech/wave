@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { variant } from 'styled-system';
 import { BaseInput } from './BaseInput';
 import { activeBoxedPosition, BoxedInputLabel } from './BoxedInputLabel';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { InternalInputProps } from './InputProps';
+import { type InternalInputProps } from './InputProps';
 
 const errorStyles = css`
     box-shadow: inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')};

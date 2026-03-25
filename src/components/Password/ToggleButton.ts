@@ -1,8 +1,8 @@
 import { variant } from 'styled-system';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { get } from '../../utils/themeGet';
-import { InputProps } from '../Input/InputProps';
+import { type InputProps } from '../Input/InputProps';
 import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 
 const inputType = variant({

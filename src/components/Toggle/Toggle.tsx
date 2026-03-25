@@ -1,8 +1,8 @@
-import React, { ComponentPropsWithoutRef, FC, ReactNode, Ref } from 'react';
-import styled from 'styled-components';
-import { MarginProps } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC, type ReactNode, type Ref } from 'react';
+import { styled } from 'styled-components';
+import { type MarginProps } from 'styled-system';
 
-import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { type ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { Text } from '../Text/Text';
 import { Input } from './Input';
 import { Label } from './Label';
@@ -49,4 +49,4 @@ const Toggle: FC<ToggleProps> = props => {
     );
 };
 
-export { Toggle, ToggleProps };
+export { Toggle, type ToggleProps };

@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
@@ -59,7 +60,9 @@ interface DayButtonProps {
     disabledDate: boolean;
 }
 
-const DayButton = styled.button.attrs({ type: 'button' })<DayButtonProps>`
+const DayButton = styled.button
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ type: 'button' })<DayButtonProps>`
     width: 2.4375rem;
     height: 2.4375rem;
 

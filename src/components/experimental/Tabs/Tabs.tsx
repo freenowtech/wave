@@ -1,15 +1,15 @@
-import React, { ReactElement, ComponentType } from 'react';
+import React, { type ReactElement, type ComponentType } from 'react';
 import {
     Tabs as BaseTabs,
     TabList as BaseTabList,
     Tab as BaseTab,
     TabPanel as BaseTabPanel,
-    TabsProps,
-    TabListProps,
-    TabProps,
-    TabPanelProps
+    type TabsProps,
+    type TabListProps,
+    type TabProps,
+    type TabPanelProps
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';
@@ -111,7 +111,7 @@ function Tabs(props: TabsProps): ReactElement {
 }
 
 function TabList<T extends Record<string, unknown>>(props: TabListProps<T>): ReactElement {
-    return <StyledTabList {...props} />;
+    return <StyledTabList {...(props as TabListProps<Record<string, unknown>>)} />;
 }
 
 function Tab(props: TabProps): ReactElement {

@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { ButtonStyleProps, ResponsiveValue, variant } from 'styled-system';
+import { styled } from 'styled-components';
+import { type ButtonStyleProps, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 
 import { getSemanticValue } from '../../utils/cssVariables';
-import { BaseButton, BaseButtonProps } from './BaseButton';
-import { ComponentSemanticTokens } from '../../essentials/Colors/types';
+import { BaseButton, type BaseButtonProps } from './BaseButton';
+import { type ComponentSemanticTokens } from '../../essentials/Colors/types';
 
 type Variant = 'primary' | 'secondary' | 'danger';
 
@@ -67,15 +67,14 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
     }
 });
 
-const Button = styled(BaseButton).attrs({ theme })<ButtonProps>`
-    transition: background ease 200ms, border-color ease 200ms, color ease 200ms, fill ease 200ms;
+const Button = styled(BaseButton).attrs<ButtonProps>({ theme, size: 'medium', variant: 'primary' })<ButtonProps>`
+    transition:
+        background ease 200ms,
+        border-color ease 200ms,
+        color ease 200ms,
+        fill ease 200ms;
 
     ${variantStyles};
 `;
 
-Button.defaultProps = {
-    size: 'medium',
-    variant: 'primary'
-};
-
-export { Button, ButtonProps };
+export { Button, type ButtonProps };

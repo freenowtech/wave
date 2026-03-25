@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
@@ -58,7 +59,9 @@ const getColor = ({ isSelectedStartOrEnd, isInRange, disabled }: MonthButtonProp
     `;
 };
 
-const MonthButton = styled.button.attrs({ type: 'button' })<MonthButtonProps>`
+const MonthButton = styled.button
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ type: 'button' })<MonthButtonProps>`
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.normal')};
     font-size: ${get('fontSizes.0')};

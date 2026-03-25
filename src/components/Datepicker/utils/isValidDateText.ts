@@ -1,6 +1,6 @@
 import { getInputValue } from '@datepicker-react/hooks';
 
-const isValidDateText = (parsedDate: Date, inputValue: string, displayFormat: string): boolean => {
+const isValidDateText = (parsedDate: Date | undefined, inputValue: string, displayFormat: string): boolean => {
     if (!parsedDate) {
         return false;
     }

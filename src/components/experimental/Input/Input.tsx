@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import { InputProps as BaseInputProps } from 'react-aria-components';
+import React, { type ReactElement } from 'react';
+import { type InputProps as BaseInputProps } from 'react-aria-components';
 
 import * as Styled from './Input.styled';
 

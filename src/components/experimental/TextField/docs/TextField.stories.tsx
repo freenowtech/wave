@@ -1,6 +1,6 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { StoryObj, Meta } from '@storybook/react';
+import { action } from 'storybook/actions';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { TextField } from '../TextField';
 import { ClockIcon, EyeIcon, PersonFilledIcon } from '../../../../icons';
 
@@ -108,7 +108,7 @@ export const WithoutActionIcon: Story = {
     args: {
         label: 'Time',
         leadingIcon: <ClockIcon />,
-        // eslint-disable-next-line unicorn/no-null
+
         actionIcon: null
     }
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { useHover } from '@react-aria/interactions';
 import { mergeProps } from '@react-aria/utils';
 
@@ -14,7 +15,7 @@ interface StyledLabelProps extends LabelWrapperProps {
     isHovered?: boolean;
 }
 
-const StyledLabel = styled.label.attrs({ theme })<StyledLabelProps>`
+const StyledLabel = styled.label.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<StyledLabelProps>`
     display: inline-flex;
     position: relative;
     user-select: none;
@@ -26,7 +27,7 @@ const StyledLabel = styled.label.attrs({ theme })<StyledLabelProps>`
     align-items: center;
 `;
 
-function LabelWrapper(props: LabelWrapperProps & React.LabelHTMLAttributes<HTMLLabelElement>): JSX.Element {
+function LabelWrapper(props: LabelWrapperProps & React.LabelHTMLAttributes<HTMLLabelElement>): React.JSX.Element {
     const { isDisabled = false, isInvalid = false, ...otherProps } = props;
 
     const { hoverProps, isHovered } = useHover({ isDisabled });

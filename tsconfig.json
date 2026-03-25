@@ -3,22 +3,16 @@
         "forceConsistentCasingInFileNames": true,
         "removeComments": true,
         "esModuleInterop": true,
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
+        "module": "esnext",
         "jsx": "react",
-        "lib": ["dom", "es2020"],
+        "lib": ["dom", "es2023"],
         "declaration": true,
         "declarationDir": "lib/types/",
         "rootDir": "src/",
         "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "plugins": [
-            {
-                "transform": "typescript-plugin-styled-components",
-                "type": "config",
-                "ssr": true
-            }
-        ]
+        "skipDefaultLibCheck": true
     },
     "include": ["src/**/*"],
-    "exclude": ["src/**/docs", "**/node_modules", "src/codemods/__*"]
+    "exclude": ["src/**/docs", "**/node_modules", "src/codemods"]
 }

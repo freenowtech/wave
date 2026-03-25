@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import {
-    ClearIndicatorProps,
+    type ClearIndicatorProps,
     components as ReactSelectComponents,
-    ControlProps,
-    MenuProps,
-    DropdownIndicatorProps,
-    Props,
-    StylesConfig
+    type ControlProps,
+    type MenuProps,
+    type DropdownIndicatorProps,
+    type Props,
+    type StylesConfig
 } from 'react-select';
 import WindowedSelect from 'wave-react-windowed-select';
 
@@ -21,12 +21,15 @@ import { DarkScheme, LightScheme } from '../ColorScheme';
 import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
-import { SelectListProps } from './types';
+import { type SelectListProps } from './types';
 
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
 const getOptionError = (option: unknown): boolean =>
-    typeof option === 'object' && 'error' in option && Boolean(option.error);
+    typeof option === 'object' &&
+    option !== null &&
+    'error' in option &&
+    Boolean((option as Record<string, unknown>).error);
 
 const getOptionVariant = (selectProps: Props, option: unknown): 'default' | 'disabled' | 'error' => {
     if (selectProps.isDisabled) {
@@ -53,7 +56,8 @@ const customStyles: StylesConfig = {
 
         return {
             ...provided,
-            ...bSize[selectProps.size]
+            // eslint-disable-next-line unicorn/explicit-length-check
+            ...(selectProps.size ? bSize[selectProps.size] : {})
         };
     },
     control: (_, state: WithSelectProps<ControlProps>) => {
@@ -173,9 +177,12 @@ const customStyles: StylesConfig = {
         };
 
         const colors = Object.keys(colorsByState)
-            .filter(key => state[key])
+            .filter(key => (state as unknown as Record<string, unknown>)[key])
             // eslint-disable-next-line unicorn/no-array-reduce
-            .reduce((acc, style) => ({ ...acc, ...colorsByState[style] }), defaultColors);
+            .reduce(
+                (acc, style) => ({ ...acc, ...(colorsByState as Record<string, Record<string, unknown>>)[style] }),
+                defaultColors
+            );
 
         return {
             ...provided,
@@ -205,7 +212,7 @@ const customStyles: StylesConfig = {
         };
 
         switch (optionVariant) {
-            case 'disabled':
+            case 'disabled': {
                 return {
                     ...styles,
                     color: getSemanticValue('foreground-disabled'),
@@ -216,7 +223,8 @@ const customStyles: StylesConfig = {
                         color: getSemanticValue('foreground-disabled')
                     }
                 };
-            case 'error':
+            }
+            case 'error': {
                 return {
                     ...styles,
                     color: getSemanticValue('foreground-danger-default'),
@@ -237,8 +245,9 @@ const customStyles: StylesConfig = {
                         }
                     }
                 };
+            }
             case 'default':
-            default:
+            default: {
                 return {
                     ...styles,
                     color: getSemanticValue('foreground-info-faded'),
@@ -259,6 +268,7 @@ const customStyles: StylesConfig = {
                         }
                     }
                 };
+            }
         }
     },
     multiValueLabel: (provided, { selectProps }) => ({
@@ -284,29 +294,37 @@ const customStyles: StylesConfig = {
     })
 };
 
-const getIconSize = sizeAsString => (sizeAsString === 'medium' ? 24 : 18);
+const getIconSize = (sizeAsString: string) => (sizeAsString === 'medium' ? 24 : 18);
 
 const DropdownIndicator = (props: WithSelectProps<DropdownIndicatorProps>) => (
     <ReactSelectComponents.DropdownIndicator {...props}>
         {props.selectProps.menuIsOpen ? (
-            <ChevronUpIcon data-testid="close-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+            <ChevronUpIcon
+                data-testid="close-icon"
+                color="inherit"
+                size={getIconSize(props.selectProps.size ?? 'medium')}
+            />
         ) : (
-            <ChevronDownIcon data-testid="open-icon" color="inherit" size={getIconSize(props.selectProps.size)} />
+            <ChevronDownIcon
+                data-testid="open-icon"
+                color="inherit"
+                size={getIconSize(props.selectProps.size ?? 'medium')}
+            />
         )}
     </ReactSelectComponents.DropdownIndicator>
 );
 
 const ClearIndicator = (props: WithSelectProps<ClearIndicatorProps>) => (
     <ReactSelectComponents.ClearIndicator {...props}>
-        <XCrossIcon color="inherit" size={getIconSize(props.selectProps.size)} />
+        <XCrossIcon color="inherit" size={getIconSize(props.selectProps.size ?? 'medium')} />
     </ReactSelectComponents.ClearIndicator>
 );
 
 // Remove Separator component
-// eslint-disable-next-line unicorn/no-null
+
 const IndicatorSeparator = () => null;
 
-const MultiValueRemove = props => (
+const MultiValueRemove = (props: Parameters<typeof ReactSelectComponents.MultiValueRemove>[0]) => (
     <ReactSelectComponents.MultiValueRemove {...props}>
         <XCrossIcon size={14} color="inherit" />
     </ReactSelectComponents.MultiValueRemove>
@@ -332,22 +350,23 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
-    const { components, isDisabled, variant, size, error, label, inputId } = restProps;
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
+    const { components, isDisabled, variant = 'boxed', size = 'medium', error, label, inputId } = restProps;
+    const [triggerReference, setTriggerReference] = React.useState<HTMLDivElement | null>(null);
+    const triggerRefCallback = (el: HTMLDivElement | null) => setTriggerReference(el);
 
     const id = useGeneratedId(inputId);
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const enforcedColorScheme = useClosestColorScheme(triggerReference ?? undefined);
 
     const Menu =
         enforcedColorScheme === 'light'
             ? LightSchemeMenu
             : enforcedColorScheme === 'dark'
-            ? DarkSchemeMenu
-            : DefaultMenu;
+              ? DarkSchemeMenu
+              : DefaultMenu;
 
     return (
-        <Wrapper ref={setTriggerReference} {...classNameProps} {...marginProps} {...widthProps}>
+        <Wrapper ref={triggerRefCallback} {...classNameProps} {...marginProps} {...widthProps}>
             <WindowedSelect
                 inputId={id}
                 styles={customStyles}
@@ -369,11 +388,6 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
             )}
         </Wrapper>
     );
-};
-
-SelectList.defaultProps = {
-    variant: 'boxed',
-    size: 'medium'
 };
 
 export { SelectList };

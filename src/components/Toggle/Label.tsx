@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { margin, MarginProps } from 'styled-system';
+import { styled } from 'styled-components';
+import { margin, type MarginProps } from 'styled-system';
 
 interface LabelProps extends MarginProps {
     disabled?: boolean;

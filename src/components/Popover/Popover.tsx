@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { Placement } from '@popperjs/core/lib/enums';
-import { usePopper } from 'react-popper';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import type { Placement } from '@floating-ui/react';
+import { useFloating, offset as floatingOffset, flip, autoUpdate } from '@floating-ui/react';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -15,17 +16,18 @@ import { Text } from '../Text/Text';
 import { PopoverContent } from './PopoverContent';
 
 interface PopoverRefObjectProps {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: any;
 }
 
-const PopoverTrigger = styled.div.attrs({ theme })<PopoverRefObjectProps>`
+const PopoverTrigger = styled.div
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<PopoverRefObjectProps>`
     display: inline-block;
     width: fit-content;
     border-radius: ${get('radii.2')};
 `;
 
-const DefaultPopoverWrapper = styled.div.attrs({ theme })`
+const DefaultPopoverWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     position: relative;
     display: flex;
     align-items: center;
@@ -111,8 +113,6 @@ const Popover: React.FC<PopoverProps> = ({
     onOpen,
     onClose
 }: PopoverProps) => {
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
-    const [contentReference, setContentReference] = React.useState(undefined);
     const popoverTriggerRef = React.useRef<HTMLDivElement>(null);
     const popoverContentRef = React.useRef<HTMLDivElement>(null);
 
@@ -120,26 +120,15 @@ const Popover: React.FC<PopoverProps> = ({
 
     const [render, setRender] = React.useState(openByDefault);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const { refs, floatingStyles } = useFloating({
         placement,
         strategy: 'fixed',
-        modifiers: [
-            {
-                name: 'offset',
-                enabled: !!offset,
-                options: {
-                    offset: [0, offset]
-                }
-            },
-            {
-                name: 'flip',
-                enabled: true
-            }
-        ]
+        middleware: [...(offset ? [floatingOffset(offset)] : []), flip()],
+        whileElementsMounted: autoUpdate
     });
 
     const resolveCallback = React.useCallback(
-        state => {
+        (state: boolean) => {
             if (onClose && !state) onClose();
             if (onOpen && state) onOpen();
         },
@@ -171,14 +160,17 @@ const Popover: React.FC<PopoverProps> = ({
     }, [resolveCallback, setRender, render, hidePopover]);
 
     const handleOut = React.useCallback(
-        ev => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            if (popoverTriggerRef && popoverTriggerRef.current && !popoverTriggerRef.current.contains(ev.target)) {
-                if (!openByDefault) {
-                    handleClose();
-                } else {
+        (ev: Event) => {
+            if (
+                popoverTriggerRef &&
+                popoverTriggerRef.current &&
+                !popoverTriggerRef.current.contains(ev.target as Node)
+            ) {
+                if (openByDefault) {
                     setOpenByDefault(false);
                     resolveCallback(false);
+                } else {
+                    handleClose();
                 }
             }
         },
@@ -186,20 +178,24 @@ const Popover: React.FC<PopoverProps> = ({
     );
 
     const handleKeyControl = (ev: React.KeyboardEvent<HTMLElement>) => {
-        // eslint-disable-next-line default-case
         switch (ev.keyCode) {
-            case KEY_CODE_MAP.ESC:
+            case KEY_CODE_MAP.ESC: {
                 handleClose();
                 break;
-            case KEY_CODE_MAP.ENTER:
+            }
+            case KEY_CODE_MAP.ENTER: {
                 handleClick();
                 break;
-            case KEY_CODE_MAP.SPACE:
+            }
+            case KEY_CODE_MAP.SPACE: {
                 handleClick();
+            }
         }
     };
 
     React.useEffect(() => {
+        // Sync render gate when openByDefault prop changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRender(openByDefault);
     }, [openByDefault, setRender]);
 
@@ -208,7 +204,7 @@ const Popover: React.FC<PopoverProps> = ({
     return (
         <>
             <PopoverTrigger
-                ref={setTriggerReference}
+                ref={refs.setReference}
                 onClick={handleClick}
                 tabIndex={0}
                 aria-describedby="popover-content"
@@ -226,14 +222,14 @@ const Popover: React.FC<PopoverProps> = ({
                         <Text fontWeight="semibold" style={{ color: 'inherit' }}>
                             {children}
                         </Text>
-                        {!render ? (
-                            <ChevronDownIcon
+                        {render ? (
+                            <ChevronUpIcon
                                 size={20}
                                 color="inherit"
                                 style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
                             />
                         ) : (
-                            <ChevronUpIcon
+                            <ChevronDownIcon
                                 size={20}
                                 color="inherit"
                                 style={{ marginLeft: Spaces[1], fill: 'currentColor' }}
@@ -248,12 +244,11 @@ const Popover: React.FC<PopoverProps> = ({
             {render && (
                 <PopoverContentContainer
                     id="popover-content"
-                    ref={setContentReference}
-                    style={{ ...styles.popper, zIndex: 999 }}
-                    {...attributes.popper}
+                    ref={refs.setFloating}
+                    style={{ ...floatingStyles, zIndex: 999 }}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
-                        <PopoverContent padding={padding}>{content}</PopoverContent>
+                        <PopoverContent padding={padding ?? 0}>{content}</PopoverContent>
                     </PopoverContentWrapper>
                 </PopoverContentContainer>
             )}
@@ -261,4 +256,4 @@ const Popover: React.FC<PopoverProps> = ({
     );
 };
 
-export { Popover, PopoverProps };
+export { Popover, type PopoverProps };

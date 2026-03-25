@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import { Radio as BaseRadio, RadioProps } from 'react-aria-components';
+import React, { type FC } from 'react';
+import { styled } from 'styled-components';
+import { Radio as BaseRadio, type RadioProps } from 'react-aria-components';
 
 import { getSemanticValue } from '../../../essentials/experimental';
 import { themeGet } from '../../../utils/experimental';
@@ -19,7 +19,9 @@ const Indicator = styled.span<{ $selected: boolean }>`
     border-width: ${props => (props.$selected ? '5px' : '2px')};
     border-radius: 50%;
     background-color: ${getSemanticValue('surface')};
-    transition: border-color 200ms ease, border-width 50ms ease;
+    transition:
+        border-color 200ms ease,
+        border-width 50ms ease;
 `;
 
 const Radio = styled(BaseRadio)`
@@ -81,7 +83,9 @@ const Radio = styled(BaseRadio)`
     }
 `;
 
-export const RadioButton: FC<RadioProps> = ({ children, ...rest }) => (
+type RadioButtonProps = Omit<RadioProps, 'children'> & { children?: React.ReactNode };
+
+export const RadioButton: FC<RadioButtonProps> = ({ children, ...rest }) => (
     <Radio {...rest}>
         {({ isSelected }) => (
             <>

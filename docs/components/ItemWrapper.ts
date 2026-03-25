@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, MarginProps, padding, PaddingProps } from 'styled-system';
 import { Spaces } from '../../src/essentials';
 import { getSemanticValue } from '../../src/utils/cssVariables';
@@ -15,7 +15,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
     margin-left: -${Spaces[4]};
     margin-right: -${Spaces[4]};
     display: grid;
-    grid-template-columns: ${p => (p.gridTemplate ? p.gridTemplate : '1fr')};
+    grid-template-columns: ${p => p.gridTemplate || '1fr'};
     grid-row-gap: ${Spaces[3]};
     grid-column-gap: ${Spaces[2]};
     background-color: ${getSemanticValue('background-page-default')};

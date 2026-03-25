@@ -1,6 +1,6 @@
 import { format as dfFormat } from 'date-fns';
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { type DateValue } from '@internationalized/date';
 import type { Matcher, DateRange as RdpRange } from 'react-day-picker';
@@ -95,7 +95,6 @@ const StyledPopover = styled(Popover)`
 
 // type guards
 function hasMode(p: DatePickerProps): p is DatePickerProps & { mode: Mode } {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return 'mode' in p && typeof (p as any).mode === 'string';
 }
 function isSingleProps(props: DatePickerProps): props is SingleProps & LegacyCompatProps {
@@ -109,12 +108,12 @@ function isRangeProps(props: DatePickerProps): props is RangeProps & LegacyCompa
 }
 
 export interface DatePickerOverloads {
-    (props: SingleProps & LegacyCompatProps): JSX.Element;
-    (props: MultipleProps & LegacyCompatProps): JSX.Element;
-    (props: RangeProps & LegacyCompatProps): JSX.Element;
+    (props: SingleProps & LegacyCompatProps): React.JSX.Element;
+    (props: MultipleProps & LegacyCompatProps): React.JSX.Element;
+    (props: RangeProps & LegacyCompatProps): React.JSX.Element;
 }
 
-function DatePickerImpl(props: DatePickerProps): JSX.Element {
+function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
     const {
         label,
         description,
@@ -167,7 +166,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
     const [open, setOpen] = React.useState(false);
 
     // internal states
-    const [internalSingle, setInternalSingle] = React.useState<Date | null>(toJSDate(legacyDefaultValue) ?? null);
+    const [internalSingle, setInternalSingle] = React.useState<Date | null>(() => toJSDate(legacyDefaultValue) ?? null);
     const [internalMultiple, setInternalMultiple] = React.useState<Date[]>([]);
     const [internalRange, setInternalRange] = React.useState<DateRange>(undefined);
 
@@ -183,11 +182,15 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
     const isControlledRange = isRange && rangeValueProp !== undefined;
 
     // sources per mode
-    const singleSource: Date | null = isSingle ? (isControlledSingle ? singleValueProp ?? null : internalSingle) : null;
+    const singleSource: Date | null = isSingle
+        ? isControlledSingle
+            ? (singleValueProp ?? null)
+            : internalSingle
+        : null;
 
     const multipleSource: Date[] | undefined = isMultiple
         ? isControlledMultiple
-            ? multipleValueProp ?? []
+            ? (multipleValueProp ?? [])
             : internalMultiple
         : undefined;
 
@@ -208,17 +211,27 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
     // visible month
     const [month, setMonth] = React.useState<Date | undefined>(
         isSingle
-            ? singleSource ?? initialMonth
+            ? (singleSource ?? initialMonth)
             : isMultiple
-            ? multipleSource?.[0] ?? initialMonth
-            : rangeSource?.from ?? initialMonth
+              ? (multipleSource?.[0] ?? initialMonth)
+              : (rangeSource?.from ?? initialMonth)
     );
+
+    // stable numeric keys used as dep-array sentinels to avoid Date-identity churn
+    const singleSourceTime = singleSource?.getTime?.();
+    const rangeFromTime = rangeSource?.from?.getTime?.();
+    const rangeToTime = rangeSource?.to?.getTime?.();
+    const firstMultipleTime = multipleSource?.[0]?.getTime?.();
 
     // reflect controlled changes in the UI
     React.useEffect(() => {
+        // Sync display text and calendar month when controlled value changes.
+        // "Time" aliases (singleSourceTime etc.) are stable primitives used instead of Date objects.
         if (isSingle) {
             const src = singleSource;
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             setText(src ? dfFormat(src, displayFormat, { locale }) : '');
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             if (src) setMonth(src);
             return;
         }
@@ -226,23 +239,29 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         if (isRange) {
             const a = rangeSource?.from ? dfFormat(rangeSource.from, displayFormat, { locale }) : '';
             const b = rangeSource?.to ? dfFormat(rangeSource.to, displayFormat, { locale }) : '';
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             setText(a || b ? `${a}${sepForRange}${b}` : '');
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             if (rangeSource?.from) setMonth(rangeSource.from);
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             else if (rangeSource?.to) setMonth(rangeSource.to);
             return;
         }
 
         // multiple
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         if (multipleSource?.[0]) setMonth(multipleSource[0]);
+        // Deps use stable "time" primitive aliases instead of Date object refs to avoid re-runs
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [
         isSingle,
         isRange,
         displayFormat,
         locale,
-        singleSource?.getTime?.(),
-        rangeSource?.from?.getTime?.(),
-        rangeSource?.to?.getTime?.(),
-        multipleSource?.[0]?.getTime?.(),
+        singleSourceTime,
+        rangeFromTime,
+        rangeToTime,
+        firstMultipleTime,
         sepForRange
     ]);
 
@@ -298,7 +317,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                 if (a && b && a > b) [a, b] = [b, a];
                 if (a && !inBounds(a, minDateCompat, maxDateCompat)) return;
                 if (b && !inBounds(b, minDateCompat, maxDateCompat)) return;
-                range = { from: a, to: b };
+                range = { from: a ?? undefined, to: b ?? undefined };
             }
 
             emitRange(range);
@@ -326,7 +345,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
 
     const handleSelectMultiple = React.useCallback(
         (dates?: Date[]) => {
-            const next = [...(dates ?? [])].sort((a, b) => a.getTime() - b.getTime());
+            const next = [...(dates ?? [])].toSorted((a, b) => a.getTime() - b.getTime());
             if (maxSelections && next.length > maxSelections) return;
             emitMultiple(next);
         },
@@ -345,6 +364,11 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         [displayFormat, locale, sepForRange, emitRange]
     );
 
+    // stable sentinel values for Date deps — avoids re-running when same date is a new object
+    const minDateCompatTime = minDateCompat?.getTime();
+    const maxDateCompatTime = maxDateCompat?.getTime();
+    const disabledDaysKey = Array.isArray(disabledDays) ? disabledDays.map(String).join('|') : String(disabledDays);
+
     // disabled/hidden matchers
     const disabledMatcher = React.useMemo<Matcher[] | undefined>(() => {
         const arr: Matcher[] = [];
@@ -353,11 +377,9 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         if (minDateCompat) arr.push({ before: stripTime(minDateCompat) });
         if (maxDateCompat) arr.push({ after: stripTime(maxDateCompat) });
         return arr.length > 0 ? arr : undefined;
-    }, [
-        Array.isArray(disabledDays) ? disabledDays.map(el => String(el)).join('|') : String(disabledDays),
-        minDateCompat?.getTime(),
-        maxDateCompat?.getTime()
-    ]);
+        // Deps use stable primitive aliases (disabledDaysKey, *Time) instead of object refs
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
+    }, [disabledDaysKey, minDateCompatTime, maxDateCompatTime]);
 
     const hiddenMatcher = React.useMemo<Matcher[] | undefined>(() => {
         if (!hideOutOfRange) return undefined;
@@ -365,7 +387,9 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         if (minDateCompat) arr.push({ before: stripTime(minDateCompat) });
         if (maxDateCompat) arr.push({ after: stripTime(maxDateCompat) });
         return arr.length > 0 ? arr : undefined;
-    }, [hideOutOfRange, minDateCompat?.getTime(), maxDateCompat?.getTime()]);
+        // Deps use stable primitive aliases (*Time) instead of Date object refs
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
+    }, [hideOutOfRange, minDateCompatTime, maxDateCompatTime]);
 
     // common Calendar props
     const commonCalProps = {
@@ -375,7 +399,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
         disabled: disabledMatcher,
         hidden: hiddenMatcher,
         captionLayout: 'label' as const,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
         locale: locale as any
     };
 
@@ -399,6 +423,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                             const next = dv ? calendarDateToDate(dv) : null;
                             handleSelectSingle(next);
                         }}
+                        // eslint-disable-next-line jsx-a11y/no-autofocus
                         autoFocus={autoFocus}
                         onBlur={onBlur}
                         actionIcon={
@@ -455,21 +480,24 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                             },
                             onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
                                 switch (event.key) {
-                                    case 'ArrowDown':
+                                    case 'ArrowDown': {
                                         event.preventDefault();
                                         setOpen(true);
                                         break;
+                                    }
                                     case 'Enter': {
                                         const v = (event.target as HTMLInputElement).value;
                                         if (isSingle) commitSingle(v);
                                         else if (isRange) commitRange(v, sepForRange);
                                         break;
                                     }
-                                    case 'Escape':
+                                    case 'Escape': {
                                         setOpen(false);
                                         break;
-                                    default:
+                                    }
+                                    default: {
                                         break;
+                                    }
                                 }
                             }
                         }}
@@ -492,7 +520,7 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
 
             {isMultiple && (multipleSource?.length ?? 0) > 0 && (
                 <Chips aria-label="Selected dates">
-                    {multipleSource.map(d => {
+                    {multipleSource!.map(d => {
                         const key = stripTime(d).getTime(); // stable per day
                         return (
                             <Chip key={key}>
@@ -529,7 +557,6 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
             >
                 <FocusTrap role="dialog">
                     <div id={contentId} ref={contentRef}>
-                        {/* eslint-disable react/jsx-no-bind */}
                         {isSingle && (
                             <Calendar
                                 selectionType="single"
@@ -559,7 +586,6 @@ function DatePickerImpl(props: DatePickerProps): JSX.Element {
                                 onSelect={handleSelectRange}
                             />
                         )}
-                        {/* eslint-enable react/jsx-no-bind */}
                     </div>
                 </FocusTrap>
             </StyledPopover>

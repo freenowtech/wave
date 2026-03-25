@@ -30,19 +30,25 @@ const Logo: React.FC<LogoProps> = ({ monochrome, variant, style = {}, ...otherPr
     const componentStyle = { ...style, ...(monochrome ? monochromeCss : undefined) };
 
     switch (variant) {
-        case 'business':
+        case 'business': {
             return <BusinessLogo style={componentStyle} {...otherProps} />;
-        case 'drivers':
+        }
+        case 'drivers': {
             return <DriversLogo style={componentStyle} {...otherProps} />;
-        case 'default-vertical':
+        }
+        case 'default-vertical': {
             return <DefaultVerticalLogo style={componentStyle} {...otherProps} />;
-        case 'trust-in-taxi':
+        }
+        case 'trust-in-taxi': {
             return <TrustInTaxiLogo style={componentStyle} {...otherProps} />;
-        case 'by-lyft':
+        }
+        case 'by-lyft': {
             return <ByLyftLogo style={componentStyle} {...otherProps} />;
-        default:
+        }
+        default: {
             return <DefaultLogo style={componentStyle} {...otherProps} />;
+        }
     }
 };
 
-export { Logo, LogoProps };
+export { Logo, type LogoProps };

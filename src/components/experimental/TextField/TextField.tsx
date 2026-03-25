@@ -1,6 +1,10 @@
 import React from 'react';
-import { FieldError, TextField as BaseTextField, TextFieldProps as BaseTextFieldProps } from 'react-aria-components';
-import styled from 'styled-components';
+import {
+    FieldError,
+    TextField as BaseTextField,
+    type TextFieldProps as BaseTextFieldProps
+} from 'react-aria-components';
+import { styled } from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
 import { Button } from '../Field/Button';
@@ -10,7 +14,7 @@ import { FakeInput } from '../Field/FakeInput';
 import { Footer } from '../Field/Footer';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 
 const defaultAriaStrings = {
     clearFieldButton: 'Clear field'
@@ -86,6 +90,8 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
 
         React.useEffect(() => {
             if (props.value !== undefined) {
+                // Sync controlled value into local text state — intentional derived state pattern
+                // eslint-disable-next-line @eslint-react/set-state-in-effect
                 setText(props.value);
             }
         }, [props.value]);
@@ -101,7 +107,7 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
                     aria-controls={inputRef.current?.id}
                     aria-label={ariaStrings.clearFieldButton}
                     onPress={() => {
-                        inputRef.current.value = '';
+                        if (inputRef.current) inputRef.current.value = '';
                         handleChange('');
                     }}
                     excludeFromTabOrder
@@ -151,4 +157,4 @@ const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
     }
 );
 
-export { TextField, TextFieldProps };
+export { TextField, type TextFieldProps };

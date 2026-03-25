@@ -1,4 +1,4 @@
-import { SemanticColorsSchema } from './types';
+import { type SemanticColorsSchema } from './types';
 import { createThemeGlobalStyle } from './globalStyles';
 
 // Bare Tier (--wave-b-color-...)

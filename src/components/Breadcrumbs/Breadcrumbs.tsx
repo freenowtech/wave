@@ -1,6 +1,7 @@
-import React, { Children, ReactElement, ReactNode, cloneElement, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { MarginProps } from 'styled-system';
+import React, { type ReactElement, type ReactNode, useEffect, useRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { type MarginProps } from 'styled-system';
 
 import { ChevronRightIcon } from '../../icons';
 import { Text } from '../Text/Text';
@@ -34,8 +35,8 @@ const BreadcrumbsListItem = styled.li`
     display: flex;
 `;
 
-const Breadcrumbs = ({ children }: BreadcrumbsProps): JSX.Element => {
-    const arrayChildren = Children.toArray(children);
+const Breadcrumbs = ({ children }: BreadcrumbsProps): React.JSX.Element => {
+    const arrayChildren = (Array.isArray(children) ? children.flat() : [children]).filter(Boolean) as ReactElement[];
     const breadcrumbsListRef = useRef<HTMLUListElement | null>(null);
 
     useEffect(() => {
@@ -46,22 +47,22 @@ const Breadcrumbs = ({ children }: BreadcrumbsProps): JSX.Element => {
 
     return (
         <BreadcrumbsList ref={breadcrumbsListRef}>
-            {Children.map(arrayChildren, (child, index) => (
-                <BreadcrumbsListItem>
-                    <nav aria-label="breadcrumbs">{cloneElement(child as ReactElement)}</nav>
+            {arrayChildren.map((child, index) => (
+                // eslint-disable-next-line @eslint-react/no-array-index-key
+                <BreadcrumbsListItem key={index}>
+                    <nav aria-label="breadcrumbs">{child}</nav>
                     {index < arrayChildren.length - 1 ? (
                         <Box height={16} mt="0.125rem">
                             <ChevronRightIcon size={16} color={getSemanticValue('foreground-neutral-default')} />
                         </Box>
-                    ) : // eslint-disable-next-line unicorn/no-null
-                    null}
+                    ) : null}
                 </BreadcrumbsListItem>
             ))}
         </BreadcrumbsList>
     );
 };
 
-const Link = styled.a.attrs({ theme })`
+const Link = styled.a.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     display: inline-block;
     color: ${getSemanticValue('foreground-accent-default')};
     cursor: pointer;
@@ -86,4 +87,4 @@ const Item = styled(Text).attrs(() => ({
 Breadcrumbs.Item = Item;
 Breadcrumbs.Link = Link;
 
-export { Breadcrumbs, BreadcrumbsProps };
+export { Breadcrumbs, type BreadcrumbsProps };

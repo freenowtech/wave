@@ -12,6 +12,9 @@ jobs:
     build:
         if: github.ref != 'refs/heads/main'
         runs-on: ubuntu-latest
+        timeout-minutes: 15
+        permissions:
+            contents: read
         steps:
             - uses: actions/checkout@v4
               with:
@@ -19,8 +22,11 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: 24
+                  cache: 'npm'
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm ci --legacy-peer-deps
             - name: Run linter
               run: npm run lint
             - name: Run build
@@ -31,6 +37,7 @@ jobs:
     release:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
+        timeout-minutes: 15
         permissions:
             contents: write # to be able to publish a GitHub release
             issues: write # to be able to comment on released issues
@@ -43,8 +50,11 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: 24
+                  cache: 'npm'
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm ci --legacy-peer-deps
             - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
               run: npm audit signatures
             - name: Run build
@@ -57,6 +67,9 @@ jobs:
     merge-main:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
+        timeout-minutes: 5
+        permissions:
+            contents: write
         steps:
             - uses: actions/checkout@v4
               with:

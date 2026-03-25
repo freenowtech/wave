@@ -1,28 +1,25 @@
-import { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
+import { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import {
     compose,
     fontFamily,
-    FontFamilyProps,
+    type FontFamilyProps,
     fontSize,
-    FontSizeProps,
+    type FontSizeProps,
     fontWeight,
     margin,
-    MarginProps,
-    ResponsiveValue,
+    type MarginProps,
+    type ResponsiveValue,
     textAlign,
-    TextAlignProps
+    type TextAlignProps
 } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 interface TextProps
-    extends ComponentPropsWithoutRef<'span'>,
-        MarginProps,
-        FontSizeProps,
-        FontFamilyProps,
-        TextAlignProps {
+    extends ComponentPropsWithoutRef<'span'>, MarginProps, FontSizeProps, FontFamilyProps, TextAlignProps {
     /**
      * The font-weight property specifies the weight (or boldness) of the font.
      * @default normal
@@ -60,7 +57,7 @@ function determineTextColor(props: TextProps) {
     return 'inherit';
 }
 
-const Text = styled.span.attrs({ theme })<TextProps>`
+const Text = styled.span.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<TextProps>`
     color: ${determineTextColor};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
@@ -70,4 +67,4 @@ const Text = styled.span.attrs({ theme })<TextProps>`
     ${compose(margin, fontSize, fontWeight, fontFamily, textAlign)}
 `;
 
-export { Text, TextProps };
+export { Text, type TextProps };

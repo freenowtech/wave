@@ -1,16 +1,15 @@
 import * as React from 'react';
 
-import styled, { keyframes } from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
+import { styled, keyframes } from 'styled-components';
+import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { ReadCssColorVariable } from '../../essentials/Colors/types';
+import { type ReadCssColorVariable } from '../../essentials/Colors/types';
 
 interface InlineSpinnerProps extends MarginProps {
     /**
      * Override the color of the spinner
      */
     // the below is the hack to keep autocomplete showing semantic variables but allowing any string as well
-    // eslint-disable-next-line @typescript-eslint/ban-types
     color?: ReadCssColorVariable | (string & {});
     /**
      * Set the size of the component
@@ -64,4 +63,4 @@ const InlineSpinner: React.FC<InlineSpinnerProps> = ({
     </span>
 );
 
-export { InlineSpinner, InlineSpinnerProps };
+export { InlineSpinner, type InlineSpinnerProps };

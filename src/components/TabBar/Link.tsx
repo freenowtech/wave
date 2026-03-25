@@ -1,5 +1,6 @@
-import React, { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
+import React, { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -21,8 +22,8 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'> {
      * Replace the rendered component with an HTML tag or another component
      * @default 'a'
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+
+    as?: keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
 }
 
 const DEFAULT_ACTIVE_CLASS_NAME = 'active';
@@ -33,7 +34,7 @@ const UnderLine = styled.div`
     margin-top: ${Spaces[1]};
 `;
 
-const InnerLink = styled.a.attrs({ theme })<LinkProps>`
+const InnerLink = styled.a.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<LinkProps>`
     color: ${getSemanticValue('foreground-neutral-emphasized')};
     cursor: pointer;
     font-size: ${get('fontSizes.1')};
@@ -70,4 +71,4 @@ const Link: React.FC<LinkProps> = ({ children, selected, ...rest }: LinkProps) =
     );
 };
 
-export { Link, LinkProps };
+export { Link, type LinkProps };

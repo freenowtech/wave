@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, variant, width } from 'styled-system';
 import { get } from '../../utils/themeGet';
-import { InputProps } from './InputProps';
+import { type InputProps } from './InputProps';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 const ANIMATION_DURATION = 100;
@@ -50,7 +50,9 @@ const BaseInput = styled.input<InputProps>`
     color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
-    transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
+    transition:
+        box-shadow ${ANIMATION_DURATION}ms,
+        border ${ANIMATION_DURATION}ms;
     outline: none;
     appearance: none;
     width: 100%;

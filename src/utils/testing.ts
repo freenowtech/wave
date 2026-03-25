@@ -1,7 +1,7 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import 'jest-axe/extend-expect';
 import 'jest-styled-components';
-import { RenderResult } from '@testing-library/react';
+import { type RenderResult } from '@testing-library/react';
 import CustomMatcherResult = jest.CustomMatcherResult;
 
 declare global {

@@ -1,5 +1,11 @@
-import { API, FileInfo, ImportDeclaration, JSXAttribute, VariableDeclarator } from 'jscodeshift';
-import { Options } from 'recast';
+import {
+    type API,
+    type FileInfo,
+    type ImportDeclaration,
+    type JSXAttribute,
+    type VariableDeclarator
+} from 'jscodeshift';
+import { type Options } from 'recast';
 
 const ComponentNamesWithInvertedProp = [
     'Input',
@@ -35,11 +41,11 @@ export default (file: FileInfo, api: API, options: Options) => {
     // Find component named imports in @freenow/wave imports that potentially have an inverted prop
     const componentImports = waveImports
         .find(j.ImportSpecifier)
-        .filter(path => ComponentNamesWithInvertedProp.includes(path.node.imported.name));
+        .filter(path => ComponentNamesWithInvertedProp.includes(path.node.imported.name as string));
 
     // Get the local icons import names
     componentImports.forEach(spec => {
-        if (spec.node.local?.name) localComponentNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localComponentNames.push(spec.node.local.name as string);
     });
 
     // Find declarations of styled components that use a component which has the inverted prop
@@ -80,17 +86,14 @@ export default (file: FileInfo, api: API, options: Options) => {
         let shouldWrap = false;
         const invertedProp: JSXAttribute = invertedProps.get(0).node;
 
-        // In case the prop has a value (`inverted={true}` or `inverted={false}`) set shouldWrap based on the value
-        if (
+        // In case the prop has a value (`inverted={true}` or `inverted={false}`) set shouldWrap based on the value,
+        // otherwise (implicit `true`) set shouldWrap to `true`
+        shouldWrap =
             invertedProp.value &&
             invertedProp.value.type === 'JSXExpressionContainer' &&
             invertedProp.value.expression.type === 'BooleanLiteral'
-        ) {
-            shouldWrap = invertedProp.value.expression.value;
-        } else {
-            // In case the prop has an implicit `true` value set shouldWrap to `true`
-            shouldWrap = true;
-        }
+                ? invertedProp.value.expression.value
+                : true;
 
         // Remove the inverted prop
         invertedProps.at(0).remove();

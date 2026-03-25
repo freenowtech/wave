@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { Elevation } from '../../../essentials';
-import { Card, CardProps } from '../../Card/Card';
+import { Card, type CardProps } from '../../Card/Card';
 
 const ANIMATION_DURATION = 150;
 const TRANSITION_KEY = 'centered-card-animation';
@@ -76,10 +76,12 @@ const StyledCard = styled(Card)<{ side?: string }>`
     z-index: ${Elevation.CARD_ON_DIMMING};
     width: 100%;
     will-change: transform, opacity;
-    transition: transform ${ANIMATION_DURATION}ms ease-out, opacity ${ANIMATION_DURATION}ms ease-out;
+    transition:
+        transform ${ANIMATION_DURATION}ms ease-out,
+        opacity ${ANIMATION_DURATION}ms ease-out;
 
-    ${p => inFrom[p.side]};
-    ${p => position[p.side]};
+    ${p => (p.side ? inFrom[p.side as keyof typeof inFrom] : '')};
+    ${p => (p.side ? position[p.side as keyof typeof position] : '')};
 
     @media (max-width: calc(${p => p.width} + 2rem)) {
         width: calc(100% - 2rem);
@@ -95,10 +97,20 @@ const CenteredCard: React.FC<React.PropsWithChildren<CenteredCardProps>> = ({
     visible,
     height = '28.375rem',
     ...rest
-}: CenteredCardProps) => (
-    <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-        <StyledCard {...rest} height={height} level={300} />
-    </CSSTransition>
-);
+}: CenteredCardProps) => {
+    const nodeRef = React.useRef(null);
+    return (
+        <CSSTransition
+            nodeRef={nodeRef}
+            in={visible}
+            classNames={TRANSITION_KEY}
+            timeout={ANIMATION_DURATION}
+            unmountOnExit
+            appear
+        >
+            <StyledCard ref={nodeRef} {...rest} height={height} level={300} />
+        </CSSTransition>
+    );
+};
 
 export { CenteredCard, ANIMATION_DURATION };

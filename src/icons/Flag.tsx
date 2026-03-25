@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { isSSR } from '../utils/isSSR';
 import { FlagErrorBoundary } from './FlagErrorBoundary';
-import { FlagProps } from './FlagProps';
+import type { FlagProps } from './FlagProps';
 import { getSemanticValue } from '../utils/cssVariables';
 
 const Loading = styled.div`
@@ -15,7 +15,7 @@ const Loading = styled.div`
 `;
 
 const Flag: React.FC<FlagProps> = React.memo(({ code, className }) => {
-    const Component = React.lazy(() => import(`./flags/${code}`));
+    const Component = React.lazy(() => import(/* @vite-ignore */ `./flags/${code}`));
 
     return (
         <FlagErrorBoundary className={className} code={code}>
@@ -28,4 +28,4 @@ const Flag: React.FC<FlagProps> = React.memo(({ code, className }) => {
     );
 });
 
-export { Flag, FlagProps };
+export { Flag };

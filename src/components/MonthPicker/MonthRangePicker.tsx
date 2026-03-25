@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useMemo, Fragment } from 'react';
+import React, { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { createPortal } from 'react-dom';
-import styled from 'styled-components';
-import { usePopper } from 'react-popper';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { isBefore, isAfter, isSameMonth, startOfMonth, endOfMonth } from 'date-fns';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { dateToText, isBetween } from './utils';
 import { Input } from '../Input/Input';
 import { MonthCalendar } from './MonthCalender/MonthCalender';
@@ -18,7 +19,7 @@ import { useLocaleObject } from '../Datepicker/utils/useLocaleObject';
 
 type FocusedInput = 'start' | 'end' | null;
 
-const Wrapper = styled.div.attrs({ theme })<MarginProps & WidthProps>`
+const Wrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<MarginProps & WidthProps>`
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -86,7 +87,7 @@ export interface MonthRangePickerProps extends MarginProps, WidthProps {
 type DatepickerPopperPlacement = 'bottom-end' | 'bottom-start' | 'bottom';
 
 const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
-    [key in MonthRangePickerProps['placement']]: DatepickerPopperPlacement;
+    [key in NonNullable<MonthRangePickerProps['placement']>]: DatepickerPopperPlacement;
 } = {
     center: 'bottom',
     left: 'bottom-start',
@@ -94,7 +95,7 @@ const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
 };
 
 const mapPlacementToPopperPlacement = (placement: MonthRangePickerProps['placement']) =>
-    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement];
+    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement ?? 'center'];
 
 export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     onRangeSelect,
@@ -109,64 +110,61 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     ...rest
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+    const [currentYear, setCurrentYear] = useState(() => new Date().getFullYear());
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
 
     const [rangeStart, setRangeStart] = useState<Date | null>(null);
     const [rangeEnd, setRangeEnd] = useState<Date | null>(null);
     const [hoveredMonth, setHoveredMonth] = useState<Date | null>(null);
 
-    const [triggerReference, setTriggerReference] = useState<HTMLDivElement | null>(null);
-    const [contentReference, setContentReference] = useState<HTMLDivElement | null>(null);
-    const [arrowReference, setArrowReference] = useState(undefined);
+    const [triggerElement, setTriggerElement] = useState<Element | null>(null);
+    const arrowRef = useRef<HTMLDivElement | null>(null);
     const localeObject = useLocaleObject(locale);
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
     const mappedPlacement = mapPlacementToPopperPlacement(placement);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement,
+        middlewareData
+    } = useFloating({
         placement: mappedPlacement,
-        modifiers: [
-            {
-                name: 'flip',
-                enabled: true
-            },
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 15]
-                }
-            },
-            {
-                name: 'arrow',
-                options: { element: arrowReference }
-            }
-        ]
+        middleware: [flip(), offset(15), shift(), arrow({ element: arrowRef })],
+        whileElementsMounted: autoUpdate
     });
+
+    const handleTriggerRef = (el: HTMLDivElement | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
 
     useEffect(() => {
         const start = value?.start instanceof Date ? value.start : null;
         const end = value?.end instanceof Date ? value.end : null;
+        // Sync controlled value prop into local state — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRangeStart(start ? startOfMonth(start) : null);
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRangeEnd(end ? endOfMonth(end) : null);
     }, [value]);
 
     const inputText = useMemo(() => {
         if (rangeStart && rangeEnd) {
-            return `${dateToText(rangeStart, localeObject)} - ${dateToText(rangeEnd, localeObject)}`;
+            return `${dateToText(rangeStart, localeObject!)} - ${dateToText(rangeEnd, localeObject!)}`;
         }
-        return rangeStart ? `${dateToText(rangeStart, localeObject)} - ...` : '';
-    }, [rangeStart, rangeEnd]);
+        return rangeStart ? `${dateToText(rangeStart, localeObject!)} - ...` : '';
+    }, [rangeStart, rangeEnd, localeObject]);
 
     // Close the picker when clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (
-                triggerReference &&
-                !triggerReference.contains(event.target as Node) &&
-                contentReference &&
-                !contentReference.contains(event.target as Node)
+                triggerElement &&
+                !triggerElement.contains(event.target as Node) &&
+                refs.floating.current &&
+                !refs.floating.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
                 setFocusedInput(null);
@@ -174,7 +172,9 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
         }
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [triggerReference, contentReference]);
+        // refs.floating is a stable ref object from @floating-ui/react — intentionally excluded
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
+    }, [triggerElement]);
 
     const handleMonthClick = (monthIndex: number, year: number) => {
         const clickedDate = startOfMonth(new Date(year, monthIndex, 1));
@@ -246,7 +246,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
 
     return (
         <Wrapper {...rest}>
-            <div ref={setTriggerReference}>
+            <div ref={handleTriggerRef}>
                 <Input
                     label={label}
                     placeholder={placeholder}
@@ -261,11 +261,17 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
                 createPortal(
                     <PortalWrapper>
                         <MonthPickerContentContainer
-                            ref={setContentReference}
-                            style={styles.popper}
-                            {...attributes.popper}
+                            ref={refs.setFloating}
+                            style={floatingStyles}
+                            data-popper-placement={currentPlacement}
                         >
-                            <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                            <Arrow
+                                ref={arrowRef}
+                                style={{
+                                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                                }}
+                            />
                             <Back
                                 onClick={() => setCurrentYear(y => y - 1)}
                                 aria-label="Previous year"
@@ -288,7 +294,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
                                     isMonthDisabled={isMonthDisabled}
                                     isSelectedStartOrEnd={isSelectedStartOrEnd}
                                     isInRange={isInRange}
-                                    locale={localeObject}
+                                    locale={localeObject!}
                                 />
                                 <MonthCalendar
                                     year={currentYear + 1}
@@ -297,7 +303,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
                                     isMonthDisabled={isMonthDisabled}
                                     isSelectedStartOrEnd={isSelectedStartOrEnd}
                                     isInRange={isInRange}
-                                    locale={localeObject}
+                                    locale={localeObject!}
                                 />
                             </YearGridContainer>
                         </MonthPickerContentContainer>

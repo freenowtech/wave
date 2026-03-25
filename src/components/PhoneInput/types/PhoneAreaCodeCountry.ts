@@ -4,4 +4,4 @@ interface PhoneAreaCodeCountry {
     dialCode: string;
 }
 
-export { PhoneAreaCodeCountry };
+export type { PhoneAreaCodeCountry };

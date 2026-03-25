@@ -1,7 +1,7 @@
 import React from 'react';
 import type { DateRange as RdpRange } from 'react-day-picker';
 import { getLocalTimeZone, today } from '@internationalized/date';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DatePicker } from '../DatePicker';
 import type { DatePickerProps, SingleProps, MultipleProps, RangeProps, LegacyCompatProps } from '../DatePicker';
 

@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
-import styled from 'styled-components';
+import React, { type FC } from 'react';
+import { useMonth, type FirstDayOfWeek } from '@datepicker-react/hooks';
+import { styled } from 'styled-components';
 import { format } from 'date-fns';
 
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -68,7 +68,7 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
                     }
 
                     // we can use index as a key since the array is never reordered
-                    // eslint-disable-next-line react/no-array-index-key
+                    // eslint-disable-next-line @eslint-react/no-array-index-key
                     return <div key={index} />;
                 })}
             </DaysContainer>

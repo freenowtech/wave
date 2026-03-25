@@ -1,7 +1,17 @@
-import React, { ComponentPropsWithoutRef, FC, useEffect, useState } from 'react';
-import styled, { CSSProperties } from 'styled-components';
+import React, { type ComponentPropsWithoutRef, type FC, useEffect, useState } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, type CSSProperties } from 'styled-components';
 
-import { compose, height, HeightProps, margin, MarginProps, ResponsiveValue, width, WidthProps } from 'styled-system';
+import {
+    compose,
+    height,
+    type HeightProps,
+    margin,
+    type MarginProps,
+    type ResponsiveValue,
+    width,
+    type WidthProps
+} from 'styled-system';
 import { theme } from '../../essentials/theme';
 import {
     extractClassNameProps,
@@ -12,7 +22,7 @@ import {
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { BoxedInput } from '../Input/BoxedInput';
 import { BoxedInputLabel } from '../Input/BoxedInputLabel';
-import { InternalInputProps } from '../Input/InputProps';
+import { type InternalInputProps } from '../Input/InputProps';
 
 type WrapperProps = MarginProps &
     WidthProps &
@@ -20,7 +30,7 @@ type WrapperProps = MarginProps &
         className?: string;
     };
 
-const TextAreaWrapper: FC<WrapperProps> = styled.div.attrs({ theme })`
+const TextAreaWrapper: FC<WrapperProps> = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     display: inline-block;
     position: relative;
     box-sizing: border-box;
@@ -42,9 +52,7 @@ const TextareaField: FC<TextAreaProps & Pick<InternalInputProps, 'hasValue'>> = 
 
 // TODO looks like neither variant nor size props are used
 interface TextAreaProps
-    extends WrapperProps,
-        Omit<ComponentPropsWithoutRef<'textarea'>, 'size' | 'width'>,
-        Pick<CSSProperties, 'resize'> {
+    extends WrapperProps, Omit<ComponentPropsWithoutRef<'textarea'>, 'size' | 'width'>, Pick<CSSProperties, 'resize'> {
     /**
      * Sets the variant of the textarea
      * @default 'boxed'
@@ -78,16 +86,18 @@ const Textarea: FC<WrapperProps & TextAreaProps> = ({ resize = 'both', ...props 
     const { label, onChange, ...rest } = restProps;
     const id = useGeneratedId(props.id);
 
-    const [hasValue, setHasValue] = useState(rest.value && rest.value.toString().length > 0);
+    const [hasValue, setHasValue] = useState(Boolean(rest.value && rest.value.toString().length > 0));
 
-    const handleChange = event => {
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         if (onChange) {
             onChange(event);
         }
     };
 
     useEffect(() => {
-        setHasValue(rest.value && rest.value.toString().length > 0);
+        // Sync label float state with controlled value — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
+        setHasValue(Boolean(rest.value && rest.value.toString().length > 0));
     }, [rest.value]);
 
     return (
@@ -110,4 +120,4 @@ const Textarea: FC<WrapperProps & TextAreaProps> = ({ resize = 'both', ...props 
     );
 };
 
-export { Textarea, TextAreaProps };
+export { Textarea, type TextAreaProps };

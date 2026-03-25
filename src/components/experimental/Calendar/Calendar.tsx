@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-    DayEventHandler,
+    type DayEventHandler,
     DayPicker,
-    Matcher,
-    DayButton as RdpDayButton,
+    type Matcher,
+    type DayButton as RdpDayButton,
     getDefaultClassNames,
     type DateRange as RdpRange
 } from 'react-day-picker';
@@ -15,7 +15,6 @@ import { CalendarDayButton } from './components/CalendarDayButton';
 import { SelectionTypeContext, type SelectionType } from './context/Calendar.context';
 
 export type Range = RdpRange;
-type DateFnsFormatOptions = Parameters<typeof format>[2];
 
 type BaseProps = Omit<React.ComponentProps<typeof DayPicker>, 'mode' | 'selected' | 'onSelect'> & {
     visibleMonths?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -46,10 +45,10 @@ export type RangeProps = BaseProps & {
 
 export type CalendarProps = SingleProps | MultipleProps | RangeProps;
 
-export function Calendar(props: SingleProps): JSX.Element;
-export function Calendar(props: MultipleProps): JSX.Element;
-export function Calendar(props: RangeProps): JSX.Element;
-export function Calendar(props: CalendarProps): JSX.Element {
+export function Calendar(props: SingleProps): React.JSX.Element;
+export function Calendar(props: MultipleProps): React.JSX.Element;
+export function Calendar(props: RangeProps): React.JSX.Element;
+export function Calendar(props: CalendarProps): React.JSX.Element {
     const {
         className,
         classNames,
@@ -73,41 +72,43 @@ export function Calendar(props: CalendarProps): JSX.Element {
         weekStartsOn,
         captionLayout,
         formatters: {
-            formatWeekdayName: (date, options?: DateFnsFormatOptions) => format(date, 'eee', options)
+            formatWeekdayName: date => format(date, 'eee')
         },
         classNames: { ...defaults, ...classNames },
         components: {
-            Chevron: ({ orientation, ...p }: { orientation?: 'left' | 'right' }) => {
+            Chevron: ({
+                orientation,
+                ...p
+            }: {
+                orientation?: 'left' | 'right' | 'up' | 'down';
+                className?: string;
+                size?: number;
+                disabled?: boolean;
+            }) => {
                 if (orientation === 'left') return <ChevronLeftIcon size={24} {...p} />;
                 if (orientation === 'right') return <ChevronRightIcon size={24} {...p} />;
                 return null as unknown as React.ReactElement;
             },
             DayButton: DayButtonComp,
-            ...(components ?? {})
+            ...components
         },
         ...rest
     } satisfies Omit<React.ComponentProps<typeof DayPicker>, 'mode'>;
 
-    const selectedProp = selected !== undefined ? { selected: selected as unknown } : {};
+    const selectedProp = selected === undefined ? {} : { selected: selected as unknown };
     const onSelectProp = onSelect ? { onSelect: onSelect as unknown } : {};
 
     const modeProps =
         selectionType === 'range'
             ? ({ mode: 'range' } as const)
             : selectionType === 'multiple'
-            ? ({ mode: 'multiple' } as const)
-            : ({ mode: 'single' } as const);
+              ? ({ mode: 'multiple' } as const)
+              : ({ mode: 'single' } as const);
 
     return (
         <Styled.Container className={className}>
             <SelectionTypeContext.Provider value={selectionType}>
-                <DayPicker
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    {...(common as any)}
-                    {...modeProps}
-                    {...selectedProp}
-                    {...onSelectProp}
-                />
+                <DayPicker {...(common as any)} {...modeProps} {...selectedProp} {...onSelectProp} />
             </SelectionTypeContext.Provider>
         </Styled.Container>
     );

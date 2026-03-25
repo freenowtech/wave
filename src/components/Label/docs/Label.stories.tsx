@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { Label } from '../Label';
 
 const meta: Meta = {

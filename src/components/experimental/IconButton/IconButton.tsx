@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { ButtonProps, Button } from 'react-aria-components';
+import React, { type ReactElement } from 'react';
+import { styled } from 'styled-components';
+import { type ButtonProps, Button } from 'react-aria-components';
 import { useVisuallyHidden } from 'react-aria';
-import { IconProps } from '../../../icons';
+import type { IconProps } from '../../../icons';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { InlineSpinner } from '../InlineSpinner/InlineSpinner';
 

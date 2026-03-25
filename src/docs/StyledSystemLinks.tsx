@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 import * as React from 'react';
 import { Link, Text } from '../components';
 
@@ -30,7 +30,6 @@ export const StyledSystemLinks: FC<StyledSystemLinksProps> = ({
         );
     };
 
-    // eslint-disable-next-line unicorn/no-array-reduce
     const supportedPropsTextParts = supportedProps
         .map(element => propToLink(element))
         // eslint-disable-next-line unicorn/no-array-reduce
@@ -49,7 +48,7 @@ export const StyledSystemLinks: FC<StyledSystemLinksProps> = ({
         <Text {...rest} as="p">
             The {component} supports{' '}
             {supportedPropsTextParts.map((c, index) => (
-                // eslint-disable-next-line react/no-array-index-key
+                // eslint-disable-next-line @eslint-react/no-array-index-key
                 <React.Fragment key={index}>{c}</React.Fragment>
             ))}{' '}
             styled-system props.

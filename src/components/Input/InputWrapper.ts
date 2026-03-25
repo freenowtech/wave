@@ -1,11 +1,12 @@
-import styled from 'styled-components';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
-import { ClassNameProps } from '../../utils/extractProps';
+import { type ClassNameProps } from '../../utils/extractProps';
 
 type InputWrapperProps = ClassNameProps & MarginProps & WidthProps;
 
-const InputWrapper = styled.div.attrs<InputWrapperProps>({ theme })`
+const InputWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs<InputWrapperProps>({ theme })`
     display: inline-block;
     position: relative;
     box-sizing: border-box;
@@ -13,4 +14,5 @@ const InputWrapper = styled.div.attrs<InputWrapperProps>({ theme })`
     ${compose(margin, width)}
 `;
 
-export { InputWrapper, InputWrapperProps };
+export { InputWrapper };
+export type { InputWrapperProps };

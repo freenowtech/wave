@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 const VisuallyHidden = styled.div`
     clip: rect(0 0 0 0);

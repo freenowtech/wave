@@ -1,13 +1,13 @@
-import { createGlobalStyle, css, CSSObject, GlobalStyleComponent, DefaultTheme } from 'styled-components';
+import { createGlobalStyle, css, type CSSObject } from 'styled-components';
 
-import { TokenObject } from '../../utils/cssVariables';
+import { type TokenObject } from '../../utils/cssVariables';
 import { generateBareCssVariables, generateCssVariables, generateSemanticCssVariables } from './cssVariables';
-import { SemanticColorsSchema } from './types';
+import { type SemanticColorsSchema } from './types';
 
 export const DARK_THEME_CLASS = 'dark-scheme';
 export const LIGHT_THEME_CLASS = 'light-scheme';
 
-export const darkTheme: typeof css = (first: CSSObject | TemplateStringsArray, ...interpolations: never[]) => {
+export const darkTheme = (first: CSSObject | TemplateStringsArray, ...interpolations: never[]) => {
     const styles = css(first, ...interpolations);
 
     return css`
@@ -25,7 +25,7 @@ export const createThemeGlobalStyle = (
     bareVariables: TokenObject,
     lightScheme: SemanticColorsSchema,
     darkScheme: SemanticColorsSchema
-): GlobalStyleComponent<Record<string, unknown>, DefaultTheme> => {
+) => {
     const bareCssVariables = generateBareCssVariables(bareVariables);
     const semanticCssVariablesForLightTheme = generateSemanticCssVariables(lightScheme);
     const semanticCssVariablesForDarkTheme = generateSemanticCssVariables(darkScheme);

@@ -1,8 +1,8 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
-import styled from 'styled-components';
-import { compose, LayoutProps, textAlign, TextAlignProps, layout } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
+import { styled } from 'styled-components';
+import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { TableContext } from '../context/TableContext';
-import { TableProps } from './Table';
+import { type TableProps } from './Table';
 
 type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     ComponentPropsWithoutRef<'td'> &
@@ -32,4 +32,4 @@ const TableCell: FC<TableCellProps> = (props: TableCellProps) => {
     return <TableCellElement rowSize={rowSize} columnSpace={columnSpace} {...props} />;
 };
 
-export { TableCell, TableCellProps };
+export { TableCell, type TableCellProps };

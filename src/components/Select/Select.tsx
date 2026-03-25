@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { ChevronDownIcon } from '../../icons';
 import { extractClassNameProps, extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
-import { BaseSelectProps, SelectInput } from './SelectInput';
+import { type BaseSelectProps, SelectInput } from './SelectInput';
 import { SelectLabel } from './SelectLabel';
 
 interface SelectProps extends BaseSelectProps, WidthProps, MarginProps {
@@ -20,7 +21,7 @@ interface SelectProps extends BaseSelectProps, WidthProps, MarginProps {
     placeholder?: string;
 }
 
-const SelectWrapper = styled.div.attrs({ theme })`
+const SelectWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
     display: inline-block;
     position: relative;
     box-sizing: border-box;
@@ -62,4 +63,4 @@ const Select: React.FC<SelectProps> = ({ variant = 'boxed', size = 'medium', ...
     );
 };
 
-export { Select, SelectProps };
+export { Select, type SelectProps };

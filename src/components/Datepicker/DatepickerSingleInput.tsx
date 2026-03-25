@@ -1,10 +1,10 @@
-import { FirstDayOfWeek, START_DATE } from '@datepicker-react/hooks';
-import parse from 'date-fns/parse';
-import React, { ChangeEventHandler, FC, Fragment, useEffect, useMemo, useState } from 'react';
-import { MarginProps, WidthProps } from 'styled-system';
-import { usePopper } from 'react-popper';
+import { type FirstDayOfWeek, START_DATE } from '@datepicker-react/hooks';
+import { parse } from 'date-fns';
+import React, { type ChangeEventHandler, type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { type MarginProps, type WidthProps } from 'styled-system';
+import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { createPortal } from 'react-dom';
-import { Input, InputProps } from '../Input/Input';
+import { Input, type InputProps } from '../Input/Input';
 
 import { Datepicker } from './Datepicker';
 import { isValidDateText } from './utils/isValidDateText';
@@ -17,9 +17,7 @@ import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
 
 interface DatepickerSingleInputProps
-    extends MarginProps,
-        WidthProps,
-        Omit<InputProps, 'value' | 'onChange' | 'disabled'> {
+    extends MarginProps, WidthProps, Omit<InputProps, 'value' | 'onChange' | 'disabled'> {
     /**
      * Function that is used when datepicker closes without selected date.
      */
@@ -90,48 +88,46 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     disabled,
     ...rest
 }) => {
-    const [triggerReference, setTriggerReference] = useState(undefined);
-    const [contentReference, setContentReference] = useState(undefined);
-    const [arrowReference, setArrowReference] = useState(undefined);
+    const [triggerElement, setTriggerElement] = useState<Element | null>(null);
+    const arrowRef = useRef<HTMLDivElement | null>(null);
 
     const localeObject = useLocaleObject(locale);
     const [isFocused, setIsFocused] = useState(false);
-    const [inputText, setInputText] = useState(dateToDisplayText(localeObject, displayFormat, value));
+    const [inputText, setInputText] = useState(() => dateToDisplayText(localeObject!, displayFormat, value));
     const [error, setError] = useState(false);
     const displayErrorMessage = typeof errorHandler === 'string';
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement,
+        middlewareData
+    } = useFloating({
         placement: 'bottom-start',
-        modifiers: [
-            {
-                name: 'flip',
-                enabled: true
-            },
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 15]
-                }
-            },
-            {
-                name: 'arrow',
-                options: { element: arrowReference }
-            }
-        ]
+        middleware: [flip(), offset(15), shift(), arrow({ element: arrowRef })],
+        whileElementsMounted: autoUpdate
     });
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const handleTriggerRef = (el: HTMLElement | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
+
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
     const id = useGeneratedId(inputId);
 
     useEffect(() => {
         if (error && typeof errorHandler === 'function') {
             errorHandler();
         }
+        // errorHandler is a user-provided callback; intentionally excluded to avoid re-running on every render
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [error]);
 
     useEffect(() => {
-        setInputText(dateToDisplayText(localeObject, displayFormat, value));
+        // Sync display text when controlled value changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
+        setInputText(dateToDisplayText(localeObject!, displayFormat, value));
     }, [value, localeObject, displayFormat]);
 
     const handleDatepickerClose = () => {
@@ -170,9 +166,7 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     return (
         <>
             <Input
-                ref={element => {
-                    setTriggerReference(element);
-                }}
+                ref={handleTriggerRef}
                 id={id}
                 autoComplete="off"
                 className="startDate"
@@ -192,27 +186,33 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
                 createPortal(
                     <PortalWrapper>
                         <DatepickerContentContainer
-                            ref={setContentReference}
-                            style={styles.popper}
-                            {...attributes.popper}
+                            ref={refs.setFloating}
+                            style={floatingStyles}
+                            data-popper-placement={currentPlacement}
                         >
-                            <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
+                            <Arrow
+                                ref={arrowRef}
+                                style={{
+                                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                                }}
+                            />
                             <Datepicker
                                 numberOfMonths={1}
                                 exactMinBookingDays
                                 minBookingDays={1}
-                                startDate={value}
-                                endDate={value}
+                                startDate={value ?? null}
+                                endDate={value ?? null}
                                 minBookingDate={minDate}
                                 maxBookingDate={maxDate}
                                 firstDayOfWeek={firstDayOfWeek}
-                                focusedInput={isFocused ? START_DATE : undefined}
+                                focusedInput={isFocused ? START_DATE : null}
                                 onDatesChange={({ focusedInput, startDate }) => {
                                     setIsFocused(focusedInput !== null);
-                                    handleDateChange(startDate || undefined);
+                                    handleDateChange(startDate ?? undefined);
                                 }}
                                 isDateBlocked={isDateBlocked}
-                                locale={localeObject}
+                                locale={localeObject!}
                             />
                         </DatepickerContentContainer>
                     </PortalWrapper>,
@@ -222,4 +222,4 @@ const DatepickerSingleInput: FC<DatepickerSingleInputProps> = ({
     );
 };
 
-export { DatepickerSingleInput, DatepickerSingleInputProps };
+export { DatepickerSingleInput, type DatepickerSingleInputProps };

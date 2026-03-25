@@ -1,5 +1,5 @@
-import React, { PropsWithChildren, ReactElement, useState } from 'react';
-import styled from 'styled-components';
+import React, { type PropsWithChildren, type ReactElement, useState } from 'react';
+import { styled } from 'styled-components';
 import { Text } from '../../Text/Text';
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
@@ -7,7 +7,7 @@ import { Header } from './Header';
 import { ChevronUp } from './ChevronUp';
 import { ChevronDown } from './ChevronDown';
 import { Description } from './Description';
-import { AccordionProps } from '../types';
+import { type AccordionProps } from '../types';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 const ButtonLabel = styled(Text).attrs({ as: 'p' })`
@@ -72,7 +72,7 @@ export const DefaultPanel = ({
                     <CardHeader
                         onClick={() => {
                             setIsOpen(!isOpen);
-                            onCollapse();
+                            onCollapse?.();
                         }}
                     >
                         <Box display="flex" flexDirection="column" maxWidth="33%">
@@ -92,7 +92,7 @@ export const DefaultPanel = ({
                 <PanelHeader
                     onClick={() => {
                         setIsOpen(!isOpen);
-                        onExpand();
+                        onExpand?.();
                     }}
                 >
                     <Headline as="h4" mr="3">

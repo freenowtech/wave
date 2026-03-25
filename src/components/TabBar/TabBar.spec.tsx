@@ -11,6 +11,6 @@ describe('TabBar', () => {
                 <TabBar.Link href="episode-6">Return of the Jedi</TabBar.Link>
             </TabBar>
         );
-        expect(instance.container.firstElementChild.children).toHaveLength(3);
+        expect(instance.container.firstElementChild!.children).toHaveLength(3);
     });
 });

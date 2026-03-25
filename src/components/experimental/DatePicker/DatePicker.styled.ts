@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Button as BaseButton } from '../Field/Button';
 
 export const ChipRemoveButton = styled(BaseButton)`

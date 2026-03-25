@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryObj, Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import { getLocalTimeZone, now, parseTime } from '@internationalized/date';
 import { TimeField } from '../TimeField';
 import ClockIcon from '../../../../icons/basic/ClockIcon';
@@ -18,7 +18,7 @@ const meta: Meta = {
                 <Story />
             </div>
         )
-    ],
+    ]
 };
 
 export default meta;

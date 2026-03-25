@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { compose, margin, ResponsiveValue, variant } from 'styled-system';
+import type React from 'react';
+import { styled } from 'styled-components';
+import { compose, margin, type ResponsiveValue, variant } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
-import { Text, TextProps } from '../Text/Text';
+import { Text, type TextProps } from '../Text/Text';
 
 interface HelperTextProps extends TextProps {
     /**
@@ -25,15 +25,11 @@ const variants = variant({
     }
 });
 
-const HelperText: React.FC<HelperTextProps> = styled(Text).attrs({ theme })`
+const HelperText: React.FC<HelperTextProps> = styled(Text).attrs<HelperTextProps>({ theme, variant: 'info' })`
     display: block;
     font-size: ${get('fontSizes.0')};
     text-align: left;
     ${compose(variants, margin)};
 `;
 
-HelperText.defaultProps = {
-    variant: 'info'
-};
-
-export { HelperText, HelperTextProps };
+export { HelperText, type HelperTextProps };

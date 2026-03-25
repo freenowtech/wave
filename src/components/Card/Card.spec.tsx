@@ -26,13 +26,10 @@ describe('Card', () => {
             [300, theme.shadows.large]
         ];
 
-        test.each(testCases)(
-            'with level %s and sets the correct box-shadow',
-            (level: 0 | 100 | 200 | 300, expected) => {
-                expect(render(<Card level={level} />).container.firstChild).toHaveStyle(`
+        test.each(testCases)('with level %s and sets the correct box-shadow', (level: string | number, expected) => {
+            expect(render(<Card level={level as 0 | 100 | 200 | 300} />).container.firstChild).toHaveStyle(`
                     box-shadow: ${expected};
                 `);
-            }
-        );
+        });
     });
 });

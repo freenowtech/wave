@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import { MarginProps } from 'styled-system';
+import React, { type ReactElement } from 'react';
+import { type MarginProps } from 'styled-system';
 import { Text } from '../../Text/Text';
 
 interface Props extends MarginProps {

@@ -1,6 +1,6 @@
-import React, { useEffect, useState, ReactNode, useContext } from 'react';
+import React, { useCallback, useEffect, useState, type ReactNode, useContext } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { WidthProps } from 'styled-system';
+import { type WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, CenteredCard } from './components/CenteredCard';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION_SIDE, SideCard } from './components/SideCard';
@@ -9,7 +9,7 @@ import { TopRightXIcon } from './components/TopRightXIcon';
 
 type DismissFunc = () => void;
 
-const DismissContext = React.createContext<DismissFunc>(undefined);
+const DismissContext = React.createContext<DismissFunc>(() => {});
 
 const useOffcanvasDismiss = (): DismissFunc => {
     const dismiss = useContext(DismissContext);
@@ -67,13 +67,14 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
 
-    const handleClose: DismissFunc = () => {
+    const handleClose: DismissFunc = useCallback(() => {
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setVisible(false);
 
         if (onClose) {
             setTimeout(() => onClose(), ANIMATION_DURATION);
         }
-    };
+    }, [onClose]);
 
     const handleDimmingClick = () => {
         if (dismissible) handleClose();
@@ -83,7 +84,7 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
         if (dismissible && isEscKeyPressed) {
             handleClose();
         }
-    }, [dismissible, isEscKeyPressed]);
+    }, [dismissible, isEscKeyPressed, handleClose]);
 
     const renderChildren = () => {
         if (typeof children === 'function') {
@@ -112,4 +113,4 @@ const Offcanvas: React.FC<OffcanvasProps> = ({
     );
 };
 
-export { Offcanvas, OffcanvasProps, useOffcanvasDismiss };
+export { Offcanvas, type OffcanvasProps, useOffcanvasDismiss };

@@ -1,6 +1,7 @@
-import React, { ReactNode, useContext, useState } from 'react';
+import React, { type ReactNode, useContext, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Elevation } from '../../essentials';
 import { theme } from '../../essentials/theme';
@@ -115,7 +116,7 @@ const getBannerPosition = (props: BannerProps) => {
     return props.variant === 'danger' ? fallDown : riseUp;
 };
 
-const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
+const AnimatedBanner = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<BannerProps>`
     overflow: auto;
     box-sizing: border-box;
     padding: ${get('space.3')};
@@ -127,7 +128,9 @@ const AnimatedBanner = styled.div.attrs({ theme })<BannerProps>`
     width: 100%;
     z-index: ${Elevation.BANNER};
 
-    transition: transform ${ANIMATION_DURATION}ms ease-out, opacity ${ANIMATION_DURATION * 0.75}ms ease;
+    transition:
+        transform ${ANIMATION_DURATION}ms ease-out,
+        opacity ${ANIMATION_DURATION * 0.75}ms ease;
 
     ${props => getBannerPosition(props)}
 
@@ -148,6 +151,7 @@ const useBannerDismiss: () => DismissFunc = () => {
 
 const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerProps) => {
     const [visible, setVisible] = useState(true);
+    const nodeRef = React.useRef(null);
 
     const dismissFunction = () => {
         setVisible(false);
@@ -165,12 +169,19 @@ const Banner: React.FC<BannerProps> = ({ children, onClose, ...rest }: BannerPro
     };
 
     return (
-        <CSSTransition in={visible} classNames={TRANSITION_KEY} timeout={ANIMATION_DURATION} unmountOnExit appear>
-            <AnimatedBanner {...rest}>
+        <CSSTransition
+            nodeRef={nodeRef}
+            in={visible}
+            classNames={TRANSITION_KEY}
+            timeout={ANIMATION_DURATION}
+            unmountOnExit
+            appear
+        >
+            <AnimatedBanner ref={nodeRef} {...rest}>
                 <DismissContext.Provider value={dismissFunction}>{renderChildren()}</DismissContext.Provider>
             </AnimatedBanner>
         </CSSTransition>
     );
 };
 
-export { Banner, BannerProps, useBannerDismiss, DismissFunc };
+export { Banner, type BannerProps, useBannerDismiss, type DismissFunc };

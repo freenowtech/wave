@@ -1,5 +1,5 @@
-import { API, FileInfo } from 'jscodeshift';
-import { Options } from 'recast';
+import { type API, type FileInfo } from 'jscodeshift';
+import { type Options } from 'recast';
 
 const DeprecatedToValidIconsMap = {
     BackwardSmallIcon: 'BackwardLastIcon',
@@ -173,14 +173,14 @@ export default (file: FileInfo, api: API, options: Options) => {
     // Find deprecated icons named imports in @freenow/wave imports
     const deprecatedIconsImports = waveImports
         .find(j.ImportSpecifier)
-        .filter(path => DeprecatedIconsNames.includes(path.node.imported.name));
+        .filter(path => DeprecatedIconsNames.includes(path.node.imported.name as string));
 
     // Early return if no deprecated icons are imported
     if (deprecatedIconsImports.length === 0) return file.source;
 
     // Get the local icons import names
     deprecatedIconsImports.forEach(spec => {
-        if (spec.node.local?.name) localIconsNames.push(spec.node.local.name);
+        if (spec.node.local?.name) localIconsNames.push(spec.node.local.name as string);
     });
 
     // Find usages of the deprecated icons

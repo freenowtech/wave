@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { type FC, useState } from 'react';
 import { Box } from '../../Box/Box';
 import { FilePicker } from '../FilePicker';
 import { HelperText } from '../../HelperText/HelperText';

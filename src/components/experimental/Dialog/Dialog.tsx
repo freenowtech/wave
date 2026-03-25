@@ -1,9 +1,9 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { type ReactElement, type ReactNode } from 'react';
 import { Heading } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Text, textStyles } from '../Text/Text';
 import { Modal } from '../Modal/Modal';
-import { Backdrop, BackdropProps } from '../Backdrop/Backdrop';
+import { Backdrop, type BackdropProps } from '../Backdrop/Backdrop';
 import { getSemanticValue } from '../../../essentials/experimental';
 
 const Card = styled.div`
@@ -69,7 +69,7 @@ const Dialog = ({
                     {subtitle}
                 </SubtitleText>
 
-                {body && <BodyWrapper>{body}</BodyWrapper>}
+                {body != null && <BodyWrapper>{body}</BodyWrapper>}
 
                 <ButtonsWrapper>
                     {dismissButton}
@@ -80,4 +80,4 @@ const Dialog = ({
     </Backdrop>
 );
 
-export { Dialog, DialogProps };
+export { Dialog, type DialogProps };

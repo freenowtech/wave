@@ -1,6 +1,15 @@
-import { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant, width, WidthProps } from 'styled-system';
+import { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import {
+    compose,
+    margin,
+    type MarginProps,
+    type ResponsiveValue,
+    variant,
+    width,
+    type WidthProps
+} from 'styled-system';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -31,7 +40,7 @@ const sizeVariant = variant({
 });
 
 // "svg path" fill set to "inherit" to being able to transition using button variants
-const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
+const BaseButton = styled.button.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<BaseButtonProps>`
     align-items: center;
     background: transparent;
     border-radius: ${get('radii.2')};
@@ -55,4 +64,4 @@ const BaseButton = styled.button.attrs({ theme })<BaseButtonProps>`
     ${compose(margin, sizeVariant, width)}
 `;
 
-export { BaseButton, BaseButtonProps };
+export { BaseButton, type BaseButtonProps };

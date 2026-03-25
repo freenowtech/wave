@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
-import { Checkbox as CheckboxComponent, CheckboxProps as ReactAriaCheckboxProps } from 'react-aria-components';
-import styled from 'styled-components';
+import React, { type FC, type ReactNode } from 'react';
+import { Checkbox as CheckboxComponent, type CheckboxProps as ReactAriaCheckboxProps } from 'react-aria-components';
+import { styled } from 'styled-components';
 
-import { Text, TextVariant } from '../Text/Text';
+import { Text, type TextVariant } from '../Text/Text';
 import { LabelWrapper } from './components/LabelWrapper';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { themeGet } from '../../../utils/experimental';
@@ -180,4 +180,4 @@ const Checkbox: FC<CheckboxProps> = props => {
     );
 };
 
-export { Checkbox, CheckboxProps };
+export { Checkbox, type CheckboxProps };

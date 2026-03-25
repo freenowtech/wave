@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC, MouseEventHandler, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { MarginProps } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC, type MouseEventHandler, useRef, useState } from 'react';
+import { styled, css } from 'styled-components';
+import { type MarginProps } from 'styled-system';
 import { MediaQueries } from '../../essentials';
 import { CheckCircleIcon, UploadIcon } from '../../icons';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { Text } from '../Text/Text';
 import { shrinkFileName } from './utils/format';
@@ -74,7 +74,9 @@ const Outliner = styled(Box)<OutlinerProps>`
     box-sizing: border-box;
     cursor: pointer;
     position: relative;
-    transition: background-color ease 200ms, border-color ease 200ms;
+    transition:
+        background-color ease 200ms,
+        border-color ease 200ms;
 
     ${Text} {
         cursor: pointer;
@@ -142,13 +144,13 @@ const FilePicker: FC<FilePickerProps> = ({
     alwaysShowActionButton = false,
     ...nonInputProps
 }: FilePickerProps) => {
-    const inputEl = useRef<HTMLInputElement>(null);
+    const inputElRef = useRef<HTMLInputElement>(null);
     const [file, setFile] = useState<File | null>();
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const eventFile = e.target.files?.[0];
 
         onChange(e);
-        onFileChange(eventFile, e);
+        if (eventFile) onFileChange(eventFile, e);
         setFile(eventFile);
     };
     const onClickHandler: MouseEventHandler = e => {
@@ -157,7 +159,7 @@ const FilePicker: FC<FilePickerProps> = ({
         // Avoid button trigger file selection twice
         e.stopPropagation();
         // Allow other spaces of the component trigger file selection
-        inputEl.current.click();
+        inputElRef.current?.click();
     };
     const validFileSelected = file && !error;
 
@@ -171,7 +173,7 @@ const FilePicker: FC<FilePickerProps> = ({
                 multiple={false}
                 name={name}
                 onChange={onInputChange}
-                ref={inputEl}
+                ref={inputElRef}
                 type="file"
             />
             <Outliner
@@ -179,9 +181,9 @@ const FilePicker: FC<FilePickerProps> = ({
                 alignItems="stretch"
                 data-testid="filepicker-outliner"
                 display="flex"
-                disabled={disabled}
-                hasValidFile={validFileSelected}
-                error={error}
+                disabled={disabled ?? false}
+                hasValidFile={validFileSelected ?? false}
+                error={error ?? false}
                 justifyContent="space-between"
                 onClick={onClickHandler}
                 px={2}
@@ -216,4 +218,4 @@ const FilePicker: FC<FilePickerProps> = ({
     );
 };
 
-export { FilePicker, FilePickerProps };
+export { FilePicker, type FilePickerProps };

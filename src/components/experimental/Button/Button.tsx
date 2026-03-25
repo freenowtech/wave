@@ -1,7 +1,11 @@
-import React, { ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { type ReactElement, type ReactNode } from 'react';
+import { styled } from 'styled-components';
 import { variant } from 'styled-system';
-import { Button as BaseButton, ButtonProps as BaseButtonProps, ButtonRenderProps } from 'react-aria-components';
+import {
+    Button as BaseButton,
+    type ButtonProps as BaseButtonProps,
+    type ButtonRenderProps
+} from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';

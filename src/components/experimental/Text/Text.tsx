@@ -1,6 +1,6 @@
-import { Text as BaseText, TextProps as BaseTextProps } from 'react-aria-components';
-import styled from 'styled-components';
-import { compose, ResponsiveValue, variant } from 'styled-system';
+import { Text as BaseText, type TextProps as BaseTextProps } from 'react-aria-components';
+import { styled } from 'styled-components';
+import { compose, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../../essentials/experimental';
 
 export type TextVariant = 'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2';
@@ -64,15 +64,11 @@ export const textStyles = {
     }
 };
 
-const Text = styled(BaseText)<TextProps>`
+const Text = styled(BaseText).attrs<TextProps>({ variant: 'body1' })<TextProps>`
     color: inherit;
     margin: 0;
 
     ${compose(variant(textStyles))}
 `;
 
-Text.defaultProps = {
-    variant: 'body1'
-};
-
-export { Text, TextProps };
+export { Text, type TextProps };

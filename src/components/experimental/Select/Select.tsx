@@ -1,21 +1,21 @@
 import React from 'react';
 import {
     Select as BaseSelect,
-    SelectProps as BaseSelectProps,
+    type SelectProps as BaseSelectProps,
     SelectValue,
     SelectStateContext,
     FieldError,
-    SelectValueRenderProps
+    type SelectValueRenderProps
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Popover } from '../Popover/Popover';
 import { ListBox } from '../ListBox/ListBox';
 import { FakeInput } from '../Field/FakeInput';
 import { Label } from '../Field/Label';
 import { InnerWrapper } from '../Field/InnerWrapper';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { Button } from '../Field/Button';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
@@ -45,7 +45,6 @@ interface SelectFieldProps<T> extends Pick<FieldProps, 'label' | 'description' |
     renderValue?: (props: SelectValueRenderProps<T> & { defaultChildren: React.ReactNode }) => React.ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 function SelectTriggerWithRef<T extends object>(
     { label, hideLabel, leadingIcon, placeholder, renderValue }: SelectFieldProps<T>,
     forwardedRef: React.ForwardedRef<HTMLDivElement>
@@ -54,7 +53,11 @@ function SelectTriggerWithRef<T extends object>(
     const buttonRef = React.useRef<HTMLButtonElement>(null);
 
     return (
-        <FakeButton $isVisuallyFocused={state?.isOpen} ref={forwardedRef} onClick={() => buttonRef.current?.click()}>
+        <FakeButton
+            $isVisuallyFocused={state?.isOpen ?? false}
+            ref={forwardedRef}
+            onClick={() => buttonRef.current?.click()}
+        >
             {leadingIcon}
             <InnerWrapper hideLabel={hideLabel}>
                 {hideLabel ? (
@@ -86,8 +89,7 @@ function SelectTriggerWithRef<T extends object>(
 const SelectTrigger = React.forwardRef(SelectTriggerWithRef);
 
 interface SelectProps<T extends Record<string, unknown>>
-    extends SelectFieldProps<T>,
-        Omit<BaseSelectProps<T>, 'children'> {
+    extends SelectFieldProps<T>, Omit<BaseSelectProps<T>, 'children'> {
     items?: Iterable<T>;
     children: React.ReactNode | ((item: T) => React.ReactNode);
     hideLabel?: boolean;
@@ -131,7 +133,11 @@ function Select<T extends Record<string, unknown>>({
                             hideLabel={hideLabel}
                             leadingIcon={leadingIcon}
                             placeholder={placeholder}
-                            renderValue={renderValue}
+                            renderValue={
+                                renderValue as
+                                    | ((props: object & { defaultChildren: React.ReactNode }) => React.ReactNode)
+                                    | undefined
+                            }
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>

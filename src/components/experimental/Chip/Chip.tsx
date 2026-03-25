@@ -1,6 +1,6 @@
 import React, { forwardRef, type ReactElement } from 'react';
-import styled from 'styled-components';
-import { Button as BaseButton, ButtonProps as ButtonBaseProps } from 'react-aria-components';
+import { styled } from 'styled-components';
+import { Button as BaseButton, type ButtonProps as ButtonBaseProps } from 'react-aria-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 
@@ -61,10 +61,9 @@ const Button = styled(BaseButton)<{ isActive: boolean }>`
 const Chip = forwardRef<HTMLButtonElement, ChipProps>(
     ({ children, isActive = false, ...props }, ref): ReactElement => (
         <Button isActive={isActive} ref={ref} {...props}>
-            {/* Button expects a single child */}
-            <>{children}</>
+            {children}
         </Button>
     )
 );
 
-export { Chip, ChipProps };
+export { Chip, type ChipProps };

@@ -1,5 +1,5 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { Box, BoxProps } from '../Box/Box';
+import React, { type FC, type ReactNode, useEffect, useState } from 'react';
+import { Box, type BoxProps } from '../Box/Box';
 
 const evalColorSchemeQuery = () => window.matchMedia('(prefers-color-scheme: dark)');
 const getInvertedScheme = (query: { matches: boolean }): 'dark-scheme' | 'light-scheme' =>
@@ -10,7 +10,7 @@ export interface InvertedColorSchemeProps extends BoxProps {
 }
 
 export const InvertedColorScheme: FC<InvertedColorSchemeProps> = ({ children, ...props }) => {
-    const [preferredColorScheme, setPreferredColorScheme] = useState(getInvertedScheme(evalColorSchemeQuery()));
+    const [preferredColorScheme, setPreferredColorScheme] = useState(() => getInvertedScheme(evalColorSchemeQuery()));
 
     useEffect(() => {
         const mql = evalColorSchemeQuery();

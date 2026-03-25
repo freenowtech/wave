@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react';
-import { ReadCssColorVariable } from '../essentials/Colors/types';
+import { type ComponentPropsWithoutRef } from 'react';
+import { type ReadCssColorVariable } from '../essentials/Colors/types';
 
-export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
+interface IconProps extends ComponentPropsWithoutRef<'svg'> {
     /**
      * Overrides the default color of the icon.
      */
@@ -11,3 +11,5 @@ export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
      */
     size?: 'small' | 'medium' | 'large' | number;
 }
+
+export type { IconProps };

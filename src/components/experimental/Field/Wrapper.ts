@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 
 export const Wrapper = styled.div`

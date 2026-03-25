@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { type FC, useCallback } from 'react';
 import { orderBy } from 'lodash';
 import { Table, TableCell, TableSortableHeaderCell, TableRow } from '..';
 import { Text } from '../..';

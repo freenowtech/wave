@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
-import styled from 'styled-components';
+import React, { type FC } from 'react';
+import { useDatepicker, type MonthType, type UseDatepickerProps } from '@datepicker-react/hooks';
+import { styled } from 'styled-components';
 
 import { getSemanticValue } from '../../utils/cssVariables';
 import { MediaQueries } from '../../essentials';

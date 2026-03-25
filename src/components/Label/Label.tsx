@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
-import { ComponentPropsWithoutRef } from 'react';
+import { styled } from 'styled-components';
+import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
+import { type ComponentPropsWithoutRef } from 'react';
 import { Text } from '../Text/Text';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -79,7 +79,7 @@ const filledVariantStyles = variant({
     }
 });
 
-const Label = styled(Text).attrs({ theme })<LabelProps>`
+const Label = styled(Text).attrs<LabelProps>({ theme, variant: 'default' })<LabelProps>`
     display: inline-block;
     box-sizing: border-box;
     font-size: 0.625rem;
@@ -93,8 +93,4 @@ const Label = styled(Text).attrs({ theme })<LabelProps>`
     ${props => compose(props.filled ? filledVariantStyles : normalVariantStyles, margin)(props)}
 `;
 
-Label.defaultProps = {
-    variant: 'default'
-};
-
-export { Label, LabelProps };
+export { Label, type LabelProps };

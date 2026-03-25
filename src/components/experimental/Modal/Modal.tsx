@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Dialog, DialogProps, Modal as BaseModal } from 'react-aria-components';
+import { styled } from 'styled-components';
+import { Dialog, type DialogProps, Modal as BaseModal } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 
 const ModalCard = styled(BaseModal)`
@@ -35,4 +35,4 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => (
     </ModalCard>
 ));
 
-export { Modal, ModalProps };
+export { Modal, type ModalProps };
