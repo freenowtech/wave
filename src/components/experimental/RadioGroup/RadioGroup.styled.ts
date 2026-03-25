@@ -1,5 +1,5 @@
 import { RadioGroup as BaseRadioGroup } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { themeGet } from '../../../utils/experimental';
 

@@ -9,7 +9,7 @@ import {
     type TabProps,
     type TabPanelProps
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { textStyles } from '../Text/Text';

@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import type { Placement } from '@floating-ui/react';
 import { RadioButton, Tooltip } from '../..';
 import { MediaQueries } from '../../../essentials';

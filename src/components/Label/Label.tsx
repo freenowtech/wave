@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 import { type ComponentPropsWithoutRef } from 'react';
 import { Text } from '../Text/Text';

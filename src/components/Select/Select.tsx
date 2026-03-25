@@ -1,6 +1,6 @@
 import React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { ChevronDownIcon } from '../../icons';

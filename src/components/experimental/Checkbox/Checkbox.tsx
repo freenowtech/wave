@@ -1,6 +1,6 @@
 import React, { type FC, type ReactNode } from 'react';
 import { Checkbox as CheckboxComponent, type CheckboxProps as ReactAriaCheckboxProps } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Text, type TextVariant } from '../Text/Text';
 import { LabelWrapper } from './components/LabelWrapper';

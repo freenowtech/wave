@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { variant } from 'styled-system';
 import { BaseInput } from './BaseInput';
 import { activeBoxedPosition, BoxedInputLabel } from './BoxedInputLabel';

@@ -1,6 +1,6 @@
 import React, { type FC, type ReactElement } from 'react';
 import { components, type SingleValueProps } from 'react-select';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Flag } from '../../../icons';
 import { Text } from '../../Text/Text';
 import { type PhoneAreaCodeCountry } from '../types/PhoneAreaCodeCountry';

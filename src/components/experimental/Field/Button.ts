@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Button as BaseButton } from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';

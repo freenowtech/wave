@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import { type ComponentPropsWithoutRef } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import {
     compose,
     margin,

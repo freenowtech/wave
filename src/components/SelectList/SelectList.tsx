@@ -277,7 +277,7 @@ const customStyles: StylesConfig = {
         color: 'inherit',
         padding: '0.1875rem',
         paddingLeft: '0.5rem',
-        fontWeight: get('fontWeights.semibold')(selectProps) as number,
+        fontWeight: get('fontWeights.semibold')(selectProps),
         fontSize: '0.625rem'
     }),
     multiValueRemove: provided => ({

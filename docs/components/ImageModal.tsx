@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Modal } from '../../src/components';
 
 interface ImageModalProps {

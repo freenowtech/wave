@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { ChevronUpIcon } from '../../../icons';
 import { getSemanticValue } from '../../../utils/cssVariables';
 

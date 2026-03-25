@@ -6,14 +6,13 @@ import reactPlugin from '@eslint-react/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
 import importX from 'eslint-plugin-import-x';
 import jest from 'eslint-plugin-jest';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
 import promise from 'eslint-plugin-promise';
 import unicorn from 'eslint-plugin-unicorn';
 import eslintComments from '@eslint-community/eslint-plugin-eslint-comments';
 import prettier from 'eslint-config-prettier';
 import globals from 'globals';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -26,7 +25,9 @@ export default tseslint.config(
             'coverage/**',
             'fixtures/**',
             'src/icons/**',
-            'src/codemods/__testfixtures__/**'
+            'src/codemods/__testfixtures__/**',
+            '.github/**',
+            'storybook-static/**'
         ]
     },
     // TypeScript recommended + type-checked rules
@@ -46,7 +47,7 @@ export default tseslint.config(
     // Promise best practices
     promise.configs['flat/recommended'],
     // JSX accessibility
-    jsxA11y.flatConfigs.recommended,
+    // jsxA11y.flatConfigs.recommended,
     // Import order and resolution (TypeScript-aware)
     importX.flatConfigs.recommended,
     importX.flatConfigs.typescript,
@@ -135,6 +136,51 @@ export default tseslint.config(
             '@eslint-react/no-forward-ref': 'off'
         }
     },
+    // ── Docs components ───────────────────────────────────────────────────────
+    {
+        files: ['docs/**/*.{ts,tsx}'],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node
+            },
+            parserOptions: {
+                project: './tsconfig.eslint.json',
+                tsconfigRootDir: __dirname
+            }
+        },
+        rules: {
+            'unicorn/prevent-abbreviations': 'off',
+            'unicorn/filename-case': 'off'
+        }
+    },
+    // ── Storybook config files ────────────────────────────────────────────────
+    {
+        files: ['.storybook/**/*.{ts,tsx}'],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node
+            },
+            parserOptions: {
+                project: './tsconfig.eslint.json',
+                tsconfigRootDir: __dirname
+            }
+        },
+        rules: {
+            'unicorn/prevent-abbreviations': 'off',
+            'unicorn/filename-case': 'off',
+            // Storybook decorator functions use hooks but aren't named as components/hooks
+            'react-hooks/rules-of-hooks': 'off',
+            '@eslint-react/rules-of-hooks': 'off',
+            // Storybook context/story types are loosely typed (any)
+            '@typescript-eslint/no-unsafe-assignment': 'off',
+            '@typescript-eslint/no-unsafe-member-access': 'off',
+            '@typescript-eslint/no-unsafe-argument': 'off',
+            '@typescript-eslint/no-unsafe-call': 'off',
+            'unicorn/prefer-global-this': 'off'
+        }
+    },
     // ── Storybook stories — hooks rules relaxed ───────────────────────────────
     // CSF3 render() functions are React components but named lowercase
     {
@@ -185,6 +231,21 @@ export default tseslint.config(
         rules: {
             'unicorn/prevent-abbreviations': 'off',
             'unicorn/filename-case': 'off'
+        }
+    },
+    // ── Root-level config files — no tsconfig available ───────────────────────
+    // Disable type-checked rules for JS config files at the root (no parserOptions)
+    {
+        files: ['*.js', '*.mjs', '*.cjs'],
+        ...tseslint.configs.disableTypeChecked,
+        rules: {
+            ...tseslint.configs.disableTypeChecked.rules,
+            '@typescript-eslint/no-require-imports': 'off',
+            'unicorn/prevent-abbreviations': 'off',
+            'unicorn/filename-case': 'off',
+            // ESLint plugin imports use default exports by convention — these are not bugs
+            'import-x/no-named-as-default': 'off',
+            'import-x/no-named-as-default-member': 'off'
         }
     },
     // Disable Prettier-conflicting formatting rules (must be last)

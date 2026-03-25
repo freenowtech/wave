@@ -15,7 +15,7 @@ const meta: Meta = {
             description: 'Font size of the text',
             table: {
                 defaultValue: {
-                    summary: 2
+                    summary: '2'
                 }
             }
         },
@@ -32,8 +32,7 @@ const meta: Meta = {
                 defaultValue: { summary: 'span' }
             },
             control: {
-                type: 'text',
-                value: 'span'
+                type: 'text'
             }
         },
         forwardedAs: {

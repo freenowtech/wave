@@ -1,5 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { TableContext } from '../context/TableContext';
 import { type TableProps } from './Table';

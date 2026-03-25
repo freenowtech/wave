@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 const determineBackground = (props: SlideProps) => {
@@ -44,7 +44,9 @@ const Slide = styled.div<SlideProps>`
                 props.disabled ? 'background-element-disabled-faded' : 'background-element-neutral-default'
             )};
         border-radius: 50%;
-        box-shadow: 0 0 0.0625rem 0 rgba(0, 0, 0, 0.05), 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.4);
+        box-shadow:
+            0 0 0.0625rem 0 rgba(0, 0, 0, 0.05),
+            0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.4);
         transform: translateX(0);
         transition: transform 200ms;
     }

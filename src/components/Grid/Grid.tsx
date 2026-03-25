@@ -1,5 +1,5 @@
 import React, { type FC, type PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Spaces } from '../../essentials/Spaces/Spaces';
 import { Box, type BoxProps } from '../Box/Box';
 
