@@ -1,8 +1,8 @@
 import { END_DATE, type FirstDayOfWeek, type FocusedInput, START_DATE } from '@datepicker-react/hooks';
 import { compareDesc, type Locale, parse, startOfDay, endOfDay } from 'date-fns';
-import React, { type ChangeEventHandler, type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import React, { type ChangeEventHandler, type FC, useEffect, useRef, useState } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { createPortal } from 'react-dom';
@@ -283,10 +283,15 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         if (!focusedInput && (error.startDate || error.endDate) && typeof errorHandler === 'function') {
             errorHandler();
         }
+        // errorHandler is a user-provided callback; intentionally excluded to avoid re-running on every render
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [error.startDate, error.endDate, focusedInput]);
 
     useEffect(() => {
+        // Sync display text when controlled value changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setInputText(dateRangeToDisplayText(localeObject!, displayFormat, value));
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [value.startDate, value.endDate, displayFormat, localeObject]);
 
     useEffect(() => {
@@ -363,10 +368,38 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         }));
     };
 
-    const PortalWrapper = useMemo(() => {
-        if (!enforcedColorScheme) return Fragment;
-        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
-    }, [enforcedColorScheme]);
+    const datepickerContent = (
+        <DatepickerContentContainer
+            ref={refs.setFloating}
+            style={floatingStyles}
+            data-popper-placement={currentPlacement}
+        >
+            <Arrow
+                ref={arrowRef}
+                style={{
+                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                }}
+            />
+            <Datepicker
+                // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
+                numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
+                minBookingDays={1}
+                startDate={value.startDate ?? null}
+                endDate={value.endDate ?? null}
+                minBookingDate={minDate}
+                maxBookingDate={maxDate}
+                firstDayOfWeek={firstDayOfWeek}
+                focusedInput={focusedInput}
+                onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
+                    setFocusedInput(focusedValue);
+                    handleDateChange(startDate ?? undefined, endDate ?? undefined);
+                }}
+                isDateBlocked={isDateBlocked}
+                locale={localeObject!}
+            />
+        </DatepickerContentContainer>
+    );
 
     return (
         <>
@@ -414,38 +447,13 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
             )}
             {focusedInput &&
                 createPortal(
-                    <PortalWrapper>
-                        <DatepickerContentContainer
-                            ref={refs.setFloating}
-                            style={floatingStyles}
-                            data-popper-placement={currentPlacement}
-                        >
-                            <Arrow
-                                ref={arrowRef}
-                                style={{
-                                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
-                                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
-                                }}
-                            />
-                            <Datepicker
-                                // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
-                                numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
-                                minBookingDays={1}
-                                startDate={value.startDate ?? null}
-                                endDate={value.endDate ?? null}
-                                minBookingDate={minDate}
-                                maxBookingDate={maxDate}
-                                firstDayOfWeek={firstDayOfWeek}
-                                focusedInput={focusedInput}
-                                onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
-                                    setFocusedInput(focusedValue);
-                                    handleDateChange(startDate ?? undefined, endDate ?? undefined);
-                                }}
-                                isDateBlocked={isDateBlocked}
-                                locale={localeObject!}
-                            />
-                        </DatepickerContentContainer>
-                    </PortalWrapper>,
+                    enforcedColorScheme === 'light' ? (
+                        <LightScheme>{datepickerContent}</LightScheme>
+                    ) : enforcedColorScheme === 'dark' ? (
+                        <DarkScheme>{datepickerContent}</DarkScheme>
+                    ) : (
+                        datepickerContent
+                    ),
                     document.body
                 )}
         </>

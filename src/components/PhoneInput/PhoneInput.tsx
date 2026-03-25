@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components';
-import warning from 'warning';
+import { styled } from 'styled-components';
 import {
     compose,
     layout,

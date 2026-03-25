@@ -1,6 +1,6 @@
 import React, { type ComponentPropsWithoutRef, type FC, useEffect, useState } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled, { type CSSProperties } from 'styled-components';
+import { styled, type CSSProperties } from 'styled-components';
 
 import {
     compose,
@@ -95,6 +95,8 @@ const Textarea: FC<WrapperProps & TextAreaProps> = ({ resize = 'both', ...props 
     };
 
     useEffect(() => {
+        // Sync label float state with controlled value — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setHasValue(Boolean(rest.value && rest.value.toString().length > 0));
     }, [rest.value]);
 

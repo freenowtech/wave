@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo, useRef, Fragment } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { isBefore, isAfter, isSameMonth, startOfMonth, endOfMonth } from 'date-fns';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
@@ -143,7 +143,10 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
     useEffect(() => {
         const start = value?.start instanceof Date ? value.start : null;
         const end = value?.end instanceof Date ? value.end : null;
+        // Sync controlled value prop into local state — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRangeStart(start ? startOfMonth(start) : null);
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRangeEnd(end ? endOfMonth(end) : null);
     }, [value]);
 
@@ -152,7 +155,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
             return `${dateToText(rangeStart, localeObject!)} - ${dateToText(rangeEnd, localeObject!)}`;
         }
         return rangeStart ? `${dateToText(rangeStart, localeObject!)} - ...` : '';
-    }, [rangeStart, rangeEnd]);
+    }, [rangeStart, rangeEnd, localeObject]);
 
     // Close the picker when clicking outside
     useEffect(() => {
@@ -169,7 +172,8 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
         }
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // refs.floating is a stable ref object from @floating-ui/react — intentionally excluded
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [triggerElement]);
 
     const handleMonthClick = (monthIndex: number, year: number) => {
@@ -235,10 +239,55 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
         return false;
     };
 
-    const PortalWrapper = useMemo(() => {
-        if (!enforcedColorScheme) return Fragment;
-        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
-    }, [enforcedColorScheme]);
+    const pickerContent = (
+        <MonthPickerContentContainer
+            ref={refs.setFloating}
+            style={floatingStyles}
+            data-popper-placement={currentPlacement}
+        >
+            <Arrow
+                ref={arrowRef}
+                style={{
+                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                }}
+            />
+            <Back
+                onClick={() => setCurrentYear(y => y - 1)}
+                aria-label="Previous year"
+                disabled={minMonth && currentYear <= minMonth.getFullYear()}
+            >
+                <ChevronLeftIcon />
+            </Back>
+            <Forward
+                onClick={() => setCurrentYear(y => y + 1)}
+                aria-label="Next year"
+                disabled={maxMonth && currentYear + 1 >= maxMonth.getFullYear()}
+            >
+                <ChevronRightIcon />
+            </Forward>
+            <YearGridContainer onMouseLeave={() => setHoveredMonth(null)}>
+                <MonthCalendar
+                    year={currentYear}
+                    onClick={handleMonthClick}
+                    onHover={handleMonthHover}
+                    isMonthDisabled={isMonthDisabled}
+                    isSelectedStartOrEnd={isSelectedStartOrEnd}
+                    isInRange={isInRange}
+                    locale={localeObject!}
+                />
+                <MonthCalendar
+                    year={currentYear + 1}
+                    onClick={handleMonthClick}
+                    onHover={handleMonthHover}
+                    isMonthDisabled={isMonthDisabled}
+                    isSelectedStartOrEnd={isSelectedStartOrEnd}
+                    isInRange={isInRange}
+                    locale={localeObject!}
+                />
+            </YearGridContainer>
+        </MonthPickerContentContainer>
+    );
 
     return (
         <Wrapper {...rest}>
@@ -255,55 +304,13 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
             </div>
             {isOpen &&
                 createPortal(
-                    <PortalWrapper>
-                        <MonthPickerContentContainer
-                            ref={refs.setFloating}
-                            style={floatingStyles}
-                            data-popper-placement={currentPlacement}
-                        >
-                            <Arrow
-                                ref={arrowRef}
-                                style={{
-                                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
-                                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
-                                }}
-                            />
-                            <Back
-                                onClick={() => setCurrentYear(y => y - 1)}
-                                aria-label="Previous year"
-                                disabled={minMonth && currentYear <= minMonth.getFullYear()}
-                            >
-                                <ChevronLeftIcon />
-                            </Back>
-                            <Forward
-                                onClick={() => setCurrentYear(y => y + 1)}
-                                aria-label="Next year"
-                                disabled={maxMonth && currentYear + 1 >= maxMonth.getFullYear()}
-                            >
-                                <ChevronRightIcon />
-                            </Forward>
-                            <YearGridContainer onMouseLeave={() => setHoveredMonth(null)}>
-                                <MonthCalendar
-                                    year={currentYear}
-                                    onClick={handleMonthClick}
-                                    onHover={handleMonthHover}
-                                    isMonthDisabled={isMonthDisabled}
-                                    isSelectedStartOrEnd={isSelectedStartOrEnd}
-                                    isInRange={isInRange}
-                                    locale={localeObject!}
-                                />
-                                <MonthCalendar
-                                    year={currentYear + 1}
-                                    onClick={handleMonthClick}
-                                    onHover={handleMonthHover}
-                                    isMonthDisabled={isMonthDisabled}
-                                    isSelectedStartOrEnd={isSelectedStartOrEnd}
-                                    isInRange={isInRange}
-                                    locale={localeObject!}
-                                />
-                            </YearGridContainer>
-                        </MonthPickerContentContainer>
-                    </PortalWrapper>,
+                    enforcedColorScheme === 'light' ? (
+                        <LightScheme>{pickerContent}</LightScheme>
+                    ) : enforcedColorScheme === 'dark' ? (
+                        <DarkScheme>{pickerContent}</DarkScheme>
+                    ) : (
+                        pickerContent
+                    ),
                     document.body
                 )}
         </Wrapper>

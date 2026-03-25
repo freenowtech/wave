@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
 import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/react';
 import type { Placement } from '@floating-ui/react';
@@ -164,11 +164,6 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 
     const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
 
-    const PortalWrapper = React.useMemo(() => {
-        if (!enforcedColorScheme) return React.Fragment;
-        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
-    }, [enforcedColorScheme]);
-
     let dynamicContent = content;
 
     if (typeof content === 'string') {
@@ -185,8 +180,16 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
         }
     };
 
+    const tooltipBody = (
+        <TooltipBody ref={refs.setFloating} style={floatingStyles} variant={currentPlacement}>
+            {dynamicContent}
+        </TooltipBody>
+    );
+
     return (
         <>
+            {/* cloneElement is required here to inject the ref and mouse handlers without adding a wrapper DOM node */}
+            {/* eslint-disable-next-line @eslint-react/no-clone-element */}
             {React.cloneElement(
                 children as React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>,
                 {
@@ -197,11 +200,13 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
             )}
             {!!(content && isVisible) &&
                 createPortal(
-                    <PortalWrapper>
-                        <TooltipBody ref={refs.setFloating} style={floatingStyles} variant={currentPlacement}>
-                            {dynamicContent}
-                        </TooltipBody>
-                    </PortalWrapper>,
+                    enforcedColorScheme === 'light' ? (
+                        <LightScheme>{tooltipBody}</LightScheme>
+                    ) : enforcedColorScheme === 'dark' ? (
+                        <DarkScheme>{tooltipBody}</DarkScheme>
+                    ) : (
+                        tooltipBody
+                    ),
                     document.body
                 )}
         </>

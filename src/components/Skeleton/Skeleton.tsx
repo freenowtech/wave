@@ -1,5 +1,5 @@
 import isPropValid from '@emotion/is-prop-valid';
-import styled, { css, keyframes } from 'styled-components';
+import { styled, css, keyframes } from 'styled-components';
 import {
     borderRadius,
     type BorderRadiusProps,

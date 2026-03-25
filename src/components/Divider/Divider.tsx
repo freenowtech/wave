@@ -1,6 +1,6 @@
 import React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, space, type SpaceProps } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { getSemanticValue } from '../../utils/cssVariables';

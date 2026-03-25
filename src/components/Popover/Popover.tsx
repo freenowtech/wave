@@ -1,6 +1,6 @@
 import * as React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import type { Placement } from '@floating-ui/react';
 import { useFloating, offset as floatingOffset, flip, autoUpdate } from '@floating-ui/react';
 
@@ -194,6 +194,8 @@ const Popover: React.FC<PopoverProps> = ({
     };
 
     React.useEffect(() => {
+        // Sync render gate when openByDefault prop changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setRender(openByDefault);
     }, [openByDefault, setRender]);
 

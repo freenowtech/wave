@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 
@@ -11,7 +11,9 @@ const SelectLabel = styled.label`
     font-weight: ${get('fontWeights.semibold')};
     color: ${getSemanticValue('foreground-neutral-emphasized')};
     background: ${getSemanticValue('background-page-default')};
-    transition: color ${ANIMATION_DURATION}ms ease-out, background ${ANIMATION_DURATION}ms ease-out;
+    transition:
+        color ${ANIMATION_DURATION}ms ease-out,
+        background ${ANIMATION_DURATION}ms ease-out;
 `;
 
 export { SelectLabel };

@@ -1,6 +1,6 @@
-import React, { Children, type ReactElement, type ReactNode, cloneElement, useEffect, useRef } from 'react';
+import React, { type ReactElement, type ReactNode, useEffect, useRef } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { type MarginProps } from 'styled-system';
 
 import { ChevronRightIcon } from '../../icons';
@@ -36,7 +36,7 @@ const BreadcrumbsListItem = styled.li`
 `;
 
 const Breadcrumbs = ({ children }: BreadcrumbsProps): React.JSX.Element => {
-    const arrayChildren = Children.toArray(children);
+    const arrayChildren = (Array.isArray(children) ? children.flat() : [children]).filter(Boolean) as ReactElement[];
     const breadcrumbsListRef = useRef<HTMLUListElement | null>(null);
 
     useEffect(() => {
@@ -47,9 +47,10 @@ const Breadcrumbs = ({ children }: BreadcrumbsProps): React.JSX.Element => {
 
     return (
         <BreadcrumbsList ref={breadcrumbsListRef}>
-            {Children.map(arrayChildren, (child, index) => (
-                <BreadcrumbsListItem>
-                    <nav aria-label="breadcrumbs">{cloneElement(child as ReactElement)}</nav>
+            {arrayChildren.map((child, index) => (
+                // eslint-disable-next-line @eslint-react/no-array-index-key
+                <BreadcrumbsListItem key={index}>
+                    <nav aria-label="breadcrumbs">{child}</nav>
                     {index < arrayChildren.length - 1 ? (
                         <Box height={16} mt="0.125rem">
                             <ChevronRightIcon size={16} color={getSemanticValue('foreground-neutral-default')} />

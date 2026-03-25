@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import React, { PropsWithChildren } from 'react';
 
 import { Headline, HeadlineProps } from '../../src/components/Headline/Headline';

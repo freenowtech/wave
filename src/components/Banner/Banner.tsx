@@ -1,7 +1,7 @@
 import React, { type ReactNode, useContext, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import isPropValid from '@emotion/is-prop-valid';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { variant } from 'styled-system';
 import { Elevation } from '../../essentials';
 import { theme } from '../../essentials/theme';

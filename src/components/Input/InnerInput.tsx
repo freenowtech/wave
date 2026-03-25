@@ -39,6 +39,8 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         };
 
         useEffect(() => {
+            // Sync label float state with controlled value — intentional derived state pattern
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
             setHasValue((rest?.value?.toString()?.length ?? 0) > 0);
         }, [rest.value]);
 

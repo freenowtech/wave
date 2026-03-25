@@ -5,7 +5,7 @@ import {
     FieldError,
     Group
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Label } from '../Field/Label';
 import { Footer } from '../Field/Footer';
 import { FakeInput } from '../Field/FakeInput';

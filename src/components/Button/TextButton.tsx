@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { type ResponsiveValue, variant } from 'styled-system';
 
 import { BaseButton, type BaseButtonProps } from './BaseButton';

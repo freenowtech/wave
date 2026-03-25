@@ -1,5 +1,5 @@
 import { Text as BaseText, type TextProps as BaseTextProps } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../../essentials/experimental';
 

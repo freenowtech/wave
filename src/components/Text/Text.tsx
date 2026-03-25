@@ -1,6 +1,6 @@
 import { type ComponentPropsWithoutRef } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import {
     compose,
     fontFamily,
@@ -37,6 +37,10 @@ interface TextProps
      * Adjust color to display a disabled text element
      */
     disabled?: boolean;
+    /**
+     * tags to use for element
+     */
+    as?: keyof HTMLElementTagNameMap;
 }
 
 function determineTextColor(props: TextProps) {

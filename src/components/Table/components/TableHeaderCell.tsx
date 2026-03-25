@@ -1,6 +1,6 @@
 import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { theme } from '../../../essentials/theme';

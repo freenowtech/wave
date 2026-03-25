@@ -1,6 +1,6 @@
 import React, { type FC } from 'react';
 import { useMonth, type FirstDayOfWeek } from '@datepicker-react/hooks';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { format } from 'date-fns';
 
 import { getSemanticValue } from '../../utils/cssVariables';
