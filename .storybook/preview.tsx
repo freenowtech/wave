@@ -1,20 +1,7 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { I18nProvider } from 'react-aria-components';
 import { Preview } from '@storybook/react-vite';
-import { themes } from 'storybook/theming';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
-import { addons } from 'storybook/preview-api';
-import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
-
-const STORAGE_KEY = 'sb-addon-themes-3';
-
-const getInitialDarkMode = (): boolean => {
-    try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) return JSON.parse(stored).current === 'dark';
-    } catch {}
-    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-};
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
@@ -51,6 +38,10 @@ const THEMES = {
     }
 } as const;
 
+const isDarkColorScheme = (colorScheme: string): boolean =>
+    colorScheme === 'dark' ||
+    (colorScheme === 'system' && (window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false));
+
 export const withTheme = (Story, context) => {
     const { theme } = context.globals;
     const { Colors, font } = THEMES[theme];
@@ -68,8 +59,8 @@ export const withTheme = (Story, context) => {
 };
 
 export const withColorScheme = (Story, context) => {
-    // useDarkMode from storybook-dark-mode works inside decorators (preview hook context)
-    const SchemeWrapper = useDarkMode() ? DarkScheme : LightScheme;
+    const colorScheme = (context.globals.colorScheme as string) ?? 'system';
+    const SchemeWrapper = isDarkColorScheme(colorScheme) ? DarkScheme : LightScheme;
 
     return (
         <SchemeWrapper>
@@ -92,16 +83,6 @@ export const preview: Preview = {
     decorators: [withTheme, withColorScheme, withI18nProvider],
 
     parameters: {
-        darkMode: {
-            dark: { ...themes.dark, ...DarkTheme },
-            light: {
-                ...themes.normal,
-                ...LightTheme
-            },
-            lightClass: ['wave', 'light-scheme'],
-            darkClass: ['wave', 'dark-scheme'],
-            stylePreview: true
-        },
         actions: { argTypesRegex: '^on[A-Z].*' },
         viewMode: 'docs',
         controls: {
@@ -118,17 +99,8 @@ export const preview: Preview = {
         },
         docs: {
             container: props => {
-                // Use React hooks + channel to track dark mode in docs context.
-                // storybook-dark-mode's useDarkMode() uses preview-api hooks which
-                // only work in decorator/story context, not here.
-                const [isDark, setIsDark] = useState(getInitialDarkMode);
-                useEffect(() => {
-                    const channel = addons.getChannel();
-                    channel.on(DARK_MODE_EVENT_NAME, setIsDark);
-                    return () => channel.off(DARK_MODE_EVENT_NAME, setIsDark);
-                }, []);
-
-                const scheme = isDark ? DarkTheme : LightTheme;
+                const colorScheme = (props.context.globals?.colorScheme as string) ?? 'system';
+                const scheme = isDarkColorScheme(colorScheme) ? DarkTheme : LightTheme;
                 const globals = props.context.globals ?? {};
                 const theme = (globals.theme as keyof typeof THEMES) ?? 'modern';
                 const { Colors } = THEMES[theme] ?? THEMES.modern;
