@@ -17,4 +17,4 @@ export { default as EditPenIcon } from './EditPenIcon';
 export { default as HailingIcon } from './HailingIcon';
 export { default as PinIcon } from './PinIcon';
 export { default as SwapIcon } from './SwapIcon';
-export { default as Calendar_addIcon } from './CalendarAddIcon';
+export { default as CalendarAddIcon } from './CalendarAddIcon';
