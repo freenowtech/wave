@@ -74,7 +74,7 @@ export const AsyncValues: StoryObj<typeof ComboBox<Character>> = {
         const [filterText, setFilterText] = React.useState('');
 
         const list = useAsyncList<Character>({
-            async load() {
+            async load({ signal, cursor }) {
                 const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`);
                 const json = await res.json();
 
