@@ -91,6 +91,7 @@ export const AsyncValues: StoryObj<typeof ComboBox<Character>> = {
                 items={list.items}
                 inputValue={filterText}
                 onInputChange={setFilterText}
+                renderEmptyState={() => <p>No items found</p>}
             >
                 {item => <ListBoxItem id={item.name}>{item.name}</ListBoxItem>}
             </ComboBox>
