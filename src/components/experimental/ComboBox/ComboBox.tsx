@@ -134,7 +134,11 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
-                    <Popover triggerRef={triggerRef} style={{ '--trigger-width': menuWidth } as React.CSSProperties}>
+                    <Popover
+                        triggerRef={triggerRef}
+                        style={{ '--trigger-width': menuWidth } as React.CSSProperties}
+                        isNonModal
+                    >
                         <ListBox renderEmptyState={renderEmptyState}>{children}</ListBox>
                     </Popover>
                 </>
