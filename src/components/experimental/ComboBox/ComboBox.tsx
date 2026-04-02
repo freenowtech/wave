@@ -3,7 +3,8 @@ import {
     ComboBox as BaseComboBox,
     ComboBoxProps as BaseComboBoxProps,
     ComboBoxStateContext,
-    FieldError
+    FieldError,
+    ListBoxProps
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
@@ -45,6 +46,7 @@ interface ComboBoxProps<T extends Record<string, unknown>>
         Omit<BaseComboBoxProps<T>, 'children'>,
         React.RefAttributes<HTMLDivElement> {
     children: React.ReactNode | ((item: T) => React.ReactNode);
+    renderEmptyState?: ListBoxProps<unknown>['renderEmptyState'];
 }
 
 const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
@@ -97,6 +99,7 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
         ariaStrings = defaultAriaStrings,
         errorMessage,
         description,
+        renderEmptyState,
         ...restProps
     } = props;
 
@@ -132,7 +135,7 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
                     </Wrapper>
                     <Popover triggerRef={triggerRef} style={{ '--trigger-width': menuWidth } as React.CSSProperties}>
-                        <ListBox>{children}</ListBox>
+                        <ListBox renderEmptyState={renderEmptyState}>{children}</ListBox>
                     </Popover>
                 </>
             )}
