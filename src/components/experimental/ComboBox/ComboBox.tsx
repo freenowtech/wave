@@ -120,7 +120,7 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
     });
 
     return (
-        <BaseComboBox<T> aria-label={label} shouldFocusWrap {...restProps}>
+        <BaseComboBox<T> shouldFocusWrap {...restProps}>
             {({ isInvalid }) => (
                 <>
                     <Wrapper>
