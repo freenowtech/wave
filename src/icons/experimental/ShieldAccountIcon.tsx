@@ -3,7 +3,7 @@ import * as React from 'react';
 import { get } from '../../utils/themeGet';
 import { IconProps } from '../IconProps';
 type Props = IconProps;
-const SwapIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
+const ShieldAccountIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest }) => {
     const props = { ...rest, color };
     const sizePx = Number.isFinite(size as number)
         ? size
@@ -24,4 +24,4 @@ const SwapIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...rest
         </svg>
     );
 };
-export default SwapIcon;
+export default ShieldAccountIcon;
