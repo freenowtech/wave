@@ -19,3 +19,4 @@ export { default as PinIcon } from './PinIcon';
 export { default as SwapIcon } from './SwapIcon';
 export { default as CalendarAddIcon } from './CalendarAddIcon';
 export { default as ShieldAccountIcon } from './ShieldAccountIcon';
+export { default as QuestionMarkCircleIcon } from './QuestionMarkCircleIcon';
