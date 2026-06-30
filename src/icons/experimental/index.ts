@@ -21,3 +21,5 @@ export { default as CalendarAddIcon } from './CalendarAddIcon';
 export { default as ShieldAccountIcon } from './ShieldAccountIcon';
 export { default as QuestionMarkCircleIcon } from './QuestionMarkCircleIcon';
 export { default as AssignDriverIcon } from './AssignDriverIcon';
+export { default as WifiOnIcon } from './WifiOnIcon';
+export { default as WifiOffIcon } from './WifiOffIcon';
