@@ -130,6 +130,9 @@ const customStyles: StylesConfig = {
             marginRight: '0.5rem',
             cursor: 'pointer',
             color: getSemanticValue('foreground-neutral-default'),
+            '@media (hover: none) and (pointer: coarse)': {
+                pointerEvents: 'none'
+            },
             ...disabled
         };
     },
