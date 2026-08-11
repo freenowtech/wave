@@ -24,3 +24,4 @@ export { default as AssignDriverIcon } from './AssignDriverIcon';
 export { default as WifiOnIcon } from './WifiOnIcon';
 export { default as WifiOffIcon } from './WifiOffIcon';
 export { default as ResendEmailIcon } from './ResendEmailIcon';
+export { default as SteeringWheelIcon } from './SteeringWheelIcon';
