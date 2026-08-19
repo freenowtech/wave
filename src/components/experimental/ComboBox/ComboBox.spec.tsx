@@ -39,6 +39,26 @@ describe('ComboBox', () => {
         });
     });
 
+    it('hides clear button when hideClearButton is true', () => {
+        render(
+            <ComboBox label="Star Wars Character" items={mockItems} hideClearButton inputValue="Luke">
+                {item => <ListBoxItem>{item.name}</ListBoxItem>}
+            </ComboBox>
+        );
+
+        expect(screen.queryByRole('button', { name: 'Clear field' })).not.toBeInTheDocument();
+    });
+
+    it('shows clear button by default when input has value', () => {
+        render(
+            <ComboBox label="Star Wars Character" items={mockItems} inputValue="Luke">
+                {item => <ListBoxItem>{item.name}</ListBoxItem>}
+            </ComboBox>
+        );
+
+        expect(screen.getByRole('button', { name: 'Clear field' })).toBeInTheDocument();
+    });
+
     it('calls onSelectionChange when an item is selected', async () => {
         const onSelectionChange = jest.fn();
         render(
