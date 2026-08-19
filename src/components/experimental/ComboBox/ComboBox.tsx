@@ -30,6 +30,7 @@ const defaultAriaStrings = {
 interface ComboBoxFieldProps extends Pick<FieldProps, 'description' | 'errorMessage' | 'leadingIcon'> {
     label: string;
     placeholder?: string;
+    hideClearButton?: boolean;
     /**
      * If your project supports multiple languages,
      * it is recommended to pass translated labels to these properties
@@ -50,7 +51,7 @@ interface ComboBoxProps<T extends Record<string, unknown>>
 }
 
 const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
-    ({ label, placeholder, leadingIcon, ariaStrings, inputRef: externalInputRef }, forwardedRef) => {
+    ({ label, placeholder, leadingIcon, ariaStrings, hideClearButton, inputRef: externalInputRef }, forwardedRef) => {
         const state = React.useContext(ComboBoxStateContext);
         const internalInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -67,7 +68,7 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
                     <Label $flying={Boolean(placeholder || state?.inputValue?.length > 0)}>{label}</Label>
                     <Input placeholder={placeholder} ref={combinedInputRef} />
                 </InnerWrapper>
-                {state?.inputValue?.length > 0 ? (
+                {!hideClearButton && state?.inputValue?.length > 0 ? (
                     <Button
                         // Don't inherit default Button behavior from ComboBox.
                         slot={null}
@@ -79,7 +80,7 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
                     >
                         <XCrossCircleIcon />
                     </Button>
-                ) : (
+                ) : state?.inputValue?.length > 0 ? null : (
                     <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
                 )}
             </FakeInput>
@@ -96,6 +97,7 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
         children,
         placeholder,
         leadingIcon,
+        hideClearButton,
         ariaStrings = defaultAriaStrings,
         errorMessage,
         description,
@@ -130,6 +132,7 @@ function ComboBoxComponent<T extends Record<string, unknown>>(
                             label={label}
                             placeholder={placeholder}
                             leadingIcon={leadingIcon}
+                            hideClearButton={hideClearButton}
                             ariaStrings={ariaStrings}
                         />
                         <Footer>{isInvalid ? <FieldError>{errorMessage}</FieldError> : description}</Footer>
