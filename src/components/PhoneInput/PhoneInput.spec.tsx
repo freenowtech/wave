@@ -42,6 +42,15 @@ describe('PhoneInput', () => {
         expect(document.activeElement).toEqual(screen.getByLabelText('Phone Number'));
     });
 
+    it('should only render countries from allowedCountries when provided', async () => {
+        render(<PhoneInput country={defaultCountry} allowedCountries={['DE', 'AD']} label="Phone Number" />);
+
+        fireEvent.keyDown(screen.getByText(defaultCountry.dialCode), { keyCode: 40 });
+
+        expect(await screen.findByText('Andorra +376')).toBeInTheDocument();
+        expect(screen.queryByText(/Afghanistan/)).not.toBeInTheDocument();
+    });
+
     it('should call the change handler when typing in the national number input', () => {
         const mockCountryChangeHandler = jest.fn();
         const mockTextChangeHandler = jest.fn();
