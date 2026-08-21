@@ -64,6 +64,10 @@ interface PhoneInputProps
      * Pass props directly to the internal SelectList component used to show prefixes. Any value from the `SelectList` component props are allowed, but props from the `PhoneInput` take precedence
      */
     selectListProps?: SelectListProps;
+    /**
+     * Restricts the country list to only these ISO codes (e.g. ['DE', 'FR']). When omitted, all countries are shown.
+     */
+    allowedCountries?: ReadonlyArray<string>;
 }
 
 const Box = styled.div<LayoutProps & WidthProps>`
@@ -83,6 +87,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     const containerRef = useRef<HTMLDivElement>();
     const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
 
+    const countries = props.allowedCountries
+        ? COUNTRIES.filter(it => props.allowedCountries.includes(it.value))
+        : COUNTRIES;
+
     const handleCountrySelection = value => {
         if (props.onCountryChange) {
             props.onCountryChange(value);
@@ -99,7 +107,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
                 name={`${props.name}-area-code`}
                 value={props.country}
                 onChange={handleCountrySelection}
-                options={COUNTRIES.map(it => ({ ...it, label: `${it.label} ${it.dialCode}` }))}
+                options={countries.map(it => ({ ...it, label: `${it.label} ${it.dialCode}` }))}
                 placeholder=""
                 width="8rem"
                 components={{
