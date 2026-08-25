@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import warning from 'warning';
 import {
     compose,
     layout,
@@ -91,6 +92,16 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
         ? COUNTRIES.filter(it => props.allowedCountries.includes(it.value))
         : COUNTRIES;
 
+    // Avoid rendering a invalid option/country that isn't amongst allowedCountries
+    const selectedCountry = countries.find(it => it.value === props.country?.value) && props.country;
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    warning(
+        !props.country || Boolean(selectedCountry),
+        `[@freenow/wave] PhoneInput received a \`country\` ("${props.country?.value}") that is not among the ` +
+            'available options and will not be displayed. Ensure it is included in `allowedCountries`.'
+    );
+
     const handleCountrySelection = value => {
         if (props.onCountryChange) {
             props.onCountryChange(value);
@@ -105,7 +116,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
                 {...selectListProps}
                 id={`${props.id}-area-code`}
                 name={`${props.name}-area-code`}
-                value={props.country}
+                value={selectedCountry}
                 onChange={handleCountrySelection}
                 options={countries.map(it => ({ ...it, label: `${it.label} ${it.dialCode}` }))}
                 placeholder=""

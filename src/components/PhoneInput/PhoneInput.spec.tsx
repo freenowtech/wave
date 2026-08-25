@@ -51,6 +51,30 @@ describe('PhoneInput', () => {
         expect(screen.queryByText(/Afghanistan/)).not.toBeInTheDocument();
     });
 
+    it('should not render the selected country value when it is not part of allowedCountries', () => {
+        render(<PhoneInput country={defaultCountry} allowedCountries={['AD']} label="Phone Number" />);
+
+        expect(screen.queryByText(defaultCountry.dialCode)).not.toBeInTheDocument();
+    });
+
+    it('should not render the selected country value when it is not a valid country', () => {
+        const invalidCountry = { value: 'POTATO', label: 'Potato', dialCode: '+0' };
+        render(<PhoneInput country={invalidCountry} label="Phone Number" />);
+
+        expect(screen.queryByText('Potato')).not.toBeInTheDocument();
+        expect(screen.queryByText('+0')).not.toBeInTheDocument();
+    });
+
+    it('should warn when the selected country is not among the available options', () => {
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+        render(<PhoneInput country={defaultCountry} allowedCountries={['AD']} label="Phone Number" />);
+
+        expect(consoleErrorSpy).toHaveBeenCalledWith(expect.stringContaining('is not among the available options'));
+
+        consoleErrorSpy.mockRestore();
+    });
+
     it('should call the change handler when typing in the national number input', () => {
         const mockCountryChangeHandler = jest.fn();
         const mockTextChangeHandler = jest.fn();
