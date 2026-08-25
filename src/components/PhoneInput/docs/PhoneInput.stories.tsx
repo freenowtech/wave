@@ -69,6 +69,13 @@ export const Preselected: Story = {
     }
 };
 
+export const AllowedCountries: Story = {
+    ...Default,
+    args: {
+        allowedCountries: ['DE', 'ES', 'FR', 'GB', 'AD']
+    }
+};
+
 export const BottomLined: Story = {
     ...Default,
     args: {
