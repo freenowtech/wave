@@ -30,7 +30,7 @@ const EmptyStateLabel = styled.span`
     display: flex;
     align-items: center;
     pointer-events: none;
-    color: ${getSemanticValue('on-surface-variant')};
+    color: ${getSemanticValue('on-surface')};
 `;
 
 type TimeFieldProps = Omit<FieldProps, 'label'> &
