@@ -1,6 +1,6 @@
 {
     "name": "@freenow/wave",
-    "version": "2.49.1",
+    "version": "2.66.0",
     "description": "React components of the Wave design system for your Front-End project",
     "main": "lib/cjs/index.js",
     "typings": "lib/types/index.d.ts",
@@ -141,6 +141,7 @@
         "@internationalized/date": "^3.12.1",
         "@react-aria/interactions": "^3.28.0",
         "@react-aria/utils": "^3.34.0",
+        "@react-stately/utils": "3.11.0",
         "@styled-system/theme-get": "^5.1.2",
         "date-fns": "^4.1.0",
         "react-aria": "^3.47.0",

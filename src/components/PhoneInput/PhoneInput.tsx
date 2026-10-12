@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { styled } from 'styled-components';
+import warning from 'warning';
 import {
     compose,
     layout,
@@ -84,6 +85,19 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
     const nationalNumberInputRef = useRef<HTMLInputElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const spaceBetweenInputs = variant === 'boxed' ? '0.25rem' : '0.75rem';
+
+    const countries = props.allowedCountries
+        ? COUNTRIES.filter(it => props.allowedCountries?.includes(it.value))
+        : COUNTRIES;
+
+    // Avoid rendering a invalid option/country that isn't amongst allowedCountries
+    const selectedCountry = countries.find(it => it.value === props.country?.value) && props.country;
+
+    warning(
+        !props.country || Boolean(selectedCountry),
+        `[@freenow/wave] PhoneInput received a \`country\` ("${props.country?.value}") that is not among the ` +
+            'available options and will not be displayed. Ensure it is included in `allowedCountries`.'
+    );
 
     const handleCountrySelection = (value: unknown) => {
         if (props.onCountryChange) {

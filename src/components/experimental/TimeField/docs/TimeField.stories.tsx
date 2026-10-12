@@ -2,7 +2,7 @@ import React from 'react';
 import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 import { getLocalTimeZone, now, parseTime } from '@internationalized/date';
-import { TimeField, TimeFieldProps } from '../TimeField';
+import { TimeField, type TimeFieldProps } from '../TimeField';
 import ClockIcon from '../../../../icons/basic/ClockIcon';
 import DropdownSelectIcon from '../../../../icons/arrows/DropdownSelectIcon';
 

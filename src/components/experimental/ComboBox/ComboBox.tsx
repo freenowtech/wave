@@ -4,7 +4,7 @@ import {
     type ComboBoxProps as BaseComboBoxProps,
     ComboBoxStateContext,
     FieldError,
-    ListBoxProps
+    type ListBoxProps
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
@@ -66,7 +66,7 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
                     <Label $flying={Boolean(placeholder || (state?.inputValue?.length ?? 0) > 0)}>{label}</Label>
                     <Input placeholder={placeholder} ref={combinedInputRef} />
                 </InnerWrapper>
-                {(state?.inputValue?.length ?? 0) > 0 ? (
+                {!hideClearButton && (state?.inputValue?.length ?? 0) > 0 ? (
                     <Button
                         // Don't inherit default Button behavior from ComboBox.
                         slot={null}
@@ -78,7 +78,7 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
                     >
                         <XCrossCircleIcon />
                     </Button>
-                ) : (
+                ) : (state?.inputValue?.length ?? 0) > 0 ? null : (
                     <VisuallyHidden aria-live="polite">{ariaStrings?.messageFieldIsCleared}</VisuallyHidden>
                 )}
             </FakeInput>
