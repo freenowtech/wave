@@ -183,8 +183,7 @@ export type SemanticToken = SemanticColorToken | SemanticHslComponentsToken;
 export type SemanticColorCssVariable = SemanticColorTokenCssVariable | HslComponentsTokenCssVariable;
 
 export type ReadCssColorVariable =
-    | `var(${SemanticColorTokenCssVariable})`
-    | `var(${SemanticColorTokenCssVariable}, ${string})`;
+    `var(${SemanticColorTokenCssVariable})` | `var(${SemanticColorTokenCssVariable}, ${string})`;
 export type ReadCssVariable = `var(${SemanticColorCssVariable})` | `var(${SemanticColorCssVariable}, ${string})`;
 
 export type ComponentSemanticTokens = {

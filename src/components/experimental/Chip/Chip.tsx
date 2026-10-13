@@ -58,12 +58,10 @@ const Button = styled(BaseButton)<{ isActive: boolean }>`
     ${textStyles.variants.label1}
 `;
 
-const Chip = forwardRef<HTMLButtonElement, ChipProps>(
-    ({ children, isActive = false, ...props }, ref): ReactElement => (
-        <Button isActive={isActive} ref={ref} {...props}>
-            {children}
-        </Button>
-    )
-);
+const Chip = forwardRef<HTMLButtonElement, ChipProps>(({ children, isActive = false, ...props }, ref): ReactElement => (
+    <Button isActive={isActive} ref={ref} {...props}>
+        {children}
+    </Button>
+));
 
 export { Chip, type ChipProps };

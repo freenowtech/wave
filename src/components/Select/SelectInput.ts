@@ -53,9 +53,11 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
     if (error) {
         return css`
             border-color: ${getSemanticValue('border-danger-default')};
-            box-shadow: ${variantProp === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
-                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`};
+            box-shadow: ${
+                variantProp === 'boxed'
+                    ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
+                    : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
+            };
 
             & ~ ${SelectLabel} {
                 color: ${getSemanticValue('foreground-danger-emphasized')};
