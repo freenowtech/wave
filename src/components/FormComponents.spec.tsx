@@ -281,7 +281,10 @@ const cases: FormComponentCase[] = [
     { name: 'experimental Search', element: <ExperimentalSearch placeholder="Placeholder" /> },
     {
         name: 'experimental DatePicker',
-        element: <ExperimentalDatePicker label="Date" description="Description" errorMessage="Error" isInvalid />
+        element: <ExperimentalDatePicker label="Date" description="Description" errorMessage="Error" isInvalid />,
+        open: async () => {
+            await userEvent.click(screen.getByRole('button', { name: 'Date: open calendar' }));
+        }
     },
     {
         name: 'experimental TimeField',

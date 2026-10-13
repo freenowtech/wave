@@ -418,7 +418,8 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
                         isDisabled={legacyIsDisabled}
                         isVisuallyFocused={open}
                         leadingIcon={<CalendarTodayOutlineIcon />}
-                        value={singleSource ? dateToCalendarDate(singleSource) : undefined}
+                        // null keeps the field controlled while empty; undefined would switch it to uncontrolled
+                        value={singleSource ? dateToCalendarDate(singleSource) : null}
                         onChange={(dv: DateValue | null | undefined) => {
                             const next = dv ? calendarDateToDate(dv) : null;
                             handleSelectSingle(next);
@@ -554,7 +555,7 @@ function DatePickerImpl(props: DatePickerProps): React.JSX.Element {
                     return true;
                 }}
             >
-                <FocusTrap role="dialog">
+                <FocusTrap role="dialog" aria-label={label ?? 'Date picker'}>
                     <div id={contentId} ref={contentRef}>
                         {isSingle && (
                             <Calendar
