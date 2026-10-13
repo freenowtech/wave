@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
 
 import { PhoneInput } from './PhoneInput';
@@ -6,6 +6,8 @@ import { PhoneInput } from './PhoneInput';
 const selectOption = async (currentValueText: string, selectOptionText: string) => {
     fireEvent.keyDown(screen.getByText(currentValueText), { keyCode: 40 });
     fireEvent.click(await screen.findByText(selectOptionText));
+    // let the lazily loaded flag of the selected country finish loading
+    await act(async () => {});
 };
 
 // FIXME: These tests seems to take a very long time (more than 10s), not sure why.
@@ -52,17 +54,28 @@ describe('PhoneInput', () => {
     });
 
     it('should not render the selected country value when it is not part of allowedCountries', () => {
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
         render(<PhoneInput country={defaultCountry} allowedCountries={['AD']} label="Phone Number" />);
 
         expect(screen.queryByText(defaultCountry.dialCode)).not.toBeInTheDocument();
+        expect(consoleErrorSpy).toHaveBeenCalledWith(expect.stringContaining('is not among the available options'));
+
+        consoleErrorSpy.mockRestore();
     });
 
     it('should not render the selected country value when it is not a valid country', () => {
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
         const invalidCountry = { value: 'POTATO', label: 'Potato', dialCode: '+0' };
         render(<PhoneInput country={invalidCountry} label="Phone Number" />);
 
         expect(screen.queryByText('Potato')).not.toBeInTheDocument();
         expect(screen.queryByText('+0')).not.toBeInTheDocument();
+        expect(consoleErrorSpy).toHaveBeenCalledWith(
+            expect.stringContaining('("POTATO") that is not among the available options')
+        );
+
+        consoleErrorSpy.mockRestore();
     });
 
     it('should warn when the selected country is not among the available options', () => {
@@ -75,7 +88,7 @@ describe('PhoneInput', () => {
         consoleErrorSpy.mockRestore();
     });
 
-    it('should call the change handler when typing in the national number input', () => {
+    it('should call the change handler when typing in the national number input', async () => {
         const mockCountryChangeHandler = jest.fn();
         const mockTextChangeHandler = jest.fn();
         render(
@@ -86,6 +99,8 @@ describe('PhoneInput', () => {
                 onTextChange={mockTextChangeHandler}
             />
         );
+        // let the lazily loaded country flag finish loading
+        await act(async () => {});
 
         fireEvent.change(screen.getByLabelText('Phone Number'), { target: { value: '01722254928' } });
 

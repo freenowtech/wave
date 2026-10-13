@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { act, fireEvent, render, waitFor, screen } from '@testing-library/react';
 import { format } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { advanceTo, clear } from 'jest-date-mock';
@@ -16,8 +16,10 @@ describe('DatepickerSingleInput', () => {
         clear();
     });
 
-    it('can be disabled', () => {
+    it('can be disabled', async () => {
         const { getByRole } = render(<DatepickerSingleInput disabled />);
+        // let the date-fns locale finish loading
+        await act(async () => {});
         const input = getByRole('textbox');
         expect(input).toBeDisabled();
     });

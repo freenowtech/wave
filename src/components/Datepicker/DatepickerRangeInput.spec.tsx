@@ -34,8 +34,10 @@ describe('DatepickerRangeInput', () => {
         clear();
     });
 
-    it('can be disabled', () => {
+    it('can be disabled', async () => {
         const { getAllByRole } = render(<DatepickerRangeInput disabled />);
+        // let the date-fns locale finish loading
+        await act(async () => {});
         const inputs = getAllByRole('textbox');
         expect(inputs).toHaveLength(2);
         inputs.forEach(input => {
@@ -67,9 +69,9 @@ describe('DatepickerRangeInput', () => {
 
                 const buttons = getAllByText(day);
                 // Select the first date
-                await act(() => user.click(buttons[0]));
+                await user.click(buttons[0]);
                 // Select the second date
-                await act(() => user.click(buttons[1]));
+                await user.click(buttons[1]);
             };
 
             // initial date selection
