@@ -1,4 +1,5 @@
 import { StorybookConfig } from '@storybook/react-vite';
+import './docgen';
 
 const config: StorybookConfig = {
     stories: ['../**/*.storybook.mdx', '../src/**/*.stories.@(ts|tsx)'],

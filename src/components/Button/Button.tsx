@@ -11,6 +11,7 @@ type Variant = 'primary' | 'secondary' | 'danger';
 interface ButtonProps extends BaseButtonProps, ButtonStyleProps {
     /**
      * Define style of the button component, defaults to primary
+     * @default primary
      */
     variant?: ResponsiveValue<Variant>;
 }

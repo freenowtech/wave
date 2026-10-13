@@ -9,6 +9,7 @@ import { getSemanticValue } from '../../utils/cssVariables';
 interface LabelProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
     /**
      * Set the appropriate colors for the component with 'default' as a default
+     * @default default
      */
     variant?: ResponsiveValue<'default' | 'info' | 'success' | 'warning' | 'danger'>;
 

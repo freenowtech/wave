@@ -10,6 +10,7 @@ type Variant = 'default' | 'danger';
 interface TextButtonProps extends BaseButtonProps {
     /**
      * Define base colors
+     * @default default
      */
     variant?: ResponsiveValue<Variant>;
 }

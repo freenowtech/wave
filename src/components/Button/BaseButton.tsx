@@ -17,6 +17,7 @@ import { get } from '../../utils/themeGet';
 interface BaseButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps, WidthProps {
     /**
      * Adjusts the size of the button
+     * @default medium
      */
     size?: ResponsiveValue<'small' | 'medium'>;
 }
