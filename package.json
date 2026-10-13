@@ -61,6 +61,13 @@
         "lib/"
     ],
     "license": "Apache-2.0",
+    "devEngines": {
+        "runtime": {
+            "name": "node",
+            "version": ">=24",
+            "onFail": "error"
+        }
+    },
     "overrides": {
         "react-refresh": "0.14.2",
         "@csstools/css-tokenizer": "^3.0.4",
