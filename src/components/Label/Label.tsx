@@ -79,7 +79,7 @@ const filledVariantStyles = variant({
     }
 });
 
-const Label = styled(Text).attrs<LabelProps>({ theme, variant: 'default' })<LabelProps>`
+const Label = styled(Text).attrs<LabelProps>(({ variant = 'default' }) => ({ theme, variant }))<LabelProps>`
     display: inline-block;
     box-sizing: border-box;
     font-size: 0.625rem;

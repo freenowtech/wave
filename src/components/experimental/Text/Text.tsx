@@ -64,7 +64,7 @@ export const textStyles = {
     }
 };
 
-const Text = styled(BaseText).attrs<TextProps>({ variant: 'body1' })<TextProps>`
+const Text = styled(BaseText).attrs<TextProps>(({ variant = 'body1' }) => ({ variant }))<TextProps>`
     color: inherit;
     margin: 0;
 

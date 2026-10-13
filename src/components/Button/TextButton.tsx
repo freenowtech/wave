@@ -47,7 +47,10 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
     }
 });
 
-const TextButton = styled(BaseButton).attrs<TextButtonProps>({ size: 'medium', variant: 'default' })<TextButtonProps>`
+const TextButton = styled(BaseButton).attrs<TextButtonProps>(({ size = 'medium', variant = 'default' }) => ({
+    size,
+    variant
+}))<TextButtonProps>`
     transition:
         color 200ms,
         fill 200ms;

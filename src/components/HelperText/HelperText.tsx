@@ -25,7 +25,10 @@ const variants = variant({
     }
 });
 
-const HelperText: React.FC<HelperTextProps> = styled(Text).attrs<HelperTextProps>({ theme, variant: 'info' })`
+const HelperText: React.FC<HelperTextProps> = styled(Text).attrs<HelperTextProps>(({ variant = 'info' }) => ({
+    theme,
+    variant
+}))`
     display: block;
     font-size: ${get('fontSizes.0')};
     text-align: left;
