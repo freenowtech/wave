@@ -168,7 +168,10 @@ package is no longer installed with Wave. If your app imports it, add it to your
 
 ### TypeScript
 
-The type declarations are tested with TypeScript 6.
+The type declarations are tested with TypeScript 6, and apps on TypeScript 5.0 to 5.9 type-check too. Keep
+`skipLibCheck: true`, as most apps have it: without it, the declarations of some of Wave's dependencies (e.g.
+react-day-picker and styled-components) report errors, on TypeScript 6 as well. With `moduleResolution: "node"`, also set
+`esModuleInterop: true`.
 
 - **styled-components 6 types.** Wave's styled components are now typed with styled-components 6 types. If your code
   annotates Wave components with styled-components 5 types such as `StyledComponent`, remove the annotations.
