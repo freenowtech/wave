@@ -7,7 +7,27 @@ import { getSemanticValue } from '../../utils/cssVariables';
 const createOptions = (count: number, prefix = 'Option') =>
     Array.from({ length: count }, (_, index) => ({ label: `${prefix} ${index}`, value: `${prefix}-${index}` }));
 
+// react-select generates ids, so compare the class names of its emotion styles, which are hashes of the styles
+const styleClassNames = (element: React.ReactElement) => {
+    const { container, unmount } = render(element);
+    const classNames = [...container.querySelectorAll('[class*="css-"]')].map(node => node.getAttribute('class'));
+    unmount();
+
+    return classNames;
+};
+
 describe('SelectList', () => {
+    it('renders the boxed variant in medium size by default', () => {
+        const options = createOptions(2);
+
+        expect(styleClassNames(<SelectList options={options} />)).toEqual(
+            styleClassNames(<SelectList options={options} variant="boxed" size="medium" />)
+        );
+        expect(styleClassNames(<SelectList options={options} />)).not.toEqual(
+            styleClassNames(<SelectList options={options} size="small" />)
+        );
+    });
+
     it('renders options in multi select', () => {
         const options = [
             {

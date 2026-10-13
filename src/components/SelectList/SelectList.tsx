@@ -354,6 +354,8 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
     const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
     const { widthProps, restProps } = extractWidthProps(withoutMargin);
     const { components, isDisabled, variant = 'boxed', size = 'medium', error, label, inputId } = restProps;
+    // The styles read the variant and size from the select props, so they need the defaults too
+    const selectProps = { ...restProps, variant, size };
     const [triggerReference, setTriggerReference] = React.useState<HTMLDivElement | null>(null);
     const triggerRefCallback = (el: HTMLDivElement | null) => setTriggerReference(el);
 
@@ -382,7 +384,7 @@ const SelectList: FC<SelectListProps> = (props: SelectListProps) => {
                     MultiValueRemove,
                     ...components
                 }}
-                {...restProps}
+                {...selectProps}
             />
             {label && (
                 <Label htmlFor={id} isDisabled={isDisabled} variant={variant} size={size} error={error}>
