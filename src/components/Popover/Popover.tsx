@@ -120,7 +120,11 @@ const Popover: React.FC<PopoverProps> = ({
 
     const [render, setRender] = React.useState(openByDefault);
 
-    const { refs, floatingStyles } = useFloating({
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement
+    } = useFloating({
         placement,
         strategy: 'fixed',
         middleware: [...(offset ? [floatingOffset(offset)] : []), flip()],
@@ -248,6 +252,8 @@ const Popover: React.FC<PopoverProps> = ({
                     // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
                     ref={refs.setFloating}
                     style={{ ...floatingStyles, zIndex: 999 }}
+                    // Kept from react-popper, so consumers' CSS selectors and tests keep working
+                    data-popper-placement={currentPlacement}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
                         <PopoverContent padding={padding ?? 0}>{content}</PopoverContent>
