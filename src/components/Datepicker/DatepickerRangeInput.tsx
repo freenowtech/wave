@@ -371,6 +371,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
     const datepickerContent = (
         <DatepickerContentContainer
+            // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
             ref={refs.setFloating}
             style={floatingStyles}
             data-popper-placement={currentPlacement}

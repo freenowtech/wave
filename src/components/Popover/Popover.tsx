@@ -204,6 +204,7 @@ const Popover: React.FC<PopoverProps> = ({
     return (
         <>
             <PopoverTrigger
+                // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
                 ref={refs.setReference}
                 onClick={handleClick}
                 tabIndex={0}
@@ -244,6 +245,7 @@ const Popover: React.FC<PopoverProps> = ({
             {render && (
                 <PopoverContentContainer
                     id="popover-content"
+                    // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
                     ref={refs.setFloating}
                     style={{ ...floatingStyles, zIndex: 999 }}
                 >

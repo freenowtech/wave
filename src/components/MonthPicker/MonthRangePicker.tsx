@@ -241,6 +241,7 @@ export const MonthRangePicker: React.FC<MonthRangePickerProps> = ({
 
     const pickerContent = (
         <MonthPickerContentContainer
+            // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
             ref={refs.setFloating}
             style={floatingStyles}
             data-popper-placement={currentPlacement}

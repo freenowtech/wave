@@ -182,6 +182,7 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     };
 
     const tooltipBody = (
+        // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
         <TooltipBody ref={refs.setFloating} style={floatingStyles} variant={currentPlacement}>
             {dynamicContent}
         </TooltipBody>
