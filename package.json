@@ -64,19 +64,13 @@
     "license": "Apache-2.0",
     "overrides": {
         "react-refresh": "0.14.2",
-        "react-is": "19.2.4",
-        "wave-react-windowed-select": {
-            "react": "19.2.4",
-            "react-dom": "19.2.4",
-            "@types/react": "^19.0.0"
-        },
         "@csstools/css-tokenizer": "^3.0.4",
         "@csstools/css-parser-algorithms": "^3.0.5"
     },
     "peerDependencies": {
         "react": "^18.2.0 || ^19.0.0",
         "react-dom": "^18.2.0 || ^19.0.0",
-        "styled-components": ">4.3"
+        "styled-components": "^6.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.29.0",
@@ -97,8 +91,8 @@
         "@types/node": "^25.5.0",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
-        "@types/react-select": "^5.0.0",
         "@types/react-transition-group": "^4.2.4",
+        "@types/react-window": "^1.8.8",
         "@types/styled-system": "^5.1.25",
         "eslint": "^10.1.0",
         "eslint-config-prettier": "^10.0.0",
@@ -146,9 +140,10 @@
         "react-aria": "^3.47.0",
         "react-aria-components": "^1.16.0",
         "react-day-picker": "^9.14.0",
+        "react-select": "^5.10.2",
         "react-transition-group": "^4.3.0",
+        "react-window": "^1.8.11",
         "styled-system": "^5.1.5",
-        "warning": "^4.0.3",
-        "wave-react-windowed-select": "^1.0.0"
+        "warning": "^4.0.3"
     }
 }

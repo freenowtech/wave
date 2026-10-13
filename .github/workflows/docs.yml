@@ -23,7 +23,7 @@ jobs:
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
               with:
-                  install-command: npm ci --legacy-peer-deps
+                  install-command: npm ci
             - name: Build docs
               run: npm run build:documentation
             - uses: actions/upload-artifact@v4

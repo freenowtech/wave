@@ -26,7 +26,7 @@ jobs:
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
               with:
-                  install-command: npm ci --legacy-peer-deps
+                  install-command: npm ci
             - name: Run linter
               run: npm run lint
             - name: Run build
@@ -54,7 +54,7 @@ jobs:
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
               with:
-                  install-command: npm ci --legacy-peer-deps
+                  install-command: npm ci
             - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
               run: npm audit signatures
             - name: Run build

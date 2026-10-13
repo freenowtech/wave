@@ -8,7 +8,6 @@ import {
     type Props,
     type StylesConfig
 } from 'react-select';
-import WindowedSelect from 'wave-react-windowed-select';
 
 import { Elevation } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon, XCrossIcon } from '../../icons';
@@ -22,6 +21,7 @@ import { Label } from './components/Label';
 import { Wrapper } from './components/Wrapper';
 import { disabledStyles, errorStyles, variantStyles } from './styles';
 import { type SelectListProps } from './types';
+import { WindowedSelect } from './WindowedSelect/WindowedSelect';
 
 type WithSelectProps<T> = T & { selectProps: SelectListProps };
 
