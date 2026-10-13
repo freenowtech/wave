@@ -1,7 +1,7 @@
 import { type API, type FileInfo } from 'jscodeshift';
 import { type Options } from 'recast';
 
-const DeprecatedToValidIconsMap = {
+const DeprecatedToValidIconsMap: Record<string, string> = {
     BackwardSmallIcon: 'BackwardLastIcon',
     ChevronDownSmallIcon: 'ChevronDownIcon',
     ChevronLeftSmallIcon: 'ChevronLeftIcon',

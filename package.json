@@ -59,8 +59,7 @@
         "url": "https://github.com/freenowtech/wave.git"
     },
     "files": [
-        "lib/",
-        "codemods/"
+        "lib/"
     ],
     "license": "Apache-2.0",
     "overrides": {

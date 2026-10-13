@@ -1,7 +1,7 @@
 import { type API, type ASTPath, type FileInfo, type StringLiteral } from 'jscodeshift';
 import { type Options } from 'recast';
 
-const DeprecatedToValidPlacementsMap = {
+const DeprecatedToValidPlacementsMap: Record<string, string> = {
     'bottom-left': 'bottom-start',
     'bottom-center': 'bottom',
     'bottom-right': 'bottom-end',
@@ -14,19 +14,19 @@ const DeprecatedToValidPlacementsMap = {
 
 const DeprecatedPlacements = Array.from(Object.keys(DeprecatedToValidPlacementsMap));
 
-module.exports = (file: FileInfo, api: API, options: Options) => {
+export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
     const ast = j(file.source);
     const printOptions = options ?? { quote: 'single' };
 
-    const localTooltipNames = [];
+    const localTooltipNames: string[] = [];
 
     // Find Wave Tooltip imports and store the local names
     ast.find(j.ImportDeclaration, decl => decl.source.value === '@freenow/wave').forEach(decl => {
         j(decl)
             .find(j.ImportSpecifier)
             .forEach(spec => {
-                if (spec.node.imported.name === 'Tooltip') localTooltipNames.push(spec.node.local.name);
+                if (spec.node.imported.name === 'Tooltip') localTooltipNames.push(spec.node.local?.name as string);
             });
     });
 
@@ -36,7 +36,7 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
     ast.find(j.JSXElement, {
         openingElement: {
             name: {
-                name: name => localTooltipNames.includes(name)
+                name: (name: string) => localTooltipNames.includes(name)
             }
         }
     }).forEach(el => {

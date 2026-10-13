@@ -11,7 +11,7 @@ import {
 } from 'jscodeshift';
 import { type Options } from 'recast';
 
-const DeprecatedSemanticColorsToSemanticTokensMap = {
+const DeprecatedSemanticColorsToSemanticTokensMap: Record<string, string> = {
     'text.primary': 'foreground-primary',
     'text.primaryInverted': 'foreground-on-background-primary',
     'text.secondary': 'foreground-neutral-emphasized',
@@ -330,7 +330,7 @@ export default (file: FileInfo, api: API, options: Options) => {
 
     // Add an import for `getSemanticValue`
     const importDeclaration: ImportDeclaration = waveImports.get(0).node;
-    importDeclaration.specifiers.push(j.importSpecifier(j.identifier(SEMANTIC_VALUE_GETTER_NAME)));
+    (importDeclaration.specifiers ??= []).push(j.importSpecifier(j.identifier(SEMANTIC_VALUE_GETTER_NAME)));
 
     // Remove the SemanticColors import
     colorsImports.remove();

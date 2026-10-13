@@ -1,12 +1,12 @@
 import { type API, type FileInfo } from 'jscodeshift';
 import { type Options } from 'recast';
 
-module.exports = (file: FileInfo, api: API, options: Options) => {
+export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
     const ast = j(file.source);
     const printOptions = options ?? { quote: 'single' };
 
-    const localButtonNames = [];
+    const localButtonNames: string[] = [];
 
     // Node representing the `width="100%"` prop
     const fullWidthProp = {
@@ -25,7 +25,7 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
             .forEach(spec => {
                 // Keep a copy of the local rename of Button and TextButton named imports
                 if (spec.node.imported.name === 'Button' || spec.node.imported.name === 'TextButton') {
-                    localButtonNames.push(spec.node.local.name);
+                    localButtonNames.push(spec.node.local?.name as string);
                 }
             });
     });
@@ -34,10 +34,10 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
     const buttonsWithBlockProp = ast.find(j.JSXElement, {
         openingElement: {
             name: {
-                name: name => localButtonNames.includes(name)
+                name: (name: string) => localButtonNames.includes(name)
             },
             attributes: attributes =>
-                attributes.some(attr => attr.type === 'JSXAttribute' && attr.name.name === 'block')
+                attributes?.some(attr => attr.type === 'JSXAttribute' && attr.name.name === 'block') ?? false
         }
     });
 

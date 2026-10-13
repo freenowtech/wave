@@ -69,7 +69,7 @@ export default (file: FileInfo, api: API, options: Options) => {
         openingElement: {
             // Find the inverted prop
             attributes: attributes =>
-                attributes.some(attr => attr.type === 'JSXAttribute' && attr.name.name === 'inverted')
+                attributes?.some(attr => attr.type === 'JSXAttribute' && attr.name.name === 'inverted') ?? false
         }
     });
 
@@ -117,7 +117,7 @@ export default (file: FileInfo, api: API, options: Options) => {
     // Add wrapper import
     if (shouldAddWrapperImport && waveImports.size() > 0) {
         const importDeclaration: ImportDeclaration = waveImports.get(0).node;
-        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(WRAPPER_COMPONENT_NAME)));
+        (importDeclaration.specifiers ??= []).push(j.importSpecifier(j.identifier(WRAPPER_COMPONENT_NAME)));
     }
 
     return ast.toSource(printOptions);

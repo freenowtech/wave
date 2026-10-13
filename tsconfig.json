@@ -14,5 +14,5 @@
         "skipDefaultLibCheck": true
     },
     "include": ["src/**/*"],
-    "exclude": ["src/**/docs", "**/node_modules", "src/codemods"]
+    "exclude": ["src/**/docs", "**/node_modules", "src/codemods/__*"]
 }

@@ -11,7 +11,7 @@ import {
 } from 'jscodeshift';
 import { type Options } from 'recast';
 
-const ColorsToCssVariablesMap = {
+const ColorsToCssVariablesMap: Record<string, string> = {
     WHITE: 'var(--wave-b-color-white)',
     BLACK: 'var(--wave-b-color-black)',
     AUTHENTIC_BLUE_1100: 'var(--wave-b-color-blue-primary-1100)',
@@ -118,21 +118,21 @@ const addLeadingDisableEslintComment = (j: JSCodeshift, node: Node): void => {
     node.comments = [comment];
 };
 
-const findLinesWhereNodesStart = (nodes: Collection<Node>) => {
+const findLinesWhereNodesStart = <T extends Node>(nodes: Collection<T>) => {
     const uniqueStartLines = new Set<number>();
 
     nodes.forEach(path => {
         // Add the start line number to a set so they are unique
-        if (path.node.loc.start.line) uniqueStartLines.add(path.node.loc.start.line);
+        if (path.node.loc?.start.line) uniqueStartLines.add(path.node.loc.start.line);
     });
 
     return uniqueStartLines;
 };
 
-const findPathsOnNodesStartLines = (
+const findPathsOnNodesStartLines = <T extends Node>(
     ast: Collection<any>,
     j: JSCodeshift,
-    nodes: Collection<Node>
+    nodes: Collection<T>
 ): Map<number, ASTPath<Node>[]> => {
     const uniqueStartLines = findLinesWhereNodesStart(nodes);
 
@@ -150,22 +150,28 @@ const findPathsOnNodesStartLines = (
 
     // Iterate all paths and store them based on their line
     pathsForLines.forEach(path => {
-        const line = path.node.loc.start.line;
-        if (pathsPerLine.get(line)) pathsPerLine.get(line).push(path);
+        if (!path.node.loc) return;
+        const { line } = path.node.loc.start;
+        const linePaths = pathsPerLine.get(line);
+        if (linePaths) linePaths.push(path);
         else pathsPerLine.set(line, [path]);
     });
 
     return pathsPerLine;
 };
 
-const addLeadingDisableEslintCommentToNodes = (ast: Collection<any>, j: JSCodeshift, nodes: Collection<Node>) => {
+const addLeadingDisableEslintCommentToNodes = <T extends Node>(
+    ast: Collection<any>,
+    j: JSCodeshift,
+    nodes: Collection<T>
+) => {
     // Find the paths on each line where the nodes are being used
     const lineNumberToPathsMap = findPathsOnNodesStartLines(ast, j, nodes);
 
     lineNumberToPathsMap.forEach(paths => {
         // Find the first path for each line
         const firstPath = paths.reduce((accum, curr) => {
-            if (curr.node.loc.start.column < accum.node.loc.start.column) return curr;
+            if ((curr.node.loc?.start.column ?? 0) < (accum.node.loc?.start.column ?? 0)) return curr;
             return accum;
         });
 
@@ -251,7 +257,7 @@ export default (file: FileInfo, api: API, options: Options) => {
     // If Colors is used as a type add the import for the new css colors type
     if (usagesAsTypes.size() > 0) {
         const importDeclaration: ImportDeclaration = waveImports.get(0).node;
-        importDeclaration.specifiers.push(j.importSpecifier(j.identifier(CSS_VARS_COLORS_TYPE_NAME)));
+        (importDeclaration.specifiers ??= []).push(j.importSpecifier(j.identifier(CSS_VARS_COLORS_TYPE_NAME)));
     }
 
     return ast.toSource(printOptions);
