@@ -46,7 +46,6 @@
         "test:codemods": "jest codemods",
         "lint": "npm run lint:eslint",
         "lint:eslint": "eslint .",
-        "husky:commitMsg": "commitlint -E HUSKY_GIT_PARAMS",
         "husky:precommit": "npm run lint:eslint -- --fix && npm run prettier",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
@@ -73,7 +72,6 @@
         "styled-components": "^6.0.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.29.0",
         "@commitlint/cli": "^21.2.3",
         "@commitlint/config-conventional": "^21.2.3",
         "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
