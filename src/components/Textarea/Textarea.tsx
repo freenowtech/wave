@@ -40,9 +40,9 @@ const TextAreaWrapper: FC<WrapperProps> = styled.div.withConfig({ shouldForwardP
     ${compose(margin, height, width)}
 `;
 
-const TextareaField: FC<TextAreaProps & Pick<InternalInputProps, 'hasValue'>> = styled(BoxedInput).attrs({
-    as: 'textarea'
-})<TextAreaProps>`
+const TextareaField: FC<TextAreaProps & Pick<InternalInputProps, 'hasValue'>> = styled(BoxedInput).attrs<TextAreaProps>(
+    { as: 'textarea' }
+)<TextAreaProps>`
     height: 100%;
     padding: 0.75rem;
     overflow: auto;

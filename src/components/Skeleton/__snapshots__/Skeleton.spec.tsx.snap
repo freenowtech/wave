@@ -21,8 +21,14 @@ exports[`Skeleton should render animated version 1`] = `
   background-image: linear-gradient(             90deg,             rgba(255, 255, 255, 0) 25%,             rgba(255, 255, 255, 0.5) 37%,             rgba(255, 255, 255, 0) 63%         );
   background-repeat: no-repeat;
   content: '';
-  animation: ctGIgz 1600ms ease infinite;
+  animation: k0 1600ms ease infinite;
   animation-delay: 200ms;
+}
+
+@keyframes k0 {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 <span
