@@ -33,8 +33,8 @@
     "scripts": {
         "clean": "rm -rf lib",
         "build": "npm run clean && npm run build:cjs && npm run build:esm",
-        "build:cjs": "tsc --target es2015 --module commonjs --outDir lib/cjs",
-        "build:esm": "tsc --target es6 --module esnext --outDir lib/esm",
+        "build:cjs": "tsc -p tsconfig.build.json --target es2015 --module commonjs --outDir lib/cjs",
+        "build:esm": "tsc -p tsconfig.build.json --target es6 --module esnext --outDir lib/esm",
         "build:documentation": "storybook build",
         "generate": "npm run generate:icons",
         "generate:icons": "node ./scripts/generate-icons assets/icons -r -o src/icons --exclude-color-prop **/brands/** **/flags/** --exclude-suffix **/flags/**",
