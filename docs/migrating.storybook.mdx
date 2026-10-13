@@ -11,7 +11,7 @@ import { PlacementMappingsTable } from './components/migration/PlacementMappings
 
 Prerequisites:
 
-- your project must use React@18;
+- your project must use React 18.2 or newer (Wave 2 supports React 18 only, [Wave 3](?path=/docs/migration-to-v3--docs) also supports React 19);
 - React is mounted to the DOM using the [new `createRoot` API](https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis).
 
 ## 1️⃣ Connect Classic colors
@@ -91,6 +91,7 @@ Consider adding a task to your backlog, and disable the dark scheme by adding th
 In case you cannot access the `body` directly (e.g. NextJS projects) Wave exposes the `enforceSchemeOnElement` utility to programmatically enforce a color scheme for an element.
 
 ```tsx
+import { useEffect } from 'react';
 import { enforceSchemeOnElement } from '@freenow/wave';
 
 export const App = () => {
@@ -99,7 +100,7 @@ export const App = () => {
         if (body) enforceSchemeOnElement('light-scheme', body);
     }, []);
 
-    return {/* YOUR APP */};
+    return <YourApp />;
 };
 ```
 
@@ -151,7 +152,7 @@ Now you can easily switch to the `ModernColors` theme if your project requires r
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import { ModernColors } from '@freenow/wave'; // blue primary color
+import { ModernColors } from '@freenow/wave'; // maroon primary color
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -279,7 +280,8 @@ DOM gets too deep. Ideally when you have Wave components using the `inverted` pr
 
 In a previous minor release we swapped our positioning engine from `react-tether` to `react-popper`, this came with changes in the placement options
 of the engine, but to not introduce breaking changes we kept supporting the previous `react-tether` options as well. From now on you need to use the new
-`react-popper` options. This change only affects the `Tooltip` component `placement` prop.
+options. They are the placement names of `react-popper` and of [Floating UI](https://floating-ui.com/), which replaced `react-popper` in Wave 3.
+This change only affects the `Tooltip` component `placement` prop.
 
 The mapping from old values to new:
 

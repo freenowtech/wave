@@ -18,6 +18,7 @@ import { ArrowRightIcon, WarningIcon as AlertIcon, PenIcon } from '../src/icons/
 import { Box } from '../src/components/Box/Box';
 import { Button } from '../src/components/Button/Button';
 import { Card } from '../src/components/Card/Card';
+import { DarkScheme } from '../src/components/ColorScheme';
 import { Headline } from '../src/components/Headline/Headline';
 import { Text } from '../src/components/Text/Text';
 import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
@@ -259,7 +260,7 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
           <Box mt='24px' display='flex' justifyContent='space-between'>
             {/* This link has limited access only for FREENOW employees at the moment, but could link in the future to a publicly accessible Figma UI Kit (as library itself is open-source as well, it would make sense imo) */}
             <a href='https://www.figma.com/files/934505907400252834/project/25370412/WAVE-DS' target='_blank'>
-              <Button size='small' variant='secondary' inverted><PenIcon size={18} /> &nbsp; Go to Figma library</Button>
+              <DarkScheme><Button size='small' variant='secondary'><PenIcon size={18} /> &nbsp; Go to Figma library</Button></DarkScheme>
             </a>
 
             <img height='32px' src={FigmaLogo} alt='figma-logo-with-text' />
@@ -278,7 +279,7 @@ import { InfoBanner } from '../src/components/InfoBanner/InfoBanner';
 
           <Box mt='24px' display='flex' justifyContent='space-between'>
             <a href='https://github.com/freenowtech/wave/issues/new/choose' target='_blank'>
-              <Button size='small' variant='secondary' inverted><AlertIcon size={18} /> &nbsp; Report a bug</Button>
+              <DarkScheme><Button size='small' variant='secondary'><AlertIcon size={18} /> &nbsp; Report a bug</Button></DarkScheme>
             </a>
 
             <a href='https://github.com/freenowtech/wave' target='_blank'>

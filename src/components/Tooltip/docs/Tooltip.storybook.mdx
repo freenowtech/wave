@@ -38,8 +38,8 @@ Use the tooltip for user on-boarding, guiding information about a new feature, d
 
 It is possible to adjust the position of the tooltip connection to the target with the `placement` prop. Below is a list
 of possible options which are represented in the square next to it. It is important to keep in mind that the tooltip
-will be moved to a different position if it cannot be shown on the desired side due to screen sizes. Read more about the
-Popper library [here](https://popper.js.org/).
+will be moved to a different position if it cannot be shown on the desired side due to screen sizes. The positioning is
+done by the [Floating UI](https://floating-ui.com/) library.
 
 <Unstyled>
     <TooltipPlacementExample />
@@ -48,8 +48,9 @@ Popper library [here](https://popper.js.org/).
 ## Technical Usage
 
 For the Tooltip to work properly, it needs to have a single child component to bind the mouse-enter and -leave events to.
-The library `react-popper` which is used internally works with setting a `ref` to the child. To avoid complications, make
-sure the child component supports the `ref` property.
+The Tooltip positions itself by setting a `ref` on the child, so make sure the child component passes the `ref` on to a
+DOM element. On React 18 this requires `forwardRef`; on React 19 a function component can also receive `ref` as a
+regular prop.
 
 ```jsx
 const CustomComponent = React.forwardRef((props, ref) => (
