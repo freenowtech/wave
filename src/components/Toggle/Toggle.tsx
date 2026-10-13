@@ -1,4 +1,4 @@
-import React, { type ComponentPropsWithoutRef, type FC, type ReactNode, type Ref } from 'react';
+import React, { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from 'react';
 import { styled } from 'styled-components';
 import { type MarginProps } from 'styled-system';
 
@@ -8,11 +8,7 @@ import { Input } from './Input';
 import { Label } from './Label';
 import { Slide } from './Slide';
 
-type ToggleHtmlInputProps = ComponentPropsWithoutRef<'input'> & {
-    ref?: Ref<HTMLInputElement>;
-};
-
-interface ToggleProps extends ToggleHtmlInputProps, ClassNameProps, MarginProps {
+interface ToggleProps extends ComponentPropsWithoutRef<'input'>, ClassNameProps, MarginProps {
     /**
      * Provide a label for the input which will be shown next to the toggle
      */
@@ -28,7 +24,7 @@ const SlideWrapper = styled.span`
     align-items: center;
 `;
 
-const Toggle: FC<ToggleProps> = props => {
+const Toggle = forwardRef<HTMLInputElement, ToggleProps>((props, ref) => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
     const { disabled, error, label, ...rest } = restProps;
@@ -41,12 +37,12 @@ const Toggle: FC<ToggleProps> = props => {
     return (
         <Label disabled={disabled} {...classNameProps} {...marginProps}>
             <SlideWrapper>
-                <Input disabled={disabled} error={error} {...rest} type="checkbox" />
+                <Input disabled={disabled} error={error} {...rest} ref={ref} type="checkbox" />
                 <Slide disabled={disabled} error={error} />
             </SlideWrapper>
             {dynamicLabel}
         </Label>
     );
-};
+});
 
 export { Toggle, type ToggleProps };
