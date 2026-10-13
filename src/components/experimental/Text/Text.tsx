@@ -67,7 +67,10 @@ export const textStyles = {
     }
 };
 
-const Text = styled(BaseText).attrs<TextProps>(({ variant = 'body1' }) => ({ variant }))<TextProps>`
+// react-aria's Text, and the element given as `as`, would put `variant` on the DOM
+const Text = styled(BaseText)
+    .withConfig({ shouldForwardProp: prop => prop !== 'variant' })
+    .attrs<TextProps>(({ variant = 'body1' }) => ({ variant }))<TextProps>`
     color: inherit;
     margin: 0;
 

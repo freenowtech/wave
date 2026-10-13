@@ -14,4 +14,14 @@ describe('Experimental Text', () => {
 
         expect(screen.getByText('Content')).toHaveStyleRule('font-size', textStyles.variants.headline.fontSize);
     });
+
+    it.each([undefined, 'p'] as const)('keeps the variant off the DOM with as=%s', as => {
+        render(
+            <Text variant="headline" as={as}>
+                Content
+            </Text>
+        );
+
+        expect(screen.getByText('Content')).not.toHaveAttribute('variant');
+    });
 });

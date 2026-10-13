@@ -304,5 +304,8 @@ describe('Form components', () => {
         }
 
         expect(container.firstChild).toBeInTheDocument();
+        // React doesn't warn about unknown lowercase attributes, so look for Wave's `variant` prop in the DOM (popovers
+        // render into the body)
+        expect(document.body.querySelector('[variant]')).toBeNull();
     });
 });
