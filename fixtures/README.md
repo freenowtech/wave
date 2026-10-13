@@ -8,10 +8,13 @@ The fixtures check the library the way consumers get it: as the packed tarball (
 | `react-18` | React 18.3, styled-components 6, TypeScript 6, Vite |
 | `react-19` | React 19, styled-components 6, TypeScript 6, Vite   |
 
-Both apps run the same sources from `shared/`, which the script copies into each app's `src/`. For every app the script:
+Both apps run the same sources from `shared/`. The script copies each app and the sources into a temporary directory
+outside the repository, so the app can't resolve packages from the repository's `node_modules`. For every app the
+script:
 
 1. installs the tarball with strict peer dependency checks and no lockfile, like a new consumer would,
-2. type-checks the app against the published type declarations (`tsc --noEmit`),
+2. type-checks the app against the published type declarations (`tsc --noEmit`). `shared/types.tsx` makes this fail
+   when Wave's props lose their types, e.g. because a type dependency is missing from the package,
 3. builds it for the browser (`vite build`),
 4. builds a server bundle and runs it with Node, which renders the app with `renderToString` and fails on any console
    error or warning (e.g. a prop leaking to the DOM).

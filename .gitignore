@@ -14,7 +14,3 @@ storybook-static/
 node_modules/
 lib/
 dist/
-
-# consumer fixtures (sources are copied from fixtures/shared)
-fixtures/*/src/
-dist-ssr/

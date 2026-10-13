@@ -12,7 +12,10 @@ if [ "${1:-}" != "--skip-build" ]; then
 fi
 
 tarball="$root_dir/$(npm pack --silent | tail -1)"
-trap 'rm -f "$tarball"' EXIT
+# The apps run outside the repository: inside it, Node, TypeScript and Vite would also resolve packages from the
+# repository's node_modules and hide dependencies missing from the package
+work_dir="$(mktemp -d)"
+trap 'rm -rf "$tarball" "$work_dir"' EXIT
 
 for app in fixtures/*/; do
     if [ ! -f "$app/package.json" ]; then
@@ -21,12 +24,15 @@ for app in fixtures/*/; do
 
     echo "Running fixture $app"
 
+    app_dir="$work_dir/$(basename "$app")"
+    mkdir "$app_dir"
+    find "$app" -mindepth 1 -maxdepth 1 ! -name node_modules ! -name src ! -name dist ! -name dist-ssr \
+        -exec cp -R {} "$app_dir/" \;
     # Every app runs the same sources from fixtures/shared
-    rm -rf "$app/src" "$app/dist" "$app/dist-ssr" "$app/node_modules/@freenow"
-    cp -R fixtures/shared "$app/src"
+    cp -R fixtures/shared "$app_dir/src"
 
     (
-        cd "$app"
+        cd "$app_dir"
         # No lockfile: install what a new consumer would get today, with strict peer dependency checks
         npm install --no-save --no-package-lock --no-audit --no-fund "$tarball"
         npm test
