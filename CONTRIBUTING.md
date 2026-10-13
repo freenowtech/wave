@@ -86,9 +86,9 @@ the test.
 
 #### Consumer fixtures
 
-`npm run test:fixture` packs the library and installs it into a React 18 app and a React 19 app (see
-[`fixtures/`](./fixtures/README.md)). Each app type-checks, builds and server-renders a few components, the way
-consumers use Wave. The CI runs them on every push. Run them locally when you change the build, the `package.json` or a
+`npm run test:fixture` packs the library and installs it into a React 18 app and a React 19 app, which type-check,
+build and server-render a few components with Vite, and into a webpack app, which bundles them (see
+[`fixtures/`](./fixtures/README.md)). That is how consumers use Wave. The CI runs them on every push. Run them locally when you change the build, the `package.json` or a
 dependency.
 
 ### Code style
