@@ -4,6 +4,7 @@ import {
     TextField as BaseTextField,
     type TextFieldProps as BaseTextFieldProps
 } from 'react-aria-components';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
 import { get } from '../../../utils/experimental/themeGet';
@@ -53,7 +54,7 @@ const BottomLine = styled(Footer)`
     gap: ${get('space.2')};
 `;
 
-const Counter = styled.span`
+const Counter = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     grid-area: counter;
 `;
 

@@ -46,7 +46,7 @@ const Wrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs(
     ${compose(margin, width)}
 `;
 
-const NavButton = styled.button`
+const NavButton = styled.button.withConfig({ shouldForwardProp: isPropValid })`
     background: none;
     border: none;
     cursor: pointer;
@@ -57,7 +57,7 @@ const NavButton = styled.button`
     position: absolute;
 `;
 
-const YearGridContainer = styled.div`
+const YearGridContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     grid-template-columns: repeat(2, 17.5625rem);
     grid-gap: 0 1.5rem;

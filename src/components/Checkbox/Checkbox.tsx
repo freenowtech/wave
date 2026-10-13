@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type FC, type ReactNode, useEffect } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { type MarginProps, type ResponsiveValue } from 'styled-system';
 
@@ -32,7 +33,9 @@ interface CheckboxProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>,
     indeterminate?: boolean;
 }
 
-const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
+const WithTapAreaWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<
+    Pick<CheckboxProps, 'textVerticalAlign'>
+>`
     position: relative;
     display: inline-flex;
     align-items: center;

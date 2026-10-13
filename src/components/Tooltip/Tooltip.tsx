@@ -1,4 +1,5 @@
 import * as React from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled, keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
 import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/react';
@@ -86,7 +87,7 @@ interface TooltipBodyProps {
     variant: string;
 }
 
-const TooltipBody = styled.div<TooltipBodyProps>`
+const TooltipBody = styled.div.withConfig({ shouldForwardProp: isPropValid })<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
     background-color: ${getSemanticValue('background-backdrop')};

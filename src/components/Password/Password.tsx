@@ -1,4 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
@@ -14,7 +15,7 @@ import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 import { extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 
 type WrapperProps = MarginProps & WidthProps;
-const PasswordWrapper = styled.div<WrapperProps>`
+const PasswordWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<WrapperProps>`
     display: inline-block;
     position: relative;
     box-sizing: border-box;

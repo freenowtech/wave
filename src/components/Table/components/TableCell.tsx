@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { TableContext } from '../context/TableContext';
@@ -9,7 +10,7 @@ type TableCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     TextAlignProps &
     LayoutProps;
 
-const TableCellElement = styled.td<TableCellProps>`
+const TableCellElement = styled.td.withConfig({ shouldForwardProp: isPropValid })<TableCellProps>`
     height: ${p => p.rowSize};
     padding: 0 calc(${p => p.columnSpace} / 2);
     vertical-align: middle;

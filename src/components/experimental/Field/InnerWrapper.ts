@@ -1,6 +1,7 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 
-export const InnerWrapper = styled.div<{ hideLabel?: boolean }>`
+export const InnerWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<{ hideLabel?: boolean }>`
     position: relative;
     overflow: hidden;
 

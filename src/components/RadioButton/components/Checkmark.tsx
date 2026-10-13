@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
@@ -5,7 +6,7 @@ interface CheckmarkProps {
     error?: boolean;
 }
 
-const Checkmark = styled.input<CheckmarkProps>`
+const Checkmark = styled.input.withConfig({ shouldForwardProp: isPropValid })<CheckmarkProps>`
     appearance: none;
     outline: none;
     border: 0;

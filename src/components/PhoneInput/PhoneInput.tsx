@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import warning from 'warning';
 import {
@@ -69,7 +70,7 @@ interface PhoneInputProps
     allowedCountries?: ReadonlyArray<string>;
 }
 
-const Box = styled.div<LayoutProps & WidthProps>`
+const Box = styled.div.withConfig({ shouldForwardProp: isPropValid })<LayoutProps & WidthProps>`
     ${compose(layout, widthFn, marginFn)}
 `;
 

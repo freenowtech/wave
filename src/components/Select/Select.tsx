@@ -29,7 +29,7 @@ const SelectWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).
     ${compose(margin, width)}
 `;
 
-const IconNode = styled.div`
+const IconNode = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     bottom: 0;
     display: flex;
     flex-direction: column;

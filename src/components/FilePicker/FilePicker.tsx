@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type FC, type MouseEventHandler, useRef, useState } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled, css } from 'styled-components';
 import { type MarginProps } from 'styled-system';
 import { MediaQueries } from '../../essentials';
@@ -116,7 +117,7 @@ const Outliner = styled(Box)<OutlinerProps>`
         `}
 `;
 
-const Input = styled.input`
+const Input = styled.input.withConfig({ shouldForwardProp: isPropValid })`
     height: 100%;
     left: 0;
     opacity: 0;

@@ -19,7 +19,7 @@ interface BreadcrumbsProps extends MarginProps {
     children: ReactNode;
 }
 
-const BreadcrumbsList = styled.ul`
+const BreadcrumbsList = styled.ul.withConfig({ shouldForwardProp: isPropValid })`
     padding: 0;
     list-style: none;
     display: flex;
@@ -31,7 +31,7 @@ const BreadcrumbsList = styled.ul`
     }
 `;
 
-const BreadcrumbsListItem = styled.li`
+const BreadcrumbsListItem = styled.li.withConfig({ shouldForwardProp: isPropValid })`
     display: flex;
 `;
 

@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { Slide } from './Slide';
 
@@ -6,7 +7,7 @@ interface InputProps {
     error?: boolean;
 }
 
-const Input = styled.input<InputProps>`
+const Input = styled.input.withConfig({ shouldForwardProp: isPropValid })<InputProps>`
     height: 0;
     width: 0;
     margin: 0;

@@ -1,4 +1,5 @@
 import React from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { type TimeValue } from 'react-aria';
 import {
@@ -19,7 +20,7 @@ import { Wrapper } from '../Field/Wrapper';
 import { type FieldProps } from '../Field/Props';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
-const TimeInputWrapper = styled.div`
+const TimeInputWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     position: relative;
 `;
 
@@ -27,7 +28,7 @@ const StyledDateInput = styled(DateInput)<{ $isHidden?: boolean }>`
     ${props => props.$isHidden && 'opacity: 0;'}
 `;
 
-const EmptyStateLabel = styled.span`
+const EmptyStateLabel = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     ${fieldTextStyles}
     position: absolute;
     inset: 0;

@@ -1,10 +1,11 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 const ANIMATION_DURATION = 100;
 
-const SelectLabel = styled.label`
+const SelectLabel = styled.label.withConfig({ shouldForwardProp: isPropValid })`
     position: absolute;
     pointer-events: none;
     line-height: 1;

@@ -8,6 +8,7 @@ import {
     type ColumnProps,
     type RowProps
 } from 'react-aria-components';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
@@ -95,7 +96,7 @@ const Row = styled(BaseRow as React.ComponentType<RowProps<Record<string, unknow
     }
 ` as typeof BaseRow;
 
-const Skeleton = styled.div`
+const Skeleton = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     height: 1rem;
     border-radius: ${get('radii.2')};
     background: ${getSemanticValue('surface-variant')};

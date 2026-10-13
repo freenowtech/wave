@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { variant } from 'styled-system';
 import React, { type ComponentPropsWithoutRef, type ReactElement } from 'react';
@@ -32,7 +33,7 @@ const variantStyles = variant({
     }
 });
 
-const StyledLabel = styled.span<{ $type: LabelType }>`
+const StyledLabel = styled.span.withConfig({ shouldForwardProp: isPropValid })<{ $type: LabelType }>`
     display: inline-flex;
     box-sizing: border-box;
     border-radius: ${get('radii.2')};

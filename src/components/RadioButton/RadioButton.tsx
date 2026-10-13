@@ -1,4 +1,5 @@
 import React, { type FC, type ReactNode } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 
 import { extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
@@ -9,7 +10,9 @@ import { LabelWrapper } from './components/LabelWrapper';
 import { TapArea } from './components/TapArea';
 import { type RadioButtonProps } from './RadioButtonProps';
 
-const WithTapAreaWrapper = styled.div<Pick<RadioButtonProps, 'textVerticalAlign'>>`
+const WithTapAreaWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<
+    Pick<RadioButtonProps, 'textVerticalAlign'>
+>`
     width: 1rem;
     position: relative;
     display: inline-flex;

@@ -1,5 +1,6 @@
 import React, { type FC } from 'react';
 import { useMonth, type FirstDayOfWeek } from '@datepicker-react/hooks';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { format } from 'date-fns';
 
@@ -7,14 +8,14 @@ import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
 import { Day } from './Day';
 
-const Weekdays = styled.div`
+const Weekdays = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     justify-content: center;
     margin-bottom: 0.25rem;
 `;
 
-const DaysContainer = styled.div`
+const DaysContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     grid-template-columns: repeat(7, auto);
     justify-content: center;

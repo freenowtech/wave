@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled, css } from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 import { get } from '../../../utils/experimental/themeGet';
@@ -14,7 +15,7 @@ const focusStyles = css`
     }
 `;
 
-export const FakeInput = styled.div<{ $isVisuallyFocused: boolean }>`
+export const FakeInput = styled.div.withConfig({ shouldForwardProp: isPropValid })<{ $isVisuallyFocused: boolean }>`
     box-sizing: border-box;
     cursor: text;
 

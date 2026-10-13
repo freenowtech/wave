@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 
@@ -6,7 +7,7 @@ import { get } from '../../../utils/themeGet';
 
 type WrapperProps = ClassNameProps & MarginProps & WidthProps;
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<WrapperProps>`
     position: relative;
     font-family: ${get('fonts.normal')};
 

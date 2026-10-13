@@ -72,7 +72,7 @@ const DateArrow = styled(ChevronRightIcon)`
     z-index: 1;
 `;
 
-const StartDateFocusedBlock = styled.div`
+const StartDateFocusedBlock = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
@@ -82,7 +82,7 @@ const StartDateFocusedBlock = styled.div`
     left: 0.75rem;
 `;
 
-const EndDateFocusedBlock = styled.div`
+const EndDateFocusedBlock = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);

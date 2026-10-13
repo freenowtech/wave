@@ -44,11 +44,11 @@ const DefaultPopoverWrapper = styled.div.withConfig({ shouldForwardProp: isPropV
     }
 `;
 
-const PopoverContentContainer = styled.div<PopoverRefObjectProps>`
+const PopoverContentContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })<PopoverRefObjectProps>`
     display: inline-block;
 `;
 
-const PopoverContentWrapper = styled.div`
+const PopoverContentWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: inline-block;
     box-sizing: border-box;
     width: auto;

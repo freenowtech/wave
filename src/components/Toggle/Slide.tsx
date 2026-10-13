@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { getSemanticValue } from '../../utils/cssVariables';
 
@@ -18,7 +19,7 @@ interface SlideProps {
     error?: boolean;
 }
 
-const Slide = styled.div<SlideProps>`
+const Slide = styled.div.withConfig({ shouldForwardProp: isPropValid })<SlideProps>`
     width: 2.25rem;
     height: 1rem;
 

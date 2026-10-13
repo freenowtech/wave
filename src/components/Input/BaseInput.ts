@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { compose, variant, width } from 'styled-system';
 import { get } from '../../utils/themeGet';
@@ -42,7 +43,7 @@ const inputVariants = variant({
     }
 });
 
-const BaseInput = styled.input<InputProps>`
+const BaseInput = styled.input.withConfig({ shouldForwardProp: isPropValid })<InputProps>`
     margin: 0;
     box-sizing: border-box;
     background: ${getSemanticValue('background-page-default')};

@@ -1,3 +1,4 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { Button as BaseButton } from '../Field/Button';
 
@@ -22,13 +23,13 @@ export const ChipRemoveButton = styled(BaseButton)`
     }
 `;
 
-export const Chips = styled.div`
+export const Chips = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.5rem;
 `;
-export const Chip = styled.span`
+export const Chip = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;

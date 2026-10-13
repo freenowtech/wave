@@ -28,7 +28,7 @@ interface LinkProps extends ComponentPropsWithoutRef<'a'> {
 
 const DEFAULT_ACTIVE_CLASS_NAME = 'active';
 
-const UnderLine = styled.div`
+const UnderLine = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background-color: transparent;
     height: 0.1875rem;
     margin-top: ${Spaces[1]};

@@ -1,4 +1,5 @@
 import React from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled, keyframes } from 'styled-components';
 import { compose, variant } from 'styled-system';
 import SpinnerIcon from '../../../icons/experimental/SpinnerIcon';
@@ -39,7 +40,7 @@ const rotation = keyframes`
     }
 `;
 
-const Wrapper = styled.span<InlineSpinnerProps>`
+const Wrapper = styled.span.withConfig({ shouldForwardProp: isPropValid })<InlineSpinnerProps>`
     display: inline-flex;
     box-sizing: border-box;
     vertical-align: text-bottom;

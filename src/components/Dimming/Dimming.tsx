@@ -1,9 +1,10 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 
 import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 
-const Dimming = styled.div`
+const Dimming = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background-color: ${getSemanticValue('background-backdrop')};
     height: 100%;
     left: 0;

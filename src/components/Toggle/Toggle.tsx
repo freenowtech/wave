@@ -1,4 +1,5 @@
 import React, { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { type MarginProps } from 'styled-system';
 
@@ -19,7 +20,7 @@ interface ToggleProps extends ComponentPropsWithoutRef<'input'>, ClassNameProps,
     error?: boolean;
 }
 
-const SlideWrapper = styled.span`
+const SlideWrapper = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     display: inline-flex;
     align-items: center;
 `;

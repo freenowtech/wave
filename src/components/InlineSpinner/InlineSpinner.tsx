@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import isPropValid from '@emotion/is-prop-valid';
 import { styled, keyframes } from 'styled-components';
 import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -39,7 +40,7 @@ const rotation = keyframes`
     }
 `;
 
-const InlineSpinnerIcon = styled.span<InlineSpinnerProps>`
+const InlineSpinnerIcon = styled.span.withConfig({ shouldForwardProp: isPropValid })<InlineSpinnerProps>`
     display: inline-block;
     box-sizing: border-box;
     width: 1.25rem;

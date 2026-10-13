@@ -1,8 +1,9 @@
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
 
-export const Container = styled.div`
+export const Container = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     /* Define react-day-picker CSS custom properties */
     --rdp-accent-color: ${getSemanticValue('on-interactive-container')};
     --rdp-accent-background-color: ${getSemanticValue('interactive-container')};
@@ -135,7 +136,7 @@ export const Container = styled.div`
     }
 `;
 
-export const DayButton = styled.button`
+export const DayButton = styled.button.withConfig({ shouldForwardProp: isPropValid })`
     position: relative;
     display: flex;
     align-items: center;

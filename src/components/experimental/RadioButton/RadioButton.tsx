@@ -1,11 +1,12 @@
 import React, { type FC } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 import { Radio as BaseRadio, type RadioProps } from 'react-aria-components';
 
 import { getSemanticValue } from '../../../essentials/experimental';
 import { themeGet } from '../../../utils/experimental';
 
-const Indicator = styled.span<{ $selected: boolean }>`
+const Indicator = styled.span.withConfig({ shouldForwardProp: isPropValid })<{ $selected: boolean }>`
     position: relative;
     flex-shrink: 0;
 

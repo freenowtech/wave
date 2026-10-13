@@ -1,4 +1,5 @@
 import { variant } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
 
 import { get } from '../../utils/themeGet';
@@ -14,7 +15,7 @@ const inputType = variant({
     }
 });
 
-const ToggleButton = styled.button<Pick<InputProps, 'size' | 'variant'>>`
+const ToggleButton = styled.button.withConfig({ shouldForwardProp: isPropValid })<Pick<InputProps, 'size' | 'variant'>>`
     box-sizing: border-box;
     position: absolute;
     background: transparent;
