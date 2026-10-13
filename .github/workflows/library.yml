@@ -31,6 +31,8 @@ jobs:
               run: npm run lint
             - name: Run build
               run: npm run build
+            - name: Run consumer fixtures
+              run: npm run test:fixture -- --skip-build
             - name: Run tests
               run: npm run test
 
