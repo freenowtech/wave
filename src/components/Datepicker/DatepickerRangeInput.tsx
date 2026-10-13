@@ -22,6 +22,7 @@ import { useOnChange } from './utils/useOnChange';
 import { Arrow, DatepickerContentContainer } from './DatepickerContentElements';
 import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
+import { isSSR } from '../../utils/isSSR';
 
 type DateRangerProps = MarginProps & WidthProps;
 
@@ -383,7 +384,7 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
             />
             <Datepicker
                 // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
-                numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
+                numberOfMonths={variant === 'normal' && !isSSR() && window.innerWidth >= 768 ? 2 : 1}
                 minBookingDays={1}
                 startDate={value.startDate ?? null}
                 endDate={value.endDate ?? null}

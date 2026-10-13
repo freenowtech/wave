@@ -1,4 +1,4 @@
-import baseThemeGet from '@styled-system/theme-get';
+import { themeGet as baseThemeGet } from '@styled-system/theme-get';
 import { get as getKey } from 'styled-system';
 import { theme } from '../essentials/theme';
 
