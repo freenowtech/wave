@@ -42,6 +42,8 @@ jobs:
         if: always() && (github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/next' && needs.build.result == 'success'))
         runs-on: ubuntu-latest
         timeout-minutes: 15
+        env:
+            HUSKY: 0 # the release commit must not run the pre-commit (eslint --fix, prettier) and commitlint hooks
         permissions:
             contents: write # to be able to publish a GitHub release
             issues: write # to be able to comment on released issues
