@@ -1,24 +1,16 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { I18nProvider } from 'react-aria-components';
 import { Preview } from '@storybook/react-vite';
 import { themes } from 'storybook/theming';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
-import { addons } from 'storybook/preview-api';
-import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
-
-const STORAGE_KEY = 'sb-addon-themes-3';
-
-const getInitialDarkMode = (): boolean => {
-    try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) return JSON.parse(stored).current === 'dark';
-    } catch {}
-    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
-};
+import { useDarkMode } from 'storybook-dark-mode';
+import { createGlobalStyle as createStyledGlobalStyle } from 'styled-components';
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
 import { createGlobalStyle, ColorPalette as ExperimentalColors } from '../src/essentials/experimental/Colors';
+import { DarkScheme, LightScheme } from '../src/components/ColorScheme';
+
 import { LightTheme, DarkTheme } from '../src/docs/storybook-theme/FreenowTheme';
 
 const THEMES = {
@@ -66,19 +58,21 @@ export const withTheme = (Story, context) => {
 };
 
 export const withColorScheme = (Story, context) => {
-    // useDarkMode from storybook-dark-mode works inside decorators (preview hook context)
-    const isDark = useDarkMode();
-    const schemeClass = isDark ? 'dark-scheme' : 'light-scheme';
+    const SchemeWrapper = useDarkMode() ? DarkScheme : LightScheme;
 
     return (
-        <div
-            className={`${schemeClass} wave`}
-            style={{ background: 'var(--wave-background-page-default)', minHeight: '100%' }}
-        >
+        <SchemeWrapper>
             <Story {...context} />
-        </div>
+        </SchemeWrapper>
     );
 };
+
+// Storybook 10 underlines the links in docs, and its rule wins over the styles of Wave's Link. Keep them as in Storybook 7.
+const DocsLinkStyle = createStyledGlobalStyle`
+    .sbdocs.sbdocs-content :where(a:not(.sb-anchor, .sb-unstyled, .sb-unstyled a):not(:hover, :active)) {
+        text-decoration: none;
+    }
+`;
 
 export const withI18nProvider = (Story, context) => {
     const { locale } = context.globals;
@@ -120,24 +114,14 @@ export const preview: Preview = {
         },
         docs: {
             container: props => {
-                // Use React hooks + channel to track dark mode in docs context.
-                // storybook-dark-mode's useDarkMode() uses preview-api hooks which
-                // only work in decorator/story context, not here.
-                const [isDark, setIsDark] = useState(getInitialDarkMode);
-                useEffect(() => {
-                    const channel = addons.getChannel();
-                    channel.on(DARK_MODE_EVENT_NAME, setIsDark);
-                    return () => channel.off(DARK_MODE_EVENT_NAME, setIsDark);
-                }, []);
-
-                const scheme = isDark ? DarkTheme : LightTheme;
-                const globals = props.context.globals ?? {};
-                const theme = (globals.theme as keyof typeof THEMES) ?? 'modern';
-                const { Colors } = THEMES[theme] ?? THEMES.modern;
+                const scheme = useDarkMode() ? DarkTheme : LightTheme;
+                const globals = props.context.store.userGlobals.get();
+                const { Colors } = THEMES[globals.theme as keyof typeof THEMES];
 
                 return (
                     <>
                         <Colors />
+                        <DocsLinkStyle />
                         <DocsContainer {...props} theme={scheme} />
                     </>
                 );

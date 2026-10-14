@@ -15,7 +15,7 @@ const Loading = styled.div`
 `;
 
 const Flag: React.FC<FlagProps> = React.memo(({ code, className }) => {
-    const Component = React.lazy(() => import(/* @vite-ignore */ `./flags/${code}`));
+    const Component = React.lazy(() => import(`./flags/${code}`));
 
     return (
         <FlagErrorBoundary className={className} code={code}>

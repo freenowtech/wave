@@ -1,6 +1,7 @@
 import { DocsContext } from '@storybook/addon-docs/blocks';
 
 import React, { type FC, useContext, useMemo, useState } from 'react';
+import { useDarkMode } from 'storybook-dark-mode';
 import { styled } from 'styled-components';
 import { Box, DarkScheme, Input, LightScheme, Table, TableCell, TableHeaderCell, TableRow } from '../../../components';
 import { applyPrefix, generateCssVariableEntries, getSemanticValue } from '../../../utils/cssVariables';
@@ -60,14 +61,14 @@ const Tokens = {
 
 export const CssVariablesTable: FC<{ tier: 'b' | 's' }> = ({ tier }) => {
     const [nameSearchInput, setNameSearchInput] = useState('');
+    const isDark = useDarkMode();
     const {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        store: { globals }
+        store: { userGlobals }
     } = useContext(DocsContext);
 
-    const { theme, darkMode } = globals.get();
-    const isDark = Boolean(darkMode);
+    const { theme } = userGlobals.get();
     const tokens = Tokens[tier][isDark ? 'dark' : 'light'][theme];
     const invertedSchemeTokens = Tokens[tier][isDark ? 'light' : 'dark'][theme];
 
