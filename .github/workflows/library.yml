@@ -12,25 +12,36 @@ jobs:
     build:
         if: github.ref != 'refs/heads/main'
         runs-on: ubuntu-latest
+        timeout-minutes: 15
+        permissions:
+            contents: read
         steps:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
             - uses: actions/setup-node@v4
               with:
-                  node-version: 24
+                  node-version-file: '.nvmrc'
+                  cache: 'npm'
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm ci
             - name: Run linter
               run: npm run lint
             - name: Run build
               run: npm run build
+            - name: Run consumer fixtures
+              run: npm run test:fixture -- --skip-build
             - name: Run tests
               run: npm run test
 
     release:
-        if: github.ref == 'refs/heads/main'
+        # main releases as before (its build job is skipped); next publishes release candidates after its tests pass
+        needs: build
+        if: always() && (github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/next' && needs.build.result == 'success'))
         runs-on: ubuntu-latest
+        timeout-minutes: 15
         permissions:
             contents: write # to be able to publish a GitHub release
             issues: write # to be able to comment on released issues
@@ -42,9 +53,12 @@ jobs:
                   fetch-depth: 0
             - uses: actions/setup-node@v4
               with:
-                  node-version: 24
+                  node-version-file: '.nvmrc'
+                  cache: 'npm'
             - name: Install dependencies
               uses: bahmutov/npm-install@v1
+              with:
+                  install-command: npm ci
             - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
               run: npm audit signatures
             - name: Run build
@@ -57,6 +71,9 @@ jobs:
     merge-main:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
+        timeout-minutes: 5
+        permissions:
+            contents: write
         steps:
             - uses: actions/checkout@v4
               with:

@@ -1,11 +1,14 @@
-import { Text as BaseText, TextProps as BaseTextProps } from 'react-aria-components';
-import styled from 'styled-components';
-import { compose, ResponsiveValue, variant } from 'styled-system';
+import { Text as BaseText, type TextProps as BaseTextProps } from 'react-aria-components';
+import { styled } from 'styled-components';
+import { compose, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../../essentials/experimental';
 
 export type TextVariant = 'display' | 'headline' | 'title1' | 'title2' | 'body1' | 'body2' | 'label1' | 'label2';
 
 interface TextProps extends BaseTextProps {
+    /**
+     * @default body1
+     */
     variant?: ResponsiveValue<TextVariant>;
 }
 
@@ -64,15 +67,14 @@ export const textStyles = {
     }
 };
 
-const Text = styled(BaseText)<TextProps>`
+// react-aria's Text, and the element given as `as`, would put `variant` on the DOM
+const Text = styled(BaseText)
+    .withConfig({ shouldForwardProp: prop => prop !== 'variant' })
+    .attrs<TextProps>(({ variant = 'body1' }) => ({ variant }))<TextProps>`
     color: inherit;
     margin: 0;
 
     ${compose(variant(textStyles))}
 `;
 
-Text.defaultProps = {
-    variant: 'body1'
-};
-
-export { Text, TextProps };
+export { Text, type TextProps };

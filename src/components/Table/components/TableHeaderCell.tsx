@@ -1,18 +1,21 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
-import styled from 'styled-components';
-import { compose, LayoutProps, textAlign, TextAlignProps, layout } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { compose, type LayoutProps, textAlign, type TextAlignProps, layout } from 'styled-system';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
 import { TableContext } from '../context/TableContext';
-import { TableProps } from './Table';
+import { type TableProps } from './Table';
 
 type TableHeaderCellProps = Pick<TableProps, 'rowSize' | 'columnSpace'> &
     ComponentPropsWithoutRef<'th'> &
     TextAlignProps &
     LayoutProps;
 
-const TableHeaderCellElement = styled.th.attrs({ theme })<TableHeaderCellProps>`
+const TableHeaderCellElement = styled.th
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<TableHeaderCellProps>`
     border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-emphasized')} !important;
     font-weight: ${get('fontWeights.bold')};
     height: ${p => p.rowSize};
@@ -38,4 +41,4 @@ const TableHeaderCell: FC<TableHeaderCellProps> = (props: TableHeaderCellProps) 
     return <TableHeaderCellElement rowSize={rowSize} columnSpace={columnSpace} {...props} />;
 };
 
-export { TableHeaderCell, TableHeaderCellProps };
+export { TableHeaderCell, type TableHeaderCellProps };

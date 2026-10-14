@@ -1,18 +1,18 @@
 import React from 'react';
 import {
     NumberField as BaseNumberField,
-    NumberFieldProps as BaseNumberFieldProps,
+    type NumberFieldProps as BaseNumberFieldProps,
     FieldError,
     Group
 } from 'react-aria-components';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Label } from '../Field/Label';
 import { Footer } from '../Field/Footer';
 import { FakeInput } from '../Field/FakeInput';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
 import { Input } from '../Field/Field';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { Button } from '../Field/Button';
 import DropupSelectIcon from '../../../icons/arrows/DropupSelectIcon';
 import DropdownSelectIcon from '../../../icons/arrows/DropdownSelectIcon';
@@ -81,4 +81,4 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
     )
 );
 
-export { NumberField, NumberFieldProps };
+export { NumberField, type NumberFieldProps };

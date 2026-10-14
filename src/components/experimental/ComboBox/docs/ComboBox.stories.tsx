@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { StoryObj, Meta } from '@storybook/react';
 import { useAsyncList } from 'react-aria-components';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { ComboBox } from '../ComboBox';
 import { ListBoxItem } from '../../ListBox/ListBox';
 import { Button } from '../../../Button/Button';
@@ -117,7 +117,6 @@ export const FullyControlled: Story = {
                 }
             }
 
-            // eslint-disable-next-line no-void
             void startFetching();
 
             return () => {
@@ -166,7 +165,6 @@ export const WithRef: StoryObj<typeof ComboBox> = {
                 }
             }
 
-            // eslint-disable-next-line no-void
             void startFetching();
 
             return () => {
@@ -177,7 +175,7 @@ export const WithRef: StoryObj<typeof ComboBox> = {
         const handleFocus = () => {
             if (comboBoxRef.current) {
                 comboBoxRef.current.focus();
-                // eslint-disable-next-line no-console
+
                 console.log('input focused');
             }
         };
@@ -185,14 +183,13 @@ export const WithRef: StoryObj<typeof ComboBox> = {
         const handleBlur = () => {
             if (comboBoxRef.current) {
                 comboBoxRef.current.blur();
-                // eslint-disable-next-line no-console
+
                 console.log('input blurred');
             }
         };
 
         const handleGetValue = () => {
             if (comboBoxRef.current) {
-                // eslint-disable-next-line no-console
                 console.log('current value:', comboBoxRef.current.value);
             }
         };

@@ -1,11 +1,12 @@
 import { Input as BaseInput } from 'react-aria-components';
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 
 import { getSemanticValue } from '../../../essentials/experimental';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
 
-export const Wrapper = styled.span`
+export const Wrapper = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     position: relative;
 
     display: flex;

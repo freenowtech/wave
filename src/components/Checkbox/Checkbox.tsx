@@ -1,8 +1,9 @@
-import React, { ComponentPropsWithoutRef, FC, ReactNode, useEffect } from 'react';
-import styled from 'styled-components';
-import { MarginProps, ResponsiveValue } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC, type ReactNode, useEffect } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { type MarginProps, type ResponsiveValue } from 'styled-system';
 
-import { ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
+import { type ClassNameProps, extractClassNameProps, extractWrapperMarginProps } from '../../utils/extractProps';
 import { Text } from '../Text/Text';
 
 import { Checkmark } from './components/Checkmark';
@@ -32,7 +33,9 @@ interface CheckboxProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size'>,
     indeterminate?: boolean;
 }
 
-const WithTapAreaWrapper = styled.div<Pick<CheckboxProps, 'textVerticalAlign'>>`
+const WithTapAreaWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<
+    Pick<CheckboxProps, 'textVerticalAlign'>
+>`
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -46,7 +49,7 @@ const Checkbox: FC<CheckboxProps> = props => {
     const { classNameProps, restProps: withoutClassName } = extractClassNameProps(props);
     const { marginProps, restProps } = extractWrapperMarginProps(withoutClassName);
 
-    const { disabled, error, label, textVerticalAlign, size, indeterminate, ...rest } = restProps;
+    const { disabled, error, label, textVerticalAlign = 'center', size = 'medium', indeterminate, ...rest } = restProps;
     let dynamicLabel: ReactNode = label;
 
     if (typeof label === 'string') {
@@ -57,7 +60,7 @@ const Checkbox: FC<CheckboxProps> = props => {
         );
     }
 
-    const checkboxRef = React.createRef<HTMLInputElement>();
+    const checkboxRef = React.useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         /**
@@ -65,7 +68,9 @@ const Checkbox: FC<CheckboxProps> = props => {
          * currently can be set only using javascript (non HTML)
          * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate
          */
-        checkboxRef.current.indeterminate = !!indeterminate;
+        if (checkboxRef.current) {
+            checkboxRef.current.indeterminate = !!indeterminate;
+        }
     }, [indeterminate]);
 
     return (
@@ -86,10 +91,4 @@ const Checkbox: FC<CheckboxProps> = props => {
     );
 };
 
-Checkbox.defaultProps = {
-    textVerticalAlign: 'center',
-    // TODO: size defaults to "large" when theme fontSizes aliases are fixed
-    size: 'medium'
-};
-
-export { Checkbox, CheckboxProps };
+export { Checkbox, type CheckboxProps };

@@ -6,14 +6,10 @@ export interface BreakpointsArray extends Array<string> {
 }
 const Breakpoints: BreakpointsArray = ['30rem', '48rem', '62rem', '75rem'];
 
-/* eslint-disable prefer-destructuring */
-
 Breakpoints.small = Breakpoints[0];
 Breakpoints.medium = Breakpoints[1];
 Breakpoints.large = Breakpoints[2];
 Breakpoints.xlarge = Breakpoints[3];
-
-/* eslint-enable prefer-destructuring */
 
 const MediaQueries = {
     small: `@media screen and (min-width: ${Breakpoints[0]})`,

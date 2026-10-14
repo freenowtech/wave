@@ -3,7 +3,7 @@ import { endOfDay, format, startOfDay } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { advanceTo, clear } from 'jest-date-mock';
 import * as React from 'react';
-import { DatepickerRangeInput, DatepickerRangeInputProps, DateRange } from './DatepickerRangeInput';
+import { DatepickerRangeInput, type DatepickerRangeInputProps, type DateRange } from './DatepickerRangeInput';
 
 const ControlledRangeInput: React.FC<DatepickerRangeInputProps> = ({
     onChange,
@@ -34,8 +34,10 @@ describe('DatepickerRangeInput', () => {
         clear();
     });
 
-    it('can be disabled', () => {
+    it('can be disabled', async () => {
         const { getAllByRole } = render(<DatepickerRangeInput disabled />);
+        // let the date-fns locale finish loading
+        await act(async () => {});
         const inputs = getAllByRole('textbox');
         expect(inputs).toHaveLength(2);
         inputs.forEach(input => {
@@ -61,24 +63,24 @@ describe('DatepickerRangeInput', () => {
             const user = userEvent.setup();
             const mockCloseHandler = jest.fn();
             const { getByTestId, getAllByText } = render(<ControlledRangeInput onClose={mockCloseHandler} />);
-            const selectDate = async day => {
+            const selectDate = async (day: string) => {
                 // Open datepicker
                 await user.click(getByTestId('start-date-input'));
 
                 const buttons = getAllByText(day);
                 // Select the first date
-                await act(() => user.click(buttons[0]));
+                await user.click(buttons[0]);
                 // Select the second date
-                await act(() => user.click(buttons[1]));
+                await user.click(buttons[1]);
             };
 
             // initial date selection
             await selectDate('01');
-            expect(mockCloseHandler).toBeCalledTimes(1);
+            expect(mockCloseHandler).toHaveBeenCalledTimes(1);
 
             await selectDate('02');
 
-            expect(mockCloseHandler).toBeCalledTimes(2);
+            expect(mockCloseHandler).toHaveBeenCalledTimes(2);
         });
     });
 

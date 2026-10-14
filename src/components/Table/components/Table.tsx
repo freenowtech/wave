@@ -1,6 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import styled, { StyledComponent } from 'styled-components';
-import { compose, height, HeightProps, margin, MarginProps, width, WidthProps } from 'styled-system';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { compose, height, type HeightProps, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
 import { TableContext } from '../context/TableContext';
@@ -8,7 +9,8 @@ import { getColumnSpace } from '../util/getColumnSpace';
 import { getRowSize } from '../util/getRowSize';
 
 interface TableElementProps
-    extends MarginProps,
+    extends
+        MarginProps,
         HeightProps,
         WidthProps,
         // do not include width property from the `<table>` tag type because styled-system provides its own
@@ -30,9 +32,7 @@ interface TableProps extends TableElementProps {
     columnSpace?: 'normal' | 'small' | string;
 }
 
-const TableElement: StyledComponent<FC<TableElementProps>, typeof theme> = styled.table.attrs({
-    theme
-})<TableElementProps>`
+const TableElement = styled.table.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<TableElementProps>`
     font-size: ${get('fontSizes.1')};
     font-family: ${get('fonts.normal')};
     border-collapse: collapse;
@@ -66,4 +66,4 @@ const Table: FC<TableProps> = ({
     );
 };
 
-export { Table, TableElement, TableProps };
+export { Table, TableElement, type TableProps };

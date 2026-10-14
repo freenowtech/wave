@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DocsTable } from './components/DocsTable';
 
 <Meta title="Browser support" />
 
@@ -12,3 +13,35 @@ The design system should be universally accessible. Components might not look pe
 should still be accessible to the user.
 
 **Currently, we are supporting the latest 2 versions of Chrome, Firefox, Safari, and Edge.**
+
+### Minimum versions
+
+The supported versions above are a moving target. Wave's own code needs at least these versions:
+
+<DocsTable
+    headers={['Browser', 'Minimum version']}
+    rows={[
+        ['Chrome, Edge', '111'],
+        ['Firefox', '121'],
+        ['Safari, Safari on iOS', '16.2']
+    ]}
+/>
+
+They come from the JavaScript and CSS features Wave uses without polyfills or fallbacks, e.g.
+`Array.prototype.toSorted` (ES2023), the `:has()` selector and `color-mix()` in the experimental components.
+Dependencies such as React Aria and Floating UI may need newer versions. The minimum can go up in a minor release, as
+long as it stays within the latest 2 versions of each browser.
+
+React 18 and 19 don't support Internet Explorer. React doesn't publish a list of minimum browser versions.
+
+## JavaScript output
+
+The package contains two builds compiled by TypeScript:
+
+- `lib/esm` with ES modules, used by bundlers (`import`)
+- `lib/cjs` with CommonJS modules (`require`)
+
+Both use ES2015 syntax (e.g. arrow functions, `const` and template literals), but Wave and its dependencies call newer
+JavaScript APIs and don't ship polyfills. If your app supports browsers older than the minimum versions above, its
+bundler has to transpile `node_modules` and add polyfills, and some styles of the experimental components will still
+not work.

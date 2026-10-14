@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import styled from 'styled-components';
+import { type ReactNode } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
 import { disabledStyles, errorStyles, variantStyles } from '../styles';
-import { Size, Variant } from '../types';
+import { type Size, type Variant } from '../types';
 
 interface LabelProps {
     error?: boolean;
@@ -14,7 +15,7 @@ interface LabelProps {
     children: ReactNode;
 }
 
-export const Label = styled.label<LabelProps>`
+export const Label = styled.label.withConfig({ shouldForwardProp: isPropValid })<LabelProps>`
     position: absolute;
     pointer-events: none;
     line-height: 1;

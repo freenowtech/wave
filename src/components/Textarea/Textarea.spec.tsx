@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import { ElementRef } from 'react';
+import { type ElementRef } from 'react';
 import { Textarea } from './Textarea';
 
 describe('Textarea', () => {

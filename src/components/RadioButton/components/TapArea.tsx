@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
-const TapArea = styled.div`
+const TapArea = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     position: absolute;
     width: 1.75rem;
     height: 1.75rem;

@@ -9,4 +9,4 @@ interface FlagProps {
     className?: string;
 }
 
-export { FlagProps };
+export type { FlagProps };

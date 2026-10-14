@@ -1,6 +1,10 @@
 import React from 'react';
-import { DateValue } from 'react-aria';
-import { DateField as BaseDateField, DateFieldProps as BaseDateFieldProps, FieldError } from 'react-aria-components';
+import { type DateValue } from 'react-aria';
+import {
+    DateField as BaseDateField,
+    type DateFieldProps as BaseDateFieldProps,
+    FieldError
+} from 'react-aria-components';
 import { Label } from '../Field/Label';
 import { Footer } from '../Field/Footer';
 import { FakeInput } from '../Field/FakeInput';
@@ -8,7 +12,7 @@ import { InnerWrapper } from '../Field/InnerWrapper';
 import { Wrapper } from '../Field/Wrapper';
 import { DateInput, Input } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 
 type TextOnlyKeys = 'value' | 'onChange' | 'placeholder' | 'inputProps';
 
@@ -40,8 +44,8 @@ export type DateFieldProps = SegmentedProps | TextProps;
 
 // overloads to preserve good inference with forwardRef
 export interface DateFieldOverloads {
-    (props: SegmentedProps & React.RefAttributes<HTMLDivElement>): JSX.Element;
-    (props: TextProps & React.RefAttributes<HTMLDivElement>): JSX.Element;
+    (props: SegmentedProps & React.RefAttributes<HTMLDivElement>): React.JSX.Element;
+    (props: TextProps & React.RefAttributes<HTMLDivElement>): React.JSX.Element;
 }
 
 const inputStyle: React.CSSProperties = {
@@ -55,6 +59,15 @@ const inputStyle: React.CSSProperties = {
 };
 
 const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, forwardedRef) => {
+    const isText = props.variant === 'text';
+    const autoFocus = isText ? props.autoFocus : undefined;
+    const isDisabledForEffect = isText ? props.isDisabled : undefined;
+    const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+    React.useEffect(() => {
+        if (autoFocus && !isDisabledForEffect) queueMicrotask(() => inputRef.current?.focus());
+    }, [autoFocus, isDisabledForEffect]);
+
     if (props.variant === 'text') {
         const {
             label,
@@ -68,15 +81,8 @@ const DateFieldInner = React.forwardRef<HTMLDivElement, DateFieldProps>((props, 
             onChange,
             placeholder,
             inputProps,
-            autoFocus,
             isDisabled
         } = props;
-
-        const inputRef = React.useRef<HTMLInputElement | null>(null);
-
-        React.useEffect(() => {
-            if (autoFocus && !isDisabled) queueMicrotask(() => inputRef.current?.focus());
-        }, [autoFocus, isDisabled]);
 
         return (
             <Wrapper ref={forwardedRef}>

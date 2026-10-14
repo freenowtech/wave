@@ -1,16 +1,17 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { format } from 'date-fns';
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { Text } from '../../Text/Text';
 import { MonthButton } from './MonthButton';
 
-const MonthGrid = styled.div`
+const MonthGrid = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
 `;
 
-const YearSection = styled.div`
+const YearSection = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     flex: 1;
 `;
 

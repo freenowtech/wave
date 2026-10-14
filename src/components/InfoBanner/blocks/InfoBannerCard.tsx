@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Box } from '../../Box/Box';
 import { Headline } from '../../Headline/Headline';
@@ -7,7 +7,7 @@ import { Link as WaveLink } from '../../Link/Link';
 import { Text } from '../../Text/Text';
 import { Icon } from './Icon';
 import { Container, LOCAL_CSS_VARIABLES } from './Container';
-import { CardProps } from '../types';
+import { type CardProps } from '../types';
 
 const StyledLink = styled(WaveLink).attrs(props => ({
     fontSize: 0,
@@ -41,9 +41,9 @@ const Description = ({ children }: { children: string }) => (
     </Text>
 );
 
-const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): JSX.Element => (
+const InfoBannerCard = ({ children, variant = 'info', emphasized, ...props }: CardProps): React.JSX.Element => (
     <Container variant={variant} emphasized={emphasized} {...props}>
-        <Icon variant={variant} emphasized={emphasized} />
+        <Icon variant={variant} emphasized={emphasized ?? false} />
         <Box display="flex" flexDirection="column">
             {children}
         </Box>

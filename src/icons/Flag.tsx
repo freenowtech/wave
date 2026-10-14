@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { isSSR } from '../utils/isSSR';
 import { FlagErrorBoundary } from './FlagErrorBoundary';
-import { FlagProps } from './FlagProps';
+import type { FlagProps } from './FlagProps';
 import { getSemanticValue } from '../utils/cssVariables';
 
 const Loading = styled.div`
@@ -28,4 +28,4 @@ const Flag: React.FC<FlagProps> = React.memo(({ code, className }) => {
     );
 });
 
-export { Flag, FlagProps };
+export { Flag };

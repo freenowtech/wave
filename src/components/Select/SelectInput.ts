@@ -1,6 +1,7 @@
-import { ComponentPropsWithoutRef, FC } from 'react';
-import styled, { css } from 'styled-components';
-import { compose, ResponsiveValue, variant } from 'styled-system';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
+import { compose, type ResponsiveValue, variant } from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 import { SelectLabel } from './SelectLabel';
@@ -52,9 +53,11 @@ const getErrorStyles = ({ error, variant: variantProp }: BaseSelectProps) => {
     if (error) {
         return css`
             border-color: ${getSemanticValue('border-danger-default')};
-            box-shadow: ${variantProp === 'boxed'
-                ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
-                : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`};
+            box-shadow: ${
+                variantProp === 'boxed'
+                    ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
+                    : `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
+            };
 
             & ~ ${SelectLabel} {
                 color: ${getSemanticValue('foreground-danger-emphasized')};
@@ -79,7 +82,9 @@ const disabledStyles = css<BaseSelectProps>`
     }
 `;
 
-const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSelectProps>`
+const SelectInput: FC<BaseSelectProps> = styled.select
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<BaseSelectProps>`
     margin: 0;
     box-sizing: border-box;
     background: ${getSemanticValue('background-page-default')};
@@ -87,7 +92,9 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     color: ${getSemanticValue('foreground-primary')};
     font-size: ${get('fontSizes.2')};
     font-family: ${get('fonts.normal')};
-    transition: box-shadow ${ANIMATION_DURATION}ms, border ${ANIMATION_DURATION}ms;
+    transition:
+        box-shadow ${ANIMATION_DURATION}ms,
+        border ${ANIMATION_DURATION}ms;
     outline: none;
     appearance: none;
     width: 100%;
@@ -102,12 +109,15 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
 
     ${p => {
         switch (p.variant) {
-            case 'boxed':
+            case 'boxed': {
                 return compose(boxedSizeVariants, inputVariants)(p);
-            case 'bottom-lined':
+            }
+            case 'bottom-lined': {
                 return compose(bottomLinedSizeVariants, inputVariants)(p);
-            default:
+            }
+            default: {
                 return undefined;
+            }
         }
     }}
     ${getErrorStyles}
@@ -137,4 +147,5 @@ const SelectInput: FC<BaseSelectProps> = styled.select.attrs({ theme })<BaseSele
     }
 `;
 
-export { SelectInput, BaseSelectProps };
+export { SelectInput };
+export type { BaseSelectProps };

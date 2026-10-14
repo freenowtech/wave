@@ -4,6 +4,19 @@ import * as React from 'react';
 import { Accordion } from './Accordion';
 
 describe('Accordion', () => {
+    it('shows the bottom divider only below the last accordion', () => {
+        render(
+            <div>
+                <Accordion heading="First" />
+                <Accordion heading="Last" />
+            </div>
+        );
+
+        const [first, last] = screen.getAllByRole('group');
+        expect(getComputedStyle(first.lastElementChild as Element).display).toBe('none');
+        expect(getComputedStyle(last.lastElementChild as Element).display).not.toBe('none');
+    });
+
     it('allows rendering react nodes as children', () => {
         render(
             <Accordion defaultExpanded>

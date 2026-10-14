@@ -116,7 +116,6 @@ describe('Search', () => {
             const user = userEvent.setup();
             const mockOnClick = jest.fn();
             const mockOnEnter = jest.fn();
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
             const item = <div onClick={mockOnClick}>Barry</div>;
 
             render(<Search results={['Adam', item]} onEnter={mockOnEnter} />);

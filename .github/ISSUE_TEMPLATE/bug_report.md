@@ -14,7 +14,11 @@ about: Bugs, missing documentation, or unexpected behavior 🤔.
 
 -->
 
--   `@freenow/wave` version:
+- `@freenow/wave` version:
+- `react` and `react-dom` versions:
+- `styled-components` version:
+- Node version (if the bug happens during the build, tests or server-side rendering):
+- Browser and version:
 
 ### Relevant code
 

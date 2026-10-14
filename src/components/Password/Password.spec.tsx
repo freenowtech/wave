@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Password } from './Password';
 
-const ControlledPassword = props => {
+const ControlledPassword = (props: any) => {
     const [value, setValue] = useState('');
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);

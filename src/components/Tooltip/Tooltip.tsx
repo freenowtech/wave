@@ -1,8 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
-import { usePopper } from 'react-popper';
-import { Placement } from '@popperjs/core';
+import { useFloating, offset, shift, autoUpdate } from '@floating-ui/react';
 import { variant } from 'styled-system';
 import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -10,6 +10,7 @@ import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
+import { getFloatingPlacement, type Placement } from '../../utils/floatingPlacement';
 
 const fadeAnimation = keyframes`
     from {
@@ -86,7 +87,7 @@ interface TooltipBodyProps {
     variant: string;
 }
 
-const TooltipBody = styled.div<TooltipBodyProps>`
+const TooltipBody = styled.div.withConfig({ shouldForwardProp: isPropValid })<TooltipBodyProps>`
     position: relative;
     z-index: ${Elevation.TOOLTIP};
     background-color: ${getSemanticValue('background-backdrop')};
@@ -145,39 +146,33 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
     alwaysVisible = false
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
-    /**
-     * triggerReference and contentReference are used with the Popper library in order to get the tooltip styles and attributes
-     */
-    const [triggerReference, setTriggerReference] = React.useState(undefined);
-    const [contentReference, setContentReference] = React.useState(undefined);
+    const [triggerElement, setTriggerElement] = React.useState<Element | null>(null);
+    const floatingPlacement = getFloatingPlacement(placement);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
-        placement,
-        modifiers: [
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 5]
-                }
-            }
-        ]
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement
+    } = useFloating({
+        placement: floatingPlacement.placement,
+        middleware: [offset(5), floatingPlacement.middleware, shift()],
+        whileElementsMounted: autoUpdate
     });
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const handleTriggerRef = (el: Element | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
 
-    const PortalWrapper = React.useMemo(() => {
-        if (!enforcedColorScheme) return React.Fragment;
-        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
-    }, [enforcedColorScheme]);
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
 
     let dynamicContent = content;
 
     if (typeof content === 'string') {
         dynamicContent = (
-                <Text as="p" fontSize={0}>
-                    {content}
-                </Text>
+            <Text as="p" fontSize={0}>
+                {content}
+            </Text>
         );
     }
 
@@ -187,30 +182,44 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
         }
     };
 
+    const tooltipBody = (
+        <TooltipBody
+            // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
+            ref={refs.setFloating}
+            style={floatingStyles}
+            variant={currentPlacement}
+            // Kept from react-popper, so consumers' CSS selectors and tests keep working
+            data-popper-placement={currentPlacement}
+        >
+            {dynamicContent}
+        </TooltipBody>
+    );
+
     return (
         <>
-            {React.cloneElement(children as React.ReactElement, {
-                onMouseOver: () => handleVisibilityChange(true),
-                onMouseOut: () => handleVisibilityChange(false),
-                ref: setTriggerReference
-            })}
-            {content &&
-                isVisible &&
+            {/* cloneElement is required here to inject the ref and mouse handlers without adding a wrapper DOM node */}
+            {/* eslint-disable-next-line @eslint-react/no-clone-element */}
+            {React.cloneElement(
+                children as React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>,
+                {
+                    onMouseOver: () => handleVisibilityChange(true),
+                    onMouseOut: () => handleVisibilityChange(false),
+                    ref: handleTriggerRef
+                }
+            )}
+            {!!(content && isVisible) &&
                 createPortal(
-                    <PortalWrapper>
-                        <TooltipBody
-                            ref={setContentReference}
-                            style={{ ...styles.popper }}
-                            variant={attributes.popper?.['data-popper-placement']}
-                            {...attributes.popper}
-                        >
-                            {dynamicContent}
-                        </TooltipBody>
-                    </PortalWrapper>,
+                    enforcedColorScheme === 'light' ? (
+                        <LightScheme>{tooltipBody}</LightScheme>
+                    ) : enforcedColorScheme === 'dark' ? (
+                        <DarkScheme>{tooltipBody}</DarkScheme>
+                    ) : (
+                        tooltipBody
+                    ),
                     document.body
                 )}
         </>
     );
 };
 
-export { Tooltip, TooltipProps };
+export { Tooltip, type TooltipProps };

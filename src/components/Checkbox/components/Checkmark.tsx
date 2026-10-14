@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
 
@@ -6,7 +7,7 @@ interface CheckmarkProps {
     error?: boolean;
 }
 
-const Checkmark = styled.input<CheckmarkProps>`
+const Checkmark = styled.input.withConfig({ shouldForwardProp: isPropValid })<CheckmarkProps>`
     appearance: none;
     outline-offset: 0.25rem;
     border: none;
@@ -23,7 +24,9 @@ const Checkmark = styled.input<CheckmarkProps>`
     box-shadow: inset 0 0 0 0.125rem
         ${props => getSemanticValue(props.error ? 'border-danger-default' : 'border-neutral-default')};
     border-radius: ${get('radii.2')};
-    transition: background-color 100ms, box-shadow 100ms;
+    transition:
+        background-color 100ms,
+        box-shadow 100ms;
     cursor: pointer;
 
     vertical-align: text-bottom;
@@ -44,7 +47,11 @@ const Checkmark = styled.input<CheckmarkProps>`
         opacity: 0;
         visibility: hidden;
         transform: translate(-45%, -40%) scale(0.2);
-        transition: visibility 175ms, opacity 150ms, scale 175ms, transform 175ms;
+        transition:
+            visibility 175ms,
+            opacity 150ms,
+            scale 175ms,
+            transform 175ms;
     }
 
     &:checked {

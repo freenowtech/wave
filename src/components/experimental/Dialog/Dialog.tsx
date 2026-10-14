@@ -1,17 +1,18 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { type ReactElement, type ReactNode } from 'react';
 import { Heading } from 'react-aria-components';
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { Text, textStyles } from '../Text/Text';
 import { Modal } from '../Modal/Modal';
-import { Backdrop, BackdropProps } from '../Backdrop/Backdrop';
+import { Backdrop, type BackdropProps } from '../Backdrop/Backdrop';
 import { getSemanticValue } from '../../../essentials/experimental';
 
-const Card = styled.div`
+const Card = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     gap: 0.5rem;
 `;
 
-const ButtonsWrapper = styled.div`
+const ButtonsWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     padding-top: 1.5rem;
     display: flex;
     flex-direction: row;
@@ -19,7 +20,7 @@ const ButtonsWrapper = styled.div`
     gap: 1rem;
 `;
 
-const BodyWrapper = styled.div`
+const BodyWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -69,7 +70,7 @@ const Dialog = ({
                     {subtitle}
                 </SubtitleText>
 
-                {body && <BodyWrapper>{body}</BodyWrapper>}
+                {body != null && <BodyWrapper>{body}</BodyWrapper>}
 
                 <ButtonsWrapper>
                     {dismissButton}
@@ -80,4 +81,4 @@ const Dialog = ({
     </Backdrop>
 );
 
-export { Dialog, DialogProps };
+export { Dialog, type DialogProps };

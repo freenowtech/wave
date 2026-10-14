@@ -1,8 +1,8 @@
-import { CSSObject } from 'styled-components';
-import { CSSObjectWithLabel } from 'react-select';
+import { type CSSObject } from 'styled-components';
+import { type CSSObjectWithLabel } from 'react-select';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
-import { SelectListProps } from './types';
+import { type SelectListProps } from './types';
 
 export const disabledStyles = {
     control: {
@@ -27,7 +27,9 @@ export const errorStyles = {
         boxShadow:
             variant === 'boxed'
                 ? `inset 0 0 0 0.0625rem ${getSemanticValue('border-danger-default')}`
-                : variant === 'bottom-lined' && `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
+                : variant === 'bottom-lined'
+                  ? `inset 0 -0.0625rem 0 0 ${getSemanticValue('border-danger-default')}`
+                  : undefined
     }),
     label: (): CSSObject => ({
         color: getSemanticValue('foreground-danger-emphasized')
@@ -58,7 +60,8 @@ export const variantStyles = {
                     borderRadius: get('radii.2')(props),
                     border: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBFocused,
-                    ...bSize[props.size]
+                    // eslint-disable-next-line unicorn/explicit-length-check
+                    ...(props.size ? bSize[props.size] : {})
                 };
             }
             case 'bottom-lined': {
@@ -83,11 +86,13 @@ export const variantStyles = {
                     borderTopRightRadius: get('radii.1')(props),
                     borderBottom: `0.0625rem solid ${getSemanticValue('border-neutral-default')}`,
                     ...isBLFocused,
-                    ...btSize[props.size]
+                    // eslint-disable-next-line unicorn/explicit-length-check
+                    ...(props.size ? btSize[props.size] : {})
                 };
             }
-            default:
+            default: {
                 return {};
+            }
         }
     },
     label: (props: Pick<SelectListProps, 'variant' | 'size'>): CSSObject => {
@@ -108,7 +113,8 @@ export const variantStyles = {
                     }
                 };
 
-                return bSize[props.size];
+                // eslint-disable-next-line unicorn/explicit-length-check
+                return props.size ? bSize[props.size] : {};
             }
             case 'bottom-lined': {
                 const btSize = {
@@ -126,10 +132,12 @@ export const variantStyles = {
                     }
                 };
 
-                return btSize[props.size];
+                // eslint-disable-next-line unicorn/explicit-length-check
+                return props.size ? btSize[props.size] : {};
             }
-            default:
+            default: {
                 return {};
+            }
         }
     }
 };

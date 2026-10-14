@@ -1,20 +1,21 @@
 # Contributing
 
--   [Contributing](#contributing)
-    -   [Introduction](#introduction)
-    -   [Project setup](#project-setup)
-    -   [Ground Rules](#ground-rules)
-        -   [Testing](#testing)
-        -   [Code style](#code-style)
-        -   [Commit messages](#commit-messages)
-    -   [Your First Contribution](#your-first-contribution)
-        -   [Triage tickets](#triage-tickets)
-        -   [Write some documentation](#write-some-documentation)
-        -   [Give us your feedback](#give-us-your-feedback)
-        -   [Take from the backlog](#take-from-the-backlog)
-    -   [Tools we use](#tools-we-use)
-    -   [Component patterns](#component-patterns)
-    -   [Adding icons](#adding-icons)
+- [Contributing](#contributing)
+    - [Introduction](#introduction)
+    - [Project setup](#project-setup)
+    - [Ground Rules](#ground-rules)
+        - [Testing](#testing)
+        - [Code style](#code-style)
+        - [Commit messages](#commit-messages)
+    - [Your First Contribution](#your-first-contribution)
+        - [Triage tickets](#triage-tickets)
+        - [Write some documentation](#write-some-documentation)
+        - [Give us your feedback](#give-us-your-feedback)
+        - [Take from the backlog](#take-from-the-backlog)
+    - [Distribution channels](#distribution-channels)
+    - [Tools we use](#tools-we-use)
+    - [Component patterns](#component-patterns)
+    - [Adding icons](#adding-icons)
 
 ## Introduction
 
@@ -26,8 +27,11 @@ series [How to Contribute to an Open Source Project on GitHub](https://app.egghe
 ## Project setup
 
 1. Fork and clone the repo
-2. Run `npm install` to install dependencies
-3. Create a branch for your PR with `git checkout -b <ISSUE-NUMBER>/your-branch-name`
+2. Use Node 24, the version in [`.nvmrc`](./.nvmrc) (`nvm use` picks it up). npm refuses to install or run scripts on
+   older versions, because `package.json` declares it in `devEngines`. This only applies to working on Wave: apps that
+   install `@freenow/wave` are not affected.
+3. Run `npm ci` to install the dependencies from the lockfile
+4. Create a branch for your PR with `git checkout -b <ISSUE-NUMBER>/your-branch-name`
 
 [Check Github official documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks)
 
@@ -50,28 +54,63 @@ series [How to Contribute to an Open Source Project on GitHub](https://app.egghe
 
 ### Testing
 
-We test our components with [Jest](https://facebook.github.io/jest/) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro).
+We test our components with [Jest](https://jestjs.io) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro).
 You can run the tests locally with `npm test` (or `npm t`). To run the tests as you work, run Jest in watch mode with:
 
 ```sh
-npm test -- --watch
+npm run test:watch
 ```
 
 Make sure your fixes, improvements and overall code additions is backed with some tests we can use to iterate properly over your contribution in the future
 
+#### Tests fail on console errors and warnings
+
+Every test fails if it logs a `console.error` or `console.warn` (see [`src/utils/testing.ts`](./src/utils/testing.ts)).
+This is how we catch React warnings such as `React does not recognize the "x" prop on a DOM element` or missing `act()`
+calls. If a test expects a warning, it opts out by installing its own implementation and asserting on it:
+
+```tsx
+const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+// render and interact
+
+expect(consoleError).toHaveBeenCalledWith(expect.stringContaining('the expected warning'));
+consoleError.mockRestore();
+```
+
+#### Form components
+
+Add every new form component to [`src/components/FormComponents.spec.tsx`](./src/components/FormComponents.spec.tsx).
+It renders each component with its props set, and opens its popover if it has one, so props leaking to the DOM fail
+the test.
+
+#### Consumer fixtures
+
+`npm run test:fixture` packs the library and installs it into a React 18 app and a React 19 app, which type-check,
+build and server-render a few components with Vite, and into a webpack app, which bundles them (see
+[`fixtures/`](./fixtures/README.md)). That is how consumers use Wave. The CI runs them on every push. Run them locally when you change the build, the `package.json` or a
+dependency.
+
 ### Code style
 
-We use the [Prettier](https://prettier.io) to format our code. When you commit your files, they will automatically be
-adjusted to follow our conventions. To format your work manually, run:
+We use [ESLint](https://eslint.org) and [Prettier](https://prettier.io). Before every commit, a Git hook runs
+`eslint . --fix` on the whole repository and formats the staged files with Prettier. To run ESLint yourself:
 
 ```sh
-npm run prettier
+npm run lint
+```
+
+`npm run prettier` only formats staged files. To format other files, run Prettier on them directly:
+
+```sh
+npx prettier --write src/components/MyComponent
 ```
 
 ### Commit messages
 
 We are using [conventional commits](https://www.conventionalcommits.org/en) to improve readability commit messages and makes
-it easier to follow through the project history. The commit message should be structured as follows:
+it easier to follow through the project history. A Git hook checks every commit message with
+[commitlint](https://commitlint.js.org). The commit message should be structured as follows:
 
 ```sh
 <type>[optional scope]: <description>
@@ -92,6 +131,21 @@ see the issue for details on the typos fixed
 closes issue #12
 ```
 
+The commit types decide the next version (see [Distribution channels](#distribution-channels)): `fix` releases a patch
+and `feat` releases a minor version. **A change that breaks consumers must have a `BREAKING CHANGE:` footer** (and
+`!` after the type), which releases a major version. Breaking changes include removing or renaming a prop, a component
+or an export, and raising the minimum version of a peer dependency (React, styled-components). The footer text ends up
+in the changelog, so describe what consumers have to change:
+
+```sh
+feat(Button)!: remove the deprecated size prop
+
+BREAKING CHANGE: Button no longer accepts `size`. Use `width` instead.
+```
+
+Pull requests are squash-merged, so the pull request title becomes the commit header and must follow the same format.
+When you merge a breaking change, make sure the `BREAKING CHANGE:` footer is in the squash commit message.
+
 You can serve your self with CI tools to make easier the creation of commits with <https://github.com/streamich/git-cz>
 
 ## Your First Contribution
@@ -105,13 +159,15 @@ If an unreviewed ticket reports a bug, try and reproduce it. If you can reproduc
 Our documentation is great, but it can always be improved. Did you find a typo? Do you think that something should be clarified? Go ahead and suggest a documentation patch!
 
 We use [Storybook](https://storybook.js.org) to run our documentation site at [wave.free-now.com](https://wave.free-now.com/).
+Run it locally with `npm run storybook`.
 
 To add a new component to our documentation site:
 
-1. Create a new file with the `.stories.tsx` prefix for your component in `/src/stories`.
-2. Include a brief description and examples. Props should be configurable via Storybook
+1. Create a `docs` folder next to your component, e.g. `src/components/MyComponent/docs/`
+2. Add stories in `MyComponent.stories.tsx`. Props should be configurable via Storybook
+3. Add a brief description and usage guidelines in `MyComponent.storybook.mdx`
 
-To learn more how to add stories go to [Storybook docs](https://storybook.js.org/docs/react/writing-stories/introduction)
+To learn more how to add stories go to [Storybook docs](https://storybook.js.org/docs/writing-stories)
 
 ### Give us your feedback
 
@@ -125,21 +181,48 @@ Feel like doing a bit more? You can check what is up for grabs in our public bac
 
 ## Distribution channels
 
-We use [semantic release](https://semantic-release.gitbook.io/semantic-release) to automate our versioning and release process. Currently, we have 3 distribution channels:
+We use [semantic release](https://semantic-release.gitbook.io/semantic-release) to automate our versioning and release process. Currently, we have 4 distribution channels:
 
--   `latest` tag (follows the [main](https://github.com/freenowtech/wave/tree/main) branch): It is used for releases on the current major (v2)
--   `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for pre-releases on the next major (v3)
--   `release-1.34.x` tag (follows the [1.34.x](https://github.com/freenowtech/wave/tree/1.34.x) branch): It is used to provide maintenance on our previous major version (v1). For more information check [semantic-release maintenance releases guide](https://semantic-release.gitbook.io/semantic-release/recipes/release-workflow/maintenance-releases)
+- `latest` tag (follows the [main](https://github.com/freenowtech/wave/tree/main) branch): It is used for releases on the current major (v3)
+- `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for release candidates (`x.y.z-rc.N`), e.g. of the next major, before they are merged to `main`
+- `release-2.x` tag (follows the [2.x](https://github.com/freenowtech/wave/tree/2.x) branch): It is used to provide maintenance on our second major version (v2). Fixes and features are allowed, breaking changes are not
+- `release-1.34.x` tag (follows the [1.34.x](https://github.com/freenowtech/wave/tree/1.34.x) branch): It is used to provide maintenance on our first major version (v1). For more information check [semantic-release maintenance releases guide](https://semantic-release.gitbook.io/semantic-release/recipes/release-workflow/maintenance-releases)
 
 ## Tools we use
 
-1. We use [styled-components](https://www.styled-components.com/) to style our components.
+1. We use [styled-components](https://www.styled-components.com/) 6 to style our components.
 2. We use style functions from [styled-system](https://styled-system.com/) whenever possible.
+3. We write [TypeScript](https://www.typescriptlang.org) 6. Components support React 18.2+ and React 19.
+4. [Storybook](https://storybook.js.org) 10 with [Vite](https://vite.dev) builds the documentation site.
+5. [Jest](https://jestjs.io) 30 with [react-testing-library](https://testing-library.com/docs/react-testing-library/intro) runs the tests.
+6. [ESLint](https://eslint.org) 10 with a flat config ([`eslint.config.mjs`](./eslint.config.mjs)) and [Prettier](https://prettier.io) 3 check the code style.
+7. [husky](https://typicode.github.io/husky) 9 runs the Git hooks (`.husky/`), and [semantic-release](https://semantic-release.gitbook.io/semantic-release) publishes the package.
 
 ## Component patterns
 
 All components should be created with the `styled` function from [styled-components] and should have the appropriate
 groups of system props attached.
+
+Import `styled` by name. The default import breaks when styled-components is loaded as a native ES module, e.g. in
+server-side rendering:
+
+```tsx
+import { styled } from 'styled-components';
+```
+
+styled-components 6 passes every prop to the DOM. Wave components accept props that are not HTML attributes (e.g.
+`variant`), so every styled HTML element filters its props with `@emotion/is-prop-valid`:
+
+```tsx
+import isPropValid from '@emotion/is-prop-valid';
+
+const Wrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<WrapperProps>`
+    ...
+`;
+```
+
+Components built with `styled(OtherStyledComponent)` inherit the filter. A React component wrapped with `styled()`
+receives all props, so it decides itself which ones reach the DOM.
 
 Default values for props can be set in `.attrs()` function.
 

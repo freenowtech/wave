@@ -1,6 +1,6 @@
 import 'styled-components';
-import { BreakpointsArray, MediaQueries } from './essentials/Breakpoints/Breakpoints';
-import { Spaces } from './essentials';
+import { type BreakpointsArray, type MediaQueries } from './essentials/Breakpoints/Breakpoints';
+import { type Spaces } from './essentials';
 
 declare module 'styled-components' {
     export interface DefaultTheme {

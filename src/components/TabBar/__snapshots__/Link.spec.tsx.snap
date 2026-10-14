@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TabBar.Link has a bright color if selected 1`] = `
 .c2 {
@@ -14,7 +14,6 @@ exports[`TabBar.Link has a bright color if selected 1`] = `
   font-weight: 600;
   font-family: "Roboto Flex Variable","Open Sans",sans-serif;
   margin-right: 1.5rem;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -55,7 +54,6 @@ exports[`TabBar.Link renders with default props 1`] = `
   font-weight: 600;
   font-family: "Roboto Flex Variable","Open Sans",sans-serif;
   margin-right: 1.5rem;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

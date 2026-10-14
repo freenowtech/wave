@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { FilePicker } from '../FilePicker';
 import { Box } from '../../Box/Box';
 

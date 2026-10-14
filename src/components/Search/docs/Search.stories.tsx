@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Search } from '../Search';
 import { Box } from '../../Box/Box';
 import { Text } from '../../Text/Text';
@@ -35,10 +35,11 @@ export const WithAPI: Story = {
         width: '20rem',
         placeholder: 'Enter a name'
     },
-    parameters: {},
+
     argTypes: {
         results: { table: { disable: true } }
     },
+
     render: args => {
         const [results, setResults] = useState<JSX.Element[]>([]);
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { compose, LayoutProps, space, SpaceProps, variant } from 'styled-system';
-import styled from 'styled-components';
+import { compose, type LayoutProps, space, type SpaceProps, variant } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { getSemanticValue } from '../../../essentials/experimental';
 
 type DividerProps = SpaceProps &
@@ -47,12 +48,12 @@ const verticalVariants = variant({
     }
 });
 
-const HorizontalLine = styled.div<DividerProps>`
+const HorizontalLine = styled.div.withConfig({ shouldForwardProp: isPropValid })<DividerProps>`
     border-top: 1px solid ${getSemanticValue('divider')};
     ${compose(space, horizontalVariants)}
 `;
 
-const VerticalLine = styled.div<DividerProps>`
+const VerticalLine = styled.div.withConfig({ shouldForwardProp: isPropValid })<DividerProps>`
     align-self: stretch;
     border-left: 1px solid ${getSemanticValue('divider')};
     ${compose(space, verticalVariants)}

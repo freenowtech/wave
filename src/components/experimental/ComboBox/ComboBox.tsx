@@ -1,10 +1,10 @@
-import React, { forwardRef, ReactElement, Ref, useState } from 'react';
+import React, { forwardRef, type ReactElement, type Ref, useState } from 'react';
 import {
     ComboBox as BaseComboBox,
-    ComboBoxProps as BaseComboBoxProps,
+    type ComboBoxProps as BaseComboBoxProps,
     ComboBoxStateContext,
     FieldError,
-    ListBoxProps
+    type ListBoxProps
 } from 'react-aria-components';
 import { useIsSSR } from 'react-aria';
 import { useResizeObserver } from '@react-aria/utils';
@@ -14,12 +14,12 @@ import { FakeInput } from '../Field/FakeInput';
 import { Label } from '../Field/Label';
 import { InnerWrapper } from '../Field/InnerWrapper';
 import { Input } from '../Field/Field';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { Button } from '../Field/Button';
 import { Footer } from '../Field/Footer';
 import { Wrapper } from '../Field/Wrapper';
 import XCrossCircleIcon from '../../../icons/actions/XCrossCircleIcon';
-import useMergeRefs from '../../../utils/hooks/useMergeRefs';
+import mergeRefs from '../../../utils/hooks/useMergeRefs';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
 const defaultAriaStrings = {
@@ -43,9 +43,7 @@ interface ComboBoxFieldProps extends Pick<FieldProps, 'description' | 'errorMess
 }
 
 interface ComboBoxProps<T extends Record<string, unknown>>
-    extends ComboBoxFieldProps,
-        Omit<BaseComboBoxProps<T>, 'children'>,
-        React.RefAttributes<HTMLDivElement> {
+    extends ComboBoxFieldProps, Omit<BaseComboBoxProps<T>, 'children'>, React.RefAttributes<HTMLDivElement> {
     children: React.ReactNode | ((item: T) => React.ReactNode);
     renderEmptyState?: ListBoxProps<unknown>['renderEmptyState'];
 }
@@ -55,24 +53,24 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
         const state = React.useContext(ComboBoxStateContext);
         const internalInputRef = React.useRef<HTMLInputElement>(null);
 
-        const combinedInputRef = useMergeRefs(internalInputRef, externalInputRef);
+        const combinedInputRef = mergeRefs(internalInputRef, externalInputRef);
 
         return (
             <FakeInput
-                $isVisuallyFocused={state?.isOpen}
+                $isVisuallyFocused={state?.isOpen ?? false}
                 ref={forwardedRef}
                 onClick={() => internalInputRef.current?.focus()}
             >
                 {leadingIcon}
                 <InnerWrapper>
-                    <Label $flying={Boolean(placeholder || state?.inputValue?.length > 0)}>{label}</Label>
+                    <Label $flying={Boolean(placeholder || (state?.inputValue?.length ?? 0) > 0)}>{label}</Label>
                     <Input placeholder={placeholder} ref={combinedInputRef} />
                 </InnerWrapper>
-                {!hideClearButton && state?.inputValue?.length > 0 ? (
+                {!hideClearButton && (state?.inputValue?.length ?? 0) > 0 ? (
                     <Button
                         // Don't inherit default Button behavior from ComboBox.
                         slot={null}
-                        aria-label={ariaStrings.clearFieldButton}
+                        aria-label={ariaStrings?.clearFieldButton}
                         onPress={() => {
                             state?.setSelectedKey(null);
                             state?.setInputValue('');
@@ -80,8 +78,8 @@ const ComboBoxInput = React.forwardRef<HTMLDivElement, ComboBoxFieldProps>(
                     >
                         <XCrossCircleIcon />
                     </Button>
-                ) : state?.inputValue?.length > 0 ? null : (
-                    <VisuallyHidden aria-live="polite">{ariaStrings.messageFieldIsCleared}</VisuallyHidden>
+                ) : (state?.inputValue?.length ?? 0) > 0 ? null : (
+                    <VisuallyHidden aria-live="polite">{ariaStrings?.messageFieldIsCleared}</VisuallyHidden>
                 )}
             </FakeInput>
         );

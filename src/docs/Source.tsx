@@ -1,5 +1,5 @@
 import React from 'react';
-import { Source as StorybookSource } from '@storybook/blocks';
+import { Source as StorybookSource } from '@storybook/addon-docs/blocks';
 import { useDarkMode } from 'storybook-dark-mode';
 
 interface SourceProps {

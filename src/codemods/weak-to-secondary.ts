@@ -1,12 +1,12 @@
-import { API, ASTPath, FileInfo, JSXAttribute, JSXIdentifier } from 'jscodeshift';
-import { Options } from 'recast';
+import { type API, type ASTPath, type FileInfo, type JSXAttribute, type JSXIdentifier } from 'jscodeshift';
+import { type Options } from 'recast';
 
-module.exports = (file: FileInfo, api: API, options: Options) => {
+export default (file: FileInfo, api: API, options: Options) => {
     const j = api.jscodeshift;
     const ast = j(file.source);
     const printOptions = options ?? { quote: 'single' };
 
-    const localTextNames = [];
+    const localTextNames: string[] = [];
 
     const secondaryProp = {
         type: 'JSXAttribute',
@@ -18,7 +18,7 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
         j(decl)
             .find(j.ImportSpecifier)
             .forEach(spec => {
-                if (spec.node.imported.name === 'Text') localTextNames.push(spec.node.local.name);
+                if (spec.node.imported.name === 'Text') localTextNames.push(spec.node.local?.name as string);
             });
     });
 
@@ -28,7 +28,7 @@ module.exports = (file: FileInfo, api: API, options: Options) => {
     ast.find(j.JSXElement, {
         openingElement: {
             name: {
-                name: name => localTextNames.includes(name)
+                name: (name: string) => localTextNames.includes(name)
             }
         }
     }).forEach(el => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlagProps } from './FlagProps';
+import type { FlagProps } from './FlagProps';
 import WW from './flags/WW';
 
 interface State {
@@ -7,11 +7,11 @@ interface State {
 }
 
 export class FlagErrorBoundary extends React.Component<React.PropsWithChildren<FlagProps>, State> {
-    public static getDerivedStateFromError(error) {
+    public static getDerivedStateFromError(error: unknown) {
         return { hasError: true };
     }
 
-    constructor(props) {
+    constructor(props: React.PropsWithChildren<FlagProps>) {
         super(props);
         this.state = { hasError: false };
     }

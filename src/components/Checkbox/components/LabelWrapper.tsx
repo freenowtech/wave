@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
-import { compose, margin, MarginProps, ResponsiveValue, variant } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
+import { compose, margin, type MarginProps, type ResponsiveValue, variant } from 'styled-system';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { get } from '../../../utils/themeGet';
@@ -69,7 +70,7 @@ const hoverStyle = ({ disabled, error, indeterminate }: LabelWrapperProps) => {
     `;
 };
 
-const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
+const LabelWrapper = styled.label.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<LabelWrapperProps>`
     display: inline-flex;
     position: relative;
     user-select: none;

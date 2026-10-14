@@ -21,7 +21,7 @@
 // 3. Apply the design system prefix to the variable names.
 // 4. Concatenate entries to a valid CSS variables declaration.
 
-import { ReadCssVariable, SemanticToken } from '../essentials/Colors/types';
+import { type ReadCssVariable, type SemanticToken } from '../essentials/Colors/types';
 
 export const DS_PREFIX = 'wave';
 
@@ -58,11 +58,11 @@ export const generateCssVariableEntries = (
     path: string[] = []
 ): ReadonlyArray<CssVariableEntry> =>
     Object.entries(tokenObject).flatMap(([key, value]) => {
-        if (typeof value === 'object') {
+        if (typeof value === 'object' && value !== null) {
             return generateCssVariableEntries(value, [...path, key]);
         }
 
-        return { variable: [...path, key].join('-').toLowerCase(), value };
+        return { variable: [...path, key].join('-').toLowerCase(), value: value as string | number };
     });
 
 export const generateHslComponentsCssVariableEntries = (
@@ -84,7 +84,7 @@ export const applyPrefix = <T extends string>(
     namespace: 'color' = 'color'
 ): string => `--${DS_PREFIX}-${tier}-${namespace}-${variableName}`;
 
-export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): ReadonlyArray<string> => {
+export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): string[] => {
     const entries = generateCssVariableEntries(tokens);
     const hslComponentsEntries = generateHslComponentsCssVariableEntries(entries);
 
@@ -93,10 +93,8 @@ export const generateCssVariables = (tokens: TokenObject, tier: 'b' | 's'): Read
     );
 };
 
-export const generateBareTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 'b');
+export const generateBareTierCssVariables = (tokens: TokenObject): string[] => generateCssVariables(tokens, 'b');
 
-export const generateSemanticTierCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 's');
+export const generateSemanticTierCssVariables = (tokens: TokenObject): string[] => generateCssVariables(tokens, 's');
 
 export const getSemanticValue = (token: SemanticToken): ReadCssVariable => `var(--${DS_PREFIX}-s-color-${token})`;

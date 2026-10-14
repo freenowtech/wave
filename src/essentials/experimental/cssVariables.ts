@@ -24,10 +24,10 @@
 import {
     generateHslComponentsCssVariableEntries,
     generateCssVariableEntries,
-    TokenObject
+    type TokenObject
 } from '../../utils/cssVariables';
-import { Join, Leaves } from '../../utils/types';
-import { ColorPaletteSchema, SemanticColorsSchema } from './types';
+import { type Join, type Leaves } from '../../utils/types';
+import { type ColorPaletteSchema, type SemanticColorsSchema } from './types';
 
 const DS_PREFIX = 'wave-exp';
 type NameSpace = 'color' | 'palette' | 'typescale';
@@ -59,7 +59,7 @@ export const getBareValue = (token: BareColorToken): ReadCssVariable<BareColorTo
 export const getBareHslValue = (token: BareColorToken): ReadCssVariable<BareColorHslTokenCssVariable> =>
     `var(--${DS_PREFIX}-palette-${token}-hsl)`;
 
-export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace): ReadonlyArray<string> => {
+export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace): string[] => {
     const entries = generateCssVariableEntries(tokens);
     const hslComponentsEntries = generateHslComponentsCssVariableEntries(entries);
 
@@ -68,8 +68,6 @@ export const generateCssVariables = (tokens: TokenObject, namespace: NameSpace):
     );
 };
 
-export const generateBareCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 'palette');
+export const generateBareCssVariables = (tokens: TokenObject): string[] => generateCssVariables(tokens, 'palette');
 
-export const generateSemanticCssVariables = (tokens: TokenObject): ReadonlyArray<string> =>
-    generateCssVariables(tokens, 'color');
+export const generateSemanticCssVariables = (tokens: TokenObject): string[] => generateCssVariables(tokens, 'color');

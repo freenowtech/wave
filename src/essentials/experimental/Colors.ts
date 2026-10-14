@@ -1,5 +1,5 @@
 import { createThemeGlobalStyle } from './globalStyles';
-import { ColorPaletteSchema, SemanticColorsSchema } from './types';
+import { type ColorPaletteSchema, type SemanticColorsSchema } from './types';
 
 export const ColorPalette = {
     neutral: {

@@ -1,5 +1,14 @@
-import styled, { css, keyframes } from 'styled-components';
-import { borderRadius, BorderRadiusProps, compose, layout, LayoutProps, margin, MarginProps } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css, keyframes } from 'styled-components';
+import {
+    borderRadius,
+    type BorderRadiusProps,
+    compose,
+    layout,
+    type LayoutProps,
+    margin,
+    type MarginProps
+} from 'styled-system';
 import { getSemanticValue } from '../../utils/cssVariables';
 import { get } from '../../utils/themeGet';
 
@@ -39,7 +48,7 @@ export interface SkeletonProps extends LayoutProps, MarginProps, BorderRadiusPro
     animated?: boolean;
 }
 
-export const Skeleton = styled.span<SkeletonProps>`
+export const Skeleton = styled.span.withConfig({ shouldForwardProp: isPropValid })<SkeletonProps>`
     display: inline-block;
     height: 1rem;
     width: 100%;

@@ -1,4 +1,4 @@
-import { Join, Leaves } from '../../utils/types';
+import { type Join, type Leaves } from '../../utils/types';
 
 export type HSL = `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 
@@ -183,8 +183,7 @@ export type SemanticToken = SemanticColorToken | SemanticHslComponentsToken;
 export type SemanticColorCssVariable = SemanticColorTokenCssVariable | HslComponentsTokenCssVariable;
 
 export type ReadCssColorVariable =
-    | `var(${SemanticColorTokenCssVariable})`
-    | `var(${SemanticColorTokenCssVariable}, ${string})`;
+    `var(${SemanticColorTokenCssVariable})` | `var(${SemanticColorTokenCssVariable}, ${string})`;
 export type ReadCssVariable = `var(${SemanticColorCssVariable})` | `var(${SemanticColorCssVariable}, ${string})`;
 
 export type ComponentSemanticTokens = {

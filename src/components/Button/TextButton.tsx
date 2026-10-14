@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { ResponsiveValue, variant } from 'styled-system';
+import { styled } from 'styled-components';
+import { type ResponsiveValue, variant } from 'styled-system';
 
-import { BaseButton, BaseButtonProps } from './BaseButton';
-import { ComponentSemanticTokens } from '../../essentials/Colors/types';
+import { BaseButton, type BaseButtonProps } from './BaseButton';
+import { type ComponentSemanticTokens } from '../../essentials/Colors/types';
 import { getSemanticValue } from '../../utils/cssVariables';
 
 type Variant = 'default' | 'danger';
@@ -10,6 +10,7 @@ type Variant = 'default' | 'danger';
 interface TextButtonProps extends BaseButtonProps {
     /**
      * Define base colors
+     * @default default
      */
     variant?: ResponsiveValue<Variant>;
 }
@@ -47,15 +48,15 @@ const variantStyles = variant<ComponentSemanticTokens, Variant>({
     }
 });
 
-const TextButton = styled(BaseButton)<TextButtonProps>`
-    transition: color 200ms, fill 200ms;
+const TextButton = styled(BaseButton).attrs<TextButtonProps>(({ size = 'medium', variant = 'default' }) => ({
+    size,
+    variant
+}))<TextButtonProps>`
+    transition:
+        color 200ms,
+        fill 200ms;
 
     ${variantStyles};
 `;
 
-TextButton.defaultProps = {
-    size: 'medium',
-    variant: 'default'
-};
-
-export { TextButton, TextButtonProps };
+export { TextButton, type TextButtonProps };

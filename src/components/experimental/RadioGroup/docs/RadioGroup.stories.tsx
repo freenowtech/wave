@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { RadioGroup } from '../RadioGroup';
 import { RadioButton } from '../../RadioButton/RadioButton';
 
@@ -8,9 +8,15 @@ const meta: Meta = {
     component: RadioGroup,
     args: {
         children: [
-            <RadioButton value="one">one</RadioButton>,
-            <RadioButton value="two">two</RadioButton>,
-            <RadioButton value="three">three</RadioButton>
+            <RadioButton key="one" value="one">
+                one
+            </RadioButton>,
+            <RadioButton key="two" value="two">
+                two
+            </RadioButton>,
+            <RadioButton key="three" value="three">
+                three
+            </RadioButton>
         ],
         label: 'Example',
         defaultValue: 'one'

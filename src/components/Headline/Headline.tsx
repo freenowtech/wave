@@ -1,7 +1,16 @@
-import * as React from 'react';
-import { ComponentPropsWithoutRef } from 'react';
-import styled from 'styled-components';
-import { compose, margin, system, MarginProps, textAlign, TextAlignProps, ResponsiveValue } from 'styled-system';
+import type * as React from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import {
+    compose,
+    margin,
+    system,
+    type MarginProps,
+    textAlign,
+    type TextAlignProps,
+    type ResponsiveValue
+} from 'styled-system';
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
 
@@ -53,7 +62,9 @@ const parser = system({
 const getSize = ({ as = 'h1', size }: HeadlineProps): ResponsiveValue<'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs'> =>
     size || DEFAULT_HEADLINE_SIZE[as];
 
-const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlineProps>`
+const Headline: React.FC<HeadlineProps> = styled.h1
+    .withConfig({ shouldForwardProp: isPropValid })
+    .attrs({ theme })<HeadlineProps>`
     color: inherit;
     font-family: ${get('fonts.normal')};
     font-weight: ${get('fontWeights.bold')};
@@ -63,4 +74,4 @@ const Headline: React.FC<HeadlineProps> = styled.h1.attrs({ theme })<HeadlinePro
     ${compose(margin, textAlign)}
 `;
 
-export { Headline, HeadlineProps };
+export { Headline, type HeadlineProps };

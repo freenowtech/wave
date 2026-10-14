@@ -1,7 +1,8 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
-import styled, { css } from 'styled-components';
+import React, { type ComponentPropsWithoutRef, type FC, useContext } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
 import { TableContext } from '../context/TableContext';
-import { TableProps } from './Table';
+import { type TableProps } from './Table';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
@@ -17,7 +18,7 @@ type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
     hover?: boolean;
 };
 
-const zebraStyles = (active, hover) => css`
+const zebraStyles = (active: boolean, hover: boolean) => css`
     &:nth-child(even) {
         background-color: hsla(${getSemanticValue('background-surface-neutral-faded-hsl')}, 0.3);
     }
@@ -29,7 +30,7 @@ const zebraStyles = (active, hover) => css`
     ${active ? `background-color: ${getSemanticValue('background-surface-info-active')} !important` : ''};
 `;
 
-const linesStyles = (active, hover) => css`
+const linesStyles = (active: boolean, hover: boolean) => css`
     td,
     th {
         border-bottom: 0.0625rem solid ${getSemanticValue('border-neutral-default')};
@@ -48,27 +49,28 @@ const linesStyles = (active, hover) => css`
     ${active ? `background-color: ${getSemanticValue('background-surface-info-faded')} !important` : ''};
 `;
 
-const TableRowElement = styled.tr<TableRowProps & Pick<TableProps, 'rowStyle'>>(
-    ({ rowStyle, active, hover = true }) => {
-        switch (rowStyle) {
-            case 'zebra':
-                return zebraStyles(active, hover);
-            case 'lines':
-                return linesStyles(active, hover);
-            case 'blank':
-            default:
-                return css`
-                    &:hover {
-                        ${hover ? `background-color: ${getSemanticValue('background-surface-neutral-faded')}` : ''};
-                    }
+const TableRowElement = styled.tr.withConfig({ shouldForwardProp: isPropValid })<
+    TableRowProps & Pick<TableProps, 'rowStyle'>
+>(({ rowStyle, active, hover = true }) => {
+    switch (rowStyle) {
+        case 'zebra': {
+            return zebraStyles(active ?? false, hover);
+        }
+        case 'lines': {
+            return linesStyles(active ?? false, hover);
+        }
+        case 'blank':
+        default: {
+            return css`
+                &:hover {
+                    ${hover ? `background-color: ${getSemanticValue('background-surface-neutral-faded')}` : ''};
+                }
 
-                    ${active
-                        ? `background-color: ${getSemanticValue('background-surface-info-faded')} !important`
-                        : ''};
-                `;
+                ${active ? `background-color: ${getSemanticValue('background-surface-info-faded')} !important` : ''};
+            `;
         }
     }
-);
+});
 
 const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
     const { rowStyle } = useContext(TableContext);
@@ -76,4 +78,4 @@ const TableRow: FC<TableRowProps> = (props: TableRowProps) => {
     return <TableRowElement rowStyle={rowStyle} {...props} />;
 };
 
-export { TableRow, TableRowProps };
+export { TableRow, type TableRowProps };

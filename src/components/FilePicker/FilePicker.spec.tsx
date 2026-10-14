@@ -1,7 +1,7 @@
 import React from 'react';
 import { render as renderRtl, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FilePicker, FilePickerProps } from './FilePicker';
+import { FilePicker, type FilePickerProps } from './FilePicker';
 
 const baseProps = {
     label: 'A picture of you',
@@ -80,7 +80,7 @@ test('expose a way to get selected file within the host composition', async () =
     // emulate real environment and make sure FilePicker properly support forms
     const onFormSubmit = jest.fn().mockImplementation((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        submittedFiles = ((event.target as HTMLFormElement).elements.namedItem('avatar') as HTMLInputElement).files;
+        submittedFiles = ((event.target as HTMLFormElement).elements.namedItem('avatar') as HTMLInputElement).files!;
     });
 
     render({ ...baseProps, onFileChange }, onFormSubmit);
@@ -96,7 +96,7 @@ test('expose a way to get selected file within the host composition', async () =
     // Assert over SyntheticEvent will lead to console errors
     expect(onFileChange).toHaveBeenCalledWith(file, expect.anything());
     expect(onFormSubmit).toHaveBeenCalledTimes(1);
-    expect(submittedFiles[0]).toEqual(file);
+    expect(submittedFiles![0]).toEqual(file);
 });
 
 test('expose a way to access the event using onChange input standard prop', () => {

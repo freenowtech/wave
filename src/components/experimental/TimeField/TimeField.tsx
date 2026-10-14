@@ -1,7 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { TimeValue } from 'react-aria';
-import { FieldError, TimeField as BaseTimeField, TimeFieldProps as BaseTimeFieldProps } from 'react-aria-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { type TimeValue } from 'react-aria';
+import {
+    FieldError,
+    TimeField as BaseTimeField,
+    type TimeFieldProps as BaseTimeFieldProps
+} from 'react-aria-components';
 import { useControlledState } from '@react-stately/utils';
 import { now, getLocalTimeZone } from '@internationalized/date';
 import { getSemanticValue } from '../../../essentials/experimental';
@@ -12,10 +17,10 @@ import { InnerWrapper } from '../Field/InnerWrapper';
 import { DateInput, fieldTextStyles } from '../Field/Field';
 import { DateSegment } from '../Field/DateSegment';
 import { Wrapper } from '../Field/Wrapper';
-import { FieldProps } from '../Field/Props';
+import { type FieldProps } from '../Field/Props';
 import { VisuallyHidden } from '../../VisuallyHidden/VisuallyHidden';
 
-const TimeInputWrapper = styled.div`
+const TimeInputWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     position: relative;
 `;
 
@@ -23,7 +28,7 @@ const StyledDateInput = styled(DateInput)<{ $isHidden?: boolean }>`
     ${props => props.$isHidden && 'opacity: 0;'}
 `;
 
-const EmptyStateLabel = styled.span`
+const EmptyStateLabel = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     ${fieldTextStyles}
     position: absolute;
     inset: 0;
@@ -121,4 +126,4 @@ const TimeField = React.forwardRef<HTMLDivElement, TimeFieldProps>(
     }
 );
 
-export { TimeField, TimeFieldProps };
+export { TimeField, type TimeFieldProps };

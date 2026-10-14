@@ -1,9 +1,10 @@
-import { END_DATE, FirstDayOfWeek, FocusedInput, START_DATE } from '@datepicker-react/hooks';
-import { compareDesc, Locale, parse, startOfDay, endOfDay } from 'date-fns';
-import React, { ChangeEventHandler, FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
-import styled from 'styled-components';
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
-import { usePopper } from 'react-popper';
+import { END_DATE, type FirstDayOfWeek, type FocusedInput, START_DATE } from '@datepicker-react/hooks';
+import { compareDesc, type Locale, parse, startOfDay, endOfDay } from 'date-fns';
+import React, { type ChangeEventHandler, type FC, useEffect, useRef, useState } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
+import { useFloating, offset, flip, shift, arrow, autoUpdate } from '@floating-ui/react';
 import { createPortal } from 'react-dom';
 import { MediaQueries } from '../../essentials';
 import { theme } from '../../essentials/theme';
@@ -21,10 +22,11 @@ import { useOnChange } from './utils/useOnChange';
 import { Arrow, DatepickerContentContainer } from './DatepickerContentElements';
 import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
+import { isSSR } from '../../utils/isSSR';
 
 type DateRangerProps = MarginProps & WidthProps;
 
-const DateRangeWrapper = styled.div.attrs({ theme })<DateRangerProps>`
+const DateRangeWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<DateRangerProps>`
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -71,7 +73,7 @@ const DateArrow = styled(ChevronRightIcon)`
     z-index: 1;
 `;
 
-const StartDateFocusedBlock = styled.div`
+const StartDateFocusedBlock = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
@@ -81,7 +83,7 @@ const StartDateFocusedBlock = styled.div`
     left: 0.75rem;
 `;
 
-const EndDateFocusedBlock = styled.div`
+const EndDateFocusedBlock = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background: ${getSemanticValue('background-element-info-emphasized')};
     height: 0.25rem;
     width: calc(50% - 1.5rem);
@@ -193,13 +195,13 @@ const dateRangeToDisplayText = (locale: Locale, displayFormat?: string, dateRang
     }
 
     return {
-        startText: dateToDisplayText(locale, displayFormat, dateRange.startDate),
-        endText: dateToDisplayText(locale, displayFormat, dateRange.endDate)
+        startText: dateToDisplayText(locale, displayFormat!, dateRange.startDate),
+        endText: dateToDisplayText(locale, displayFormat!, dateRange.endDate)
     };
 };
 
 // https://date-fns.org/v2.12.0/docs/compareDesc
-const isValidRange = (startDate, endDate) => {
+const isValidRange = (startDate: Date | undefined, endDate: Date | undefined) => {
     if (startDate && endDate) {
         return compareDesc(startDate, endDate) >= 0;
     }
@@ -211,7 +213,7 @@ const isValidRange = (startDate, endDate) => {
 type DatepickerPopperPlacement = 'bottom-end' | 'bottom-start' | 'bottom';
 
 const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
-    [key in DatepickerRangeInputProps['placement']]: DatepickerPopperPlacement;
+    [key in NonNullable<DatepickerRangeInputProps['placement']>]: DatepickerPopperPlacement;
 } = {
     center: 'bottom',
     left: 'bottom-start',
@@ -219,7 +221,7 @@ const PLACEMENT_TO_POPPER_PLACEMENT_MAP: {
 };
 
 const mapPlacementToPopperPlacement = (placement: DatepickerRangeInputProps['placement']) =>
-    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement];
+    PLACEMENT_TO_POPPER_PLACEMENT_MAP[placement ?? 'center'];
 
 const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     minDate,
@@ -242,45 +244,39 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
     disabled,
     ...rest
 }) => {
-    const [triggerReference, setTriggerReference] = useState(undefined);
-    const [contentReference, setContentReference] = useState(undefined);
-    const [arrowReference, setArrowReference] = useState(undefined);
+    const [triggerElement, setTriggerElement] = useState<Element | null>(null);
+    const arrowRef = useRef<HTMLDivElement | null>(null);
 
     const localeObject = useLocaleObject(locale);
-    const startDateRef = useRef<HTMLInputElement>();
-    const endDateRef = useRef<HTMLInputElement>();
-    // eslint-disable-next-line unicorn/no-null
+    const startDateRef = useRef<HTMLInputElement | null>(null);
+    const endDateRef = useRef<HTMLInputElement | null>(null);
+
     const [focusedInput, setFocusedInput] = useState<FocusedInput>(null);
-    const [inputText, setInputText] = useState<DateRangeInputText>(
-        dateRangeToDisplayText(localeObject, displayFormat, value)
+    const [inputText, setInputText] = useState<DateRangeInputText>(() =>
+        dateRangeToDisplayText(localeObject!, displayFormat, value)
     );
     const [error, setError] = useState({ startDate: false, endDate: false });
     const displayErrorMessage = typeof errorHandler === 'string';
 
     const mappedPlacement = mapPlacementToPopperPlacement(placement);
 
-    const { styles, attributes } = usePopper(triggerReference, contentReference, {
+    const {
+        refs,
+        floatingStyles,
+        placement: currentPlacement,
+        middlewareData
+    } = useFloating({
         placement: mappedPlacement,
-        modifiers: [
-            {
-                name: 'flip',
-                enabled: true
-            },
-            {
-                name: 'offset',
-                enabled: true,
-                options: {
-                    offset: [0, 15]
-                }
-            },
-            {
-                name: 'arrow',
-                options: { element: arrowReference }
-            }
-        ]
+        middleware: [flip(), offset(15), shift(), arrow({ element: arrowRef })],
+        whileElementsMounted: autoUpdate
     });
 
-    const enforcedColorScheme = useClosestColorScheme(triggerReference);
+    const handleTriggerRef = (el: HTMLDivElement | null) => {
+        refs.setReference(el);
+        setTriggerElement(el);
+    };
+
+    const enforcedColorScheme = useClosestColorScheme(triggerElement ?? undefined);
     const startId = useGeneratedId(startInputId);
     const endId = useGeneratedId(endInputId);
 
@@ -288,10 +284,15 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         if (!focusedInput && (error.startDate || error.endDate) && typeof errorHandler === 'function') {
             errorHandler();
         }
+        // errorHandler is a user-provided callback; intentionally excluded to avoid re-running on every render
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [error.startDate, error.endDate, focusedInput]);
 
     useEffect(() => {
-        setInputText(dateRangeToDisplayText(localeObject, displayFormat, value));
+        // Sync display text when controlled value changes — intentional derived state pattern
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
+        setInputText(dateRangeToDisplayText(localeObject!, displayFormat, value));
+        // eslint-disable-next-line react-hooks/exhaustive-deps, @eslint-react/exhaustive-deps
     }, [value.startDate, value.endDate, displayFormat, localeObject]);
 
     useEffect(() => {
@@ -308,8 +309,9 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
 
                 break;
             }
-            default:
+            default: {
                 break;
+            }
         }
     }, [focusedInput]);
 
@@ -367,14 +369,43 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
         }));
     };
 
-    const PortalWrapper = useMemo(() => {
-        if (!enforcedColorScheme) return Fragment;
-        return enforcedColorScheme === 'light' ? LightScheme : DarkScheme;
-    }, [enforcedColorScheme]);
+    const datepickerContent = (
+        <DatepickerContentContainer
+            // eslint-disable-next-line @typescript-eslint/unbound-method -- Floating UI ref setters are stable callbacks that do not use this
+            ref={refs.setFloating}
+            style={floatingStyles}
+            data-popper-placement={currentPlacement}
+        >
+            <Arrow
+                ref={arrowRef}
+                style={{
+                    left: middlewareData.arrow?.x == null ? undefined : `${middlewareData.arrow.x}px`,
+                    top: middlewareData.arrow?.y == null ? undefined : `${middlewareData.arrow.y}px`
+                }}
+            />
+            <Datepicker
+                // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
+                numberOfMonths={variant === 'normal' && !isSSR() && window.innerWidth >= 768 ? 2 : 1}
+                minBookingDays={1}
+                startDate={value.startDate ?? null}
+                endDate={value.endDate ?? null}
+                minBookingDate={minDate}
+                maxBookingDate={maxDate}
+                firstDayOfWeek={firstDayOfWeek}
+                focusedInput={focusedInput}
+                onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
+                    setFocusedInput(focusedValue);
+                    handleDateChange(startDate ?? undefined, endDate ?? undefined);
+                }}
+                isDateBlocked={isDateBlocked}
+                locale={localeObject!}
+            />
+        </DatepickerContentContainer>
+    );
 
     return (
         <>
-            <DateRangeWrapper ref={setTriggerReference} {...rest}>
+            <DateRangeWrapper ref={handleTriggerRef} {...rest}>
                 <Input
                     id={startId}
                     ref={startDateRef}
@@ -384,7 +415,6 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                     label={label}
                     placeholder={startPlaceholder}
                     onFocus={() => setFocusedInput(START_DATE)}
-                    // eslint-disable-next-line unicorn/no-null
                     onBlur={() => setFocusedInput(null)}
                     value={inputText.startText}
                     width="100%"
@@ -399,13 +429,12 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
                 <Input
                     id={endId}
                     ref={endDateRef}
-                    tabIndex={!inputText.startText ? -1 : 0}
+                    tabIndex={inputText.startText ? 0 : -1}
                     autoComplete="off"
                     className="endDate"
                     data-testid="end-date-input"
                     placeholder={endPlaceholder}
-                    onFocus={() => setFocusedInput(!value.startDate ? START_DATE : END_DATE)}
-                    // eslint-disable-next-line unicorn/no-null
+                    onFocus={() => setFocusedInput(value.startDate ? END_DATE : START_DATE)}
                     onBlur={() => setFocusedInput(null)}
                     value={inputText.endText}
                     onChange={handleEndDateInputChange}
@@ -420,36 +449,17 @@ const DatepickerRangeInput: FC<DatepickerRangeInputProps> = ({
             )}
             {focusedInput &&
                 createPortal(
-                    <PortalWrapper>
-                        <DatepickerContentContainer
-                            ref={setContentReference}
-                            style={styles.popper}
-                            {...attributes.popper}
-                        >
-                            <Arrow ref={setArrowReference} style={styles.arrow} {...attributes.arrow} />
-                            <Datepicker
-                                // TODO: refer to https://stash.intapps.it/projects/DS/repos/wave/pull-requests/104/overview?commentId=168382
-                                numberOfMonths={variant === 'normal' && window.innerWidth >= 768 ? 2 : 1}
-                                minBookingDays={1}
-                                startDate={value.startDate}
-                                endDate={value.endDate}
-                                minBookingDate={minDate}
-                                maxBookingDate={maxDate}
-                                firstDayOfWeek={firstDayOfWeek}
-                                focusedInput={focusedInput}
-                                onDatesChange={({ focusedInput: focusedValue, startDate, endDate }) => {
-                                    setFocusedInput(focusedValue);
-                                    handleDateChange(startDate || undefined, endDate || undefined);
-                                }}
-                                isDateBlocked={isDateBlocked}
-                                locale={localeObject}
-                            />
-                        </DatepickerContentContainer>
-                    </PortalWrapper>,
+                    enforcedColorScheme === 'light' ? (
+                        <LightScheme>{datepickerContent}</LightScheme>
+                    ) : enforcedColorScheme === 'dark' ? (
+                        <DarkScheme>{datepickerContent}</DarkScheme>
+                    ) : (
+                        datepickerContent
+                    ),
                     document.body
                 )}
         </>
     );
 };
 
-export { DatepickerRangeInput, DatepickerRangeInputProps };
+export { DatepickerRangeInput, type DatepickerRangeInputProps };

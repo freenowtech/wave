@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { margin } from 'styled-system';
 
 import { theme } from '../../essentials/theme';
 import { Link } from './Link';
-import { TabBarWithLink } from './TabBarWithLink';
+import { type TabBarWithLink } from './TabBarWithLink';
 
 const TabBar: TabBarWithLink = Object.assign(
-    styled.nav.attrs({ theme })`
+    styled.nav.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })`
         display: flex;
 
         ${margin}
@@ -14,4 +15,6 @@ const TabBar: TabBarWithLink = Object.assign(
     { Link }
 );
 
-export { TabBar, TabBarWithLink };
+export { TabBar };
+
+export { type TabBarWithLink } from './TabBarWithLink';

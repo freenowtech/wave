@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { type FC } from 'react';
+import { styled } from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 
 import { applyPrefix, getSemanticValue } from '../../../utils/cssVariables';
@@ -7,7 +7,7 @@ import { Box } from '../../Box/Box';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
 import { Spaces } from '../../../essentials';
-import { CardProps, InfoBannerVariants } from '../types';
+import { type CardProps, type InfoBannerVariants } from '../types';
 
 export const LOCAL_CSS_VARIABLES = {
     LINK: applyPrefix('infobanner-link', 'l'),

@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { type FC } from 'react';
+import { styled } from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 
 import { Box } from '../../Box/Box';
@@ -7,11 +7,11 @@ import { getSemanticValue } from '../../../utils/cssVariables';
 import {
     CheckCircleFilledIcon,
     XCrossCircleFilledIcon,
-    IconProps,
+    type IconProps,
     InfoCircleFilledIcon,
     WarningFilledIcon
 } from '../../../icons';
-import { BoxWithVariant, InfoBannerVariants } from '../types';
+import { type BoxWithVariant, type InfoBannerVariants } from '../types';
 
 const iconColorVariants = styledVariant({
     variants: {

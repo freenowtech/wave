@@ -1,4 +1,4 @@
-import { render, RenderResult, within } from '@testing-library/react';
+import { render, type RenderResult, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import React from 'react';
@@ -83,11 +83,11 @@ describe('Pagination', () => {
 
         const container = queryByLabelText('Select page size container');
 
-        const pageSizeSelectList = within(container).queryByRole('combobox');
+        const pageSizeSelectList = within(container!).queryByRole('combobox');
 
-        await user.type(pageSizeSelectList, '1');
+        await user.type(pageSizeSelectList!, '1');
 
-        await selectEvent.select(container, ['10']);
+        await selectEvent.select(container!, ['10']);
 
         expect(onSelectPageSizeMock).toHaveBeenCalledWith(
             { label: '10', value: '10' },

@@ -12,4 +12,4 @@ export * from './service-type';
 export * from './trip';
 
 export { Flag } from './Flag';
-export { IconProps } from './IconProps';
+export type { IconProps } from './IconProps';

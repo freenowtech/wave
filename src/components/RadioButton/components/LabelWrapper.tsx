@@ -1,10 +1,11 @@
-import styled, { css } from 'styled-components';
-import { compose, margin, MarginProps, variant } from 'styled-system';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
+import { compose, margin, type MarginProps, variant } from 'styled-system';
 
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { theme } from '../../../essentials/theme';
 import { get } from '../../../utils/themeGet';
-import { RadioButtonProps } from '../RadioButtonProps';
+import { type RadioButtonProps } from '../RadioButtonProps';
 import { Checkmark } from './Checkmark';
 import { TapArea } from './TapArea';
 
@@ -52,7 +53,7 @@ const hoverStyle = ({ disabled, error }: LabelWrapperProps) => {
     `;
 };
 
-const LabelWrapper = styled.label.attrs({ theme })<LabelWrapperProps>`
+const LabelWrapper = styled.label.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<LabelWrapperProps>`
     display: inline-flex;
     align-items: center;
     position: relative;

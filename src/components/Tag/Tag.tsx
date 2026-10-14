@@ -1,6 +1,7 @@
-import React, { FC, MouseEvent, PropsWithChildren } from 'react';
-import styled from 'styled-components';
-import { margin, MarginProps, variant } from 'styled-system';
+import React, { type FC, type MouseEvent, type PropsWithChildren } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { margin, type MarginProps, variant } from 'styled-system';
 
 import { theme } from '../../essentials/theme';
 import { XCrossIcon } from '../../icons';
@@ -109,7 +110,7 @@ const tagVariant = variant({
     }
 });
 
-const TagWrapper = styled.div.attrs({ theme })<TagProps>`
+const TagWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid }).attrs({ theme })<TagProps>`
     box-sizing: border-box;
     border: solid 0.0625rem;
     display: inline-flex;
@@ -144,4 +145,4 @@ const Tag: FC<PropsWithChildren<TagProps>> = ({
     </TagWrapper>
 );
 
-export { Tag, TagProps };
+export { Tag, type TagProps };

@@ -1,12 +1,13 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { type ReactNode } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { Spaces } from '../../essentials/Spaces/Spaces';
 import { BackwardIcon, BackwardLastIcon, ForwardIcon, ForwardLastIcon } from '../../icons';
 import { Box } from '../Box/Box';
 import { SelectList } from '../SelectList/SelectList';
 import { getSemanticValue } from '../../utils/cssVariables';
 
-const Container = styled.div`
+const Container = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     text-align: center;
 `;
 
@@ -16,7 +17,7 @@ const ButtonsContainer = styled(Box)`
     gap: ${Spaces[1]};
 `;
 
-const IconButton = styled.button`
+const IconButton = styled.button.withConfig({ shouldForwardProp: isPropValid })`
     align-items: center;
     background-color: ${getSemanticValue('background-page-default')};
     border: 0.0625rem solid ${getSemanticValue('border-neutral-faded')};
@@ -44,7 +45,7 @@ const IconButton = styled.button`
     }
 `;
 
-const LabelContainer = styled.div`
+const LabelContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     margin-top: ${Spaces[2]};
 `;
 
@@ -145,7 +146,7 @@ const Pagination: React.FC<PaginationProps> = ({
                         <Box aria-label={ariaLabelSelectPageSizeContainer} width="fit-content" minWidth="5em">
                             <SelectList
                                 options={pageSizes}
-                                onChange={onSelectPageSize}
+                                onChange={onSelectPageSize as any}
                                 value={pageSizes.find(sizeOption => sizeOption.value === pageSize.toString())}
                             />
                         </Box>
@@ -175,9 +176,9 @@ const Pagination: React.FC<PaginationProps> = ({
                 <Box flex="1" />
             </ButtonsContainer>
 
-            {label && <LabelContainer>{label}</LabelContainer>}
+            {label != null && <LabelContainer>{label}</LabelContainer>}
         </Container>
     );
 };
 
-export { Pagination, PaginationProps };
+export { Pagination, type PaginationProps };

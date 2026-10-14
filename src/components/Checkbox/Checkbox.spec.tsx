@@ -13,9 +13,9 @@ describe('Checkbox', () => {
         const label = checkbox.getByText(labelText);
 
         await user.click(label);
-        expect(onClickCallback).toBeCalledWith(true);
+        expect(onClickCallback).toHaveBeenCalledWith(true);
 
         await user.click(label);
-        expect(onClickCallback).toBeCalledWith(false);
+        expect(onClickCallback).toHaveBeenCalledWith(false);
     });
 });

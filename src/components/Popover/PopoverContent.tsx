@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Spaces } from '../../essentials';
 import { Card } from '../Card/Card';
@@ -14,7 +14,7 @@ interface PopoverContentProps {
     /**
      * Popover content padding
      */
-    padding: string | number;
+    padding?: string | number;
 }
 
 const PopoverContentContainer = styled(Card)<{ padding: string | number }>`

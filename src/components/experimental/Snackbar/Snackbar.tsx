@@ -1,7 +1,8 @@
-import React, { forwardRef, ReactNode, type ReactElement } from 'react';
-import { PressEvent } from 'react-aria';
-import styled from 'styled-components';
-import { SpaceProps, LayoutProps, PositionProps, FlexboxProps } from 'styled-system';
+import React, { forwardRef, type ReactNode, type ReactElement } from 'react';
+import { type PressEvent } from 'react-aria';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
+import { type SpaceProps, type LayoutProps, type PositionProps, type FlexboxProps } from 'styled-system';
 
 import { get } from '../../../utils/experimental/themeGet';
 import { getSemanticValue } from '../../../essentials/experimental';
@@ -9,7 +10,7 @@ import { textStyles } from '../Text/Text';
 import { XCrossIcon } from '../../../icons';
 import { IconButton } from '../IconButton/IconButton';
 
-const Container = styled.div`
+const Container = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     position: relative;
     justify-content: space-between;
 
@@ -34,18 +35,14 @@ const DismissButton = styled(IconButton)`
 `;
 
 interface SnackbarProps
-    extends SpaceProps,
-        LayoutProps,
-        PositionProps,
-        FlexboxProps,
-        React.HTMLAttributes<HTMLDivElement> {
+    extends SpaceProps, LayoutProps, PositionProps, FlexboxProps, React.HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     hasDismissButton?: boolean;
     onDismiss?: (e: PressEvent) => void;
 }
 
 const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
-    ({ children, hasDismissButton = false, onDismiss = null, ...restProps }, ref): ReactElement => (
+    ({ children, hasDismissButton = false, onDismiss = undefined, ...restProps }, ref): ReactElement => (
         <Container ref={ref} {...restProps}>
             {children}
             {hasDismissButton && (
@@ -59,4 +56,4 @@ const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
     )
 );
 
-export { Snackbar, SnackbarProps };
+export { Snackbar, type SnackbarProps };

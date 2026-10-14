@@ -1,0 +1,23 @@
+{
+    "name": "wave-fixture-react-19",
+    "private": true,
+    "description": "Consumer app on React 19 that type-checks, builds and server-renders the packed Wave tarball",
+    "type": "module",
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "build": "vite build",
+        "build:ssr": "vite build --ssr src/ssr.tsx --outDir dist-ssr",
+        "test": "npm run typecheck && npm run build && npm run build:ssr && node dist-ssr/ssr.js"
+    },
+    "dependencies": {
+        "react": "19.3.0",
+        "react-dom": "19.3.0",
+        "styled-components": "6.5.3"
+    },
+    "devDependencies": {
+        "@types/react": "19.3.0",
+        "@types/react-dom": "19.3.0",
+        "typescript": "6.0.3",
+        "vite": "8.3.4"
+    }
+}

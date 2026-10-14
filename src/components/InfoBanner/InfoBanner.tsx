@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { variant as styledVariant } from 'styled-system';
 import { get } from '../../utils/themeGet';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -8,15 +8,15 @@ import {
     XCrossCircleFilledIcon,
     InfoCircleFilledIcon,
     WarningFilledIcon,
-    IconProps
+    type IconProps
 } from '../../icons';
-import { BoxProps, Box } from '../Box/Box';
+import { type BoxProps, Box } from '../Box/Box';
 import { Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 import { Headline } from '../Headline/Headline';
 import { Spaces } from '../../essentials';
 import { theme } from '../../essentials/theme';
-import { InfoBannerVariants, BoxWithVariant } from './types';
+import { type InfoBannerVariants, type BoxWithVariant } from './types';
 
 interface InfoBannerProps extends BoxProps {
     /**
@@ -182,8 +182,8 @@ const InfoBanner: React.FC<InfoBannerProps> = ({
     const BannerIcon = ICON_VARIANTS[variant];
 
     return (
-        <RoundedBox variant={variant} emphasized={emphasized} role={ROLE_VARIANTS[variant]} {...props}>
-            <IconBox mr={1} variant={variant} emphasized={emphasized} data-testid="infobanner-icon-container">
+        <RoundedBox variant={variant} emphasized={emphasized ?? false} role={ROLE_VARIANTS[variant]} {...props}>
+            <IconBox mr={1} variant={variant} emphasized={emphasized ?? false} data-testid="infobanner-icon-container">
                 <BannerIcon size={20} color="inherit" />
             </IconBox>
             <Box display="flex" flexDirection="column">
@@ -203,4 +203,6 @@ const InfoBanner: React.FC<InfoBannerProps> = ({
     );
 };
 
-export { InfoBanner, InfoBannerProps, InfoBannerVariants };
+export { InfoBanner, type InfoBannerProps };
+
+export { type InfoBannerVariants } from './types';

@@ -1,5 +1,5 @@
-import { RadioGroupProps as BaseRadioGroupProps } from 'react-aria-components';
-import React, { FC, ReactNode } from 'react';
+import { type RadioGroupProps as BaseRadioGroupProps } from 'react-aria-components';
+import React, { type FC, type ReactNode } from 'react';
 
 import * as Styled from './RadioGroup.styled';
 

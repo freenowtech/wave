@@ -1,7 +1,12 @@
-import React, { ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { type ReactElement, type ReactNode } from 'react';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { variant } from 'styled-system';
-import { Button as BaseButton, ButtonProps as BaseButtonProps, ButtonRenderProps } from 'react-aria-components';
+import {
+    Button as BaseButton,
+    type ButtonProps as BaseButtonProps,
+    type ButtonRenderProps
+} from 'react-aria-components';
 import { getSemanticValue } from '../../../essentials/experimental/cssVariables';
 import { get } from '../../../utils/experimental/themeGet';
 import { textStyles } from '../Text/Text';
@@ -116,7 +121,7 @@ const ButtonStyled = styled(BaseButton)<{ $emphasis: Emphasis }>`
     ${emphasisStyles};
 `;
 
-const ChildrenContainer = styled.span<{ $isLoading: boolean }>`
+const ChildrenContainer = styled.span.withConfig({ shouldForwardProp: isPropValid })<{ $isLoading: boolean }>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -128,7 +133,7 @@ const ChildrenContainer = styled.span<{ $isLoading: boolean }>`
     transition: opacity ease 200ms;
 `;
 
-const SpinnerContainer = styled.span`
+const SpinnerContainer = styled.span.withConfig({ shouldForwardProp: isPropValid })`
     position: absolute;
     display: flex;
     justify-content: center;

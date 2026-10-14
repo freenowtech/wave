@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
-import { useDatepicker, MonthType, UseDatepickerProps } from '@datepicker-react/hooks';
-import styled from 'styled-components';
+import React, { type FC } from 'react';
+import { useDatepicker, type MonthType, type UseDatepickerProps } from '@datepicker-react/hooks';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 
 import { getSemanticValue } from '../../utils/cssVariables';
 import { MediaQueries } from '../../essentials';
@@ -8,7 +9,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '../../icons';
 import { Month } from './Month';
 import { DatepickerContext } from './DatepickerContext';
 
-const DatepickerWrapper = styled.div<{
+const DatepickerWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<{
     activeMonths: MonthType[];
 }>`
     display: grid;
@@ -17,7 +18,7 @@ const DatepickerWrapper = styled.div<{
     width: 100%;
 `;
 
-const DatepickerContainer = styled.div`
+const DatepickerContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: flex;
     padding: 0.5rem;
 

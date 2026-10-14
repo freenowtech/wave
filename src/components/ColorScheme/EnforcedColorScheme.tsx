@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 
 export interface EnforcedColorSchemeProps extends BoxProps {
     scheme: 'dark' | 'light';

@@ -1,9 +1,10 @@
 import React, { useLayoutEffect } from 'react';
 import { I18nProvider } from 'react-aria-components';
-import { Preview } from '@storybook/react';
-import { themes } from '@storybook/theming';
-import { DocsContainer } from '@storybook/addon-docs';
+import { Preview } from '@storybook/react-vite';
+import { themes } from 'storybook/theming';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import { useDarkMode } from 'storybook-dark-mode';
+import { createGlobalStyle as createStyledGlobalStyle } from 'styled-components';
 
 import { GlobalStyle as ClassicColors } from '../src/essentials/Colors/Colors';
 import { GlobalStyle as ModernColors } from '../src/essentials/Colors/ModernColors';
@@ -46,7 +47,7 @@ export const withTheme = (Story, context) => {
 
     useLayoutEffect(() => {
         document.body.style.fontFamily = font;
-    }, []);
+    }, [font]);
 
     return (
         <>
@@ -65,6 +66,13 @@ export const withColorScheme = (Story, context) => {
         </SchemeWrapper>
     );
 };
+
+// Storybook 10 underlines the links in docs, and its rule wins over the styles of Wave's Link. Keep them as in Storybook 7.
+const DocsLinkStyle = createStyledGlobalStyle`
+    .sbdocs.sbdocs-content :where(a:not(.sb-anchor, .sb-unstyled, .sb-unstyled a):not(:hover, :active)) {
+        text-decoration: none;
+    }
+`;
 
 export const withI18nProvider = (Story, context) => {
     const { locale } = context.globals;
@@ -107,12 +115,13 @@ export const preview: Preview = {
         docs: {
             container: props => {
                 const scheme = useDarkMode() ? DarkTheme : LightTheme;
-                const globals = props.context.store.globals.get();
-                const { Colors } = THEMES[globals.theme];
+                const globals = props.context.store.userGlobals.get();
+                const { Colors } = THEMES[globals.theme as keyof typeof THEMES];
 
                 return (
                     <>
                         <Colors />
+                        <DocsLinkStyle />
                         <DocsContainer {...props} theme={scheme} />
                     </>
                 );
@@ -122,10 +131,10 @@ export const preview: Preview = {
             }
         },
         backgrounds: {
-            disable: true
+            disabled: true
         },
         viewport: {
-            viewports: {
+            options: {
                 mobile: {
                     name: 'Mobile',
                     styles: {
@@ -191,7 +200,9 @@ export const preview: Preview = {
                 dynamicTitle: true
             }
         }
-    }
+    },
+
+    tags: ['autodocs']
 };
 
 export default preview;

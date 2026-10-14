@@ -1,4 +1,4 @@
-import { Primary, Stories, ArgTypes, Meta } from '@storybook/blocks';
+import { Primary, Stories, ArgTypes, Meta } from '@storybook/addon-docs/blocks';
 import { StyledSystemLinks } from '../../../docs/StyledSystemLinks';
 import * as SelectStories from './Select.stories';
 
@@ -22,9 +22,9 @@ They are typically used when user has 5-15 items to choose from.
 
 ## Appearance
 
--   **Label:** It should be a sentence and as short as possible while clearly explaining the content of the menu.
--   **Input:** by default we can include a value saying: ‘All [items name]’ or ‘Select an [item name]’
--   **Item list:** Contains the list of all selectable items. These can be grouped into sub-categories under headings.
+- **Label:** It should be a sentence and as short as possible while clearly explaining the content of the menu.
+- **Input:** by default we can include a value saying: ‘All [items name]’ or ‘Select an [item name]’
+- **Item list:** Contains the list of all selectable items. These can be grouped into sub-categories under headings.
 
 ## Placement
 
@@ -50,14 +50,14 @@ Errors are shown just in the cases the field is mandatory and just after user cl
 
 ## Items List
 
--   When the list is longer than the layer shown, include a scroll to navigate
--   In cases where a menu item is longer than selector width, the menu will grow to the width of the longest item listed. However, there is a maximum width specified by the component. If the menu item exceeds the maximum width it will be truncated and we will use 3 dots including a tooltip mouse over to see all the content.
--   The options will be sorted in a way that will make the most sense to the user. They can be order:
-    -   alphabetically
-    -   numerically
-    -   by most commonly selected option.
--   Remove options that rarely get used.
--   Remove the options that we know cannot be selected (eg: countries where we don’t work)
+- When the list is longer than the layer shown, include a scroll to navigate
+- In cases where a menu item is longer than selector width, the menu will grow to the width of the longest item listed. However, there is a maximum width specified by the component. If the menu item exceeds the maximum width it will be truncated and we will use 3 dots including a tooltip mouse over to see all the content.
+- The options will be sorted in a way that will make the most sense to the user. They can be order:
+    - alphabetically
+    - numerically
+    - by most commonly selected option.
+- Remove options that rarely get used.
+- Remove the options that we know cannot be selected (eg: countries where we don’t work)
 
 ## Testing
 

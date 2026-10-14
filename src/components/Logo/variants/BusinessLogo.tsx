@@ -1,4 +1,4 @@
-import React, { ElementRef, FC, memo, SVGProps } from 'react';
+import React, { type ElementRef, type FC, memo, type SVGProps } from 'react';
 import { getSemanticValue } from '../../../utils/cssVariables';
 
 const BusinessLogo: FC<SVGProps<ElementRef<'svg'>>> = memo(props => (

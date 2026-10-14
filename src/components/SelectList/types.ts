@@ -1,6 +1,6 @@
-import { Props } from 'react-select';
-import { MarginProps, WidthProps } from 'styled-system';
-import { ClassNameProps } from '../../utils/extractProps';
+import { type Props } from 'react-select';
+import { type MarginProps, type WidthProps } from 'styled-system';
+import { type ClassNameProps } from '../../utils/extractProps';
 
 export type Variant = 'boxed' | 'bottom-lined';
 export type Size = 'medium' | 'small';
@@ -28,4 +28,4 @@ interface SelectListProps extends Props, ClassNameProps, WidthProps, MarginProps
     inputId?: string;
 }
 
-export { SelectListProps };
+export type { SelectListProps };

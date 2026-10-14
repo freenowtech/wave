@@ -1,0 +1,204 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { DocsTable } from './components/DocsTable';
+
+<Meta title="Migration to v3" />
+
+# Migrating to Wave 3
+
+Wave 3 adds support for React 19 and requires styled-components 6. The components, their props and the exports of
+`@freenow/wave` and `@freenow/wave/experimental` are the same as in Wave 2, apart from the changes listed below. There
+are no codemods for this version.
+
+Wave 2 keeps getting fixes: from the 3.0.0 release on, they ship from the `2.x` branch under the npm tag `release-2.x`,
+and apps on `^2` get them with `npm update`. Its documentation stays at
+[wave.free-now.com/v2](https://wave.free-now.com/v2/).
+
+## Requirements
+
+<DocsTable
+    headers={['Dependency', 'Wave 2', 'Wave 3']}
+    rows={[
+        ['React, React DOM', '18.2+', '18.2+ or 19'],
+        ['styled-components', '4.3+', '6'],
+        [
+            'Browsers',
+            'The latest 2 versions of Chrome, Edge, Firefox and Safari',
+            <>
+                The latest 2 versions of Chrome, Edge, Firefox and Safari (see{' '}
+                <a href="?path=/docs/browser-support--docs">Browser support</a>)
+            </>
+        ]
+    ]}
+/>
+
+## Upgrade step by step
+
+### 1️⃣ Upgrade styled-components to version 6
+
+Skip this step if your app already uses styled-components 6.
+
+```bash
+npm i styled-components@^6
+```
+
+styled-components 6 ships its own types, so remove `@types/styled-components` if you have it. Then follow the
+[styled-components migration guide](https://styled-components.com/docs/faqs#what-do-i-need-to-do-to-migrate-to-v6) for
+your own styled components.
+
+With styled-components 5, Wave 3 crashes as soon as it is imported, with an error like
+`Cannot read properties of undefined (reading 'div')`.
+
+### 2️⃣ Upgrade Wave
+
+```bash
+npm i @freenow/wave@^3
+```
+
+### 3️⃣ Filter the props of your own styled components
+
+styled-components 6 passes every prop of a styled HTML element on to the DOM, and React warns about the ones that are
+not HTML attributes. Wave's components filter their props, so you don't need to do anything for them. For your own
+styled components, see [Usage with styled-components](?path=/docs/get-started--docs#usage-with-styled-components).
+
+### 4️⃣ Check the changes below and update your tests
+
+Read the [changes](#changes) that apply to your app, run your tests, and update your snapshots (see
+[Snapshot tests](#snapshot-tests)).
+
+### 5️⃣ Upgrade to React 19 when you are ready
+
+Wave 3 works with React 18.2+ and React 19, so you can upgrade React later, following the
+[React 19 upgrade guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide).
+
+## Changes
+
+### Tooltip and Popover use Floating UI
+
+Tooltip, Popover, Datepicker and the month range picker are positioned by [Floating UI](https://floating-ui.com/)
+instead of react-popper. The placement names are the same, the content still moves to the other side when it doesn't
+fit, and the `data-popper-placement` attribute is still set, so CSS selectors that use it keep working.
+
+- `react-popper` and `@popperjs/core` are no longer installed with Wave. If your app imports them, add them to your own
+  dependencies.
+
+### Experimental Calendar: removed react-day-picker props
+
+The experimental `Calendar` passes its props on to react-day-picker, which Wave 3 upgrades to version 10. Version 10
+removes the props that were deprecated in version 9:
+
+<DocsTable
+    headers={['Removed prop', 'Use instead']}
+    rows={[
+        [
+            'fromDate',
+            <>
+                <code>{'hidden={{ before: date }}'}</code>
+            </>
+        ],
+        [
+            'toDate',
+            <>
+                <code>{'hidden={{ after: date }}'}</code>
+            </>
+        ],
+        [
+            'fromMonth, fromYear',
+            <>
+                <code>startMonth</code>
+            </>
+        ],
+        [
+            'toMonth, toYear',
+            <>
+                <code>endMonth</code>
+            </>
+        ],
+        [
+            'initialFocus',
+            <>
+                <code>autoFocus</code>
+            </>
+        ],
+        [
+            'onDayKeyUp, onDayKeyPress, onDayPointerEnter, onDayPointerLeave, onDayTouchStart, onDayTouchMove, onDayTouchEnd, onDayTouchCancel',
+            <>
+                A custom <code>DayButton</code> in the <code>components</code> prop
+            </>
+        ],
+        [
+            'onWeekNumberClick',
+            <>
+                A custom <code>WeekNumber</code> in the <code>components</code> prop
+            </>
+        ]
+    ]}
+/>
+
+The deprecated keys of `classNames` and `styles`, e.g. `day_selected`, `caption` and `nav_button`, are removed too.
+The experimental `DatePicker` props don't change.
+
+### Snapshot tests
+
+Snapshots of Wave components change in three ways:
+
+- **Class names and component names.** Wave 2 named its styled components at build time. Wave 3 doesn't, so the
+  generated class names are shorter (`Box-sc-lqdr92 isZAYT` becomes e.g. `sc-bdvwhi feigpc`), and React DevTools show
+  names such as `styled.div` instead of `Box`.
+- **CSS.** styled-components 6 doesn't add vendor prefixes such as `-webkit-` and `-ms-` anymore. If you need them, pass
+  `enableVendorPrefixes` to `StyleSheetManager`.
+- **DOM attributes.** If you used Wave 2 with styled-components 6, Wave's props such as `variant` or `size` reached the
+  DOM as attributes. Wave 3 filters them, so they disappear from your snapshots, and so do React's warnings about them.
+
+If your tests use [jest-styled-components](https://github.com/styled-components/jest-styled-components), use version 7,
+which supports styled-components 6.
+
+### `defaultProps` are removed
+
+React 19 ignores `defaultProps` on function components, so Wave 3 doesn't set them anymore. The default values don't
+change. This only affects your app if it reads `defaultProps` of a Wave component, e.g. `Button.defaultProps`, which is
+now `undefined`.
+
+### Toggle forwards its ref on React 18
+
+A `ref` passed to `Toggle` now points to its checkbox input on React 18 too. Before, React 18 dropped it.
+
+### Classic colors: page background in the dark scheme
+
+With `ClassicColors` and the dark scheme, `--wave-s-color-background-page-default` is now `hsl(211, 100%, 12%)`, the
+darkest blue of the classic palette. In Wave 2 it was `undefined`, so the page had no background color and its light text
+could be unreadable.
+
+### SelectList's windowed menu is built in
+
+`SelectList` used the `wave-react-windowed-select` package for long option lists. Wave 3 contains that code, so the
+package is no longer installed with Wave. If your app imports it, add it to your own dependencies.
+
+### TypeScript
+
+The type declarations are tested with TypeScript 6, and apps on TypeScript 5.0 to 5.9 type-check too. Keep
+`skipLibCheck: true`, as most apps have it: without it, the declarations of some of Wave's dependencies (e.g.
+react-day-picker and styled-components) report errors, on TypeScript 6 as well. With `moduleResolution: "node"`, also set
+`esModuleInterop: true`.
+
+- **styled-components 6 types.** Wave's styled components are now typed with styled-components 6 types. If your code
+  annotates Wave components with styled-components 5 types such as `StyledComponent`, remove the annotations.
+  `ClassicColors` and `ModernColors` no longer accept the styled-components 5 prop `suppressMultiMountWarning`.
+- **React 19 types.** The declarations use `React.JSX`, so they work with `@types/react` 19, which removed the global
+  `JSX` namespace.
+- **Experimental RadioButton.** `children` is typed as `ReactNode`. A function passed as `children` was never rendered.
+
+### Compiled code
+
+The CommonJS build (`require('@freenow/wave')`) is compiled to ES2015 instead of ES5, like the ES module build. See
+[Browser support](?path=/docs/browser-support--docs).
+
+### Server-side rendering
+
+Wave 3 fixes crashes during server-side rendering when its dependencies are loaded as native ES modules, e.g. by Vite.
+Server builds still need to bundle Wave, because it imports CSS files for its fonts. With Vite, add
+`ssr: { noExternal: ['@freenow/wave'] }` to the config.
+
+## Need help?
+
+Reach out to the #ask-wave Slack channel, or [open an issue](https://github.com/freenowtech/wave/issues/new/choose).

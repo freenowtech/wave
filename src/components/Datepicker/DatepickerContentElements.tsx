@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled, css } from 'styled-components';
 import { Elevation } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
 
@@ -9,7 +10,7 @@ const baseArrowStyles = css`
     background: inherit;
 `;
 
-export const Arrow = styled.div`
+export const Arrow = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     visibility: hidden;
     ${baseArrowStyles};
 
@@ -21,7 +22,7 @@ export const Arrow = styled.div`
     }
 `;
 
-export const DatepickerContentContainer = styled.div`
+export const DatepickerContentContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     background: ${getSemanticValue('background-surface-neutral-default')};
     box-shadow: 0 0 0.5rem 0.1875rem rgba(0, 0, 0, 0.08);
     z-index: ${Elevation.DATEPICKER};

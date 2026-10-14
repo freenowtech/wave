@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Button } from './Button';
 
 describe('Experimental: Button', () => {
@@ -12,21 +12,21 @@ describe('Experimental: Button', () => {
     it('calls onPress when clicked', () => {
         const onPress = jest.fn();
         render(<Button onPress={onPress} />);
-        screen.getByTestId('button-container').click();
+        fireEvent.click(screen.getByTestId('button-container'));
         expect(onPress).toHaveBeenCalledTimes(1);
     });
 
     it('does not call onPress when disabled', () => {
         const onPress = jest.fn();
         render(<Button onPress={onPress} isDisabled />);
-        screen.getByTestId('button-container').click();
+        fireEvent.click(screen.getByTestId('button-container'));
         expect(onPress).toHaveBeenCalledTimes(0);
     });
 
     it('does not call onPress when is loading', () => {
         const onPress = jest.fn();
         render(<Button onPress={onPress} isLoading />);
-        screen.getByTestId('button-container').click();
+        fireEvent.click(screen.getByTestId('button-container'));
         expect(onPress).toHaveBeenCalledTimes(0);
     });
 

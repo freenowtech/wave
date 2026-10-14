@@ -1,7 +1,7 @@
-import React, { FC, PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import React, { type FC, type PropsWithChildren } from 'react';
+import { styled } from 'styled-components';
 import { Spaces } from '../../essentials/Spaces/Spaces';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 
 const AMOUNT_OF_DECIMALS = 4;
 const COLUMN_WIDTH = 100 / 12;
@@ -39,4 +39,4 @@ const Column: FC<PropsWithChildren<ColumnProps>> = ({ span = 1, offset = 0, ...r
     );
 };
 
-export { Row, RowProps, Column, ColumnProps };
+export { Row, type RowProps, Column, type ColumnProps };

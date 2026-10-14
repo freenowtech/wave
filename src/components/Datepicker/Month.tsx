@@ -1,20 +1,21 @@
-import React, { FC } from 'react';
-import { useMonth, FirstDayOfWeek } from '@datepicker-react/hooks';
-import styled from 'styled-components';
+import React, { type FC } from 'react';
+import { useMonth, type FirstDayOfWeek } from '@datepicker-react/hooks';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 import { format } from 'date-fns';
 
 import { getSemanticValue } from '../../utils/cssVariables';
 import { Text } from '../Text/Text';
 import { Day } from './Day';
 
-const Weekdays = styled.div`
+const Weekdays = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     justify-content: center;
     margin-bottom: 0.25rem;
 `;
 
-const DaysContainer = styled.div`
+const DaysContainer = styled.div.withConfig({ shouldForwardProp: isPropValid })`
     display: grid;
     grid-template-columns: repeat(7, auto);
     justify-content: center;
@@ -68,7 +69,7 @@ const Month: FC<MonthProps> = ({ year, month, firstDayOfWeek, locale }: MonthPro
                     }
 
                     // we can use index as a key since the array is never reordered
-                    // eslint-disable-next-line react/no-array-index-key
+                    // eslint-disable-next-line @eslint-react/no-array-index-key
                     return <div key={index} />;
                 })}
             </DaysContainer>

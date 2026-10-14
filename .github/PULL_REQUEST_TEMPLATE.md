@@ -26,3 +26,13 @@ Please fill out the information below to expedite the review and (hopefully) mer
 ## How
 
 <!-- Often a list of things to describe the process to accomplish this PR -->
+
+## Checklist
+
+<!-- Tick what applies, and strike through or remove what does not -->
+
+- [ ] Tests cover the change, and `npm test` passes without console errors or warnings
+- [ ] New or changed components have a story, and their documentation is updated
+- [ ] New form components are added to `src/components/FormComponents.spec.tsx`
+- [ ] Checked with React 18 and React 19 (`npm run test:fixture` runs the consumer apps)
+- [ ] Breaking changes have a `BREAKING CHANGE:` footer in the commit message that explains what consumers need to change

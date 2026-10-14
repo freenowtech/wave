@@ -10,28 +10,35 @@
 
 Our documentation site lives at [https://wave.free-now.com/](https://wave.free-now.com/). You'll be able to find detailed documentation on getting started, all of the components, our theme, our principles, and more.
 
+## Requirements
+
+| Dependency        | Supported versions |
+| ----------------- | ------------------ |
+| React, React DOM  | 18.2+ or 19        |
+| styled-components | 6                  |
+
+React, React DOM and styled-components are peer dependencies: your app installs them, and Wave uses your copies.
+See the [supported browsers](https://wave.free-now.com/?path=/docs/browser-support--docs).
+
+Upgrading from Wave 2? Follow [Migrating to Wave 3](https://wave.free-now.com/?path=/docs/migration-to-v3--docs).
+
 ## Installation
 
 ```sh
-npm install @freenow/wave
+npm install @freenow/wave styled-components
 ```
 
-or
-
-```sh
-yarn add @freenow/wave
-```
+Yarn and pnpm users can run `yarn add` or `pnpm add` with the same packages.
 
 ## Getting started
 
 After installing Wave as dependency, there are some extra steps to get the styles in place:
 
--   Make sure to install the peerDependencies (including styled-components)
--   Check that you don't have any pre-existing global styles that might override/clash with the styles shipped with the components (ex.: `a { color: #ffeeaa }`)
--   Make sure to add the desired Color Scheme component to your React tree, to get the CSS variables loaded ([more details](https://wave.free-now.com/iframe.html?viewMode=docs&id=migration-to-v2--docs#1%EF%B8%8F%E2%83%A3-connect-classic-colors))
+- Check that you don't have any pre-existing global styles that might override/clash with the styles shipped with the components (ex.: `a { color: #ffeeaa }`)
+- Make sure to add the desired Color Scheme component to your React tree, to get the CSS variables loaded ([more details](https://wave.free-now.com/?path=/docs/essentials-colors--docs))
 
 ```typescript jsx
-import { ModernColors } from '@freenow/wave'; // blue primary color
+import { ModernColors } from '@freenow/wave'; // maroon primary color, use ClassicColors for blue
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -86,8 +93,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 <!-- prettier-ignore-start -->
 [all-contributors-badge]: https://img.shields.io/github/all-contributors/freenowtech/wave/main?style=flat-square
-[build-badge]: https://img.shields.io/github/workflow/status/freenowtech/wave/Component%20Library?logo=github&style=flat-square
-[build]: https://github.com/freenowtech/wave/actions?query=workflow%3Alibrary
+[build-badge]: https://img.shields.io/github/actions/workflow/status/freenowtech/wave/library.yml?branch=main&logo=github&style=flat-square
+[build]: https://github.com/freenowtech/wave/actions/workflows/library.yml
 [version-badge]: https://img.shields.io/npm/v/@freenow/wave.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@freenow/wave
 <!-- prettier-ignore-end -->

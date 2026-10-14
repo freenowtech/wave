@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DocsTable } from './components/DocsTable';
 
 <Meta title="Versioning Policy" />
 
@@ -11,12 +12,74 @@ Predictable and consistent versions for Wave
 Our goal is to release update to this library without breaking anyone's projects. Therefore, we are using [SemVer](https://semver.org)
 which has the following release types.
 
--   **Major** versions contain breaking changes and may also contain sweeping visual changes, like changing colors (usually includes a codemods).
--   **Minor** versions include new components or functionality and properties for existing components.
--   **Patch** versions provide internal fixes, documentation changes or package upgrades (anything that does not affect the consumers of this library).
+- **Major** versions contain breaking changes and may also contain sweeping visual changes, like changing colors (usually includes a codemods).
+- **Minor** versions include new components or functionality and properties for existing components.
+- **Patch** versions provide internal fixes, documentation changes or package upgrades (anything that does not affect the consumers of this library).
 
 ### Deprecations
 
 When deciding on the deprecation of a feature or component in the next major version, we add a warning indicating
 the feature is scheduled for deprecation or removal. This is sent to the console in development builds and excluded in
 production builds.
+
+## Supported versions
+
+<DocsTable
+    headers={['Wave', 'React, React DOM', 'styled-components', 'Releases']}
+    rows={[
+        [
+            '3',
+            '18.2+ or 19',
+            '6',
+            <>
+                Current major, npm tag <code>latest</code>
+            </>
+        ],
+        [
+            '2',
+            '18.2+',
+            '4.3+',
+            <>
+                Maintenance branch <code>2.x</code>, npm tag <code>release-2.x</code> (
+                <a href="https://wave.free-now.com/v2/" target="_blank">
+                    Wave 2 docs
+                </a>
+                )
+            </>
+        ],
+        [
+            '1',
+            '16.8+',
+            '4.3+',
+            <>
+                Maintenance branch <code>1.34.x</code>, npm tag <code>release-1.34.x</code>
+            </>
+        ]
+    ]}
+/>
+
+### Peer dependencies
+
+React, React DOM and styled-components are peer dependencies: your app installs them, and Wave works with the versions
+you have, as long as they are in the supported range.
+
+- **Adding support** for a new major version of a peer dependency is not a breaking change, so it can ship in a minor
+  release once our tests pass with it.
+- **Dropping support** for a major version is a breaking change, so it only happens in a new major version of Wave and
+  is listed in its migration guide.
+- **React**: we support the two latest major versions. Features that only exist in the newest one (e.g. passing `ref`
+  as a prop in React 19) are not used until the older one is dropped.
+- **styled-components**: we support one major version at a time. styled-components 7 (in prerelease) requires React 19,
+  so Wave can only adopt it in a major version that drops React 18.
+
+On every push, the CI installs the packed library into a React 18 app and a React 19 app, type-checks and builds them,
+and renders them on the server.
+
+### Node.js
+
+Wave runs in the browser, so it doesn't require a Node.js version from your app. Server-side rendering is tested with
+Node.js 24. Working on Wave itself requires Node.js 24 (see [CONTRIBUTING.md](https://github.com/freenowtech/wave/blob/main/CONTRIBUTING.md)).
+
+### Browsers
+
+See [Browser support](?path=/docs/browser-support--docs).

@@ -20,7 +20,7 @@ export { RadioButton } from './RadioButton/RadioButton';
 export { RadioGroup } from './RadioGroup/RadioGroup';
 export { Search } from './Search/Search';
 export { Select } from './Select/Select';
-export { Snackbar, SnackbarProps } from './Snackbar/Snackbar';
+export { Snackbar, type SnackbarProps } from './Snackbar/Snackbar';
 export { Table, Row, Cell, Skeleton, Column, TableBody, TableHeader } from './Table/Table';
 export { Tabs, TabList, Tab, TabPanel } from './Tabs/Tabs';
 export { Text } from './Text/Text';

@@ -5,8 +5,8 @@ import { BottomLinedInput } from './BottomLinedInput';
 import { BottomLinedInputLabel } from './BottomLinedInputLabel';
 import { BoxedInput } from './BoxedInput';
 import { BoxedInputLabel } from './BoxedInputLabel';
-import { InputProps } from './InputProps';
-import { InputWrapper, InputWrapperProps } from './InputWrapper';
+import { type InputProps } from './InputProps';
+import { InputWrapper, type InputWrapperProps } from './InputWrapper';
 
 const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     (props: InputWrapperProps & InputProps, ref) => {
@@ -14,14 +14,22 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(withoutClassName);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
-        const { label, onChange, size, id: providedId, variant, ...rest } = restProps;
+        const {
+            label,
+            onChange,
+            size = 'medium',
+            id: providedId,
+            variant = 'boxed',
+            type = 'text',
+            ...rest
+        } = restProps;
         const id = useGeneratedId(providedId);
 
-        const innerRef = useRef<HTMLInputElement>();
-        useImperativeHandle(ref, () => innerRef.current, []);
+        const innerRef = useRef<HTMLInputElement | null>(null);
+        useImperativeHandle(ref, () => innerRef.current!, []);
 
-        const [hasValue, setHasValue] = useState(rest?.value?.toString().length > 0);
-        const hasUncontrolledValue = innerRef?.current?.value?.length > 0;
+        const [hasValue, setHasValue] = useState((rest?.value?.toString()?.length ?? 0) > 0);
+        const hasUncontrolledValue = (innerRef?.current?.value?.length ?? 0) > 0;
 
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             setHasValue(event.target.value.length > 0);
@@ -31,7 +39,9 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
         };
 
         useEffect(() => {
-            setHasValue(rest?.value?.toString().length > 0);
+            // Sync label float state with controlled value — intentional derived state pattern
+            // eslint-disable-next-line @eslint-react/set-state-in-effect
+            setHasValue((rest?.value?.toString()?.length ?? 0) > 0);
         }, [rest.value]);
 
         if (variant === 'boxed') {
@@ -40,6 +50,7 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
                     <BoxedInput
                         {...rest}
                         ref={innerRef}
+                        type={type}
                         variant={variant}
                         id={id}
                         waveSize={size}
@@ -62,6 +73,7 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
                     <BottomLinedInput
                         {...rest}
                         ref={innerRef}
+                        type={type}
                         variant={variant}
                         id={id}
                         waveSize={size}
@@ -82,10 +94,6 @@ const InnerInput = forwardRef<HTMLInputElement, InputWrapperProps & InputProps>(
     }
 );
 
-InnerInput.defaultProps = {
-    size: 'medium',
-    variant: 'boxed',
-    type: 'text'
-};
+export { InnerInput };
 
-export { InnerInput, InputProps };
+export { type InputProps } from './InputProps';

@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { MarginProps } from 'styled-system';
-import { ClassNameProps } from '../../utils/extractProps';
+import { type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { type MarginProps } from 'styled-system';
+import { type ClassNameProps } from '../../utils/extractProps';
 
 interface RadioButtonProps extends ComponentPropsWithoutRef<'input'>, ClassNameProps, MarginProps {
     /**
@@ -26,4 +26,4 @@ interface RadioButtonProps extends ComponentPropsWithoutRef<'input'>, ClassNameP
     textVerticalAlign?: 'top' | 'center';
 }
 
-export { RadioButtonProps };
+export type { RadioButtonProps };

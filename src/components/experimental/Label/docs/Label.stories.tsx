@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { StoryObj, Meta } from '@storybook/react';
+import { styled } from 'styled-components';
+import { type StoryObj, type Meta } from '@storybook/react-vite';
 import { Label } from '../Label';
 import { darkTheme, getBareValue } from '../../../../essentials/experimental';
 

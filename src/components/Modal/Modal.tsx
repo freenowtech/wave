@@ -1,6 +1,6 @@
-import React, { useEffect, useState, ReactNode, useContext, useRef } from 'react';
+import React, { useCallback, useEffect, useState, type ReactNode, useContext, useRef } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { WidthProps } from 'styled-system';
+import { type WidthProps } from 'styled-system';
 import { useIsEscKeyPressed } from '../../utils/hooks/useIsEscKeyPressed';
 import { ANIMATION_DURATION as CARD_ANIMATION_DURATION, CenteredCard } from './components/CenteredCard';
 import { ANIMATION_DURATION as DIMMING_ANIMATION_DURATION, DimmingFade } from './components/DimmingFade';
@@ -8,7 +8,7 @@ import { TopRightXIcon } from './components/TopRightXIcon';
 
 type DismissFunc = () => void;
 
-const DismissContext = React.createContext<DismissFunc>(undefined);
+const DismissContext = React.createContext<DismissFunc>(() => {});
 
 const useModalDismiss = (): DismissFunc => {
     const dismiss = useContext(DismissContext);
@@ -53,18 +53,19 @@ const ANIMATION_DURATION = Math.max(DIMMING_ANIMATION_DURATION, CARD_ANIMATION_D
  * when only using `React.FC<ModalProps>`. This leads to compiler errors when passing the
  * dismiss function.
  */
-const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible = true, ...rest }: ModalProps) => {
     const [visible, setVisible] = useState(true);
     const isEscKeyPressed = useIsEscKeyPressed();
-    const closeTimeout = useRef(null);
+    const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const handleClose: DismissFunc = () => {
+    const handleClose: DismissFunc = useCallback(() => {
+        // eslint-disable-next-line @eslint-react/set-state-in-effect
         setVisible(false);
 
         if (onClose) {
-            closeTimeout.current = setTimeout(() => onClose(), ANIMATION_DURATION);
+            closeTimeoutRef.current = setTimeout(() => onClose(), ANIMATION_DURATION);
         }
-    };
+    }, [onClose]);
 
     const handleDimmingClick = () => {
         if (dismissible && !rest.fullscreen) {
@@ -76,11 +77,11 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }
         if (dismissible && isEscKeyPressed) {
             handleClose();
         }
-    }, [dismissible, isEscKeyPressed]);
+    }, [dismissible, isEscKeyPressed, handleClose]);
 
     useEffect(
         () => () => {
-            if (closeTimeout.current) clearTimeout(closeTimeout.current);
+            if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
         },
         []
     );
@@ -112,8 +113,4 @@ const Modal: React.FC<ModalProps> = ({ children, onClose, dismissible, ...rest }
     );
 };
 
-Modal.defaultProps = {
-    dismissible: true
-};
-
-export { Modal, ModalProps, useModalDismiss };
+export { Modal, type ModalProps, useModalDismiss };

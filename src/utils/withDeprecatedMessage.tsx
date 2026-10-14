@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import warning from 'warning';
 
 type WithDeprecatedMessageFunc<T> = (
@@ -19,21 +19,18 @@ type WithDeprecatedMessageFunc<T> = (
  * @param PassedComponent Alternative component to use
  * @param externalProps Alternative component props
  */
-// eslint-disable-next-line import/no-mutable-exports
 let withDeprecatedMessage: WithDeprecatedMessageFunc<Record<string, unknown>> =
     (deprecatedComponentName, PassedComponent, externalProps = {}) =>
-    props =>
-        <PassedComponent {...props} {...externalProps} />;
+    props => <PassedComponent {...props} {...externalProps} />;
 
 if (process.env.NODE_ENV !== 'production') {
     withDeprecatedMessage =
         (deprecatedComponentName: string, PassedComponent: React.ComponentType, externalProps = {}) =>
-        (props: Record<string, unknown>): JSX.Element => {
+        (props: Record<string, unknown>): React.JSX.Element => {
             const stringifiedProps = Object.entries(externalProps)
-                .map(([k, v]) => `${k}={${v.toString()}}`)
+                .map(([k, v]) => `${k}={${String(v)}}`)
                 .join(' ');
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
             warning(
                 false,
                 `The component ${deprecatedComponentName} is deprecated. Replace it with <${PassedComponent.name} ${stringifiedProps}/>`

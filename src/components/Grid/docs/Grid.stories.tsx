@@ -1,8 +1,8 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { getSemanticValue } from '../../../utils/cssVariables';
 import { Box } from '../../Box/Box';
-import { Row, Column, RowProps } from '../Grid';
+import { Row, Column, type RowProps } from '../Grid';
 
 const meta: Meta = {
     title: 'Components/Grid System',
@@ -14,7 +14,7 @@ export default meta;
 const Grid = ({ numberOfColumns = 12, ...props }: RowProps & { numberOfColumns: number }) => (
     <Row {...props}>
         {Array.from({ length: numberOfColumns }).map((_, index) => (
-            // eslint-disable-next-line react/no-array-index-key
+            // eslint-disable-next-line @eslint-react/no-array-index-key
             <Column key={index}>
                 <Box bg={getSemanticValue('background-surface-neutral-faded')} textAlign="center">
                     {1 + index}

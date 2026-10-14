@@ -1,11 +1,12 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import styled from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import { styled } from 'styled-components';
 
-import { compose, margin, MarginProps, width, WidthProps } from 'styled-system';
+import { compose, margin, type MarginProps, width, type WidthProps } from 'styled-system';
 import { EyeClosedIcon, EyeIcon } from '../../icons';
 import { InnerInput as Input } from '../Input/InnerInput';
-import { InputProps } from '../Input/InputProps';
-import { InputWrapperProps } from '../Input/InputWrapper';
+import { type InputProps } from '../Input/InputProps';
+import { type InputWrapperProps } from '../Input/InputWrapper';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 import { useGeneratedId } from '../../utils/hooks/useGeneratedId';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -14,7 +15,7 @@ import { TOGGLE_MODE_BUTTON_WIDTH } from './constants';
 import { extractWidthProps, extractWrapperMarginProps } from '../../utils/extractProps';
 
 type WrapperProps = MarginProps & WidthProps;
-const PasswordWrapper = styled.div<WrapperProps>`
+const PasswordWrapper = styled.div.withConfig({ shouldForwardProp: isPropValid })<WrapperProps>`
     display: inline-block;
     position: relative;
     box-sizing: border-box;
@@ -81,8 +82,8 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         const { marginProps, restProps: withoutMargin } = extractWrapperMarginProps(rest);
         const { widthProps, restProps } = extractWidthProps(withoutMargin);
 
-        const inputRef = useRef<HTMLInputElement>();
-        useImperativeHandle(ref, () => inputRef.current, []);
+        const inputRef = useRef<HTMLInputElement | null>(null);
+        useImperativeHandle(ref, () => inputRef.current!, []);
 
         return (
             <PasswordWrapper {...widthProps} {...marginProps}>
@@ -97,7 +98,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                     type={isHidden ? 'password' : 'text'}
                     autoComplete={purpose === 'new-password' ? 'new-password' : 'off'}
                 />
-                {!disabled ? (
+                {disabled ? undefined : (
                     <>
                         <ToggleButton
                             size={size}
@@ -120,7 +121,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                             {isHidden ? aria.messagePasswordIsHidden : aria.messagePasswordIsShown}
                         </VisuallyHidden>
                     </>
-                ) : undefined}
+                )}
             </PasswordWrapper>
         );
     }
