@@ -55,7 +55,9 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     merge-main:
-        if: github.ref == 'refs/heads/main'
+        # Paused while Wave 3 release candidates are on next: main is still Wave 2, and its changes are merged into next
+        # by hand and ported to Wave 3 (#576). Wave 3's own library.yml turns this job back on when next is merged to main.
+        if: false
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
