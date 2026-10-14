@@ -181,10 +181,11 @@ Feel like doing a bit more? You can check what is up for grabs in our public bac
 
 ## Distribution channels
 
-We use [semantic release](https://semantic-release.gitbook.io/semantic-release) to automate our versioning and release process. Currently, we have 3 distribution channels:
+We use [semantic release](https://semantic-release.gitbook.io/semantic-release) to automate our versioning and release process. Currently, we have 4 distribution channels:
 
 - `latest` tag (follows the [main](https://github.com/freenowtech/wave/tree/main) branch): It is used for releases on the current major (v3)
-- `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for pre-releases, e.g. of the next major, before they are merged to `main`
+- `next` tag (follows the [next](https://github.com/freenowtech/wave/tree/next) branch): It is used for release candidates (`x.y.z-rc.N`), e.g. of the next major, before they are merged to `main`
+- `release-2.x` tag (follows the [2.x](https://github.com/freenowtech/wave/tree/2.x) branch): It is used to provide maintenance on our second major version (v2). Fixes and features are allowed, breaking changes are not
 - `release-1.34.x` tag (follows the [1.34.x](https://github.com/freenowtech/wave/tree/1.34.x) branch): It is used to provide maintenance on our first major version (v1). For more information check [semantic-release maintenance releases guide](https://semantic-release.gitbook.io/semantic-release/recipes/release-workflow/maintenance-releases)
 
 ## Tools we use
