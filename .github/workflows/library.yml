@@ -37,7 +37,9 @@ jobs:
               run: npm run test
 
     release:
-        if: github.ref == 'refs/heads/main'
+        # main releases as before (its build job is skipped); next publishes release candidates after its tests pass
+        needs: build
+        if: always() && (github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/next' && needs.build.result == 'success'))
         runs-on: ubuntu-latest
         timeout-minutes: 15
         permissions:
