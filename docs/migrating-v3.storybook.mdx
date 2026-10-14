@@ -159,6 +159,12 @@ now `undefined`.
 
 A `ref` passed to `Toggle` now points to its checkbox input on React 18 too. Before, React 18 dropped it.
 
+### Classic colors: page background in the dark scheme
+
+With `ClassicColors` and the dark scheme, `--wave-s-color-background-page-default` is now `hsl(211, 100%, 12%)`, the
+darkest blue of the classic palette. In Wave 2 it was `undefined`, so the page had no background color and its light text
+could be unreadable.
+
 ### SelectList's windowed menu is built in
 
 `SelectList` used the `wave-react-windowed-select` package for long option lists. Wave 3 contains that code, so the
