@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="176" height="139">
+    <g fill="none" fill-rule="evenodd">
+        <g fill-rule="nonzero">
+            <path fill="#FF00F7" fill-opacity=".3" d="M.6.6h96v96H.6z"/>
+            <path fill="#FFF1FF" d="M8.6 8.6h81v81h-81z"/>
+            <path fill="#001E3E" d="M49.119 8.619c22.367 0 40.5 18.132 40.5 40.5 0 22.367-18.133 40.5-40.5 40.5-22.368 0-40.5-18.133-40.5-40.5 0-22.368 18.132-40.5 40.5-40.5zm0 8.1c-17.895 0-32.4 14.505-32.4 32.4 0 17.894 14.505 32.4 32.4 32.4 17.894 0 32.4-14.506 32.4-32.4 0-17.895-14.506-32.4-32.4-32.4zm15.788 17.386l5.728 5.727L45.04 65.423l-14.97-14.812 5.696-5.758 9.244 9.146 19.896-19.894z"/>
+        </g>
+        <text fill="#001E3E" font-family="OpenSans-Regular, Open Sans" font-size="12">
+            <tspan x="24.6" y="137.6">trim area</tspan>
+        </text>
+        <text fill="#001E3E" font-family="OpenSans-Regular, Open Sans" font-size="12">
+            <tspan x="121.6" y="51.6">safe zone</tspan>
+        </text>
+        <path fill="#C6CDD4" fill-rule="nonzero" d="M1.1 117.1l-.001 4H5.1v1H1.099l.001 4h-1v-9h1zm96 0v9h-1v-9h1zm-84 4v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zm8 0v1h-5v-1h5zM106.6 90.6v-1h3.999l.001-4h1l-.001 4h4.001v1h-9zm5-13v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm0-8v5h-1v-5h1zm4-5v1h-4.001l.001 1h-1l-.001-1H106.6v-1h9z"/>
+    </g>
+</svg>
