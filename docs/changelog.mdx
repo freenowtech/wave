@@ -5,745 +5,741 @@ cardHeadline: Changelog
 cardSubHeadline: Keep up to date with the latest releases of @freenow/wave
 ---
 
+## [3.0.0-rc.1](https://github.com/freenowtech/wave/compare/v2.66.0...v3.0.0-rc.1) (2026-10-14)
+
+### ⚠ BREAKING CHANGES
+
+- styled-components 6 is required (peer dependency `^6.0.0`). With styled-components
+  5, Wave crashes on import. React 18.2+ and React 19 are supported.
+- the experimental `Calendar` passes its props on to react-day-picker 10, which
+  removes the props deprecated in v9. Use `startMonth` instead of `fromMonth` and `fromYear`,
+  `endMonth` instead of `toMonth` and `toYear`, `hidden={{ before: date }}` and `hidden={{ after: date
+}}` instead of `fromDate` and `toDate`, and `autoFocus` instead of `initialFocus`. The
+  `onWeekNumberClick`, `onDayKeyUp`, `onDayKeyPress`, `onDayPointerEnter`, `onDayPointerLeave` and
+  `onDayTouch*` handlers and the deprecated `classNames` and `styles` keys (e.g. `day_selected`) are
+  removed; use custom `DayButton` and `WeekNumber` components instead of the handlers.
+- Tooltip, Popover, Datepicker and the month range picker are positioned by Floating
+  UI instead of react-popper, with the same placements. `react-popper`, `@popperjs/core` and
+  `wave-react-windowed-select` are no longer installed with Wave, so add them to your own dependencies
+  if your app imports them.
+- snapshots of Wave components change: generated class names are shorter
+  (`Box-sc-lqdr92` becomes e.g. `sc-bdvwhi`), component names are e.g. `styled.div`, vendor prefixes
+  are gone (pass `enableVendorPrefixes` to `StyleSheetManager` to keep them), and Wave props no longer
+  appear as DOM attributes. Use jest-styled-components 7.
+- Wave's components no longer set `defaultProps`, which React 19 ignores. The default
+  values are the same, but e.g. `Button.defaultProps` is `undefined`.
+- the CommonJS build is compiled to ES2015 instead of ES5, like the ES module build.
+
+### Features
+
+- support react 19, storybook 10 and styled-components 6 ([#576](https://github.com/freenowtech/wave/issues/576)) ([83ba98d](https://github.com/freenowtech/wave/commit/83ba98da0dc8993fe71c9070c211499e61364071))
+
 ## 2.66.0 (2026-08-31)
 
-* feat: change empty state text colour (#596) ([926eddd](https://github.com/freenowtech/wave/commit/926eddd)), closes [#596](https://github.com/freenowtech/wave/issues/596)
+- feat: change empty state text colour (#596) ([926eddd](https://github.com/freenowtech/wave/commit/926eddd)), closes [#596](https://github.com/freenowtech/wave/issues/596)
 
 ## 2.65.0 (2026-08-27)
 
-* feat(time-field): add emptyStateLabel and getValueOnBlur props (#595) ([58a9c42](https://github.com/freenowtech/wave/commit/58a9c42)), closes [#595](https://github.com/freenowtech/wave/issues/595)
+- feat(time-field): add emptyStateLabel and getValueOnBlur props (#595) ([58a9c42](https://github.com/freenowtech/wave/commit/58a9c42)), closes [#595](https://github.com/freenowtech/wave/issues/595)
 
 ## 2.64.0 (2026-08-25)
 
-* feat(phone-input): Add optional allowedCountries prop to PhoneInput (#594) ([0755389](https://github.com/freenowtech/wave/commit/0755389)), closes [#594](https://github.com/freenowtech/wave/issues/594)
+- feat(phone-input): Add optional allowedCountries prop to PhoneInput (#594) ([0755389](https://github.com/freenowtech/wave/commit/0755389)), closes [#594](https://github.com/freenowtech/wave/issues/594)
 
 ## 2.63.0 (2026-08-19)
 
-* feat: add hideClearButton prop to ComboBox (#593) ([c288e79](https://github.com/freenowtech/wave/commit/c288e79)), closes [#593](https://github.com/freenowtech/wave/issues/593)
+- feat: add hideClearButton prop to ComboBox (#593) ([c288e79](https://github.com/freenowtech/wave/commit/c288e79)), closes [#593](https://github.com/freenowtech/wave/issues/593)
 
 ## <small>2.62.1 (2026-08-12)</small>
 
-* fix: camelcase svg attributes (#592) ([ba34674](https://github.com/freenowtech/wave/commit/ba34674)), closes [#592](https://github.com/freenowtech/wave/issues/592)
+- fix: camelcase svg attributes (#592) ([ba34674](https://github.com/freenowtech/wave/commit/ba34674)), closes [#592](https://github.com/freenowtech/wave/issues/592)
 
 ## 2.62.0 (2026-08-11)
 
-* feat: add SteeringWheelIcon (#591) ([c6ced47](https://github.com/freenowtech/wave/commit/c6ced47)), closes [#591](https://github.com/freenowtech/wave/issues/591)
+- feat: add SteeringWheelIcon (#591) ([c6ced47](https://github.com/freenowtech/wave/commit/c6ced47)), closes [#591](https://github.com/freenowtech/wave/issues/591)
 
 ## 2.61.0 (2026-07-29)
 
-* feat: add resend email icon to experimental (#590) ([d6dde11](https://github.com/freenowtech/wave/commit/d6dde11)), closes [#590](https://github.com/freenowtech/wave/issues/590)
+- feat: add resend email icon to experimental (#590) ([d6dde11](https://github.com/freenowtech/wave/commit/d6dde11)), closes [#590](https://github.com/freenowtech/wave/issues/590)
 
 ## <small>2.60.1 (2026-07-29)</small>
 
-* fix: chevron not opening dropdown on mobile (#589) ([4540a69](https://github.com/freenowtech/wave/commit/4540a69)), closes [#589](https://github.com/freenowtech/wave/issues/589)
+- fix: chevron not opening dropdown on mobile (#589) ([4540a69](https://github.com/freenowtech/wave/commit/4540a69)), closes [#589](https://github.com/freenowtech/wave/issues/589)
 
 ## 2.60.0 (2026-06-30)
 
-* feat: add WifiOn and WifiOff icons to experimental (#588) ([a893fbe](https://github.com/freenowtech/wave/commit/a893fbe)), closes [#588](https://github.com/freenowtech/wave/issues/588)
+- feat: add WifiOn and WifiOff icons to experimental (#588) ([a893fbe](https://github.com/freenowtech/wave/commit/a893fbe)), closes [#588](https://github.com/freenowtech/wave/issues/588)
 
 ## 2.59.0 (2026-06-19)
 
-* feat: add assign driver icon (#587) ([0a37055](https://github.com/freenowtech/wave/commit/0a37055)), closes [#587](https://github.com/freenowtech/wave/issues/587)
+- feat: add assign driver icon (#587) ([0a37055](https://github.com/freenowtech/wave/commit/0a37055)), closes [#587](https://github.com/freenowtech/wave/issues/587)
 
 ## <small>2.58.1 (2026-06-09)</small>
 
-* fix: changed hardcoded color to currentColor (#586) ([cf97a58](https://github.com/freenowtech/wave/commit/cf97a58)), closes [#586](https://github.com/freenowtech/wave/issues/586)
+- fix: changed hardcoded color to currentColor (#586) ([cf97a58](https://github.com/freenowtech/wave/commit/cf97a58)), closes [#586](https://github.com/freenowtech/wave/issues/586)
 
 ## 2.58.0 (2026-06-02)
 
-* feat: add QuestionMarkCircle icon (#585) ([f6b6ef7](https://github.com/freenowtech/wave/commit/f6b6ef7)), closes [#585](https://github.com/freenowtech/wave/issues/585)
+- feat: add QuestionMarkCircle icon (#585) ([f6b6ef7](https://github.com/freenowtech/wave/commit/f6b6ef7)), closes [#585](https://github.com/freenowtech/wave/issues/585)
 
 ## 2.57.0 (2026-05-07)
 
-* feat: add ShieldAccount icon (#584) ([a4b280f](https://github.com/freenowtech/wave/commit/a4b280f)), closes [#584](https://github.com/freenowtech/wave/issues/584)
+- feat: add ShieldAccount icon (#584) ([a4b280f](https://github.com/freenowtech/wave/commit/a4b280f)), closes [#584](https://github.com/freenowtech/wave/issues/584)
 
 ## <small>2.56.1 (2026-04-08)</small>
 
-* fix: remove specifying aria-label (#583) ([0648f79](https://github.com/freenowtech/wave/commit/0648f79)), closes [#583](https://github.com/freenowtech/wave/issues/583)
+- fix: remove specifying aria-label (#583) ([0648f79](https://github.com/freenowtech/wave/commit/0648f79)), closes [#583](https://github.com/freenowtech/wave/issues/583)
 
 ## 2.56.0 (2026-04-02)
 
-* feat: update combobox to mark the popover as nonmodal (#582) ([593d577](https://github.com/freenowtech/wave/commit/593d577)), closes [#582](https://github.com/freenowtech/wave/issues/582)
+- feat: update combobox to mark the popover as nonmodal (#582) ([593d577](https://github.com/freenowtech/wave/commit/593d577)), closes [#582](https://github.com/freenowtech/wave/issues/582)
 
 ## 2.55.0 (2026-04-02)
 
-* feat: update documentation to force a release (#581) ([ca820fb](https://github.com/freenowtech/wave/commit/ca820fb)), closes [#581](https://github.com/freenowtech/wave/issues/581)
-* Re upgrade react aria components (#580) ([8741b36](https://github.com/freenowtech/wave/commit/8741b36)), closes [#580](https://github.com/freenowtech/wave/issues/580) [#575](https://github.com/freenowtech/wave/issues/575) [#577](https://github.com/freenowtech/wave/issues/577)
+- feat: update documentation to force a release (#581) ([ca820fb](https://github.com/freenowtech/wave/commit/ca820fb)), closes [#581](https://github.com/freenowtech/wave/issues/581)
+- Re upgrade react aria components (#580) ([8741b36](https://github.com/freenowtech/wave/commit/8741b36)), closes [#580](https://github.com/freenowtech/wave/issues/580) [#575](https://github.com/freenowtech/wave/issues/575) [#577](https://github.com/freenowtech/wave/issues/577)
 
 ## <small>2.54.1 (2026-03-31)</small>
 
-* fix: revert aria update and add calendar icon (#579) ([2b8d734](https://github.com/freenowtech/wave/commit/2b8d734)), closes [#579](https://github.com/freenowtech/wave/issues/579) [#577](https://github.com/freenowtech/wave/issues/577) [#575](https://github.com/freenowtech/wave/issues/575)
+- fix: revert aria update and add calendar icon (#579) ([2b8d734](https://github.com/freenowtech/wave/commit/2b8d734)), closes [#579](https://github.com/freenowtech/wave/issues/579) [#577](https://github.com/freenowtech/wave/issues/577) [#575](https://github.com/freenowtech/wave/issues/575)
 
 ## 2.54.0 (2026-03-31)
 
-* feat: calendar add icon (#578) ([58f278b](https://github.com/freenowtech/wave/commit/58f278b)), closes [#578](https://github.com/freenowtech/wave/issues/578)
+- feat: calendar add icon (#578) ([58f278b](https://github.com/freenowtech/wave/commit/58f278b)), closes [#578](https://github.com/freenowtech/wave/issues/578)
 
 ## 2.53.0 (2026-03-25)
 
-* feat: extend ComboBox ListBox to allow rendering empty state (#577) ([f70b916](https://github.com/freenowtech/wave/commit/f70b916)), closes [#577](https://github.com/freenowtech/wave/issues/577)
+- feat: extend ComboBox ListBox to allow rendering empty state (#577) ([f70b916](https://github.com/freenowtech/wave/commit/f70b916)), closes [#577](https://github.com/freenowtech/wave/issues/577)
 
 ## 2.52.0 (2026-03-24)
 
-* feat: update react-aria-components and combobox async example (#575) ([c418ddb](https://github.com/freenowtech/wave/commit/c418ddb)), closes [#575](https://github.com/freenowtech/wave/issues/575)
-* docs: #548 - Add details about adding styles in the react project root (#549) ([d4fd402](https://github.com/freenowtech/wave/commit/d4fd402)), closes [#548](https://github.com/freenowtech/wave/issues/548) [#549](https://github.com/freenowtech/wave/issues/549)
-* chore: update codeowners/maintainers (#574) ([2c221f0](https://github.com/freenowtech/wave/commit/2c221f0)), closes [#574](https://github.com/freenowtech/wave/issues/574)
-* fix link ([730ac46](https://github.com/freenowtech/wave/commit/730ac46))
+- feat: update react-aria-components and combobox async example (#575) ([c418ddb](https://github.com/freenowtech/wave/commit/c418ddb)), closes [#575](https://github.com/freenowtech/wave/issues/575)
+- docs: #548 - Add details about adding styles in the react project root (#549) ([d4fd402](https://github.com/freenowtech/wave/commit/d4fd402)), closes [#548](https://github.com/freenowtech/wave/issues/548) [#549](https://github.com/freenowtech/wave/issues/549)
+- chore: update codeowners/maintainers (#574) ([2c221f0](https://github.com/freenowtech/wave/commit/2c221f0)), closes [#574](https://github.com/freenowtech/wave/issues/574)
+- fix link ([730ac46](https://github.com/freenowtech/wave/commit/730ac46))
 
 ## 2.51.0 (2026-02-24)
 
-* feat: tabs component (#573) ([1c3ca66](https://github.com/freenowtech/wave/commit/1c3ca66)), closes [#573](https://github.com/freenowtech/wave/issues/573)
+- feat: tabs component (#573) ([1c3ca66](https://github.com/freenowtech/wave/commit/1c3ca66)), closes [#573](https://github.com/freenowtech/wave/issues/573)
 
 ## 2.50.0 (2026-02-12)
 
-* feat: add swap icon (#572) ([f9219a2](https://github.com/freenowtech/wave/commit/f9219a2)), closes [#572](https://github.com/freenowtech/wave/issues/572)
+- feat: add swap icon (#572) ([f9219a2](https://github.com/freenowtech/wave/commit/f9219a2)), closes [#572](https://github.com/freenowtech/wave/issues/572)
 
 ## <small>2.49.1 (2026-01-23)</small>
 
-* fix(AUT-2298): Bug fix for years that default incorrectly  (#568) ([5568a13](https://github.com/freenowtech/wave/commit/5568a13)), closes [#568](https://github.com/freenowtech/wave/issues/568)
-* fix(ci): extend GITHUB_TOKEN permissions for release (#571) ([85a6fc6](https://github.com/freenowtech/wave/commit/85a6fc6)), closes [#571](https://github.com/freenowtech/wave/issues/571)
-* fix(ci): publishing doesn't work (#570) ([6b5dcd7](https://github.com/freenowtech/wave/commit/6b5dcd7)), closes [#570](https://github.com/freenowtech/wave/issues/570)
+- fix(AUT-2298): Bug fix for years that default incorrectly (#568) ([5568a13](https://github.com/freenowtech/wave/commit/5568a13)), closes [#568](https://github.com/freenowtech/wave/issues/568)
+- fix(ci): extend GITHUB_TOKEN permissions for release (#571) ([85a6fc6](https://github.com/freenowtech/wave/commit/85a6fc6)), closes [#571](https://github.com/freenowtech/wave/issues/571)
+- fix(ci): publishing doesn't work (#570) ([6b5dcd7](https://github.com/freenowtech/wave/commit/6b5dcd7)), closes [#570](https://github.com/freenowtech/wave/issues/570)
 
 ## [2.49.0](https://github.com/freenowtech/wave/compare/v2.48.1...v2.49.0) (2025-12-02)
 
-
 ### Features
 
-* added pin icon and hailing icon ([#567](https://github.com/freenowtech/wave/issues/567)) ([a6b7576](https://github.com/freenowtech/wave/commit/a6b7576d06041e1d3ae08fffc257d876809c0cfc))
+- added pin icon and hailing icon ([#567](https://github.com/freenowtech/wave/issues/567)) ([a6b7576](https://github.com/freenowtech/wave/commit/a6b7576d06041e1d3ae08fffc257d876809c0cfc))
 
 ### [2.48.1](https://github.com/freenowtech/wave/compare/v2.48.0...v2.48.1) (2025-10-30)
 
-
 ### Bug Fixes
 
-* icon ([#566](https://github.com/freenowtech/wave/issues/566)) ([768bcdd](https://github.com/freenowtech/wave/commit/768bcddfec43562e5155956ba5ab37ade44c6b5b))
+- icon ([#566](https://github.com/freenowtech/wave/issues/566)) ([768bcdd](https://github.com/freenowtech/wave/commit/768bcddfec43562e5155956ba5ab37ade44c6b5b))
 
 ## [2.48.0](https://github.com/freenowtech/wave/compare/v2.47.1...v2.48.0) (2025-10-30)
 
-
 ### Features
 
-* calendar refactor and multiple choices ([#558](https://github.com/freenowtech/wave/issues/558)) ([6bf1acf](https://github.com/freenowtech/wave/commit/6bf1acf082a09ae064383081653f1c0039db738d))
+- calendar refactor and multiple choices ([#558](https://github.com/freenowtech/wave/issues/558)) ([6bf1acf](https://github.com/freenowtech/wave/commit/6bf1acf082a09ae064383081653f1c0039db738d))
 
 ### [2.47.1](https://github.com/freenowtech/wave/compare/v2.47.0...v2.47.1) (2025-10-30)
 
-
 ### Bug Fixes
 
-* changed size to match padding of other icons ([#565](https://github.com/freenowtech/wave/issues/565)) ([e0df700](https://github.com/freenowtech/wave/commit/e0df70088bcb94d395816ee11f022c5cc29ade1d))
+- changed size to match padding of other icons ([#565](https://github.com/freenowtech/wave/issues/565)) ([e0df700](https://github.com/freenowtech/wave/commit/e0df70088bcb94d395816ee11f022c5cc29ade1d))
 
 ## [2.47.0](https://github.com/freenowtech/wave/compare/v2.46.1...v2.47.0) (2025-10-29)
 
-
 ### Features
 
-* add edit pen icon ([#564](https://github.com/freenowtech/wave/issues/564)) ([94283ab](https://github.com/freenowtech/wave/commit/94283ab0782cbbc723fd6fd7f692787ef782383d))
+- add edit pen icon ([#564](https://github.com/freenowtech/wave/issues/564)) ([94283ab](https://github.com/freenowtech/wave/commit/94283ab0782cbbc723fd6fd7f692787ef782383d))
 
 ### [2.46.1](https://github.com/freenowtech/wave/compare/v2.46.0...v2.46.1) (2025-09-29)
 
-
 ### Bug Fixes
 
-* add missing MonthRangePicker export to components index file ([#562](https://github.com/freenowtech/wave/issues/562)) ([4e17493](https://github.com/freenowtech/wave/commit/4e174934b70aeaebf99aa3478297a845b4495efb))
+- add missing MonthRangePicker export to components index file ([#562](https://github.com/freenowtech/wave/issues/562)) ([4e17493](https://github.com/freenowtech/wave/commit/4e174934b70aeaebf99aa3478297a845b4495efb))
 
 ## [2.46.0](https://github.com/freenowtech/wave/compare/v2.45.1...v2.46.0) (2025-09-26)
 
-
 ### Features
 
-* add month range picker ([#560](https://github.com/freenowtech/wave/issues/560)) ([420d956](https://github.com/freenowtech/wave/commit/420d9563c1ce4b82295558e97a04225350e52549))
+- add month range picker ([#560](https://github.com/freenowtech/wave/issues/560)) ([420d956](https://github.com/freenowtech/wave/commit/420d9563c1ce4b82295558e97a04225350e52549))
 
 ### [2.45.1](https://github.com/freenowtech/wave/compare/v2.45.0...v2.45.1) (2025-09-26)
 
-
 ### Bug Fixes
 
-* align Business, Driver and by Lift logo to Brand guidelines ([#561](https://github.com/freenowtech/wave/issues/561)) ([6db6399](https://github.com/freenowtech/wave/commit/6db6399f7bd6b20c658f1dcc3ed2365d6decaacb))
+- align Business, Driver and by Lift logo to Brand guidelines ([#561](https://github.com/freenowtech/wave/issues/561)) ([6db6399](https://github.com/freenowtech/wave/commit/6db6399f7bd6b20c658f1dcc3ed2365d6decaacb))
 
 ## [2.45.0](https://github.com/freenowtech/wave/compare/v2.44.0...v2.45.0) (2025-09-09)
 
-
 ### Features
 
-* added checkout logo ([#559](https://github.com/freenowtech/wave/issues/559)) ([4cb21c8](https://github.com/freenowtech/wave/commit/4cb21c805891d4b06f7940bedf7605c826cd4618))
+- added checkout logo ([#559](https://github.com/freenowtech/wave/issues/559)) ([4cb21c8](https://github.com/freenowtech/wave/commit/4cb21c805891d4b06f7940bedf7605c826cd4618))
 
 ## [2.44.0](https://github.com/freenowtech/wave/compare/v2.43.0...v2.44.0) (2025-09-04)
 
-
 ### Features
 
-* upgrading colours & font in wave 2.0 | SUP-49317 ([#557](https://github.com/freenowtech/wave/issues/557)) ([419923a](https://github.com/freenowtech/wave/commit/419923aa3b6c5207a3ab1ffb50c7ae59722ee671))
+- upgrading colours & font in wave 2.0 | SUP-49317 ([#557](https://github.com/freenowtech/wave/issues/557)) ([419923a](https://github.com/freenowtech/wave/commit/419923aa3b6c5207a3ab1ffb50c7ae59722ee671))
 
 ## [2.43.0](https://github.com/freenowtech/wave/compare/v2.42.0...v2.43.0) (2025-08-18)
 
-
 ### Features
 
-* upgrading logo and colours in wave 2.0 ([#556](https://github.com/freenowtech/wave/issues/556)) ([5b28524](https://github.com/freenowtech/wave/commit/5b28524a39fc93a38b3cc203362d660de89c9e69))
+- upgrading logo and colours in wave 2.0 ([#556](https://github.com/freenowtech/wave/issues/556)) ([5b28524](https://github.com/freenowtech/wave/commit/5b28524a39fc93a38b3cc203362d660de89c9e69))
 
 ## [2.42.0](https://github.com/freenowtech/wave/compare/v2.41.3...v2.42.0) (2025-08-07)
 
-
 ### Features
 
-* make label a required prop on TimeField ([#555](https://github.com/freenowtech/wave/issues/555)) ([8e68d54](https://github.com/freenowtech/wave/commit/8e68d54d07e37a3748e51b8ebea530b04aa9be8c))
+- make label a required prop on TimeField ([#555](https://github.com/freenowtech/wave/issues/555)) ([8e68d54](https://github.com/freenowtech/wave/commit/8e68d54d07e37a3748e51b8ebea530b04aa9be8c))
 
 ### [2.41.3](https://github.com/freenowtech/wave/compare/v2.41.2...v2.41.3) (2025-08-06)
 
-
 ### Bug Fixes
 
-* pass hideLabel prop to TimeField InnerWrapper ([#554](https://github.com/freenowtech/wave/issues/554)) ([ad2843f](https://github.com/freenowtech/wave/commit/ad2843f8f0169864ca3ab589ed1b02ab5e3e4072))
+- pass hideLabel prop to TimeField InnerWrapper ([#554](https://github.com/freenowtech/wave/issues/554)) ([ad2843f](https://github.com/freenowtech/wave/commit/ad2843f8f0169864ca3ab589ed1b02ab5e3e4072))
 
 ### [2.41.2](https://github.com/freenowtech/wave/compare/v2.41.1...v2.41.2) (2025-08-05)
 
-
 ### Bug Fixes
 
-* remove unreliable :has() selector in InnerWrapper ([#553](https://github.com/freenowtech/wave/issues/553)) ([1ca4f8c](https://github.com/freenowtech/wave/commit/1ca4f8c8d34970189794ec5efa8746a027043a25))
+- remove unreliable :has() selector in InnerWrapper ([#553](https://github.com/freenowtech/wave/issues/553)) ([1ca4f8c](https://github.com/freenowtech/wave/commit/1ca4f8c8d34970189794ec5efa8746a027043a25))
 
 ### [2.41.1](https://github.com/freenowtech/wave/compare/v2.41.0...v2.41.1) (2025-08-05)
 
-
 ### Bug Fixes
 
-* select component hide label style ([#552](https://github.com/freenowtech/wave/issues/552)) ([7a8a7fe](https://github.com/freenowtech/wave/commit/7a8a7fea5354d720d1cf38415528354674183a22))
+- select component hide label style ([#552](https://github.com/freenowtech/wave/issues/552)) ([7a8a7fe](https://github.com/freenowtech/wave/commit/7a8a7fea5354d720d1cf38415528354674183a22))
 
 ## [2.41.0](https://github.com/freenowtech/wave/compare/v2.40.0...v2.41.0) (2025-08-05)
 
-
 ### Features
 
-* add hideLabel property on experimental Select ([#551](https://github.com/freenowtech/wave/issues/551)) ([1ccf77d](https://github.com/freenowtech/wave/commit/1ccf77d209859fe9d68fd8861820847669c0bcb8))
+- add hideLabel property on experimental Select ([#551](https://github.com/freenowtech/wave/issues/551)) ([1ccf77d](https://github.com/freenowtech/wave/commit/1ccf77d209859fe9d68fd8861820847669c0bcb8))
 
 ## [2.40.0](https://github.com/freenowtech/wave/compare/v2.39.0...v2.40.0) (2025-06-17)
 
-
 ### Features
 
-* add trash icon ([#550](https://github.com/freenowtech/wave/issues/550)) ([b6e04b0](https://github.com/freenowtech/wave/commit/b6e04b0c5838a3fc40a07ebb11681b413f77d7f1))
+- add trash icon ([#550](https://github.com/freenowtech/wave/issues/550)) ([b6e04b0](https://github.com/freenowtech/wave/commit/b6e04b0c5838a3fc40a07ebb11681b413f77d7f1))
 
 ## [2.39.0](https://github.com/freenowtech/wave/compare/v2.38.1...v2.39.0) (2025-06-17)
 
-
 ### Features
 
-* add group experimental icon ([#547](https://github.com/freenowtech/wave/issues/547)) ([b3541f0](https://github.com/freenowtech/wave/commit/b3541f08d4b8d820b91d1ab9b0e36b8ad74af34d))
+- add group experimental icon ([#547](https://github.com/freenowtech/wave/issues/547)) ([b3541f0](https://github.com/freenowtech/wave/commit/b3541f08d4b8d820b91d1ab9b0e36b8ad74af34d))
 
 ### [2.38.1](https://github.com/freenowtech/wave/compare/v2.38.0...v2.38.1) (2025-05-28)
 
-
 ### Bug Fixes
 
-* **field:** fix disabled state ([#546](https://github.com/freenowtech/wave/issues/546)) ([a6ccfe4](https://github.com/freenowtech/wave/commit/a6ccfe4149efb32b2a5adf6cc9664f0c21aa2a1f))
+- **field:** fix disabled state ([#546](https://github.com/freenowtech/wave/issues/546)) ([a6ccfe4](https://github.com/freenowtech/wave/commit/a6ccfe4149efb32b2a5adf6cc9664f0c21aa2a1f))
 
 ## [2.38.0](https://github.com/freenowtech/wave/compare/v2.37.0...v2.38.0) (2025-05-27)
 
-
 ### Features
 
-* **calendar:** support multi-month and range selection ([#545](https://github.com/freenowtech/wave/issues/545)) ([3958f3c](https://github.com/freenowtech/wave/commit/3958f3cae180af3e67cf7e37db49f1d06d6a6ccd))
+- **calendar:** support multi-month and range selection ([#545](https://github.com/freenowtech/wave/issues/545)) ([3958f3c](https://github.com/freenowtech/wave/commit/3958f3cae180af3e67cf7e37db49f1d06d6a6ccd))
 
 ## [2.37.0](https://github.com/freenowtech/wave/compare/v2.36.0...v2.37.0) (2025-05-22)
 
-
 ### Features
 
-* add NumberField component ([#544](https://github.com/freenowtech/wave/issues/544)) ([0ba7b21](https://github.com/freenowtech/wave/commit/0ba7b21789a05f455fd14a079a63dcbf6b794679))
+- add NumberField component ([#544](https://github.com/freenowtech/wave/issues/544)) ([0ba7b21](https://github.com/freenowtech/wave/commit/0ba7b21789a05f455fd14a079a63dcbf6b794679))
 
 ## [2.36.0](https://github.com/freenowtech/wave/compare/v2.35.0...v2.36.0) (2025-05-21)
 
-
 ### Features
 
-* add RadioButton and RadioGroup ([#543](https://github.com/freenowtech/wave/issues/543)) ([b7e42b1](https://github.com/freenowtech/wave/commit/b7e42b19bebd5a7db7f5e943b00974c017ef194f))
+- add RadioButton and RadioGroup ([#543](https://github.com/freenowtech/wave/issues/543)) ([b7e42b1](https://github.com/freenowtech/wave/commit/b7e42b19bebd5a7db7f5e943b00974c017ef194f))
 
 ## [2.35.0](https://github.com/freenowtech/wave/compare/v2.34.0...v2.35.0) (2025-05-14)
 
-
 ### Features
 
-* add new icon ([#542](https://github.com/freenowtech/wave/issues/542)) ([2e9cdfe](https://github.com/freenowtech/wave/commit/2e9cdfe55e8972e489375bb49204949b846e9fd1))
+- add new icon ([#542](https://github.com/freenowtech/wave/issues/542)) ([2e9cdfe](https://github.com/freenowtech/wave/commit/2e9cdfe55e8972e489375bb49204949b846e9fd1))
 
 ## [2.34.0](https://github.com/freenowtech/wave/compare/v2.33.0...v2.34.0) (2025-05-14)
 
-
 ### Features
 
-* **icons:** add experimental icons ([#541](https://github.com/freenowtech/wave/issues/541)) ([85e2d01](https://github.com/freenowtech/wave/commit/85e2d016c8c4428e99919b0d7c1012b09f3e19f7))
+- **icons:** add experimental icons ([#541](https://github.com/freenowtech/wave/issues/541)) ([85e2d01](https://github.com/freenowtech/wave/commit/85e2d016c8c4428e99919b0d7c1012b09f3e19f7))
 
 ## [2.33.0](https://github.com/freenowtech/wave/compare/v2.32.4...v2.33.0) (2025-05-13)
 
-
 ### Features
 
-* adds input component ([#538](https://github.com/freenowtech/wave/issues/538)) ([3fab564](https://github.com/freenowtech/wave/commit/3fab5643bdb5973653bd8190551f7a59d6e13429))
+- adds input component ([#538](https://github.com/freenowtech/wave/issues/538)) ([3fab564](https://github.com/freenowtech/wave/commit/3fab5643bdb5973653bd8190551f7a59d6e13429))
 
 ### [2.32.4](https://github.com/freenowtech/wave/compare/v2.32.3...v2.32.4) (2025-05-13)
 
-
 ### Bug Fixes
 
-* rollback react aria downgrade ([#540](https://github.com/freenowtech/wave/issues/540)) ([b4cd30b](https://github.com/freenowtech/wave/commit/b4cd30b2ccd3da5145f0c691770bcdea3dfd037c))
+- rollback react aria downgrade ([#540](https://github.com/freenowtech/wave/issues/540)) ([b4cd30b](https://github.com/freenowtech/wave/commit/b4cd30b2ccd3da5145f0c691770bcdea3dfd037c))
 
 ### [2.32.3](https://github.com/freenowtech/wave/compare/v2.32.2...v2.32.3) (2025-05-12)
 
-
 ### Bug Fixes
 
-* downgrade react aria components ([#539](https://github.com/freenowtech/wave/issues/539)) ([a23674b](https://github.com/freenowtech/wave/commit/a23674bacd219b290be48769b0ff117e9e9b59b9))
+- downgrade react aria components ([#539](https://github.com/freenowtech/wave/issues/539)) ([a23674b](https://github.com/freenowtech/wave/commit/a23674bacd219b290be48769b0ff117e9e9b59b9))
 
 ### [2.32.2](https://github.com/freenowtech/wave/compare/v2.32.1...v2.32.2) (2025-05-12)
 
-
 ### Bug Fixes
 
-* react aria upgrade ([#537](https://github.com/freenowtech/wave/issues/537)) ([1213b82](https://github.com/freenowtech/wave/commit/1213b820a5f9c5557a7b22798579596c16896c34))
+- react aria upgrade ([#537](https://github.com/freenowtech/wave/issues/537)) ([1213b82](https://github.com/freenowtech/wave/commit/1213b820a5f9c5557a7b22798579596c16896c34))
 
 ### [2.32.1](https://github.com/freenowtech/wave/compare/v2.32.0...v2.32.1) (2025-05-12)
 
-
 ### Bug Fixes
 
-* adding a box shadow for the tooltip ([#536](https://github.com/freenowtech/wave/issues/536)) ([2a4518b](https://github.com/freenowtech/wave/commit/2a4518bd71699d6911e4c98dd7bed197975e98f5))
+- adding a box shadow for the tooltip ([#536](https://github.com/freenowtech/wave/issues/536)) ([2a4518b](https://github.com/freenowtech/wave/commit/2a4518bd71699d6911e4c98dd7bed197975e98f5))
 
 ## [2.32.0](https://github.com/freenowtech/wave/compare/v2.31.2...v2.32.0) (2025-05-12)
 
-
 ### Features
 
-* add support of non visible backdrop to the experimental Dialog component ([#535](https://github.com/freenowtech/wave/issues/535)) ([8f106d1](https://github.com/freenowtech/wave/commit/8f106d1b0de33306d54c55ba99198810bc5e2d4f))
+- add support of non visible backdrop to the experimental Dialog component ([#535](https://github.com/freenowtech/wave/issues/535)) ([8f106d1](https://github.com/freenowtech/wave/commit/8f106d1b0de33306d54c55ba99198810bc5e2d4f))
 
 ### [2.31.2](https://github.com/freenowtech/wave/compare/v2.31.1...v2.31.2) (2025-05-09)
 
-
 ### Bug Fixes
 
-* fixing the tooltip styles ([#534](https://github.com/freenowtech/wave/issues/534)) ([40ab351](https://github.com/freenowtech/wave/commit/40ab351c69a450b0a4f68c9eabdd274a9dc656ee))
+- fixing the tooltip styles ([#534](https://github.com/freenowtech/wave/issues/534)) ([40ab351](https://github.com/freenowtech/wave/commit/40ab351c69a450b0a4f68c9eabdd274a9dc656ee))
 
 ### [2.31.1](https://github.com/freenowtech/wave/compare/v2.31.0...v2.31.1) (2025-05-08)
 
-
 ### Bug Fixes
 
-* exporting tooltip ([#533](https://github.com/freenowtech/wave/issues/533)) ([5e55ec7](https://github.com/freenowtech/wave/commit/5e55ec7f21b0ed19461d85b7ca2913750d8a8096))
+- exporting tooltip ([#533](https://github.com/freenowtech/wave/issues/533)) ([5e55ec7](https://github.com/freenowtech/wave/commit/5e55ec7f21b0ed19461d85b7ca2913750d8a8096))
 
 ## [2.31.0](https://github.com/freenowtech/wave/compare/v2.30.2...v2.31.0) (2025-05-08)
 
-
 ### Features
 
-* adding an experimental tooltip component based on react-aria ([#531](https://github.com/freenowtech/wave/issues/531)) ([aa044ef](https://github.com/freenowtech/wave/commit/aa044efeb51ba639cb3b89661be343713dd47924))
+- adding an experimental tooltip component based on react-aria ([#531](https://github.com/freenowtech/wave/issues/531)) ([aa044ef](https://github.com/freenowtech/wave/commit/aa044efeb51ba639cb3b89661be343713dd47924))
 
 ### [2.30.2](https://github.com/freenowtech/wave/compare/v2.30.1...v2.30.2) (2025-05-08)
 
 ### Bug Fixes
 
--   avoid isLoading prop on button element ([#530](https://github.com/freenowtech/wave/issues/530)) ([ea7d3fe](https://github.com/freenowtech/wave/commit/ea7d3fea8606caea6349350449275a7e4e6dd7b4))
+- avoid isLoading prop on button element ([#530](https://github.com/freenowtech/wave/issues/530)) ([ea7d3fe](https://github.com/freenowtech/wave/commit/ea7d3fea8606caea6349350449275a7e4e6dd7b4))
 
 ### [2.30.1](https://github.com/freenowtech/wave/compare/v2.30.0...v2.30.1) (2025-05-07)
 
 ### Bug Fixes
 
--   fixing the colour of the icon to display properly in dark mode ([#529](https://github.com/freenowtech/wave/issues/529)) ([dbdf970](https://github.com/freenowtech/wave/commit/dbdf97016cebd79647776bc180198d956550a8bc))
+- fixing the colour of the icon to display properly in dark mode ([#529](https://github.com/freenowtech/wave/issues/529)) ([dbdf970](https://github.com/freenowtech/wave/commit/dbdf97016cebd79647776bc180198d956550a8bc))
 
 ## [2.30.0](https://github.com/freenowtech/wave/compare/v2.29.1...v2.30.0) (2025-05-07)
 
 ### Features
 
--   adding the experimental bot icon to wave ([#528](https://github.com/freenowtech/wave/issues/528)) ([47d6803](https://github.com/freenowtech/wave/commit/47d68034160e63f95a0090452076bbccdfafde6a))
+- adding the experimental bot icon to wave ([#528](https://github.com/freenowtech/wave/issues/528)) ([47d6803](https://github.com/freenowtech/wave/commit/47d68034160e63f95a0090452076bbccdfafde6a))
 
 ### [2.29.1](https://github.com/freenowtech/wave/compare/v2.29.0...v2.29.1) (2025-04-29)
 
 ### Bug Fixes
 
--   experimental checkbox imports ([#527](https://github.com/freenowtech/wave/issues/527)) ([25a9a67](https://github.com/freenowtech/wave/commit/25a9a67aa81756c7fa6834f33c83d5540be8de23))
+- experimental checkbox imports ([#527](https://github.com/freenowtech/wave/issues/527)) ([25a9a67](https://github.com/freenowtech/wave/commit/25a9a67aa81756c7fa6834f33c83d5540be8de23))
 
 ## [2.29.0](https://github.com/freenowtech/wave/compare/v2.28.0...v2.29.0) (2025-04-28)
 
 ### Features
 
--   add body support to experimental dialog ([#526](https://github.com/freenowtech/wave/issues/526)) ([3c05c3f](https://github.com/freenowtech/wave/commit/3c05c3fe26107907c6ba1048650dc23f38ab064d))
+- add body support to experimental dialog ([#526](https://github.com/freenowtech/wave/issues/526)) ([3c05c3f](https://github.com/freenowtech/wave/commit/3c05c3fe26107907c6ba1048650dc23f38ab064d))
 
 ## [2.28.0](https://github.com/freenowtech/wave/compare/v2.27.1...v2.28.0) (2025-04-25)
 
 ### Features
 
--   experimental checkbox component ([#525](https://github.com/freenowtech/wave/issues/525)) ([f752ead](https://github.com/freenowtech/wave/commit/f752ead5eb01809b352e35edba3143e83912e5aa))
+- experimental checkbox component ([#525](https://github.com/freenowtech/wave/issues/525)) ([f752ead](https://github.com/freenowtech/wave/commit/f752ead5eb01809b352e35edba3143e83912e5aa))
 
 ### [2.27.1](https://github.com/freenowtech/wave/compare/v2.27.0...v2.27.1) (2025-03-11)
 
 ### Bug Fixes
 
--   improve spaces when label is not defined ([#450](https://github.com/freenowtech/wave/issues/450)) ([#515](https://github.com/freenowtech/wave/issues/515)) ([47ac450](https://github.com/freenowtech/wave/commit/47ac4508c910db98f20bb4d07f2534354b2c2894))
+- improve spaces when label is not defined ([#450](https://github.com/freenowtech/wave/issues/450)) ([#515](https://github.com/freenowtech/wave/issues/515)) ([47ac450](https://github.com/freenowtech/wave/commit/47ac4508c910db98f20bb4d07f2534354b2c2894))
 
 ## [2.27.0](https://github.com/freenowtech/wave/compare/v2.26.1...v2.27.0) (2025-03-06)
 
 ### Features
 
--   add search component ([#522](https://github.com/freenowtech/wave/issues/522)) ([3f3dd99](https://github.com/freenowtech/wave/commit/3f3dd99f481fe5e7f9b48c14f617a9d1efedcd1f))
+- add search component ([#522](https://github.com/freenowtech/wave/issues/522)) ([3f3dd99](https://github.com/freenowtech/wave/commit/3f3dd99f481fe5e7f9b48c14f617a9d1efedcd1f))
 
 ### [2.26.1](https://github.com/freenowtech/wave/compare/v2.26.0...v2.26.1) (2025-02-25)
 
 ### Bug Fixes
 
--   lint warnings ([#520](https://github.com/freenowtech/wave/issues/520)) ([08ea4b8](https://github.com/freenowtech/wave/commit/08ea4b8cc85179281d529e30a0431b4883923638))
+- lint warnings ([#520](https://github.com/freenowtech/wave/issues/520)) ([08ea4b8](https://github.com/freenowtech/wave/commit/08ea4b8cc85179281d529e30a0431b4883923638))
 
 ## [2.26.0](https://github.com/freenowtech/wave/compare/v2.25.1...v2.26.0) (2025-02-21)
 
 ### Features
 
--   **icons:** add search icon ([#518](https://github.com/freenowtech/wave/issues/518)) ([4cce650](https://github.com/freenowtech/wave/commit/4cce650c9999e06841486ce9ff29a562e26507eb))
+- **icons:** add search icon ([#518](https://github.com/freenowtech/wave/issues/518)) ([4cce650](https://github.com/freenowtech/wave/commit/4cce650c9999e06841486ce9ff29a562e26507eb))
 
 ### [2.25.1](https://github.com/freenowtech/wave/compare/v2.25.0...v2.25.1) (2025-01-31)
 
 ### Bug Fixes
 
--   add label prop to icon button ([#514](https://github.com/freenowtech/wave/issues/514)) ([6228528](https://github.com/freenowtech/wave/commit/62285282371881ba0b0240b150d6bb75118c860a))
+- add label prop to icon button ([#514](https://github.com/freenowtech/wave/issues/514)) ([6228528](https://github.com/freenowtech/wave/commit/62285282371881ba0b0240b150d6bb75118c860a))
 
 ## [2.25.0](https://github.com/freenowtech/wave/compare/v2.24.0...v2.25.0) (2025-01-28)
 
 ### Features
 
--   add PhoneCarOutlineIcon ([#513](https://github.com/freenowtech/wave/issues/513)) ([5ce1036](https://github.com/freenowtech/wave/commit/5ce1036f38cd371fd37491628ca81c4a145e1219))
+- add PhoneCarOutlineIcon ([#513](https://github.com/freenowtech/wave/issues/513)) ([5ce1036](https://github.com/freenowtech/wave/commit/5ce1036f38cd371fd37491628ca81c4a145e1219))
 
 ## [2.24.0](https://github.com/freenowtech/wave/compare/v2.23.0...v2.24.0) (2025-01-24)
 
 ### Features
 
--   **table:** add pointer as a cursor for interactive rows ([#512](https://github.com/freenowtech/wave/issues/512)) ([03ccbf7](https://github.com/freenowtech/wave/commit/03ccbf74201188a7b868272101012b2dce3d28f9))
+- **table:** add pointer as a cursor for interactive rows ([#512](https://github.com/freenowtech/wave/issues/512)) ([03ccbf7](https://github.com/freenowtech/wave/commit/03ccbf74201188a7b868272101012b2dce3d28f9))
 
 ## [2.23.0](https://github.com/freenowtech/wave/compare/v2.22.0...v2.23.0) (2025-01-23)
 
 ### Features
 
--   **modal:** remove padding from ModalCard ([#511](https://github.com/freenowtech/wave/issues/511)) ([a2b2a62](https://github.com/freenowtech/wave/commit/a2b2a627c3725b0b67ae7ab78d6a3bc9e687a6d6))
+- **modal:** remove padding from ModalCard ([#511](https://github.com/freenowtech/wave/issues/511)) ([a2b2a62](https://github.com/freenowtech/wave/commit/a2b2a627c3725b0b67ae7ab78d6a3bc9e687a6d6))
 
 ## [2.22.0](https://github.com/freenowtech/wave/compare/v2.21.2...v2.22.0) (2025-01-23)
 
 ### Features
 
--   **experimental:** export Backdrop and Modal ([#510](https://github.com/freenowtech/wave/issues/510)) ([dc77753](https://github.com/freenowtech/wave/commit/dc77753e74b583b9e5ce9fa0a52eda93ba6d077d))
+- **experimental:** export Backdrop and Modal ([#510](https://github.com/freenowtech/wave/issues/510)) ([dc77753](https://github.com/freenowtech/wave/commit/dc77753e74b583b9e5ce9fa0a52eda93ba6d077d))
 
 ### [2.21.2](https://github.com/freenowtech/wave/compare/v2.21.1...v2.21.2) (2025-01-09)
 
 ### Bug Fixes
 
--   divider margin ([#508](https://github.com/freenowtech/wave/issues/508)) ([a248920](https://github.com/freenowtech/wave/commit/a2489208517ee73cc17f58030d9100fd47fdffea))
+- divider margin ([#508](https://github.com/freenowtech/wave/issues/508)) ([a248920](https://github.com/freenowtech/wave/commit/a2489208517ee73cc17f58030d9100fd47fdffea))
 
 ### [2.21.1](https://github.com/freenowtech/wave/compare/v2.21.0...v2.21.1) (2025-01-08)
 
 ### Bug Fixes
 
--   vertical divider height ([#507](https://github.com/freenowtech/wave/issues/507)) ([50df229](https://github.com/freenowtech/wave/commit/50df2298d58e7a188c63a28716fa81da5b7f2277))
+- vertical divider height ([#507](https://github.com/freenowtech/wave/issues/507)) ([50df229](https://github.com/freenowtech/wave/commit/50df2298d58e7a188c63a28716fa81da5b7f2277))
 
 ## [2.21.0](https://github.com/freenowtech/wave/compare/v2.20.2...v2.21.0) (2024-12-30)
 
 ### Features
 
--   **combo-box:** external input ref support ([#506](https://github.com/freenowtech/wave/issues/506)) ([5a71da0](https://github.com/freenowtech/wave/commit/5a71da0b3128ed5c5e428e8f46f1795827a368fa))
+- **combo-box:** external input ref support ([#506](https://github.com/freenowtech/wave/issues/506)) ([5a71da0](https://github.com/freenowtech/wave/commit/5a71da0b3128ed5c5e428e8f46f1795827a368fa))
 
 ### [2.20.2](https://github.com/freenowtech/wave/compare/v2.20.1...v2.20.2) (2024-12-11)
 
 ### Bug Fixes
 
--   **combo-box:** fix clearing the state in the controlled variant ([#505](https://github.com/freenowtech/wave/issues/505)) ([b39e7f8](https://github.com/freenowtech/wave/commit/b39e7f882911b4b2262c33f57d80b6cc3ed336f5))
+- **combo-box:** fix clearing the state in the controlled variant ([#505](https://github.com/freenowtech/wave/issues/505)) ([b39e7f8](https://github.com/freenowtech/wave/commit/b39e7f882911b4b2262c33f57d80b6cc3ed336f5))
 
 ### [2.20.1](https://github.com/freenowtech/wave/compare/v2.20.0...v2.20.1) (2024-12-05)
 
 ### Bug Fixes
 
--   keep button content in order to maintain the width in loading state ([#504](https://github.com/freenowtech/wave/issues/504)) ([784b5d2](https://github.com/freenowtech/wave/commit/784b5d29e1b02cfe7c7642c337a9b15f29ed0c63))
+- keep button content in order to maintain the width in loading state ([#504](https://github.com/freenowtech/wave/issues/504)) ([784b5d2](https://github.com/freenowtech/wave/commit/784b5d29e1b02cfe7c7642c337a9b15f29ed0c63))
 
 ## [2.20.0](https://github.com/freenowtech/wave/compare/v2.19.4...v2.20.0) (2024-12-04)
 
 ### Features
 
--   **inline-spinner:** add experimental component ([#503](https://github.com/freenowtech/wave/issues/503)) ([1b198fa](https://github.com/freenowtech/wave/commit/1b198fa07ee082937ce8120311e905318cde7899))
+- **inline-spinner:** add experimental component ([#503](https://github.com/freenowtech/wave/issues/503)) ([1b198fa](https://github.com/freenowtech/wave/commit/1b198fa07ee082937ce8120311e905318cde7899))
 
 ### [2.19.4](https://github.com/freenowtech/wave/compare/v2.19.3...v2.19.4) (2024-12-03)
 
 ### Bug Fixes
 
--   **table:** add non-static position to all the cell content ([#502](https://github.com/freenowtech/wave/issues/502)) ([98f2c24](https://github.com/freenowtech/wave/commit/98f2c243eca473b9839c8c78ab440a15fd7fe1d4))
+- **table:** add non-static position to all the cell content ([#502](https://github.com/freenowtech/wave/issues/502)) ([98f2c24](https://github.com/freenowtech/wave/commit/98f2c243eca473b9839c8c78ab440a15fd7fe1d4))
 
 ### [2.19.3](https://github.com/freenowtech/wave/compare/v2.19.2...v2.19.3) (2024-12-02)
 
 ### Bug Fixes
 
--   **icons:** fix experimental icons ([#501](https://github.com/freenowtech/wave/issues/501)) ([ef3c2fb](https://github.com/freenowtech/wave/commit/ef3c2fb629f65b7abf558b79b59e5d7924113a34))
+- **icons:** fix experimental icons ([#501](https://github.com/freenowtech/wave/issues/501)) ([ef3c2fb](https://github.com/freenowtech/wave/commit/ef3c2fb629f65b7abf558b79b59e5d7924113a34))
 
 ### [2.19.2](https://github.com/freenowtech/wave/compare/v2.19.1...v2.19.2) (2024-12-02)
 
 ### Bug Fixes
 
--   remove prop type overriding and add event type in snackbar ([#500](https://github.com/freenowtech/wave/issues/500)) ([c4d4db8](https://github.com/freenowtech/wave/commit/c4d4db8764c3db57ca4445023b32fedd712355c5))
+- remove prop type overriding and add event type in snackbar ([#500](https://github.com/freenowtech/wave/issues/500)) ([c4d4db8](https://github.com/freenowtech/wave/commit/c4d4db8764c3db57ca4445023b32fedd712355c5))
 
 ### [2.19.1](https://github.com/freenowtech/wave/compare/v2.19.0...v2.19.1) (2024-11-28)
 
 ### Bug Fixes
 
--   add ref support to snackbar ([#499](https://github.com/freenowtech/wave/issues/499)) ([791d69b](https://github.com/freenowtech/wave/commit/791d69bf8bed58326010c74b9cc2b9215980c5c0))
+- add ref support to snackbar ([#499](https://github.com/freenowtech/wave/issues/499)) ([791d69b](https://github.com/freenowtech/wave/commit/791d69bf8bed58326010c74b9cc2b9215980c5c0))
 
 ## [2.19.0](https://github.com/freenowtech/wave/compare/v2.18.2...v2.19.0) (2024-11-27)
 
 ### Features
 
--   add snackbar component ([#497](https://github.com/freenowtech/wave/issues/497)) ([9b9a266](https://github.com/freenowtech/wave/commit/9b9a2662aab3ed4ec42d495a51706cd5a0b21a64))
+- add snackbar component ([#497](https://github.com/freenowtech/wave/issues/497)) ([9b9a266](https://github.com/freenowtech/wave/commit/9b9a2662aab3ed4ec42d495a51706cd5a0b21a64))
 
 ### [2.18.2](https://github.com/freenowtech/wave/compare/v2.18.1...v2.18.2) (2024-11-25)
 
 ### Bug Fixes
 
--   pass rest props to the icon button container ([#496](https://github.com/freenowtech/wave/issues/496)) ([a4a606e](https://github.com/freenowtech/wave/commit/a4a606e82b5986b484c7a0cf7fd3a6a408f35bc0))
+- pass rest props to the icon button container ([#496](https://github.com/freenowtech/wave/issues/496)) ([a4a606e](https://github.com/freenowtech/wave/commit/a4a606e82b5986b484c7a0cf7fd3a6a408f35bc0))
 
 ### [2.18.1](https://github.com/freenowtech/wave/compare/v2.18.0...v2.18.1) (2024-11-20)
 
 ### Bug Fixes
 
--   **table:** re-export all parts ([#495](https://github.com/freenowtech/wave/issues/495)) ([c90c400](https://github.com/freenowtech/wave/commit/c90c400b8ca2a4634147692606fe9b8d60580ee4))
+- **table:** re-export all parts ([#495](https://github.com/freenowtech/wave/issues/495)) ([c90c400](https://github.com/freenowtech/wave/commit/c90c400b8ca2a4634147692606fe9b8d60580ee4))
 
 ## [2.18.0](https://github.com/freenowtech/wave/compare/v2.17.0...v2.18.0) (2024-11-20)
 
 ### Features
 
--   add experimental icons ([#494](https://github.com/freenowtech/wave/issues/494)) ([745e6bb](https://github.com/freenowtech/wave/commit/745e6bb1ea57ea924413099e87f41708a6dddff1))
+- add experimental icons ([#494](https://github.com/freenowtech/wave/issues/494)) ([745e6bb](https://github.com/freenowtech/wave/commit/745e6bb1ea57ea924413099e87f41708a6dddff1))
 
 ## [2.17.0](https://github.com/freenowtech/wave/compare/v2.16.0...v2.17.0) (2024-11-20)
 
 ### Features
 
--   **table:** add experimental component ([#493](https://github.com/freenowtech/wave/issues/493)) ([31e0c21](https://github.com/freenowtech/wave/commit/31e0c21184aefaaa779ce9742493316d8d862b37))
+- **table:** add experimental component ([#493](https://github.com/freenowtech/wave/issues/493)) ([31e0c21](https://github.com/freenowtech/wave/commit/31e0c21184aefaaa779ce9742493316d8d862b37))
 
 ## [2.16.0](https://github.com/freenowtech/wave/compare/v2.15.1...v2.16.0) (2024-11-19)
 
 ### Features
 
--   **select:** add value customisation ([#492](https://github.com/freenowtech/wave/issues/492)) ([982d7be](https://github.com/freenowtech/wave/commit/982d7beabdf6eb8f8cb4dea100ac53bac80acf58))
+- **select:** add value customisation ([#492](https://github.com/freenowtech/wave/issues/492)) ([982d7be](https://github.com/freenowtech/wave/commit/982d7beabdf6eb8f8cb4dea100ac53bac80acf58))
 
 ### [2.15.1](https://github.com/freenowtech/wave/compare/v2.15.0...v2.15.1) (2024-11-19)
 
 ### Bug Fixes
 
--   center content in experimental button ([#491](https://github.com/freenowtech/wave/issues/491)) ([274a66d](https://github.com/freenowtech/wave/commit/274a66da62af60f3e5f8a4c35e2432e3bbe6dbc7))
+- center content in experimental button ([#491](https://github.com/freenowtech/wave/issues/491)) ([274a66d](https://github.com/freenowtech/wave/commit/274a66da62af60f3e5f8a4c35e2432e3bbe6dbc7))
 
 ## [2.15.0](https://github.com/freenowtech/wave/compare/v2.14.1...v2.15.0) (2024-11-13)
 
 ### Features
 
--   **dialog:** add experimental dialog ([#490](https://github.com/freenowtech/wave/issues/490)) ([6694b06](https://github.com/freenowtech/wave/commit/6694b06ce8f964df91bb7061a4c683a70c0e9ce3))
+- **dialog:** add experimental dialog ([#490](https://github.com/freenowtech/wave/issues/490)) ([6694b06](https://github.com/freenowtech/wave/commit/6694b06ce8f964df91bb7061a4c683a70c0e9ce3))
 
 ### [2.14.1](https://github.com/freenowtech/wave/compare/v2.14.0...v2.14.1) (2024-11-11)
 
 ### Bug Fixes
 
--   popover and listboxitem styling ([#489](https://github.com/freenowtech/wave/issues/489)) ([4503ced](https://github.com/freenowtech/wave/commit/4503ced34e2d4562a08f13e312d720c244d6072b))
+- popover and listboxitem styling ([#489](https://github.com/freenowtech/wave/issues/489)) ([4503ced](https://github.com/freenowtech/wave/commit/4503ced34e2d4562a08f13e312d720c244d6072b))
 
 ## [2.14.0](https://github.com/freenowtech/wave/compare/v2.13.1...v2.14.0) (2024-11-11)
 
 ### Features
 
--   Experimental buttons improvements ([#488](https://github.com/freenowtech/wave/issues/488)) ([df226ae](https://github.com/freenowtech/wave/commit/df226ae334257d418d3baab90cc2cdadb8f699ed))
+- Experimental buttons improvements ([#488](https://github.com/freenowtech/wave/issues/488)) ([df226ae](https://github.com/freenowtech/wave/commit/df226ae334257d418d3baab90cc2cdadb8f699ed))
 
 ### [2.13.1](https://github.com/freenowtech/wave/compare/v2.13.0...v2.13.1) (2024-10-31)
 
 ### Bug Fixes
 
--   changing the cursor pointer for disabled states ([#487](https://github.com/freenowtech/wave/issues/487)) ([824549c](https://github.com/freenowtech/wave/commit/824549c4b6251d31ab324fe4c56ebe08262d5e2c))
+- changing the cursor pointer for disabled states ([#487](https://github.com/freenowtech/wave/issues/487)) ([824549c](https://github.com/freenowtech/wave/commit/824549c4b6251d31ab324fe4c56ebe08262d5e2c))
 
 ## [2.13.0](https://github.com/freenowtech/wave/compare/v2.12.1...v2.13.0) (2024-10-29)
 
 ### Features
 
--   experimental IconButton ([#485](https://github.com/freenowtech/wave/issues/485)) ([7fd91b4](https://github.com/freenowtech/wave/commit/7fd91b41e5466b49fbbed72126b96f98277135fa))
+- experimental IconButton ([#485](https://github.com/freenowtech/wave/issues/485)) ([7fd91b4](https://github.com/freenowtech/wave/commit/7fd91b41e5466b49fbbed72126b96f98277135fa))
 
 ### [2.12.1](https://github.com/freenowtech/wave/compare/v2.12.0...v2.12.1) (2024-10-25)
 
 ### Bug Fixes
 
--   fix the Popup positioning issue ([#486](https://github.com/freenowtech/wave/issues/486)) ([8d15808](https://github.com/freenowtech/wave/commit/8d15808c8167a999b761cdb1447eb74011e8fc42))
+- fix the Popup positioning issue ([#486](https://github.com/freenowtech/wave/issues/486)) ([8d15808](https://github.com/freenowtech/wave/commit/8d15808c8167a999b761cdb1447eb74011e8fc42))
 
 ## [2.12.0](https://github.com/freenowtech/wave/compare/v2.11.1...v2.12.0) (2024-10-23)
 
 ### Features
 
--   adding an experimental divider component ([#484](https://github.com/freenowtech/wave/issues/484)) ([aa61ec6](https://github.com/freenowtech/wave/commit/aa61ec667e63c74a87f808e813e2e3eba117710f))
+- adding an experimental divider component ([#484](https://github.com/freenowtech/wave/issues/484)) ([aa61ec6](https://github.com/freenowtech/wave/commit/aa61ec667e63c74a87f808e813e2e3eba117710f))
 
 ### [2.11.1](https://github.com/freenowtech/wave/compare/v2.11.0...v2.11.1) (2024-10-15)
 
 ### Bug Fixes
 
--   fix overflow in popover ([#483](https://github.com/freenowtech/wave/issues/483)) ([f90a770](https://github.com/freenowtech/wave/commit/f90a77035d9aa3c6dbe96d3ed6a43841e4827ac6))
+- fix overflow in popover ([#483](https://github.com/freenowtech/wave/issues/483)) ([f90a770](https://github.com/freenowtech/wave/commit/f90a77035d9aa3c6dbe96d3ed6a43841e4827ac6))
 
 ## [2.11.0](https://github.com/freenowtech/wave/compare/v2.10.0...v2.11.0) (2024-10-14)
 
 ### Features
 
--   add select ([#482](https://github.com/freenowtech/wave/issues/482)) ([0ea07e7](https://github.com/freenowtech/wave/commit/0ea07e7a77e93d551bc9838bc3a29971eddaa9f5))
+- add select ([#482](https://github.com/freenowtech/wave/issues/482)) ([0ea07e7](https://github.com/freenowtech/wave/commit/0ea07e7a77e93d551bc9838bc3a29971eddaa9f5))
 
 ## [2.10.0](https://github.com/freenowtech/wave/compare/v2.9.3...v2.10.0) (2024-10-11)
 
 ### Features
 
--   **combo-box:** add component ([#481](https://github.com/freenowtech/wave/issues/481)) ([09460ba](https://github.com/freenowtech/wave/commit/09460badc684d58060f29ccfaa4e6b9d7b518f18))
+- **combo-box:** add component ([#481](https://github.com/freenowtech/wave/issues/481)) ([09460ba](https://github.com/freenowtech/wave/commit/09460badc684d58060f29ccfaa4e6b9d7b518f18))
 
 ### [2.9.3](https://github.com/freenowtech/wave/compare/v2.9.2...v2.9.3) (2024-09-30)
 
 ### Bug Fixes
 
--   **experimental:** small calendar fixes ([#480](https://github.com/freenowtech/wave/issues/480)) ([8d03f35](https://github.com/freenowtech/wave/commit/8d03f3517e9658dc81349b4320e78ca6b0c1b25b))
+- **experimental:** small calendar fixes ([#480](https://github.com/freenowtech/wave/issues/480)) ([8d03f35](https://github.com/freenowtech/wave/commit/8d03f3517e9658dc81349b4320e78ca6b0c1b25b))
 
 ### [2.9.2](https://github.com/freenowtech/wave/compare/v2.9.1...v2.9.2) (2024-09-27)
 
 ### Bug Fixes
 
--   **experimental:** fix validation and disabled styling ([#479](https://github.com/freenowtech/wave/issues/479)) ([6c9ed35](https://github.com/freenowtech/wave/commit/6c9ed3573004a48e7b84a3c3f12efd6881291e48))
+- **experimental:** fix validation and disabled styling ([#479](https://github.com/freenowtech/wave/issues/479)) ([6c9ed35](https://github.com/freenowtech/wave/commit/6c9ed3573004a48e7b84a3c3f12efd6881291e48))
 
 ### [2.9.1](https://github.com/freenowtech/wave/compare/v2.9.0...v2.9.1) (2024-09-27)
 
 ### Bug Fixes
 
--   **experimental:** add exports ([#478](https://github.com/freenowtech/wave/issues/478)) ([193f998](https://github.com/freenowtech/wave/commit/193f998ffd588cba2963a5d9b3d4baac6c08902a))
+- **experimental:** add exports ([#478](https://github.com/freenowtech/wave/issues/478)) ([193f998](https://github.com/freenowtech/wave/commit/193f998ffd588cba2963a5d9b3d4baac6c08902a))
 
 ## [2.9.0](https://github.com/freenowtech/wave/compare/v2.8.0...v2.9.0) (2024-09-27)
 
 ### Features
 
--   experimental components for user input ([#477](https://github.com/freenowtech/wave/issues/477)) ([d837bb5](https://github.com/freenowtech/wave/commit/d837bb5230e6856e76cf6eb53517d8fc66462abb))
+- experimental components for user input ([#477](https://github.com/freenowtech/wave/issues/477)) ([d837bb5](https://github.com/freenowtech/wave/commit/d837bb5230e6856e76cf6eb53517d8fc66462abb))
 
 ## [2.8.0](https://github.com/freenowtech/wave/compare/v2.7.3...v2.8.0) (2024-09-26)
 
 ### Features
 
--   **calendar:** add experimental component ([#476](https://github.com/freenowtech/wave/issues/476)) ([a525e4e](https://github.com/freenowtech/wave/commit/a525e4e902b73d660803a6670fe004828e7dae85))
+- **calendar:** add experimental component ([#476](https://github.com/freenowtech/wave/issues/476)) ([a525e4e](https://github.com/freenowtech/wave/commit/a525e4e902b73d660803a6670fe004828e7dae85))
 
 ### [2.7.3](https://github.com/freenowtech/wave/compare/v2.7.2...v2.7.3) (2024-09-25)
 
 ### Bug Fixes
 
--   **text-field:** fixes for controlled and uncontrolled states ([#475](https://github.com/freenowtech/wave/issues/475)) ([cb3c484](https://github.com/freenowtech/wave/commit/cb3c484e55dba9a94b766137b857aed089d821bb))
+- **text-field:** fixes for controlled and uncontrolled states ([#475](https://github.com/freenowtech/wave/issues/475)) ([cb3c484](https://github.com/freenowtech/wave/commit/cb3c484e55dba9a94b766137b857aed089d821bb))
 
 ### [2.7.2](https://github.com/freenowtech/wave/compare/v2.7.1...v2.7.2) (2024-09-24)
 
 ### Bug Fixes
 
--   small updates ([#474](https://github.com/freenowtech/wave/issues/474)) ([69c6f3f](https://github.com/freenowtech/wave/commit/69c6f3f6b37cc5bcb3e2be2961fd339a4398853c))
+- small updates ([#474](https://github.com/freenowtech/wave/issues/474)) ([69c6f3f](https://github.com/freenowtech/wave/commit/69c6f3f6b37cc5bcb3e2be2961fd339a4398853c))
 
 ### [2.7.1](https://github.com/freenowtech/wave/compare/v2.7.0...v2.7.1) (2024-09-23)
 
 ### Bug Fixes
 
--   exports ([#473](https://github.com/freenowtech/wave/issues/473)) ([cb36091](https://github.com/freenowtech/wave/commit/cb36091719766d6aa8c067293c44b7034831be15))
+- exports ([#473](https://github.com/freenowtech/wave/issues/473)) ([cb36091](https://github.com/freenowtech/wave/commit/cb36091719766d6aa8c067293c44b7034831be15))
 
 ## [2.7.0](https://github.com/freenowtech/wave/compare/v2.6.0...v2.7.0) (2024-09-20)
 
 ### Features
 
--   **chip:** style experimental chip ([#472](https://github.com/freenowtech/wave/issues/472)) ([7439ed2](https://github.com/freenowtech/wave/commit/7439ed26245d5e38b3d2e6241362933cc2051396))
+- **chip:** style experimental chip ([#472](https://github.com/freenowtech/wave/issues/472)) ([7439ed2](https://github.com/freenowtech/wave/commit/7439ed26245d5e38b3d2e6241362933cc2051396))
 
 ## [2.6.0](https://github.com/freenowtech/wave/compare/v2.5.0...v2.6.0) (2024-09-20)
 
 ### Features
 
--   **label:** add experimental label component ([#471](https://github.com/freenowtech/wave/issues/471)) ([ea608ab](https://github.com/freenowtech/wave/commit/ea608abf0f78b431d156318429e604d5692af0b6))
+- **label:** add experimental label component ([#471](https://github.com/freenowtech/wave/issues/471)) ([ea608ab](https://github.com/freenowtech/wave/commit/ea608abf0f78b431d156318429e604d5692af0b6))
 
 ## [2.5.0](https://github.com/freenowtech/wave/compare/v2.4.0...v2.5.0) (2024-07-08)
 
 ### Features
 
--   add util to enforce a color scheme on an html element ([#460](https://github.com/freenowtech/wave/issues/460)) ([97a6f70](https://github.com/freenowtech/wave/commit/97a6f7000b381d5cb8cb1988ae3e27271fffb7be))
+- add util to enforce a color scheme on an html element ([#460](https://github.com/freenowtech/wave/issues/460)) ([97a6f70](https://github.com/freenowtech/wave/commit/97a6f7000b381d5cb8cb1988ae3e27271fffb7be))
 
 ## [2.4.0](https://github.com/freenowtech/wave/compare/v2.3.1...v2.4.0) (2024-06-25)
 
 ### Features
 
--   add bell icon ([#459](https://github.com/freenowtech/wave/issues/459)) ([f9f67b3](https://github.com/freenowtech/wave/commit/f9f67b3fe076b8f27c7b0f23a41482bb27b74330))
+- add bell icon ([#459](https://github.com/freenowtech/wave/issues/459)) ([f9f67b3](https://github.com/freenowtech/wave/commit/f9f67b3fe076b8f27c7b0f23a41482bb27b74330))
 
 ### [2.3.1](https://github.com/freenowtech/wave/compare/v2.3.0...v2.3.1) (2024-06-21)
 
 ### Bug Fixes
 
--   **icons:** fix icon generation ([#458](https://github.com/freenowtech/wave/issues/458)) ([2ad7ad5](https://github.com/freenowtech/wave/commit/2ad7ad560c8825318daeeaeaf5dec133182e4c32))
+- **icons:** fix icon generation ([#458](https://github.com/freenowtech/wave/issues/458)) ([2ad7ad5](https://github.com/freenowtech/wave/commit/2ad7ad560c8825318daeeaeaf5dec133182e4c32))
 
 ## [2.3.0](https://github.com/freenowtech/wave/compare/v2.2.2...v2.3.0) (2024-06-20)
 
 ### Features
 
--   add two new neutral colors and a new semantic color ([#457](https://github.com/freenowtech/wave/issues/457)) ([97bb713](https://github.com/freenowtech/wave/commit/97bb713b8795ebcfd0e6f2065fed8a4c201f576e))
+- add two new neutral colors and a new semantic color ([#457](https://github.com/freenowtech/wave/issues/457)) ([97bb713](https://github.com/freenowtech/wave/commit/97bb713b8795ebcfd0e6f2065fed8a4c201f576e))
 
 ### [2.2.2](https://github.com/freenowtech/wave/compare/v2.2.1...v2.2.2) (2024-05-31)
 
 ### Bug Fixes
 
--   **checkbox:** change the bg semantic color token ([#454](https://github.com/freenowtech/wave/issues/454)) ([b873693](https://github.com/freenowtech/wave/commit/b873693bc0d696d28f9d0446731c9bb373854b3a))
+- **checkbox:** change the bg semantic color token ([#454](https://github.com/freenowtech/wave/issues/454)) ([b873693](https://github.com/freenowtech/wave/commit/b873693bc0d696d28f9d0446731c9bb373854b3a))
 
 ### [2.2.1](https://github.com/freenowtech/wave/compare/v2.2.0...v2.2.1) (2024-05-28)
 
 ### Bug Fixes
 
--   wrong monochrome logo color ([#451](https://github.com/freenowtech/wave/issues/451)) ([3a8fc69](https://github.com/freenowtech/wave/commit/3a8fc69344d77745b94e7b4630307a9c31200233))
+- wrong monochrome logo color ([#451](https://github.com/freenowtech/wave/issues/451)) ([3a8fc69](https://github.com/freenowtech/wave/commit/3a8fc69344d77745b94e7b4630307a9c31200233))
 
 ## [2.2.0](https://github.com/freenowtech/wave/compare/v2.1.7...v2.2.0) (2024-05-22)
 
 ### Features
 
--   add semantic colors for chart ([#448](https://github.com/freenowtech/wave/issues/448)) ([3877026](https://github.com/freenowtech/wave/commit/3877026112c105eead317a6544b1d397a640e8c7))
+- add semantic colors for chart ([#448](https://github.com/freenowtech/wave/issues/448)) ([3877026](https://github.com/freenowtech/wave/commit/3877026112c105eead317a6544b1d397a640e8c7))
 
 ### [2.1.7](https://github.com/freenowtech/wave/compare/v2.1.6...v2.1.7) (2024-05-16)
 
 ### Bug Fixes
 
--   add missing type exports in components index ([#446](https://github.com/freenowtech/wave/issues/446)) ([8189d79](https://github.com/freenowtech/wave/commit/8189d791754448eaa07bcc841e488f31905a79f3))
+- add missing type exports in components index ([#446](https://github.com/freenowtech/wave/issues/446)) ([8189d79](https://github.com/freenowtech/wave/commit/8189d791754448eaa07bcc841e488f31905a79f3))
 
 ### [2.1.6](https://github.com/freenowtech/wave/compare/v2.1.5...v2.1.6) (2024-05-16)
 
 ### Bug Fixes
 
--   add missing type exports ([#445](https://github.com/freenowtech/wave/issues/445)) ([d5f6eea](https://github.com/freenowtech/wave/commit/d5f6eea003f817a9711dd4075a78ea7213a2c263))
+- add missing type exports ([#445](https://github.com/freenowtech/wave/issues/445)) ([d5f6eea](https://github.com/freenowtech/wave/commit/d5f6eea003f817a9711dd4075a78ea7213a2c263))
 
 ### [2.1.5](https://github.com/freenowtech/wave/compare/v2.1.4...v2.1.5) (2024-04-16)
 
 ### Bug Fixes
 
--   remove width from pageSize selectList box ([#442](https://github.com/freenowtech/wave/issues/442)) ([c2da9e7](https://github.com/freenowtech/wave/commit/c2da9e743fc0bcd11d823d2fc80809e5a5c3d551))
+- remove width from pageSize selectList box ([#442](https://github.com/freenowtech/wave/issues/442)) ([c2da9e7](https://github.com/freenowtech/wave/commit/c2da9e743fc0bcd11d823d2fc80809e5a5c3d551))
 
 ### [2.1.4](https://github.com/freenowtech/wave/compare/v2.1.3...v2.1.4) (2024-04-09)
 
 ### Bug Fixes
 
--   **SelectList:** overwrite styling with enforced color scheme for menu ([#438](https://github.com/freenowtech/wave/issues/438)) ([0029eff](https://github.com/freenowtech/wave/commit/0029eff111c2db3c78f7e207275903c7f695a6cf))
+- **SelectList:** overwrite styling with enforced color scheme for menu ([#438](https://github.com/freenowtech/wave/issues/438)) ([0029eff](https://github.com/freenowtech/wave/commit/0029eff111c2db3c78f7e207275903c7f695a6cf))
 
 ### [2.1.3](https://github.com/freenowtech/wave/compare/v2.1.2...v2.1.3) (2024-04-09)
 
 ### Bug Fixes
 
--   **tabbar:** make Wave's theme apply to TabBar component ([#441](https://github.com/freenowtech/wave/issues/441)) ([37226de](https://github.com/freenowtech/wave/commit/37226de8ae163f2652fffdcb6210ef313bbc7984))
+- **tabbar:** make Wave's theme apply to TabBar component ([#441](https://github.com/freenowtech/wave/issues/441)) ([37226de](https://github.com/freenowtech/wave/commit/37226de8ae163f2652fffdcb6210ef313bbc7984))
 
 ### [2.1.2](https://github.com/freenowtech/wave/compare/v2.1.1...v2.1.2) (2024-02-14)
 
 ### Bug Fixes
 
--   **offcanvas:** export offcanvas hook ([#430](https://github.com/freenowtech/wave/issues/430)) ([1176ddc](https://github.com/freenowtech/wave/commit/1176ddcd24081fd8eac82bcda04a4b2eac002c36))
+- **offcanvas:** export offcanvas hook ([#430](https://github.com/freenowtech/wave/issues/430)) ([1176ddc](https://github.com/freenowtech/wave/commit/1176ddcd24081fd8eac82bcda04a4b2eac002c36))
 
 ### [2.1.1](https://github.com/freenowtech/wave/compare/v2.1.0...v2.1.1) (2024-02-13)
 
 ### Bug Fixes
 
--   datepicker elevation, portals color scheme and bottom-lined input ref ([#429](https://github.com/freenowtech/wave/issues/429)) ([5eba018](https://github.com/freenowtech/wave/commit/5eba01849506d04772467a00f0ff368ce9c5d9c4)), closes [#425](https://github.com/freenowtech/wave/issues/425) [#427](https://github.com/freenowtech/wave/issues/427)
+- datepicker elevation, portals color scheme and bottom-lined input ref ([#429](https://github.com/freenowtech/wave/issues/429)) ([5eba018](https://github.com/freenowtech/wave/commit/5eba01849506d04772467a00f0ff368ce9c5d9c4)), closes [#425](https://github.com/freenowtech/wave/issues/425) [#427](https://github.com/freenowtech/wave/issues/427)
 
 ## [2.1.0](https://github.com/freenowtech/wave/compare/v2.0.1...v2.1.0) (2024-02-02)
 
 ### Features
 
--   add breadcrumbs component ([#353](https://github.com/freenowtech/wave/issues/353)) ([ed82e05](https://github.com/freenowtech/wave/commit/ed82e05c35b8c8e31ed27b158f4e47a95d9199e3))
--   add error Tag and SelectList variants ([#372](https://github.com/freenowtech/wave/issues/372)) ([e0eecdd](https://github.com/freenowtech/wave/commit/e0eecdd05b84370cb18e4cf8c1985f49c4f1f8e1)), closes [#354](https://github.com/freenowtech/wave/issues/354)
+- add breadcrumbs component ([#353](https://github.com/freenowtech/wave/issues/353)) ([ed82e05](https://github.com/freenowtech/wave/commit/ed82e05c35b8c8e31ed27b158f4e47a95d9199e3))
+- add error Tag and SelectList variants ([#372](https://github.com/freenowtech/wave/issues/372)) ([e0eecdd](https://github.com/freenowtech/wave/commit/e0eecdd05b84370cb18e4cf8c1985f49c4f1f8e1)), closes [#354](https://github.com/freenowtech/wave/issues/354)
 
 ### Bug Fixes
 
--   **infobanner:** allow to override attrs in InfoBannerCard ([#393](https://github.com/freenowtech/wave/issues/393)) ([8b1457e](https://github.com/freenowtech/wave/commit/8b1457e6a06fe4d36eae90ba9ed9b9af7f7fe432))
--   enhanced breadcrumbs style ([#390](https://github.com/freenowtech/wave/issues/390)) ([e364381](https://github.com/freenowtech/wave/commit/e364381fa51c29913aa7eee9be17bed048d9973d))
--   **deps:** crossOrigin prop is not required for inputs ([#386](https://github.com/freenowtech/wave/issues/386)) ([b9e7217](https://github.com/freenowtech/wave/commit/b9e72174bf8ac69e92d22c5b00e3aec362dd6336))
--   **input:** add aria-invalid when an input has an error ([#379](https://github.com/freenowtech/wave/issues/379)) ([ec26782](https://github.com/freenowtech/wave/commit/ec26782480502cd884e0bc88653b165d15d7fc08))
--   add border secondary ([#355](https://github.com/freenowtech/wave/issues/355)) ([75243ec](https://github.com/freenowtech/wave/commit/75243ec6b379fd7aab7d2ea4141e8de69640f85e))
+- **infobanner:** allow to override attrs in InfoBannerCard ([#393](https://github.com/freenowtech/wave/issues/393)) ([8b1457e](https://github.com/freenowtech/wave/commit/8b1457e6a06fe4d36eae90ba9ed9b9af7f7fe432))
+- enhanced breadcrumbs style ([#390](https://github.com/freenowtech/wave/issues/390)) ([e364381](https://github.com/freenowtech/wave/commit/e364381fa51c29913aa7eee9be17bed048d9973d))
+- **deps:** crossOrigin prop is not required for inputs ([#386](https://github.com/freenowtech/wave/issues/386)) ([b9e7217](https://github.com/freenowtech/wave/commit/b9e72174bf8ac69e92d22c5b00e3aec362dd6336))
+- **input:** add aria-invalid when an input has an error ([#379](https://github.com/freenowtech/wave/issues/379)) ([ec26782](https://github.com/freenowtech/wave/commit/ec26782480502cd884e0bc88653b165d15d7fc08))
+- add border secondary ([#355](https://github.com/freenowtech/wave/issues/355)) ([75243ec](https://github.com/freenowtech/wave/commit/75243ec6b379fd7aab7d2ea4141e8de69640f85e))
 
 ### [2.0.1](https://github.com/freenowtech/wave/compare/v1.34.1...v2.0.1) (2024-02-01)
 
@@ -753,161 +749,161 @@ For a comprehensive view of all the breaking changes in the 2.0 major please vis
 
 ### Bug Fixes
 
--   **infobanner:** allow to override attrs in InfoBannerCard ([#393](https://github.com/freenowtech/wave/issues/393)) ([8b1457e](https://github.com/freenowtech/wave/commit/8b1457e6a06fe4d36eae90ba9ed9b9af7f7fe432))
+- **infobanner:** allow to override attrs in InfoBannerCard ([#393](https://github.com/freenowtech/wave/issues/393)) ([8b1457e](https://github.com/freenowtech/wave/commit/8b1457e6a06fe4d36eae90ba9ed9b9af7f7fe432))
 
 ### [1.34.3](https://github.com/freenowtech/wave/compare/v1.34.2...v1.34.3) (2023-10-11)
 
 ### Bug Fixes
 
--   enhanced breadcrumbs style ([#390](https://github.com/freenowtech/wave/issues/390)) ([e364381](https://github.com/freenowtech/wave/commit/e364381fa51c29913aa7eee9be17bed048d9973d))
+- enhanced breadcrumbs style ([#390](https://github.com/freenowtech/wave/issues/390)) ([e364381](https://github.com/freenowtech/wave/commit/e364381fa51c29913aa7eee9be17bed048d9973d))
 
 ### [1.34.2](https://github.com/freenowtech/wave/compare/v1.34.1...v1.34.2) (2023-10-05)
 
 ### Bug Fixes
 
--   **deps:** crossOrigin prop is not required for inputs ([#386](https://github.com/freenowtech/wave/issues/386)) ([b9e7217](https://github.com/freenowtech/wave/commit/b9e72174bf8ac69e92d22c5b00e3aec362dd6336))
+- **deps:** crossOrigin prop is not required for inputs ([#386](https://github.com/freenowtech/wave/issues/386)) ([b9e7217](https://github.com/freenowtech/wave/commit/b9e72174bf8ac69e92d22c5b00e3aec362dd6336))
 
 ### [1.34.1](https://github.com/freenowtech/wave/compare/v1.34.0...v1.34.1) (2023-09-29)
 
 ### Bug Fixes
 
--   **input:** add aria-invalid when an input has an error ([#379](https://github.com/freenowtech/wave/issues/379)) ([ec26782](https://github.com/freenowtech/wave/commit/ec26782480502cd884e0bc88653b165d15d7fc08))
+- **input:** add aria-invalid when an input has an error ([#379](https://github.com/freenowtech/wave/issues/379)) ([ec26782](https://github.com/freenowtech/wave/commit/ec26782480502cd884e0bc88653b165d15d7fc08))
 
 ## [1.34.0](https://github.com/freenowtech/wave/compare/v1.33.0...v1.34.0) (2023-09-01)
 
 ### Features
 
--   add error Tag and SelectList variants ([#372](https://github.com/freenowtech/wave/issues/372)) ([e0eecdd](https://github.com/freenowtech/wave/commit/e0eecdd05b84370cb18e4cf8c1985f49c4f1f8e1)), closes [#354](https://github.com/freenowtech/wave/issues/354)
+- add error Tag and SelectList variants ([#372](https://github.com/freenowtech/wave/issues/372)) ([e0eecdd](https://github.com/freenowtech/wave/commit/e0eecdd05b84370cb18e4cf8c1985f49c4f1f8e1)), closes [#354](https://github.com/freenowtech/wave/issues/354)
 
 ## [1.33.0](https://github.com/freenowtech/wave/compare/v1.32.2...v1.33.0) (2023-08-18)
 
 ### Features
 
--   add breadcrumbs component ([#353](https://github.com/freenowtech/wave/issues/353)) ([ed82e05](https://github.com/freenowtech/wave/commit/ed82e05c35b8c8e31ed27b158f4e47a95d9199e3))
+- add breadcrumbs component ([#353](https://github.com/freenowtech/wave/issues/353)) ([ed82e05](https://github.com/freenowtech/wave/commit/ed82e05c35b8c8e31ed27b158f4e47a95d9199e3))
 
 ### [1.32.2](https://github.com/freenowtech/wave/compare/v1.32.1...v1.32.2) (2023-08-17)
 
 ### Bug Fixes
 
--   add border secondary ([#355](https://github.com/freenowtech/wave/issues/355)) ([75243ec](https://github.com/freenowtech/wave/commit/75243ec6b379fd7aab7d2ea4141e8de69640f85e))
+- add border secondary ([#355](https://github.com/freenowtech/wave/issues/355)) ([75243ec](https://github.com/freenowtech/wave/commit/75243ec6b379fd7aab7d2ea4141e8de69640f85e))
 
 ### [1.32.1](https://github.com/freenowtech/wave/compare/v1.32.0...v1.32.1) (2023-07-27)
 
 ### Bug Fixes
 
--   support children prop type in row component ([#347](https://github.com/freenowtech/wave/issues/347)) ([4620776](https://github.com/freenowtech/wave/commit/4620776fe53fb5c5f56a887c27585e48fdbf5a9b))
+- support children prop type in row component ([#347](https://github.com/freenowtech/wave/issues/347)) ([4620776](https://github.com/freenowtech/wave/commit/4620776fe53fb5c5f56a887c27585e48fdbf5a9b))
 
 ## [1.32.0](https://github.com/freenowtech/wave/compare/v1.31.2...v1.32.0) (2023-06-12)
 
 ### Features
 
--   **InfoBanner:** fix up the InfoBannerCard Link export ([f6dac56](https://github.com/freenowtech/wave/commit/f6dac566d3e588b7e5a3f515b7863cf20376030d))
+- **InfoBanner:** fix up the InfoBannerCard Link export ([f6dac56](https://github.com/freenowtech/wave/commit/f6dac566d3e588b7e5a3f515b7863cf20376030d))
 
 ### [1.31.2](https://github.com/freenowtech/wave/compare/v1.31.1...v1.31.2) (2023-06-12)
 
 ### Bug Fixes
 
--   add support for children props for Label component ([#340](https://github.com/freenowtech/wave/issues/340)) ([c840c88](https://github.com/freenowtech/wave/commit/c840c88b7315db9188cfec40b75415f2580ad757))
+- add support for children props for Label component ([#340](https://github.com/freenowtech/wave/issues/340)) ([c840c88](https://github.com/freenowtech/wave/commit/c840c88b7315db9188cfec40b75415f2580ad757))
 
 ### [1.31.1](https://github.com/freenowtech/wave/compare/v1.31.0...v1.31.1) (2023-06-01)
 
 ### Bug Fixes
 
--   set focus on password input resolve [#124](https://github.com/freenowtech/wave/issues/124) ([#328](https://github.com/freenowtech/wave/issues/328)) ([5068920](https://github.com/freenowtech/wave/commit/506892004e38490ef768045a854c47f319329352))
+- set focus on password input resolve [#124](https://github.com/freenowtech/wave/issues/124) ([#328](https://github.com/freenowtech/wave/issues/328)) ([5068920](https://github.com/freenowtech/wave/commit/506892004e38490ef768045a854c47f319329352))
 
 ## [1.31.0](https://github.com/freenowtech/wave/compare/v1.30.1...v1.31.0) (2023-05-24)
 
 ### Features
 
--   implement compound component approach for InfoBanner ([#336](https://github.com/freenowtech/wave/issues/336)) ([9f1982c](https://github.com/freenowtech/wave/commit/9f1982cf2977a49f48b2335f313671a7f4ffc874))
+- implement compound component approach for InfoBanner ([#336](https://github.com/freenowtech/wave/issues/336)) ([9f1982c](https://github.com/freenowtech/wave/commit/9f1982cf2977a49f48b2335f313671a7f4ffc874))
 
 ### [1.30.1](https://github.com/freenowtech/wave/compare/v1.30.0...v1.30.1) (2023-05-09)
 
 ### Bug Fixes
 
--   **tooltip:** type children prop ([#330](https://github.com/freenowtech/wave/issues/330)) ([9bbdafe](https://github.com/freenowtech/wave/commit/9bbdafe374101c4e0ad055998f56f27fdddc9e9c))
+- **tooltip:** type children prop ([#330](https://github.com/freenowtech/wave/issues/330)) ([9bbdafe](https://github.com/freenowtech/wave/commit/9bbdafe374101c4e0ad055998f56f27fdddc9e9c))
 
 ## [1.30.0](https://github.com/freenowtech/wave/compare/v1.29.1...v1.30.0) (2023-04-04)
 
 ### Features
 
--   **table:** add sortable table components and hook ([362dba5](https://github.com/freenowtech/wave/commit/362dba50beafc5b3d35fbaedb86d458bede0df7f))
+- **table:** add sortable table components and hook ([362dba5](https://github.com/freenowtech/wave/commit/362dba50beafc5b3d35fbaedb86d458bede0df7f))
 
 ### [1.29.1](https://github.com/freenowtech/wave/compare/v1.29.0...v1.29.1) (2023-03-09)
 
 ### Bug Fixes
 
--   **inline-spinner:** html and a11y ([#307](https://github.com/freenowtech/wave/issues/307)) ([cb46551](https://github.com/freenowtech/wave/commit/cb46551c344651a06c2dad1a00ddf274234ceafd)), closes [#306](https://github.com/freenowtech/wave/issues/306)
+- **inline-spinner:** html and a11y ([#307](https://github.com/freenowtech/wave/issues/307)) ([cb46551](https://github.com/freenowtech/wave/commit/cb46551c344651a06c2dad1a00ddf274234ceafd)), closes [#306](https://github.com/freenowtech/wave/issues/306)
 
 ## [1.29.0](https://github.com/freenowtech/wave/compare/v1.28.2...v1.29.0) (2023-02-23)
 
 ### Features
 
--   **filePicker:** add alwaysShowActionButton to mobile ([#303](https://github.com/freenowtech/wave/issues/303)) ([5d46685](https://github.com/freenowtech/wave/commit/5d46685d701793c95275e5c608690515b642ba2a))
+- **filePicker:** add alwaysShowActionButton to mobile ([#303](https://github.com/freenowtech/wave/issues/303)) ([5d46685](https://github.com/freenowtech/wave/commit/5d46685d701793c95275e5c608690515b642ba2a))
 
 ### [1.28.2](https://github.com/freenowtech/wave/compare/v1.28.1...v1.28.2) (2023-02-23)
 
 ### Bug Fixes
 
--   **datepicker:** invoke `onClose` handler only once ([#300](https://github.com/freenowtech/wave/issues/300)) ([9190e6c](https://github.com/freenowtech/wave/commit/9190e6cb932eabfb52a55336193f01ca9d4b30e0))
+- **datepicker:** invoke `onClose` handler only once ([#300](https://github.com/freenowtech/wave/issues/300)) ([9190e6c](https://github.com/freenowtech/wave/commit/9190e6cb932eabfb52a55336193f01ca9d4b30e0))
 
 ### [1.28.1](https://github.com/freenowtech/wave/compare/v1.28.0...v1.28.1) (2022-12-13)
 
 ### Bug Fixes
 
--   uncontrolled input's label position ([#297](https://github.com/freenowtech/wave/issues/297)) ([fb6c009](https://github.com/freenowtech/wave/commit/fb6c00907d201c774160e4ef0c434da51059e2dd))
+- uncontrolled input's label position ([#297](https://github.com/freenowtech/wave/issues/297)) ([fb6c009](https://github.com/freenowtech/wave/commit/fb6c00907d201c774160e4ef0c434da51059e2dd))
 
 ## [1.28.0](https://github.com/freenowtech/wave/compare/v1.27.1...v1.28.0) (2022-11-17)
 
 ### Features
 
--   add missing colors to match Figma file ([#289](https://github.com/freenowtech/wave/issues/289)) ([b0ae302](https://github.com/freenowtech/wave/commit/b0ae302dd215d40231b32083634e4e399dc2d2ca))
+- add missing colors to match Figma file ([#289](https://github.com/freenowtech/wave/issues/289)) ([b0ae302](https://github.com/freenowtech/wave/commit/b0ae302dd215d40231b32083634e4e399dc2d2ca))
 
 ### [1.27.1](https://github.com/freenowtech/wave/compare/v1.27.0...v1.27.1) (2022-10-25)
 
 ### Bug Fixes
 
--   **password:** use `flex-end` instead of `end` ([#291](https://github.com/freenowtech/wave/issues/291)) ([debdb5a](https://github.com/freenowtech/wave/commit/debdb5a97e098c78d6841378fe03ed4c78eb4a2c)), closes [#290](https://github.com/freenowtech/wave/issues/290)
+- **password:** use `flex-end` instead of `end` ([#291](https://github.com/freenowtech/wave/issues/291)) ([debdb5a](https://github.com/freenowtech/wave/commit/debdb5a97e098c78d6841378fe03ed4c78eb4a2c)), closes [#290](https://github.com/freenowtech/wave/issues/290)
 
 ## [1.27.0](https://github.com/freenowtech/wave/compare/v1.26.1...v1.27.0) (2022-08-19)
 
 ### Features
 
--   Tooltip with react-popper ([#267](https://github.com/freenowtech/wave/issues/267)) ([6965ef4](https://github.com/freenowtech/wave/commit/6965ef42b5f4257825b2fc86eeb1033eb4f06aa9))
+- Tooltip with react-popper ([#267](https://github.com/freenowtech/wave/issues/267)) ([6965ef4](https://github.com/freenowtech/wave/commit/6965ef42b5f4257825b2fc86eeb1033eb4f06aa9))
 
 ### [1.25.3](https://github.com/freenowtech/wave/compare/v1.25.2...v1.25.3) (2022-07-21)
 
 ### Bug Fixes
 
--   expose padding prop and adjust z-index for Popover component ([#263](https://github.com/freenowtech/wave/issues/263)) ([da0e80b](https://github.com/freenowtech/wave/commit/da0e80be5df4274220336451641b31d1fe8d524f))
+- expose padding prop and adjust z-index for Popover component ([#263](https://github.com/freenowtech/wave/issues/263)) ([da0e80b](https://github.com/freenowtech/wave/commit/da0e80be5df4274220336451641b31d1fe8d524f))
 
 ### [1.25.2](https://github.com/freenowtech/wave/compare/v1.25.1...v1.25.2) (2022-07-11)
 
 ### Bug Fixes
 
--   display semantic colors in table and allow to filter them ([#258](https://github.com/freenowtech/wave/issues/258)) ([2e83e76](https://github.com/freenowtech/wave/commit/2e83e763427fb5ce67fc99719a0a3a8837be086c))
+- display semantic colors in table and allow to filter them ([#258](https://github.com/freenowtech/wave/issues/258)) ([2e83e76](https://github.com/freenowtech/wave/commit/2e83e763427fb5ce67fc99719a0a3a8837be086c))
 
 ### [1.25.1](https://github.com/freenowtech/wave/compare/v1.25.0...v1.25.1) (2022-06-16)
 
 ### Bug Fixes
 
--   window is undefined error in next.js projects ([b89bfc9](https://github.com/freenowtech/wave/commit/b89bfc973035cc59fe987a8b6f56d8d97d786079)), closes [#222](https://github.com/freenowtech/wave/issues/222)
+- window is undefined error in next.js projects ([b89bfc9](https://github.com/freenowtech/wave/commit/b89bfc973035cc59fe987a8b6f56d8d97d786079)), closes [#222](https://github.com/freenowtech/wave/issues/222)
 
 ## [1.25.0](https://github.com/freenowtech/wave/compare/v1.24.2...v1.25.0) (2022-06-13)
 
 ### Features
 
--   add InfoBanner component ([#225](https://github.com/freenowtech/wave/issues/225)) ([e434f5a](https://github.com/freenowtech/wave/commit/e434f5a01915e0754ba0029b9dfbef047b6de3b2))
+- add InfoBanner component ([#225](https://github.com/freenowtech/wave/issues/225)) ([e434f5a](https://github.com/freenowtech/wave/commit/e434f5a01915e0754ba0029b9dfbef047b6de3b2))
 
 ### Bug Fixes
 
--   giving singlevalue full max width to override the selectlist styles ([#248](https://github.com/freenowtech/wave/issues/248)) ([115ae70](https://github.com/freenowtech/wave/commit/115ae709d491d75d76342aa0536d274f5a23eb45))
+- giving singlevalue full max width to override the selectlist styles ([#248](https://github.com/freenowtech/wave/issues/248)) ([115ae70](https://github.com/freenowtech/wave/commit/115ae709d491d75d76342aa0536d274f5a23eb45))
 
 ### [1.24.2](https://github.com/freenowtech/wave/compare/v1.24.1...v1.24.2) (2022-06-08)
 
 ### Bug Fixes
 
--   export popover component in components index ([#246](https://github.com/freenowtech/wave/issues/246)) ([0def6b8](https://github.com/freenowtech/wave/commit/0def6b83c7f5543a7a319088a1a9b8fe2fa86583)
+- export popover component in components index ([#246](https://github.com/freenowtech/wave/issues/246)) ([0def6b8](https://github.com/freenowtech/wave/commit/0def6b83c7f5543a7a319088a1a9b8fe2fa86583)
 
     )
 
@@ -915,302 +911,302 @@ For a comprehensive view of all the breaking changes in the 2.0 major please vis
 
 ### Bug Fixes
 
--   adding layout to the compose styles ([#233](https://github.com/freenowtech/wave/issues/233)) ([48af1d1](https://github.com/freenowtech/wave/commit/48af1d1e1cc2c0d9b23cadc427adbfaf1b6b90c6))
+- adding layout to the compose styles ([#233](https://github.com/freenowtech/wave/issues/233)) ([48af1d1](https://github.com/freenowtech/wave/commit/48af1d1e1cc2c0d9b23cadc427adbfaf1b6b90c6))
 
 ## [1.24.0](https://github.com/freenowtech/wave/compare/v1.23.0...v1.24.0) (2022-06-02)
 
 ### Features
 
--   Add Popover component to wave ([#230](https://github.com/freenowtech/wave/issues/230)) ([0c49ab3](https://github.com/freenowtech/wave/commit/0c49ab3f2bb7b6586e955ee425d1ef0e88a9c4ec))
--   popover ([#234](https://github.com/freenowtech/wave/issues/234)) ([8e4075b](https://github.com/freenowtech/wave/commit/8e4075b3d53d16bb3bd5ff2e03aa5c0ab0566ee3))
+- Add Popover component to wave ([#230](https://github.com/freenowtech/wave/issues/230)) ([0c49ab3](https://github.com/freenowtech/wave/commit/0c49ab3f2bb7b6586e955ee425d1ef0e88a9c4ec))
+- popover ([#234](https://github.com/freenowtech/wave/issues/234)) ([8e4075b](https://github.com/freenowtech/wave/commit/8e4075b3d53d16bb3bd5ff2e03aa5c0ab0566ee3))
 
 ## [1.23.0](https://github.com/freenowtech/wave/compare/v1.22.0...v1.23.0) (2022-05-26)
 
 ### Features
 
--   introduce `useToggle` hook ([#220](https://github.com/freenowtech/wave/issues/220)) ([83cbad8](https://github.com/freenowtech/wave/commit/83cbad81f14a97e0b89db7f8ae0474bd4a3b4971))
+- introduce `useToggle` hook ([#220](https://github.com/freenowtech/wave/issues/220)) ([83cbad8](https://github.com/freenowtech/wave/commit/83cbad81f14a97e0b89db7f8ae0474bd4a3b4971))
 
 ## [1.22.0](https://github.com/freenowtech/wave/compare/v1.21.0...v1.22.0) (2022-05-23)
 
 ### Features
 
--   update missing icons ([#228](https://github.com/freenowtech/wave/issues/228)) ([2f840e5](https://github.com/freenowtech/wave/commit/2f840e5829c07ebe91b6249c5700576f6859cc55))
+- update missing icons ([#228](https://github.com/freenowtech/wave/issues/228)) ([2f840e5](https://github.com/freenowtech/wave/commit/2f840e5829c07ebe91b6249c5700576f6859cc55))
 
 ## [1.21.0](https://github.com/freenowtech/wave/compare/v1.20.0...v1.21.0) (2022-05-11)
 
 ### Features
 
--   adds Divider component ([#218](https://github.com/freenowtech/wave/issues/218)) ([9e6cb47](https://github.com/freenowtech/wave/commit/9e6cb4787320a702caf7ecf1b13ee74f26174aee))
+- adds Divider component ([#218](https://github.com/freenowtech/wave/issues/218)) ([9e6cb47](https://github.com/freenowtech/wave/commit/9e6cb4787320a702caf7ecf1b13ee74f26174aee))
 
 ## [1.20.0](https://github.com/freenowtech/wave/compare/v1.19.0...v1.20.0) (2022-04-21)
 
 ### Features
 
--   adds select page size component ([#201](https://github.com/freenowtech/wave/issues/201)) ([068b958](https://github.com/freenowtech/wave/commit/068b958fb693909016c7b842df7820a4fca2bc48))
+- adds select page size component ([#201](https://github.com/freenowtech/wave/issues/201)) ([068b958](https://github.com/freenowtech/wave/commit/068b958fb693909016c7b842df7820a4fca2bc48))
 
 ## [1.19.0](https://github.com/freenowtech/wave/compare/v1.18.1...v1.19.0) (2022-03-08)
 
 ### Features
 
--   remove brand colors from semantic colors object ([#208](https://github.com/freenowtech/wave/issues/208)) ([1ccb794](https://github.com/freenowtech/wave/commit/1ccb7942df9999afda89cb94cd448a1c78c1a3a6))
+- remove brand colors from semantic colors object ([#208](https://github.com/freenowtech/wave/issues/208)) ([1ccb794](https://github.com/freenowtech/wave/commit/1ccb7942df9999afda89cb94cd448a1c78c1a3a6))
 
 ### [1.18.1](https://github.com/freenowtech/wave/compare/v1.18.0...v1.18.1) (2022-02-05)
 
 ### Bug Fixes
 
--   replace weak prop with secondary ([#206](https://github.com/freenowtech/wave/issues/206)) ([37a7f4f](https://github.com/freenowtech/wave/commit/37a7f4f1ae07c0ce9d2709e7ad9b027e1331de4e))
+- replace weak prop with secondary ([#206](https://github.com/freenowtech/wave/issues/206)) ([37a7f4f](https://github.com/freenowtech/wave/commit/37a7f4f1ae07c0ce9d2709e7ad9b027e1331de4e))
 
 ## [1.18.0](https://github.com/freenowtech/wave/compare/v1.17.1...v1.18.0) (2022-02-01)
 
 ### Features
 
--   add grid system components ([#198](https://github.com/freenowtech/wave/issues/198)) ([c435683](https://github.com/freenowtech/wave/commit/c4356831e111c8237871778974bee8bfe69c383f)), closes [#200](https://github.com/freenowtech/wave/issues/200)
--   add missing icons ([#200](https://github.com/freenowtech/wave/pull/200)) ([f585dfb](https://github.com/freenowtech/wave/commit/f585dfb412b3091d3fbd6aa9a815a1dbcc570361))
+- add grid system components ([#198](https://github.com/freenowtech/wave/issues/198)) ([c435683](https://github.com/freenowtech/wave/commit/c4356831e111c8237871778974bee8bfe69c383f)), closes [#200](https://github.com/freenowtech/wave/issues/200)
+- add missing icons ([#200](https://github.com/freenowtech/wave/pull/200)) ([f585dfb](https://github.com/freenowtech/wave/commit/f585dfb412b3091d3fbd6aa9a815a1dbcc570361))
 
 ### [1.17.1](https://github.com/freenowtech/wave/compare/v1.17.0...v1.17.1) (2022-01-26)
 
 ### Bug Fixes
 
--   spread Box props correctly ([9dac265](https://github.com/freenowtech/wave/commit/9dac265f2a65ba9897a588ef545e2efd0fc14c2f)), closes [#190](https://github.com/freenowtech/wave/issues/190)
+- spread Box props correctly ([9dac265](https://github.com/freenowtech/wave/commit/9dac265f2a65ba9897a588ef545e2efd0fc14c2f)), closes [#190](https://github.com/freenowtech/wave/issues/190)
 
 ## [1.17.0](https://github.com/freenowtech/wave/compare/v1.16.2...v1.17.0) (2021-12-09)
 
 ### Features
 
--   add secondary variant for text component ([#170](https://github.com/freenowtech/wave/issues/170)) ([f056fea](https://github.com/freenowtech/wave/commit/f056fea33f1a4183ee1cf96b14232572b3b65f78))
+- add secondary variant for text component ([#170](https://github.com/freenowtech/wave/issues/170)) ([f056fea](https://github.com/freenowtech/wave/commit/f056fea33f1a4183ee1cf96b14232572b3b65f78))
 
 ### [1.16.2](https://github.com/freenowtech/wave/compare/v1.16.1...v1.16.2) (2021-11-17)
 
 ### Bug Fixes
 
--   cleanup Modal timeout ([#193](https://github.com/freenowtech/wave/issues/193)) ([fcb1341](https://github.com/freenowtech/wave/commit/fcb1341b06bcc92af0b368da5ef566c01718316e))
+- cleanup Modal timeout ([#193](https://github.com/freenowtech/wave/issues/193)) ([fcb1341](https://github.com/freenowtech/wave/commit/fcb1341b06bcc92af0b368da5ef566c01718316e))
 
 ### [1.16.1](https://github.com/freenowtech/wave/compare/v1.16.0...v1.16.1) (2021-10-26)
 
 ### Bug Fixes
 
--   add layout props to TableHeaderCell and TableCell ([#185](https://github.com/freenowtech/wave/issues/185)) ([0915c58](https://github.com/freenowtech/wave/commit/0915c580ca06b11517f36f0e5da3bcd24b7e7d1f))
+- add layout props to TableHeaderCell and TableCell ([#185](https://github.com/freenowtech/wave/issues/185)) ([0915c58](https://github.com/freenowtech/wave/commit/0915c580ca06b11517f36f0e5da3bcd24b7e7d1f))
 
 ## [1.16.0](https://github.com/freenowtech/wave/compare/v1.15.1...v1.16.0) (2021-10-25)
 
 ### Features
 
--   added Accordion component ([#172](https://github.com/freenowtech/wave/issues/172)) ([439b67c](https://github.com/freenowtech/wave/commit/439b67c0b14ae0c4d820a24710f35085d3037d1b))
+- added Accordion component ([#172](https://github.com/freenowtech/wave/issues/172)) ([439b67c](https://github.com/freenowtech/wave/commit/439b67c0b14ae0c4d820a24710f35085d3037d1b))
 
 ### [1.15.1](https://github.com/freenowtech/wave/compare/v1.15.0...v1.15.1) (2021-10-15)
 
 ### Bug Fixes
 
--   adding disabled state for datepicker ([#181](https://github.com/freenowtech/wave/issues/181)) ([313f424](https://github.com/freenowtech/wave/commit/313f4240190767f77bb00340f4ecbbb8e215a2af))
+- adding disabled state for datepicker ([#181](https://github.com/freenowtech/wave/issues/181)) ([313f424](https://github.com/freenowtech/wave/commit/313f4240190767f77bb00340f4ecbbb8e215a2af))
 
 ## [1.15.0](https://github.com/freenowtech/wave/compare/v1.14.0...v1.15.0) (2021-10-07)
 
 ### Features
 
--   replace tslint with eslint ([#163](https://github.com/freenowtech/wave/issues/163)) ([38c6da6](https://github.com/freenowtech/wave/commit/38c6da61581db49d7a44a3c3c29e44a6e0b21cd4))
+- replace tslint with eslint ([#163](https://github.com/freenowtech/wave/issues/163)) ([38c6da6](https://github.com/freenowtech/wave/commit/38c6da61581db49d7a44a3c3c29e44a6e0b21cd4))
 
 ## [1.14.0](https://github.com/freenowtech/wave/compare/v1.13.3...v1.14.0) (2021-09-13)
 
 ### Features
 
--   **checkbox:** add the indeterminate state to the checkbox component ([c2ef780](https://github.com/freenowtech/wave/commit/c2ef780481f29992c4112e27d8a614d7b546b1b3))
+- **checkbox:** add the indeterminate state to the checkbox component ([c2ef780](https://github.com/freenowtech/wave/commit/c2ef780481f29992c4112e27d8a614d7b546b1b3))
 
 ### [1.13.3](https://github.com/freenowtech/wave/compare/v1.13.2...v1.13.3) (2021-08-11)
 
 ### Bug Fixes
 
--   remove margin around Toggle component ([#168](https://github.com/freenowtech/wave/issues/168)) ([c745695](https://github.com/freenowtech/wave/commit/c745695c33fda61ffd2bab24cef517ba11afeda1))
+- remove margin around Toggle component ([#168](https://github.com/freenowtech/wave/issues/168)) ([c745695](https://github.com/freenowtech/wave/commit/c745695c33fda61ffd2bab24cef517ba11afeda1))
 
 ### [1.13.2](https://github.com/freenowtech/wave/compare/v1.13.1...v1.13.2) (2021-07-29)
 
 ### Bug Fixes
 
--   set search input autocomplete to off ([#161](https://github.com/freenowtech/wave/issues/161)) ([4a2f66a](https://github.com/freenowtech/wave/commit/4a2f66ad6079404ee2a7f4f91bb3bda9039a4b7f))
+- set search input autocomplete to off ([#161](https://github.com/freenowtech/wave/issues/161)) ([4a2f66a](https://github.com/freenowtech/wave/commit/4a2f66ad6079404ee2a7f4f91bb3bda9039a4b7f))
 
 ### [1.13.1](https://github.com/freenowtech/wave/compare/v1.13.0...v1.13.1) (2021-07-21)
 
 ### Bug Fixes
 
--   use currentColor to pass props color for MinusIcon ([#160](https://github.com/freenowtech/wave/issues/160)) ([a0dc014](https://github.com/freenowtech/wave/commit/a0dc0140c76224f007a250b1eaface356b41ff8a))
+- use currentColor to pass props color for MinusIcon ([#160](https://github.com/freenowtech/wave/issues/160)) ([a0dc014](https://github.com/freenowtech/wave/commit/a0dc0140c76224f007a250b1eaface356b41ff8a))
 
 ## [1.13.0](https://github.com/freenowtech/wave/compare/v1.12.0...v1.13.0) (2021-07-21)
 
 ### Features
 
--   add minus icon ([#158](https://github.com/freenowtech/wave/issues/158)) ([780be84](https://github.com/freenowtech/wave/commit/780be8491b298ae1ccfbfb68e066faf9af271858))
+- add minus icon ([#158](https://github.com/freenowtech/wave/issues/158)) ([780be84](https://github.com/freenowtech/wave/commit/780be8491b298ae1ccfbfb68e066faf9af271858))
 
 ## [1.12.0](https://github.com/freenowtech/wave/compare/v1.11.0...v1.12.0) (2021-07-20)
 
 ### Features
 
--   add control props to search component ([d5e8fbc](https://github.com/freenowtech/wave/commit/d5e8fbce536a683e9be1da72b33b414e3a6ed968))
+- add control props to search component ([d5e8fbc](https://github.com/freenowtech/wave/commit/d5e8fbce536a683e9be1da72b33b414e3a6ed968))
 
 ## [1.11.0](https://github.com/freenowtech/wave/compare/v1.10.0...v1.11.0) (2021-07-15)
 
 ### Features
 
--   add and export semantic/functional colors ([945e1bf](https://github.com/freenowtech/wave/commit/945e1bf63060a965a7429c0e12ad22981a375daa))
+- add and export semantic/functional colors ([945e1bf](https://github.com/freenowtech/wave/commit/945e1bf63060a965a7429c0e12ad22981a375daa))
 
 ## [1.10.0](https://github.com/freenowtech/wave/compare/v1.9.0...v1.10.0) (2021-07-13)
 
 ### Features
 
--   add placeholder for the select component ([#150](https://github.com/freenowtech/wave/issues/150)) ([9c37f54](https://github.com/freenowtech/wave/commit/9c37f54bddfbd18e0316d0b79036c93732c66428))
+- add placeholder for the select component ([#150](https://github.com/freenowtech/wave/issues/150)) ([9c37f54](https://github.com/freenowtech/wave/commit/9c37f54bddfbd18e0316d0b79036c93732c66428))
 
 ## [1.9.0](https://github.com/freenowtech/wave/compare/v1.8.1...v1.9.0) (2021-07-08)
 
 ### Features
 
--   **icon:** add the copy icon ([#141](https://github.com/freenowtech/wave/issues/141)) ([956b5ee](https://github.com/freenowtech/wave/commit/956b5ee619acb11acd83c2b4e54819c3da99dfa7))
+- **icon:** add the copy icon ([#141](https://github.com/freenowtech/wave/issues/141)) ([956b5ee](https://github.com/freenowtech/wave/commit/956b5ee619acb11acd83c2b4e54819c3da99dfa7))
 
 ### [1.8.1](https://github.com/freenowtech/wave/compare/v1.8.0...v1.8.1) (2021-07-06)
 
 ### Bug Fixes
 
--   add polyfill for IE 11 browsers for the nanoid library ([f2acdbe](https://github.com/freenowtech/wave/commit/f2acdbe23d025eb60aea4cb1d516ac601ff4ef68))
+- add polyfill for IE 11 browsers for the nanoid library ([f2acdbe](https://github.com/freenowtech/wave/commit/f2acdbe23d025eb60aea4cb1d516ac601ff4ef68))
 
 ## [1.8.0](https://github.com/freenowtech/wave/compare/v1.7.0...v1.8.0) (2021-06-29)
 
 ### Features
 
--   **date-range:** Allow to force picker to show a single month via props ([#133](https://github.com/freenowtech/wave/issues/133)) ([bc635b0](https://github.com/freenowtech/wave/commit/bc635b073f2ae30dd1487f8eb26263db72d5fbfb))
+- **date-range:** Allow to force picker to show a single month via props ([#133](https://github.com/freenowtech/wave/issues/133)) ([bc635b0](https://github.com/freenowtech/wave/commit/bc635b073f2ae30dd1487f8eb26263db72d5fbfb))
 
 ## [1.7.0](https://github.com/freenowtech/wave/compare/v1.6.0...v1.7.0) (2021-06-28)
 
 ### Features
 
--   add new label variants and filled prop ([#125](https://github.com/freenowtech/wave/issues/125)) ([f28c797](https://github.com/freenowtech/wave/commit/f28c7976d98f98e87cca744f8931e516b87d6d74))
+- add new label variants and filled prop ([#125](https://github.com/freenowtech/wave/issues/125)) ([f28c797](https://github.com/freenowtech/wave/commit/f28c7976d98f98e87cca744f8931e516b87d6d74))
 
 ## [1.6.0](https://github.com/freenowtech/wave/compare/v1.5.0...v1.6.0) (2021-06-15)
 
 ### Features
 
--   making input ids passable by props for datepicker ([#120](https://github.com/freenowtech/wave/issues/120)) ([2667dce](https://github.com/freenowtech/wave/commit/2667dce227d6d81c11c7d41df294a441d7e925a3))
+- making input ids passable by props for datepicker ([#120](https://github.com/freenowtech/wave/issues/120)) ([2667dce](https://github.com/freenowtech/wave/commit/2667dce227d6d81c11c7d41df294a441d7e925a3))
 
 ## [1.5.0](https://github.com/freenowtech/wave/compare/v1.4.4...v1.5.0) (2021-06-15)
 
 ### Features
 
--   **SelectList:** associate label with the input ([#112](https://github.com/freenowtech/wave/issues/112)) ([a5ede85](https://github.com/freenowtech/wave/commit/a5ede85e2b3dc9f825104395d6521f0c28791763))
+- **SelectList:** associate label with the input ([#112](https://github.com/freenowtech/wave/issues/112)) ([a5ede85](https://github.com/freenowtech/wave/commit/a5ede85e2b3dc9f825104395d6521f0c28791763))
 
 ### [1.4.4](https://github.com/freenowtech/wave/compare/v1.4.3...v1.4.4) (2021-06-14)
 
 ### Bug Fixes
 
--   **offcanvas:** export Offcanvas component ([#118](https://github.com/freenowtech/wave/issues/118)) ([cccb033](https://github.com/freenowtech/wave/commit/cccb0331e9f2623005d0604d0b032ecbdcc70a5f))
+- **offcanvas:** export Offcanvas component ([#118](https://github.com/freenowtech/wave/issues/118)) ([cccb033](https://github.com/freenowtech/wave/commit/cccb0331e9f2623005d0604d0b032ecbdcc70a5f))
 
 ### [1.4.3](https://github.com/freenowtech/wave/compare/v1.4.2...v1.4.3) (2021-06-11)
 
 ### Features
 
--   add offcanvas component ([#115](https://github.com/freenowtech/wave/issues/115)) ([c937a48](https://github.com/freenowtech/wave/commit/c937a485169bf051ee0b843725a5dee7dee43e94))
+- add offcanvas component ([#115](https://github.com/freenowtech/wave/issues/115)) ([c937a48](https://github.com/freenowtech/wave/commit/c937a485169bf051ee0b843725a5dee7dee43e94))
 
 ### Bug Fixes
 
--   **checkbox:** preserve checkbox outline ([#116](https://github.com/freenowtech/wave/issues/116)) ([4774215](https://github.com/freenowtech/wave/commit/4774215921a6d0ec6f9d6ec909530d7e80555a17))
+- **checkbox:** preserve checkbox outline ([#116](https://github.com/freenowtech/wave/issues/116)) ([4774215](https://github.com/freenowtech/wave/commit/4774215921a6d0ec6f9d6ec909530d7e80555a17))
 
 ### [1.4.2](https://github.com/freenowtech/wave/compare/v1.4.1...v1.4.2) (2021-06-11)
 
 ### Bug Fixes
 
--   **checkbox:** preventing one click trigger twice. one input one for text ([#110](https://github.com/freenowtech/wave/issues/110)) ([6a1c739](https://github.com/freenowtech/wave/commit/6a1c739a67e1f403d791ba92b2d0536691311984))
+- **checkbox:** preventing one click trigger twice. one input one for text ([#110](https://github.com/freenowtech/wave/issues/110)) ([6a1c739](https://github.com/freenowtech/wave/commit/6a1c739a67e1f403d791ba92b2d0536691311984))
 
 ### [1.4.1](https://github.com/freenowtech/wave/compare/v1.4.0...v1.4.1) (2021-06-11)
 
 ### Bug Fixes
 
--   **date-picker:** emitting single input click events for datepicker ([#111](https://github.com/freenowtech/wave/issues/111)) ([cb1193d](https://github.com/freenowtech/wave/commit/cb1193defa96223f43542e4419f3500da6057f70))
+- **date-picker:** emitting single input click events for datepicker ([#111](https://github.com/freenowtech/wave/issues/111)) ([cb1193d](https://github.com/freenowtech/wave/commit/cb1193defa96223f43542e4419f3500da6057f70))
 
 ## [1.4.0](https://github.com/freenowtech/wave/compare/v1.3.0...v1.4.0) (2021-06-09)
 
 ### Features
 
--   Adds `size` prop to separate headline styles from heading level ([4910b35](https://github.com/freenowtech/wave/commit/4910b3584e05726f9f602c9ad4dd1b9a4ebbf841))
+- Adds `size` prop to separate headline styles from heading level ([4910b35](https://github.com/freenowtech/wave/commit/4910b3584e05726f9f602c9ad4dd1b9a4ebbf841))
 
 ## [1.3.0](https://github.com/freenowtech/wave/compare/v1.2.2...v1.3.0) (2021-06-09)
 
 ### Features
 
--   add new textVerticalAlign prop to radio button ([#109](https://github.com/freenowtech/wave/issues/109)) ([29a7c60](https://github.com/freenowtech/wave/commit/29a7c6078907467e990682dd3389c52e8df491a3))
+- add new textVerticalAlign prop to radio button ([#109](https://github.com/freenowtech/wave/issues/109)) ([29a7c60](https://github.com/freenowtech/wave/commit/29a7c6078907467e990682dd3389c52e8df491a3))
 
 ### [1.2.2](https://github.com/freenowtech/wave/compare/v1.2.1...v1.2.2) (2021-06-09)
 
 ### Bug Fixes
 
--   enable props to change the inline spinner ([#107](https://github.com/freenowtech/wave/issues/107)) ([fd48a93](https://github.com/freenowtech/wave/commit/fd48a93c1a655ef3dc1d84f635662bfb9497864c))
+- enable props to change the inline spinner ([#107](https://github.com/freenowtech/wave/issues/107)) ([fd48a93](https://github.com/freenowtech/wave/commit/fd48a93c1a655ef3dc1d84f635662bfb9497864c))
 
 ### [1.2.1](https://github.com/freenowtech/wave/compare/v1.2.0...v1.2.1) (2021-06-04)
 
 ### Bug Fixes
 
--   **password:** allow to set width of the password input ([#101](https://github.com/freenowtech/wave/issues/101)) ([17d9a9a](https://github.com/freenowtech/wave/commit/17d9a9a338f3769ac02e6a1537271bf6d37ca081))
+- **password:** allow to set width of the password input ([#101](https://github.com/freenowtech/wave/issues/101)) ([17d9a9a](https://github.com/freenowtech/wave/commit/17d9a9a338f3769ac02e6a1537271bf6d37ca081))
 
 ## [1.2.0](https://github.com/freenowtech/wave/compare/v1.1.0...v1.2.0) (2021-06-03)
 
 ### Features
 
--   **text:** adding the disabled text color, fixing inverted text colors ([#96](https://github.com/freenowtech/wave/issues/96)) ([40b529d](https://github.com/freenowtech/wave/commit/40b529d2f51397ac7d95373ffd2f40a130853864))
+- **text:** adding the disabled text color, fixing inverted text colors ([#96](https://github.com/freenowtech/wave/issues/96)) ([40b529d](https://github.com/freenowtech/wave/commit/40b529d2f51397ac7d95373ffd2f40a130853864))
 
 ### Bug Fixes
 
--   **checkbox:** Adds disabled checkbox text color ([#97](https://github.com/freenowtech/wave/issues/97)) ([d2dc31d](https://github.com/freenowtech/wave/commit/d2dc31db1323e3947bb95139f80e02db5599a928))
+- **checkbox:** Adds disabled checkbox text color ([#97](https://github.com/freenowtech/wave/issues/97)) ([d2dc31d](https://github.com/freenowtech/wave/commit/d2dc31db1323e3947bb95139f80e02db5599a928))
 
 ## [1.1.0](https://github.com/freenowtech/wave/compare/v1.0.7...v1.1.0) (2021-05-31)
 
 ### Features
 
--   add `Password` component ([#89](https://github.com/freenowtech/wave/issues/89)) ([e590596](https://github.com/freenowtech/wave/commit/e5905961f23b5a238513dd556344ebb31f5cbfd6))
+- add `Password` component ([#89](https://github.com/freenowtech/wave/issues/89)) ([e590596](https://github.com/freenowtech/wave/commit/e5905961f23b5a238513dd556344ebb31f5cbfd6))
 
 ### [1.0.7](https://github.com/freenowtech/wave/compare/v1.0.6...v1.0.7) (2021-05-21)
 
 ### Bug Fixes
 
--   **a11y:** Link inputs and labels when `id` is not provided by the user ([#86](https://github.com/freenowtech/wave/issues/86)) ([541a9ba](https://github.com/freenowtech/wave/commit/541a9ba496ef1a4e48ed6fc34efbefe0731cc4fa))
+- **a11y:** Link inputs and labels when `id` is not provided by the user ([#86](https://github.com/freenowtech/wave/issues/86)) ([541a9ba](https://github.com/freenowtech/wave/commit/541a9ba496ef1a4e48ed6fc34efbefe0731cc4fa))
 
 ### [1.0.6](https://github.com/freenowtech/wave/compare/v1.0.5...v1.0.6) (2021-05-21)
 
 ### Bug Fixes
 
--   Allow to set icon color for payments icons ([#76](https://github.com/freenowtech/wave/issues/76)) ([5cf02b9](https://github.com/freenowtech/wave/commit/5cf02b97c1111b09a97d2f61a003f4185f4bf5ee))
+- Allow to set icon color for payments icons ([#76](https://github.com/freenowtech/wave/issues/76)) ([5cf02b9](https://github.com/freenowtech/wave/commit/5cf02b97c1111b09a97d2f61a003f4185f4bf5ee))
 
 ### [1.0.5](https://github.com/freenowtech/wave/compare/v1.0.4...v1.0.5) (2021-05-21)
 
 ### Bug Fixes
 
--   Inline spinner breaking button siblings ([#77](https://github.com/freenowtech/wave/issues/77)) ([a4a6fe3](https://github.com/freenowtech/wave/commit/a4a6fe39b8b661f6aa39f00f3d48067c882632d2)), closes [#22](https://github.com/freenowtech/wave/issues/22)
+- Inline spinner breaking button siblings ([#77](https://github.com/freenowtech/wave/issues/77)) ([a4a6fe3](https://github.com/freenowtech/wave/commit/a4a6fe39b8b661f6aa39f00f3d48067c882632d2)), closes [#22](https://github.com/freenowtech/wave/issues/22)
 
 ### [1.0.4](https://github.com/freenowtech/wave/compare/v1.0.3...v1.0.4) (2021-05-21)
 
 ### Bug Fixes
 
--   **essentials:** use correct blur-radius value for medium size shadow ([#83](https://github.com/freenowtech/wave/issues/83)) ([0a79512](https://github.com/freenowtech/wave/commit/0a79512e43247efc214231414329132ac420d0a9)), closes [#82](https://github.com/freenowtech/wave/issues/82)
+- **essentials:** use correct blur-radius value for medium size shadow ([#83](https://github.com/freenowtech/wave/issues/83)) ([0a79512](https://github.com/freenowtech/wave/commit/0a79512e43247efc214231414329132ac420d0a9)), closes [#82](https://github.com/freenowtech/wave/issues/82)
 
 ### [1.0.3](https://github.com/freenowtech/wave/compare/v1.0.2...v1.0.3) (2021-05-11)
 
 ### Bug Fixes
 
--   use default export instead of named export ([#73](https://github.com/freenowtech/wave/issues/73)) ([6f91edc](https://github.com/freenowtech/wave/commit/6f91edc98ba9988b415d114a2f9b002a58af409a))
+- use default export instead of named export ([#73](https://github.com/freenowtech/wave/issues/73)) ([6f91edc](https://github.com/freenowtech/wave/commit/6f91edc98ba9988b415d114a2f9b002a58af409a))
 
 ### [1.0.2](https://github.com/freenowtech/wave/compare/v1.0.1...v1.0.2) (2021-05-06)
 
 ### Bug Fixes
 
--   isLastPage true if 0 items ([#64](https://github.com/freenowtech/wave/issues/64)) ([7fc21fd](https://github.com/freenowtech/wave/commit/7fc21fd17fb91c36bc78ca8020c0ff0c25e81f4c))
+- isLastPage true if 0 items ([#64](https://github.com/freenowtech/wave/issues/64)) ([7fc21fd](https://github.com/freenowtech/wave/commit/7fc21fd17fb91c36bc78ca8020c0ff0c25e81f4c))
 
 ### [1.0.1](https://github.com/freenowtech/wave/compare/v1.0.0...v1.0.1) (2021-05-03)
 
 ### Bug Fixes
 
--   set publish config to public ([#63](https://github.com/freenowtech/wave/issues/63)) ([0a501ae](https://github.com/freenowtech/wave/commit/0a501ae93ee49bcfb01c775890bdb815083be295))
+- set publish config to public ([#63](https://github.com/freenowtech/wave/issues/63)) ([0a501ae](https://github.com/freenowtech/wave/commit/0a501ae93ee49bcfb01c775890bdb815083be295))
 
 ## 1.0.0 (2021-05-03)
 
 ### Features
 
--   add new pen icon ([#58](https://github.com/freenowtech/wave/issues/58)) ([96792e7](https://github.com/freenowtech/wave/commit/96792e703ad22cf760470a0781497173c3787364))
--   open source big bang ([ec3b280](https://github.com/freenowtech/wave/commit/ec3b2804eee816091811c98c3e2406d298a68718))
+- add new pen icon ([#58](https://github.com/freenowtech/wave/issues/58)) ([96792e7](https://github.com/freenowtech/wave/commit/96792e703ad22cf760470a0781497173c3787364))
+- open source big bang ([ec3b280](https://github.com/freenowtech/wave/commit/ec3b2804eee816091811c98c3e2406d298a68718))
 
 ### Bug Fixes
 
--   add break-word so selected option does not get cut off ([c52118c](https://github.com/freenowtech/wave/commit/c52118c8da0d8fc6d5a61dbc9ec68bf914a0ca7b))
--   use a dedicated transpiler for styled-components ([#31](https://github.com/freenowtech/wave/issues/31)) ([dd34652](https://github.com/freenowtech/wave/commit/dd3465226dbba4b3fc92b650ce8c5a676853cac2))
+- add break-word so selected option does not get cut off ([c52118c](https://github.com/freenowtech/wave/commit/c52118c8da0d8fc6d5a61dbc9ec68bf914a0ca7b))
+- use a dedicated transpiler for styled-components ([#31](https://github.com/freenowtech/wave/issues/31)) ([dd34652](https://github.com/freenowtech/wave/commit/dd3465226dbba4b3fc92b650ce8c5a676853cac2))
