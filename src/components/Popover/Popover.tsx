@@ -1,8 +1,7 @@
 import * as React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
 import { styled } from 'styled-components';
-import type { Placement } from '@floating-ui/react';
-import { useFloating, offset as floatingOffset, flip, autoUpdate } from '@floating-ui/react';
+import { useFloating, offset as floatingOffset, autoUpdate } from '@floating-ui/react';
 
 import { theme } from '../../essentials/theme';
 import { get } from '../../utils/themeGet';
@@ -10,6 +9,7 @@ import { getSemanticValue } from '../../utils/cssVariables';
 import { Spaces } from '../../essentials';
 import { ChevronDownIcon, ChevronUpIcon } from '../../icons';
 import { useClickOutside } from '../../utils/hooks/useClickOutside';
+import { getFloatingPlacement, type Placement } from '../../utils/floatingPlacement';
 
 import { Text } from '../Text/Text';
 
@@ -119,15 +119,16 @@ const Popover: React.FC<PopoverProps> = ({
     const [openByDefault, setOpenByDefault] = React.useState(isOpen);
 
     const [render, setRender] = React.useState(openByDefault);
+    const floatingPlacement = getFloatingPlacement(placement);
 
     const {
         refs,
         floatingStyles,
         placement: currentPlacement
     } = useFloating({
-        placement,
+        placement: floatingPlacement.placement,
         strategy: 'fixed',
-        middleware: [...(offset ? [floatingOffset(offset)] : []), flip()],
+        middleware: [...(offset ? [floatingOffset(offset)] : []), floatingPlacement.middleware],
         whileElementsMounted: autoUpdate
     });
 

@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import * as React from 'react';
 import { styled } from 'styled-components';
-import type { Placement } from '@floating-ui/react';
+import type { Placement } from '../../../utils/floatingPlacement';
 import { RadioButton, Tooltip } from '../..';
 import { MediaQueries } from '../../../essentials';
 import { getSemanticValue } from '../../../utils/cssVariables';
@@ -51,7 +51,10 @@ const TooltipPlacementExample: FC = () => {
         'top',
         'bottom',
         'right',
-        'left'
+        'left',
+        'auto',
+        'auto-start',
+        'auto-end'
     ];
 
     return (

@@ -2,8 +2,7 @@ import * as React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
 import { styled, keyframes } from 'styled-components';
 import { createPortal } from 'react-dom';
-import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/react';
-import type { Placement } from '@floating-ui/react';
+import { useFloating, offset, shift, autoUpdate } from '@floating-ui/react';
 import { variant } from 'styled-system';
 import { Elevation, MediaQueries } from '../../essentials';
 import { getSemanticValue } from '../../utils/cssVariables';
@@ -11,6 +10,7 @@ import { get } from '../../utils/themeGet';
 import { Text } from '../Text/Text';
 import { DarkScheme, LightScheme } from '../ColorScheme';
 import { useClosestColorScheme } from '../../utils/hooks/useClosestColorScheme';
+import { getFloatingPlacement, type Placement } from '../../utils/floatingPlacement';
 
 const fadeAnimation = keyframes`
     from {
@@ -147,14 +147,15 @@ const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
 }) => {
     const [isVisible, setIsVisible] = React.useState(alwaysVisible);
     const [triggerElement, setTriggerElement] = React.useState<Element | null>(null);
+    const floatingPlacement = getFloatingPlacement(placement);
 
     const {
         refs,
         floatingStyles,
         placement: currentPlacement
     } = useFloating({
-        placement,
-        middleware: [offset(5), flip(), shift()],
+        placement: floatingPlacement.placement,
+        middleware: [offset(5), floatingPlacement.middleware, shift()],
         whileElementsMounted: autoUpdate
     });
 

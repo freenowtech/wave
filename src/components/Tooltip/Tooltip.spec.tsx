@@ -31,4 +31,16 @@ describe('Tooltip', () => {
             await screen.findByText('Tooltip content').then(text => text.closest('[data-popper-placement]'))
         ).toHaveAttribute('data-popper-placement', 'bottom-end');
     });
+
+    it('resolves the auto placements to the side with the most space', async () => {
+        render(
+            <Tooltip content="Tooltip content" placement="auto-start" alwaysVisible>
+                <button type="button">Trigger</button>
+            </Tooltip>
+        );
+
+        expect(
+            await screen.findByText('Tooltip content').then(text => text.closest('[data-popper-placement]'))
+        ).toHaveAttribute('data-popper-placement', expect.stringMatching(/^(top|right|bottom|left)-start$/));
+    });
 });

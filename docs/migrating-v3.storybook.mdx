@@ -75,8 +75,6 @@ Tooltip, Popover, Datepicker and the month range picker are positioned by [Float
 instead of react-popper. The placement names are the same, the content still moves to the other side when it doesn't
 fit, and the `data-popper-placement` attribute is still set, so CSS selectors that use it keep working.
 
-- The `placement` prop of `Tooltip` and `Popover` no longer accepts `auto`, `auto-start` and `auto-end`. Pick a side,
-  e.g. `top`: Wave moves the content when it doesn't fit.
 - `react-popper` and `@popperjs/core` are no longer installed with Wave. If your app imports them, add them to your own
   dependencies.
 

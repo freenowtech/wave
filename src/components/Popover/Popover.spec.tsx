@@ -20,4 +20,19 @@ describe('Popover', () => {
             'top-start'
         );
     });
+
+    it('resolves the auto placements to the side with the most space', async () => {
+        render(
+            <Popover content="Popover content" placement="auto">
+                <button type="button">Trigger</button>
+            </Popover>
+        );
+
+        await userEvent.click(screen.getByRole('button', { name: 'Trigger' }));
+
+        expect(screen.getByText('Popover content').closest('#popover-content')).toHaveAttribute(
+            'data-popper-placement',
+            expect.stringMatching(/^(top|right|bottom|left)$/)
+        );
+    });
 });
