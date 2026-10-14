@@ -9,8 +9,9 @@ import { isFlagAvailable } from '../util/isFlagAvailable';
 // Styled wrapper for content inside react-select's Option.
 // We avoid wrapping components.Option directly with styled() because
 // styled-components v6 strips the `theme` prop, which react-select needs internally.
+// It's a block (not inline-flex like the Option was) so that the line box of the Option doesn't make it taller.
 const OptionContent = styled.div.withConfig({ shouldForwardProp: isPropValid })`
-    display: inline-flex;
+    display: flex;
 
     svg {
         min-width: 1.5rem;
