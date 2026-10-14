@@ -14,7 +14,7 @@ interface PopoverContentProps {
     /**
      * Popover content padding
      */
-    padding: string | number;
+    padding?: string | number;
 }
 
 const PopoverContentContainer = styled(Card)<{ padding: string | number }>`

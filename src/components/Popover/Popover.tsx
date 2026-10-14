@@ -256,7 +256,7 @@ const Popover: React.FC<PopoverProps> = ({
                     data-popper-placement={currentPlacement}
                 >
                     <PopoverContentWrapper ref={popoverContentRef}>
-                        <PopoverContent padding={padding ?? 0}>{content}</PopoverContent>
+                        <PopoverContent padding={padding}>{content}</PopoverContent>
                     </PopoverContentWrapper>
                 </PopoverContentContainer>
             )}
