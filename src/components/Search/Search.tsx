@@ -71,7 +71,7 @@ const StyledInput = styled(Input)`
 
         text-overflow: ellipsis;
 
-        ::-webkit-search-cancel-button {
+        &::-webkit-search-cancel-button {
             display: none;
         }
     }

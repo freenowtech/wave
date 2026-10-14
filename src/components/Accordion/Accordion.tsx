@@ -18,7 +18,7 @@ const HorizontalDividerBottom = styled(HorizontalDivider)`
 `;
 
 const RenderedSection = styled(Box)`
-    :last-child ${HorizontalDividerBottom} {
+    &:last-child ${HorizontalDividerBottom} {
         display: inherit;
     }
 `;
