@@ -25,4 +25,4 @@ export { default as WifiOnIcon } from './WifiOnIcon';
 export { default as WifiOffIcon } from './WifiOffIcon';
 export { default as ResendEmailIcon } from './ResendEmailIcon';
 export { default as SteeringWheelIcon } from './SteeringWheelIcon';
-export { default as MagnifierEyeIcon } from './SteeringWheelIcon';
+export { default as MagnifierEyeIcon } from './MagnifierEyeIcon';
