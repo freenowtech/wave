@@ -26,3 +26,7 @@ export { default as WifiOffIcon } from './WifiOffIcon';
 export { default as ResendEmailIcon } from './ResendEmailIcon';
 export { default as SteeringWheelIcon } from './SteeringWheelIcon';
 export { default as MagnifierEyeIcon } from './MagnifierEyeIcon';
+export { default as CalendarClockFilledIcon } from './CalendarClockFilledIcon';
+export { default as EyeFilledIcon } from './EyeFilledIcon';
+export { default as MedicalIcon } from './MedicalIcon';
+export { default as PhonePersonFilledIcon } from './PhonePersonFilledIcon';
