@@ -9,7 +9,14 @@ const ClockIcon: React.FC<Props> = ({ size = 'medium', color = 'inherit', ...res
         ? size
         : get(`iconSizes.${size}`)(props) || get('iconSizes.medium')(props);
     return (
-        <svg {...props} xmlns="http://www.w3.org/2000/svg" width={sizePx} height={sizePx} fill="none">
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width={sizePx}
+            height={sizePx}
+            viewBox="0 0 24 24"
+            fill="none"
+        >
             <path
                 fill="currentColor"
                 fillRule="evenodd"
